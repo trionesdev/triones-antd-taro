@@ -5,20 +5,7 @@ module.exports = {
     ['taro', {
       framework: 'react',
       ts: true,
-      compiler: 'webpack5',
-    }],
-    ['@wyw-in-js', {displayName: true}],
-  ],
-  plugins: [
-    [
-      "import",
-      {
-        "libraryName": "@trionesdev/antd-taro-react",
-        "libraryDirectory": "es",
-        "style": true,
-        "camel2DashComponentName": false
-      },
-      'antd-taro-react'
-    ]
+      compiler: 'vite',
+    }]
   ]
 }

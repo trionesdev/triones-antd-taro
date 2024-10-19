@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "light-mes-miniprogram",
+  "projectname": "react-doc1",
   "appid": "testAppId",
   "setting": {
     "es6": false,

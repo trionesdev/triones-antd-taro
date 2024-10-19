@@ -3,7 +3,7 @@ import { Provider } from 'mobx-react'
 
 import counterStore from './store/counter'
 
-import './app.less'
+import './app.scss'
 
 const store = {
   counterStore
