@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import dts from "vite-plugin-dts"
 
 export default defineConfig({
-    plugins: [react(), dts({outDir: 'es'}), dts({outDir: 'lib'}),],
+    plugins: [react(), dts({outDir: 'es',exclude: ['src/**/style/**']}), dts({outDir: 'lib',exclude: ['src/**/style/**']}),],
     build: {
         target: 'modules',
         lib: {
@@ -11,7 +11,7 @@ export default defineConfig({
             name: 'antd-taro-react',
             fileName: 'index',
             // fileName: (format) => `index.${format}.js`,
-            // formats: ['es', 'cjs'],
+            formats: ['es', 'cjs'],
         },
         rollupOptions: {
             external: ['react', 'react-dom', '@tarojs/react', '@tarojs/runtime', '@tarojs/taro', '@tarojs/components'],
