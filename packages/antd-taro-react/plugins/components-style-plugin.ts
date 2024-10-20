@@ -18,7 +18,11 @@ const resolveFolder = (targetDir: string) => {
     }
 }
 
-
+/**
+ * 组件样式编译插件
+ * 将组件下style文件夹下的文件按照按需加载的需求进行构建
+ * @param options
+ */
 function componentsStylePlugin(options?: PluginOptions): import('vite').Plugin {
     const {src = 'src', formats = ['es', 'lib'], logLevel} = options || {}
     let logger: Logger
@@ -64,7 +68,7 @@ function componentsStylePlugin(options?: PluginOptions): import('vite').Plugin {
 
         styleFolders.forEach(styleFolder => {
             const files = glob.sync(path.resolve(process.cwd(), styleFolder, './**'), {dotRelative: true, nodir: true})
-console.log('files', files)
+            console.log('files', files)
             if (!_.isEmpty(files)) {
                 files.forEach(file => {
                     const extname = path.extname(file)
@@ -100,14 +104,14 @@ console.log('files', files)
                         buildCss(path.resolve(styleFolder, filename), targetDir)
                     }
                 })
-                logger.info(`\n${filename.replace(process.cwd(),'')} changed`)
+                logger.info(`\n${filename.replace(process.cwd(), '')} changed`)
             })
         })
     }
 
     return {
-        name: 'components-style-plugin',
-        // apply: 'build',
+        name: 'trionesdev:components-style-plugin',
+        apply: 'build',
         enforce: 'post',
         async configResolved(config) {
             logger = logLevel
@@ -121,7 +125,7 @@ console.log('files', files)
         async buildStart() {
             console.log('buildStart----------------------------------')
             generateStyle(src, formats)
-            if (watch){
+            if (watch) {
                 watchStyle(src, formats)
             }
         }
