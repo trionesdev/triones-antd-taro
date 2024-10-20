@@ -17,7 +17,10 @@ export default defineConfig({
             external: ['react', 'react-dom', '@tarojs/react', '@tarojs/runtime', '@tarojs/taro', '@tarojs/components'],
             input: './src/index.tsx',
             output: [
-                {}, //默认配置，打包到dist 文件夹下
+                {
+                    // format: 'cjs',
+                    entryFileNames: '[name].js',
+                }, //默认配置，打包到dist 文件夹下
                 {
                     format: 'es',
                     dir: 'es',

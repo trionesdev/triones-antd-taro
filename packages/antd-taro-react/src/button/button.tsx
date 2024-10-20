@@ -17,13 +17,21 @@ type AntButtonProps = {
 } & Omit<ButtonProps, 'size'>
 
 
-
-
 export const AntButton: FC<AntButtonProps> = (
     {
-
+        block,
+        color,
+        disabled,
+        fill,
+        loading,
+        loadingIcon,
+        loadingText,
+        shape,
+        size,
+        type,
+        ...props
     }
 ) => {
 
-    return <Button className={classNames('antm-button')}/>
+    return <Button {...props} className={classNames('antm-button')}/>
 }

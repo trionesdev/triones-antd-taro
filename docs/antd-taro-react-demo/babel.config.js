@@ -7,5 +7,17 @@ module.exports = {
       ts: true,
       compiler: 'vite',
     }]
+  ],
+  plugins: [
+    [
+      "import",
+      {
+        "libraryName": "@trionesdev/antd-taro-react",
+        "libraryDirectory": "es",
+        "style": true,
+        "camel2DashComponentName": false
+      },
+      'antd-taro-react'
+    ]
   ]
 }
