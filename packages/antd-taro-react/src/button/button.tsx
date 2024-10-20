@@ -32,6 +32,7 @@ export const AntButton: FC<AntButtonProps> = (
         ...props
     }
 ) => {
+    console.log(props)
 
     return <Button {...props} className={classNames('antm-button')}/>
 }

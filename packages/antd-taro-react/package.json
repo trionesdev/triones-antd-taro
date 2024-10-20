@@ -12,12 +12,14 @@
   "types": "./es/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "build:dev": "vite build --watch"
   },
   "dependencies": {
     "@wyw-in-js/babel-preset": "^0.5.4",
     "@wyw-in-js/vite": "^0.5.4",
     "classnames": "^2.5.1",
+    "postcss-import": "^16.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.80.2",

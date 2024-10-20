@@ -40,11 +40,15 @@ const styleBuild = (file, mode) => {
 }
 
 
-const scssFiles = glob.sync('./src/**/style/index.tsx', {dotRelative: true});
+const scssFiles = glob.sync('./src/**/style', {dotRelative: true});
 console.log(scssFiles)
+console.log(path.resolve(process.cwd(), scssFiles[0]))
+console.log(glob.sync(path.resolve(process.cwd(), scssFiles[0]+'/**'), {dotRelative: true,nodir: true}))
 
-_.forEach(scssFiles, function (file) {
-    styleBuild(file, 'es')
-    styleBuild(file, 'lib')
-})
+console.log(path.extname("indes.js"))
+
+// _.forEach(scssFiles, function (file) {
+//     styleBuild(file, 'es')
+//     styleBuild(file, 'lib')
+// })
 
