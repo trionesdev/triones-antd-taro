@@ -2,7 +2,7 @@ import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from "vite-plugin-dts"
 import atImport from 'postcss-import'
-import componentsStylePlugin from "./plugins/components-style-plugin";
+import componentsStylePlugin from "./plugins/vite-components-style-plugin";
 import * as path from "node:path";
 
 
@@ -57,6 +57,7 @@ export default defineConfig({
                 {
                     // format: 'cjs',
                     entryFileNames: '[name].js',
+                    plugins: []
                 }, //默认配置，打包到dist 文件夹下
                 {
                     format: 'es',

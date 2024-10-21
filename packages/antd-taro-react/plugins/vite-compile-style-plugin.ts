@@ -9,7 +9,7 @@ export interface PluginOptions {
  * 打包所有的样式
  * @param options
  */
-function compileStylePlugin(options?: PluginOptions): import('vite').Plugin {
+function viteCompileStylePlugin(options?: PluginOptions): import('vite').Plugin {
     const {logLevel} = options
     let logger: Logger
     return {
@@ -27,4 +27,4 @@ function compileStylePlugin(options?: PluginOptions): import('vite').Plugin {
     }
 }
 
-export default compileStylePlugin
+export default viteCompileStylePlugin

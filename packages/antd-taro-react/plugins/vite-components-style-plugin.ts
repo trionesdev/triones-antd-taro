@@ -3,7 +3,7 @@ import * as path from "path"
 import * as ts from "typescript"
 import * as sass from "sass";
 import * as glob from "glob"
-import * as _ from "lodash";
+import  _ from "lodash";
 import type {LogLevel, Logger} from 'vite'
 
 export interface PluginOptions {

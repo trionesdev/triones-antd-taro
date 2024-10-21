@@ -1,14 +1,6 @@
-import typescript, {RollupTypescriptOptions} from "@rollup/plugin-typescript"
-import alias from '@rollup/plugin-alias';
+import typescript from "@rollup/plugin-typescript"
 import postcss from 'rollup-plugin-postcss'
-import scss from 'rollup-plugin-scss';
-import * as path from "path"
-
-const tsCompilerOptions = {
-    "allowImportingTsExtensions": true,
-    noEmit: true,
-}
-
+import rollupStylePlugin from "./plugins/rollup-style-plugin.js";
 
 const external = [
     'react',
@@ -23,19 +15,28 @@ const external = [
 
 export default [
     {
-        input: ['src/index.tsx'],
+        input: ['src/index.tsx', 'src/style/index.scss'],
         plugins: [
             typescript({tsconfig: './tsconfig.json'}),
+            rollupStylePlugin(),
             postcss({
                 extract: true,
                 minimize: true,
-                sourceMap: true
+                sourceMap: true,
+                preprocessOptions:{
+                    scss:{
+                        includePaths: [
+                            'src/style'
+                        ]
+                    }
+                }
             }),
         ],
         external: external,
         output: {
+            // format: 'umd',
             dir: 'dist',
-            entryFileNames: '[name].js',
+            name: '[name].js',
         },
     },
     {
