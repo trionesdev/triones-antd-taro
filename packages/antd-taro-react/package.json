@@ -11,9 +11,11 @@
   "unpkg": "./dist/index.js",
   "types": "./es/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev:dep": "vite",
+    "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "build:dev": "vite build --watch"
+    "build:rollup": "rollup --config rollup.config.ts --configPlugin typescript",
+    "dev:rollup": "rollup --config rollup.config.ts --configPlugin typescript --watch"
   },
   "dependencies": {
     "@wyw-in-js/babel-preset": "^0.5.4",
@@ -22,12 +24,16 @@
     "postcss-import": "^16.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.80.2",
     "vite-plugin-dts": "^4.2.4"
   },
   "devDependencies": {
     "@linaria/core": "^6.2.0",
     "@linaria/react": "^6.2.1",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
     "@tarojs/components": "4.0.6",
     "@tarojs/react": "4.0.6",
     "@tarojs/runtime": "4.0.6",
@@ -41,6 +47,8 @@
     "glob": "^11.0.0",
     "globals": "^15.9.0",
     "lodash": "^4.17.21",
+    "rollup": "^4.24.0",
+    "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.5.3",
     "vite": "^5.4.8"
   }

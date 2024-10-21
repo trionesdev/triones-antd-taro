@@ -36,11 +36,11 @@ export default defineConfig({
         target: 'modules',
         emptyOutDir: false,
         lib: {
-            entry: ['./src/index.tsx'],
+            entry: ['./src/index.tsx','./src/style/index.scss'],
             name: 'antd-taro-react',
             fileName: 'index',
             // fileName: (format) => `index.${format}.js`,
-            formats: ['es', 'cjs'],
+            // formats: ['es', 'cjs'],
         },
         rollupOptions: {
             external: [
@@ -62,9 +62,9 @@ export default defineConfig({
                     format: 'es',
                     dir: 'es',
                     entryFileNames: '[name].js',
-                    assetFileNames: '[name].[ext]',
                     preserveModules: true,
                     preserveModulesRoot: 'src',
+                    banner: '/** TrionesDev  **/',
                 },
                 {
                     format: 'cjs',

@@ -60,22 +60,23 @@ function componentsStylePlugin(options?: PluginOptions): import('vite').Plugin {
     }
 
     const generateStyle = (src: string, formats?: string[]) => {
-
-        const styleFolders = glob.sync(path.resolve(process.cwd(), src, './**/style'), {dotRelative: true});
+        const styleFolderPattern = path.join(src, './*/style').replace(/\\/g, '/')
+        console.log('styleFolderPattern', styleFolderPattern)
+        const styleFolders = glob.sync(styleFolderPattern, {dotRelative: true});
+        console.log('styleFolders', styleFolders)
         if (_.isEmpty(styleFolders)) {
+            logger.warn('\nNo style folder found in src')
             return
         }
 
         styleFolders.forEach(styleFolder => {
-            const files = glob.sync(path.resolve(process.cwd(), styleFolder, './**'), {dotRelative: true, nodir: true})
-            console.log('files', files)
+            const pathPattern = path.join(styleFolder, '/**').replace(/\\/g, '/')
+            const files = glob.sync(pathPattern, {dotRelative: true, nodir: true})
             if (!_.isEmpty(files)) {
                 files.forEach(file => {
                     const extname = path.extname(file)
-                    console.log('extname', extname)
                     _.forEach(formats, format => {
-                        const targetDir = styleFolder.replace('src', format)
-                        console.log('targetDir', targetDir)
+                        const targetDir = styleFolder.replace(src, format)
                         if (_.includes(['.ts', '.tsx'], extname)) {
                             buildJs(file, targetDir, format)
                         } else if (_.includes(['.scss'], extname)) {
@@ -89,11 +90,13 @@ function componentsStylePlugin(options?: PluginOptions): import('vite').Plugin {
     }
 
     const watchStyle = (src: string, formats?: string[]) => {
-        const styleFolders = glob.sync(path.resolve(process.cwd(), src, './**/style'), {dotRelative: true});
+        const styleFolderPattern = path.join(src, './*/style').replace(/\\/g, '/')
+        const styleFolders = glob.sync(styleFolderPattern, {dotRelative: true});
         if (_.isEmpty(styleFolders)) {
             return
         }
         styleFolders.forEach(styleFolder => {
+            console.log('watch', styleFolder)
             fs.watch(styleFolder, {recursive: true}, (eventType, filename) => {
                 const extname = path.extname(filename)
                 _.forEach(formats, format => {
@@ -123,7 +126,7 @@ function componentsStylePlugin(options?: PluginOptions): import('vite').Plugin {
 
         },
         async buildStart() {
-            console.log('buildStart----------------------------------')
+            console.log('buildStart----------------------------------',watch)
             generateStyle(src, formats)
             if (watch) {
                 watchStyle(src, formats)
