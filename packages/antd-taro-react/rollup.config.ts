@@ -15,22 +15,16 @@ const external = [
 
 export default [
     {
-        input: ['src/index.tsx', 'src/style/index.scss'],
+        input: ['src/index.tsx'],
         plugins: [
             typescript({tsconfig: './tsconfig.json'}),
-            rollupStylePlugin(),
+
             postcss({
                 extract: true,
                 minimize: true,
                 sourceMap: true,
-                preprocessOptions:{
-                    scss:{
-                        includePaths: [
-                            'src/style'
-                        ]
-                    }
-                }
             }),
+            rollupStylePlugin(),
         ],
         external: external,
         output: {

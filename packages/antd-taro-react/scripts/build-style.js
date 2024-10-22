@@ -1,6 +1,9 @@
-const _ = require('lodash');
-const path = require('path');
-const glob = require('glob');
+// const _ = require('lodash');
+import _ from "lodash"
+// const path = require('path');
+import * as path from "node:path";
+// const glob = require('glob');
+import glob from "glob"; 
 const vite = require('vite')
 const sass = require('sass');
 const fse = require('fs-extra')
@@ -10,6 +13,8 @@ const ts = require('typescript')
 const rollup = require('rollup')
 // import * as ts1 from 'typescript';
 // import * as rollup from "rollup"
+
+const postcss = require('postcss')
 
 // import { nodeResolve } from '@rollup/plugin-node-resolve';
 
@@ -59,16 +64,19 @@ console.log(path.extname("indes.js"))
 //     styleBuild(file, 'es')
 //     styleBuild(file, 'lib')
 // })
-const options = rollup.defineConfig({
-    input: './src/button/style/index.tsx',
-    plugins: [nodeResolve(),tsPlugin({
-        target: 'ES2020',
-        module: 'ESNext',
-        jsx: 'react-jsx',
-        noEmit: true,
-    })]
-})
-rollup.rollup(options).then(bundle => bundle.write({
-    file: './dist/bundle.js',
-    format: 'es'
-}))
+// const options = rollup.defineConfig({
+//     input: './src/button/style/index.tsx',
+//     plugins: [nodeResolve(),tsPlugin({
+//         target: 'ES2020',
+//         module: 'ESNext',
+//         jsx: 'react-jsx',
+//         noEmit: true,
+//     })]
+// })
+// rollup.rollup(options).then(bundle => bundle.write({
+//     file: './dist/bundle.js',
+//     format: 'es'
+// }))
+
+
+postcss([]).process(fs.readFileSync(path.resolve(process.cwd(), './src/button/style/style.scss'), 'utf8'), {})
