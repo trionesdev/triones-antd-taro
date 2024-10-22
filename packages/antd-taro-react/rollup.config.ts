@@ -1,7 +1,9 @@
 import typescript from "@rollup/plugin-typescript"
-import postcss from 'rollup-plugin-postcss'
-import rollupStylePlugin from "./plugins/rollup-compile-style-plugin"
-import componentsStylePlugin  from "./plugins/vite-components-style-plugin";
+import dts from "rollup-plugin-dts";
+// import postcss from 'rollup-plugin-postcss'
+// import rollupStylePlugin from "./plugins/rollup-compile-style-plugin"
+import componentsStylePlugin from "./plugins/rollup-components-style-plugin";
+import type {RollupOptions} from 'rollup';
 
 const external = [
     'react',
@@ -14,11 +16,15 @@ const external = [
     '@tarojs/components'
 ];
 
-export default [
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const configs: RollupOptions[] = [
     {
         input: 'src/index.tsx',
         plugins: [
-            typescript({tsconfig: './tsconfig.json'}),
+            dts(),
+            typescript({tsconfig: 'tsconfig.json'}),
             componentsStylePlugin()
         ],
         external: external,
@@ -42,3 +48,4 @@ export default [
         ],
     }
 ]
+export default configs

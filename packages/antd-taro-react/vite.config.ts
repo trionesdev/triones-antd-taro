@@ -2,7 +2,6 @@ import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from "vite-plugin-dts"
 import atImport from 'postcss-import'
-import componentsStylePlugin from "./plugins/vite-components-style-plugin";
 import * as path from "node:path";
 
 
@@ -16,7 +15,6 @@ export default defineConfig({
         react(),
         dts({outDir: 'es', exclude: ['src/**/style/**']}),
         dts({outDir: 'lib', exclude: ['src/**/style/**']}),
-        componentsStylePlugin()
     ],
     css: {
         preprocessorOptions: {

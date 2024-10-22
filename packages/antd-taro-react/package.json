@@ -6,6 +6,12 @@
     "es",
     "lib"
   ],
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.scss"
+  ],
   "type": "module",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -15,8 +21,9 @@
     "dev:dep": "vite",
     "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "build:rollup": "rollup --config rollup.config.ts --configPlugin typescript",
-    "dev:rollup": "rollup --config rollup.config.ts --configPlugin typescript --watch"
+    "build:rollup": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "dev:rollup": "rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "pp": "tsc ./rollup.config.ts"
   },
   "dependencies": {
     "@wyw-in-js/babel-preset": "^0.5.4",
@@ -52,6 +59,7 @@
     "lodash": "^4.17.21",
     "postcss-scss": "^4.0.9",
     "rollup": "^4.24.0",
+    "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.5.3",
     "vite": "^5.4.8"
