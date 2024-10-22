@@ -8,16 +8,15 @@ import * as process from "node:process";
 
 export default () => {
     return {
-        name: 'rollup:style-plugin',
+        name: 'rollup:compile-style-plugin',
         buildStart(options) {
+            console.log('buildStart----------------------------------')
             // console.log('buildStart----------------------------------', options)
             // this.load({id: 'src/style/index.tsx', resolveDependencies: true})
-            const files = glob.sync('src/**/*.scss', {nodir: true, cwd: process.cwd()})
-            const files2 = glob.sync('src/**/*.less', {nodir: true, cwd: process.cwd()})
-            const files3 = glob.sync('src/**/*.css', {nodir: true, cwd: process.cwd()})
+            const files = glob.sync(['src/**/*.scss', 'src/**/*.less', 'src/**/*.css'], {nodir: true, cwd: process.cwd()})
+
             console.log('glob.sync----------------------------------', files)
-            console.log('glob.sync----------------------------------', files2)
-            console.log('glob.sync----------------------------------', files3)
+
              Promise.all(files.map(async (file) => {
                 const content = await this.load({id: file})
                 // console.log('content----------------------------------', content)
@@ -25,16 +24,6 @@ export default () => {
             }))
 
 
-             Promise.all(files2.map(async (file) => {
-                const content = await this.load({id: file})
-                // console.log('content----------------------------------', content)
-                return content
-            }))
-             Promise.all(files3.map(async (file) => {
-                const content = await this.load({id: file})
-                // console.log('content----------------------------------', content)
-                return content
-            }))
         },
         async resolveId(source, importer, options) {
             console.log('resolveId source----------------------------------', source)

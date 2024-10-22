@@ -16,10 +16,28 @@ const external = [
 
 export default [
     {
+        input: ['src/index.tsx'],
+        plugins: [
+            typescript({tsconfig: './tsconfig.json'}),
+
+            postcss({
+                extract: true,
+                minimize: true,
+                sourceMap: true,
+            }),
+            rollupStylePlugin(),
+        ],
+        external: external,
+        output: {
+            // format: 'umd',
+            dir: 'dist',
+            name: '[name].js',
+        },
+    },
+    {
         input: 'src/index.tsx',
         plugins: [
             typescript({tsconfig: './tsconfig.json'}),
-            componentsStylePlugin()
         ],
         external: external,
         output: [
