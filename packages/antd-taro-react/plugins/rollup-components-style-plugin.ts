@@ -12,6 +12,8 @@ interface PluginOptions {
     formats?: Record<string, string>;
 }
 
+const pathUnixFormat = (path: string) => path.replace(/\\+/g, '/')
+
 /**
  * 打包js 文件，只需要生成index.js和css.js文件
  * @param ctx
@@ -36,8 +38,9 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
     //将ts代码转成js代码
     const result = ts.transpileModule(fs.readFileSync(filePath, 'utf8'), {compilerOptions})
 
-    const targetJsFile = path.join(targetDir, 'index.js')
-
+    const targetJsFile = pathUnixFormat(path.join(targetDir, 'index.js'))
+    console.log('targetJsFile', targetJsFile)
+    console.log(bundle)
     if (_.includes(_.keys(bundle), targetJsFile)) {
         _.set(bundle[targetJsFile], 'source', result.outputText)
     } else {
@@ -48,7 +51,7 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
         })
     }
 
-    const targetCssJsFile = path.join(targetDir, 'css.js')
+    const targetCssJsFile = pathUnixFormat(path.join(targetDir, 'css.js'))
     const targetCssJsFileContent = result.outputText.replace(/.scss/g, '.css')
     if (_.includes(_.keys(bundle), targetCssJsFile)) {
         _.set(bundle[targetCssJsFile], 'source', targetCssJsFileContent)
@@ -63,7 +66,7 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
 
 const buildCss = (ctx: PluginContext, bundle: OutputBundle, filePath: string, targetDir: string) => {
     const basename = path.basename(filePath)
-    const targetFile = path.join(targetDir, basename)
+    const targetFile = pathUnixFormat(path.join(targetDir, basename))
     const targetFileContent = fs.readFileSync(filePath, 'utf8')
     if (_.includes(_.keys(bundle), targetFile)) {
         _.set(bundle[targetFile], 'source', targetFileContent)
@@ -102,13 +105,20 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
         buildStart(_options) {
             allStyleFiles = []
             const styleFolders = glob.sync(pattern, {cwd: process.cwd()})
+            console.log("styleFolders", styleFolders)
             if (_.isEmpty(styleFolders)) {
                 return
             }
 
             styleFolders.forEach(styleFolder => {
-                const styleFiles = glob.sync(styleFolder + "/**", {cwd: process.cwd(), nodir: true})
-                allStyleFiles.push(...styleFiles)
+                console.log(path.normalize(path.join(styleFolder, "/**")))
+
+                const styleFiles = glob.sync(pathUnixFormat(path.join(styleFolder, "/**")), {
+                    cwd: process.cwd(),
+                    nodir: true
+                })
+                console.log("styleFiles", styleFiles)
+                allStyleFiles.push(...styleFiles.map(sf => pathUnixFormat(sf)))
                 styleFiles.forEach(styleFile => {
                     this.addWatchFile(styleFile)
                 })
@@ -117,7 +127,8 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
         generateBundle(_options, bundle) {
             _.forEach(allStyleFiles, (styleFile) => {
                 _.forEach(formats, (_format, key) => {
-                    const targetDir = path.dirname(styleFile).replace("src/", '')
+                    const targetDir = pathUnixFormat(path.dirname(styleFile)).replace("src/", '')
+                    console.log('targetDir', targetDir)
                     if (_.includes(['.ts', '.tsx'], path.extname(styleFile))) {
                         buildJs(this, bundle, styleFile, targetDir, key)
                     } else if (_.includes(['.scss'], path.extname(styleFile))) {

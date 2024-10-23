@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    "doc/index",
     'pages/index/index',
     'pages/button/index'
   ],

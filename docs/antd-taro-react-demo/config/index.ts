@@ -67,6 +67,11 @@ export default defineConfig<'vite'>(async (merge, { command, mode }) => {
           }
         }
       },
+      router: {
+        customRoutes:{
+          '/doc/index': '/'
+        }
+      }
     },
     rn: {
       appName: 'taroDemo',

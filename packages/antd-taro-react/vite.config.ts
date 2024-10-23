@@ -13,8 +13,8 @@ export default defineConfig({
     },
     plugins: [
         react(),
-        dts({outDir: 'es', exclude: ['src/**/style/**']}),
-        dts({outDir: 'lib', exclude: ['src/**/style/**']}),
+        dts({outDir: 'es', include: ['src'],exclude: ['src/**/style/**']}),
+        dts({outDir: 'lib',include: ['src'], exclude: ['src/**/style/**']}),
     ],
     css: {
         preprocessorOptions: {

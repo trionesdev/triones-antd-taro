@@ -7,6 +7,7 @@ const ButtonPage = () => {
     <View>
       <Button>确定</Button>
     </View>
+    <div>ss</div>
   </View>
 }
 export default ButtonPage
