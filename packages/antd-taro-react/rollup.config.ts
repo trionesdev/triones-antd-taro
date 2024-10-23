@@ -34,7 +34,7 @@ const distConfig: RollupOptions = {
             minimize: true,
             sourceMap: true,
         }),
-        rollupStylePlugin(['src/**/*.scss']),
+        rollupStylePlugin({pattern: ['src/**/*.scss']}),
     ],
     external: external,
     output: {
@@ -51,11 +51,11 @@ const componentConfig: RollupOptions = {
         dts({outDir: 'es', include: ['src'], exclude: ['src/**/style/**']}),
         dts({outDir: 'lib', include: ['src'], exclude: ['src/**/style/**']}),
         typescript(),
-        commonjs(),
+        commonjs({exclude: ['node_modules/**','src/**/style/*']}),
         babel({
             "presets": ['@babel/preset-react', '@babel/preset-env']
         }),
-        componentsStylePlugin()
+        componentsStylePlugin({pattern: ['./src/*/style']})
     ],
     external: external,
     output: [

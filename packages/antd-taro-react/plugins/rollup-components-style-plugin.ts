@@ -37,10 +37,11 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
     }
     //将ts代码转成js代码
     const result = ts.transpileModule(fs.readFileSync(filePath, 'utf8'), {compilerOptions})
+    console.log("result", result)
 
     const targetJsFile = pathUnixFormat(path.join(targetDir, 'index.js'))
     console.log('targetJsFile', targetJsFile)
-    console.log(bundle)
+    // console.log(bundle)
     if (_.includes(_.keys(bundle), targetJsFile)) {
         _.set(bundle[targetJsFile], 'source', result.outputText)
     } else {
@@ -96,7 +97,7 @@ const buildCss = (ctx: PluginContext, bundle: OutputBundle, filePath: string, ta
  * @param options
  */
 function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin {
-    const {pattern = ['./src/*/style'], formats = {"es": "es", "cjs": "lib"}} = options || {};
+    const {pattern = ['./src/*/style'] } = options || {};
 
     let allStyleFiles: string[] = []
 
@@ -124,17 +125,20 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
                 })
             })
         },
-        generateBundle(_options, bundle) {
+        generateBundle(options, bundle) {
+            // console.log('generateBundle', _options)
             _.forEach(allStyleFiles, (styleFile) => {
-                _.forEach(formats, (_format, key) => {
-                    const targetDir = pathUnixFormat(path.dirname(styleFile)).replace("src/", '')
-                    console.log('targetDir', targetDir)
-                    if (_.includes(['.ts', '.tsx'], path.extname(styleFile))) {
-                        buildJs(this, bundle, styleFile, targetDir, key)
-                    } else if (_.includes(['.scss'], path.extname(styleFile))) {
-                        buildCss(this, bundle, styleFile, targetDir)
-                    }
-                })
+                // _.forEach(formats, (_format, key) => {
+                //
+                // })
+                // console.log('format  key', _format,key)
+                const targetDir = pathUnixFormat(path.dirname(styleFile)).replace("src/", '')
+                console.log('targetDir', targetDir)
+                if (_.includes(['.ts', '.tsx'], path.extname(styleFile))) {
+                    buildJs(this, bundle, styleFile, targetDir, options.format)
+                } else if (_.includes(['.scss'], path.extname(styleFile))) {
+                    buildCss(this, bundle, styleFile, targetDir)
+                }
             })
         }
     }
