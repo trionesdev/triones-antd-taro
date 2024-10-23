@@ -17,19 +17,14 @@
   "unpkg": "./dist/index.js",
   "types": "./es/index.d.ts",
   "scripts": {
-    "dev:dep": "vite",
-    "dev": "vite build --watch",
-    "build": "tsc && vite build",
-    "build:rollup": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
-    "dev:rollup": "rollup --config rollup.config.ts --configPlugin typescript --watch"
+    "dev": "rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript"
   },
   "dependencies": {
     "classnames": "^2.5.1",
     "postcss-import": "^16.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sass": "^1.80.2",
-    "vite-plugin-dts": "^4.2.4"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
@@ -47,9 +42,10 @@
     "glob": "^11.0.0",
     "globals": "^15.9.0",
     "lodash": "^4.17.21",
-    "postcss-scss": "^4.0.9",
     "rollup": "^4.24.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.80.3",
+    "vite-plugin-dts": "^4.2.4",
     "typescript": "^5.5.3"
   }
 }

@@ -5,7 +5,7 @@
 ```
 pnpm install 
 ```
-2. 构建@trionesdev/antd-taro-react
+2. 构建 @trionesdev/antd-taro-react
 ```shell
 pnpm run build
 ```

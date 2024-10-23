@@ -24,7 +24,7 @@ const distConfig: RollupOptions = {
     input: ['src/index.tsx'],
     plugins: [
         resolve(),
-        typescript({tsconfig: './tsconfig.json'}),
+        typescript({tsconfig: 'tsconfig.json'}),
         commonjs(),
         babel({
             "presets": ['@babel/preset-react', '@babel/preset-env']
@@ -48,8 +48,8 @@ const componentConfig: RollupOptions = {
     input: 'src/index.tsx',
     plugins: [
         resolve(),
-        dts({outDir: 'es', include: ['src'], exclude: ['src/**/style/**']}),
-        dts({outDir: 'lib', include: ['src'], exclude: ['src/**/style/**']}),
+        dts({outDir: 'es', include: ['src']}),
+        dts({outDir: 'lib', include: ['src']}),
         typescript(),
         commonjs({exclude: ['node_modules/**','src/**/style/*']}),
         babel({
