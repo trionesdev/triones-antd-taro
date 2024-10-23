@@ -47,5 +47,10 @@
     "sass": "^1.80.3",
     "vite-plugin-dts": "^4.2.4",
     "typescript": "^5.5.3"
+  },
+  "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    }
   }
 }

@@ -3,7 +3,7 @@ import {glob} from "glob";
 import * as process from "node:process";
 
 interface PluginOptions {
-    pattern?: string | string[];
+    include: string | string[];
 }
 
 /**
@@ -15,10 +15,10 @@ export default (options?: PluginOptions): import('rollup').Plugin => {
     return {
         name: 'rollup:compile-style-plugin',
         buildStart(_options) {
-            if (!options || !options.pattern) {
+            if (!options || !options.include) {
                 return
             }
-            const files = glob.sync(options!.pattern!, {nodir: true, cwd: process.cwd()})
+            const files = glob.sync(options!.include!, {nodir: true, cwd: process.cwd()})
             if (_.isEmpty(files)){
                 return;
             }

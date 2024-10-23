@@ -34,7 +34,7 @@ const distConfig: RollupOptions = {
             minimize: true,
             sourceMap: true,
         }),
-        rollupStylePlugin({pattern: ['src/**/*.scss']}),
+        rollupStylePlugin({include: ['src/**/*.scss']}),
     ],
     external: external,
     output: {
