@@ -106,8 +106,6 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
         name: 'rollup:components-style-plugin',
         buildStart(_options) {
             allStyleFiles = []
-            console.log(path.join(process.cwd(), 'src'))
-            console.log(glob.sync(include, {cwd: path.join(process.cwd(), 'src')}))
             const styleFolders = glob.sync(include, {cwd: process.cwd()})
 
             if (_.isEmpty(styleFolders)) {
@@ -119,7 +117,6 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
                     cwd: process.cwd(),
                     nodir: true
                 })
-                console.log("styleFiles", styleFiles)
                 allStyleFiles.push(...styleFiles.map(sf => pathUnixFormat(sf)))
                 styleFiles.forEach(styleFile => {
                     this.addWatchFile(styleFile)

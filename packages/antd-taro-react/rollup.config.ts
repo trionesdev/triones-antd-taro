@@ -8,6 +8,7 @@ import rollupStylePlugin from "./plugins/rollup-compile-style-plugin";
 import dts from "vite-plugin-dts";
 import componentsStylePlugin from "./plugins/rollup-components-style-plugin";
 import commonjs from "@rollup/plugin-commonjs";
+import cleanPlugin from "./plugins/rollup-clean-plugin.ts"
 
 export const external = [
     'react',
@@ -35,6 +36,7 @@ const distConfig: RollupOptions = {
             sourceMap: true,
         }),
         rollupStylePlugin({include: ['src/**/*.scss']}),
+        cleanPlugin()
     ],
     external: external,
     output: {
@@ -55,7 +57,8 @@ const componentConfig: RollupOptions = {
         babel({
             "presets": ['@babel/preset-react', '@babel/preset-env']
         }),
-        componentsStylePlugin({include: ['./src/*/style']})
+        componentsStylePlugin({include: ['./src/*/style']}),
+        cleanPlugin()
     ],
     external: external,
     output: [

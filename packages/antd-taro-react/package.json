@@ -24,7 +24,8 @@
     "classnames": "^2.5.1",
     "postcss-import": "^16.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
@@ -45,8 +46,8 @@
     "rollup": "^4.24.0",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.59.3",
-    "vite-plugin-dts": "^4.2.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vite-plugin-dts": "^4.2.4"
   },
   "peerDependenciesMeta": {
     "sass": {
