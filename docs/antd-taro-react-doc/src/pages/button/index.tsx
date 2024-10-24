@@ -5,7 +5,7 @@ const ButtonPage = () => {
   return <View>
     <View>一般用法</View>
     <View>
-      <Button>确定</Button>
+      <Button type={`primary`}>确定</Button>
     </View>
     <div>ss</div>
   </View>
