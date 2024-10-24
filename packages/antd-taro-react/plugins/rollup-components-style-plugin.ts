@@ -5,10 +5,11 @@ import path from "node:path";
 import ts from "typescript";
 import fs from "fs";
 import {OutputBundle, PluginContext} from "rollup";
-import * as sass from "sass";
+import sass from "sass";
 
 interface PluginOptions {
     include?: string | string[];
+    preserveModulesRoot?: 'src',
 }
 
 const pathUnixFormat = (path: string) => path.replace(/\\+/g, '/')
@@ -36,8 +37,9 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
     }
     //将ts代码转成js代码
     const result = ts.transpileModule(fs.readFileSync(filePath, 'utf8'), {compilerOptions})
+    const fileNameNoExt = path.basename(filePath).replace(path.extname(filePath), "")
 
-    const targetJsFile = pathUnixFormat(path.join(targetDir, 'index.js'))
+    const targetJsFile = pathUnixFormat(path.join(targetDir, `${fileNameNoExt}.js`))
 
     if (_.includes(_.keys(bundle), targetJsFile)) {
         _.set(bundle[targetJsFile], 'source', result.outputText)
@@ -48,18 +50,20 @@ const buildJs = (ctx: PluginContext, bundle: OutputBundle, filePath: string, tar
             fileName: targetJsFile,
         })
     }
-
-    const targetCssJsFile = pathUnixFormat(path.join(targetDir, 'css.js'))
-    const targetCssJsFileContent = result.outputText.replace(/.scss/g, '.css')
-    if (_.includes(_.keys(bundle), targetCssJsFile)) {
-        _.set(bundle[targetCssJsFile], 'source', targetCssJsFileContent)
-    } else {
-        ctx.emitFile({
-            type: 'asset',
-            source: targetCssJsFileContent,
-            fileName: targetCssJsFile,
-        })
+    if (fileNameNoExt == "index") {
+        const targetCssJsFile = pathUnixFormat(path.join(targetDir, 'css.js'))
+        const targetCssJsFileContent = result.outputText.replace(/.scss/g, '.css')
+        if (_.includes(_.keys(bundle), targetCssJsFile)) {
+            _.set(bundle[targetCssJsFile], 'source', targetCssJsFileContent)
+        } else {
+            ctx.emitFile({
+                type: 'asset',
+                source: targetCssJsFileContent,
+                fileName: targetCssJsFile,
+            })
+        }
     }
+
 }
 
 const buildCss = (ctx: PluginContext, bundle: OutputBundle, filePath: string, targetDir: string) => {
@@ -94,7 +98,7 @@ const buildCss = (ctx: PluginContext, bundle: OutputBundle, filePath: string, ta
  * @param options
  */
 function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin {
-    const {include = ['./src/*/style'] } = options || {};
+    const {include = ['./src/*/style'], preserveModulesRoot = 'src'} = options || {};
 
     let allStyleFiles: string[] = []
 
@@ -102,8 +106,8 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
         name: 'rollup:components-style-plugin',
         buildStart(_options) {
             allStyleFiles = []
-            console.log(path.join(process.cwd(),'src'))
-            console.log(glob.sync(include, {cwd: path.join(process.cwd(),'src')}))
+            console.log(path.join(process.cwd(), 'src'))
+            console.log(glob.sync(include, {cwd: path.join(process.cwd(), 'src')}))
             const styleFolders = glob.sync(include, {cwd: process.cwd()})
 
             if (_.isEmpty(styleFolders)) {
@@ -111,8 +115,6 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
             }
 
             styleFolders.forEach(styleFolder => {
-                console.log(path.normalize(path.join(styleFolder, "/**")))
-
                 const styleFiles = glob.sync(pathUnixFormat(path.join(styleFolder, "/**")), {
                     cwd: process.cwd(),
                     nodir: true
@@ -127,7 +129,7 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
         generateBundle(options, bundle) {
             // console.log("generateBundle", options)
             _.forEach(allStyleFiles, (styleFile) => {
-                const targetDir = pathUnixFormat(path.dirname(styleFile)).replace("src/", '')
+                const targetDir = pathUnixFormat(path.dirname(styleFile)).replace(preserveModulesRoot, '').replace(/^\//, '')
                 if (_.includes(['.ts', '.tsx'], path.extname(styleFile))) {
                     buildJs(this, bundle, styleFile, targetDir, options.format)
                 } else if (_.includes(['.scss'], path.extname(styleFile))) {

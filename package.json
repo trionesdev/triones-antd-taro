@@ -25,11 +25,9 @@
     "lerna": "^8.1.8"
   },
   "resolutions": {
-    "@tarojs/webpack5-runner>sass-loader": "16.0.2"
+    "sass": "1.59.3"
   },
   "overrides": {
-    "@tarojs/webpack5-runner": {
-      "sass-loader": "16.0.2"
-    }
+    "sass": "1.59.3"
   }
 }

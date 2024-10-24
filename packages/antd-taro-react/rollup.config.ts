@@ -55,7 +55,7 @@ const componentConfig: RollupOptions = {
         babel({
             "presets": ['@babel/preset-react', '@babel/preset-env']
         }),
-        componentsStylePlugin({pattern: ['./src/*/style']})
+        componentsStylePlugin({include: ['./src/*/style']})
     ],
     external: external,
     output: [
