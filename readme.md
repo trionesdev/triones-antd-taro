@@ -12,7 +12,7 @@ pnpm --dir packages/antd-taro-react run dev
 ```
 3. 文档工程运行
 ```shell
-pnpm --dir packages/antd-taro-react-doc run dev
+pnpm --dir doc/antd-taro-react-doc run dev
 ```
 
 ***

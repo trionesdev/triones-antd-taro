@@ -1,13 +1,10 @@
-.antm-button{
-  background-color: #00b578;
-  border-radius: 4px;
-  padding: 8px 16px;
-  color: #fff;
+taro-button-core:not([disabled]):active {
+  color: initial;
+  background-color: initial;
 }
-
-.ant-button{
+.ant-button {
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
@@ -19,13 +16,37 @@
   box-sizing: border-box;
   font-size: 18px;
   z-index: 2;
-  &:not([disabled]):active{
-    background-color: #1677ff;
-    color: #ffffff;
-  }
-  &-primary{
+
+
+
+  &-color-primary {
     color: #ffffff;
     background-color: #1677ff;
     box-shadow: inset 0 0 0 1px #1677ff;
+
+    &:active {
+      color: #ffffff;
+      background-color: #1677ff;
+      filter: brightness(92%);
+    }
+  }
+
+  &-color-default {
+    color: #1677ff;
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 1px #1677ff;
+
+    &:active {
+      color: #1677ff !important;
+      background-color: #ffffff !important;
+    }
+  }
+
+  &-block {
+    display: flex;
+  }
+
+  &[disabled] {
+    opacity: 0.4;
   }
 }
