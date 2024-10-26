@@ -21,24 +21,8 @@ export default defineConfig({
                 {
                     format: 'umd',
                     entryFileNames: '[name].js',
-                    assetFileNames: '[name].[ext]',
                     name: 'index.umd.js'
-                }, //默认配置，打包到dist 文件夹下
-                {
-                    format: 'es',
-                    dir: 'es',
-                    entryFileNames: '[name].es.js',
-                    assetFileNames: '[name].[ext]',
-                    preserveModules: true,
-                    preserveModulesRoot: 'src',
-                },
-                {
-                    format: 'cjs',
-                    dir: 'lib',
-                    entryFileNames: '[name].cjs',
-                    preserveModules: true,
-                    preserveModulesRoot: 'src',
-                }
+                }, //默认配置，打包到dist 文件夹
             ]
         },
     },

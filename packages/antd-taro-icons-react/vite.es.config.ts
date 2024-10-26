@@ -1,9 +1,14 @@
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import dts from "vite-plugin-dts";
+import viteContentAppendPlugin from "./plugins/vite-content-append-plugin";
 
 export default defineConfig({
-    plugins: [react(), dts({include: ['src/**']})],
+    plugins: [react(), dts({include: ['src/**/*']}),
+        viteContentAppendPlugin({
+            entries: ['index.es.js'],
+            appendContent: '\nimport "../dist/style.css"'
+        })],
     build: {
         cssCodeSplit: false,
         lib: {
@@ -19,12 +24,6 @@ export default defineConfig({
                 'react/jsx-runtime'],
             output: [
                 {
-                    format: 'umd',
-                    entryFileNames: '[name].js',
-                    assetFileNames: '[name].[ext]',
-                    name: 'index.umd.js'
-                }, //默认配置，打包到dist 文件夹下
-                {
                     format: 'es',
                     dir: 'es',
                     entryFileNames: '[name].es.js',
@@ -32,13 +31,6 @@ export default defineConfig({
                     preserveModules: true,
                     preserveModulesRoot: 'src',
                 },
-                {
-                    format: 'cjs',
-                    dir: 'lib',
-                    entryFileNames: '[name].cjs',
-                    preserveModules: true,
-                    preserveModulesRoot: 'src',
-                }
             ]
         },
     },
