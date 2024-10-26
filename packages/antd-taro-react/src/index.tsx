@@ -1,3 +1,4 @@
-export {default as Button} from "./button"
+export {default as Button} from "./Button"
+export {default as Icon, MinusOutline} from "./Icon"
 export * from "./input"
-export * from "./config-provider"
+export * from "./ConfigProvider"

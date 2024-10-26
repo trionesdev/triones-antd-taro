@@ -1,0 +1,36 @@
+{
+  "name": "@trionesdev/antd-taro-icons-react",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/index.es.js"
+  ],
+  "main": "./dist/index.js.",
+  "module": "./es/index.es.js",
+  "style": "dist/style.css",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "classnames": "^2.5.1",
+    "rollup-plugin-styles": "^4.0.0",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.9",
+    "vite-plugin-dts": "^4.2.4",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  }
+}
