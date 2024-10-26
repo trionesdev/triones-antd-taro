@@ -1,5 +1,5 @@
 import {FC} from "react"
-import "./styles.scss"
+import "./styles.scss?inline"
 import classNames from "classnames";
 
 export type IconProps = {
