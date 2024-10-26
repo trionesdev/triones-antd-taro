@@ -1,8 +1,5 @@
-taro-button-core:not([disabled]):active {
-  color: initial;
-  background-color: initial;
-}
-.ant-button {
+$buttonCls: 'ant-button';
+.#{$buttonCls} {
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -17,36 +14,182 @@ taro-button-core:not([disabled]):active {
   font-size: 18px;
   z-index: 2;
 
+  &:active {
+    filter: brightness(92%);
+  }
 
-
-  &-color-primary {
-    color: #ffffff;
-    background-color: #1677ff;
-    box-shadow: inset 0 0 0 1px #1677ff;
+  &[disabled] {
+    opacity: 0.4;
 
     &:active {
-      color: #ffffff;
-      background-color: #1677ff;
-      filter: brightness(92%);
+      filter: none;
     }
   }
 
-  &-color-default {
-    color: #1677ff;
-    background-color: #ffffff;
-    box-shadow: inset 0 0 0 1px #1677ff;
+  &-color {
+    &-default {
+      background-color: #ffffff;
 
-    &:active {
-      color: #1677ff !important;
-      background-color: #ffffff !important;
+
+      &.#{$buttonCls} {
+        &-variant {
+          &-solid {
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.75);
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75);
+          }
+
+          &-outlined {
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.75);
+
+          }
+
+          &-dashed {
+            border: 1px dashed rgba(0, 0, 0, 0.75);
+            background-color: #ffffff;
+          }
+
+          &-filled {
+            color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.06);
+          }
+
+          &-text {
+            color: rgba(0, 0, 0, 0.75);
+            background-color: #ffffff;
+          }
+
+          &-link {
+            color: rgba(0, 0, 0, 0.75);
+            background-color: #ffffff;
+
+            &:active {
+              filter: none;
+            }
+          }
+        }
+      }
+    }
+
+    &-primary {
+
+      &.#{$buttonCls} {
+        &-variant {
+          &-solid {
+            color: #ffffff;
+            background-color: #1677ff;
+            box-shadow: inset 0 0 0 1px #1677ff;
+          }
+
+          &-outlined {
+            color: #1677ff;
+            background-color: white;
+            border: 1px solid #1677ff;
+          }
+
+          &-dashed {
+            color: #1677ff;
+            border: 1px dashed #1677ff;
+            background-color: #ffffff;
+          }
+
+          &-filled {
+            color: #1677ff;
+            background-color: #bae0ff;
+          }
+
+          &-text {
+            color: #1677ff;
+            background-color: #ffffff;
+          }
+
+          &-link {
+            color: #1677ff;
+            background-color: #ffffff;
+
+            &:active {
+              filter: none;
+            }
+          }
+        }
+      }
+    }
+
+    &-danger {
+
+      &.#{$buttonCls} {
+        &-variant {
+          &-solid {
+            color: #ffffff;
+            background-color: #ff4d4f;
+            box-shadow: inset 0 0 0 1px #ff4d4f;
+          }
+
+          &-outlined {
+            color: #ff4d4f;
+            background-color: #ffffff;
+            border: 1px solid #ff4d4f;
+
+          }
+
+          &-dashed {
+            color: #ff4d4f;
+            border: 1px dashed #ff4d4f;
+            background-color: #ffffff;
+          }
+
+          &-filled {;
+            color: #ff4d4f;
+            background-color: #ffdfdc;
+          }
+
+          &-text {
+            color: #ff4d4f;
+            background-color: #ffffff;
+          }
+
+          &-link {
+            color: #ff4d4f;
+            background-color: #ffffff;
+
+            &:active {
+              filter: none;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  &-variant {
+    &-solid {
+
+    }
+
+    &-outlined {
+      background-color: #ffffff;
+    }
+
+    &-dashed {
+      border: 1px dashed #d9d9d9;
+      background-color: #ffffff;
+    }
+
+    &-text {
+      background-color: #ffffff;
+    }
+
+    &-link {
+      background-color: #ffffff;
     }
   }
 
   &-block {
     display: flex;
+    width: 100%;
   }
 
-  &[disabled] {
-    opacity: 0.4;
-  }
 }
