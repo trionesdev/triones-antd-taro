@@ -50,13 +50,15 @@ export const AntButton: FC<AntButtonProps> = (
         ...props
     }
 ) => {
-    const clsPrefix = "ant-button"
+    const clsPrefix = "triones-antm-button"
     let finalColor = color
     let finalVariant = variant
     if (type) {
         if (!color) {
             if (type == 'primary' || type == 'link') {
                 finalColor = 'primary'
+            }else if (type == 'default') {
+                finalColor = 'default'
             }
         }
         if (!variant) {

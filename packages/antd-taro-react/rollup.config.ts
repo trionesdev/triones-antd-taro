@@ -15,10 +15,6 @@ export const external = [
     'react-dom',
     'react/jsx-dev-runtime',
     'react/jsx-runtime',
-    '@tarojs/react',
-    '@tarojs/runtime',
-    '@tarojs/taro',
-    '@tarojs/components'
 ];
 
 const distConfig: RollupOptions = {
@@ -53,7 +49,7 @@ const componentConfig: RollupOptions = {
         dts({outDir: 'es', include: ['src']}),
         dts({outDir: 'lib', include: ['src']}),
         typescript(),
-        commonjs({exclude: ['node_modules/**','src/**/style/*']}),
+        commonjs({exclude: ['node_modules/**', 'src/**/style/*']}),
         babel({
             "presets": ['@babel/preset-react', '@babel/preset-env']
         }),

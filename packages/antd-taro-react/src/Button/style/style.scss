@@ -1,4 +1,9 @@
-$buttonCls: 'ant-button';
+button::after {
+  content: none;
+  width: 100%;
+}
+
+$buttonCls: 'triones-antm-button';
 .#{$buttonCls} {
   position: relative;
   display: inline-flex;
@@ -30,7 +35,6 @@ $buttonCls: 'ant-button';
     &-default {
       background-color: #ffffff;
 
-
       &.#{$buttonCls} {
         &-variant {
           &-solid {
@@ -40,12 +44,13 @@ $buttonCls: 'ant-button';
           }
 
           &-outlined {
-            background-color: white;
+            color: rgba(0, 0, 0, 0.75);
             border: 1px solid rgba(0, 0, 0, 0.75);
-
+            background-color: white;
           }
 
           &-dashed {
+            color: rgba(0, 0, 0, 0.75);
             border: 1px dashed rgba(0, 0, 0, 0.75);
             background-color: #ffffff;
           }

@@ -12,7 +12,7 @@ function viteContentAppendPlugin(options?: PluginOptions): import('vite').Plugin
     const {entries = [], appendContent} = options || {}
     // let logger: Logger
     return {
-        name: 'vite:compile-style-plugin',
+        name: 'vite:content-append-plugin',
         apply: 'build',
         enforce: 'post',
         generateBundle(_options, bundle) {
