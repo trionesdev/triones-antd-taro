@@ -1,5 +1,6 @@
 # @trionesdev/antd-taro-react
 ***
+开发中，待完善。。。。
 > 基于Taro的Antd组件库
 ## 使用
 ```shell
