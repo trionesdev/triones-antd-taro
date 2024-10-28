@@ -1,0 +1,69 @@
+$checkboxCls: 'triones-antm-checkbox';
+$icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzMwMTIzNTgxMzA2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjY0MzMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTUxMiA2NS45ODRDMjY2LjA4IDY1Ljk4NCA2NS45ODQgMjY2LjA4IDY1Ljk4NCA1MTJjMCAyNDUuOTUyIDIwMC4wNjQgNDQ2LjAxNiA0NDYuMDE2IDQ0Ni4wMTYgMjQ1Ljk1MiAwIDQ0Ni4wMTYtMjAwLjA2NCA0NDYuMDE2LTQ0Ni4wMTZDOTU4LjAxNiAyNjYuMDggNzU3Ljk1MiA2NS45ODQgNTEyIDY1Ljk4NHpNNzI3LjIzMiA0MzguNDMybC0yNTYuMjI0IDI1OS4wMDhjLTAuMDY0IDAuMDY0LTAuMTkyIDAuMDk2LTAuMjU2IDAuMTkyLTAuMDk2IDAuMDY0LTAuMDk2IDAuMTkyLTAuMTkyIDAuMjU2LTIuMDQ4IDEuOTg0LTQuNTc2IDMuMi02Ljk0NCA0LjU0NC0xLjE4NCAwLjY3Mi0yLjE0NCAxLjY5Ni0zLjM5MiAyLjE3Ni0zLjg0IDEuNTM2LTcuOTA0IDIuMzM2LTExLjk2OCAyLjMzNi00LjA5NiAwLTguMjI0LTAuOC0xMi4wOTYtMi40LTEuMjgtMC41NDQtMi4zMDQtMS42MzItMy41Mi0yLjMwNC0yLjM2OC0xLjM0NC00LjgzMi0yLjUyOC02Ljg4LTQuNTQ0LTAuMDY0LTAuMDY0LTAuMDk2LTAuMTkyLTAuMTYtMC4yNTYtMC4wNjQtMC4wOTYtMC4xOTItMC4wOTYtMC4yNTYtMC4xOTJsLTEyNi4wMTYtMTI5LjUwNGMtMTIuMzItMTIuNjcyLTEyLjAzMi0zMi45MjggMC42NC00NS4yNDggMTIuNjcyLTEyLjI4OCAzMi44OTYtMTIuMDY0IDQ1LjI0OCAwLjY0bDEwMy4yNjQgMTA2LjExMiAyMzMuMjgtMjM1Ljg0YzEyLjQxNi0xMi41NzYgMzIuNzA0LTEyLjcwNCA0NS4yNDgtMC4yNTZDNzM5LjUyIDQwNS42IDczOS42NDggNDI1Ljg1NiA3MjcuMjMyIDQzOC40MzJ6IiBwLWlkPSI2NDM0Ij48L3BhdGg+PC9zdmc+';
+
+.#{$checkboxCls} {
+  display: inline-block;
+  line-height: 1.8;
+
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &-wrap {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+
+  &-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: none;
+  }
+
+  &-icon {
+    &-base {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #1677ff;
+      background-color: currentcolor;
+      mask: url($icon) 0px 0px / 100% 100% no-repeat;
+    }
+
+    &-fake {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #cccccc;
+      border-radius: 50vh;
+      box-sizing: border-box;
+    }
+  }
+
+  &-content {
+    font-size: 17px;
+    margin-left: 4px;
+  }
+}

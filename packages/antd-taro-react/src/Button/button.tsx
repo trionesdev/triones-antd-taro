@@ -55,18 +55,18 @@ export const AntButton: FC<AntButtonProps> = (
     let finalVariant = variant
     if (type) {
         if (!color) {
-            if (type == 'primary' || type == 'link') {
+            if (type === 'primary' || type === 'link') {
                 finalColor = 'primary'
-            }else if (type == 'default') {
+            } else if (type === 'default') {
                 finalColor = 'default'
             }
         }
         if (!variant) {
             if (type == 'primary') {
                 finalVariant = 'solid'
-            } else if (type == 'default') {
+            } else if (type === 'default') {
                 finalVariant = 'outlined'
-            } else if (type === 'dashed' || type == 'link' || type == 'text') {
+            } else if (type === 'dashed' || type === 'link' || type === 'text') {
                 finalVariant = type
             }
         }
