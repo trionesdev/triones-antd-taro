@@ -36,17 +36,20 @@ export default (options?: PluginOptions): import('rollup').Plugin => {
                         nodir: true,
                         cwd: path.join(process.cwd(), root, componentFolder)
                     })
-                    let importsLange = '';
-                    if (options.format == 'es') {
-                        importsLange = styleFiles.map((styleFile: string) => {
-                            return `import "./${pathUnixFormat(styleFile)}";`
-                        }).join('\n');
-                    } else if (options.format == 'cjs') {
-                        importsLange = styleFiles.map((styleFile: string) => {
-                            return `require("./${pathUnixFormat(styleFile).replace(/\.(scss|less)$/, '.css')}"); `
-                        }).join('\n');
+                    if (!_.isEmpty(styleFiles)) {
+                        let importsLange = '';
+                        if (options.format == 'es') {
+                            importsLange = styleFiles.map((styleFile: string) => {
+                                return `import "./${pathUnixFormat(styleFile)}";`
+                            }).join('\n');
+                        } else if (options.format == 'cjs') {
+                            importsLange = styleFiles.map((styleFile: string) => {
+                                return `require("./${pathUnixFormat(styleFile).replace(/\.(scss|less)$/, '.css')}"); `
+                            }).join('\n');
+                        }
+                        (item as OutputChunk).code = `${importsLange}\n${(item as OutputChunk).code}`
                     }
-                    (item as OutputChunk).code = `${importsLange}\n${(item as OutputChunk).code}`
+
                 }
             })
         }
