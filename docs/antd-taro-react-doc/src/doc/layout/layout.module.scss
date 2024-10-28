@@ -1,43 +1,35 @@
 .layout {
+  background-color: #ffffff;
   &Header {
     position: sticky;
     top: 0;
     z-index: 1000;
     max-width: 100%;
     background: #ffffff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 
     &Right {
-      display: inline-flex;
+      &Wrapper {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 12px;
+        padding-inline-end: 12px;
+      }
 
       &Search {
         flex: auto;
       }
 
-      :global {
-        .ant-menu-horizontal {
-          .ant-menu-item {
-            //min-width: 64Px;
-            height: 64Px;
-            padding-inline-end: 12px;
-            padding-inline-start: 12px;
-            line-height: 64px;
-
-            .ant-menu-title-content {
-              min-width: 64px;
-              justify-content: center;
-            }
-          }
-        }
+      &Menu {
+        flex: 1;
+        justify-content: flex-end;
       }
     }
-  }
-
-  &Main {
-    //display: flex;
-    margin-top: 40px;
   }
 }
 
