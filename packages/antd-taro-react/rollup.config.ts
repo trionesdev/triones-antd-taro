@@ -9,6 +9,7 @@ import dts from "vite-plugin-dts";
 import componentsStylePlugin from "./plugins/rollup-components-style-plugin";
 import commonjs from "@rollup/plugin-commonjs";
 import cleanPlugin from "./plugins/rollup-clean-plugin.ts"
+import insertImportStyle from "./plugins/rollup-insert-import-style-plugin.ts"
 
 export const external = [
     'react',
@@ -39,6 +40,7 @@ const distConfig: RollupOptions = {
         format: 'umd',
         dir: 'dist',
         name: '[name].js',
+        banner: '/** TrionesDev Antd Taro UI Components   **/',
     },
 }
 
@@ -54,6 +56,7 @@ const componentConfig: RollupOptions = {
             "presets": ['@babel/preset-react', '@babel/preset-env']
         }),
         componentsStylePlugin({include: ['./src/*/style']}),
+        insertImportStyle(),
         cleanPlugin()
     ],
     external: external,
@@ -64,7 +67,7 @@ const componentConfig: RollupOptions = {
             entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: 'src',
-            banner: '/** TrionesDev  **/',
+            banner: '/** TrionesDev Antd Taro UI Components   **/',
         },
         {
             format: 'cjs',
@@ -72,7 +75,7 @@ const componentConfig: RollupOptions = {
             entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: 'src',
-            banner: '/** TrionesDev  **/',
+            banner: '/** TrionesDev Antd Taro UI Components   **/',
         }
     ],
 }

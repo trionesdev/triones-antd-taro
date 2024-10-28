@@ -8,16 +8,16 @@ module.exports = {
       compiler: 'webpack5',
     }]
   ],
-  plugins: [
-    [
-      "import",
-      {
-        "libraryName": "@trionesdev/antd-taro-react",
-        "libraryDirectory": "es",
-        "style": true,
-        "camel2DashComponentName": false
-      },
-      'antd-taro-react'
-    ]
-  ]
+  // plugins: [
+  //   [
+  //     "import",
+  //     {
+  //       "libraryName": "@trionesdev/antd-taro-react",
+  //       "libraryDirectory": "es",
+  //       "style": true,
+  //       "camel2DashComponentName": false
+  //     },
+  //     'antd-taro-react'
+  //   ]
+  // ]
 }

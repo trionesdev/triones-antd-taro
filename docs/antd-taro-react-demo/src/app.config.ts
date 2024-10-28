@@ -4,6 +4,7 @@ export default defineAppConfig({
     'pages/button/index',
     'pages/icon/index',
     'pages/input/index',
+    'pages/tab-bar/index',
   ],
   window: {
     backgroundTextStyle: 'light',

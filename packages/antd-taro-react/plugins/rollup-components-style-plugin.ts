@@ -124,7 +124,6 @@ function componentsStylePlugin(options?: PluginOptions): import('rollup').Plugin
             })
         },
         generateBundle(options, bundle) {
-            // console.log("generateBundle", options)
             _.forEach(allStyleFiles, (styleFile) => {
                 const targetDir = pathUnixFormat(path.dirname(styleFile)).replace(preserveModulesRoot, '').replace(/^\//, '')
                 if (_.includes(['.ts', '.tsx'], path.extname(styleFile))) {

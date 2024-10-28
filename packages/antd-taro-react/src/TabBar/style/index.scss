@@ -1,0 +1,17 @@
+$tabBarCls: 'triones-tab-bar';
+.#{$tabBarCls} {
+  &-wrap {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+
+    &-label {
+      font-size: 10px;
+    }
+  }
+}
