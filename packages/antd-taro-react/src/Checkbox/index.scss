@@ -1,3 +1,8 @@
+@font-face {
+  font-family: antdmini-icon;
+  src: url('../style/icons.ttf') format('truetype');
+}
+
 $checkboxItemCls: 'triones-antm-checkbox-item';
 $checkedIcon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzMwMjExODEzNTU1IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjgxNjIiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTg4Ny45MDQgMjk4LjIwOGMtMTIuODY0LTEyLjA2NC0zMy4xNTItMTEuNDg4LTQ1LjIxNiAxLjQwOEw0MTUuOTM2IDc1My45ODRsLTIzMy4xMi0yMjkuNjk2QzE3MC4yMDggNTExLjg3MiAxNDkuOTUyIDUxMiAxMzcuNTM2IDUyNC42MDhjLTEyLjQxNiAxMi41NzYtMTIuMjU2IDMyLjg2NCAwLjM1MiA0NS4yNDhsMjU2LjQ4IDI1Mi42NzJjMC4wOTYgMC4wOTYgMC4yMjQgMC4xMjggMC4zMiAwLjIyNCAwLjA5NiAwLjA5NiAwLjEyOCAwLjIyNCAwLjIyNCAwLjMyIDIuMDE2IDEuOTIgNC40NDggMy4wMDggNi43ODQgNC4yODggMS4xNTIgMC42NzIgMi4xNDQgMS42NjQgMy4zNiAyLjE0NCAzLjc3NiAxLjQ3MiA3Ljc3NiAyLjI0IDExLjc0NCAyLjI0IDQuMTkyIDAgOC4zODQtMC44MzIgMTIuMjg4LTIuNDk2IDEuMzEyLTAuNTQ0IDIuMzM2LTEuNjY0IDMuNTUyLTIuMzY4IDIuNC0xLjQwOCA0Ljg5Ni0yLjU5MiA2Ljk0NC00LjY3MiAwLjA5Ni0wLjA5NiAwLjEyOC0wLjI1NiAwLjIyNC0wLjM1MiAwLjA2NC0wLjA5NiAwLjE5Mi0wLjEyOCAwLjI4OC0wLjIyNGw0NDkuMTg0LTQ3OC4yMDhDOTAxLjQ0IDMzMC41OTIgOTAwLjc2OCAzMTAuMzM2IDg4Ny45MDQgMjk4LjIwOHoiIHAtaWQ9IjgxNjMiPjwvcGF0aD48L3N2Zz4=';
 
@@ -75,18 +80,26 @@ $checkedIcon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25
       border-radius: 50vh;
       width: 100%;
       height: 100%;
-      display: -webkit-box;
-      display: -webkit-flex;
       display: flex;
       align-items: center;
       justify-content: center;
 
+      &::before {
+        font-family: antdmini-icon !important;
+        font-style: normal;
+        line-height: 1;
+      }
     }
 
     .checkedIcon {
       background-color: #1677ff;
       color: #ffffff;
-      mask: url($checkedIcon) 0px 0px / 100% 100% no-repeat;
+      //mask: url($checkedIcon) 0px 0px / 100% 100% no-repeat;
+      &::before {
+        font-family: antdmini-icon !important;
+        font-style: normal;
+        content: "\e68b";
+      }
     }
 
     .uncheckedIcon {
