@@ -1,9 +1,9 @@
-# @trionesdev/antd-taro-react
+# @trionesdev/antd-taro-icons-react
 
-[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
-[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
+[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-taro-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-icons-react)
+[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-taro-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-icons-react)
 
-antd taro react 
+A react library developed with dumi
 
 ## Usage
 
