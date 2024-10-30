@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "triones-ant-mini-icon"; /* Project id 4727221 */
+  src: url("~@trionesdev/antd-taro-icons-react/style/iconfont.ttf") format('truetype');
+}
+
+.triones-antm-icon {
+  font-family: "triones-ant-mini-icon" !important;
+  font-style: normal;
+
+  &::before {
+    font-style: normal;
+    content: "\e6e9";
+  }
+}
