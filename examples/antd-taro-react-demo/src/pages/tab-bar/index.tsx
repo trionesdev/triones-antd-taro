@@ -1,8 +1,8 @@
-import {TabBar} from "@trionesdev/antd-taro-react";
+import TabBarBaseDemo from "@trionesdev/antd-taro-react/dist/TabBar/demo/base";
 
 const TabBarDemo = () => {
   return <div>
-    <TabBar items={[{key: 'home', label: '首页'}]}/>
+    <TabBarBaseDemo/>
   </div>
 }
 export default TabBarDemo

@@ -59,6 +59,16 @@ class Index extends Component<PropsWithChildren> {
             url: '/pages/button/index',
           })
         }}>Button</Button>
+        <Button onClick={() => {
+          Taro.navigateTo({
+            url: '/pages/tab-bar/index',
+          })
+        }}>TabBar</Button>
+        <Button onClick={() => {
+          Taro.navigateTo({
+            url: '/pages/checkbox/index',
+          })
+        }}>Checkbox</Button>
       </View>
     )
   }
