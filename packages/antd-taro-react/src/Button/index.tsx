@@ -1,3 +1,3 @@
-import {AntButton} from "./button.tsx";
+import {Button} from "./button";
 
-export default AntButton
+export default Button

@@ -1,6 +1,13 @@
 import "./style/global.scss"
-import React from "react";
+import React, {FC} from "react";
 
-export const Icon = () => {
-  return <i className={"triones-antm-icon"}/>
+export const IconClsPrefix = "triones-antm-icon-";
+
+export type IconProps = {
+  className?: string
+  style?: React.CSSProperties
+}
+
+export const Icon: FC<IconProps> = ({className, style}) => {
+  return <span className={`triones-antm-icon ${className}`} style={style}/>
 }

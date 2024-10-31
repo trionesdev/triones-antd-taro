@@ -1,3 +1,4 @@
+import "../style/asset.scss"
 import "./index.scss"
 import classNames from "classnames";
 import React, {FC, useState} from "react";

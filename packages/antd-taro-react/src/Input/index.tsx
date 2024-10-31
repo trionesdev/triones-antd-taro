@@ -1,1 +1,3 @@
-export {AntInput as Input} from './input.tsx'
+import {Input} from './input'
+
+export default Input

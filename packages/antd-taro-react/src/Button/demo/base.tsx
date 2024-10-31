@@ -1,4 +1,5 @@
 import {Button} from "@trionesdev/antd-taro-react";
+import React from "react";
 
 export default () => {
   return <div style={{padding: '8px'}}>

@@ -1,4 +1,5 @@
 import {Checkbox} from "@trionesdev/antd-taro-react";
+import React from "react";
 
 export default () => {
   return <div>

@@ -4,9 +4,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
