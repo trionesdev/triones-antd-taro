@@ -55,23 +55,25 @@
     "react-dom": ">=16.9.0"
   },
   "devDependencies": {
-    "classnames": "^2.5.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@trionesdev/antd-taro-icons-react": "workspace:0.0.1",
+    "@types/lodash": "^4.17.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
+    "classnames": "^2.5.1",
     "dumi": "^2.3.0",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "lodash": "^4.17.21",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1",
-    "@trionesdev/antd-taro-icons-react": "workspace:0.0.1"
+    "stylelint": "^14.9.1"
   }
 }

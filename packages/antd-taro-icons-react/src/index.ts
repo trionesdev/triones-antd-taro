@@ -1,4 +1,4 @@
-export * from "./Icon"
+export {Icon} from "./Icon"
 export * from "./MinusOutline"
 export * from "./BankcardOutline"
 export * from "./HeartOutline"
