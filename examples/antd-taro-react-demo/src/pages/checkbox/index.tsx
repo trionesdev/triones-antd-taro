@@ -1,9 +1,8 @@
-import {Checkbox} from "@trionesdev/antd-taro-react";
+import CheckboxBaseDemo from "@trionesdev/antd-taro-react/dist/Checkbox/demo/base";
 
 const CheckboxDemo = () => {
   return <div>
-    <Checkbox checked={true}>苹果</Checkbox>
-    <Checkbox checked={false}>香蕉</Checkbox>
+    <CheckboxBaseDemo/>
   </div>
 }
 export default CheckboxDemo

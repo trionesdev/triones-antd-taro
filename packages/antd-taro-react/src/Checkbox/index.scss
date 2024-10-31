@@ -57,7 +57,6 @@ $checkedIcon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25
       align-items: center;
       color: #1677ff;
       background-color: currentcolor;
-      mask: url($checkedIcon) 0px 0px / 100% 100% no-repeat;
     }
   }
 
@@ -92,7 +91,6 @@ $checkedIcon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25
     .checkedIcon {
       background-color: #1677ff;
       color: #ffffff;
-      //mask: url($checkedIcon) 0px 0px / 100% 100% no-repeat;
       &::before {
         font-style: normal;
         content: "\e6e9";
