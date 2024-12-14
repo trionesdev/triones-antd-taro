@@ -1,0 +1,68 @@
+$inputCls: 'triones-antm-input';
+.#{$inputCls} {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  &-line{
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  &-content{
+    width: 100%;
+    align-self: center;
+    padding: 0;
+    font-size: 17px;
+    text-align: left;
+    color: #333333;
+    background: #ffffff;
+  }
+  &-wrap{
+    position: relative;
+    text-overflow: inherit;
+    border: none;
+    height: 100%;
+    width: auto;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
+    background: inherit;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    text-align: inherit;
+    overflow: hidden;
+
+    input{
+      position: relative;
+      border: none;
+      height: inherit;
+      width: 100%;
+      font-size: inherit;
+      font-weight: inherit;
+      font-family: inherit;
+      color: inherit;
+      background: transparent;
+      display: inherit;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      vertical-align: middle;
+      text-align: inherit;
+      overflow: inherit;
+      white-space: inherit;
+      text-overflow: inherit;
+      -webkit-tap-highlight-color: transparent;
+      left: 0;
+      top: 0;
+      &::placeholder{
+        font-size: 17px;
+        color: #cccccc;
+      }
+    }
+  }
+
+}

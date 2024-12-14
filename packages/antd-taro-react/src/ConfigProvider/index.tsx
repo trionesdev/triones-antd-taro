@@ -1,3 +1,3 @@
-import {ConfigProvider} from './config-provider.tsx'
+import {ConfigProvider} from './config-provider'
 
 export {ConfigProvider}

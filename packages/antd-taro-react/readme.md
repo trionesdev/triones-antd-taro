@@ -1,14 +1,43 @@
 # @trionesdev/antd-taro-react
-***
-开发中，待完善。。。。
-> 基于Taro的Antd组件库
-## 使用
-```shell
-pnpm install @trionesdev/antd-taro-react
-```
-***
-## 互相吹捧，共同进步
 
-<div style="width: 100%;text-align: center;">
-<img src="../../images/shuque_wx.jpg" width="200px" alt="">
-</div>
+[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
+[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
+
+antd taro react 
+
+## Usage
+
+TODO
+
+## Options
+
+TODO
+
+## Development
+
+```bash
+# install dependencies
+$ pnpm install
+
+# develop library by docs demo
+$ pnpm start
+
+# build library source code
+$ pnpm run build
+
+# build library source code in watch mode
+$ pnpm run build:watch
+
+# build docs
+$ pnpm run docs:build
+
+# Locally preview the production build.
+$ pnpm run docs:preview
+
+# check your project for potential problems
+$ pnpm run doctor
+```
+
+## LICENSE
+
+MIT

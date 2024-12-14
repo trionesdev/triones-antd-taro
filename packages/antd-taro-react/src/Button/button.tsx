@@ -1,3 +1,4 @@
+import "./style.scss"
 import React, {FC} from "react";
 import classNames from "classnames";
 
@@ -34,7 +35,7 @@ type AntButtonProps = {
 }
 
 
-export const AntButton: FC<AntButtonProps> = (
+export const Button: FC<AntButtonProps> = (
     {
         block = false,
         type = 'default',
@@ -62,7 +63,7 @@ export const AntButton: FC<AntButtonProps> = (
             }
         }
         if (!variant) {
-            if (type == 'primary') {
+            if (type === 'primary') {
                 finalVariant = 'solid'
             } else if (type === 'default') {
                 finalVariant = 'outlined'

@@ -1,3 +1,5 @@
-import {Checkbox} from "./checkbox.tsx"
+import {Checkbox} from "./checkbox"
 
-export default Checkbox
+export {
+  Checkbox
+}

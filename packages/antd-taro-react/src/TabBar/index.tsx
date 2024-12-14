@@ -1,9 +1,9 @@
-import {TabBar as InternalTabBar, TabBarItem} from "./tab-bar.tsx"
+import {TabBar as InternalTabBar, TabBarItem} from "./tab-bar"
 
 type CompoundedComponent = typeof InternalTabBar & {
-    Item: typeof TabBarItem
+  Item: typeof TabBarItem
 }
 
 const TabBar = InternalTabBar as CompoundedComponent
 
-export default TabBar
+export {TabBar}
