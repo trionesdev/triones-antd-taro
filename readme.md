@@ -14,7 +14,10 @@ pnpm install
 ```shell
 pnpm --dir packages/antd-taro-react run dev
 ```
-
+3. 启动demo工程
+```shell
+pnpm --dir examples/antd-taro-react-demo run dev:h5
+```
 
 ***
 ## 互相吹捧，共同进步
