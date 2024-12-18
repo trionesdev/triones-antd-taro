@@ -5,6 +5,7 @@ export default defineAppConfig({
     'pages/checkbox/index',
     'pages/input/index',
     'pages/tab-bar/index',
+    'pages/empty/index',
   ],
   window: {
     backgroundTextStyle: 'light',
