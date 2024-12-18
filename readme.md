@@ -10,11 +10,16 @@
 ```
 pnpm install 
 ```
-2. 构建 @trionesdev/antd-taro-react 并保持开发模式持续更新
+2. 构建工程
+> 首先要对所有的依赖工程进行构建，如果不需要实时构建，可以先执行一次构建，之后再对需要实时构建的包执行dev命令
+```shell
+pnpm run build
+```
+3. 构建 @trionesdev/antd-taro-react 并保持开发模式持续更新
 ```shell
 pnpm --dir packages/antd-taro-react run dev
 ```
-3. 启动demo工程
+4. 启动demo工程
 ```shell
 pnpm --dir examples/antd-taro-react-demo run dev:h5
 ```
