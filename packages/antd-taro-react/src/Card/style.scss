@@ -5,12 +5,20 @@ $class-prefix-card: 'adm-card';
   border-radius: 8px;
   padding: 0 12px;
   &-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
     padding: 12px 0;
     &:not(:last-child) {
       border-bottom: solid 0.5px #eee;
     }
     &-title {
       font-size: 15px;
+      line-height: 1.4;
+      font-weight: bold;
     }
     &-icon {
       margin-right: 8px;
@@ -22,4 +30,3 @@ $class-prefix-card: 'adm-card';
   &-body {
     padding: 12px 0;
   }
-}
