@@ -1,16 +1,17 @@
 export default defineAppConfig({
   pages: [
-    'pages/index/index',
-    'pages/button/index',
-    'pages/checkbox/index',
-    'pages/input/index',
-    'pages/tab-bar/index',
-    'pages/empty/index',
+    "pages/index/index",
+    "pages/button/index",
+    "pages/checkbox/index",
+    "pages/input/index",
+    "pages/tab-bar/index",
+    "pages/empty/index",
+    "pages/card/index",
   ],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
-  }
-})
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTitleText: "WeChat",
+    navigationBarTextStyle: "black",
+  },
+});
