@@ -1,9 +1,11 @@
 
 $class-prefix-card: 'adm-card';
+
 .#{$class-prefix-card} {
   background: #fff;
   border-radius: 8px;
   padding: 0 12px;
+
   &-header {
     position: relative;
     display: flex;
@@ -30,3 +32,4 @@ $class-prefix-card: 'adm-card';
   &-body {
     padding: 12px 0;
   }
+}
