@@ -74,6 +74,11 @@ class Index extends Component<PropsWithChildren> {
             url: '/pages/empty/index',
           })
         }}>Empty</Button>
+        <Button onClick={() => {
+          Taro.navigateTo({
+            url: '/pages/tag/index',
+          })
+        }}>Tag</Button>
       </View>
     )
   }
