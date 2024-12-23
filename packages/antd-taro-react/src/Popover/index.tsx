@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import Tooltip from './tooltip';
 
-export default function Popover({
+function Popover({
   children,
   ...restProps
 }) {
@@ -11,3 +11,6 @@ export default function Popover({
     {children}
   </Tooltip>
 }
+
+type CompoundedComponent = typeof Popover
+export default Popover as CompoundedComponent;

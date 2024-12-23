@@ -1,6 +1,6 @@
 import RcTooltip from 'rc-tooltip';
 import { getNextZIndex } from '../utils/zIndex';
-import * as React from 'react';
+import React, { useState }  from 'react';
 import classNames from 'classnames';
 import { isFragment, cloneElement } from '../utils/reactNode';
 import type {
@@ -9,23 +9,19 @@ import type {
 } from 'rc-tooltip/lib/Tooltip';
 
 
-
 interface TooltipProps extends RcTooltipProps {
-  afterOpenChange: boolean;
   arrow: boolean;
-  onOpenChange?: RcTooltipProps['onVisibleChange'];
-  open?: RcTooltipProps['visible'];
 }
-const Tooltip = React.forwardRef<RcTooltipRef, TooltipProps>((props, ref) => {
+
+const Tooltip = React.forwardRef<RcTooltipRef, TooltipProps>((props) => {
   const {
     getTooltipContainer,
     children,
-    // afterOpenChange,
-    // afterVisibleChange,
     destroyTooltipOnHide,
     arrow = true,
     overlay,
     visible,
+    trigger = ['hover']
   } = props;  
   const child =
     React.isValidElement(children) && !isFragment(children) ? children : <span>{children}</span>;
@@ -47,25 +43,22 @@ const Tooltip = React.forwardRef<RcTooltipRef, TooltipProps>((props, ref) => {
     mouseLeaveDelay = 0,
     ...otherProps
   } = props;
-  const zIndex = getNextZIndex();
+  const [zIndex, handleZIndex] = useState<number>(0);
+
   const tooltipRef = React.useRef<RcTooltipRef>(null);
-  const tempOpen = otherProps.open || visible
+  const tempOpen = visible
 
 
-  const onOpenChange = (vis: boolean) => {
-    // setOpen(vis);
-    props.onOpenChange?.(vis);
+  const onVisibleChange = (vis: boolean) => {
+    if (vis) {
+      handleZIndex(_ => getNextZIndex())
+    }
     props.onVisibleChange?.(vis);
   };
-  const afterVisibleChange = (vis: boolean) => {
-    // setOpen(vis);
-    props.onOpenChange?.(vis);
-    props.onVisibleChange?.(vis);
-  };
-  console.log('----overlay--', overlay, zIndex, otherProps, tempOpen)
+
   return <RcTooltip
       {...otherProps}
-      trigger={['hover']}
+      trigger={trigger}
       zIndex={zIndex}
       showArrow={mergedShowArrow}
       placement={placement}
@@ -76,8 +69,7 @@ const Tooltip = React.forwardRef<RcTooltipRef, TooltipProps>((props, ref) => {
       overlay={overlay}
       visible={tempOpen}
       ref={tooltipRef}
-      onVisibleChange={onOpenChange}
-      afterVisibleChange={afterVisibleChange}
+      onVisibleChange={onVisibleChange}
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       destroyTooltipOnHide={!!destroyTooltipOnHide}
     >
@@ -85,4 +77,5 @@ const Tooltip = React.forwardRef<RcTooltipRef, TooltipProps>((props, ref) => {
       {tempOpen ? cloneElement(child, { className: childCls }) : children}
     </RcTooltip>
 })
+// type CompoundedComponent = typeof Tooltip
 export default Tooltip;

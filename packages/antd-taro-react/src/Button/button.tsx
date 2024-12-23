@@ -31,7 +31,8 @@ type AntButtonProps = {
     icon?: React.ReactNode
     iconPosition?: 'start' | 'end'
     loading?: boolean
-    variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link'
+    variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link',
+    onClick?: (event: Event) => void
 }
 
 
@@ -77,6 +78,7 @@ export const Button: FC<AntButtonProps> = (
         finalColor = 'danger'
     }
     return <button
+        {...props}
         className={classNames(clsPrefix,
             {
                 [`${clsPrefix}-block`]: block,
