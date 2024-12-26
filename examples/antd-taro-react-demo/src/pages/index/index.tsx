@@ -23,13 +23,13 @@ interface Index {
 @inject('store')
 @observer
 class Index extends Component<PropsWithChildren> {
-  componentDidMount () { }
+  componentDidMount() { }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   increment = () => {
     const { counterStore } = this.props.store
@@ -46,7 +46,7 @@ class Index extends Component<PropsWithChildren> {
     counterStore.incrementAsync()
   }
 
-  render () {
+  render() {
     const { counterStore: { counter } } = this.props.store
     return (
       <View className='index'>
@@ -64,6 +64,11 @@ class Index extends Component<PropsWithChildren> {
             url: '/pages/tab-bar/index',
           })
         }}>TabBar</Button>
+        <Button onClick={() => {
+          Taro.navigateTo({
+            url: '/pages/divider/index',
+          })
+        }}>Divider</Button>
         <Button onClick={() => {
           Taro.navigateTo({
             url: '/pages/checkbox/index',
