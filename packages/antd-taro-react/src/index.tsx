@@ -1,5 +1,6 @@
 export { default as Button } from "./Button"
 export { default as Divider } from "./Divider"
+export { default as Footer } from "./Footer"
 export * from "./Input"
 export * from "./ConfigProvider"
 export * from "./TabBar"
