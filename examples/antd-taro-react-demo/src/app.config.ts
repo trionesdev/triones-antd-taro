@@ -6,6 +6,7 @@ export default defineAppConfig({
     'pages/input/index',
     'pages/tab-bar/index',
     'pages/empty/index',
+    'pages/tag/index',
   ],
   window: {
     backgroundTextStyle: 'light',
