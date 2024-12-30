@@ -56,6 +56,11 @@ class Index extends Component<PropsWithChildren> {
         <Text>{counter}</Text>
         <Button onClick={() => {
           Taro.navigateTo({
+            url: '/pages/avatar/index',
+          })
+        }}>Avatar</Button>
+        <Button onClick={() => {
+          Taro.navigateTo({
             url: '/pages/button/index',
           })
         }}>Button</Button>
