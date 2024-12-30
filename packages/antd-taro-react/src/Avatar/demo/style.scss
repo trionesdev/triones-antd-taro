@@ -1,0 +1,16 @@
+.tag-demo-style {
+  padding: 8px;
+  &-item {
+    margin-bottom: 16px;
+  }
+  &-title {
+    margin-bottom: 8px;
+  }
+  &-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+}
