@@ -1,0 +1,85 @@
+$tagCls: 'triones-antm-tag';
+
+.#{$tagCls} {
+  display: inline-block;
+  align-items: center;
+  padding: 2px 4px;
+  font-size: 11px;
+  line-height: 1.2;
+  border-radius: 2px;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  &-square {
+    border-radius: 0;
+  }
+
+  &-round {
+    border-radius: 12px;
+  }
+
+  // Default variant styles
+  &-default {
+    &.#{$tagCls}-solid {
+      background: #666;
+      color: #fff;
+    }
+    &.#{$tagCls}-outline {
+      color: #666;
+      border: 1px solid #666;
+      background: transparent;
+    }
+  }
+
+  // Primary variant styles
+  &-primary {
+    &.#{$tagCls}-solid {
+      background: #1677ff;
+      color: #fff;
+    }
+    &.#{$tagCls}-outline {
+      color: #1677ff;
+      border: 1px solid #1677ff;
+      background: transparent;
+    }
+  }
+
+  // Success variant styles
+  &-success {
+    &.#{$tagCls}-solid {
+      background: #00b578;
+      color: #fff;
+    }
+    &.#{$tagCls}-outline {
+      color: #00b578;
+      border: 1px solid #00b578;
+      background: transparent;
+    }
+  }
+
+  // Warning variant styles
+  &-warning {
+    &.#{$tagCls}-solid {
+      background: #ff8f1f;
+      color: #fff;
+    }
+    &.#{$tagCls}-outline {
+      color: #ff8f1f;
+      border: 1px solid #ff8f1f;
+      background: transparent;
+    }
+  }
+
+  // Danger variant styles
+  &-danger {
+    &.#{$tagCls}-solid {
+      background: #ff3141;
+      color: #fff;
+    }
+    &.#{$tagCls}-outline {
+      color: #ff3141;
+      border: 1px solid #ff3141;
+      background: transparent;
+    }
+  }
+}
