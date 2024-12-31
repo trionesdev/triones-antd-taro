@@ -27,7 +27,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   return (
     <div
       className={classNames(clsPrefix, {
-        [`${clsPrefix}-${shape ? 'circle' : 'square'}`]: true,
+        [`${clsPrefix}-${shape !== 'square' ? 'circle' : 'square'}`]: true,
       })}
       style={{
         width: size,

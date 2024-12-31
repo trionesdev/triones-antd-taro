@@ -3,9 +3,9 @@ hero:
   title: library
   description: antd taro react 
   actions:
-    - text: Hello
+    - text: 快速入门
       link: /
-    - text: World
+    - text: GitHub
       link: /
 features:
   - title: Hello

@@ -1,18 +1,21 @@
+/**
+ * compact: true
+ */
+import React from 'react';
 import { AntOutline } from '@trionesdev/antd-taro-icons-react/dist/AntOutline';
 import Avatar from '@trionesdev/antd-taro-react/Avatar';
-import React from 'react';
-import './style.scss';
+import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
+
+import './style.scss'
 
 const url =
   'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
 
 export default () => {
-  const clsPrefix = 'tag-demo-style';
   return (
-    <div className={clsPrefix}>
-      <div className={`${clsPrefix}-item`}>
-        <div className={`${clsPrefix}-title`}>基本</div>
-        <div className={`${clsPrefix}-content`}>
+    <>
+      <DemoBlock title='基本'>
+        <div className='avatar-content'>
           <Avatar
             size={64}
             icon={<AntOutline style={{ fontSize: '32px', color: '#fff' }} />}
@@ -29,8 +32,9 @@ export default () => {
             icon={<AntOutline style={{ fontSize: '12px', color: '#fff' }} />}
           />
         </div>
-        <div className={`${clsPrefix}-title`}>方形</div>
-        <div className={`${clsPrefix}-content`}>
+      </DemoBlock>
+      <DemoBlock title='方形'>
+        <div className='avatar-content'>
           <Avatar
             size={64}
             shape="square"
@@ -51,10 +55,9 @@ export default () => {
             icon={<AntOutline style={{ fontSize: '12px', color: '#fff' }} />}
           />
         </div>
-      </div>
-      <div className={`${clsPrefix}-item`}>
-        <div className={`${clsPrefix}-title`}>类型</div>
-        <div className={`${clsPrefix}-content`}>
+      </DemoBlock>
+      <DemoBlock title='类型'>
+        <div className='avatar-content'>
           <Avatar>U</Avatar>
           <Avatar
             size={48}
@@ -69,7 +72,8 @@ export default () => {
             icon={<AntOutline style={{ fontSize: '16px', color: '#fff' }} />}
           />
         </div>
-      </div>
-    </div>
+      </DemoBlock>
+
+    </>
   );
 };
