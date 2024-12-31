@@ -1,3 +1,6 @@
+/**
+ * compact: true
+ */
 import Popover from "@trionesdev/antd-taro-react/Popover";
 import Button from "@trionesdev/antd-taro-react/Button";
 import React from "react";

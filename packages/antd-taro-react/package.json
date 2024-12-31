@@ -64,6 +64,7 @@
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
     "dumi": "^2.3.0",
+    "dumi-theme-mobile": "^2.0.0",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
     "husky": "^8.0.1",
