@@ -1,0 +1,51 @@
+$class-prefix-badge: 'triones-antm-badge';
+
+.#{$class-prefix-badge}-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.#{$class-prefix-badge} {
+  display: inline-flex;
+  vertical-align: middle;
+  box-sizing: content-box;
+  border-radius: 100px;
+  background-color: var(--color);
+  --right: 0;
+  --top: 0;
+  --color: #ff3141;
+
+  &-content {
+    color: #ffffff;
+    box-sizing: border-box;
+    min-width: 8px;
+    padding: 1px 4px;
+    font-size: 9px;
+    line-height: 12px;
+    white-space: nowrap;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &-fixed {
+    position: absolute;
+    right: var(--right);
+    top: var(--top);
+    transform: translate(50%, -50%);
+    -webkit-transform: translate(50%, -50%);
+    -moz-transform: translate(50%, -50%);
+    -ms-transform: translate(50%, -50%);
+    -o-transform: translate(50%, -50%);
+  }
+
+  &-dot {
+    min-width: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  &-bordered {
+    border: solid 1px #ffffff;
+  }
+}
