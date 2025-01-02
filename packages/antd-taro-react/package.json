@@ -78,6 +78,9 @@
     "stylelint": "^14.9.1"
   },
   "dependencies": {
-    "rc-tooltip": "^6.3.1"
+    "ahooks": "^3.8.4",
+    "rc-tooltip": "^6.3.1",
+    "rc-util": "^5.44.3",
+    "runes2": "^1.1.4"
   }
 }
