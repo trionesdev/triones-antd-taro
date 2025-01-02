@@ -10,5 +10,8 @@ export default () => {
     <DemoBlock title="基础用法">
       <Input placeholder="请输入内容" />
     </DemoBlock>
+    <DemoBlock title="带清除按钮">
+      <Input placeholder="请输入内容" allowClear={true} />
+    </DemoBlock>
   </>
 }

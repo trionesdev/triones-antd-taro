@@ -3,6 +3,7 @@ $inputCls: 'triones-antm-input';
   display: flex;
   align-items: center;
   background: #ffffff;
+  font-family: "triones-ant-mini-icon" !important;
   &-line{
     position: relative;
     flex: 1;
@@ -18,6 +19,8 @@ $inputCls: 'triones-antm-input';
     text-align: left;
     color: #333333;
     background: #ffffff;
+    display: flex;
+    align-items: center;
   }
   &-wrap{
     position: relative;
@@ -35,7 +38,7 @@ $inputCls: 'triones-antm-input';
     outline: none;
     text-align: inherit;
     overflow: hidden;
-
+    flex: 1 auto;
     input{
       position: relative;
       border: none;
@@ -64,5 +67,25 @@ $inputCls: 'triones-antm-input';
       }
     }
   }
+  &-prefix{
 
+  }
+  &-suffix{
+    .clear-icon{
+      border-radius: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+      background-color: #bfbfbf;
+      color: white;
+      cursor: pointer;
+      &::before {
+        font-style: normal;
+        content: "\e75e";
+        font-size: 6px;
+      }
+    }
+  }
 }
