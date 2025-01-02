@@ -1,7 +1,7 @@
 import React from 'react'
 import type { FC, ReactNode } from 'react'
 import classNames from 'classnames'
-import { mergeProps, NativeProps, withNativeProps } from './native-props'
+import { mergeProps, NativeProps, withNativeProps } from '../utils/native-props'
 import Divider from '../Divider'
 import './style.scss'
 

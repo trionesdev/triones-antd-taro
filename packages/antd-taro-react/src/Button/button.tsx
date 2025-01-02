@@ -1,5 +1,5 @@
 import "./style.scss"
-import React, {FC, MouseEventHandler} from "react";
+import React, { FC, MouseEventHandler } from "react";
 import classNames from "classnames";
 
 type AntButtonProps = {
@@ -25,7 +25,6 @@ type AntButtonProps = {
    */
   ghost?: boolean
   type?: 'primary' | 'dashed' | 'link' | 'text' | 'default'
-
   className?: string,
   style?: React.CSSProperties
   icon?: React.ReactNode
