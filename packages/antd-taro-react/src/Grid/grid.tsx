@@ -1,8 +1,9 @@
 import React from 'react'
 import type { FC, ReactNode, CSSProperties } from 'react'
-import { mergeProps, NativeProps, toCSSLength, withNativeProps } from '../utils/native-props'
+import { NativeProps, toCSSLength, withNativeProps } from '../utils/native-props'
 
 import './style.scss'
+import { mergeProps } from '../utils/with-default-props'
 
 const classPrefix = `triones-antm-grid`
 

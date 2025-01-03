@@ -1,9 +1,10 @@
 import React from 'react'
 import type { FC, ReactNode } from 'react'
 import classNames from 'classnames'
-import { mergeProps, NativeProps, withNativeProps } from '../utils/native-props'
+import { NativeProps, withNativeProps } from '../utils/native-props'
 import Divider from '../Divider'
 import './style.scss'
+import { mergeProps } from '../utils/with-default-props'
 
 const classPrefix = `triones-antm-footer`
 
