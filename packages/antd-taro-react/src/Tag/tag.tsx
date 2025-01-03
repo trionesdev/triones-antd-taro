@@ -68,7 +68,7 @@ export const Tag: FC<TagProps> = ({
     : style;
 
   return (
-    <span
+    <div
       className={classNames(
         clsPrefix,
         {
@@ -83,6 +83,6 @@ export const Tag: FC<TagProps> = ({
       onClick={onClick}
     >
       {children}
-    </span>
+    </div>
   );
 };
