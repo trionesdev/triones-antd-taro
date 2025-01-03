@@ -46,6 +46,7 @@ export default () => {
     </DemoBlock>
     <DemoBlock title='块级按钮'>
       <div style={{ gap: '8px', rowGap: '8px', display: 'flex', flexWrap: 'wrap' }}>
+        <Button block={true} type='primary'>按钮</Button>
         <Button block={true} color='primary'>按钮</Button>
       </div>
     </DemoBlock>

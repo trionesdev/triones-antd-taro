@@ -2,11 +2,12 @@
 import type { FC, ReactNode } from 'react'
 import React from 'react'
 import useMeasure from './useMeasure'
-import { mergeProps, NativeProps, withNativeProps } from '../utils/native-props'
+import { NativeProps, withNativeProps } from '../utils/native-props'
 import { useResizeEffect } from '../utils/use-resize-effect'
 import { PropagationEvent, withStopPropagation } from '../utils/with-stop-propagation'
 
 import './style.scss'
+import { mergeProps } from '../utils/with-default-props'
 
 const classPrefix = `triones-antm-ellipsis`
 
