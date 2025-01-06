@@ -1,16 +1,18 @@
-export { default as Button } from "./Button"
-export { default as Divider } from "./Divider"
-export { default as Footer } from "./Footer"
-export { default as Ellipsis } from "./Ellipsis"
-export { default as Badge } from "./Badge"
-export { default as Grid } from "./Grid"
-export { default as Space } from "./Space"
-export { default as PageIndicator } from "./PageIndicator"
-export * from "./Input"
-export * from "./ConfigProvider"
-export * from "./TabBar"
-export * from "./Checkbox"
-export * from "./Empty"
-export * from "./Popover"
-export * from "./Tag"
+import './style';
 export * from './Avatar';
+export { default as Badge } from './Badge';
+export { default as Button } from './Button';
+export { default as Card } from './Card';
+export * from './Checkbox';
+export * from './ConfigProvider';
+export { default as Divider } from './Divider';
+export { default as Ellipsis } from './Ellipsis';
+export * from './Empty';
+export { default as Footer } from './Footer';
+export { default as Grid } from './Grid';
+export * from './Input';
+export { default as PageIndicator } from './PageIndicator';
+export * from './Popover';
+export { default as Space } from './Space';
+export * from './TabBar';
+export * from './Tag';

@@ -1,0 +1,31 @@
+$class-prefix-card: 'triones-antm-card';
+
+.#{$class-prefix-card} {
+  background: var(--triones-antm-color-background);
+  border-radius: var(--triones-antm-card-border-radius, 8px);
+  padding: 0 var(--triones-antm-card-padding-inline, 12px);
+  &-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--triones-antm-card-header-gap, 8px);
+    box-sizing: border-box;
+    padding: var(--triones-antm-card-header-padding-block, 12px) 0;
+    &:not(:last-child) {
+      border-bottom: solid var(--triones-antm-card-header-border-width, 0.5px)
+        var(
+          --triones-antm-card-header-border-color,
+          var(--triones-antm-color-border)
+        );
+    }
+    &-title {
+      font-size: var(--triones-antm-font-size-7);
+      line-height: 1.4;
+      font-weight: bold;
+    }
+  }
+  &-body {
+    padding: var(--triones-antm-card-body-padding-block, 12px) 0;
+  }
+}
