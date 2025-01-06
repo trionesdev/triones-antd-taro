@@ -1,4 +1,5 @@
 import Card from '@trionesdev/antd-taro-react/Card';
+import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -19,22 +20,18 @@ export default () => {
   };
   return (
     <>
-      <div>
-        <div>基础用法</div>
+      <DemoBlock title="基础用法">
         <Card title="卡片标题" onClick={onClick}>
           卡片内容
         </Card>
-      </div>
-      <div>
-        <div>没有卡片内容</div>
+      </DemoBlock>
+      <DemoBlock title="没有卡片内容">
         <Card title="卡片标题" onClick={onClick} />
-      </div>
-      <div>
-        <div>没有卡片标题</div>
+      </DemoBlock>
+      <DemoBlock title="没有卡片标题">
         <Card onClick={onClick}>卡片内容</Card>
-      </div>
-      <div>
-        <div>自定义卡片内容</div>
+      </DemoBlock>
+      <DemoBlock title="自定义卡片内容">
         <Card
           title={<div style={{ fontWeight: 'normal' }}>卡片标题</div>}
           onBodyClick={onBodyClick}
@@ -47,9 +44,8 @@ export default () => {
             onClick={(e) => e.stopPropagation()}
           ></div>
         </Card>
-      </div>
-      <div>
-        <div>自定义卡片样式</div>
+      </DemoBlock>
+      <DemoBlock title="自定义卡片样式">
         <Card
           headerStyle={{
             color: '#1677ff',
@@ -59,7 +55,7 @@ export default () => {
         >
           卡片内容
         </Card>
-      </div>
+      </DemoBlock>
     </>
   );
 };

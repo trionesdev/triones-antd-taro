@@ -3,7 +3,7 @@ import type { CSSProperties, FC, ReactNode } from 'react';
 import React from 'react';
 import { NativeProps, withNativeProps } from './native-props';
 
-const classPrefix = `adm-card`;
+const classPrefix = `triones-antm-card`;
 
 export type CardProps = {
   title?: ReactNode;

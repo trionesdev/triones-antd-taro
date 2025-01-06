@@ -1,7 +1,8 @@
+import './style';
 export * from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Button } from './Button';
-export * from './Card';
+export { default as Card } from './Card';
 export * from './Checkbox';
 export * from './ConfigProvider';
 export { default as Divider } from './Divider';
