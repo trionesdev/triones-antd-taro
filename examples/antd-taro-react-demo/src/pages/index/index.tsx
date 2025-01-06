@@ -59,6 +59,15 @@ class Index extends Component<PropsWithChildren> {
         <Button
           onClick={() => {
             Taro.navigateTo({
+              url: "/pages/avatar/index",
+            });
+          }}
+        >
+          Avatar
+        </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
               url: "/pages/button/index",
             });
           }}
@@ -86,6 +95,15 @@ class Index extends Component<PropsWithChildren> {
         <Button
           onClick={() => {
             Taro.navigateTo({
+              url: "/pages/divider/index",
+            });
+          }}
+        >
+          Divider
+        </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
               url: "/pages/empty/index",
             });
           }}
@@ -100,6 +118,15 @@ class Index extends Component<PropsWithChildren> {
           }}
         >
           card
+        </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
+              url: "/pages/tag/index",
+            });
+          }}
+        >
+          Tag
         </Button>
       </View>
     );

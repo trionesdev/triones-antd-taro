@@ -64,6 +64,7 @@
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
     "dumi": "^2.3.0",
+    "dumi-theme-mobile": "^2.0.0",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
     "husky": "^8.0.1",
@@ -75,5 +76,11 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "stylelint": "^14.9.1"
+  },
+  "dependencies": {
+    "ahooks": "^3.8.4",
+    "rc-tooltip": "^6.3.1",
+    "rc-util": "^5.44.3",
+    "runes2": "^1.1.4"
   }
 }

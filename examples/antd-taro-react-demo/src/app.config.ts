@@ -6,6 +6,9 @@ export default defineAppConfig({
     "pages/input/index",
     "pages/tab-bar/index",
     "pages/empty/index",
+    "pages/divider/index",
+    "pages/tag/index",
+    "pages/avatar/index",
     "pages/card/index",
   ],
   window: {

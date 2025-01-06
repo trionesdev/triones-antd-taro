@@ -1,7 +1,4 @@
----
-title: 空状态
-description: 空状态时的展示占位图。
----
+# Empty 空状态
 
 ## 何时使用
 
@@ -9,6 +6,7 @@ description: 空状态时的展示占位图。
 - 初始化场景时的引导创建流程。
 
 ## 代码演示
+
 <code src="./demo/base.tsx"></code>
 
 ## API
@@ -18,5 +16,3 @@ description: 空状态时的展示占位图。
 | description | 自定义描述内容 | ReactNode | - |  |
 | image | 设置显示图片，为 string 时表示自定义图片地址。 | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` |  |
 | imageStyle | 图片样式 | CSSProperties | - |  |
-
-

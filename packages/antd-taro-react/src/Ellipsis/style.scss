@@ -1,0 +1,12 @@
+$class-prefix-ellipsis: 'triones-antm-ellipsis';
+
+.#{$class-prefix-ellipsis} {
+  overflow: hidden;
+  line-height: 1.5;
+  word-break: break-word;
+
+  a {
+    color: #1677ff;
+    cursor: pointer;
+  }
+}
