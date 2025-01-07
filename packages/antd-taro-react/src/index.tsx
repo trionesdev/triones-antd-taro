@@ -15,5 +15,6 @@ export { default as PageIndicator } from './PageIndicator';
 export * from './Popover';
 export { default as Space } from './Space';
 export { default as ErrorBlock } from './ErrorBlock';
+export { default as Result } from './Result';
 export * from './TabBar';
 export * from './Tag';
