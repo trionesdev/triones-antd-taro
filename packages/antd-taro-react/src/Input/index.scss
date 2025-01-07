@@ -78,13 +78,16 @@ $inputCls: 'triones-antm-input';
       justify-content: center;
       width: 12px;
       height: 12px;
-      background-color: #bfbfbf;
+      background-color: rgba(0, 0, 0, 0.25);
       color: white;
       cursor: pointer;
       &::before {
         font-style: normal;
         content: "\e75e";
-        font-size: 6px;
+        font-size: 5px;
+      }
+      &:hover{
+        background-color: rgba(0, 0, 0, 0.45);
       }
     }
   }
