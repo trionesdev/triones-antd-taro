@@ -1,628 +1,656 @@
 @font-face {
-  font-family: "triones-ant-mini-icon"; /* Project id 4727221 */
+  font-family: "triones-antm-icon"; /* Project id 4727221 */
   src: url("./iconfont.ttf") format('truetype');
 }
 
+
 .triones-antm-icon {
-  font-family: "triones-ant-mini-icon" !important;
+  font-family: "triones-antm-icon" !important;
+  font-size: 16px;
   font-style: normal;
-  line-height: 1;
-  font-size: 40px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.triones-antm-icon-FingerdownOutline-copy:before {
-  content: "\e758";
+.triones-antm-AddCircleOutline:before {
+  content: "\e776";
 }
 
-.triones-antm-icon-AudioFill:before {
-  content: "\e74e";
+.triones-antm-AddSquareOutline:before {
+  content: "\e768";
 }
 
-.triones-antm-icon-FingerdownOutline:before {
-  content: "\e74f";
+.triones-antm-AudioMutedOutline:before {
+  content: "\e769";
 }
 
-.triones-antm-icon-ShopbagOutline:before {
-  content: "\e750";
+.triones-antm-BellOutline:before {
+  content: "\e76a";
 }
 
-.triones-antm-icon-ExclamationShieldFill:before {
-  content: "\e751";
+.triones-antm-BankcardOutline:before {
+  content: "\e76b";
 }
 
-.triones-antm-icon-StopOutline:before {
-  content: "\e752";
+.triones-antm-AAOutline:before {
+  content: "\e76c";
 }
 
-.triones-antm-icon-CheckShieldOutline:before {
-  content: "\e753";
+.triones-antm-ArrowDownCircleOutline:before {
+  content: "\e76d";
 }
 
-.triones-antm-icon-CloseShieldOutline:before {
-  content: "\e754";
+.triones-antm-AudioFill:before {
+  content: "\e76e";
 }
 
-.triones-antm-icon-FilterOutline:before {
-  content: "\e755";
+.triones-antm-AudioOutline:before {
+  content: "\e76f";
 }
 
-.triones-antm-icon-TextDeletionOutline:before {
-  content: "\e756";
+.triones-antm-BellMuteOutline:before {
+  content: "\e770";
 }
 
-.triones-antm-icon-EditSFill:before {
-  content: "\e757";
+.triones-antm-ArrowsAltOutline:before {
+  content: "\e771";
 }
 
-.triones-antm-icon-ContentOutline:before {
-  content: "\e6c1";
+.triones-antm-AlipayCircleFill:before {
+  content: "\e772";
 }
 
-.triones-antm-icon-AddSquareOutline:before {
-  content: "\e744";
+.triones-antm-AddOutline:before {
+  content: "\e773";
 }
 
-.triones-antm-icon-MessageOutline:before {
-  content: "\e745";
+.triones-antm-AddressBookFill:before {
+  content: "\e774";
 }
 
-.triones-antm-icon-LocationOutline:before {
-  content: "\e746";
+.triones-antm-AlipaySquareFill:before {
+  content: "\e775";
 }
 
-.triones-antm-icon-ExclamationShieldOutline:before {
-  content: "\e747";
-}
-
-.triones-antm-icon-CheckShieldFill:before {
-  content: "\e748";
-}
-
-.triones-antm-icon-MessageFill:before {
-  content: "\e749";
-}
-
-.triones-antm-icon-LockFill:before {
-  content: "\e74a";
-}
-
-.triones-antm-icon-LikeOutline:before {
-  content: "\e74b";
-}
-
-.triones-antm-icon-ReceivePaymentOutline:before {
-  content: "\e74c";
-}
-
-.triones-antm-icon-TeamFill:before {
-  content: "\e74d";
-}
-
-.triones-antm-icon-EditFill:before {
-  content: "\e742";
-}
-
-.triones-antm-icon-AlipaySquareFill:before {
-  content: "\e743";
-}
-
-.triones-antm-icon-a-DownlandOutline-copy:before {
-  content: "\e75a";
-}
-
-.triones-antm-icon-TeamOutline:before {
-  content: "\e733";
-}
-
-.triones-antm-icon-CalendarOutline:before {
-  content: "\e734";
-}
-
-.triones-antm-icon-EditSOutline:before {
-  content: "\e735";
-}
-
-.triones-antm-icon-TruckOutline:before {
-  content: "\e736";
-}
-
-.triones-antm-icon-TravelOutline:before {
-  content: "\e737";
-}
-
-.triones-antm-icon-UserContactOutline:before {
-  content: "\e738";
-}
-
-.triones-antm-icon-LocationFill:before {
-  content: "\e739";
-}
-
-.triones-antm-icon-MailFill:before {
-  content: "\e73a";
-}
-
-.triones-antm-icon-DownlandOutline:before {
-  content: "\e73b";
-}
-
-.triones-antm-icon-FillinOutline:before {
-  content: "\e73c";
-}
-
-.triones-antm-icon-AudioOutline:before {
-  content: "\e73d";
-}
-
-.triones-antm-icon-UnlockOutline:before {
-  content: "\e73e";
-}
-
-.triones-antm-icon-AudioMutedOutline:before {
-  content: "\e73f";
-}
-
-.triones-antm-icon-FileOutline:before {
-  content: "\e740";
-}
-
-.triones-antm-icon-FlagOutline:before {
-  content: "\e741";
-}
-
-.triones-antm-icon-EnvironmentOutline:before {
-  content: "\e726";
-}
-
-.triones-antm-icon-AddressBookFill:before {
-  content: "\e727";
-}
-
-.triones-antm-icon-PieOutline:before {
-  content: "\e728";
-}
-
-.triones-antm-icon-TransportQRcodeOutline:before {
-  content: "\e729";
-}
-
-.triones-antm-icon-PhonebookFill:before {
-  content: "\e72a";
-}
-
-.triones-antm-icon-FolderOutline:before {
-  content: "\e72b";
-}
-
-.triones-antm-icon-UserOutline:before {
-  content: "\e6c3";
-}
-
-.triones-antm-icon-ChatAddOutline:before {
-  content: "\e72c";
-}
-
-.triones-antm-icon-ChatCheckOutline:before {
-  content: "\e72d";
-}
-
-.triones-antm-icon-UserSetOutline:before {
-  content: "\e72e";
-}
-
-.triones-antm-icon-MailOpenOutline:before {
-  content: "\e72f";
-}
-
-.triones-antm-icon-ChatWrongOutline:before {
-  content: "\e730";
-}
-
-.triones-antm-icon-MailOutline:before {
-  content: "\e731";
-}
-
-.triones-antm-icon-SystemQRcodeOutline:before {
-  content: "\e6c2";
-}
-
-.triones-antm-icon-SendOutline:before {
-  content: "\e732";
-}
-
-.triones-antm-icon-SoundMuteOutline:before {
-  content: "\e6c6";
-}
-
-.triones-antm-icon-UploadOutline:before {
-  content: "\e719";
-}
-
-.triones-antm-icon-SoundOutline:before {
-  content: "\e71a";
-}
-
-.triones-antm-icon-SoundMuteFill:before {
-  content: "\e71b";
-}
-
-.triones-antm-icon-PhoneFill:before {
-  content: "\e71c";
-}
-
-.triones-antm-icon-LockOutline:before {
-  content: "\e71d";
-}
-
-.triones-antm-icon-HistogramOutline:before {
-  content: "\e71e";
-}
-
-.triones-antm-icon-PhonebookOutline:before {
-  content: "\e71f";
-}
-
-.triones-antm-icon-SmileOutline:before {
-  content: "\e720";
-}
-
-.triones-antm-icon-GiftOutline:before {
-  content: "\e721";
-}
-
-.triones-antm-icon-HandPayCircleOutline:before {
-  content: "\e722";
-}
-
-.triones-antm-icon-AppOutline:before {
-  content: "\e723";
-}
-
-.triones-antm-icon-UserAddOutline:before {
-  content: "\e724";
-}
-
-.triones-antm-icon-CameraOutline:before {
-  content: "\e725";
-}
-
-.triones-antm-icon-CalculatorOutline:before {
-  content: "\e6c4";
-}
-
-.triones-antm-icon-FileWrongOutline:before {
-  content: "\e6c5";
-}
-
-.triones-antm-icon-AAOutline:before {
-  content: "\e709";
-}
-
-.triones-antm-icon-UndoOutline:before {
-  content: "\e70a";
-}
-
-.triones-antm-icon-CollectMoneyOutline:before {
-  content: "\e70b";
-}
-
-.triones-antm-icon-ArrowDownCircleOutline:before {
-  content: "\e70c";
-}
-
-.triones-antm-icon-KoubeiFill:before {
-  content: "\e70d";
-}
-
-.triones-antm-icon-QuestionCircleOutline:before {
-  content: "\e70e";
-}
-
-.triones-antm-icon-DownCircleOutline:before {
-  content: "\e70f";
-}
-
-.triones-antm-icon-TagOutline:before {
-  content: "\e710";
-}
-
-.triones-antm-icon-AddCircleOutline:before {
-  content: "\e711";
-}
-
-.triones-antm-icon-ForbidFill:before {
-  content: "\e712";
-}
-
-.triones-antm-icon-UnorderedListOutline:before {
-  content: "\e713";
-}
-
-.triones-antm-icon-SetOutline:before {
-  content: "\e714";
-}
-
-.triones-antm-icon-UpCircleOutline:before {
-  content: "\e715";
-}
-
-.triones-antm-icon-ExclamationCircleOutline:before {
-  content: "\e716";
-}
-
-.triones-antm-icon-CloseCircleOutline:before {
-  content: "\e717";
-}
-
-.triones-antm-icon-CheckCircleOutline:before {
-  content: "\e718";
-}
-
-.triones-antm-icon-CompassOutline:before {
-  content: "\e6f8";
-}
-
-.triones-antm-icon-EyeOutline:before {
-  content: "\e6f9";
-}
-
-.triones-antm-icon-BellOutline:before {
-  content: "\e6fa";
-}
-
-.triones-antm-icon-DownOutline:before {
-  content: "\e6fb";
-}
-
-.triones-antm-icon-ScanningOutline:before {
-  content: "\e6fc";
-}
-
-.triones-antm-icon-EyeInvisibleOutline:before {
-  content: "\e6fd";
-}
-
-.triones-antm-icon-LoopOutline:before {
-  content: "\e6fe";
-}
-
-.triones-antm-icon-ScanningFaceOutline:before {
-  content: "\e6ff";
-}
-
-.triones-antm-icon-MinusCircleOutline:before {
-  content: "\e700";
-}
-
-.triones-antm-icon-TextOutline:before {
-  content: "\e701";
-}
-
-.triones-antm-icon-LeftOutline:before {
-  content: "\e702";
-}
-
-.triones-antm-icon-RightOutline:before {
-  content: "\e703";
-}
-
-.triones-antm-icon-SearchOutline:before {
-  content: "\e704";
-}
-
-.triones-antm-icon-QuestionCircleFill:before {
-  content: "\e705";
-}
-
-.triones-antm-icon-KeyOutline:before {
-  content: "\e706";
-}
-
-.triones-antm-icon-KoubeiOutline:before {
-  content: "\e707";
-}
-
-.triones-antm-icon-RedoOutline:before {
-  content: "\e708";
-}
-
-.triones-antm-icon-BellMuteOutline:before {
-  content: "\e6ca";
-}
-
-.triones-antm-icon-ScanCodeOutline:before {
-  content: "\e6c9";
-}
-
-.triones-antm-icon-AddOutline:before {
-  content: "\e6c7";
-}
-
-.triones-antm-icon-AppstoreOutline:before {
-  content: "\e6c8";
-}
-
-.triones-antm-icon-MovieOutline:before {
-  content: "\e6ed";
-}
-
-.triones-antm-icon-ExclamationOutline:before {
-  content: "\e6ee";
-}
-
-.triones-antm-icon-UpOutline:before {
-  content: "\e6ef";
-}
-
-.triones-antm-icon-ExclamationTriangleOutline:before {
-  content: "\e6f0";
-}
-
-.triones-antm-icon-PictureWrongOutline:before {
-  content: "\e6f1";
-}
-
-.triones-antm-icon-PicturesOutline:before {
-  content: "\e6f2";
-}
-
-.triones-antm-icon-ClockCircleFill:before {
-  content: "\e6f3";
-}
-
-.triones-antm-icon-FrownOutline:before {
-  content: "\e6f4";
-}
-
-.triones-antm-icon-ClockCircleOutline:before {
-  content: "\e6f5";
-}
-
-.triones-antm-icon-CloseOutline:before {
-  content: "\e6f6";
-}
-
-.triones-antm-icon-PictureOutline:before {
-  content: "\e6f7";
-}
-
-.triones-antm-icon-FireFill:before {
-  content: "\e6e1";
-}
-
-.triones-antm-icon-PlayOutline:before {
-  content: "\e6e2";
-}
-
-.triones-antm-icon-CloseCircleFill:before {
-  content: "\e6e3";
-}
-
-.triones-antm-icon-StarFill:before {
-  content: "\e6e4";
-}
-
-.triones-antm-icon-MoreOutline:before {
-  content: "\e6e5";
-}
-
-.triones-antm-icon-CouponOutline:before {
-  content: "\e6e6";
-}
-
-.triones-antm-icon-VideoOutline:before {
-  content: "\e6e7";
-}
-
-.triones-antm-icon-BankcardOutline:before {
-  content: "\e6e8";
-}
-
-.triones-antm-icon-CheckOutline:before {
-  content: "\e6e9";
-}
-
-.triones-antm-icon-DeleteOutline:before {
-  content: "\e6ea";
-}
-
-.triones-antm-icon-HeartOutline:before {
-  content: "\e6eb";
-}
-
-.triones-antm-icon-ReceiptOutline:before {
-  content: "\e6ec";
-}
-
-.triones-antm-icon-PayOutline:before {
-  content: "\e6de";
-}
-
-.triones-antm-icon-AntOutline:before {
-  content: "\e6df";
-}
-
-.triones-antm-icon-FaceRecognitionOutline:before {
-  content: "\e6e0";
-}
-
-.triones-antm-icon-a-DownFill-copy:before {
-  content: "\e75b";
-}
-
-.triones-antm-icon-EyeInvisibleFill:before {
-  content: "\e6ce";
-}
-
-.triones-antm-icon-AlipayCircleFill:before {
-  content: "\e6cf";
-}
-
-.triones-antm-icon-BillOutline:before {
-  content: "\e6d0";
-}
-
-.triones-antm-icon-DownFill:before {
-  content: "\e6d1";
-}
-
-.triones-antm-icon-InformationCircleFill:before {
-  content: "\e6d2";
-}
-
-.triones-antm-icon-SmileFill:before {
-  content: "\e6d3";
-}
-
-.triones-antm-icon-StarOutline:before {
-  content: "\e6d4";
-}
-
-.triones-antm-icon-ArrowsAltOutline:before {
-  content: "\e6d5";
-}
-
-.triones-antm-icon-ExclamationCircleFill:before {
-  content: "\e6d6";
-}
-
-.triones-antm-icon-InformationCircleOutline:before {
-  content: "\e6d7";
-}
-
-.triones-antm-icon-GlobalOutline:before {
+.triones-antm-BillOutline:before {
   content: "\e6d8";
 }
 
-.triones-antm-icon-HeartFill:before {
-  content: "\e6d9";
+.triones-antm-AntOutline:before {
+  content: "\e761";
 }
 
-.triones-antm-icon-EyeFill:before {
-  content: "\e6da";
+.triones-antm-CameraOutline:before {
+  content: "\e762";
 }
 
-.triones-antm-icon-ShrinkOutline:before {
-  content: "\e6cb";
+.triones-antm-CalendarOutline:before {
+  content: "\e763";
 }
 
-.triones-antm-icon-UserCircleOutline:before {
+.triones-antm-ChatAddOutline:before {
+  content: "\e764";
+}
+
+.triones-antm-AppstoreOutline:before {
+  content: "\e6d7";
+}
+
+.triones-antm-CalculatorOutline:before {
+  content: "\e765";
+}
+
+.triones-antm-a-CalculatorOutline1:before {
+  content: "\e766";
+}
+
+.triones-antm-AppOutline:before {
+  content: "\e767";
+}
+
+.triones-antm-CheckCircleFill:before {
+  content: "\e760";
+}
+
+.triones-antm-a-DownlandOutline1:before {
+  content: "\e74f";
+}
+
+.triones-antm-CloseShieldOutline:before {
+  content: "\e750";
+}
+
+.triones-antm-ContentOutline:before {
+  content: "\e751";
+}
+
+.triones-antm-a-CouponOutline1:before {
+  content: "\e752";
+}
+
+.triones-antm-CheckShieldOutline:before {
+  content: "\e753";
+}
+
+.triones-antm-CheckCircleOutline:before {
+  content: "\e754";
+}
+
+.triones-antm-DownFill:before {
+  content: "\e755";
+}
+
+.triones-antm-CloseCircleFill:before {
+  content: "\e756";
+}
+
+.triones-antm-ClockCircleFill:before {
+  content: "\e757";
+}
+
+.triones-antm-CollectMoneyOutline:before {
+  content: "\e758";
+}
+
+.triones-antm-CouponOutline:before {
+  content: "\e759";
+}
+
+.triones-antm-CloseCircleOutline:before {
+  content: "\e75a";
+}
+
+.triones-antm-ChatCheckOutline:before {
+  content: "\e75b";
+}
+
+.triones-antm-ChatWrongOutline:before {
+  content: "\e75c";
+}
+
+.triones-antm-CheckShieldFill:before {
+  content: "\e75d";
+}
+
+.triones-antm-CloseOutline:before {
+  content: "\e75e";
+}
+
+.triones-antm-CheckOutline:before {
+  content: "\e75f";
+}
+
+.triones-antm-DownlandOutline:before {
   content: "\e6db";
 }
 
-.triones-antm-icon-CheckCircleFill:before {
-  content: "\e6dc";
+.triones-antm-DownCircleOutline:before {
+  content: "\e6da";
 }
 
-.triones-antm-icon-PayCircleOutline:before {
+.triones-antm-DeleteOutline:before {
+  content: "\e74c";
+}
+
+.triones-antm-a-DownFill1:before {
+  content: "\e74d";
+}
+
+.triones-antm-ClockCircleOutline:before {
+  content: "\e6d9";
+}
+
+.triones-antm-CompassOutline:before {
+  content: "\e74e";
+}
+
+.triones-antm-EyeInvisibleFill:before {
+  content: "\e741";
+}
+
+.triones-antm-a-ExclamationTriangleOutline1:before {
+  content: "\e742";
+}
+
+.triones-antm-FileOutline:before {
+  content: "\e743";
+}
+
+.triones-antm-EditSOutline:before {
+  content: "\e744";
+}
+
+.triones-antm-EyeFill:before {
+  content: "\e745";
+}
+
+.triones-antm-ExclamationShieldFill:before {
+  content: "\e746";
+}
+
+.triones-antm-ExclamationOutline:before {
+  content: "\e747";
+}
+
+.triones-antm-ExclamationTriangleOutline:before {
+  content: "\e748";
+}
+
+.triones-antm-EditFill:before {
+  content: "\e749";
+}
+
+.triones-antm-EditSFill:before {
+  content: "\e74a";
+}
+
+.triones-antm-DownOutline:before {
+  content: "\e74b";
+}
+
+.triones-antm-FileWrongOutline:before {
   content: "\e6dd";
 }
 
-.triones-antm-icon-LinkOutline:before {
-  content: "\e6cd";
+.triones-antm-FillinOutline:before {
+  content: "\e738";
 }
 
-.triones-antm-icon-FrownFill:before {
-  content: "\e6cc";
+.triones-antm-EyeInvisibleOutline:before {
+  content: "\e739";
 }
+
+.triones-antm-FingerdownOutline:before {
+  content: "\e73a";
+}
+
+.triones-antm-FilterOutline:before {
+  content: "\e73b";
+}
+
+.triones-antm-ExclamationCircleOutline:before {
+  content: "\e6dc";
+}
+
+.triones-antm-a-FillinOutline1:before {
+  content: "\e73c";
+}
+
+.triones-antm-EnvironmentOutline:before {
+  content: "\e73d";
+}
+
+.triones-antm-FaceRecognitionOutline:before {
+  content: "\e73e";
+}
+
+.triones-antm-ExclamationShieldOutline:before {
+  content: "\e73f";
+}
+
+.triones-antm-EyeOutline:before {
+  content: "\e740";
+}
+
+.triones-antm-HeartOutline:before {
+  content: "\e728";
+}
+
+.triones-antm-LikeOutline:before {
+  content: "\e729";
+}
+
+.triones-antm-FrownFill:before {
+  content: "\e72a";
+}
+
+.triones-antm-KoubeiFill:before {
+  content: "\e72b";
+}
+
+.triones-antm-LinkOutline:before {
+  content: "\e72c";
+}
+
+.triones-antm-HandPayCircleOutline:before {
+  content: "\e72d";
+}
+
+.triones-antm-LeftOutline:before {
+  content: "\e72e";
+}
+
+.triones-antm-GlobalOutline:before {
+  content: "\e72f";
+}
+
+.triones-antm-KeyOutline:before {
+  content: "\e730";
+}
+
+.triones-antm-GiftOutline:before {
+  content: "\e731";
+}
+
+.triones-antm-HistogramOutline:before {
+  content: "\e732";
+}
+
+.triones-antm-FrownOutline:before {
+  content: "\e733";
+}
+
+.triones-antm-InformationCircleOutline:before {
+  content: "\e734";
+}
+
+.triones-antm-FlagOutline:before {
+  content: "\e735";
+}
+
+.triones-antm-FolderOutline:before {
+  content: "\e736";
+}
+
+.triones-antm-ExclamationCircleFill:before {
+  content: "\e6de";
+}
+
+.triones-antm-FireFill:before {
+  content: "\e737";
+}
+
+.triones-antm-LocationFill:before {
+  content: "\e725";
+}
+
+.triones-antm-InformationCircleFill:before {
+  content: "\e726";
+}
+
+.triones-antm-HeartFill:before {
+  content: "\e727";
+}
+
+.triones-antm-PlayOutline:before {
+  content: "\e71b";
+}
+
+.triones-antm-MessageOutline:before {
+  content: "\e71c";
+}
+
+.triones-antm-PictureWrongOutline:before {
+  content: "\e71d";
+}
+
+.triones-antm-MessageFill:before {
+  content: "\e71e";
+}
+
+.triones-antm-PhonebookFill:before {
+  content: "\e71f";
+}
+
+.triones-antm-PayOutline:before {
+  content: "\e720";
+}
+
+.triones-antm-a-MailFill1:before {
+  content: "\e721";
+}
+
+.triones-antm-MinusCircleOutline:before {
+  content: "\e722";
+}
+
+.triones-antm-KoubeiOutline:before {
+  content: "\e6e2";
+}
+
+.triones-antm-LockFill:before {
+  content: "\e6e1";
+}
+
+.triones-antm-ForbidFill:before {
+  content: "\e6df";
+}
+
+.triones-antm-LoopOutline:before {
+  content: "\e723";
+}
+
+.triones-antm-LocationOutline:before {
+  content: "\e6e0";
+}
+
+.triones-antm-LockOutline:before {
+  content: "\e724";
+}
+
+.triones-antm-a-QuestionCircleOutline1:before {
+  content: "\e6e5";
+}
+
+.triones-antm-a-QuestionCircleOutline2:before {
+  content: "\e70e";
+}
+
+.triones-antm-MailOpenOutline:before {
+  content: "\e6e3";
+}
+
+.triones-antm-QuestionCircleFill:before {
+  content: "\e6e4";
+}
+
+.triones-antm-PhoneFill:before {
+  content: "\e70f";
+}
+
+.triones-antm-PicturesOutline:before {
+  content: "\e710";
+}
+
+.triones-antm-ReceiptOutline:before {
+  content: "\e711";
+}
+
+.triones-antm-QuestionCircleOutline:before {
+  content: "\e712";
+}
+
+.triones-antm-PictureOutline:before {
+  content: "\e713";
+}
+
+.triones-antm-MovieOutline:before {
+  content: "\e714";
+}
+
+.triones-antm-PhonebookOutline:before {
+  content: "\e715";
+}
+
+.triones-antm-MailFill:before {
+  content: "\e716";
+}
+
+.triones-antm-MoreOutline:before {
+  content: "\e717";
+}
+
+.triones-antm-MailOutline:before {
+  content: "\e718";
+}
+
+.triones-antm-PayCircleOutline:before {
+  content: "\e719";
+}
+
+.triones-antm-PieOutline:before {
+  content: "\e71a";
+}
+
+.triones-antm-ScanCodeOutline:before {
+  content: "\e6ff";
+}
+
+.triones-antm-SoundMuteFill:before {
+  content: "\e700";
+}
+
+.triones-antm-StopOutline:before {
+  content: "\e701";
+}
+
+.triones-antm-StarOutline:before {
+  content: "\e702";
+}
+
+.triones-antm-SoundMuteOutline:before {
+  content: "\e703";
+}
+
+.triones-antm-SmileFill:before {
+  content: "\e704";
+}
+
+.triones-antm-ShrinkOutline:before {
+  content: "\e705";
+}
+
+.triones-antm-ScanningOutline:before {
+  content: "\e706";
+}
+
+.triones-antm-StarFill:before {
+  content: "\e707";
+}
+
+.triones-antm-SearchOutline:before {
+  content: "\e708";
+}
+
+.triones-antm-RightOutline:before {
+  content: "\e709";
+}
+
+.triones-antm-ScanningFaceOutline:before {
+  content: "\e70a";
+}
+
+.triones-antm-ShopbagOutline:before {
+  content: "\e70b";
+}
+
+.triones-antm-ReceivePaymentOutline:before {
+  content: "\e70c";
+}
+
+.triones-antm-RedoOutline:before {
+  content: "\e70d";
+}
+
+.triones-antm-TravelOutline:before {
+  content: "\e6f7";
+}
+
+.triones-antm-TruckOutline:before {
+  content: "\e6f8";
+}
+
+.triones-antm-UndoOutline:before {
+  content: "\e6f9";
+}
+
+.triones-antm-TextDeletionOutline:before {
+  content: "\e6e9";
+}
+
+.triones-antm-SystemQRcodeOutline:before {
+  content: "\e6e7";
+}
+
+.triones-antm-TagOutline:before {
+  content: "\e6e8";
+}
+
+.triones-antm-TeamOutline:before {
+  content: "\e6fa";
+}
+
+.triones-antm-SoundOutline:before {
+  content: "\e6fb";
+}
+
+.triones-antm-SendOutline:before {
+  content: "\e6e6";
+}
+
+.triones-antm-TeamFill:before {
+  content: "\e6fc";
+}
+
+.triones-antm-SmileOutline:before {
+  content: "\e6fd";
+}
+
+.triones-antm-SetOutline:before {
+  content: "\e6fe";
+}
+
+.triones-antm-UnlockOutline:before {
+  content: "\e6ea";
+}
+
+.triones-antm-UserSetOutline:before {
+  content: "\e6eb";
+}
+
+.triones-antm-UnorderedListOutline:before {
+  content: "\e6ec";
+}
+
+.triones-antm-UserContactOutline:before {
+  content: "\e6ed";
+}
+
+.triones-antm-UserOutline:before {
+  content: "\e6ee";
+}
+
+.triones-antm-UserAddOutline:before {
+  content: "\e6ef";
+}
+
+.triones-antm-TextOutline:before {
+  content: "\e6f0";
+}
+
+.triones-antm-VideoOutline:before {
+  content: "\e6f1";
+}
+
+.triones-antm-UserCircleOutline:before {
+  content: "\e6f2";
+}
+
+.triones-antm-TransportQRcodeOutline:before {
+  content: "\e6f3";
+}
+
+.triones-antm-UploadOutline:before {
+  content: "\e6f4";
+}
+
+.triones-antm-UpCircleOutline:before {
+  content: "\e6f5";
+}
+
+.triones-antm-UpOutline:before {
+  content: "\e6f6";
+}
+
+
 

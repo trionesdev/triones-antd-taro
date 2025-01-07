@@ -7,6 +7,7 @@ export type InputProps = {
   className?: string;
   style?: React.CSSProperties;
   placeholder?: string;
+  type?: 'text' | 'password' | 'textarea';
   disabled?: boolean;
   allowClear?: boolean;
   prefix?: React.ReactNode;
@@ -18,6 +19,7 @@ export const Input: FC<InputProps> = ({
   className,
   style,
   placeholder,
+  type,
   disabled,
   allowClear,
   prefix,
@@ -36,6 +38,7 @@ export const Input: FC<InputProps> = ({
             <input
               className={`${cls}-input`}
               placeholder={placeholder}
+              type={type}
               value={innerValue}
               onChange={(e) => {
                 setInnerValue(e.target.value);

@@ -1,3 +1,14 @@
-import {Input} from './input'
+import { InputPassword } from '@trionesdev/antd-taro-react/Input/input-password';
+import { Input as InternalInput } from './input';
+import { InputOPT } from './input-opt';
 
-export default Input
+type CompoundedComponent = typeof InternalInput & {
+  Password: typeof InputPassword;
+  OPT: typeof InputOPT;
+};
+
+const Input = InternalInput as CompoundedComponent;
+Input.Password = InputPassword;
+Input.OPT = InputOPT;
+
+export default Input;

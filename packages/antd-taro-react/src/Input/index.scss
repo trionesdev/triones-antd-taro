@@ -1,17 +1,20 @@
 $inputCls: 'triones-antm-input';
+$inputPotCls: 'triones-antm-input-pot';
 .#{$inputCls} {
   display: flex;
   align-items: center;
   background: #ffffff;
   font-family: "triones-ant-mini-icon" !important;
-  &-line{
+
+  &-line {
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     overflow: hidden;
   }
-  &-content{
+
+  &-content {
     width: 100%;
     align-self: center;
     padding: 0;
@@ -22,7 +25,8 @@ $inputCls: 'triones-antm-input';
     display: flex;
     align-items: center;
   }
-  &-wrap{
+
+  &-wrap {
     position: relative;
     text-overflow: inherit;
     border: none;
@@ -39,7 +43,8 @@ $inputCls: 'triones-antm-input';
     text-align: inherit;
     overflow: hidden;
     flex: 1 auto;
-    input{
+
+    input {
       position: relative;
       border: none;
       height: inherit;
@@ -61,17 +66,20 @@ $inputCls: 'triones-antm-input';
       -webkit-tap-highlight-color: transparent;
       left: 0;
       top: 0;
-      &::placeholder{
+
+      &::placeholder {
         font-size: 17px;
         color: #cccccc;
       }
     }
   }
-  &-prefix{
+
+  &-prefix {
 
   }
-  &-suffix{
-    .clear-icon{
+
+  &-suffix {
+    .clear-icon {
       border-radius: 50vh;
       display: flex;
       align-items: center;
@@ -81,14 +89,48 @@ $inputCls: 'triones-antm-input';
       background-color: rgba(0, 0, 0, 0.25);
       color: white;
       cursor: pointer;
+
       &::before {
         font-style: normal;
         content: "\e75e";
         font-size: 5px;
       }
-      &:hover{
+
+      &:hover {
         background-color: rgba(0, 0, 0, 0.45);
       }
     }
+  }
+}
+
+.#{$inputPotCls} {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  column-gap: 8px;
+
+  &-input {
+    text-align: center;
+    padding-inline: 4px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    transition: all .2s;
+    padding: 4px 11px;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: none;
+  }
+  &-outlined{
+    font-size: 14px;
+    color: rgba(0,0,0,0.88);
+    background: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 }
