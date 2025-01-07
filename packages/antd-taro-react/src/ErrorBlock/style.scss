@@ -2,7 +2,7 @@ $class-prefix-error-block: 'triones-antm-error-block';
 
 .#{$class-prefix-error-block} {
   --color: var(--triones-antm-color-text);
-  --image-height: var(--triones-antm--error-block-image-height, 100px);
+  --image-height: var(--triones-antm-error-block-image-height, 100px);
   --image-height-full-page: var(
     --triones-antm-error-block-image-height-full-page,
     200px

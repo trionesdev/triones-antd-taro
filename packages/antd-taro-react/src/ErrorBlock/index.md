@@ -26,10 +26,10 @@
 
 | 属性 | 说明 | 默认值 | 全局变量 |
 | --- | --- | --- | --- |
-| --image-height | 图片的高度 | `100px` | `--adm-error-block-image-height` |
-| --image-height-full-page | 整页模式下的图片高度 | `200px` | `--adm-error-block-image-height-full-page` |
-| --image-width | 图片的宽度 | `auto` | `--adm-error-block-image-width` |
-| --image-width-full-page | 整页模式下的图片宽度 | `auto` | `--adm-error-block-image-width-full-page` |
+| --image-height | 图片的高度 | `100px` | `--triones-antm-error-block-image-height` |
+| --image-height-full-page | 整页模式下的图片高度 | `200px` | `--triones-antm-error-block-image-height-full-page` |
+| --image-width | 图片的宽度 | `auto` | `--triones-antm-error-block-image-width` |
+| --image-width-full-page | 整页模式下的图片宽度 | `auto` | `--triones-antm-error-block-image-width-full-page` |
 
 ## createErrorBlock
 
