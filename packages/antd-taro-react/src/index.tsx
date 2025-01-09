@@ -18,3 +18,4 @@ export { default as ErrorBlock } from './ErrorBlock';
 export { default as Result } from './Result';
 export * from './TabBar';
 export * from './Tag';
+export { default as Rate } from './Rate';

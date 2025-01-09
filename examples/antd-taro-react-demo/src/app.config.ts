@@ -10,6 +10,7 @@ export default defineAppConfig({
     "pages/tag/index",
     "pages/avatar/index",
     "pages/card/index",
+    "pages/rate/index",
   ],
   window: {
     backgroundTextStyle: "light",
