@@ -1,8 +1,8 @@
-import classNames from 'classnames';
+import { BaseInput } from '@trionesdev/antd-taro-react/Input/base-input';
+import { InputAffixWrapper } from '@trionesdev/antd-taro-react/Input/input-affix-wrapper';
 import React, { FC } from 'react';
 import '../style/asset.scss';
 import './index.scss';
-import {CloseCircleFill} from "@trionesdev/antd-taro-icons-react";
 
 export type InputProps = {
   className?: string;
@@ -28,37 +28,31 @@ export const Input: FC<InputProps> = ({
   value,
   onChange,
 }) => {
-  const [innerValue, setInnerValue] = React.useState(value);
-  const cls = 'triones-antm-input';
-  return (
-    <div className={classNames(cls, className)} style={style}>
-      <div className={`${cls}-line`}>
-        <div className={`${cls}-content`}>
-          {prefix && <div className={`${cls}-prefix`}>{prefix}</div>}
-          <div className={`${cls}-wrap`}>
-            <input
-              className={`${cls}-input`}
-              placeholder={placeholder}
-              type={type}
-              value={innerValue}
-              onChange={(e) => {
-                setInnerValue(e.target.value);
-                onChange?.(e);
-              }}
-            />
-          </div>
-          {(suffix || allowClear) && (
-            <div className={`${cls}-suffix`}>
-              {allowClear && innerValue && (
-                <CloseCircleFill className="clear-icon" onClick={() => {
-                  setInnerValue('');
-                }}/>
-              )}
-              {suffix}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  const handleRender = () => {
+    if (prefix || suffix || allowClear) {
+      return (
+        <InputAffixWrapper
+          prefix={prefix}
+          suffix={suffix}
+          allowClear={allowClear}
+          type={type}
+          value={value}
+          onChange={onChange}
+        />
+      );
+    } else {
+      return (
+        <BaseInput
+          className={className}
+          placeholder={placeholder}
+          type={type}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+        />
+      );
+    }
+  };
+
+  return <>{handleRender()}</>;
 };
