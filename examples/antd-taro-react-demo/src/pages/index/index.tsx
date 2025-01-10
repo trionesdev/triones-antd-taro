@@ -128,6 +128,15 @@ class Index extends Component<PropsWithChildren> {
         >
           Tag
         </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
+              url: "/pages/rate/index",
+            });
+          }}
+        >
+          Rate
+        </Button>
       </View>
     );
   }
