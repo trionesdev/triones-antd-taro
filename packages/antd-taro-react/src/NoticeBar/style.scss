@@ -65,10 +65,6 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
       width: auto;
       transition-timing-function: linear;
       white-space: nowrap;
-
-      .#{$class-prefix-notice-bar}-wrap {
-        white-space: normal;
-      }
     }
   }
 
@@ -117,5 +113,13 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
   &-without-border {
     border-top-width: 0;
     border-bottom-width: 0;
+  }
+}
+
+.#{$class-prefix-notice-bar}.#{$class-prefix-notice-bar}-wrap {
+  .#{$class-prefix-notice-bar}-content {
+    .#{$class-prefix-notice-bar}-content-inner {
+      white-space: normal;
+    }
   }
 }
