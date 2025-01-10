@@ -1,23 +1,58 @@
-import "./index.scss"
-import React, {FC} from "react"
-import classNames from "classnames";
+import { BaseInput } from '@trionesdev/antd-taro-react/Input/base-input';
+import { InputAffixWrapper } from '@trionesdev/antd-taro-react/Input/input-affix-wrapper';
+import React, { FC } from 'react';
+import '../style/asset.scss';
+import './index.scss';
 
 export type InputProps = {
-  className?: string,
-  style?: React.CSSProperties,
-  placeholder?: string,
-  disabled?: boolean,
-}
-export const Input: FC<InputProps> = ({className, style, placeholder, disabled}) => {
+  className?: string;
+  style?: React.CSSProperties;
+  placeholder?: string;
+  type?: 'text' | 'password' | 'textarea';
+  disabled?: boolean;
+  allowClear?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+  value?: any;
+  onChange?: (e: any) => void;
+};
+export const Input: FC<InputProps> = ({
+  className,
+  style,
+  placeholder,
+  type,
+  disabled,
+  allowClear,
+  prefix,
+  suffix,
+  value,
+  onChange,
+}) => {
+  const handleRender = () => {
+    if (prefix || suffix || allowClear) {
+      return (
+        <InputAffixWrapper
+          prefix={prefix}
+          suffix={suffix}
+          allowClear={allowClear}
+          type={type}
+          value={value}
+          onChange={onChange}
+        />
+      );
+    } else {
+      return (
+        <BaseInput
+          className={className}
+          placeholder={placeholder}
+          type={type}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+        />
+      );
+    }
+  };
 
-  const cls = 'triones-antm-input';
-  return <div className={classNames(cls, className)} style={style}>
-    <div className={`${cls}-line`}>
-      <div className={`${cls}-content`}>
-        <div className={`${cls}-wrap`}>
-          <input className={`${cls}-input`} placeholder={placeholder}/>
-        </div>
-      </div>
-    </div>
-  </div>
-}
+  return <>{handleRender()}</>;
+};
