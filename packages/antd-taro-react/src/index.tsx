@@ -16,5 +16,6 @@ export * from './Popover';
 export { default as Space } from './Space';
 export { default as ErrorBlock } from './ErrorBlock';
 export { default as Result } from './Result';
+export { default as NoticeBar } from './NoticeBar';
 export * from './TabBar';
 export * from './Tag';
