@@ -1,5 +1,20 @@
 $inputCls: 'triones-antm-input';
 $inputPotCls: 'triones-antm-input-pot';
+
+
+.#{$inputCls}{
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  transition: all .2s;
+  padding: 4px 11px;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: none;
+}
+
+
 .#{$inputCls} {
   display: flex;
   align-items: center;
@@ -79,26 +94,18 @@ $inputPotCls: 'triones-antm-input-pot';
   }
 
   &-suffix {
+    display: flex;
+    gap: 4px;
     .clear-icon {
-      border-radius: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 12px;
-      height: 12px;
-      background-color: rgba(0, 0, 0, 0.25);
-      color: white;
-      cursor: pointer;
+      color: rgba(0, 0, 0, 0.25);
 
-      &::before {
-        font-style: normal;
-        content: "\e75e";
-        font-size: 5px;
-      }
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.45);
+        color: rgba(0, 0, 0, 0.45);
       }
+    }
+    .triones-antm-icon{
+      cursor: pointer;
     }
   }
 }
@@ -109,19 +116,11 @@ $inputPotCls: 'triones-antm-input-pot';
   flex-wrap: nowrap;
   column-gap: 8px;
 
-  &-input {
+  &-opt-input{
     text-align: center;
     padding-inline: 4px;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    transition: all .2s;
-    padding: 4px 11px;
-    border-radius: 6px;
-    outline: none;
-    box-shadow: none;
   }
+
   &-outlined{
     font-size: 14px;
     color: rgba(0,0,0,0.88);

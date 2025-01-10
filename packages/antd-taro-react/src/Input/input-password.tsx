@@ -21,14 +21,22 @@ export const InputPassword: FC<InputPasswordProps> = ({
     if (iconRender) {
       return iconRender(visible);
     } else {
-      return <>{visible ? <EyeInvisibleOutline /> : <EyeOutline />}</>;
+      return (
+        <>
+          {visible ? (
+            <EyeOutline onClick={() => setVisible(false)} />
+          ) : (
+            <EyeInvisibleOutline onClick={() => setVisible(true)} />
+          )}
+        </>
+      );
     }
   };
 
   return (
     <Input
       {...rest}
-      type={'password'}
+      type={visible ? 'text' : 'password'}
       suffix={
         <>
           {' '}

@@ -1,7 +1,16 @@
-import {Icon, IconClsPrefix, IconProps} from "@trionesdev/antd-taro-icons-react/Icon";
-import React from "react";
-import {FC} from "react";
+import {
+  Icon,
+  IconClsPrefix,
+  IconProps,
+} from '@trionesdev/antd-taro-icons-react/Icon';
+import classNames from 'classnames';
+import React, { FC } from 'react';
 
-export const AntOutline: FC<IconProps> = ({className, style}) => {
-  return <Icon className={`${IconClsPrefix}AntOutline ${className}`} style={style}/>
-}
+export const AntOutline: FC<IconProps> = ({ className, style,...rest }) => {
+  return (
+    <Icon {...rest}
+      className={classNames([`${IconClsPrefix}AntOutline`, className])}
+      style={style}
+    />
+  );
+};

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { FC } from 'react';
 import '../style/asset.scss';
 import './index.scss';
+import {CloseCircleFill} from "@trionesdev/antd-taro-icons-react";
 
 export type InputProps = {
   className?: string;
@@ -49,12 +50,9 @@ export const Input: FC<InputProps> = ({
           {(suffix || allowClear) && (
             <div className={`${cls}-suffix`}>
               {allowClear && innerValue && (
-                <i
-                  className={`clear-icon`}
-                  onClick={() => {
-                    setInnerValue('');
-                  }}
-                />
+                <CloseCircleFill className="clear-icon" onClick={() => {
+                  setInnerValue('');
+                }}/>
               )}
               {suffix}
             </div>
