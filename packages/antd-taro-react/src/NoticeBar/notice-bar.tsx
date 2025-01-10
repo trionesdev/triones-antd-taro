@@ -7,7 +7,7 @@ import { useConfig } from '../ConfigProvider'
 import { mergeProp, mergeProps } from '../utils/with-default-props'
 import { useResizeEffect } from '../utils/use-resize-effect'
 import { useMutationEffect } from '../utils/use-mutation-effect'
-import { CloseCircleOutline } from '@trionesdev/antd-taro-icons-react'
+import { CloseCircleOutline, SetOutline } from '@trionesdev/antd-taro-icons-react'
 
 import './style.scss'
 
@@ -53,7 +53,7 @@ const defaultProps = {
   color: 'default',
   delay: 2000,
   speed: 50,
-  icon: <CloseCircleOutline />,
+  icon: <SetOutline />,
   wrap: false,
   shape: 'rectangular',
   bordered: 'block' as 'block' | boolean,

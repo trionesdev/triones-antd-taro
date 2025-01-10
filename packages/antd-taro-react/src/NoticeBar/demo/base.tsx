@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { CloseCircleOutline } from '@trionesdev/antd-taro-icons-react'
+import { CloseCircleOutline, SetOutline } from '@trionesdev/antd-taro-icons-react'
 import { NoticeBar, Space } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
 import React from 'react'
@@ -40,7 +40,7 @@ export default () => {
         <Space block direction='vertical'>
           <NoticeBar
             extra={<CloseCircleOutline style={{ fontSize: 18 }} />}
-            icon={<CloseCircleOutline style={{ fontSize: 18 }} />}
+            icon={<SetOutline style={{ fontSize: 18 }} />}
             content={'自定义图标'}
           />
           <NoticeBar
