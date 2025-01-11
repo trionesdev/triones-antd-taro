@@ -54,7 +54,7 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
         onChange(e.target.value);
       }}
       onInput={(e) => {
-        onChange(e.target.value);
+        //onChange(e.target.value);
       }}
       onFocus={() => {
         onFocus?.(index);
