@@ -6,13 +6,13 @@
 }
 
 html {
-  background-color: var(--adm-color-background-body);
+  background-color: var(--triones-antm-color-background-body);
 }
 
 body {
-  color: var(--adm-color-text);
-  font-size: var(--adm-font-size-main);
-  font-family: var(--adm-font-family);
+  color: var(--triones-antm-color-text);
+  font-size: var(--triones-antm-font-size-main);
+  font-family: var(--triones-antm-font-family);
 }
 
 a,
@@ -21,7 +21,7 @@ button {
 }
 
 a {
-  color: var(--adm-color-primary);
+  color: var(--triones-antm-color-primary);
   transition: opacity ease-in-out 0.2s;
   &:active {
     opacity: 0.8;
