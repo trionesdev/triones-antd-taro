@@ -1,8 +1,8 @@
 import {defineConfig} from 'dumi';
 
 export default defineConfig({
-  base: '/antd-taro/',
-  publicPath: '/antd-taro/',
+  base: '/triones-antd-taro/',
+  publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
   themeConfig: {
     name: 'Triones UI',
