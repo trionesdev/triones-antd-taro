@@ -1,0 +1,27 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - develop # default branch
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install -g pnpm
+      - run: pnpm install
+      - run: pnpm run build
+      # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
+      - run: pnpm --dir packages/antd-taro-react run docs:build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 文档目录，如果是 react 模板需要修改为 docs-dist
+          publish_dir: .packages/antd-taro-react/docs-dist
