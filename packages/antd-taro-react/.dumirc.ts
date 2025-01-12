@@ -13,5 +13,11 @@ export default defineConfig({
     hd: { rules: [{ mode: 'vw', options: [100, 750] }] },
     // 配置 demo 预览器的设备宽度，默认为 375px
     deviceWidth: 375,
+    socialLinks: {
+      github: 'https://github.com/trionesdev/triones-antd-taro',
+      zhihu: 'https://www.ithere.net/',
+    },
+    footer:
+      '<div><div>Copyright © 2015-present TrionesDev</div><div>友情链接： <a href="https://www.ithere.net/" target="_blank">书阙</a></div></div>',
   },
 });
