@@ -20,5 +20,6 @@ export { default as Rate } from './Rate';
 export { default as Result } from './Result';
 export { default as Space } from './Space';
 export { default as Switch } from './Switch';
+export { default as WaterMark } from './WaterMark';
 export * from './TabBar';
 export { default as Tag } from './Tag';
