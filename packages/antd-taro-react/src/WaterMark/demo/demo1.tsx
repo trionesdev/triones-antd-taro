@@ -9,11 +9,11 @@ import Button from '@trionesdev/antd-taro-react/Button'
 import { WaterMark } from '@trionesdev/antd-taro-react'
 
 const textProps = {
-  content: 'Ant Design Mobile',
+  content: 'Ant Taro Mobile',
 }
 
 const rowsTextProps = {
-  content: ['Ant Design Mobile', 'Ant Design Mobile Pro'],
+  content: ['Ant Taro Mobile', 'Ant Taro Mobile Pro'],
 }
 
 const imageProps = {
