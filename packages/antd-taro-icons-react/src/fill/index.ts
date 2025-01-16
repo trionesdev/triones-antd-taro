@@ -1,2 +1,4 @@
+export * from "./AlipayCircleFill"
+export * from "./AudioFill"
 export * from "./CloseCircleFill"
 export * from "./StarFill"
