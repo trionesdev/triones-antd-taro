@@ -22,5 +22,6 @@ export { default as Space } from './Space';
 export { default as Switch } from './Switch';
 export { default as WaterMark } from './WaterMark';
 export { default as NavBar } from './NavBar';
+export { default as JumboTabs } from './JumboTabs';
 export * from './TabBar';
 export { default as Tag } from './Tag';

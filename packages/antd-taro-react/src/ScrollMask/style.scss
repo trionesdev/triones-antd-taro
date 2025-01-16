@@ -1,0 +1,28 @@
+$class-prefix-scroll-mask: 'triones-antm-scroll-mask';
+
+.#{$class-prefix-scroll-mask} {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 30px;
+  height: 100%;
+  pointer-events: none;
+
+  &-left {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--adm-color-background),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  &-right {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      var(--adm-color-background),
+      rgba(255, 255, 255, 0)
+    );
+  }
+}

@@ -1,0 +1,70 @@
+$class-prefix-jumbo-tabs: 'triones-antm-jumbo-tabs';
+
+.#{$class-prefix-jumbo-tabs} {
+  --gap: 8px;
+  position: relative;
+  // Hack for auto scroll fail when the parent element is a flex layout
+  min-width: 0;
+
+  &-header {
+    position: relative;
+    border-bottom: solid 1px var(--triones-antm-color-border);
+  }
+
+  &-tab-list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    overflow-x: scroll;
+    padding: 0 var(--gap);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+  }
+  &-tab-wrapper {
+    flex: auto;
+    padding: 0 calc(var(--gap) / 2);
+    text-align: center;
+  }
+  &-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: min-content;
+    margin: 0 auto;
+    padding: 12px 0;
+    cursor: pointer;
+    font-size: var(--triones-antm-font-size-9);
+    white-space: nowrap;
+    &-title {
+      line-height: 24px;
+      padding: 0 4px;
+    }
+    &-description {
+      width: min-content;
+      padding: 0 8px;
+      border-radius: 10px;
+      color: var(--triones-antm-color-weak);
+      font-size: var(--triones-antm-font-size-main);
+      background-color: var(--triones-antm-color-fill-content);
+    }
+  }
+  &-tab-active {
+    color: var(--triones-antm-color-primary);
+    .#{$class-prefix-jumbo-tabs}-tab-description {
+      color: var(--triones-antm-color-text-light-solid);
+      background-color: var(--triones-antm-color-primary);
+    }
+  }
+  &-tab-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &-content {
+    padding: 12px;
+  }
+}
