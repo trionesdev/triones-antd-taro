@@ -1,4 +1,4 @@
-import {Icon, IconClsPrefix, IconProps} from "./Icon";
+import {Icon, IconClsPrefix, IconProps} from "../Icon";
 import React from "react";
 import {FC} from "react";
 import classNames from "classnames";
