@@ -1,0 +1,15 @@
+"use strict";(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[7186],{4025:function(v,o,t){var d;t.r(o),t.d(o,{demos:function(){return a}});var i=t(90819),c=t.n(i),O=t(89933),m=t.n(O),l=t(44194),D=t(88828),f=t(30343),E=t(98355),e=t(42491),a={"tabbar-demo-base":{component:l.memo(l.lazy(function(){return t.e(8633).then(t.bind(t,9222))})),asset:{type:"BLOCK",id:"tabbar-demo-base",refAtomIds:["TabBar"],dependencies:{"index.tsx":{type:"FILE",value:t(92420).Z},"@trionesdev/antd-taro-react":{type:"NPM",value:"0.0.0"},react:{type:"NPM",value:"18.3.1"},"@trionesdev/antd-taro-icons-react":{type:"NPM",value:"0.0.1"}},entry:"index.tsx"},context:{"@trionesdev/antd-taro-react":f,react:d||(d=t.t(l,2)),"@trionesdev/antd-taro-icons-react/dist/FaceRecognitionOutline":E,"@trionesdev/antd-taro-react/DemoBlock":e},renderOpts:{compile:function(){var r=m()(c()().mark(function _(){var s,P=arguments;return c()().wrap(function(u){for(;;)switch(u.prev=u.next){case 0:return u.next=2,t.e(5926).then(t.bind(t,25926));case 2:return u.abrupt("return",(s=u.sent).default.apply(s,P));case 3:case"end":return u.stop()}},_)}));function n(){return r.apply(this,arguments)}return n}()}}}},42491:function(v,o,t){t.r(o),t.d(o,{DemoBlock:function(){return c}});var d=t(44194),i=t(31549),c=function(m){return(0,i.jsxs)("div",{className:"demoBlock",children:[(0,i.jsx)("div",{className:"demoTitle",children:m.title}),(0,i.jsx)("div",{className:"demoMain",style:{padding:"12px 12px",background:"#ffffff"},children:m.children})]})}},64386:function(v,o,t){t.r(o),t.d(o,{texts:function(){return i}});var d=t(88828);const i=[]},92420:function(v,o){o.Z=`import { TabBar } from "@trionesdev/antd-taro-react";
+import React from "react";
+import { FaceRecognitionOutline } from "@trionesdev/antd-taro-icons-react/dist/FaceRecognitionOutline";
+import { DemoBlock } from "@trionesdev/antd-taro-react/DemoBlock";
+
+export default () => {
+  return <>
+    <DemoBlock title="\u57FA\u7840\u7528\u6CD5">
+      <TabBar
+        items={[{ key: 'home', label: '\u9996\u9875', icon: <FaceRecognitionOutline /> }, { key: 'save', label: '\u6536\u85CF' }, { key: 'my', label: '\u6211\u7684' }]}
+      />
+    </DemoBlock >
+  </>
+}
+`},98355:function(v,o,t){t.r(o),t.d(o,{FaceRecognitionOutline:function(){return E}});var d=t(93713),i=t(44194),c=t(51865),O=t.n(c),m=["className","style"];function l(){return l=Object.assign?Object.assign.bind():function(e){for(var a=1;a<arguments.length;a++){var r=arguments[a];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},l.apply(this,arguments)}function D(e,a){if(e==null)return{};var r=f(e,a),n,_;if(Object.getOwnPropertySymbols){var s=Object.getOwnPropertySymbols(e);for(_=0;_<s.length;_++)n=s[_],!(a.indexOf(n)>=0)&&Object.prototype.propertyIsEnumerable.call(e,n)&&(r[n]=e[n])}return r}function f(e,a){if(e==null)return{};var r={},n=Object.keys(e),_,s;for(s=0;s<n.length;s++)_=n[s],!(a.indexOf(_)>=0)&&(r[_]=e[_]);return r}var E=function(a){var r=a.className,n=a.style,_=D(a,m);return i.createElement(d.J,l({},_,{className:O()(["".concat(d.L,"FaceRecognitionOutline"),r]),style:n}))}}}]);
