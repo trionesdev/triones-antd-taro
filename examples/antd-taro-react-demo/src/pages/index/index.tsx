@@ -137,6 +137,15 @@ class Index extends Component<PropsWithChildren> {
         >
           Rate
         </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
+              url: "/pages/progress-bar/index",
+            });
+          }}
+        >
+          ProgressBar
+        </Button>
       </View>
     );
   }
