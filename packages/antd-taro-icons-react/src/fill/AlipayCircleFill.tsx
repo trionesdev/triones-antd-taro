@@ -5,3 +5,4 @@ import classNames from "classnames";
 export const AlipayCircleFill: FC<IconProps> = ({className, style,...rest}) => {
   return <Icon {...rest} className={classNames([`${IconClsPrefix}AlipayCircleFill`,className])} style={style}/>
 }
+  

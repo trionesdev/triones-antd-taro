@@ -5,3 +5,4 @@ import classNames from "classnames";
 export const AudioFill: FC<IconProps> = ({className, style,...rest}) => {
   return <Icon {...rest} className={classNames([`${IconClsPrefix}AudioFill`,className])} style={style}/>
 }
+  

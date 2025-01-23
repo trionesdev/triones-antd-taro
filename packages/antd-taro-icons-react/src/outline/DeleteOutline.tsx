@@ -1,16 +1,8 @@
-import {
-  Icon,
-  IconClsPrefix,
-  IconProps,
-} from '@trionesdev/antd-taro-icons-react/Icon';
-import classNames from 'classnames';
-import React, { FC } from 'react';
+import {Icon, IconClsPrefix, IconProps} from "../Icon";
+import React, {FC} from "react";
+import classNames from "classnames";
 
-export const DeleteOutline: FC<IconProps> = ({ className, style,...rest }) => {
-  return (
-    <Icon {...rest}
-      className={classNames([`${IconClsPrefix}DeleteOutline`, className])}
-      style={style}
-    />
-  );
-};
+export const DeleteOutline: FC<IconProps> = ({className, style,...rest}) => {
+  return <Icon {...rest} className={classNames([`${IconClsPrefix}DeleteOutline`,className])} style={style}/>
+}
+  
