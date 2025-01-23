@@ -2,10 +2,10 @@ import React, {FC} from "react";
 import {Icon, IconClsPrefix, IconProps} from "../Icon";
 import classNames from "classnames";
 
-export const AAOutline: FC<IconProps> = ({ className, style,...rest }) => {
+export const UpCircleOutline: FC<IconProps> = ({ className, style,...rest }) => {
   return (
     <Icon {...rest}
-          className={classNames([`${IconClsPrefix}AAOutline`, className])}
+          className={classNames([`${IconClsPrefix}UpCircleOutline`, className])}
           style={style}
     />
   );
