@@ -1,14 +1,13 @@
 @font-face {
-  font-family: "triones-antm-icon"; /* Project id 4727221 */
-  src: url('./iconfont.woff2?t=1736472129654') format('woff2'),
-  url('./iconfont.woff?t=1736472129654') format('woff'),
-  url('./iconfont.ttf?t=1736472129654') format('truetype');
+  font-family: "triones-antm-icon"; /* Project id 4730738 */
+  src: url('./iconfont.woff2?t=1737614711916') format('woff2'),
+  url('./iconfont.woff?t=1737614711916') format('woff'),
+  url('./iconfont.ttf?t=1737614711916') format('truetype');
 }
-
 
 .triones-antm-icon {
   font-family: "triones-antm-icon" !important;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,20 +113,12 @@
   content: "\e760";
 }
 
-.triones-antm-icon-a-DownlandOutline1:before {
-  content: "\e74f";
-}
-
 .triones-antm-icon-CloseShieldOutline:before {
   content: "\e750";
 }
 
 .triones-antm-icon-ContentOutline:before {
   content: "\e751";
-}
-
-.triones-antm-icon-a-CouponOutline1:before {
-  content: "\e752";
 }
 
 .triones-antm-icon-CheckShieldOutline:before {
@@ -194,10 +185,6 @@
   content: "\e74c";
 }
 
-.triones-antm-icon-a-DownFill1:before {
-  content: "\e74d";
-}
-
 .triones-antm-icon-ClockCircleOutline:before {
   content: "\e6d9";
 }
@@ -208,10 +195,6 @@
 
 .triones-antm-icon-EyeInvisibleFill:before {
   content: "\e741";
-}
-
-.triones-antm-icon-a-ExclamationTriangleOutline1:before {
-  content: "\e742";
 }
 
 .triones-antm-icon-FileOutline:before {
@@ -262,7 +245,7 @@
   content: "\e739";
 }
 
-.triones-antm-icon-FingerdownOutline:before {
+.triones-antm-icon-FingerDownOutline:before {
   content: "\e73a";
 }
 
@@ -272,10 +255,6 @@
 
 .triones-antm-icon-ExclamationCircleOutline:before {
   content: "\e6dc";
-}
-
-.triones-antm-icon-a-FillinOutline1:before {
-  content: "\e73c";
 }
 
 .triones-antm-icon-EnvironmentOutline:before {
@@ -306,7 +285,7 @@
   content: "\e72a";
 }
 
-.triones-antm-icon-KoubeiFill:before {
+.triones-antm-icon-KouBeiFill:before {
   content: "\e72b";
 }
 
@@ -406,7 +385,7 @@
   content: "\e722";
 }
 
-.triones-antm-icon-KoubeiOutline:before {
+.triones-antm-icon-KouBeiOutline:before {
   content: "\e6e2";
 }
 
@@ -428,14 +407,6 @@
 
 .triones-antm-icon-LockOutline:before {
   content: "\e724";
-}
-
-.triones-antm-icon-a-QuestionCircleOutline1:before {
-  content: "\e6e5";
-}
-
-.triones-antm-icon-a-QuestionCircleOutline2:before {
-  content: "\e70e";
 }
 
 .triones-antm-icon-MailOpenOutline:before {
@@ -470,7 +441,7 @@
   content: "\e714";
 }
 
-.triones-antm-icon-PhonebookOutline:before {
+.triones-antm-icon-PhoneBookOutline:before {
   content: "\e715";
 }
 
@@ -542,7 +513,7 @@
   content: "\e70a";
 }
 
-.triones-antm-icon-ShopbagOutline:before {
+.triones-antm-icon-ShopBagOutline:before {
   content: "\e70b";
 }
 
@@ -653,3 +624,4 @@
 .triones-antm-icon-UpOutline:before {
   content: "\e6f6";
 }
+

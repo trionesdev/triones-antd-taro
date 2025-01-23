@@ -1,10 +1,10 @@
 /**
  * compact: true
  */
-import { FaceRecognitionOutline } from '@trionesdev/antd-taro-icons-react/dist/FaceRecognitionOutline'
 import { Result } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
 import React from 'react'
+import {FaceRecognitionOutline} from "@trionesdev/antd-taro-icons-react";
 
 export default () => {
   return (
