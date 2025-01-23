@@ -3,7 +3,7 @@
  */
 import { TabBar } from "@trionesdev/antd-taro-react";
 import React from "react";
-import { FaceRecognitionOutline } from "@trionesdev/antd-taro-icons-react/dist/FaceRecognitionOutline";
+import { FaceRecognitionOutline } from "@trionesdev/antd-taro-icons-react";
 import { DemoBlock } from "@trionesdev/antd-taro-react/DemoBlock";
 
 export default () => {
