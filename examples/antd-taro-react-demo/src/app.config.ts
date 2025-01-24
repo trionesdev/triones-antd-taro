@@ -12,6 +12,7 @@ export default defineAppConfig({
     "pages/avatar/index",
     "pages/card/index",
     "pages/rate/index",
+    "pages/progress-bar/index",
   ],
   window: {
     backgroundTextStyle: "light",
