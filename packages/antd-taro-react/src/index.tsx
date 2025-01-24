@@ -26,3 +26,6 @@ export { default as Switch } from './Switch';
 export * from './TabBar';
 export { default as Tag } from './Tag';
 export { default as WaterMark } from './WaterMark';
+
+export {default as Form} from './Form';
+

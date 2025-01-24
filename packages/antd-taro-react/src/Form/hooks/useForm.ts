@@ -1,80 +1,15 @@
 import * as React from 'react';
-import type { FormInstance as RcFormInstance } from 'rc-field-form';
-import { useForm as useRcForm } from 'rc-field-form';
-import { getDOM } from 'rc-util/lib/Dom/findDOMNode';
-import { InternalNamePath, NamePath } from '../instance';
-import {getFieldId, toArray} from '../util';
-
-export interface FormInstance<Values = any> extends RcFormInstance<Values> {
-  focusField: (name: NamePath) => void;
-  __INTERNAL__: {
-    /** No! Do not use this in your code! */
-    name?: string;
-    /** No! Do not use this in your code! */
-    itemRef: (name: InternalNamePath) => (node: React.ReactElement) => void;
-  };
-  getFieldInstance: (name: NamePath) => any;
-}
-function toNamePathStr(name: NamePath) {
-  const namePath = toArray(name);
-  return namePath.join('_');
-}
-
-function getFieldDOMNode(name: NamePath, wrapForm: FormInstance) {
-  const field = wrapForm.getFieldInstance(name);
-  const fieldDom = getDOM(field);
-
-  if (fieldDom) {
-    return fieldDom;
-  }
-
-  const fieldId = getFieldId(toArray(name), wrapForm.__INTERNAL__.name);
-  if (fieldId) {
-    return document.getElementById(fieldId);
-  }
-}
+import type {FormInstance as RcFormInstance} from 'rc-field-form';
+import {useForm as useRcForm} from 'rc-field-form';
+import {FormInstance} from '../interface';
 
 export default function useForm<Values = any>(form?: FormInstance<Values>): [FormInstance<Values>] {
-  const [rcForm] = useRcForm();
-  const itemsRef = React.useRef<Record<string, React.ReactElement>>({});
+    const [rcForm] = useRcForm();
+    const itemsRef = React.useRef<Record<string, React.ReactElement>>({});
 
+    const wrapForm: FormInstance<Values> = React.useMemo(() => {
+        return form ?? {...rcForm}
+    }, [form, rcForm]);
 
-  const wrapForm: FormInstance<Values> = React.useMemo(
-    () =>
-      form ?? {
-        ...rcForm,
-        __INTERNAL__: {
-          itemRef: (name: InternalNamePath) => (node: React.ReactElement) => {
-            const namePathStr = toNamePathStr(name);
-            if (node) {
-              itemsRef.current[namePathStr] = node;
-            } else {
-              delete itemsRef.current[namePathStr];
-            }
-          },
-        },
-        scrollToField: (name: NamePath, options: ScrollOptions = {}) => {
-          const node = getFieldDOMNode(name, wrapForm);
-
-          if (node) {
-
-          }
-        },
-        focusField: (name: NamePath) => {
-          const node = getFieldDOMNode(name, wrapForm);
-
-          if (node) {
-            node.focus?.();
-          }
-        },
-        getFieldInstance: (name: NamePath) => {
-          const namePathStr = toNamePathStr(name);
-          return itemsRef.current[namePathStr];
-        },
-      },
-    [form, rcForm],
-  );
-
-  return [wrapForm];
-
+    return [wrapForm];
 }
