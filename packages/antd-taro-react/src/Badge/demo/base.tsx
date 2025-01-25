@@ -5,7 +5,7 @@
 import React from 'react'
 import './base.scss'
 import { DemoBlock } from '../../DemoBlock';
-import { Badge } from '@trionesdev/antd-taro-react'
+import Badge from "../index";
 
 export default () => {
   return (

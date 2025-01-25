@@ -1,9 +1,9 @@
 /**
  * compact: true
  */
-import { Button } from "@trionesdev/antd-taro-react";
 import { DemoBlock } from '../../DemoBlock';
 import React from "react";
+import { Button } from '../button';
 
 export default () => {
   return <>

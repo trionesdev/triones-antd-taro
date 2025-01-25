@@ -1,7 +1,8 @@
 import { PlayOutline } from '@trionesdev/antd-taro-icons-react';
-import { Rate, Space } from '@trionesdev/antd-taro-react';
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react';
+import Rate from "../index";
+import Space from "../../Space";
 
 export default () => {
   return (

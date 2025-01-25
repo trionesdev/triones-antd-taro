@@ -1,7 +1,7 @@
 import "./index.scss"
 import classNames from "classnames";
 import React, {FC, useState} from "react";
-import {CheckOutline} from "@trionesdev/antd-taro-icons-react/src";
+import {CheckOutline} from "@trionesdev/antd-taro-icons-react";
 
 type CheckboxProps = {
   children?: React.ReactNode;

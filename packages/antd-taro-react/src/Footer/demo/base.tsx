@@ -1,10 +1,10 @@
 /**
  * compact: true
  */
-import { Footer } from "@trionesdev/antd-taro-react";
 import React from 'react'
 import { ChipItem, LinkItem } from '../footer'
 import { DemoBlock } from '../../DemoBlock';
+import Footer from "../index";
 
 export default () => {
   const links: LinkItem[] = [

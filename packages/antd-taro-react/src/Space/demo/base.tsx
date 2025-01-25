@@ -1,9 +1,10 @@
 /**
  * compact: true
  */
-import { Button, Space } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
+import {Space} from "../space";
+import Button from "../../Button";
 
 export default () => {
   return (

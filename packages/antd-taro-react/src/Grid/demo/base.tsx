@@ -3,9 +3,9 @@
  */
 import React from 'react'
 import { DemoBlock } from '../../DemoBlock';
-import { Grid } from '@trionesdev/antd-taro-react'
 
 import './base.scss'
+import Grid from "../index";
 
 export default () => {
   return (

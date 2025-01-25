@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 
 
 import './demo1.scss'
-import {Button} from '@trionesdev/antd-taro-react'
-import { WaterMark } from '@trionesdev/antd-taro-react'
+import Button from "../../Button";
+import WaterMark from "../index";
 
 const textProps = {
   content: 'Ant Taro Mobile',

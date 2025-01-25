@@ -1,7 +1,8 @@
-import {Button, Form} from "@trionesdev/antd-taro-react";
 import {DemoBlock} from '../../DemoBlock';
 import React from "react"
-import {Input} from "@trionesdev/antd-taro-react";
+import Form from "../index";
+import Input from "../../Input";
+import Button from "../../Button";
 
 export default () => {
   const [verticalForm] = Form.useForm();

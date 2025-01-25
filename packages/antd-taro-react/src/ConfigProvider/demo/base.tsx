@@ -2,10 +2,11 @@
  * compact: true
  */
 import React from 'react'
-import { ConfigProvider, ErrorBlock } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
 import zhCN from '../../locales/zh-CN'
 import enUS from '../../locales/en-US'
+import ConfigProvider from "../index";
+import {ErrorBlock} from "../../index";
 
 export default () => {
   return (

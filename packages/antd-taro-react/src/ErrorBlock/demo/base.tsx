@@ -1,10 +1,10 @@
 /**
  * compact: true
  */
-import { ErrorBlock } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
-import {Space} from '@trionesdev/antd-taro-react'
 import React from 'react'
+import Space from "../../Space";
+import ErrorBlock from "../index";
 
 export default () => {
   return (

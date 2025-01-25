@@ -1,8 +1,9 @@
 import { DemoBlock } from '../../DemoBlock';
 import { DemoDescription } from '../../DemoDescription';
-import {Radio,Space} from '@trionesdev/antd-taro-react';
 import React from 'react';
 import './base.scss';
+import Space from "../../Space";
+import Radio from "../index";
 
 export default () => {
   return (

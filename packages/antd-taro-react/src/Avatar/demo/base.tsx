@@ -2,11 +2,11 @@
  * compact: true
  */
 import React from 'react';
-import {Avatar} from '@trionesdev/antd-taro-react';
 import { DemoBlock } from '../../DemoBlock';
 
 import './style.scss'
 import { AntOutline } from '@trionesdev/antd-taro-icons-react';
+import Avatar from "../index";
 
 const url =
   'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';

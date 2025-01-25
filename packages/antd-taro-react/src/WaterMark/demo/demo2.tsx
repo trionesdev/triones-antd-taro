@@ -1,9 +1,9 @@
 /**
  * compact: true
  */
-import { WaterMark } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
+import WaterMark from "../index";
 
 export default () => {
   return (
