@@ -1,5 +1,5 @@
 import React from "react";
-import FieldForm from "rc-field-form";
+import FieldForm, {useWatch} from "rc-field-form";
 import type {FormProps as RcFormProps} from 'rc-field-form/lib/Form';
 import type {FormRef} from 'rc-field-form/lib/interface';
 import {FormInstance} from "./interface";
@@ -44,7 +44,7 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
                                                                                    layout,
                                                                                    labelAlign,
                                                                                    labelWidth,
-  requiredMark,
+                                                                                   requiredMark,
                                                                                    ...props
                                                                                  }, ref) => {
   return <FormContext.Provider value={{
@@ -55,8 +55,11 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
   }}>
     <FieldForm {...props} onFinishFailed={(errorInfo) => {
       console.log(errorInfo)
-    }} >{children}</FieldForm>
+    }}>{children}</FieldForm>
   </FormContext.Provider>
 }
 
+export {
+  useWatch
+}
 export default InternalForm;
