@@ -1,12 +1,12 @@
 /**
  * compact: true
  */
-import {Card} from '@trionesdev/antd-taro-react';
 import { DemoBlock } from '../../DemoBlock';
 import classNames from 'classnames';
 import React from 'react';
 
 import './base.scss';
+import {Card} from "../card";
 const classPrefix = `card-demo`;
 
 export default () => {

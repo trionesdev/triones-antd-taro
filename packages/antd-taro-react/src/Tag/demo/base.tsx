@@ -1,10 +1,10 @@
 /**
  * compact: true
  */
-import {Tag} from '@trionesdev/antd-taro-react';
 import React from 'react';
 import './style.scss';
 import { DemoBlock } from '../../DemoBlock';
+import Tag from "../index";
 
 export default () => {
   const clsPrefix = 'tag-demo-style';

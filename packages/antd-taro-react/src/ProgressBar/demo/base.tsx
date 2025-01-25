@@ -1,6 +1,9 @@
-import { Button, ProgressBar, Space } from '@trionesdev/antd-taro-react';
 import { DemoBlock } from '../../DemoBlock';
 import React, { useState } from 'react';
+import Space from "../../Space";
+import Button from "../../Button";
+import ProgressBar from "../index";
+
 
 export default () => {
   const [percent, setPercent] = useState<number>(20);

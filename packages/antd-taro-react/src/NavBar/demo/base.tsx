@@ -1,10 +1,10 @@
 import React from 'react'
-import {Space} from '@trionesdev/antd-taro-react'
 import { CloseOutline, MoreOutline } from '@trionesdev/antd-taro-icons-react'
 
 import './base.scss'
 import { DemoBlock } from '../../DemoBlock';
-import { NavBar } from '@trionesdev/antd-taro-react'
+import Space from "../../Space";
+import NavBar from "../index";
 
 
 export default () => {

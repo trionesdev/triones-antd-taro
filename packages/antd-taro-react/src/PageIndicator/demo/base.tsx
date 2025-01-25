@@ -1,9 +1,9 @@
 /**
  * compact: true
  */
-import { PageIndicator } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
+import PageIndicator from "../index";
 
 export default () => {
   return (

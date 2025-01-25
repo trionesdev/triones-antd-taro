@@ -1,9 +1,9 @@
 /**
  * compact: true
  */
-import { Divider } from "@trionesdev/antd-taro-react";
 import { DemoBlock } from '../../DemoBlock';
 import React from "react";
+import Divider from "../index";
 
 export default () => {
   return <>

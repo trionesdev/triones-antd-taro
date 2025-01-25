@@ -2,9 +2,10 @@
  * compact: true
  */
 import { CheckOutline, CloseOutline } from '@trionesdev/antd-taro-icons-react'
-import { Space, Switch } from '@trionesdev/antd-taro-react'
 import { DemoBlock } from '../../DemoBlock';
 import React, { useState } from 'react'
+import Switch from "../index";
+import Space from "../../Space";
 
 export default () => {
   const [checked, setChecked] = useState(false)

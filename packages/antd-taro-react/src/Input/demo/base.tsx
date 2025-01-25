@@ -2,8 +2,8 @@
  * compact: true
  */
 import {DemoBlock} from '../../DemoBlock';
-import {Input} from '@trionesdev/antd-taro-react';
 import React from 'react';
+import Input from "../index";
 
 export default () => {
   return (

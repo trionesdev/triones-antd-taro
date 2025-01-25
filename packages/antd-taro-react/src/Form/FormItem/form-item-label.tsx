@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {NamePath} from "rc-field-form/lib/interface";
 import {useFormContext} from "../hooks/useFormContext";
 import {isFunction} from "lodash";
-import {FormItemLayout} from "@trionesdev/antd-taro-react/Form/form";
+import {FormItemLayout} from "../form";
 
 type FormItemLabelProps = {
   className?: string

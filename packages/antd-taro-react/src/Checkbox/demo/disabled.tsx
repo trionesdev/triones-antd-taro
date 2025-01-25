@@ -1,6 +1,6 @@
-import { Checkbox } from "@trionesdev/antd-taro-react";
 import { DemoBlock } from '../../DemoBlock';
 import React from "react";
+import {Checkbox} from "../checkbox";
 
 export default () => {
   return <>

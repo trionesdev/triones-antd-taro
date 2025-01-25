@@ -1,8 +1,12 @@
-import { attachPropertiesToComponent } from '../utils/native-props'
-import { Grid, GridItem } from './grid'
+import {Grid as InternalGrid, GridItem} from './grid'
 
-export type { GridProps, GridItemProps } from './grid'
+export type {GridProps, GridItemProps} from './grid'
 
-export default attachPropertiesToComponent(Grid, {
-  Item: GridItem,
-})
+type CompoundedComponent = typeof InternalGrid & {
+  Item: typeof GridItem;
+};
+
+const Grid = InternalGrid as CompoundedComponent;
+Grid.Item = GridItem;
+
+export default Grid

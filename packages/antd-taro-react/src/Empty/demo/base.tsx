@@ -3,8 +3,8 @@
  */
 import { QuestionCircleOutline } from "@trionesdev/antd-taro-icons-react";
 import { DemoBlock } from '../../DemoBlock';
-import {Empty} from "@trionesdev/antd-taro-react";
 import React from "react";
+import Empty from "../index";
 
 export default () => {
   return <>
