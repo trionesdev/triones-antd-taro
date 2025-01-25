@@ -1,9 +1,17 @@
 import {defineConfig} from 'dumi';
+import * as process from "node:process";
+
+const apiParserEnable = process.env.NODE_ENV === 'production' || process.env.API_PARSER == 'true';
 
 export default defineConfig({
   base: '/triones-antd-taro/',
   publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
+  apiParser: apiParserEnable ? {} :false,
+  resolve: {
+    // 配置入口文件路径，API 解析将从这里开始
+    entryFile: './src/index.tsx',
+  },
   themeConfig: {
     name: 'Triones UI',
     nav: [

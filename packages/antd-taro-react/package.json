@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "npm run dev",
+    "start-dev": "cross-env API_PARSER=true npm run dev",
     "dev": "dumi dev",
     "build": "father build",
     "build:watch": "father dev",
@@ -63,6 +64,7 @@
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
+    "cross-env": "^7.0.3",
     "dumi": "2.4.12",
     "dumi-theme-mobile": "^2.3.5",
     "eslint": "^8.23.0",
@@ -80,6 +82,7 @@
   },
   "dependencies": {
     "ahooks": "^3.8.4",
+    "rc-field-form": "^2.7.0",
     "rc-tooltip": "^6.3.1",
     "rc-util": "^5.44.3",
     "runes2": "^1.1.4"

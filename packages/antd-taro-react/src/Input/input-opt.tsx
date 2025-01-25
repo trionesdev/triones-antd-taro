@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React, { FC, useEffect, useState } from 'react';
-import '../style/asset.scss';
 import './index.scss';
 
 const cls = 'triones-antm-pot';

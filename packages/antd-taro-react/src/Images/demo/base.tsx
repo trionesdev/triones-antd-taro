@@ -1,9 +1,8 @@
 /**
  * compact: true
  */
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
-import Image from '@trionesdev/antd-taro-react/Images';
-import Space from '@trionesdev/antd-taro-react/Space';
+import { DemoBlock } from '../../DemoBlock';
+import {Image,Space} from '@trionesdev/antd-taro-react';
 import React from 'react';
 import './base.scss';
 

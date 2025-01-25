@@ -3,7 +3,7 @@
  */
 import { CheckOutline, CloseOutline } from '@trionesdev/antd-taro-icons-react'
 import { Space, Switch } from '@trionesdev/antd-taro-react'
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
+import { DemoBlock } from '../../DemoBlock';
 import React, { useState } from 'react'
 
 export default () => {

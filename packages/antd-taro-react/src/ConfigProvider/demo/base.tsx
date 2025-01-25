@@ -3,9 +3,9 @@
  */
 import React from 'react'
 import { ConfigProvider, ErrorBlock } from '@trionesdev/antd-taro-react'
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
-import zhCN from '@trionesdev/antd-taro-react/locales/zh-CN'
-import enUS from '@trionesdev/antd-taro-react/locales/en-US'
+import { DemoBlock } from '../../DemoBlock';
+import zhCN from '../../locales/zh-CN'
+import enUS from '../../locales/en-US'
 
 export default () => {
   return (

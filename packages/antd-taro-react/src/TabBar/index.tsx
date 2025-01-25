@@ -6,4 +6,4 @@ type CompoundedComponent = typeof InternalTabBar & {
 
 const TabBar = InternalTabBar as CompoundedComponent
 
-export { TabBar }
+export default TabBar

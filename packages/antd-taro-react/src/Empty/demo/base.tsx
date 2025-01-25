@@ -2,8 +2,8 @@
  * compact: true
  */
 import { QuestionCircleOutline } from "@trionesdev/antd-taro-icons-react";
-import { DemoBlock } from "@trionesdev/antd-taro-react/DemoBlock";
-import Empty from "@trionesdev/antd-taro-react/Empty";
+import { DemoBlock } from '../../DemoBlock';
+import {Empty} from "@trionesdev/antd-taro-react";
 import React from "react";
 
 export default () => {

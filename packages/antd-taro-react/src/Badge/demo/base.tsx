@@ -4,7 +4,7 @@
 
 import React from 'react'
 import './base.scss'
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
+import { DemoBlock } from '../../DemoBlock';
 import { Badge } from '@trionesdev/antd-taro-react'
 
 export default () => {

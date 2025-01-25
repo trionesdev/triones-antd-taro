@@ -1,8 +1,8 @@
 /**
  * compact: true
  */
-import Card from '@trionesdev/antd-taro-react/Card';
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
+import {Card} from '@trionesdev/antd-taro-react';
+import { DemoBlock } from '../../DemoBlock';
 import classNames from 'classnames';
 import React from 'react';
 

@@ -1,7 +1,6 @@
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
-import { DemoDescription } from '@trionesdev/antd-taro-react/DemoDescription';
-import Radio from '@trionesdev/antd-taro-react/Radio';
-import Space from '@trionesdev/antd-taro-react/Space';
+import { DemoBlock } from '../../DemoBlock';
+import { DemoDescription } from '../../DemoDescription';
+import {Radio,Space} from '@trionesdev/antd-taro-react';
 import React from 'react';
 import './base.scss';
 

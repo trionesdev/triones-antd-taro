@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 
 import './demo1.scss'
-import Button from '@trionesdev/antd-taro-react/Button'
+import {Button} from '@trionesdev/antd-taro-react'
 import { WaterMark } from '@trionesdev/antd-taro-react'
 
 const textProps = {

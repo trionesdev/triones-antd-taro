@@ -4,7 +4,7 @@
 import React from "react";
 import * as icons from "@trionesdev/antd-taro-icons-react"
 import _ from "lodash";
-import { DemoBlock } from "@trionesdev/antd-taro-react/DemoBlock";
+import { DemoBlock } from '../../DemoBlock';
 
 export default () => {
   return <DemoBlock title='图标'>
