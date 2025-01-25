@@ -4,6 +4,11 @@ export default defineConfig({
   base: '/triones-antd-taro/',
   publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
+  apiParser: {},
+  resolve: {
+    // 配置入口文件路径，API 解析将从这里开始
+    entryFile: './src/index.tsx',
+  },
   themeConfig: {
     name: 'Triones UI',
     nav: [

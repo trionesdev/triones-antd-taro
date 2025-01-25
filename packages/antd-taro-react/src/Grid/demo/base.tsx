@@ -2,7 +2,7 @@
  * compact: true
  */
 import React from 'react'
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
+import { DemoBlock } from '../../DemoBlock';
 import { Grid } from '@trionesdev/antd-taro-react'
 
 import './base.scss'

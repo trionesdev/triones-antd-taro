@@ -1,7 +1,7 @@
 import React, {CSSProperties, FC} from "react"
 import classNames from "classnames";
 import {NamePath} from "rc-field-form/lib/interface";
-import {useFormContext} from "@trionesdev/antd-taro-react/Form/hooks/useFormContext";
+import {useFormContext} from "../hooks/useFormContext";
 import {isFunction} from "lodash";
 
 type FormItemLabelProps = {

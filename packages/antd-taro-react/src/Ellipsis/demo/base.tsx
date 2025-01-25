@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock'
+import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
 import { Ellipsis } from "@trionesdev/antd-taro-react";
 

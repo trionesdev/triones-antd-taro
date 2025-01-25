@@ -3,7 +3,7 @@ import FieldForm from "rc-field-form";
 import type {FormProps as RcFormProps} from 'rc-field-form/lib/Form';
 import type {FormRef} from 'rc-field-form/lib/interface';
 import {FormInstance} from "./interface";
-import {FormContext} from "@trionesdev/antd-taro-react/Form/context";
+import {FormContext} from "./context";
 import "./style.scss"
 
 export type RequiredMark =
@@ -36,7 +36,9 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
     labelWidth: labelWidth,
     requiredMark: requiredMark || true
   }}>
-    <FieldForm {...props} >{children}</FieldForm>
+    <FieldForm {...props} onFinishFailed={(errorInfo) => {
+      console.log(errorInfo)
+    }}>{children}</FieldForm>
   </FormContext.Provider>
 }
 

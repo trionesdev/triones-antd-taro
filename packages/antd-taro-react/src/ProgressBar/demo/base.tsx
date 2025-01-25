@@ -1,5 +1,5 @@
 import { Button, ProgressBar, Space } from '@trionesdev/antd-taro-react';
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
+import { DemoBlock } from '../../DemoBlock';
 import React, { useState } from 'react';
 
 export default () => {

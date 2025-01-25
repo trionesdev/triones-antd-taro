@@ -2,8 +2,8 @@
  * compact: true
  */
 import React from 'react';
-import Avatar from '@trionesdev/antd-taro-react/Avatar';
-import { DemoBlock } from '@trionesdev/antd-taro-react/DemoBlock';
+import {Avatar} from '@trionesdev/antd-taro-react';
+import { DemoBlock } from '../../DemoBlock';
 
 import './style.scss'
 import { AntOutline } from '@trionesdev/antd-taro-icons-react';

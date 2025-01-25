@@ -1,5 +1,5 @@
-import { BaseInput } from '@trionesdev/antd-taro-react/Input/base-input';
-import { InputAffixWrapper } from '@trionesdev/antd-taro-react/Input/input-affix-wrapper';
+import { BaseInput } from './base-input';
+import { InputAffixWrapper } from './input-affix-wrapper';
 import React, { FC } from 'react';
 import '../style/asset.scss';
 import './index.scss';

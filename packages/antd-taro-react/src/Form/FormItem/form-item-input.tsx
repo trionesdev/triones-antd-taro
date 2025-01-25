@@ -8,10 +8,13 @@ type FormItemInputProps = {
   className?: string;
   name?: string;
   rules?: Rule[]
+  errors?: React.ReactNode[];
 }
 
 export const FormItemInput: FC<FormItemInputProps> = ({children, className, name, rules}) => {
+
   return <div className={classNames(className)}>
-    <Field name={name} rules={rules} trigger={'onChange'}>{children}</Field>
+    <div><Field name={name} rules={rules} trigger={'onChange'}>{children}</Field></div>
+    <div></div>
   </div>
 }
