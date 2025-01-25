@@ -10,17 +10,18 @@ type FormItemInputProps = {
   name?: string;
   rules?: Rule[]
   errors?: React.ReactNode[];
+  errorRender?: (errors?: any[]) => React.ReactNode;
 }
 
-export const FormItemInput: FC<FormItemInputProps> = ({children, className, name, rules}) => {
+export const FormItemInput: FC<FormItemInputProps> = ({children, className, name, rules, errorRender}) => {
   const [meta, setMeta] = useState<Meta | undefined>()
-  console.log(meta)
 
   const clsPrefix = "triones-antm-form-item"
   return <div className={classNames(className)}>
     <div><Field name={name} rules={rules} trigger={'onChange'} onMetaChange={(meta) => {
       setMeta(meta)
     }}>{children}</Field></div>
-    {!_.isEmpty(meta?.errors) && <div className={classNames(`${clsPrefix}-error`)}>{meta?.errors.join(',')}</div>}
+    {!_.isEmpty(meta?.errors) &&
+      <div className={classNames(`${clsPrefix}-error`)}>{errorRender?.(meta?.errors) || meta?.errors.join(',')}</div>}
   </div>
 }

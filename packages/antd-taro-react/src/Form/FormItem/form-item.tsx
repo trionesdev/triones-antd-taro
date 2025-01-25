@@ -17,6 +17,7 @@ export type FormItemProps = {
   name?: NamePath;
   required?: boolean
   rules?: Rule[]
+  errorRender?: (errors?: any[]) => React.ReactNode;
 }
 
 export const FormItem: FC<FormItemProps> = ({
@@ -30,6 +31,7 @@ export const FormItem: FC<FormItemProps> = ({
                                               name,
                                               required,
                                               rules,
+                                              errorRender,
                                               ...props
                                             }) => {
   const {layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth} = useFormContext()
@@ -40,6 +42,7 @@ export const FormItem: FC<FormItemProps> = ({
   return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className)} style={style}>
     <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
                    style={{width: formItemLabelWidth}} label={label} required={required}/>
-    <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}>{children}</FormItemInput>
+    <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}
+                   errorRender={errorRender}>{children}</FormItemInput>
   </div>
 }

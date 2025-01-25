@@ -22,7 +22,8 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   &-input{
     .#{$cls-prefix-form-item}{
       &-error{
-
+        font-size: 12px;
+        color: red;
       }
     }
   }

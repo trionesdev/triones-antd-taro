@@ -15,8 +15,25 @@ export type FormItemLayout = 'horizontal' | 'vertical';
 export type FormLayoutAlign = 'left' | 'right';
 
 export interface FormProps<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
+  /**
+   * @description 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效)
+   * @default true
+   */
+  colon?: boolean;
+  /**
+   * @description 布局
+   * @default horizontal
+   */
   layout?: FormLayout
-  form: FormInstance<Values>
+  /**
+   * @description 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建
+   * @default
+   */
+  form?: FormInstance<Values>
+  /**
+   * @description 标签
+   * @default horizontal
+   */
   labelAlign?: FormLayoutAlign
   labelWidth?: number
   requiredMark?: RequiredMark

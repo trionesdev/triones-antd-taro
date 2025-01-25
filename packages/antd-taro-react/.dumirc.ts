@@ -1,6 +1,7 @@
 import {defineConfig} from 'dumi';
 
-const isProd = process.env.NODE_ENV === 'production';
+// const isProd = process.env.NODE_ENV === 'production';
+const isProd = true;
 
 export default defineConfig({
   base: '/triones-antd-taro/',
