@@ -19,7 +19,13 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       margin-right: 4px;
     }
   }
+  &-input{
+    .#{$cls-prefix-form-item}{
+      &-error{
 
+      }
+    }
+  }
   &-horizontal{
     display: flex;
     .#{$cls-prefix-form-item}{

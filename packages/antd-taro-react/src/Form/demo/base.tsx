@@ -1,5 +1,5 @@
 import {Button, Form} from "@trionesdev/antd-taro-react";
-import { DemoBlock } from '../../DemoBlock';
+import {DemoBlock} from '../../DemoBlock';
 import React from "react"
 import {Input} from "@trionesdev/antd-taro-react";
 
@@ -12,7 +12,7 @@ export default () => {
         <Form.Item label={'姓名'} name={'name'} required={true} rules={[{required: true, message: '请输入姓名'}]}>
           <Input placeholder={`请输入姓名`}/>
         </Form.Item>
-        <Form.Item label={'地址'} name={'address'}>
+        <Form.Item label={'地址'} name={'address'} required={true} rules={[{required: true, message: '请输入地址'}]}>
           <Input placeholder={`请输入地址`}/>
         </Form.Item>
       </Form>

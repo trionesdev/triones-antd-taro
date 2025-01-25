@@ -38,7 +38,7 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
   }}>
     <FieldForm {...props} onFinishFailed={(errorInfo) => {
       console.log(errorInfo)
-    }}>{children}</FieldForm>
+    }} >{children}</FieldForm>
   </FormContext.Provider>
 }
 

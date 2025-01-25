@@ -1,10 +1,12 @@
 import {defineConfig} from 'dumi';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
   base: '/triones-antd-taro/',
   publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
-  apiParser: {},
+  apiParser: isProd ? {} :false,
   resolve: {
     // 配置入口文件路径，API 解析将从这里开始
     entryFile: './src/index.tsx',

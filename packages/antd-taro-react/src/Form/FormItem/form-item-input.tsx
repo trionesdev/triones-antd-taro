@@ -1,7 +1,8 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 import {Field} from "rc-field-form";
 import classNames from "classnames";
-import {Rule} from "rc-field-form/lib/interface";
+import {Meta, Rule} from "rc-field-form/lib/interface";
+import _ from "lodash";
 
 type FormItemInputProps = {
   children?: React.ReactElement;
@@ -12,9 +13,14 @@ type FormItemInputProps = {
 }
 
 export const FormItemInput: FC<FormItemInputProps> = ({children, className, name, rules}) => {
+  const [meta, setMeta] = useState<Meta | undefined>()
+  console.log(meta)
 
+  const clsPrefix = "triones-antm-form-item"
   return <div className={classNames(className)}>
-    <div><Field name={name} rules={rules} trigger={'onChange'}>{children}</Field></div>
-    <div></div>
+    <div><Field name={name} rules={rules} trigger={'onChange'} onMetaChange={(meta) => {
+      setMeta(meta)
+    }}>{children}</Field></div>
+    {!_.isEmpty(meta?.errors) && <div className={classNames(`${clsPrefix}-error`)}>{meta?.errors.join(',')}</div>}
   </div>
 }
