@@ -1,4 +1,4 @@
-import { InputPassword } from '@trionesdev/antd-taro-react/Input/input-password';
+import { InputPassword } from './input-password';
 import { Input as InternalInput } from './input';
 import { InputOPT } from './input-opt';
 

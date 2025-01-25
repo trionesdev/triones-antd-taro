@@ -1,5 +1,5 @@
 import InternalForm, {FormProps} from "./form";
-import {FormItem, FormItemProps} from "./FormItem/form-item";
+import FormItem, {FormItemProps} from "./FormItem";
 import useForm from "./hooks/useForm";
 
 type InternalFormType = typeof InternalForm;

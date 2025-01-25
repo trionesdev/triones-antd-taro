@@ -10,7 +10,7 @@ $inputPotCls: 'triones-antm-pot';
   width: 100%;
   min-width: 0;
   transition: all .2s;
-  padding: 4px 11px;
+  padding: 4px 0px;
   outline: none;
   box-shadow: none;
   border: none;
@@ -29,7 +29,7 @@ $inputPotCls: 'triones-antm-pot';
   display: inline-flex;
   width: 100%;
   min-width: 0;
-  padding: 4px 11px;
+  padding: 4px 0px;
 
   .#{$inputCls} {
     padding: 0;
