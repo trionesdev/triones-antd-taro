@@ -14,6 +14,7 @@ export default defineAppConfig({
     "pages/rate/index",
     "pages/progress-bar/index",
     "pages/form/index",
+    // "pages/popup/index",
   ],
   window: {
     backgroundTextStyle: "light",

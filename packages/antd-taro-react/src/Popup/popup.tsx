@@ -1,49 +1,35 @@
-import React, {useEffect} from "react";
-import ReactDOM from 'react-dom/client';
-import {FC, PropsWithChildren} from "react";
+import React, {FC, PropsWithChildren, useEffect} from "react";
+import {createPortal} from "react-dom";
 import {PopupModal, PopupModalProps} from "./popup-modal";
 
-const popupCls = "antd-popup";
 
-export type Position = "top" | "bottom" | "left" | "right";
 type PopupProps = Omit<PopupModalProps, 'onDestroy'> & {
   container?: HTMLElement,
 }
-const Popup: FC<PropsWithChildren<PopupProps>> = ({
+export const Popup: FC<PropsWithChildren<PopupProps>> = ({
                                                     children,
-                                                    open,
                                                     container,
+                                                    open = false,
                                                     ...rest
                                                   }) => {
+  const [renderEnable, setRenderEnable] = React.useState(false);
+  const ref = React.useRef<HTMLDivElement | null>(null);
 
-  const handleOpen = () => {
-    const div = document.createElement('div');
-    const body = container || document.body;
-    body.appendChild(div);
-
-    const root = ReactDOM.createRoot(div as HTMLElement);
-
-    function destroy() {
-      setTimeout(() => root.unmount());
-      if (div.parentNode) {
-        div.parentNode.removeChild(div);
-      }
+  const Portal = () => {
+    console.log("ModalPortal");
+    if (!ref.current) {
+      const rootContainer = container || document.body;
+      ref.current = document.createElement('div');
+      rootContainer.appendChild(ref.current);
     }
-
-    root.render(
-      React.createElement(PopupModal, {
-        ...rest,
-        children,
-        onDestroy: destroy,
-      }),
-    );
+    return <>{createPortal(<PopupModal {...rest} open={open}>{children}</PopupModal>, ref.current!)}</>
   }
+
   useEffect(() => {
-    if (open) {
-      handleOpen()
+    if (open && !renderEnable) {
+      setRenderEnable(true);
     }
   }, [open]);
-  return <></>
-}
 
-export default Popup;
+  return <>{renderEnable && <Portal/>}</>;
+}

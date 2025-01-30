@@ -164,6 +164,15 @@ class Index extends Component<PropsWithChildren> {
         >
           Form
         </Button>
+        <Button
+          onClick={() => {
+            Taro.navigateTo({
+              url: "/pages/popup/index",
+            });
+          }}
+        >
+          Popup
+        </Button>
       </View>
     );
   }
