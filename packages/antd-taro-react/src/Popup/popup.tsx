@@ -23,6 +23,8 @@ export const Popup: FC<PropsWithChildren<PopupProps>> = ({
       rootContainer.appendChild(ref.current);
     }
     return <>{createPortal(<PopupModal {...rest} open={open}>{children}</PopupModal>, ref.current!)}</>
+
+    // return <></>
   }
 
   useEffect(() => {
