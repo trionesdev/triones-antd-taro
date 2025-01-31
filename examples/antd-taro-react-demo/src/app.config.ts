@@ -1,7 +1,7 @@
 export default defineAppConfig({
   pages: [
     "pages/index/index",
-    // "pages/button/index",
+    "pages/button/index",
     // "pages/checkbox/index",
     // "pages/radio/index",
     // "pages/input/index",
@@ -13,7 +13,8 @@ export default defineAppConfig({
     // "pages/card/index",
     // "pages/rate/index",
     // "pages/progress-bar/index",
-    // "pages/form/index",
+    "pages/input/index",
+    "pages/form/index",
     "pages/popup/index",
   ],
   window: {

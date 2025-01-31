@@ -15,6 +15,7 @@ const PopupBase = () => {
       </Popup>
       <Button onClick={()=>{
         setTopOpen(true)
+        console.log("body",document.body)
       }}>顶部弹出</Button>
     </View>
   </View>

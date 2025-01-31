@@ -1,6 +1,6 @@
-import { Button, Text, View } from "@tarojs/components";
-import { inject, observer } from "mobx-react";
-import { Component, PropsWithChildren } from "react";
+import {Button, Text, View} from "@tarojs/components";
+import {inject, observer} from "mobx-react";
+import {Component, PropsWithChildren} from "react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
@@ -23,39 +23,45 @@ interface Index {
 @inject("store")
 @observer
 class Index extends Component<PropsWithChildren> {
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+  }
 
-  componentDidShow() {}
+  componentDidShow() {
+  }
 
-  componentDidHide() {}
+  componentDidHide() {
+  }
 
   increment = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.increment();
   };
 
   decrement = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.decrement();
   };
 
   incrementAsync = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.incrementAsync();
   };
 
   render() {
     const {
-      counterStore: { counter },
+      counterStore: {counter},
     } = this.props.store;
     return (
       <View className="index">
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+        <View style={{display: 'none'}}>
+          <Button onClick={this.increment}>+</Button>
+          <Button onClick={this.decrement}>-</Button>
+          <Button onClick={this.incrementAsync}>Add Async</Button>
+          <Text>{counter}</Text>
+        </View>
         <Button
           onClick={() => {
             Taro.navigateTo({

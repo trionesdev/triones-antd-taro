@@ -7,31 +7,37 @@ type PopupProps = Omit<PopupModalProps, 'onDestroy'> & {
   container?: HTMLElement,
 }
 export const Popup: FC<PropsWithChildren<PopupProps>> = ({
-                                                    children,
-                                                    container,
-                                                    open = false,
-                                                    ...rest
-                                                  }) => {
+                                                           children,
+                                                           container,
+                                                           open = false,
+                                                           ...rest
+                                                         }) => {
   const [renderEnable, setRenderEnable] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement | null>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const mountRef = React.useRef<HTMLDivElement | null>(null);
 
   const Portal = () => {
     console.log("ModalPortal");
-    if (!ref.current) {
-      const rootContainer = container || document.body;
-      ref.current = document.createElement('div');
-      rootContainer.appendChild(ref.current);
+    if (!mountRef.current) {
+      const rootContainer = container || containerRef.current!;
+      mountRef.current = document.createElement("div");
+      rootContainer.appendChild(mountRef.current);
+      console.log(mountRef.current);
     }
-    return <>{createPortal(<PopupModal {...rest} open={open}>{children}</PopupModal>, ref.current!)}</>
+    // return <>sssss</>
+    return <>{createPortal(<PopupModal {...rest} open={open}>{children}</PopupModal>, mountRef.current!)}</>
 
     // return <></>
   }
 
   useEffect(() => {
+    console.log("open", open);
     if (open && !renderEnable) {
       setRenderEnable(true);
     }
   }, [open]);
 
-  return <>{renderEnable && <Portal/>}</>;
+  return <>
+    {!container && <div ref={containerRef}></div>}
+    {renderEnable && <Portal/>}</>;
 }

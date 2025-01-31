@@ -53,7 +53,7 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
     labelWidth: labelWidth,
     requiredMark: requiredMark || true
   }}>
-    <FieldForm {...props} onFinishFailed={(errorInfo) => {
+    <FieldForm {...props} component={false} onFinishFailed={(errorInfo) => {
       console.log(errorInfo)
     }}>{children}</FieldForm>
   </FormContext.Provider>

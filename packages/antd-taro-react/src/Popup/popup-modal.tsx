@@ -1,6 +1,6 @@
 import React, {FC, PropsWithChildren, useEffect} from "react";
 import classNames from "classnames";
-// import "./style.scss"
+import "./style.scss"
 
 const popupCls = "triones-antm-popup";
 
