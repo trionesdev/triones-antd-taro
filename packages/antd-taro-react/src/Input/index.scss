@@ -3,7 +3,9 @@ $inputAffixWrapperCls: 'triones-antm-input-affix-wrapper';
 $inputGroupWrapperCls: 'triones-antm-input-group-wrapper';
 $inputPotCls: 'triones-antm-pot';
 
-
+input{
+  height: auto;
+}
 .#{$inputCls} {
   display: inline-block;
   position: relative;
@@ -14,9 +16,10 @@ $inputPotCls: 'triones-antm-pot';
   outline: none;
   box-shadow: none;
   border: none;
-  line-height: 1.5714285714285714;
+  //line-height: 1.5714285714285714;
   border-radius: 6Px;
   font-size: 14Px;
+  height: auto;
 
   &::placeholder {
     font-size: 14Px;
@@ -73,6 +76,7 @@ $inputPotCls: 'triones-antm-pot';
     text-align: center;
     padding-inline: 4Px;
     font-size: 14Px;
+    height: auto;
     &::placeholder {
       font-size: 14Px;
     }

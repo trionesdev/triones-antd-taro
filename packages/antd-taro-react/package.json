@@ -58,7 +58,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@trionesdev/antd-taro-icons-react": "workspace:0.0.1",
+    "@trionesdev/antd-taro-icons-react": "workspace:*",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",

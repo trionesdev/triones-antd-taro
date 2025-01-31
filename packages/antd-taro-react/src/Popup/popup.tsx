@@ -15,19 +15,26 @@ export const Popup: FC<PropsWithChildren<PopupProps>> = ({
   const [renderEnable, setRenderEnable] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const mountRef = React.useRef<HTMLDivElement | null>(null);
+  const rootContainer = container || containerRef.current!;
 
   const Portal = () => {
     console.log("ModalPortal");
     if (!mountRef.current) {
-      const rootContainer = container || containerRef.current!;
+
       mountRef.current = document.createElement("div");
       rootContainer.appendChild(mountRef.current);
       console.log(mountRef.current);
     }
-    // return <>sssss</>
-    return <>{createPortal(<PopupModal {...rest} open={open}>{children}</PopupModal>, mountRef.current!)}</>
 
-    // return <></>
+    const destroy = () => {
+      if (rootContainer && mountRef.current) {
+        rootContainer.removeChild(mountRef.current);
+      }
+    }
+
+    return <>{createPortal(<PopupModal {...rest} onDestroy={destroy}
+                                       open={open}>{children}</PopupModal>, mountRef.current!)}</>
+
   }
 
   useEffect(() => {

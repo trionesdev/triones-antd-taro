@@ -41,8 +41,10 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
                                                                      open,
                                                                      position = 'top',
                                                                      maskClosable = true,
+                                                                     destroyOnClose = false,
                                                                      zIndex = 1000,
                                                                      afterOpenChange,
+                                                                     onDestroy
                                                                    }) => {
   // const {open,setOpen} = useContext(PopupContext);
   const [internalOpen, setInternalOpen] = React.useState<boolean>(open || false);
@@ -50,6 +52,9 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
     setInternalOpen(false);
     // setOpen?.(false);
     afterClose?.()
+    if (destroyOnClose) {
+      onDestroy?.()
+    }
   }
 
   useEffect(() => {
