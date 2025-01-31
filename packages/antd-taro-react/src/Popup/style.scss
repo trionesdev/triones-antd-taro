@@ -1,7 +1,7 @@
 $popupCls: 'triones-antm-popup';
 
 .#{$popupCls} {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -13,13 +13,30 @@ $popupCls: 'triones-antm-popup';
     background-color: rgba(0, 0, 0, .55);
   }
 
-  &-content {
-    padding: 12px;
+  &-close{
+    position: absolute;
+    right: 10Px;
+    top: 10Px;
+  }
+  &-body {
+    background-color: white;
+
     position: fixed;
+    min-height: 200Px;
+    &-inner {
+      padding-top: 30Px;
+      padding-left: 10Px;
+      padding-right:  10Px;
+    }
   }
 
   &-top{
     top: 0;
+    left: 0;
+    right: 0;
+  }
+  &-bottom{
+    bottom: 0;
     left: 0;
     right: 0;
   }
