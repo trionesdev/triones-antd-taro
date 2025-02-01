@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - develop # default branch
-  pull_request:
-    branches:
-      - develop
+#  pull_request:
+#    branches:
+#      - develop
 
 jobs:
   deploy:
