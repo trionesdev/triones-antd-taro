@@ -1,4 +1,4 @@
-(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[4856],{49050:function(e,t,n){"use strict";var _;n.r(t),n.d(t,{demos:function(){return C}});var r=n(90819),a=n.n(r),i=n(89933),c=n.n(i),o=n(44194),l=n(26074),P=n(92727),s=n(54214),d=n(93977),f=n(49387),v=n(19771),p=n(17455),E=n(37180),m=n(91518),h=n(51865),g=n.n(h),u=n(15626),x=n(96858),D=n(57858),C={"progressbar-demo-base":{component:o.memo(o.lazy(function(){return n.e(7616).then(n.bind(n,60258))})),asset:{type:"BLOCK",id:"progressbar-demo-base",refAtomIds:["ProgressBar"],dependencies:{"index.tsx":{type:"FILE",value:n(21293).Z},react:{type:"NPM",value:"18.3.1"},"../index.tsx":{type:"FILE",value:n(8576).Z},"../../Space.ts":{type:"FILE",value:n(97297).Z},"../../Button.tsx":{type:"FILE",value:n(77306).Z},"../../DemoBlock.tsx":{type:"FILE",value:n(7761).Z},"./progress-bar.tsx":{type:"FILE",value:n(46793).Z},"./space.tsx":{type:"FILE",value:n(55033).Z},"./button.tsx":{type:"FILE",value:n(6458).Z},"./index.scss":{type:"FILE",value:n(21791).Z},classnames:{type:"NPM",value:"2.5.1"},"./style.scss":{type:"FILE",value:n(79199).Z},"../utils/with-default-props.tsx":{type:"FILE",value:n(62055).Z},"../utils/native-props.ts":{type:"FILE",value:n(12636).Z}},entry:"index.tsx"},context:{"../index.tsx":P,"../../Space.ts":s,"../../Button.tsx":d,"../../DemoBlock.tsx":f,"./progress-bar.tsx":v,"./space.tsx":p,"./button.tsx":E,"./index.scss":m,"./style.scss":u,"../utils/with-default-props.tsx":x,"../utils/native-props.ts":D,react:_||(_=n.t(o,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/ProgressBar/index.tsx":P,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Space/index.ts":s,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/index.tsx":d,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.tsx":f,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/ProgressBar/progress-bar.tsx":v,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Space/space.tsx":p,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/button.tsx":E,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.scss":m,classnames:h,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/ProgressBar/style.scss":u,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/utils/with-default-props.tsx":x,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/utils/native-props.ts":D},renderOpts:{compile:function(){var k=c()(a()().mark(function T(){var y,b=arguments;return a()().wrap(function(B){for(;;)switch(B.prev=B.next){case 0:return B.next=2,n.e(4521).then(n.bind(n,24521));case 2:return B.abrupt("return",(y=B.sent).default.apply(y,b));case 3:case"end":return B.stop()}},T)}));function L(){return k.apply(this,arguments)}return L}()}}}},37180:function(e,t,n){"use strict";n.r(t),n.d(t,{Button:function(){return f}});var _=n(10154),r=n.n(_),a=n(84176),i=n.n(a),c=n(87695),o=n(44194),l=n(51865),P=n.n(l),s=n(31549),d=["children","block","type","color","danger","disabled","className","style","icon","iconPosition","loading","variant","onClick"],f=function(p){var E=p.children,m=p.block,h=m===void 0?!1:m,g=p.type,u=g===void 0?"default":g,x=p.color,D=p.danger,C=D===void 0?!1:D,k=p.disabled,L=p.className,T=p.style,y=p.icon,b=p.iconPosition,R=b===void 0?"start":b,B=p.loading,A=p.variant,N=p.onClick,W=i()(p,d),I="triones-antm-button",O=x,M=A;return u&&(x||(u==="primary"||u==="link"?O="primary":u==="default"&&(O="default")),A||(u==="primary"?M="solid":u==="default"?M="outlined":(u==="dashed"||u==="link"||u==="text")&&(M=u))),C&&(O="danger"),(0,s.jsxs)("button",{onClick:N,className:P()(I,r()(r()(r()(r()({},"".concat(I,"-block"),h),"".concat(I,"-type-").concat(u),u),"".concat(I,"-color-").concat(O),O),"".concat(I,"-variant-").concat(M),M)),disabled:k,children:[R=="start"&&y,E,R=="end"&&y]})}},93977:function(e,t,n){"use strict";n.r(t);var _=n(37180);t.default=_.Button},49387:function(e,t,n){"use strict";n.r(t),n.d(t,{DemoBlock:function(){return i}});var _=n(44194),r=n(91518),a=n(31549),i=function(o){return(0,a.jsxs)("div",{className:"demoBlock",children:[(0,a.jsx)("div",{className:"demoTitle",children:o.title}),(0,a.jsx)("div",{className:"demoMain",style:{padding:"12px 12px",background:"#ffffff"},children:o.children})]})}},92727:function(e,t,n){"use strict";n.r(t);var _=n(19771);t.default=_.ProgressBar},19771:function(e,t,n){"use strict";n.r(t),n.d(t,{ProgressBar:function(){return f}});var _=n(73193),r=n.n(_),a=n(51865),i=n.n(a),c=n(44194),o=n(57858),l=n(96858),P=n(15626),s=n(31549),d={rounded:!0},f=function(p){var E=(0,l.mergeProps)(d,p),m=E.percent,h=E.rounded,g=E.className,u=E.style,x=E.text;return(0,o.withNativeProps)(E,(0,s.jsxs)("div",{className:i()("triones-antm-progress-bar",g),children:[(0,s.jsx)("div",{className:"triones-antm-progress-bar-track",style:r()(r()({},u),{},{borderRadius:h?"var(--track-width)":"0"}),children:(0,s.jsx)("div",{className:"triones-antm-progress-bar-fill",style:{width:"".concat(m,"%"),borderRadius:h?"var(--track-width)":"0"}})}),x&&(0,s.jsx)("div",{className:"triones-antm-progress-bar-text",children:typeof x=="function"?x(m):x===!0?"".concat(m,"%"):x})]}))}},54214:function(e,t,n){"use strict";n.r(t);var _=n(17455);t.default=_.Space},17455:function(e,t,n){"use strict";n.r(t),n.d(t,{Space:function(){return v}});var _=n(10154),r=n.n(_),a=n(44194),i=n(51865),c=n.n(i),o=n(57858),l=n(51583),P=n(96858),s=n(31549),d="triones-antm-space",f={direction:"horizontal"},v=function(E){var m=(0,P.mergeProps)(f,E),h=m.direction,g=m.onClick;return(0,o.withNativeProps)(m,(0,s.jsx)("div",{className:c()(d,r()(r()(r()(r()(r()({},"".concat(d,"-wrap"),m.wrap),"".concat(d,"-block"),m.block),"".concat(d,"-").concat(h),!0),"".concat(d,"-align-").concat(m.align),!!m.align),"".concat(d,"-justify-").concat(m.justify),!!m.justify)),onClick:g,children:a.Children.map(m.children,function(u){return u!=null&&(0,s.jsx)("div",{className:"".concat(d,"-item"),children:u})})}))}},57858:function(e,t,n){"use strict";n.r(t),n.d(t,{attachPropertiesToComponent:function(){return l},toCSSLength:function(){return P},withNativeProps:function(){return o}});var _=n(73193),r=n.n(_),a=n(44194),i=n(51865),c=n.n(i);function o(s,d){var f=r()({},d.props);s.className&&(f.className=c()(d.props.className,s.className)),s.style&&(f.style=r()(r()({},f.style),s.style)),s.tabIndex!==void 0&&(f.tabIndex=s.tabIndex);for(var v in s)s.hasOwnProperty(v)&&(v.startsWith("data-")||v.startsWith("aria-"))&&(f[v]=s[v]);return a.cloneElement(d,f)}function l(s,d){var f=s;for(var v in d)d.hasOwnProperty(v)&&(f[v]=d[v]);return f}function P(s){return typeof s=="number"?"".concat(s,"px"):s}},96858:function(e,t,n){"use strict";n.r(t),n.d(t,{mergeProp:function(){return r},mergeProps:function(){return _}});function _(){for(var a={},i=arguments.length,c=new Array(i),o=0;o<i;o++)c[o]=arguments[o];return c.forEach(function(l){l&&Object.keys(l).forEach(function(P){l[P]!==void 0&&(a[P]=l[P])})}),a}function r(a){for(var i=arguments.length,c=new Array(i>1?i-1:0),o=1;o<i;o++)c[o-1]=arguments[o];for(var l=c.length-1;l>=0;l-=1)if(c[l]!==void 0)return c[l];return a}},87695:function(e,t,n){"use strict";n.r(t)},91518:function(e,t,n){"use strict";n.r(t)},15626:function(e,t,n){"use strict";n.r(t)},51583:function(e,t,n){"use strict";n.r(t)},87085:function(e,t,n){"use strict";n.r(t),n.d(t,{texts:function(){return r}});var _=n(26074);const r=[{value:"\u8FDB\u5EA6\u6761\u7EC4\u4EF6\uFF0C\u7528\u4E8E\u663E\u793A\u4EFB\u52A1\u7684\u5B8C\u6210\u8FDB\u5EA6\u3002",paraId:0},{value:"\u53C2\u6570",paraId:1,tocIndex:1},{value:"\u8BF4\u660E",paraId:1,tocIndex:1},{value:"\u7C7B\u578B",paraId:1,tocIndex:1},{value:"\u9ED8\u8BA4\u503C",paraId:1,tocIndex:1},{value:"percent",paraId:1,tocIndex:1},{value:"\u8FDB\u5EA6\u767E\u5206\u6BD4",paraId:1,tocIndex:1},{value:"number",paraId:1,tocIndex:1},{value:"-",paraId:1,tocIndex:1},{value:"rounded",paraId:1,tocIndex:1},{value:"\u662F\u5426\u4E3A\u5706\u89D2",paraId:1,tocIndex:1},{value:"boolean",paraId:1,tocIndex:1},{value:"false",paraId:1,tocIndex:1},{value:"text",paraId:1,tocIndex:1},{value:"\u8FDB\u5EA6\u6587\u672C",paraId:1,tocIndex:1},{value:"boolean | ReactNode | ((percent: number) => ReactNode)",paraId:1,tocIndex:1},{value:"-",paraId:1,tocIndex:1},{value:"\u53D8\u91CF",paraId:2,tocIndex:2},{value:"\u8BF4\u660E",paraId:2,tocIndex:2},{value:"\u9ED8\u8BA4\u503C",paraId:2,tocIndex:2},{value:"--fill-color",paraId:2,tocIndex:2},{value:"\u586B\u5145\u7684\u989C\u8272",paraId:2,tocIndex:2},{value:"#1677ff",paraId:2,tocIndex:2},{value:"--track-color",paraId:2,tocIndex:2},{value:"\u7EBF\u6761\u7684\u989C\u8272",paraId:2,tocIndex:2},{value:"#e9ecef",paraId:2,tocIndex:2},{value:"--track-width",paraId:2,tocIndex:2},{value:"\u7EBF\u6761\u5BBD\u5EA6",paraId:2,tocIndex:2},{value:"8px",paraId:2,tocIndex:2},{value:"--text-width",paraId:2,tocIndex:2},{value:"\u6587\u5B57\u5185\u5BB9\u7684\u5BBD\u5EA6",paraId:2,tocIndex:2},{value:"40px",paraId:2,tocIndex:2}]},6458:function(e,t){"use strict";t.Z=`import "./style.scss"
+(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[4856],{49050:function(e,t,n){"use strict";var d;n.r(t),n.d(t,{demos:function(){return C}});var r=n(90819),o=n.n(r),s=n(89933),_=n.n(s),a=n(44194),p=n(26074),m=n(92727),i=n(49387),u=n(54214),v=n(93977),P=n(90107),c=n(17455),x=n(37180),f=n(51865),h=n.n(f),g=n(91518),l=n(51583),y=n(57858),B=n(96858),C={"progressbar-demo-base":{component:a.memo(a.lazy(function(){return n.e(7616).then(n.bind(n,60258))})),asset:{type:"BLOCK",id:"progressbar-demo-base",refAtomIds:["ProgressBar"],dependencies:{"index.tsx":{type:"FILE",value:n(21293).Z},react:{type:"NPM",value:"18.3.1"},"../index.tsx":{type:"FILE",value:n(8576).Z},"../../DemoBlock.tsx":{type:"FILE",value:n(7761).Z},"../../Space.ts":{type:"FILE",value:n(97297).Z},"../../Button.tsx":{type:"FILE",value:n(77306).Z},"./progress-bar.tsx":{type:"FILE",value:n(46793).Z},"./space.tsx":{type:"FILE",value:n(55033).Z},"./button.tsx":{type:"FILE",value:n(6458).Z},classnames:{type:"NPM",value:"2.5.1"},"./index.scss":{type:"FILE",value:n(21791).Z},"./style.scss":{type:"FILE",value:n(98041).Z},"../utils/native-props.ts":{type:"FILE",value:n(12636).Z},"../utils/with-default-props.tsx":{type:"FILE",value:n(62055).Z}},entry:"index.tsx"},context:{"../index.tsx":m,"../../DemoBlock.tsx":i,"../../Space.ts":u,"../../Button.tsx":v,"./progress-bar.tsx":P,"./space.tsx":c,"./button.tsx":x,"./index.scss":g,"./style.scss":l,"../utils/native-props.ts":y,"../utils/with-default-props.tsx":B,react:d||(d=n.t(a,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/ProgressBar/index.tsx":m,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.tsx":i,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Space/index.ts":u,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/index.tsx":v,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/ProgressBar/progress-bar.tsx":P,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Space/space.tsx":c,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/button.tsx":x,classnames:f,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.scss":g,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Space/style.scss":l,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/utils/native-props.ts":y,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/utils/with-default-props.tsx":B},renderOpts:{compile:function(){var k=_()(o()().mark(function L(){var I,M=arguments;return o()().wrap(function(E){for(;;)switch(E.prev=E.next){case 0:return E.next=2,n.e(4521).then(n.bind(n,24521));case 2:return E.abrupt("return",(I=E.sent).default.apply(I,M));case 3:case"end":return E.stop()}},L)}));function N(){return k.apply(this,arguments)}return N}()}}}},37180:function(e,t,n){"use strict";n.r(t),n.d(t,{Button:function(){return v}});var d=n(10154),r=n.n(d),o=n(84176),s=n.n(o),_=n(87695),a=n(44194),p=n(51865),m=n.n(p),i=n(31549),u=["children","block","type","color","danger","disabled","className","style","icon","iconPosition","loading","variant","onClick"],v=function(c){var x=c.children,f=c.block,h=f===void 0?!1:f,g=c.type,l=g===void 0?"default":g,y=c.color,B=c.danger,C=B===void 0?!1:B,k=c.disabled,N=c.className,L=c.style,I=c.icon,M=c.iconPosition,R=M===void 0?"start":M,E=c.loading,T=c.variant,A=c.onClick,W=s()(c,u),D="triones-antm-button",b=y,O=T;return l&&(y||(l==="primary"||l==="link"?b="primary":l==="default"&&(b="default")),T||(l==="primary"?O="solid":l==="default"?O="outlined":(l==="dashed"||l==="link"||l==="text")&&(O=l))),C&&(b="danger"),(0,i.jsxs)("button",{onClick:A,className:m()(D,r()(r()(r()(r()({},"".concat(D,"-block"),h),"".concat(D,"-type-").concat(l),l),"".concat(D,"-color-").concat(b),b),"".concat(D,"-variant-").concat(O),O)),disabled:k,children:[R=="start"&&I,x,R=="end"&&I]})}},93977:function(e,t,n){"use strict";n.r(t);var d=n(37180);t.default=d.Button},49387:function(e,t,n){"use strict";n.r(t),n.d(t,{DemoBlock:function(){return s}});var d=n(44194),r=n(91518),o=n(31549),s=function(a){return(0,o.jsxs)("div",{className:"demoBlock",children:[(0,o.jsx)("div",{className:"demoTitle",children:a.title}),(0,o.jsx)("div",{className:"demoMain",style:{padding:"12px 12px",background:"#ffffff"},children:a.children})]})}},92727:function(e,t,n){"use strict";n.r(t);var d=n(90107);t.default=d.ProgressBar},90107:function(e,t,n){"use strict";n.r(t),n.d(t,{ProgressBar:function(){return u}});var d=n(73193),r=n.n(d),o=n(51865),s=n.n(o),_=n(44194),a=n(57858),p=n(96858),m=n(31549),i={rounded:!0},u=function(P){var c=(0,p.mergeProps)(i,P),x=c.percent,f=c.rounded,h=c.className,g=c.style,l=c.text;return(0,a.withNativeProps)(c,(0,m.jsxs)("div",{className:s()("triones-antm-progress-bar",h),children:[(0,m.jsx)("div",{className:"triones-antm-progress-bar-track",style:r()(r()({},g),{},{borderRadius:f?"var(--track-width)":"0"}),children:(0,m.jsx)("div",{className:"triones-antm-progress-bar-fill",style:{width:"".concat(x,"%"),borderRadius:f?"var(--track-width)":"0"}})}),l&&(0,m.jsx)("div",{className:"triones-antm-progress-bar-text",children:typeof l=="function"?l(x):l===!0?"".concat(x,"%"):l})]}))}},54214:function(e,t,n){"use strict";n.r(t);var d=n(17455);t.default=d.Space},17455:function(e,t,n){"use strict";n.r(t),n.d(t,{Space:function(){return P}});var d=n(10154),r=n.n(d),o=n(44194),s=n(51865),_=n.n(s),a=n(57858),p=n(51583),m=n(96858),i=n(31549),u="triones-antm-space",v={direction:"horizontal"},P=function(x){var f=(0,m.mergeProps)(v,x),h=f.direction,g=f.onClick;return(0,a.withNativeProps)(f,(0,i.jsx)("div",{className:_()(u,r()(r()(r()(r()(r()({},"".concat(u,"-wrap"),f.wrap),"".concat(u,"-block"),f.block),"".concat(u,"-").concat(h),!0),"".concat(u,"-align-").concat(f.align),!!f.align),"".concat(u,"-justify-").concat(f.justify),!!f.justify)),onClick:g,children:o.Children.map(f.children,function(l){return l!=null&&(0,i.jsx)("div",{className:"".concat(u,"-item"),children:l})})}))}},57858:function(e,t,n){"use strict";n.r(t),n.d(t,{attachPropertiesToComponent:function(){return p},toCSSLength:function(){return m},withNativeProps:function(){return a}});var d=n(73193),r=n.n(d),o=n(44194),s=n(51865),_=n.n(s);function a(i,u){var v=r()({},u.props);i.className&&(v.className=_()(u.props.className,i.className)),i.style&&(v.style=r()(r()({},v.style),i.style)),i.tabIndex!==void 0&&(v.tabIndex=i.tabIndex);for(var P in i)i.hasOwnProperty(P)&&(P.startsWith("data-")||P.startsWith("aria-"))&&(v[P]=i[P]);return o.cloneElement(u,v)}function p(i,u){var v=i;for(var P in u)u.hasOwnProperty(P)&&(v[P]=u[P]);return v}function m(i){return typeof i=="number"?"".concat(i,"px"):i}},96858:function(e,t,n){"use strict";n.r(t),n.d(t,{mergeProp:function(){return r},mergeProps:function(){return d}});function d(){for(var o={},s=arguments.length,_=new Array(s),a=0;a<s;a++)_[a]=arguments[a];return _.forEach(function(p){p&&Object.keys(p).forEach(function(m){p[m]!==void 0&&(o[m]=p[m])})}),o}function r(o){for(var s=arguments.length,_=new Array(s>1?s-1:0),a=1;a<s;a++)_[a-1]=arguments[a];for(var p=_.length-1;p>=0;p-=1)if(_[p]!==void 0)return _[p];return o}},87695:function(e,t,n){"use strict";n.r(t)},91518:function(e,t,n){"use strict";n.r(t)},51583:function(e,t,n){"use strict";n.r(t)},87085:function(e,t,n){"use strict";n.r(t),n.d(t,{texts:function(){return r}});var d=n(26074);const r=[{value:"\u8FDB\u5EA6\u6761\u7EC4\u4EF6\uFF0C\u7528\u4E8E\u663E\u793A\u4EFB\u52A1\u7684\u5B8C\u6210\u8FDB\u5EA6\u3002",paraId:0},{value:"\u53C2\u6570",paraId:1,tocIndex:1},{value:"\u8BF4\u660E",paraId:1,tocIndex:1},{value:"\u7C7B\u578B",paraId:1,tocIndex:1},{value:"\u9ED8\u8BA4\u503C",paraId:1,tocIndex:1},{value:"percent",paraId:1,tocIndex:1},{value:"\u8FDB\u5EA6\u767E\u5206\u6BD4",paraId:1,tocIndex:1},{value:"number",paraId:1,tocIndex:1},{value:"-",paraId:1,tocIndex:1},{value:"rounded",paraId:1,tocIndex:1},{value:"\u662F\u5426\u4E3A\u5706\u89D2",paraId:1,tocIndex:1},{value:"boolean",paraId:1,tocIndex:1},{value:"false",paraId:1,tocIndex:1},{value:"text",paraId:1,tocIndex:1},{value:"\u8FDB\u5EA6\u6587\u672C",paraId:1,tocIndex:1},{value:"boolean | ReactNode | ((percent: number) => ReactNode)",paraId:1,tocIndex:1},{value:"-",paraId:1,tocIndex:1},{value:"\u53D8\u91CF",paraId:2,tocIndex:2},{value:"\u8BF4\u660E",paraId:2,tocIndex:2},{value:"\u9ED8\u8BA4\u503C",paraId:2,tocIndex:2},{value:"--fill-color",paraId:2,tocIndex:2},{value:"\u586B\u5145\u7684\u989C\u8272",paraId:2,tocIndex:2},{value:"#1677ff",paraId:2,tocIndex:2},{value:"--track-color",paraId:2,tocIndex:2},{value:"\u7EBF\u6761\u7684\u989C\u8272",paraId:2,tocIndex:2},{value:"#e9ecef",paraId:2,tocIndex:2},{value:"--track-width",paraId:2,tocIndex:2},{value:"\u7EBF\u6761\u5BBD\u5EA6",paraId:2,tocIndex:2},{value:"8px",paraId:2,tocIndex:2},{value:"--text-width",paraId:2,tocIndex:2},{value:"\u6587\u5B57\u5185\u5BB9\u7684\u5BBD\u5EA6",paraId:2,tocIndex:2},{value:"40px",paraId:2,tocIndex:2}]},6458:function(e,t){"use strict";t.Z=`import "./style.scss"
 import React, { FC, MouseEventHandler } from "react";
 import classNames from "classnames";
 
@@ -333,39 +333,6 @@ export const ProgressBar: FC<ProgressBarProps> = (p) => {
     </div>,
   );
 };
-`},79199:function(e,t){"use strict";t.Z=`$progressCls: 'triones-antm-progress-bar';
-
-.#{$progressCls} {
-  --fill-color: #1677ff;
-  --track-width: 8px;
-  --text-width: 40px;
-  --track-color: #e9ecef;
-
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  &-track {
-    height: var(--track-width);
-    border-radius: 4px;
-    background: var(--track-color);
-    flex: 1;
-  }
-
-  &-fill {
-    height: 100%;
-    transition: width 0.6s ease;
-    background: var(--fill-color);
-    border-radius: 4px;
-  }
-
-  &-text {
-    width: calc(var(--text-width) + 8px);
-    padding-left: 8px;
-    text-align: center;
-    color: #999999;
-  }
-}
 `},97297:function(e,t){"use strict";t.Z=`import { Space } from './space'
 
 export type { SpaceProps } from './space'
@@ -426,6 +393,83 @@ export const Space: FC<SpaceProps> = p => {
       })}
     </div>
   )
+}
+`},98041:function(e,t){"use strict";t.Z=`$class-prefix-space: 'triones-antm-space';
+
+.#{$class-prefix-space}-item {
+  flex: none;
+}
+
+.#{$class-prefix-space} {
+  display: inline-flex;
+  --gap: 8px;
+  --gap-vertical: var(--gap);
+  --gap-horizontal: var(--gap);
+  &-vertical {
+    flex-direction: column;
+    > .#{$class-prefix-space}-item {
+      margin-bottom: var(--gap-vertical);
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &-horizontal {
+    flex-direction: row;
+    > .#{$class-prefix-space}-item {
+      margin-right: var(--gap-horizontal);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &.#{$class-prefix-space}-wrap {
+      flex-wrap: wrap;
+      margin-bottom: calc(var(--gap-vertical) * -1);
+      > .#{$class-prefix-space}-item {
+        padding-bottom: var(--gap-vertical);
+      }
+    }
+  }
+  &.#{$class-prefix-space}-block {
+    display: flex;
+  }
+  &-align {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-baseline {
+      align-items: baseline;
+    }
+  }
+  &-justify {
+    &-center {
+      justify-content: center;
+    }
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-evenly {
+      justify-content: space-evenly;
+    }
+    &-stretch {
+      justify-content: stretch;
+    }
+  }
 }
 `},12636:function(e,t){"use strict";t.Z=`import React, { AriaAttributes } from 'react'
 import type { CSSProperties, ReactElement } from 'react'
@@ -515,4 +559,4 @@ export function mergeProp<T, DefaultT extends T = T>(
   }
   return defaultProp;
 }
-`},84176:function(e,t,n){var _=n(75863);function r(a,i){if(a==null)return{};var c=_(a,i),o,l;if(Object.getOwnPropertySymbols){var P=Object.getOwnPropertySymbols(a);for(l=0;l<P.length;l++)o=P[l],!(i.indexOf(o)>=0)&&Object.prototype.propertyIsEnumerable.call(a,o)&&(c[o]=a[o])}return c}e.exports=r,e.exports.__esModule=!0,e.exports.default=e.exports},75863:function(e){function t(n,_){if(n==null)return{};var r={},a=Object.keys(n),i,c;for(c=0;c<a.length;c++)i=a[c],!(_.indexOf(i)>=0)&&(r[i]=n[i]);return r}e.exports=t,e.exports.__esModule=!0,e.exports.default=e.exports}}]);
+`},84176:function(e,t,n){var d=n(75863);function r(o,s){if(o==null)return{};var _=d(o,s),a,p;if(Object.getOwnPropertySymbols){var m=Object.getOwnPropertySymbols(o);for(p=0;p<m.length;p++)a=m[p],!(s.indexOf(a)>=0)&&Object.prototype.propertyIsEnumerable.call(o,a)&&(_[a]=o[a])}return _}e.exports=r,e.exports.__esModule=!0,e.exports.default=e.exports},75863:function(e){function t(n,d){if(n==null)return{};var r={},o=Object.keys(n),s,_;for(_=0;_<o.length;_++)s=o[_],!(d.indexOf(s)>=0)&&(r[s]=n[s]);return r}e.exports=t,e.exports.__esModule=!0,e.exports.default=e.exports}}]);
