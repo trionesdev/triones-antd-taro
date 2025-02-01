@@ -80,9 +80,7 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
           handleClose()
         }}/>
       </>}
-      <div className={classNames(`${popupCls}-body-inner`)}>
-        {children}
-      </div>
+      {children}
     </div>
   </div>
 }
