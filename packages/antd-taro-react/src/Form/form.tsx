@@ -14,7 +14,7 @@ export type FormLayout = 'horizontal' | 'inline' | 'vertical';
 export type FormItemLayout = 'horizontal' | 'vertical';
 export type FormLayoutAlign = 'left' | 'right';
 
-export interface FormProps<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
+export interface FormProps<Values = any> extends Omit<RcFormProps<Values>, 'form' | 'component'> {
   /**
    * @description 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效)
    * @default true
@@ -53,9 +53,7 @@ export const InternalForm: React.ForwardRefRenderFunction<FormRef, FormProps> = 
     labelWidth: labelWidth,
     requiredMark: requiredMark || true
   }}>
-    <FieldForm {...props} component={false} onFinishFailed={(errorInfo) => {
-      console.log(errorInfo)
-    }}>{children}</FieldForm>
+    <FieldForm {...props} component={false}>{children}</FieldForm>
   </FormContext.Provider>
 }
 

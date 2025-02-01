@@ -9,6 +9,10 @@ export type Position = "top" | "bottom" | "left" | "right";
 
 
 export type PopupModalProps = {
+  /**
+   * @description 样式
+   * @default horizontal
+   */
   styles?: {
     body?: CSSProperties;
   }
@@ -17,9 +21,25 @@ export type PopupModalProps = {
    * @default
    */
   afterClose?: () => void;
+  /**
+   * @description 是否打开
+   * @default false
+   */
   open?: boolean,
+  /**
+   * @description 打开位置
+   * @default bottom
+   */
   position?: Position
+  /**
+   * @description 是否可以关闭(显示关闭按钮)
+   * @default false
+   */
   closable?: boolean
+  /**
+   * @description 是否蒙层关闭
+   * @default true
+   */
   maskClosable?: boolean
   /**
    * @description 关闭时销毁 Modal 里的子元素
@@ -45,8 +65,8 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
                                                                      styles,
                                                                      afterClose,
                                                                      open,
-                                                                     position = 'top',
-                                                                     closable = true,
+                                                                     position = 'bottom',
+                                                                     closable = false,
                                                                      maskClosable = true,
                                                                      destroyOnClose = false,
                                                                      zIndex = 1000,
