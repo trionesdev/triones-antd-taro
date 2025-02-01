@@ -42,13 +42,6 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = ({
 
          }}
     >
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
-      {/*<PickerViewColumnItem option={{label: '星期一', value: '1'}}/>*/}
       {!_.isEmpty(options) && options?.map((option: any, index: number) => {
         return <PickerViewColumnItem option={option} key={index}/>
       })}
