@@ -1,4 +1,4 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 import Popup from "../Popup";
 import classNames from "classnames";
 import "./style.scss"
@@ -30,6 +30,8 @@ export const Picker: FC<PickerProps> = ({
                                           columns,
                                           labelInValue = false
                                         }) => {
+  const [internalValue, setInternalValue] = useState(Array.from({length: _.size(columns)}).map(() => null))
+
   return <Popup open={open} styles={{
     body: {
       borderTopLeftRadius: 6,
@@ -45,7 +47,16 @@ export const Picker: FC<PickerProps> = ({
       <div className={classNames(`${pickerCls}-body`)}>
         <div className={classNames(`${pickerCls}-view`)}>
           {!_.isEmpty(columns) && columns?.map((column: any, index: number) => {
-            return <PickerViewColumn options={column}/>
+            return <PickerViewColumn key={`column-${index}`} labelInValue={labelInValue}
+                                     options={column}
+                                     // value={internalValue[index]}
+                                     onChange={(value) => {
+                                       if (!_.isEqual(internalValue[index] || null, value || null)) {
+                                         internalValue[index] = value;
+                                         // setInternalValue([...internalValue]);
+                                       }
+                                     }}
+            />
           })}
           <div className={classNames(`${pickerCls}-view-mask`)}>
             <div className={classNames(`${pickerCls}-view-mask-top`)}/>
