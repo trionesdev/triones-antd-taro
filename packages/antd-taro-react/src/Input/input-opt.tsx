@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './index.scss';
+import _ from "lodash";
 
 const cls = 'triones-antm-pot';
 const inputCls = 'triones-antm-input';
@@ -22,16 +23,20 @@ export type InputOPTItemProps = {
 };
 
 const InputOPTItem: FC<InputOPTItemProps> = ({
-  index,
-  focusIndex,
-  value,
-  onChange,
-  onFocus,
-}) => {
+                                               index,
+                                               focusIndex,
+                                               value,
+                                               onChange,
+                                               onFocus,
+                                             }) => {
   const ref = React.useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (focusIndex === index) {
-      ref.current?.select();
+      if (_.isFunction(ref.current?.select)) {
+        ref.current?.select();
+      } else {
+        ref.current?.setSelectionRange(0, ref.current!.value.length);
+      }
     } else {
       ref.current?.blur();
     }
@@ -63,19 +68,19 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
 };
 
 export const InputOPT: FC<InputOPTProps> = ({
-  className,
-  style,
-  length = 6,
-}) => {
+                                              className,
+                                              style,
+                                              length = 6,
+                                            }) => {
   const [internalValue, setInternalValue] = React.useState<any>(
-    Array.from({ length }).map(() => ''),
+    Array.from({length}).map(() => ''),
   );
 
   const [focusIndex, setFocusIndex] = useState(0);
 
   return (
     <div className={classNames(cls, className)} style={style}>
-      {Array.from({ length }).map((_, index) => {
+      {Array.from({length}).map((_, index) => {
         return (
           <InputOPTItem
             key={index}

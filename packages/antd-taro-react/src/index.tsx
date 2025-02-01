@@ -29,4 +29,5 @@ export {default as Tag} from './Tag';
 export {default as WaterMark} from './WaterMark';
 
 export {default as Form} from './Form';
+export {default as Popup} from './Popup'
 

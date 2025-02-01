@@ -1,7 +1,24 @@
-import InputBaseDemo from "@trionesdev/antd-taro-react/dist/Input/demo/base"
-const InputDemo = () => {
-    return <div>
-      <InputBaseDemo/>
-    </div>
+import {View,Input as TaroInput} from "@tarojs/components";
+import { Input } from "@trionesdev/antd-taro-react";
+import {DemoBlock} from "../../components";
+
+const InputBase = () => {
+  return <View>
+    <DemoBlock title={`Taro`}>
+      <TaroInput/>
+    </DemoBlock>
+    <DemoBlock title="基础用法">
+      <Input placeholder="请输入内容"/>
+    </DemoBlock>
+    <DemoBlock title="带清除按钮">
+      <Input placeholder="请输入内容" allowClear={true}/>
+    </DemoBlock>
+    <DemoBlock title="密码模式">
+      <Input.Password placeholder="请输入内容" allowClear={true}/>
+    </DemoBlock>
+    <DemoBlock title="OPT模式">
+      <Input.OPT/>
+    </DemoBlock>
+  </View>
 }
-export default InputDemo
+export default InputBase;
