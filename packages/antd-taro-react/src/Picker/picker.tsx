@@ -27,16 +27,16 @@ export type Option = {
   label?: string, value?: string
 }
 
-export const Picker: FC<PickerProps> = ({
-                                          open,
-                                          afterOpenChange,
-                                          title,
-                                          columns,
-                                          labelInValue = false,
-                                          value, onOk,
-                                          onCancel,
-                                          onClose
-                                        }) => {
+export const Picker: FC<PickerProps> = React.memo(({
+                                                     open,
+                                                     afterOpenChange,
+                                                     title,
+                                                     columns,
+                                                     labelInValue = false,
+                                                     value, onOk,
+                                                     onCancel,
+                                                     onClose
+                                                   }) => {
   const [internalValue, setInternalValue] = useState(value || Array.from({length: _.size(columns)}).map(() => null))
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const handleClose = () => {
@@ -67,7 +67,7 @@ export const Picker: FC<PickerProps> = ({
     setInnerOpen(open)
   }, [open]);
 
-  return <Popup open={innerOpen} styles={{
+  return <Popup open={innerOpen} afterOpenChange={(o)=>{setInnerOpen(o)}} styles={{
     body: {
       borderTopLeftRadius: 6,
       borderTopRightRadius: 6,
@@ -89,4 +89,4 @@ export const Picker: FC<PickerProps> = ({
       </div>
     </div>
   </Popup>
-}
+})

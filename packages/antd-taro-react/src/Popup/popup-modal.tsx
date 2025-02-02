@@ -88,6 +88,16 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
     }
   }, [internalOpen]);
 
+  useEffect(() => {
+    if (open == undefined) {
+      return
+    }
+    if (open == internalOpen) {
+      return;
+    }
+    setInternalOpen(open);
+  }, [open]);
+
   return <div className={classNames(popupCls)} style={{zIndex, display: internalOpen ? 'block' : 'none'}}>
     <div className={classNames(`${popupCls}-mask`)} onClick={() => {
       if (maskClosable) {
