@@ -1,14 +1,15 @@
-import React, {FC, useState} from "react"
+import React, {FC, useEffect, useState} from "react"
 import Popup from "../Popup";
 import classNames from "classnames";
 import "./style.scss"
-import {PickerViewColumn} from "./picker-view-column";
 import _ from "lodash";
+import {PickerView} from "./picker-view";
 
 const pickerCls = "triones-antm-picker";
 
 export type PickerProps = {
   open?: boolean
+  afterOpenChange?: (open: boolean) => void;
   title?: React.ReactNode
   columns?: Option[][]
   /**
@@ -17,7 +18,9 @@ export type PickerProps = {
    */
   labelInValue?: boolean
   value?: any[],
-  onChange?: (value: any[]) => void,
+  onOk: (value: any[]) => void,
+  onCancel?: () => void,
+  onClose?: () => void,
 }
 
 export type Option = {
@@ -26,13 +29,45 @@ export type Option = {
 
 export const Picker: FC<PickerProps> = ({
                                           open,
+                                          afterOpenChange,
                                           title,
                                           columns,
-                                          labelInValue = false
+                                          labelInValue = false,
+                                          value, onOk,
+                                          onCancel,
+                                          onClose
                                         }) => {
-  const [internalValue, setInternalValue] = useState(Array.from({length: _.size(columns)}).map(() => null))
+  const [internalValue, setInternalValue] = useState(value || Array.from({length: _.size(columns)}).map(() => null))
+  const [innerOpen, setInnerOpen] = React.useState(open || false);
+  const handleClose = () => {
+    setInnerOpen(false)
+    onClose?.()
+  }
+  const handleOk = () => {
+    onOk?.(internalValue)
+    handleClose()
+  }
 
-  return <Popup open={open} styles={{
+  const handelCancel = () => {
+    onCancel?.()
+    handleClose()
+  }
+
+  useEffect(() => {
+    afterOpenChange?.(innerOpen)
+  }, [innerOpen]);
+
+  useEffect(() => {
+    if (open == undefined) {
+      return;
+    }
+    if (open == innerOpen) {
+      return;
+    }
+    setInnerOpen(open)
+  }, [open]);
+
+  return <Popup open={innerOpen} styles={{
     body: {
       borderTopLeftRadius: 6,
       borderTopRightRadius: 6,
@@ -40,30 +75,17 @@ export const Picker: FC<PickerProps> = ({
   }}>
     <div className={classNames(pickerCls)}>
       <div className={classNames(`${pickerCls}-header`)}>
-        <a className={classNames(`${pickerCls}-header-button`)}>取消</a>
+        <a className={classNames(`${pickerCls}-header-button`)} onClick={handelCancel}>取消</a>
         {title && <div className={classNames(`${pickerCls}-header-title`)}>{title}</div>}
-        <a className={classNames(`${pickerCls}-header-button`)}>确定</a>
+        <a className={classNames(`${pickerCls}-header-button`)} onClick={handleOk}>确定</a>
       </div>
       <div className={classNames(`${pickerCls}-body`)}>
-        <div className={classNames(`${pickerCls}-view`)}>
-          {!_.isEmpty(columns) && columns?.map((column: any, index: number) => {
-            return <PickerViewColumn key={`column-${index}`} labelInValue={labelInValue}
-                                     options={column}
-                                     // value={internalValue[index]}
-                                     onChange={(value) => {
-                                       if (!_.isEqual(internalValue[index] || null, value || null)) {
-                                         internalValue[index] = value;
-                                         // setInternalValue([...internalValue]);
-                                       }
-                                     }}
-            />
-          })}
-          <div className={classNames(`${pickerCls}-view-mask`)}>
-            <div className={classNames(`${pickerCls}-view-mask-top`)}/>
-            <div className={classNames(`${pickerCls}-view-mask-middle`)}/>
-            <div className={classNames(`${pickerCls}-view-mask-bottom`)}/>
-          </div>
-        </div>
+        <PickerView columns={columns}
+                    labelInValue={labelInValue}
+                    value={internalValue}
+                    onChange={(v) => {
+                      setInternalValue(v)
+                    }}/>
       </div>
     </div>
   </Popup>

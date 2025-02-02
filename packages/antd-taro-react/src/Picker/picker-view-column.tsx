@@ -24,18 +24,25 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
     const [touchPoint, setTouchPoint] = React.useState<any>();
     const [translateY, setTranslateY] = useState(0)
 
+    const handleSelectOption = (selectValue: any) => {
+      const valueIndex = _.findIndex(options, (option) => {
+        if (labelInValue) {
+          return option.value === selectValue.value;
+        }
+        return option.value === selectValue
+      })
+      setTranslateY(0 - (valueIndex * itemHeight));
+    }
+
     useEffect(() => {
-      if (!_.isEqual(value || null, internalValue || null)) {
-        debugger
-        const valueIndex = _.findIndex(options, (option) => {
-          if (labelInValue) {
-            return option.value === value.value;
-          }
-          return option.value === value
-        })
-        setTranslateY(0 - (valueIndex * itemHeight));
-        setInternalValue(value)
+      if (value == undefined) {
+        return;
       }
+      if (value == internalValue) {
+        return;
+      }
+      setInternalValue(value)
+      handleSelectOption(value)
     }, [value]);
 
     useEffect(() => {
@@ -43,6 +50,9 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
         const selectValue = labelInValue ? options?.[0] : options?.[0].value
         setInternalValue(selectValue || null);
         onChange?.(selectValue || null);
+        handleSelectOption(selectValue);
+      } else {
+        handleSelectOption(value);
       }
     }, [options]);
 
@@ -78,7 +88,7 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
            }}
       >
         {!_.isEmpty(options) && options?.map((option: any, index: number) => {
-          return <PickerViewColumnItem option={option} key={`view-column-${index}`} />
+          return <PickerViewColumnItem option={option} key={`view-column-${index}`}/>
         })}
       </div>
     </div>
