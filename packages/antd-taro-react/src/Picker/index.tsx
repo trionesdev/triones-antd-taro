@@ -1,3 +1,6 @@
-import {Picker} from "./picker"
+import {Picker, PickerProps} from "./picker"
 
+export type {
+    PickerProps,
+}
 export default Picker
