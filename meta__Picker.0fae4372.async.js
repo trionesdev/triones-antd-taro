@@ -1,4 +1,4 @@
-(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[9710],{12538:function(o,e,n){"use strict";var d,l;n.r(e),n.d(e,{demos:function(){return B}});var a=n(90819),s=n.n(a),u=n(89933),r=n.n(u),h=n(44194),m=n(88107),M=n(93977),i=n(49387),_=n(61272),y=n(37180),t=n(51865),P=n.n(t),p=n(91518),c=n(39378),b=n.n(c),I=n(3687),T=n(99278),k=n(70162),E=n(44164),D=n(73079),x=n(56321),L=n(43427),g=n(13889),W=n(15272),A=n(95110),B={"picker-demo-base":{component:h.memo(h.lazy(function(){return n.e(9485).then(n.bind(n,99829))})),asset:{type:"BLOCK",id:"picker-demo-base",refAtomIds:["Picker"],dependencies:{"index.tsx":{type:"FILE",value:n(7513).Z},react:{type:"NPM",value:"18.3.1"},"../../Button.tsx":{type:"FILE",value:n(77306).Z},"../../DemoBlock.tsx":{type:"FILE",value:n(7761).Z},"../picker.tsx":{type:"FILE",value:n(23115).Z},"./button.tsx":{type:"FILE",value:n(6458).Z},classnames:{type:"NPM",value:"2.5.1"},"./index.scss":{type:"FILE",value:n(21791).Z},lodash:{type:"NPM",value:"4.17.21"},"./style.scss":{type:"FILE",value:n(98092).Z},"../PickerView.tsx":{type:"FILE",value:n(93452).Z},"../Popup.tsx":{type:"FILE",value:n(81891).Z},"./picker-view.tsx":{type:"FILE",value:n(40871).Z},"./popup.tsx":{type:"FILE",value:n(30226).Z},"react-dom":{type:"NPM",value:"18.3.1"},"./popup-modal.tsx":{type:"FILE",value:n(67353).Z},"./picker-view-column.tsx":{type:"FILE",value:n(26585).Z},"@trionesdev/antd-taro-icons-react":{type:"NPM",value:"0.0.1"},"./picker-view-column-item.tsx":{type:"FILE",value:n(59105).Z}},entry:"index.tsx"},context:{"../../Button.tsx":M,"../../DemoBlock.tsx":i,"../picker.tsx":_,"./button.tsx":y,"./index.scss":p,"./style.scss":I,"../PickerView.tsx":T,"../Popup.tsx":k,"./picker-view.tsx":E,"./popup.tsx":D,"./popup-modal.tsx":L,"./picker-view-column.tsx":g,"./picker-view-column-item.tsx":A,react:d||(d=n.t(h,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/index.tsx":M,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.tsx":i,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Picker/picker.tsx":_,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/button.tsx":y,classnames:t,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.scss":p,lodash:c,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/style.scss":I,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/index.tsx":T,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/index.tsx":k,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view.tsx":E,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/popup.tsx":D,"react-dom":l||(l=n.t(x,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/popup-modal.tsx":L,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view-column.tsx":g,"@trionesdev/antd-taro-icons-react/src":W,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view-column-item.tsx":A},renderOpts:{compile:function(){var V=r()(s()().mark(function C(){var v,f=arguments;return s()().wrap(function(O){for(;;)switch(O.prev=O.next){case 0:return O.next=2,n.e(4521).then(n.bind(n,24521));case 2:return O.abrupt("return",(v=O.sent).default.apply(v,f));case 3:case"end":return O.stop()}},C)}));function R(){return V.apply(this,arguments)}return R}()}}}},49387:function(o,e,n){"use strict";n.r(e),n.d(e,{DemoBlock:function(){return s}});var d=n(44194),l=n(91518),a=n(31549),s=function(r){return(0,a.jsxs)("div",{className:"demoBlock",children:[(0,a.jsx)("div",{className:"demoTitle",children:r.title}),(0,a.jsx)("div",{className:"demoMain",style:{padding:"12px 12px",background:"#ffffff"},children:r.children})]})}},61272:function(o,e,n){"use strict";n.r(e),n.d(e,{Picker:function(){return y}});var d=n(45332),l=n.n(d),a=n(44194),s=n(70162),u=n(51865),r=n.n(u),h=n(39378),m=n.n(h),M=n(99278),i=n(31549),_="triones-antm-picker",y=a.memo(function(t){var P=t.open,p=t.afterOpenChange,c=t.title,b=t.columns,I=t.labelInValue,T=I===void 0?!1:I,k=t.value,E=t.onOk,D=t.onCancel,x=t.onClose,L=(0,a.useState)(k||Array.from({length:m().size(b)}).map(function(){return null})),g=l()(L,2),W=g[0],A=g[1],B=a.useState(P||!1),V=l()(B,2),R=V[0],C=V[1],v=function(){C(!1),x==null||x()},f=function(){E==null||E(W),v()},N=function(){D==null||D(),v()};return(0,a.useEffect)(function(){p==null||p(R)},[R]),(0,a.useEffect)(function(){P!=null&&P!=R&&C(P)},[P]),(0,i.jsx)(s.default,{open:R,afterOpenChange:function(w){C(w)},styles:{body:{borderTopLeftRadius:6,borderTopRightRadius:6}},children:(0,i.jsxs)("div",{className:r()(_),children:[(0,i.jsxs)("div",{className:r()("".concat(_,"-header")),children:[(0,i.jsx)("a",{className:r()("".concat(_,"-header-button")),onClick:N,children:"\u53D6\u6D88"}),c&&(0,i.jsx)("div",{className:r()("".concat(_,"-header-title")),children:c}),(0,i.jsx)("a",{className:r()("".concat(_,"-header-button")),onClick:f,children:"\u786E\u5B9A"})]}),(0,i.jsx)("div",{className:r()("".concat(_,"-body")),children:(0,i.jsx)(M.default,{columns:b,labelInValue:T,value:W,onChange:function(w){A(w)}})})]})})})},99278:function(o,e,n){"use strict";n.r(e);var d=n(44164);e.default=d.PickerView},95110:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerViewColumnItem:function(){return r}});var d=n(51865),l=n.n(d),a=n(44194),s=n(31549),u="triones-antm-picker-view",r=function(m){var M=m.option;return(0,s.jsx)("div",{className:l()("".concat(u,"-column-item")),children:(0,s.jsx)("div",{className:"".concat(u,"-column-item-label"),children:M.label})})}},13889:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerViewColumn:function(){return _}});var d=n(45332),l=n.n(d),a=n(44194),s=n(51865),u=n.n(s),r=n(95110),h=n(39378),m=n.n(h),M=n(31549),i="triones-antm-picker-view",_=a.memo(function(y){var t=y.options,P=y.labelInValue,p=y.value,c=y.onChange,b=(0,a.useState)(p||null),I=l()(b,2),T=I[0],k=I[1],E=34,D=a.useState(),x=l()(D,2),L=x[0],g=x[1],W=(0,a.useState)(0),A=l()(W,2),B=A[0],V=A[1],R=function(v){var f=m().findIndex(t,function(N){return P?N.value===v.value:N.value===v});V(0-f*E)};return(0,a.useEffect)(function(){p!=null&&p!=T&&(k(p),R(p))},[p]),(0,a.useEffect)(function(){if(p)R(p);else{var C=P?t==null?void 0:t[0]:t==null?void 0:t[0].value;k(C||null),c==null||c(C||null),R(C)}},[t]),(0,M.jsx)("div",{className:u()("".concat(i,"-column")),children:(0,M.jsx)("div",{className:u()("".concat(i,"-column-wheel")),style:{transform:"translate3d(0, ".concat(B,"px, 0)")},onTouchStart:function(v){var f={clientX:v.touches[0].clientX,clientY:v.touches[0].clientY};g(f)},onTouchMove:function(v){var f={clientX:v.touches[0].clientX,clientY:v.touches[0].clientY};V(B+(f.clientY-L.clientY)),g(f)},onTouchEnd:function(v){var f=0;if(B>0)V(0),f=0;else if(B<0-E*(m().size(t)-1))V(0-E*(m().size(t)-1)),f=m().size(t)-1;else{var N=Math.abs(Math.round(B/E));V(0-N*E),f=N}console.log("selectIndex",f);var O=P?t==null?void 0:t[f]:t==null?void 0:t[f].value;k(O),c==null||c(O)},children:!m().isEmpty(t)&&(t==null?void 0:t.map(function(C,v){return(0,M.jsx)(r.PickerViewColumnItem,{option:C},"view-column-".concat(v))}))})})})},44164:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerView:function(){return y}});var d=n(45332),l=n.n(d),a=n(51865),s=n.n(a),u=n(39378),r=n.n(u),h=n(13889),m=n(44194),M=n(83740),i=n(31549),_="triones-antm-picker-view",y=m.memo(function(t){var P=t.columns,p=t.labelInValue,c=t.value,b=t.onChange,I=(0,m.useState)(c||Array.from({length:r().size(P)}).map(function(){return null})),T=l()(I,2),k=T[0],E=T[1];return(0,m.useEffect)(function(){c!=null&&c!=k&&E(c)},[c]),(0,i.jsxs)("div",{className:s()("".concat(_)),children:[!r().isEmpty(P)&&(P==null?void 0:P.map(function(D,x){return(0,i.jsx)(h.PickerViewColumn,{labelInValue:p,options:D,value:c==null?void 0:c[x],onChange:function(g){k[x]=g,b==null||b(k)}},"column-".concat(x))})),(0,i.jsxs)("div",{className:s()("".concat(_,"-mask")),children:[(0,i.jsx)("div",{className:s()("".concat(_,"-mask-top"))}),(0,i.jsx)("div",{className:s()("".concat(_,"-mask-middle"))}),(0,i.jsx)("div",{className:s()("".concat(_,"-mask-bottom"))})]})]})})},91518:function(o,e,n){"use strict";n.r(e)},83740:function(o,e,n){"use strict";n.r(e)},5658:function(o,e,n){"use strict";n.r(e),n.d(e,{texts:function(){return l}});var d=n(88107);const l=[]},6458:function(o,e){"use strict";e.Z=`import "./style.scss"
+(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[9710],{12538:function(o,e,n){"use strict";var d,l;n.r(e),n.d(e,{demos:function(){return S}});var a=n(90819),s=n.n(a),u=n(89933),r=n.n(u),v=n(44194),m=n(88107),O=n(93977),i=n(49387),p=n(61272),k=n(37180),t=n(91518),_=n(51865),P=n.n(_),c=n(39378),V=n.n(c),y=n(3687),R=n(99278),E=n(70162),h=n(44164),I=n(73079),x=n(56321),N=n(43427),g=n(13889),K=n(15272),L=n(95110),S={"picker-demo-base":{component:v.memo(v.lazy(function(){return n.e(9485).then(n.bind(n,99829))})),asset:{type:"BLOCK",id:"picker-demo-base",refAtomIds:["Picker"],dependencies:{"index.tsx":{type:"FILE",value:n(7513).Z},react:{type:"NPM",value:"18.3.1"},"../../Button.tsx":{type:"FILE",value:n(77306).Z},"../../DemoBlock.tsx":{type:"FILE",value:n(7761).Z},"../picker.tsx":{type:"FILE",value:n(23115).Z},"./button.tsx":{type:"FILE",value:n(6458).Z},"./index.scss":{type:"FILE",value:n(21791).Z},classnames:{type:"NPM",value:"2.5.1"},lodash:{type:"NPM",value:"4.17.21"},"./style.scss":{type:"FILE",value:n(98092).Z},"../PickerView.tsx":{type:"FILE",value:n(93452).Z},"../Popup.tsx":{type:"FILE",value:n(81891).Z},"./picker-view.tsx":{type:"FILE",value:n(40871).Z},"./popup.tsx":{type:"FILE",value:n(30226).Z},"react-dom":{type:"NPM",value:"18.3.1"},"./popup-modal.tsx":{type:"FILE",value:n(67353).Z},"./picker-view-column.tsx":{type:"FILE",value:n(26585).Z},"@trionesdev/antd-taro-icons-react":{type:"NPM",value:"0.0.1"},"./picker-view-column-item.tsx":{type:"FILE",value:n(59105).Z}},entry:"index.tsx"},context:{"../../Button.tsx":O,"../../DemoBlock.tsx":i,"../picker.tsx":p,"./button.tsx":k,"./index.scss":t,"./style.scss":y,"../PickerView.tsx":R,"../Popup.tsx":E,"./picker-view.tsx":h,"./popup.tsx":I,"./popup-modal.tsx":N,"./picker-view-column.tsx":g,"./picker-view-column-item.tsx":L,react:d||(d=n.t(v,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/index.tsx":O,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.tsx":i,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Picker/picker.tsx":p,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Button/button.tsx":k,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/DemoBlock/index.scss":t,classnames:_,lodash:c,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/style.scss":y,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/index.tsx":R,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/index.tsx":E,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view.tsx":h,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/popup.tsx":I,"react-dom":l||(l=n.t(x,2)),"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/Popup/popup-modal.tsx":N,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view-column.tsx":g,"@trionesdev/antd-taro-icons-react/src":K,"/home/runner/work/triones-antd-taro/triones-antd-taro/packages/antd-taro-react/src/PickerView/picker-view-column-item.tsx":L},renderOpts:{compile:function(){var A=r()(s()().mark(function B(){var W,U=arguments;return s()().wrap(function(f){for(;;)switch(f.prev=f.next){case 0:return f.next=2,n.e(4521).then(n.bind(n,24521));case 2:return f.abrupt("return",(W=f.sent).default.apply(W,U));case 3:case"end":return f.stop()}},B)}));function T(){return A.apply(this,arguments)}return T}()}}}},49387:function(o,e,n){"use strict";n.r(e),n.d(e,{DemoBlock:function(){return s}});var d=n(44194),l=n(91518),a=n(31549),s=function(r){return(0,a.jsxs)("div",{className:"demoBlock",children:[(0,a.jsx)("div",{className:"demoTitle",children:r.title}),(0,a.jsx)("div",{className:"demoMain",style:{padding:"12px 12px",background:"#ffffff"},children:r.children})]})}},61272:function(o,e,n){"use strict";n.r(e),n.d(e,{Picker:function(){return k}});var d=n(45332),l=n.n(d),a=n(44194),s=n(70162),u=n(51865),r=n.n(u),v=n(39378),m=n.n(v),O=n(99278),i=n(31549),p="triones-antm-picker",k=a.memo(function(t){var _=t.open,P=t.afterOpenChange,c=t.title,V=t.columns,y=t.labelInValue,R=y===void 0?!1:y,E=t.value,h=t.onOk,I=t.onCancel,x=t.onClose,N=(0,a.useState)(E||Array.from({length:m().size(V)}).map(function(){return null})),g=l()(N,2),K=g[0],L=g[1],S=a.useState(_||!1),A=l()(S,2),T=A[0],B=A[1],W=function(){B(!1),x==null||x()},U=function(){h==null||h(K),W()},D=function(){I==null||I(),W()};return(0,a.useEffect)(function(){P==null||P(T)},[T]),(0,a.useEffect)(function(){_!=null&&_!=T&&B(_)},[_]),(0,i.jsx)(s.default,{open:T,afterOpenChange:function(w){B(w)},styles:{body:{borderTopLeftRadius:6,borderTopRightRadius:6}},children:(0,i.jsxs)("div",{className:r()(p),children:[(0,i.jsxs)("div",{className:r()("".concat(p,"-header")),children:[(0,i.jsx)("a",{className:r()("".concat(p,"-header-button")),onClick:D,children:"\u53D6\u6D88"}),c&&(0,i.jsx)("div",{className:r()("".concat(p,"-header-title")),children:c}),(0,i.jsx)("a",{className:r()("".concat(p,"-header-button")),onClick:U,children:"\u786E\u5B9A"})]}),(0,i.jsx)("div",{className:r()("".concat(p,"-body")),children:(0,i.jsx)(O.default,{columns:V,labelInValue:R,value:K,onChange:function(w){L(w)}})})]})})})},99278:function(o,e,n){"use strict";n.r(e);var d=n(44164);e.default=d.PickerView},95110:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerViewColumnItem:function(){return r}});var d=n(51865),l=n.n(d),a=n(44194),s=n(31549),u="triones-antm-picker-view",r=function(m){var O=m.option;return(0,s.jsx)("div",{className:l()("".concat(u,"-column-item")),children:(0,s.jsx)("div",{className:"".concat(u,"-column-item-label"),children:O.label})})}},13889:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerViewColumn:function(){return p}});var d=n(45332),l=n.n(d),a=n(44194),s=n(51865),u=n.n(s),r=n(95110),v=n(39378),m=n.n(v),O=n(31549),i="triones-antm-picker-view",p=a.memo(function(k){var t=k.options,_=k.labelInValue,P=k.value,c=k.onChange,V=(0,a.useState)(P||null),y=l()(V,2),R=y[0],E=y[1],h=34,I=0,x=0-h*(m().size(t)-1),N=(0,a.useState)(!1),g=l()(N,2),K=g[0],L=g[1],S=a.useState(),A=l()(S,2),T=A[0],B=A[1],W=(0,a.useState)(0),U=l()(W,2),D=U[0],f=U[1],w=function(M){var C=m().findIndex(t,function(j){return _?j.value===M.value:j.value===M});f(0-C*h)};return(0,a.useEffect)(function(){P!=null&&P!=R&&(E(P),w(P))},[P]),(0,a.useEffect)(function(){if(P)w(P);else{var b=_?t==null?void 0:t[0]:t==null?void 0:t[0].value;E(b||null),c==null||c(b||null),w(b)}},[t]),(0,O.jsx)("div",{className:u()("".concat(i,"-column")),children:(0,O.jsx)("div",{className:u()("".concat(i,"-column-wheel")),style:{transform:"translate3d(0, ".concat(D,"px, 0)")},onTouchStart:function(M){L(!0);var C={clientX:M.touches[0].clientX,clientY:M.touches[0].clientY};B(C)},onTouchMove:function(M){if(K){var C={clientX:M.touches[0].clientX,clientY:M.touches[0].clientY};if(D>I||D<x)return;f(D+(C.clientY-T.clientY)),B(C),console.log(C)}},onTouchEnd:function(M){L(!1);var C=0;if(D>0)f(0),C=0;else if(D<0-h*(m().size(t)-1))f(0-h*(m().size(t)-1)),C=m().size(t)-1;else{var j=Math.abs(Math.round(D/h));f(0-j*h),C=j}console.log("selectIndex",C);var $=_?t==null?void 0:t[C]:t==null?void 0:t[C].value;E($),c==null||c($)},children:!m().isEmpty(t)&&(t==null?void 0:t.map(function(b,M){return(0,O.jsx)(r.PickerViewColumnItem,{option:b},"view-column-".concat(M))}))})})})},44164:function(o,e,n){"use strict";n.r(e),n.d(e,{PickerView:function(){return k}});var d=n(45332),l=n.n(d),a=n(51865),s=n.n(a),u=n(39378),r=n.n(u),v=n(13889),m=n(44194),O=n(83740),i=n(31549),p="triones-antm-picker-view",k=m.memo(function(t){var _=t.columns,P=t.labelInValue,c=t.value,V=t.onChange,y=(0,m.useState)(c||Array.from({length:r().size(_)}).map(function(){return null})),R=l()(y,2),E=R[0],h=R[1];return(0,m.useEffect)(function(){c!=null&&c!=E&&h(c)},[c]),(0,i.jsxs)("div",{className:s()("".concat(p)),children:[!r().isEmpty(_)&&(_==null?void 0:_.map(function(I,x){return(0,i.jsx)(v.PickerViewColumn,{labelInValue:P,options:I,value:c==null?void 0:c[x],onChange:function(g){E[x]=g,V==null||V(E)}},"column-".concat(x))})),(0,i.jsxs)("div",{className:s()("".concat(p,"-mask")),children:[(0,i.jsx)("div",{className:s()("".concat(p,"-mask-top"))}),(0,i.jsx)("div",{className:s()("".concat(p,"-mask-middle"))}),(0,i.jsx)("div",{className:s()("".concat(p,"-mask-bottom"))})]})]})})},91518:function(o,e,n){"use strict";n.r(e)},83740:function(o,e,n){"use strict";n.r(e)},5658:function(o,e,n){"use strict";n.r(e),n.d(e,{texts:function(){return l}});var d=n(88107);const l=[]},6458:function(o,e){"use strict";e.Z=`import "./style.scss"
 import React, { FC, MouseEventHandler } from "react";
 import classNames from "classnames";
 
@@ -300,93 +300,104 @@ import {PickerColumnOption} from "./types";
 const pickerViewCls = "triones-antm-picker-view";
 
 type PickerViewColumnProps = {
-  options?: PickerColumnOption[]
-  labelInValue?: boolean
-  value?: any
-  onChange?: (value: any, index?: number) => void
+    options?: PickerColumnOption[]
+    labelInValue?: boolean
+    value?: any
+    onChange?: (value: any, index?: number) => void
 }
 
 export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
-  ({
-     options,
-     labelInValue,
-     value,
-     onChange,
-   }) => {
-    const [internalValue, setInternalValue] = useState<any>(value || null);
-    const itemHeight = 34;
-    const [touchPoint, setTouchPoint] = React.useState<any>();
-    const [translateY, setTranslateY] = useState(0)
+    ({
+         options,
+         labelInValue,
+         value,
+         onChange,
+     }) => {
+        const [internalValue, setInternalValue] = useState<any>(value || null);
+        const itemHeight = 34;
+        const max = 0;
+        const min = 0 - (itemHeight * (_.size(options) - 1));
+        const [touching, setTouching] = useState<boolean>(false);
+        const [touchPoint, setTouchPoint] = React.useState<any>();
+        const [translateY, setTranslateY] = useState(0)
 
-    const handleSelectOption = (selectValue: any) => {
-      const valueIndex = _.findIndex(options, (option) => {
-        if (labelInValue) {
-          return option.value === selectValue.value;
+        const handleSelectOption = (selectValue: any) => {
+            const valueIndex = _.findIndex(options, (option) => {
+                if (labelInValue) {
+                    return option.value === selectValue.value;
+                }
+                return option.value === selectValue
+            })
+            setTranslateY(0 - (valueIndex * itemHeight));
         }
-        return option.value === selectValue
-      })
-      setTranslateY(0 - (valueIndex * itemHeight));
+
+        useEffect(() => {
+            if (value == undefined) {
+                return;
+            }
+            if (value == internalValue) {
+                return;
+            }
+            setInternalValue(value)
+            handleSelectOption(value)
+        }, [value]);
+
+        useEffect(() => {
+            if (!value) {
+                const selectValue = labelInValue ? options?.[0] : options?.[0].value
+                setInternalValue(selectValue || null);
+                onChange?.(selectValue || null);
+                handleSelectOption(selectValue);
+            } else {
+                handleSelectOption(value);
+            }
+        }, [options]);
+
+        return <div className={classNames(\`\${pickerViewCls}-column\`)}>
+            <div className={classNames(\`\${pickerViewCls}-column-wheel\`)}
+                 style={{transform: \`translate3d(0, \${translateY}px, 0)\`}}
+                 onTouchStart={(event) => {
+                     setTouching(true);
+                     const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+                     setTouchPoint(startPoint);
+                 }}
+                 onTouchMove={(event) => {
+                     if (touching) {
+                         const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+                         if (translateY > max || translateY < min) {
+                             return;
+                         }
+                         setTranslateY(translateY + (movePoint.clientY - touchPoint.clientY));
+                         setTouchPoint(movePoint);
+                         console.log(movePoint)
+                     }
+                 }}
+                 onTouchEnd={(event) => {
+                     setTouching(false);
+                     let selectIndex = 0;
+                     if (translateY > 0) {
+                         setTranslateY(0);
+                         selectIndex = 0;
+                     } else if (translateY < (0 - itemHeight * (_.size(options) - 1))) {
+                         setTranslateY(0 - itemHeight * (_.size(options) - 1));
+                         selectIndex = _.size(options) - 1;
+                     } else {
+                         const num = Math.abs(Math.round(translateY / itemHeight));
+                         setTranslateY(0 - num * itemHeight);
+                         selectIndex = num;
+                     }
+                     console.log("selectIndex", selectIndex)
+                     const selectValue = labelInValue ? options?.[selectIndex] : options?.[selectIndex].value
+                     setInternalValue(selectValue);
+                     onChange?.(selectValue);
+                 }}
+            >
+                {!_.isEmpty(options) && options?.map((option: any, index: number) => {
+                    return <PickerViewColumnItem option={option} key={\`view-column-\${index}\`}/>
+                })}
+            </div>
+        </div>
     }
-
-    useEffect(() => {
-      if (value == undefined) {
-        return;
-      }
-      if (value == internalValue) {
-        return;
-      }
-      setInternalValue(value)
-      handleSelectOption(value)
-    }, [value]);
-
-    useEffect(() => {
-      if (!value) {
-        const selectValue = labelInValue ? options?.[0] : options?.[0].value
-        setInternalValue(selectValue || null);
-        onChange?.(selectValue || null);
-        handleSelectOption(selectValue);
-      } else {
-        handleSelectOption(value);
-      }
-    }, [options]);
-
-    return <div className={classNames(\`\${pickerViewCls}-column\`)}>
-      <div className={classNames(\`\${pickerViewCls}-column-wheel\`)}
-           style={{transform: \`translate3d(0, \${translateY}px, 0)\`}}
-           onTouchStart={(event) => {
-             const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
-             setTouchPoint(startPoint);
-           }}
-           onTouchMove={(event) => {
-             const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
-             setTranslateY(translateY + (movePoint.clientY - touchPoint.clientY));
-             setTouchPoint(movePoint);
-           }}
-           onTouchEnd={(event) => {
-             let selectIndex = 0;
-             if (translateY > 0) {
-               setTranslateY(0);
-               selectIndex = 0;
-             } else if (translateY < (0 - itemHeight * (_.size(options) - 1))) {
-               setTranslateY(0 - itemHeight * (_.size(options) - 1));
-               selectIndex = _.size(options) - 1;
-             } else {
-               const num = Math.abs(Math.round(translateY / itemHeight));
-               setTranslateY(0 - num * itemHeight);
-               selectIndex = num;
-             }
-             console.log("selectIndex", selectIndex)
-             const selectValue = labelInValue ? options?.[selectIndex] : options?.[selectIndex].value
-             setInternalValue(selectValue);
-             onChange?.(selectValue);
-           }}
-      >
-        {!_.isEmpty(options) && options?.map((option: any, index: number) => {
-          return <PickerViewColumnItem option={option} key={\`view-column-\${index}\`}/>
-        })}
-      </div>
-    </div>
-  }
 )
 `},40871:function(o,e){"use strict";e.Z=`import classNames from "classnames";
 import _ from "lodash";
@@ -655,4 +666,4 @@ export const Popup: FC<PropsWithChildren<PopupProps>> = ({
     bottom: 0;
   }
 }
-`},84176:function(o,e,n){var d=n(75863);function l(a,s){if(a==null)return{};var u=d(a,s),r,h;if(Object.getOwnPropertySymbols){var m=Object.getOwnPropertySymbols(a);for(h=0;h<m.length;h++)r=m[h],!(s.indexOf(r)>=0)&&Object.prototype.propertyIsEnumerable.call(a,r)&&(u[r]=a[r])}return u}o.exports=l,o.exports.__esModule=!0,o.exports.default=o.exports},75863:function(o){function e(n,d){if(n==null)return{};var l={},a=Object.keys(n),s,u;for(u=0;u<a.length;u++)s=a[u],!(d.indexOf(s)>=0)&&(l[s]=n[s]);return l}o.exports=e,o.exports.__esModule=!0,o.exports.default=o.exports}}]);
+`},84176:function(o,e,n){var d=n(75863);function l(a,s){if(a==null)return{};var u=d(a,s),r,v;if(Object.getOwnPropertySymbols){var m=Object.getOwnPropertySymbols(a);for(v=0;v<m.length;v++)r=m[v],!(s.indexOf(r)>=0)&&Object.prototype.propertyIsEnumerable.call(a,r)&&(u[r]=a[r])}return u}o.exports=l,o.exports.__esModule=!0,o.exports.default=o.exports},75863:function(o){function e(n,d){if(n==null)return{};var l={},a=Object.keys(n),s,u;for(u=0;u<a.length;u++)s=a[u],!(d.indexOf(s)>=0)&&(l[s]=n[s]);return l}o.exports=e,o.exports.__esModule=!0,o.exports.default=o.exports}}]);
