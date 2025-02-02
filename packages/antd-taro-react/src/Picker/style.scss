@@ -30,76 +30,8 @@ $pickerCls: 'triones-antm-picker';
     height: 100%;
     pointer-events: unset;
   }
-
-  &-view {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    --item-height: 34Px;
-    --item-font-size: 16Px;
-
-    &-column {
-      height: 100%;
-      flex: 1 1;
-      user-select: none;
-      touch-action: none;
-      position: relative;
-      z-index: 0;
-      &-wheel{
-        width: 100%;
-        cursor: grab;
-        position: absolute;
-        top: calc(50% - var(--item-height)/2);
-        left: 0;
-      }
-
-      &-item {
-        font-size: var(--item-font-size);
-        padding: 0 6px;
-        height: var(--item-height);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &-label{
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-      }
-    }
-
-    &-mask {
-      position: absolute;
-      z-index: 10000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      pointer-events: none;
-
-      &-top {
-        background-color: white;
-        flex: auto;
-        mask: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .8) 50%, #000);
-      }
-
-      &-middle {
-        height: var(--item-height);
-        box-sizing: border-box;
-        flex: none;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-      }
-
-      &-bottom {
-        background-color: white;
-        flex: auto;
-        mask: linear-gradient(180deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .8) 50%, #000);
-      }
-    }
+  &-view{
+    --height: 100%;
   }
+
 }

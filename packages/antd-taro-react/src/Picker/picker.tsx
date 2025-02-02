@@ -3,7 +3,7 @@ import Popup from "../Popup";
 import classNames from "classnames";
 import "./style.scss"
 import _ from "lodash";
-import {PickerView} from "./picker-view";
+import PickerView, {PickerColumnOption} from "../PickerView";
 
 const pickerCls = "triones-antm-picker";
 
@@ -11,7 +11,7 @@ export type PickerProps = {
   open?: boolean
   afterOpenChange?: (open: boolean) => void;
   title?: React.ReactNode
-  columns?: Option[][]
+  columns?: PickerColumnOption[][]
   /**
    * @description 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { value: string, label: ReactNode } 的格式
    * @default false
@@ -21,10 +21,6 @@ export type PickerProps = {
   onOk: (value: any[]) => void,
   onCancel?: () => void,
   onClose?: () => void,
-}
-
-export type Option = {
-  label?: string, value?: string
 }
 
 export const Picker: FC<PickerProps> = React.memo(({

@@ -1,17 +1,18 @@
 import React, {FC, useEffect, useState} from "react"
 import classNames from "classnames";
 import {PickerViewColumnItem} from "./picker-view-column-item";
-import {Option} from "./picker";
 import _ from "lodash";
+import {PickerColumnOption} from "./types";
 
-const pickerCls = "triones-antm-picker";
+const pickerViewCls = "triones-antm-picker-view";
 
 type PickerViewColumnProps = {
-  options?: Option[]
+  options?: PickerColumnOption[]
   labelInValue?: boolean
   value?: any
   onChange?: (value: any, index?: number) => void
 }
+
 export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
   ({
      options,
@@ -56,8 +57,8 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
       }
     }, [options]);
 
-    return <div className={classNames(`${pickerCls}-view-column`)}>
-      <div className={classNames(`${pickerCls}-view-column-wheel`)}
+    return <div className={classNames(`${pickerViewCls}-column`)}>
+      <div className={classNames(`${pickerViewCls}-column-wheel`)}
            style={{transform: `translate3d(0, ${translateY}px, 0)`}}
            onTouchStart={(event) => {
              const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}

@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import React, {FC} from "react";
-import {Option} from "./picker";
+import { PickerColumnOption} from "./types";
 
-const pickerCls = "triones-antm-picker";
+const pickerViewCls = "triones-antm-picker-view";
 
 type PickerViewColumnItemProps = {
-  option: Option
+  option: PickerColumnOption
 }
 export const PickerViewColumnItem: FC<PickerViewColumnItemProps> = ({
-  
+
                                                                       option,
                                                                     }) => {
-  return <div className={classNames(`${pickerCls}-view-column-item`)}>
-    <div className={`${pickerCls}-view-column-item-label`}>
+  return <div className={classNames(`${pickerViewCls}-column-item`)}>
+    <div className={`${pickerViewCls}-column-item-label`}>
       {option.label}
     </div>
   </div>

@@ -35,4 +35,5 @@ export type {FormProps, FormItemProps} from "./Form"
 export {default as Popup} from './Popup'
 export type {PopupProps} from './Popup'
 export {default as Picker} from './Picker'
+export {default as PickerView} from './PickerView'
 
