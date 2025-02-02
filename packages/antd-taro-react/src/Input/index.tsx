@@ -1,6 +1,6 @@
-import { InputPassword } from './input-password';
-import { Input as InternalInput } from './input';
-import { InputOPT } from './input-opt';
+import {InputPassword, InputPasswordProps} from './input-password';
+import {Input as InternalInput, InputProps} from './input';
+import {InputOPT, InputOPTProps} from './input-opt';
 
 type CompoundedComponent = typeof InternalInput & {
   Password: typeof InputPassword;
@@ -11,4 +11,9 @@ const Input = InternalInput as CompoundedComponent;
 Input.Password = InputPassword;
 Input.OPT = InputOPT;
 
+export type {
+  InputProps,
+  InputPasswordProps,
+  InputOPTProps
+}
 export default Input;

@@ -13,7 +13,7 @@ export default defineConfig({
     entryFile: './src/index.tsx',
   },
   themeConfig: {
-    name: 'Triones UI',
+    name: 'Antd Taro',
     nav: [
       { title: '指南', link: '/guide' },
       { title: '组件', link: '/components/avatar' }, // components会默认自动对应到src文件夹

@@ -3,7 +3,7 @@ import {createPortal} from "react-dom";
 import {PopupModal, PopupModalProps} from "./popup-modal";
 
 
-type PopupProps = Omit<PopupModalProps, 'onDestroy'> & {
+export type PopupProps = Omit<PopupModalProps, 'onDestroy'> & {
   /**
    * @description 获取容器
    * @default null

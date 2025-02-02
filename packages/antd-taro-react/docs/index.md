@@ -1,12 +1,14 @@
 ---
 hero:
-  title: library
-  description: antd taro react 
+  title: Antd Taro
+  description: trionesdev antd taro (React)
   actions:
     - text: 快速入门
       link: /
     - text: GitHub
-      link: /
+      link: https://github.com/trionesdev/triones-antd-taro
+    - text: Gitee
+      link: https://gitee.com/trionesdev/triones-antd-taro
 features:
   - title: Hello
     emoji: 💎
@@ -18,5 +20,3 @@ features:
     emoji: 🚀
     description: Put ! description here
 ---
-
-@trionesdev/antd-taro-react

@@ -62,123 +62,125 @@ class Index extends Component<PropsWithChildren> {
           <Button onClick={this.incrementAsync}>Add Async</Button>
           <Text>{counter}</Text>
         </View>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/avatar/index",
-            });
-          }}
-        >
-          Avatar
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/button/index",
-            });
-          }}
-        >
-          Button
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/tab-bar/index",
-            });
-          }}
-        >
-          TabBar
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/checkbox/index",
-            });
-          }}
-        >
-          Checkbox
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/divider/index",
-            });
-          }}
-        >
-          Divider
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/empty/index",
-            });
-          }}
-        >
-          Empty
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/card/index",
-            });
-          }}
-        >
-          card
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/tag/index",
-            });
-          }}
-        >
-          Tag
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/rate/index",
-            });
-          }}
-        >
-          Rate
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/progress-bar/index",
-            });
-          }}
-        >
-          ProgressBar
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/input/index",
-            });
-          }}
-        >
-          Input
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/form/index",
-            });
-          }}
-        >
-          Form
-        </Button>
-        <Button
-          onClick={() => {
-            Taro.navigateTo({
-              url: "/pages/popup/index",
-            });
-          }}
-        >
-          Popup
-        </Button>
+        <View style={{display: 'flex', flexWrap: 'wrap', gap: 8}}>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/avatar/index",
+                    });
+                  }}
+          >
+            Avatar
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/button/index",
+                    });
+                  }}
+          >
+            Button
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/tab-bar/index",
+                    });
+                  }}
+          >
+            TabBar
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/checkbox/index",
+                    });
+                  }}
+          >
+            Checkbox
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/divider/index",
+                    });
+                  }}
+          >
+            Divider
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/empty/index",
+                    });
+                  }}
+          >
+            Empty
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/card/index",
+                    });
+                  }}
+          >
+            card
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/tag/index",
+                    });
+                  }}
+          >
+            Tag
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/rate/index",
+                    });
+                  }}
+          >
+            Rate
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/progress-bar/index",
+                    });
+                  }}
+          >
+            ProgressBar
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/input/index",
+                    });
+                  }}
+          >
+            Input
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/form/index",
+                    });
+                  }}
+          >
+            Form
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/popup/index",
+                    });
+                  }}
+          >
+            Popup
+          </Button>
+        </View>
       </View>
     );
   }

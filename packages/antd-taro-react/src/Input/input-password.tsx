@@ -5,7 +5,7 @@ import {
 import React, { FC, useState } from 'react';
 import { Input, InputProps } from './input';
 
-type InputPasswordProps = Omit<InputProps, 'type'> & {
+export type InputPasswordProps = Omit<InputProps, 'type'> & {
   iconRender?: (visible: boolean) => React.ReactNode;
   visibilityToggle?: boolean;
 };

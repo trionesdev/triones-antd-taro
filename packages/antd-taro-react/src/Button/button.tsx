@@ -2,7 +2,7 @@ import "./style.scss"
 import React, { FC, MouseEventHandler } from "react";
 import classNames from "classnames";
 
-type AntButtonProps = {
+export type ButtonProps = {
   children?: React.ReactNode
   /**
    * block 按钮宽高自适应
@@ -35,7 +35,7 @@ type AntButtonProps = {
 }
 
 
-export const Button: FC<AntButtonProps> = (
+export const Button: FC<ButtonProps> = (
   {
     children,
     block = false,
