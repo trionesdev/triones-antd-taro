@@ -1,6 +1,7 @@
 import React from "react"
 import {Tabs} from "../tabs";
 import {DemoBlock} from "../../DemoBlock";
+import {Tab} from "../tab";
 
 export default () => {
   const items = [
@@ -52,11 +53,18 @@ export default () => {
     <DemoBlock title={`基本使用`}>
       <Tabs items={items}/>
     </DemoBlock>
-    <DemoBlock title={`Size`}>
-      <Tabs size={`small`} items={items} stretch={false} />
-    </DemoBlock>
     <DemoBlock title={`滚动`}>
       <Tabs items={items2} stretch={false} />
+    </DemoBlock>
+    <DemoBlock title={`Tab`}>
+      <Tabs stretch={false} >
+        <Tab key={`1`} label={`Tab1`}>
+          <div>1</div>
+        </Tab>
+        <Tab key={`2`} label={`Tab2`}>
+          <div>2</div>
+        </Tab>
+      </Tabs>
     </DemoBlock>
   </>
 }

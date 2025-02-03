@@ -15,7 +15,6 @@ export const TabNav: FC<TabNavProps> = ({label, active, stretch, onClick, onActi
   const tabNavInnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    debugger
     if (active && tabNavInnerRef.current) {
       const rect = tabNavInnerRef.current?.getBoundingClientRect()
       onActive?.(rect);

@@ -1,30 +1,34 @@
-import React, {FC, MouseEvent, useEffect, useMemo, useRef, useState} from "react"
-import {TabItemProps} from "./tab-item";
+import React, {FC, MouseEvent, useEffect, useReducer, useRef, useState} from "react"
+import {Tab, TabItemProps} from "./tab";
 import classNames from "classnames";
 import {TabsContext} from "./context";
 import "./style.scss"
 import {TabNav} from "./tab-nav";
-
-export type TabsSize = "small" | "medium" | "large";
+import {TabPane} from "./tab-pane";
+import _ from "lodash";
 
 export type TabsProps = {
+  children?: React.ReactNode
   activeKey?: string
   defaultActiveKey?: string
-  centered?: boolean
-  size?: TabsSize
   stretch?: boolean
   items?: TabItemProps[]
   onTabClick?: (key: string, e: MouseEvent) => void
   onChange?: (activeKey: string) => void
+
 }
 
 const tabsCls = `triones-antm-tabs`
 
+enum ITEMS_ACTION {
+  SET_ITEMS,
+  ADD_ITEM,
+}
+
 export const Tabs: FC<TabsProps> = ({
+                                      children,
                                       activeKey,
                                       defaultActiveKey,
-                                      centered,
-                                      size,
                                       stretch = true,
                                       items,
                                       onTabClick,
@@ -33,10 +37,26 @@ export const Tabs: FC<TabsProps> = ({
   const tabNavRef = useRef<HTMLDivElement>(null);
   const [line, setLine] = useState<{ left: number, width: number } | undefined>()
   const [internalActiveKey, setInternalActiveKey] = useState<string | undefined>(activeKey || defaultActiveKey || items?.[0].key)
-
+  const [internalItems, dispatch] = useReducer((prevState: TabItemProps[], action: any) => {
+    switch (action.type) {
+      case ITEMS_ACTION.SET_ITEMS:
+        return action.payload;
+      case ITEMS_ACTION.ADD_ITEM:
+        return [...prevState, action.payload];
+    }
+    return prevState
+  }, (items || []))
   const handleTabClick = (key: string, e: MouseEvent<any>) => {
     onTabClick?.(key, e)
     setInternalActiveKey(key)
+  }
+
+  const handleSetItems = (items: any) => {
+    dispatch({type: ITEMS_ACTION.SET_ITEMS, payload: items})
+  }
+
+  const handleAddItem = (item: any) => {
+    dispatch({type: ITEMS_ACTION.ADD_ITEM, payload: item})
   }
 
   useEffect(() => {
@@ -55,14 +75,43 @@ export const Tabs: FC<TabsProps> = ({
     }
   }, [internalActiveKey])
 
-  return <TabsContext.Provider value={{}}>
+  useEffect(() => {
+    if (children){
+      debugger
+
+      if (_.isArray(children)){
+        debugger
+        const tabItems = children.filter(tab=>{
+          debugger
+          return tab.type == Tab
+        }).map((tab)=>{
+          return {
+            key: tab.key,
+            label: tab.props.label,
+            children: tab.props.children,
+          }
+        })
+        handleSetItems(tabItems)
+        setInternalActiveKey(activeKey || defaultActiveKey || tabItems?.[0].key)
+      }
+    }
+  }, [children]);
+
+  return <TabsContext.Provider
+    value={{
+      activeKey: internalActiveKey,
+      setActiveKey: setInternalActiveKey,
+      items: internalItems || [],
+      setItems: handleSetItems,
+      addItem: handleAddItem,
+    }}>
     <div className={classNames(tabsCls)}>
       <div className={classNames(`${tabsCls}-nav`)}>
         <div className={classNames(`${tabsCls}-nav-wrap`)}>
           <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>
             <div className={classNames(`${tabsCls}-ink-bar`, `${tabsCls}-ink-bar-animated`)}
                  style={{left: line?.left, width: line?.width}}/>
-            {items?.map((item, index) => {
+            {internalItems?.map((item: any, index: number) => {
               return <TabNav active={internalActiveKey == item.key} stretch={stretch} label={item.label} key={index}
                              onClick={(e, rect) => {
                                handleTabClick(item.key, e)
@@ -81,14 +130,10 @@ export const Tabs: FC<TabsProps> = ({
       </div>
       <div className={classNames(`${tabsCls}-content-holder`)}>
         <div className={classNames(`${tabsCls}-content`)}>
-          {items?.map((item, index) => {
-            return <div key={`tab-pane-${index}`}
-                        className={classNames(`${tabsCls}-tab-pane`, {[`${tabsCls}-tab-pane-active`]: internalActiveKey == item.key})}>
-              {item.children}
-            </div>
+          {internalItems?.map((item: any, index: number) => {
+            return <TabPane key={item.key} tabKey={item.key} children={item.children}/>
           })}
         </div>
-
       </div>
     </div>
   </TabsContext.Provider>
