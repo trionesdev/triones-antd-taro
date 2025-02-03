@@ -31,6 +31,7 @@ export const Tabs: FC<TabsProps> = ({
                                       onChange
                                     }) => {
   const tabNavRef = useRef<HTMLDivElement>(null);
+  const [line, setLine] = useState<{ left: number, width: number } | undefined>()
   const [internalActiveKey, setInternalActiveKey] = useState<string | undefined>(activeKey || defaultActiveKey || items?.[0].key)
 
   const handleTabClick = (key: string, e: MouseEvent<any>) => {
@@ -59,15 +60,21 @@ export const Tabs: FC<TabsProps> = ({
       <div className={classNames(`${tabsCls}-nav`)}>
         <div className={classNames(`${tabsCls}-nav-wrap`)}>
           <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>
-            <div className={classNames(`${tabsCls}-ink-bar`, `${tabsCls}-ink-bar-animated`)}/>
+            <div className={classNames(`${tabsCls}-ink-bar`, `${tabsCls}-ink-bar-animated`)}
+                 style={{left: line?.left, width: line?.width}}/>
             {items?.map((item, index) => {
               return <TabNav active={internalActiveKey == item.key} stretch={stretch} label={item.label} key={index}
-                             onClick={(e,rect) => {
-                               const navRect = tabNavRef.current?.getBoundingClientRect()
-                               console.log(navRect)
-                               e.target
+                             onClick={(e, rect) => {
                                handleTabClick(item.key, e)
-                             }}/>
+                             }}
+                             onActive={(tabRect) => {
+                               const rect = tabNavRef.current!.getBoundingClientRect()
+                               setLine({
+                                 left: (tabRect.left - rect.left) + tabNavRef.current!.scrollLeft,
+                                 width: tabRect.width
+                               })
+                             }}
+              />
             })}
           </div>
         </div>

@@ -39,9 +39,9 @@ $tabsCls: 'triones-antm-tabs';
   &-ink-bar {
     position: absolute;
     bottom: 0;
-    background-color: #0318f6;
+    background-color: #1677ff;
     height: 2px;
-    width: 100px;
+    //width: 100px;
     &-animated {
 
     }
@@ -51,6 +51,7 @@ $tabsCls: 'triones-antm-tabs';
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 10Px 10Px;
     font-size: 14Px;
     background: transparent;
