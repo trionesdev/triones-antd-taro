@@ -180,6 +180,24 @@ class Index extends Component<PropsWithChildren> {
           >
             Popup
           </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/picker/index",
+                    });
+                  }}
+          >
+            Picker
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/tabs/index",
+                    });
+                  }}
+          >
+            Tabs
+          </Button>
         </View>
       </View>
     );

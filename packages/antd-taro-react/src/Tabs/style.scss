@@ -1,0 +1,101 @@
+$tabsCls: 'triones-antm-tabs';
+
+.#{$tabsCls} {
+  &-nav {
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+
+    &::before {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      left: 0;
+      border-bottom: 1Px solid #f0f0f0;
+      content: ' ';
+    }
+
+    &-wrap {
+      //position: relative;
+      //display: flex;
+      //flex: auto;
+      //align-self: stretch;
+      //overflow: hidden;
+      //white-space: nowrap;
+      //transform: translate(0);
+      width: 100%;
+    }
+
+    &-list {
+      position: relative;
+      display: flex;
+      flex: auto;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+  }
+
+  &-ink-bar {
+    position: absolute;
+    bottom: 0;
+    background-color: #1677ff;
+    height: 2px;
+    //width: 100px;
+    &-animated {
+
+    }
+  }
+
+  &-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10Px 10Px;
+    font-size: 14Px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.88);
+    white-space: nowrap;
+
+    &-stretch {
+      flex: auto;
+    }
+
+    &-active {
+      color: #1677ff;
+      &::after{
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 0.24rem * 2);
+        height: 0.04rem;
+        overflow: hidden;
+        font-size: 0;
+        border-radius: 50vh;
+        box-sizing: border-box;
+        background-color: var(--tabs-active-decorate-color, #1677ff);
+      }
+    }
+
+  }
+
+  &-content-holder {
+    .#{$tabsCls} {
+      &-content {
+      }
+    }
+  }
+
+  &-tab-pane {
+    display: none;
+
+    &-active {
+      display: block;
+    }
+  }
+}
+
