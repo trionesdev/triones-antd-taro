@@ -1,0 +1,15 @@
+$cascaderViewCls: 'triones-antm-cascader-view';
+.#{$cascaderViewCls} {
+  &-column {
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 34Px;
+
+      &-selected {
+        color: #1677ff;
+      }
+    }
+  }
+}
