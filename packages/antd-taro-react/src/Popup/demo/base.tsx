@@ -29,7 +29,7 @@ export default () => {
           setTopOpen(true)
         }}>顶部弹出</Button>
 
-        <Popup open={bottomOpen} position={`bottom`} afterOpenChange={(o) => {
+        <Popup open={bottomOpen} position={`bottom`} closable={true} afterOpenChange={(o) => {
           setBottomOpen(o);
         }}>
           <div style={{minHeight: "200px"}}>

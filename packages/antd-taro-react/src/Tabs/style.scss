@@ -67,6 +67,18 @@ $tabsCls: 'triones-antm-tabs';
 
     &-active {
       color: #1677ff;
+      &::after{
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 0.24rem * 2);
+        height: 0.04rem;
+        overflow: hidden;
+        font-size: 0;
+        border-radius: 50vh;
+        box-sizing: border-box;
+        background-color: var(--tabs-active-decorate-color, #1677ff);
+      }
     }
 
   }

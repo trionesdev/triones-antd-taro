@@ -46,6 +46,7 @@ export const Tabs: FC<TabsProps> = ({
     }
     return prevState
   }, (items || []))
+
   const handleTabClick = (key: string, e: MouseEvent<any>) => {
     onTabClick?.(key, e)
     setInternalActiveKey(key)
@@ -76,15 +77,12 @@ export const Tabs: FC<TabsProps> = ({
   }, [internalActiveKey])
 
   useEffect(() => {
-    if (children){
-      debugger
-
-      if (_.isArray(children)){
-        debugger
-        const tabItems = children.filter(tab=>{
-          debugger
+    debugger
+    if (children) {
+      if (_.isArray(children)) {
+        const tabItems = children.filter(tab => {
           return tab.type == Tab
-        }).map((tab)=>{
+        }).map((tab) => {
           return {
             key: tab.key,
             label: tab.props.label,
@@ -113,15 +111,8 @@ export const Tabs: FC<TabsProps> = ({
                  style={{left: line?.left, width: line?.width}}/>
             {internalItems?.map((item: any, index: number) => {
               return <TabNav active={internalActiveKey == item.key} stretch={stretch} label={item.label} key={index}
-                             onClick={(e, rect) => {
+                             onClick={(e) => {
                                handleTabClick(item.key, e)
-                             }}
-                             onActive={(tabRect) => {
-                               const rect = tabNavRef.current!.getBoundingClientRect()
-                               setLine({
-                                 left: (tabRect.left - rect.left) + tabNavRef.current!.scrollLeft,
-                                 width: tabRect.width
-                               })
                              }}
               />
             })}

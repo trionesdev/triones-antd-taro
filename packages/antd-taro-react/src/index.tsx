@@ -38,4 +38,6 @@ export {default as Picker} from './Picker'
 export type {PickerProps} from './Picker';
 export {default as PickerView} from './PickerView'
 export {default as Tabs} from "./Tabs"
+export type {TabsProps} from './Tabs'
+
 

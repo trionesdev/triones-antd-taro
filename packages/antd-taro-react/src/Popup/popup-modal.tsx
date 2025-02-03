@@ -1,7 +1,7 @@
 import React, {CSSProperties, FC, PropsWithChildren, useEffect} from "react";
 import classNames from "classnames";
 import "./style.scss"
-import {CloseOutline} from "@trionesdev/antd-taro-icons-react/src";
+import {CloseOutline} from "@trionesdev/antd-taro-icons-react";
 
 const popupCls = "triones-antm-popup";
 
