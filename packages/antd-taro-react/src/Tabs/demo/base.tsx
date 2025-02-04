@@ -1,7 +1,6 @@
 import React from "react"
-import {Tabs} from "../tabs";
 import {DemoBlock} from "../../DemoBlock";
-import {Tab} from "../tab";
+import Tabs from "../index";
 
 export default () => {
   const items = [
@@ -31,22 +30,22 @@ export default () => {
     {
       key: '3',
       label: 'Tab3-测试',
-      children: <>2</>
+      children: <>3</>
     },
     {
       key: '4',
       label: 'Tab4-测试',
-      children: <>2</>
+      children: <>4</>
     },
     {
       key: '5',
       label: 'Tab5-测试',
-      children: <>2</>
+      children: <>5</>
     },
     {
       key: '6',
       label: 'Tab6-测试',
-      children: <>2</>
+      children: <>6</>
     }
   ]
   return <>
@@ -58,12 +57,12 @@ export default () => {
     </DemoBlock>
     <DemoBlock title={`Tab`}>
       <Tabs stretch={false} >
-        <Tab key={`1`} label={`Tab1`}>
+        <Tabs.Tab key={`1`} label={`Tab1`}>
           <div>1</div>
-        </Tab>
-        <Tab key={`2`} label={`Tab2`}>
+        </Tabs.Tab>
+        <Tabs.Tab key={`2`} label={`Tab2`}>
           <div>2</div>
-        </Tab>
+        </Tabs.Tab>
       </Tabs>
     </DemoBlock>
   </>

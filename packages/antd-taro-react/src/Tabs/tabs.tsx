@@ -13,11 +13,20 @@ export type TabsProps = {
   style?: React.CSSProperties
   activeKey?: string
   defaultActiveKey?: string
+  /**
+   * @description 是否拉伸
+   * @default true
+   */
   stretch?: boolean
   items?: TabItemProps[]
+  /**
+   * @description Tab 点击回调
+   */
   onTabClick?: (key: string, e: MouseEvent) => void
+  /**
+   * @description 激活key变化回调
+   */
   onChange?: (activeKey?: string) => void
-
 }
 
 const tabsCls = `triones-antm-tabs`
@@ -39,7 +48,6 @@ export const Tabs: FC<TabsProps> = ({
                                       onChange
                                     }) => {
   const tabNavRef = useRef<HTMLDivElement>(null);
-  const [line, setLine] = useState<{ left: number, width: number } | undefined>()
   const [internalActiveKey, setInternalActiveKey] = useState<string | undefined>(activeKey || defaultActiveKey || items?.[0]?.key)
   const [internalItems, dispatch] = useReducer((prevState: TabItemProps[], action: any) => {
     switch (action.type) {
@@ -64,7 +72,7 @@ export const Tabs: FC<TabsProps> = ({
     dispatch({type: ITEMS_ACTION.ADD_ITEM, payload: item})
   }
 
-  const handleChange = (activeKey?:any) => {
+  const handleChange = (activeKey?: any) => {
     onChange?.(activeKey)
   }
 
@@ -90,16 +98,16 @@ export const Tabs: FC<TabsProps> = ({
   }, [items]);
 
   useEffect(() => {
-    if (internalActiveKey){
-      if (!items?.map(item => item.key).includes(internalActiveKey)){
+    if (internalActiveKey) {
+      if (!internalItems?.map((item: TabItemProps) => item.key).includes(internalActiveKey)) {
         setInternalActiveKey(items?.[0]?.key)
-        handleChange(items?.[0]?.key)
+        handleChange(internalItems?.[0]?.key)
       }
-    }else {
+    } else {
       setInternalActiveKey(items?.[0]?.key)
       handleChange(items?.[0]?.key)
     }
-  }, [internalActiveKey,internalItems]);
+  }, [internalActiveKey, internalItems]);
 
   useEffect(() => {
     if (children) {
@@ -114,7 +122,7 @@ export const Tabs: FC<TabsProps> = ({
           }
         })
         handleSetItems(tabItems)
-        setInternalActiveKey(activeKey || defaultActiveKey || tabItems?.[0].key)
+        setInternalActiveKey(activeKey || defaultActiveKey || tabItems?.[0]?.key)
       }
     }
   }, [children]);
@@ -131,8 +139,6 @@ export const Tabs: FC<TabsProps> = ({
       <div className={classNames(`${tabsCls}-nav`)}>
         <div className={classNames(`${tabsCls}-nav-wrap`)}>
           <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>
-            <div className={classNames(`${tabsCls}-ink-bar`, `${tabsCls}-ink-bar-animated`)}
-                 style={{left: line?.left, width: line?.width}}/>
             {!_.isEmpty(internalItems) && internalItems?.map((item: any, index: number) => {
               return <TabNav active={internalActiveKey == item.key} stretch={stretch} label={item.label} key={index}
                              onClick={(e) => {
