@@ -9,12 +9,14 @@ import _ from "lodash";
 
 export type TabsProps = {
   children?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
   activeKey?: string
   defaultActiveKey?: string
   stretch?: boolean
   items?: TabItemProps[]
   onTabClick?: (key: string, e: MouseEvent) => void
-  onChange?: (activeKey: string) => void
+  onChange?: (activeKey?: string) => void
 
 }
 
@@ -27,6 +29,8 @@ enum ITEMS_ACTION {
 
 export const Tabs: FC<TabsProps> = ({
                                       children,
+                                      className,
+                                      style,
                                       activeKey,
                                       defaultActiveKey,
                                       stretch = true,
@@ -60,6 +64,10 @@ export const Tabs: FC<TabsProps> = ({
     dispatch({type: ITEMS_ACTION.ADD_ITEM, payload: item})
   }
 
+  const handleChange = (activeKey?:any) => {
+    onChange?.(activeKey)
+  }
+
   useEffect(() => {
     if (activeKey == undefined) {
       return
@@ -70,11 +78,6 @@ export const Tabs: FC<TabsProps> = ({
     setInternalActiveKey(activeKey)
   }, [activeKey])
 
-  useEffect(() => {
-    if (internalActiveKey) {
-      onChange?.(internalActiveKey)
-    }
-  }, [internalActiveKey])
 
   useEffect(() => {
     if (items == undefined) {
@@ -84,10 +87,19 @@ export const Tabs: FC<TabsProps> = ({
       return;
     }
     handleSetItems(items)
-    if (!internalActiveKey || !items?.map(item => item.key).includes(internalActiveKey)) {
-      setInternalActiveKey(items?.[0]?.key)
-    }
   }, [items]);
+
+  useEffect(() => {
+    if (internalActiveKey){
+      if (!items?.map(item => item.key).includes(internalActiveKey)){
+        setInternalActiveKey(items?.[0]?.key)
+        handleChange(items?.[0]?.key)
+      }
+    }else {
+      setInternalActiveKey(items?.[0]?.key)
+      handleChange(items?.[0]?.key)
+    }
+  }, [internalActiveKey,internalItems]);
 
   useEffect(() => {
     if (children) {
@@ -115,7 +127,7 @@ export const Tabs: FC<TabsProps> = ({
       setItems: handleSetItems,
       addItem: handleAddItem,
     }}>
-    <div className={classNames(tabsCls)}>
+    <div className={classNames(tabsCls, className)} style={style}>
       <div className={classNames(`${tabsCls}-nav`)}>
         <div className={classNames(`${tabsCls}-nav-wrap`)}>
           <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>

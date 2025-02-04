@@ -70,8 +70,8 @@ export default () => {
     }
   ]
   return <>
-    <DemoBlock title={`基本使用`}>
-      <CascaderView options={options} style={{height: 200}}/>
+    <DemoBlock title={`设置值`}>
+      <CascaderView options={options} style={{height: 200}} value={['jiangsu','suzhou','gushu']}/>
     </DemoBlock>
   </>
 }

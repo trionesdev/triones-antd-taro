@@ -1,11 +1,16 @@
 $cascaderViewCls: 'triones-antm-cascader-view';
 .#{$cascaderViewCls} {
+
   &-column {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
     &-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 34Px;
+      cursor: default;
 
       &-selected {
         color: #1677ff;
