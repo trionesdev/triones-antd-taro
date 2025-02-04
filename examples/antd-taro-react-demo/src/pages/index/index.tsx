@@ -198,6 +198,24 @@ class Index extends Component<PropsWithChildren> {
           >
             Tabs
           </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/cascader-picker/index",
+                    });
+                  }}
+          >
+            CascaderPicker
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/cascader-view/index",
+                    });
+                  }}
+          >
+            CascaderView
+          </Button>
         </View>
       </View>
     );

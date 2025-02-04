@@ -1,8 +1,10 @@
 import {View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
-import { CascaderView } from "@trionesdev/antd-taro-react";
+import { Button, CascaderPicker } from "@trionesdev/antd-taro-react";
+import React from "react";
 
-const CascaderViewBase = () => {
+const CascaderPickerBase = () => {
+  const [open, setOpen] = React.useState(false);
   const options = [
     {
       value: "jiangsu",
@@ -72,8 +74,17 @@ const CascaderViewBase = () => {
 
   return <View>
     <DemoBlock title={`基本使用`}>
-      <CascaderView options={options} style={{height: 200}}/>
+      <CascaderPicker open={open} afterOpenChange={(o) => {
+        setOpen(o);
+      }} options={options} onOk={(value) => {
+        console.log(value);
+      }} style={{height: 300}}/>
+      <Button block={true} onClick={() => {
+        setOpen(true);
+      }}>
+        级联选择
+      </Button>
     </DemoBlock>
   </View>
 }
-export default CascaderViewBase
+export default CascaderPickerBase

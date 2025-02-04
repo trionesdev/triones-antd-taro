@@ -41,4 +41,5 @@ export {default as Tabs} from "./Tabs"
 export type {TabsProps} from './Tabs'
 export {default as CascaderView} from "./CascaderView"
 export type {CascaderViewProps} from "./CascaderView"
-
+export {default as CascaderPicker} from "./CascaderPicker"
+export type {CascaderPickerProps} from './CascaderPicker'

@@ -18,6 +18,9 @@ export default defineAppConfig({
     "pages/popup/index",
     "pages/picker/index",
     "pages/tabs/index",
+    "pages/cascader-picker/index",
+    "pages/cascader-view/index"
+
   ],
   window: {
     backgroundTextStyle: "light",
