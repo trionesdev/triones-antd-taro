@@ -39,5 +39,6 @@ export type {PickerProps} from './Picker';
 export {default as PickerView} from './PickerView'
 export {default as Tabs} from "./Tabs"
 export type {TabsProps} from './Tabs'
-
+export {default as CascaderView} from "./CascaderView"
+export type {CascaderViewProps} from "./CascaderView"
 

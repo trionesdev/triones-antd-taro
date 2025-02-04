@@ -1,6 +1,8 @@
 $tabsCls: 'triones-antm-tabs';
 
 .#{$tabsCls} {
+  display: flex;
+  flex-direction: column;
   &-nav {
     position: relative;
     display: flex;
@@ -84,13 +86,17 @@ $tabsCls: 'triones-antm-tabs';
   }
 
   &-content-holder {
+    flex: auto;
+    overflow: hidden;
     .#{$tabsCls} {
       &-content {
+        height: 100%;
       }
     }
   }
 
   &-tab-pane {
+    height: 100%;
     display: none;
 
     &-active {

@@ -9,12 +9,14 @@ import _ from "lodash";
 
 export type TabsProps = {
   children?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
   activeKey?: string
   defaultActiveKey?: string
   stretch?: boolean
   items?: TabItemProps[]
   onTabClick?: (key: string, e: MouseEvent) => void
-  onChange?: (activeKey: string) => void
+  onChange?: (activeKey?: string) => void
 
 }
 
@@ -27,6 +29,8 @@ enum ITEMS_ACTION {
 
 export const Tabs: FC<TabsProps> = ({
                                       children,
+                                      className,
+                                      style,
                                       activeKey,
                                       defaultActiveKey,
                                       stretch = true,
@@ -36,7 +40,7 @@ export const Tabs: FC<TabsProps> = ({
                                     }) => {
   const tabNavRef = useRef<HTMLDivElement>(null);
   const [line, setLine] = useState<{ left: number, width: number } | undefined>()
-  const [internalActiveKey, setInternalActiveKey] = useState<string | undefined>(activeKey || defaultActiveKey || items?.[0].key)
+  const [internalActiveKey, setInternalActiveKey] = useState<string | undefined>(activeKey || defaultActiveKey || items?.[0]?.key)
   const [internalItems, dispatch] = useReducer((prevState: TabItemProps[], action: any) => {
     switch (action.type) {
       case ITEMS_ACTION.SET_ITEMS:
@@ -60,6 +64,10 @@ export const Tabs: FC<TabsProps> = ({
     dispatch({type: ITEMS_ACTION.ADD_ITEM, payload: item})
   }
 
+  const handleChange = (activeKey?:any) => {
+    onChange?.(activeKey)
+  }
+
   useEffect(() => {
     if (activeKey == undefined) {
       return
@@ -70,14 +78,30 @@ export const Tabs: FC<TabsProps> = ({
     setInternalActiveKey(activeKey)
   }, [activeKey])
 
-  useEffect(() => {
-    if (internalActiveKey) {
-      onChange?.(internalActiveKey)
-    }
-  }, [internalActiveKey])
 
   useEffect(() => {
-    debugger
+    if (items == undefined) {
+      return;
+    }
+    if (_.isEqual(items, internalItems)) {
+      return;
+    }
+    handleSetItems(items)
+  }, [items]);
+
+  useEffect(() => {
+    if (internalActiveKey){
+      if (!items?.map(item => item.key).includes(internalActiveKey)){
+        setInternalActiveKey(items?.[0]?.key)
+        handleChange(items?.[0]?.key)
+      }
+    }else {
+      setInternalActiveKey(items?.[0]?.key)
+      handleChange(items?.[0]?.key)
+    }
+  }, [internalActiveKey,internalItems]);
+
+  useEffect(() => {
     if (children) {
       if (_.isArray(children)) {
         const tabItems = children.filter(tab => {
@@ -103,13 +127,13 @@ export const Tabs: FC<TabsProps> = ({
       setItems: handleSetItems,
       addItem: handleAddItem,
     }}>
-    <div className={classNames(tabsCls)}>
+    <div className={classNames(tabsCls, className)} style={style}>
       <div className={classNames(`${tabsCls}-nav`)}>
         <div className={classNames(`${tabsCls}-nav-wrap`)}>
           <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>
             <div className={classNames(`${tabsCls}-ink-bar`, `${tabsCls}-ink-bar-animated`)}
                  style={{left: line?.left, width: line?.width}}/>
-            {internalItems?.map((item: any, index: number) => {
+            {!_.isEmpty(internalItems) && internalItems?.map((item: any, index: number) => {
               return <TabNav active={internalActiveKey == item.key} stretch={stretch} label={item.label} key={index}
                              onClick={(e) => {
                                handleTabClick(item.key, e)
@@ -121,7 +145,7 @@ export const Tabs: FC<TabsProps> = ({
       </div>
       <div className={classNames(`${tabsCls}-content-holder`)}>
         <div className={classNames(`${tabsCls}-content`)}>
-          {internalItems?.map((item: any, index: number) => {
+          {!_.isEmpty(internalItems) && internalItems?.map((item: any, index: number) => {
             return <TabPane key={item.key} tabKey={item.key} children={item.children}/>
           })}
         </div>
