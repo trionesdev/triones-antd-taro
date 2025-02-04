@@ -11,7 +11,7 @@ const cascaderViewCls = 'triones-antm-cascader-view'
 export type CascaderViewProps = {
   className?: string,
   style?: CSSProperties,
-  options: any[]
+  options?: any[]
   labelInValue?: boolean
   value?: any
   onChange?: (value: any) => void;
@@ -72,7 +72,7 @@ export const CascaderView: FC<CascaderViewProps> = ({
   }
 
   useEffect(() => {
-    if (!_.isEmpty(options)) {
+    if (options && !_.isEmpty(options)) {
       const column = {
         value: null,
         options
