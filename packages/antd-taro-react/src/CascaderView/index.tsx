@@ -1,4 +1,4 @@
-import {CascaderView,CascaderViewProps} from "./cascader-view"
+import { CascaderView, CascaderViewProps } from "./cascader-view"
 
 export type {
   CascaderViewProps,

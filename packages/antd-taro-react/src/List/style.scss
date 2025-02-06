@@ -1,0 +1,109 @@
+.triones-antm-list {
+  --header-font-size: var(--triones-antm-font-size-7);
+  --prefix-width: 'auto';
+  --prefix-padding-right: 12px;
+  --align-items: center;
+  --active-background-color: var(--triones-antm-color-border);
+  --border-inner: solid 1px var(--triones-antm-color-border);
+  --border-top: solid 1px var(--triones-antm-color-border);
+  --border-bottom: solid 1px var(--triones-antm-color-border);
+  --padding-left: 12px;
+  --padding-right: 12px;
+  --font-size: var(--triones-antm-font-size-9);
+  --extra-max-width: 70%;
+
+  &-header {
+    color: var(--triones-antm-color-weak);
+    font-size: var(--header-font-size);
+    padding: 8px var(--padding-right) 8px var(--padding-left);
+  }
+  &-body {
+    background-color: var(--triones-antm-color-background);
+    overflow: hidden;
+    font-size: var(--font-size);
+  }
+  &-body-inner {
+    margin-top: -1px;
+  }
+  &-default {
+    .adm-list-body {
+      border-top: var(--border-top);
+      border-bottom: var(--border-bottom);
+    }
+  }
+  &-card {
+    margin: 12px;
+    .adm-list-body {
+      border-radius: 8px;
+    }
+    .adm-list-header {
+      padding-left: 0;
+    }
+  }
+}
+
+.triones-antm-list-item {
+  display: block;
+  padding-left: var(--padding-left);
+  position: relative;
+  background-color: var(--triones-antm-color-background);
+  line-height: 1.5;
+  &-title,
+  &-description {
+    color: var(--triones-antm-color-weak);
+    font-size: var(--triones-antm-font-size-main);
+  }
+  &-content {
+    display: flex;
+    align-items: var(--align-items);
+    justify-content: flex-start;
+    border-top: var(--border-inner);
+    padding-right: var(--padding-right);
+    &-prefix {
+      width: var(--prefix-width);
+      flex: none;
+      padding-right: var(--prefix-padding-right);
+    }
+    &-main {
+      flex: auto;
+      padding: 12px 0;
+    }
+    &-extra {
+      flex: none;
+      padding-left: 12px;
+      font-size: var(--triones-antm-font-size-7);
+      color: var(--triones-antm-color-weak);
+      max-width: var(--extra-max-width);
+    }
+    &-arrow {
+      flex: none;
+      display: flex;
+      align-items: center;
+      margin-left: 4px;
+      color: var(--triones-antm-color-light);
+      font-size: 19px;
+    }
+  }
+  &-disabled {
+    cursor: not-allowed;
+    & > .triones-antm-list-item-content > * {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}
+
+a.triones-antm-list-item {
+  &:active:not(.triones-antm-list-item-disabled) {
+    background-color: var(--active-background-color);
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      width: 100%;
+      bottom: -1px;
+      left: 0;
+      border-bottom: var(--border-inner);
+    }
+  }
+}
