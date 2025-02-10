@@ -1,6 +1,6 @@
-$class-prefix-card: 'triones-antm-card';
+$class-prefix-radio: 'triones-antm-radio';
 
-.#{$class-prefix-card} {
+.#{$class-prefix-radio} {
   --icon-size: 22px;
   --font-size: var(--triones-antm-font-size-9);
   --gap: 8px;
@@ -12,7 +12,7 @@ $class-prefix-card: 'triones-antm-card';
   input[type='radio'] {
     display: none;
   }
-  .#{class-prefix-radio}-icon {
+  .#{$class-prefix-radio}-icon {
     flex: none;
     border: 1px solid var(--triones-antm-color-light);
     border-radius: var(--icon-size);
@@ -26,27 +26,27 @@ $class-prefix-card: 'triones-antm-card';
       height: 100%;
     }
   }
-  &.#{class-prefix-radio}-block {
+  &.#{$class-prefix-radio}-block {
     display: flex;
   }
-  &.#{class-prefix-radio}-checked {
-    .#{class-prefix-radio}-icon {
+  &.#{$class-prefix-radio}-checked {
+    .#{$class-prefix-radio}-icon {
       border-color: var(--triones-antm-color-primary);
       background-color: var(--triones-antm-color-primary);
     }
   }
-  &.#{class-prefix-radio}-disabled {
+  &.#{$class-prefix-radio}-disabled {
     cursor: not-allowed;
-    .#{class-prefix-radio}-content {
+    .#{$class-prefix-radio}-content {
       opacity: 0.4;
     }
-    .#{class-prefix-radio}-icon {
+    .#{$class-prefix-radio}-icon {
       color: var(--triones-antm-color-light);
       border-color: var(--triones-antm-color-light);
       background-color: var(--triones-antm-color-fill-content);
     }
   }
-  .#{class-prefix-radio}-custom-icon {
+  .#{$class-prefix-radio}-custom-icon {
     font-size: var(--icon-size);
   }
 
