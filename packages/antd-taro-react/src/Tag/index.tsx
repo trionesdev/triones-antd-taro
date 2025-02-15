@@ -1,3 +1,6 @@
-import { Tag } from "./tag"
+import {Tag, TagProps} from "./tag"
 
-export default Tag 
+export type {
+  TagProps
+}
+export default Tag
