@@ -216,6 +216,24 @@ class Index extends Component<PropsWithChildren> {
           >
             CascaderView
           </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/toast/index",
+                    });
+                  }}
+          >
+            Toast
+          </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/spin-loading/index",
+                    });
+                  }}
+          >
+            SpinLoading
+          </Button>
         </View>
       </View>
     );

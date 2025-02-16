@@ -1,0 +1,17 @@
+$maskCls:'triones-antm-mask2';
+
+.#{$maskCls}{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  &-open{
+    display: block;
+  }
+  &-inner{
+    height: 100%;
+    width: 100%;
+  }
+}

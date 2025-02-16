@@ -81,13 +81,16 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
+    "@react-spring/web": "~9.6.1",
+    "@tarojs/react": "4.0.9",
+    "@types/crypto-js": "^4.2.2",
+    "@use-gesture/react": "10.3.0",
     "ahooks": "^3.8.4",
+    "base64-js": "^1.5.1",
+    "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
     "rc-tooltip": "^6.3.1",
     "rc-util": "^5.44.3",
-    "@react-spring/web": "~9.6.1",
-    "@use-gesture/react": "10.3.0",
-    "runes2": "^1.1.4",
-    "@tarojs/react": "4.0.9"
+    "runes2": "^1.1.4"
   }
 }

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { FC } from 'react';
 import './style.scss';
 
-type TagProps = {
+export type TagProps = {
   children?: React.ReactNode;
   /**
    * 标签色
