@@ -216,6 +216,15 @@ class Index extends Component<PropsWithChildren> {
           >
             CascaderView
           </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/toast/index",
+                    });
+                  }}
+          >
+            Toast
+          </Button>
         </View>
       </View>
     );

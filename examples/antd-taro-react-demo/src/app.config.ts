@@ -20,6 +20,7 @@ export default defineAppConfig({
     "pages/tabs/index",
     "pages/cascader-picker/index",
     "pages/cascader-view/index",
+    "pages/toast/index",
   ],
   window: {
     backgroundTextStyle: "light",

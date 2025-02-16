@@ -54,16 +54,18 @@ export const Toast1: FC<ToastProps> = forwardRef<ToastHandle, ToastProps>(({
 })
 
 export class Toast {
-  private root: HTMLElement | undefined;
+  private container: HTMLElement | undefined;
 
   static show(config: ToastProps) {
     const toast = new Toast()
+    toast.create(config);
     return toast;
   }
 
   destroy = () => {}
 
   create=(config: ToastProps)=>{
-    this.root = config?.getContainer?.() || document.createElement("div");
+    this.container = config!.getContainer!();
+
   }
 }
