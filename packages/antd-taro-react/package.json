@@ -62,6 +62,7 @@
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/crypto-js": "^4.2.2",
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -81,12 +82,9 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@react-spring/web": "~9.6.1",
     "@tarojs/react": "4.0.9",
-    "@types/crypto-js": "^4.2.2",
     "@use-gesture/react": "10.3.0",
     "ahooks": "^3.8.4",
-    "base64-js": "^1.5.1",
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
     "rc-tooltip": "^6.3.1",
