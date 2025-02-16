@@ -19,7 +19,7 @@ export type {InputOPTProps, InputPasswordProps, InputProps} from './Input';
 export {default as NavBar} from './NavBar';
 export {default as NoticeBar} from './NoticeBar';
 export {default as PageIndicator} from './PageIndicator';
-export {default as Popover} from './Popover';
+
 export {default as ProgressBar} from './ProgressBar';
 export {default as Radio} from './Radio';
 export {default as Rate} from './Rate';
