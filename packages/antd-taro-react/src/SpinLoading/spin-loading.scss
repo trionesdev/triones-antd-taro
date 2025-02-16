@@ -16,6 +16,18 @@ $spinLoadingCls: triones-antm-spin-loading;
       stroke: var(--color);
     }
   }
+
+  &-loading {
+    color: var(--color);
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: currentColor;
+    mask-image: var(--maskImage);
+    -webkit-mask-image: var(--maskImage);
+    animation: adm-spin-loading-rotate 2s infinite linear;
+  }
+
 }
 
 @keyframes adm-spin-loading-rotate {
