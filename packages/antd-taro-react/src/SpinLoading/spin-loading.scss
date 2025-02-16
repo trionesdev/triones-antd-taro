@@ -1,0 +1,28 @@
+$spinLoadingCls: triones-antm-spin-loading;
+
+.#{$spinLoadingCls} {
+  --size: 32Px;
+  --color: #1677ff;
+  width: var(--size);
+  height: var(--size);
+
+  &-svg {
+    width: 100%;
+    height: 100%;
+    //animation: adm-spin-loading-rotate 0.8s infinite linear;
+
+    > .#{$spinLoadingCls}-circle {
+      //stroke: #1677ff;
+      stroke: var(--color);
+    }
+  }
+}
+
+@keyframes adm-spin-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -225,6 +225,15 @@ class Index extends Component<PropsWithChildren> {
           >
             Toast
           </Button>
+          <Button size={`mini`}
+                  onClick={() => {
+                    Taro.navigateTo({
+                      url: "/pages/spin-loading/index",
+                    });
+                  }}
+          >
+            SpinLoading
+          </Button>
         </View>
       </View>
     );

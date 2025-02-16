@@ -2,20 +2,22 @@ import React, {forwardRef, useEffect, useImperativeHandle} from "react";
 import {FC} from "react";
 import {ToastModal, ToastModalProps} from "./toast-modal";
 import {createPortal} from "react-dom";
+import {createRoot} from "react-dom/client";
 
 export type ToastProps = Omit<ToastModalProps, 'onDestroy'> & {
   getContainer?: () => HTMLElement,
+
 }
 
 export interface ToastHandle {
   clear(): void;
 }
 
-export const Toast1: FC<ToastProps> = forwardRef<ToastHandle, ToastProps>(({
-                                                                             getContainer,
-                                                                             open = false,
-                                                                             ...rest
-                                                                           }, ref) => {
+export const InternalToast: FC<ToastProps> = forwardRef<ToastHandle, ToastProps>(({
+                                                                                    getContainer,
+                                                                                    open = false,
+                                                                                    ...rest
+                                                                                  }, ref) => {
   const [renderEnable, setRenderEnable] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const mountRef = React.useRef<HTMLDivElement | null>(null);
@@ -50,22 +52,48 @@ export const Toast1: FC<ToastProps> = forwardRef<ToastHandle, ToastProps>(({
 
   return <>
     {!getContainer?.() && <div ref={containerRef}></div>}
-    {renderEnable && <ToastPortal/>}</>;
+    {renderEnable && <ToastPortal/>}
+  </>;
 })
 
-export class Toast {
-  private container: HTMLElement | undefined;
+export type ToastShowProps = Omit<ToastModalProps, 'onDestroy' | 'open'> & {
+  getContainer: () => HTMLElement,
 
-  static show(config: ToastProps) {
+}
+
+export class Toast {
+  private containerEl: HTMLElement | undefined;
+  private mountEl: HTMLElement | null = null;
+  private timer: any;
+
+  static show(config: ToastShowProps) {
     const toast = new Toast()
     toast.create(config);
     return toast;
   }
 
-  destroy = () => {}
+  destroy = () => {
+    if (this.mountEl) {
+      this.mountEl.parentNode?.removeChild(this.mountEl);
+    }
+    if (this.timer) {
+      clearTimeout(this.timer)
+      this.timer = null
+    }
+  }
 
-  create=(config: ToastProps)=>{
-    this.container = config!.getContainer!();
+  create = (props: ToastShowProps) => {
+    const {getContainer, duration = 2000, ...config}: ToastShowProps = props;
+    this.containerEl = getContainer!();
+    this.mountEl = document.createElement("div");
+    this.containerEl!.appendChild(this.mountEl);
+    createRoot(this.mountEl!).render(<ToastModal {...config} onDestroy={this.destroy} open={true}
+                                                 durationAble={false}/>)
 
+    if (duration) {
+      this.timer = setTimeout(() => {
+        this.destroy()
+      }, duration)
+    }
   }
 }

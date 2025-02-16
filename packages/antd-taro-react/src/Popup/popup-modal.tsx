@@ -89,10 +89,10 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
   }, [internalOpen]);
 
   useEffect(() => {
-    if (open == undefined) {
+    if (open === undefined) {
       return
     }
-    if (open == internalOpen) {
+    if (open === internalOpen) {
       return;
     }
     setInternalOpen(open);
