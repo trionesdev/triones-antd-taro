@@ -40,7 +40,7 @@ export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';
 export {default as Form} from './Form';
 export type {FormItemProps, FormProps} from './Form';
-export {default as ImageViewer} from './ImageViewer';
+
 export {default as Mark} from './Mark';
 export {default as Picker} from './Picker';
 export type {PickerProps} from './Picker';

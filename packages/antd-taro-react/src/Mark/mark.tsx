@@ -1,4 +1,4 @@
-import { animated, useSpring } from '@react-spring/web';
+// import { animated, useSpring } from '@react-spring/web';
 import { useUnmountedRef } from 'ahooks';
 import type { FC, ReactNode } from 'react';
 import React, { useMemo, useRef, useState } from 'react';
@@ -69,41 +69,41 @@ export const Mask: FC<MaskProps> = (p) => {
   const [active, setActive] = useState(props.visible);
 
   const unmountedRef = useUnmountedRef();
-  const { opacity } = useSpring({
-    opacity: props.visible ? 1 : 0,
-    config: {
-      precision: 0.01,
-      mass: 1,
-      tension: 250,
-      friction: 30,
-      clamp: true,
-    },
-    onStart: () => {
-      setActive(true);
-    },
-    onRest: () => {
-      if (unmountedRef.current) return;
-      setActive(props.visible);
-      if (props.visible) {
-        props.afterShow?.();
-      } else {
-        props.afterClose?.();
-      }
-    },
-  });
+  // const { opacity } = useSpring({
+  //   opacity: props.visible ? 1 : 0,
+  //   config: {
+  //     precision: 0.01,
+  //     mass: 1,
+  //     tension: 250,
+  //     friction: 30,
+  //     clamp: true,
+  //   },
+  //   onStart: () => {
+  //     setActive(true);
+  //   },
+  //   onRest: () => {
+  //     if (unmountedRef.current) return;
+  //     setActive(props.visible);
+  //     if (props.visible) {
+  //       props.afterShow?.();
+  //     } else {
+  //       props.afterClose?.();
+  //     }
+  //   },
+  // });
 
   const node = withStopPropagation(
     props.stopPropagation,
     withNativeProps(
       props,
-      <animated.div
+      <div
         className={classPrefix}
         ref={ref}
         aria-hidden
         style={{
           ...props.style,
           background,
-          opacity,
+
           display: active ? undefined : 'none',
         }}
         onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -121,7 +121,7 @@ export const Mask: FC<MaskProps> = (p) => {
           />
         )}
         <div className={`${classPrefix}-content`}>{props.children}</div>
-      </animated.div>,
+      </div>,
     ),
   );
 
