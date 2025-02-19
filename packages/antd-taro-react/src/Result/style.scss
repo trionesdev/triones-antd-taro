@@ -1,18 +1,18 @@
 $class-prefix-result: 'triones-antm-result';
-
+/* prettier-ignore */
 .#{$class-prefix-result} {
-  padding: 32px 12px;
+  padding: 32PX 12PX;
   background-color: var(--triones-antm-color-background);
 
   &-icon {
     box-sizing: border-box;
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px auto;
-    padding: 6px;
+    width: 64PX;
+    height: 64PX;
+    margin: 0 auto 20PX auto;
+    padding: 6PX;
 
     .antd-mobile-icon {
-      font-size: 52px;
+      font-size: 52PX;
     }
   }
 
@@ -24,7 +24,7 @@ $class-prefix-result: 'triones-antm-result';
   }
 
   &-description {
-    margin-top: 8px;
+    margin-top: 8PX;
     color: var(--triones-antm-color-weak);
     font-size: var(--triones-antm-font-size-main);
     line-height: 1.4;

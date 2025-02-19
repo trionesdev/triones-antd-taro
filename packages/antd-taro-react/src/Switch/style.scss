@@ -5,12 +5,12 @@ $class-prefix-switch: 'triones-antm-switch';
     transform: rotate(1turn);
   }
 }
-
+/* prettier-ignore */
 .#{$class-prefix-switch} {
   --checked-color: var(--triones-antm-color-primary);
-  --height: 24px;
-  --width: 42px;
-  --border-width: 2px;
+  --height: 24PX;
+  --width: 42PX;
+  --border-width: 2PX;
 
   display: inline-block;
   vertical-align: middle;
@@ -27,12 +27,11 @@ $class-prefix-switch: 'triones-antm-switch';
     min-width: var(--width);
     height: var(--height);
     box-sizing: border-box;
-    border-radius: 31px;
+    border-radius: 31PX;
     background: var(--triones-antm-color-border);
     z-index: 0;
     overflow: hidden;
     line-height: var(--height);
-
     &:before {
       content: ' ';
       position: absolute;
@@ -63,9 +62,9 @@ $class-prefix-switch: 'triones-antm-switch';
     left: var(--border-width);
     transition: all 200ms;
     box-shadow:
-      0 0 2px 0 rgba(0, 0, 0, 0.2),
-      0 2px 11.5px 0 rgba(0, 0, 0, 0.08),
-      -1px 2px 2px 0 rgba(0, 0, 0, 0.1);
+      0 0 2PX 0 rgba(0, 0, 0, 0.2),
+      0 2PX 11.5PX 0 rgba(0, 0, 0, 0.08),
+      -1PX 2PX 2PX 0 rgba(0, 0, 0, 0.1);
   }
 
   &-inner {
@@ -74,7 +73,7 @@ $class-prefix-switch: 'triones-antm-switch';
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 8px 0 calc(var(--height) - var(--border-width) + 5px);
+    margin: 0 8PX 0 calc(var(--height) - var(--border-width) + 5PX);
     height: 100%;
     color: var(--triones-antm-color-weak);
     transition: margin 200ms;
@@ -94,7 +93,7 @@ $class-prefix-switch: 'triones-antm-switch';
     }
 
     .#{$class-prefix-switch}-inner {
-      margin: 0 calc(var(--height) - var(--border-width) + 5px) 0 8px;
+      margin: 0 calc(var(--height) - var(--border-width) + 5PX) 0 8PX;
       color: var(--triones-antm-color-text-light-solid);
     }
   }
@@ -107,8 +106,8 @@ $class-prefix-switch: 'triones-antm-switch';
 
   /* loading图标 */
   &-spin-icon {
-    width: 14px;
-    height: 14px;
+    width: 14PX;
+    height: 14PX;
     animation: loading-rotate 1s linear infinite;
   }
 }

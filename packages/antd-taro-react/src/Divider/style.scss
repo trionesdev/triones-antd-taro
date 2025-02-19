@@ -1,11 +1,11 @@
 $dividerCls: 'triones-antm-divider';
-
+/* prettier-ignore */
 .#{$dividerCls} {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 14PX;
   color: #999999;
-  margin: 16px 0;
+  margin: 16PX 0;
   border: 0 solid #eeeeee;
   width: 100%;
 
@@ -14,8 +14,8 @@ $dividerCls: 'triones-antm-divider';
     content: '';
     border-style: inherit;
     border-color: inherit;
-    border-width: 2px 0 0;
-    height: 2px;
+    border-width: 2PX 0 0;
+    height: 2PX;
     flex: 1;
   }
 
@@ -23,11 +23,11 @@ $dividerCls: 'triones-antm-divider';
   &-left,
   &-right {
     &::before {
-      margin-right: 8px;
+      margin-right: 8PX;
     }
 
     &::after {
-      margin-left: 8px;
+      margin-left: 8PX;
     }
   }
 
@@ -53,9 +53,9 @@ $dividerCls: 'triones-antm-divider';
   &-vertical {
     display: inline-block;
     width: auto;
-    height: 12px;
-    border-left: 1px solid #eeeeee;
-    margin: 0 8px;
+    height: 12PX;
+    border-left: 1PX solid #eeeeee;
+    margin: 0 8PX;
     vertical-align: middle;
   }
 }
