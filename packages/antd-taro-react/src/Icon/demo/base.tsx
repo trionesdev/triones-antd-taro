@@ -12,8 +12,15 @@ export default () => {
       {
         _.map(_.omit(icons, 'Icon'), (icon, name) => {
           return <div key={name} style={{ width: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 30 }}>
-            <div>{React.createElement(icon, { key: name })}</div>
-            <div style={{ fontSize: 12 }}>{name}</div>
+            <div>
+              {React.createElement(icon, {
+                key: name,
+                style: {
+                  fontSize: 48
+                }
+              })}
+            </div>
+            <div style={{ fontSize: 14, marginTop: 5 }}>{name}</div>
           </div>
         })
       }

@@ -4,7 +4,7 @@ import React from 'react'
 import { NativeProps, withNativeProps } from '../utils/native-props'
 import { useConfig } from '../ConfigProvider'
 import { mergeProp, mergeProps } from '../utils/with-default-props'
-import { CloseOutline } from '@trionesdev/antd-taro-icons-react'
+import { LeftOutline } from '@trionesdev/antd-taro-icons-react'
 
 import './style.scss'
 
@@ -23,7 +23,7 @@ export type NavBarProps = {
   children?: ReactNode
 } & NativeProps<'--height' | '--border-bottom'>
 
-const defaultBackIcon = <CloseOutline />
+const defaultBackIcon = <LeftOutline />
 
 export const NavBar: FC<NavBarProps> = props => {
   const { navBar: componentConfig = {} } = useConfig()

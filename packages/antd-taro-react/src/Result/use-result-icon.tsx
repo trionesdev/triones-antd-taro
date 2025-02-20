@@ -1,6 +1,6 @@
 import React from 'react'
 import { useConfig } from '../ConfigProvider'
-import { CheckCircleOutline, CloseCircleOutline, InformationCircleOutline } from '@trionesdev/antd-taro-icons-react'
+import { CheckCircleOutline, CloseCircleOutline, InformationCircleOutline, ClockCircleOutline, ExclamationTriangleOutline } from '@trionesdev/antd-taro-icons-react'
 
 
 export const useResultIcon = (
@@ -8,11 +8,11 @@ export const useResultIcon = (
 ) => {
   const { result: componentConfig = {} } = useConfig()
   const {
-    successIcon = <CheckCircleOutline />,
-    errorIcon = <CloseCircleOutline />,
-    infoIcon = <InformationCircleOutline />,
-    waitingIcon = <InformationCircleOutline />,
-    warningIcon = <InformationCircleOutline />,
+    successIcon = <CheckCircleOutline style={{ fontSize: "48PX" }} />,
+    errorIcon = <CloseCircleOutline style={{ fontSize: "48PX" }} />,
+    infoIcon = <InformationCircleOutline style={{ fontSize: "48PX" }} />,
+    waitingIcon = <ClockCircleOutline style={{ fontSize: "48PX" }} />,
+    warningIcon = <ExclamationTriangleOutline style={{ fontSize: "48PX" }} />,
   } = componentConfig || {}
   switch (status) {
     case 'success':

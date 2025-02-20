@@ -3,7 +3,7 @@
  */
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
-import {FaceRecognitionOutline} from "@trionesdev/antd-taro-icons-react";
+import { FaceRecognitionOutline } from "@trionesdev/antd-taro-icons-react";
 import Result from "../index";
 
 export default () => {
@@ -51,7 +51,7 @@ export default () => {
 
       <DemoBlock title='自定义图标' padding='0'>
         <Result
-          icon={<FaceRecognitionOutline />}
+          icon={<FaceRecognitionOutline style={{ fontSize: "48PX" }} />}
           status='success'
           title='Well done'
           description='内容详情可折行，建议不超过两行建议不超过两行建议不超过两行'
