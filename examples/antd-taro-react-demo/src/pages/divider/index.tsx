@@ -1,5 +1,5 @@
 
-import { View } from "@tarojs/components";
+import { View, Text } from "@tarojs/components";
 import { Divider } from "@trionesdev/antd-taro-react";
 import { DemoBlock } from "../../components";
 
@@ -26,11 +26,11 @@ const DividerBase = () => {
     </DemoBlock>
     <DemoBlock title='竖向分割线'>
       <View>
-        Text
+        <Text>Text</Text>
         <Divider direction='vertical' />
-        Link
+        <Text>Link</Text>
         <Divider direction='vertical' />
-        Vertical
+        <Text>Vertical</Text>
       </View>
     </DemoBlock>
   </View>

@@ -11,6 +11,8 @@ export default defineAppConfig({
     "pages/divider/index",
     "pages/grid/index",
     "pages/ellipsis/index",
+    "pages/nav-bar/index",
+    "pages/badge/index",
     // "pages/tag/index",
     // "pages/card/index",
     // "pages/rate/index",

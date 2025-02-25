@@ -1,6 +1,7 @@
-import { Button, Text, View } from "@tarojs/components";
+import { Text, View } from "@tarojs/components";
 import { inject, observer } from "mobx-react";
 import { Component, PropsWithChildren } from "react";
+import { Button } from "@trionesdev/antd-taro-react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
@@ -62,8 +63,10 @@ class Index extends Component<PropsWithChildren> {
           <Button onClick={this.incrementAsync}>Add Async</Button>
           <Text>{counter}</Text>
         </View>
-        <View style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          <Button size={`mini`}
+        <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px' }}>
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/avatar/index",
@@ -72,7 +75,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Avatar
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/button/index",
@@ -81,7 +86,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Button
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/tab-bar/index",
@@ -90,7 +97,9 @@ class Index extends Component<PropsWithChildren> {
           >
             TabBar
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/checkbox/index",
@@ -99,7 +108,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Checkbox
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/divider/index",
@@ -108,7 +119,31 @@ class Index extends Component<PropsWithChildren> {
           >
             Divider
           </Button>
-          <Button size={`mini`}
+          {/* <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/ellipsis/index",
+              });
+            }}
+          >
+            Ellipsis
+          </Button> */}
+          <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/nav-bar/index",
+              });
+            }}
+          >
+            NavBar
+          </Button>
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/grid/index",
@@ -117,7 +152,20 @@ class Index extends Component<PropsWithChildren> {
           >
             Grid
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/badge/index",
+              });
+            }}
+          >
+            Badge
+          </Button>
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/empty/index",
@@ -126,16 +174,20 @@ class Index extends Component<PropsWithChildren> {
           >
             Empty
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/card/index",
               });
             }}
           >
-            card
+            Card
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/tag/index",
@@ -144,7 +196,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Tag
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/rate/index",
@@ -153,7 +207,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Rate
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/progress-bar/index",
@@ -162,7 +218,9 @@ class Index extends Component<PropsWithChildren> {
           >
             ProgressBar
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/input/index",
@@ -171,7 +229,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Input
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/form/index",
@@ -180,7 +240,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Form
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/popup/index",
@@ -189,7 +251,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Popup
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/picker/index",
@@ -198,7 +262,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Picker
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/tabs/index",
@@ -207,7 +273,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Tabs
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/cascader-picker/index",
@@ -216,7 +284,9 @@ class Index extends Component<PropsWithChildren> {
           >
             CascaderPicker
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/cascader-view/index",
@@ -225,7 +295,9 @@ class Index extends Component<PropsWithChildren> {
           >
             CascaderView
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/toast/index",
@@ -234,7 +306,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Toast
           </Button>
-          <Button size={`mini`}
+          <Button
+            block={true}
+            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/spin-loading/index",

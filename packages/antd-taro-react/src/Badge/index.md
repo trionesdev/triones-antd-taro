@@ -16,16 +16,10 @@
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| bordered | 是否增加描边 | `boolean` | `false` |
-| color | 徽标背景色，等效于设置 `--color` CSS 变量 | `string` | - |
-| content | 徽标内容：如果传 `null` `undefined` `''` 或不传，则不显示徽标；如果传 `Badge.dot`，会显示小红点 | `React.ReactNode \| typeof Badge.dot` | - |
-| wrapperClassName | `Badge` wrap 自定义类名 | `string` | - |
-| wrapperStyle | `Badge` wrap 自定义样式 | `React.CSSProperties` | - |
-
-### CSS 变量
-
-| 属性 | 说明 | 默认值 | 全局变量 |
-| --- | --- | --- | --- |
-| --color | 徽标背景色 |
-| --right | 相对于最右边，向左的偏移量 | `0` | - |
-| --top | 相对于最上边，向下的偏移量 | `0` | - |
+| value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
+| max | value 为数值时，最大值 | `number` | `99` |
+| dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
+| top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
+| right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
+| color | 徽标背景颜色 | `string` | `-` |
+| fill | 填充模式 | `solid` \| `outline` | `solid` |

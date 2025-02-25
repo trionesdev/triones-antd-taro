@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { CSSProperties, ReactNode } from 'react'
 
 /** https://github.com/Microsoft/TypeScript/issues/29729 */
 export type LiteralUnion<T extends string> = T | (string & {});
@@ -78,3 +79,16 @@ export type GetContextProp<
   T extends React.Context<any>,
   PropName extends keyof GetContextProps<T>,
 > = NonNullable<GetContextProps<T>[PropName]>;
+
+
+export interface BasicComponent {
+  className?: string
+  style?: CSSProperties
+  children?: ReactNode
+  id?: string
+}
+
+export const ComponentDefaults = {
+  className: '',
+  style: {},
+}
