@@ -19,8 +19,8 @@ $class-prefix-footer: 'triones-antm-footer';
     margin: 8PX 0;
     color: #1677ff;
     white-space: nowrap;
-    a {
-      text-decoration: none;
+    &-item {
+      display: inline-block;
     }
   }
   &-content {

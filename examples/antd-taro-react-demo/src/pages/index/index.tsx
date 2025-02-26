@@ -119,17 +119,6 @@ class Index extends Component<PropsWithChildren> {
           >
             Divider
           </Button>
-          {/* <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/ellipsis/index",
-              });
-            }}
-          >
-            Ellipsis
-          </Button> */}
           <Button
             block={true}
             type={`primary`}
@@ -173,6 +162,28 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             Empty
+          </Button>
+          <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/error-block/index",
+              });
+            }}
+          >
+            ErrorBlock
+          </Button>
+          <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/footer/index",
+              });
+            }}
+          >
+            Footer
           </Button>
           <Button
             block={true}

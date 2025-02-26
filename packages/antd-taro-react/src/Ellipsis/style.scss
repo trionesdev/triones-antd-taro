@@ -5,7 +5,8 @@ $class-prefix-ellipsis: 'triones-antm-ellipsis';
   line-height: 1.5;
   word-break: break-word;
 
-  a {
+  &-icon {
+    display: inline-block;
     color: #1677ff;
     cursor: pointer;
   }

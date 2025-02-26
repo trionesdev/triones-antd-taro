@@ -13,6 +13,8 @@ export default defineAppConfig({
     "pages/ellipsis/index",
     "pages/nav-bar/index",
     "pages/badge/index",
+    "pages/error-block/index",
+    "pages/footer/index",
     // "pages/tag/index",
     // "pages/card/index",
     // "pages/rate/index",

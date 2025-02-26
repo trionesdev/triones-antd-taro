@@ -6,6 +6,9 @@ import './style.scss'
 import { NativeProps, withNativeProps } from '../utils/native-props'
 import { mergeProps } from '../utils/with-default-props'
 import { useConfig } from '../ConfigProvider'
+import ReactDOMServer from 'react-dom/server';
+import Base64 from 'crypto-js/enc-base64';
+import Utf8 from 'crypto-js/enc-utf8';
 
 const classPrefix = `triones-antm-error-block`
 
@@ -36,12 +39,12 @@ export function createErrorBlock(imageRecord: ImageRecord) {
       'description' in props ? props.description : contentPack.description
     const title = 'title' in props ? props.title : contentPack.title
 
-    const image: ReactNode = props.image ?? imageRecord[props.status]
+    const image = props.image ?? imageRecord[props.status]
     const imageNode =
       typeof image === 'string' ? (
         <img src={image} alt='error block image' />
       ) : (
-        image
+        <img src={`data:image/svg+xml;base64,${Base64.stringify(Utf8.parse(ReactDOMServer.renderToString(image)))}`} alt='error block image' />
       )
 
     return withNativeProps(

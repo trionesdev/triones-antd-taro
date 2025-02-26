@@ -46,11 +46,9 @@ export const Footer: FC<FooterProps> = p => {
 
   const clickLinkItem = (
     item: LinkItem,
-    index: number,
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    index: number
   ) => {
     if (onLinkClick) {
-      e.preventDefault()
       onLinkClick(item, index)
     }
   }
@@ -66,13 +64,12 @@ export const Footer: FC<FooterProps> = p => {
         <div className={`${classPrefix}-links`}>
           {links.map((link, index) => (
             <React.Fragment key={index}>
-              <a
-                href={link.href}
-                rel='noopener noreferrer'
-                onClick={event => clickLinkItem(link, index, event)}
+              <div
+                className={`${classPrefix}-links-item`}
+                onClick={() => clickLinkItem(link, index)}
               >
                 {link.text}
-              </a>
+              </div>
               {index !== links.length - 1 && <Divider direction='vertical' />}
             </React.Fragment>
           ))}
