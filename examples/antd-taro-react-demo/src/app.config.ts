@@ -15,6 +15,7 @@ export default defineAppConfig({
     "pages/badge/index",
     "pages/error-block/index",
     "pages/footer/index",
+    "pages/notice-bar/index",
     // "pages/tag/index",
     // "pages/card/index",
     // "pages/rate/index",

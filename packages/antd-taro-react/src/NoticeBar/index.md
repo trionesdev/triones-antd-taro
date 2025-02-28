@@ -20,12 +20,10 @@
 | closeIcon | 自定义关闭按钮图标 | `ReactNode` | `<CloseOutline />` |
 | color | 通告栏的类型 | `'default' \| 'alert' \| 'error' \| 'info' \| 'success'` | `'default'` |
 | content | 公告内容 | `React.ReactNode` | - |
-| delay | 开始滚动的延迟，单位 `ms` | `number` | `2000` |
 | extra | 额外操作区域，显示在关闭按钮左侧 | `React.ReactNode` | - |
 | icon | 左侧广播图标 | `React.ReactNode` | `<SoundOutline />` |
 | onClose | 关闭时的回调 | `() => void` | - |
 | onClick | 点击事件 | `() => void` | - |
-| speed | 滚动速度，单位 `px/s` | `number` | `50` |
 | wrap | 是否多行展示 | `boolean` | `false` |
 | shape | 形状 (rectangular: 直角; neutral: 圆角; rounded: 圆形) | `'rectangular' \| 'neutral' \| 'rounded'` | `'rectangular'` | 5.38.0 |
 | bordered | 边框可见性 (`block`: 上下边框; `true`: 全边框; `false`: 无边框) | `'block' \| boolean` | `'block'` | 5.38.0 |

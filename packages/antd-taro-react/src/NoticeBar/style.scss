@@ -33,7 +33,7 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
     --text-color: var(--triones-antm-color-orange);
   }
   &.#{$class-prefix-notice-bar}-error {
-    --background-color: var(--triones-antm-color-danger);
+    --background-color: #d9281e;
     --border-color: #d9281e;
     --text-color: #fff;
   }

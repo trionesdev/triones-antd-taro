@@ -68,8 +68,8 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
     props.closeIcon
   )
 
-  const containerRef = useRef<HTMLSpanElement>(null)
-  const textRef = useRef<HTMLSpanElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
 
   const [visible, setVisible] = useState(true)
 
@@ -101,10 +101,12 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
     } else {
       text.style.transform = `translateX(${container.offsetWidth}px)`
     }
+
     const distance = initial
       ? text.offsetWidth
       : container.offsetWidth + text.offsetWidth
     animatingRef.current = true
+
     text.style.transitionDuration = `${Math.round(distance / speed)}s`
     text.style.transform = `translateX(-${text.offsetWidth}px)`
   }
@@ -148,10 +150,10 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
       onClick={mergedProps.onClick}
     >
       {mergedProps.icon && (
-        <span className={`${classPrefix}-left`}>{mergedProps.icon}</span>
+        <div className={`${classPrefix}-left`}>{mergedProps.icon}</div>
       )}
-      <span ref={containerRef} className={`${classPrefix}-content`}>
-        <span
+      <div ref={containerRef as React.RefObject<HTMLDivElement>} className={`${classPrefix}-content`}>
+        <div
           onTransitionEnd={() => {
             animatingRef.current = false
             start()
@@ -160,10 +162,10 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
           className={`${classPrefix}-content-inner`}
         >
           {mergedProps.content}
-        </span>
-      </span>
+        </div>
+      </div>
       {(mergedProps.closeable || mergedProps.extra) && (
-        <span className={`${classPrefix}-right`}>
+        <div className={`${classPrefix}-right`}>
           {mergedProps.extra}
           {mergedProps.closeable && (
             <div
@@ -176,7 +178,7 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
               {closeIcon}
             </div>
           )}
-        </span>
+        </div>
       )}
     </div>
   )

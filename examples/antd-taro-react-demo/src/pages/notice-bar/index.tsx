@@ -1,17 +1,11 @@
-/**
- * compact: true
- */
-import { CloseCircleOutline, SetOutline } from '@trionesdev/antd-taro-icons-react'
-import { DemoBlock } from '../../DemoBlock';
-import React from 'react'
-import NoticeBar from "../index";
-import Space from "../../Space";
+import { View } from "@tarojs/components";
+import { DemoBlock } from "../../components";
+import { NoticeBar, Space } from "@trionesdev/antd-taro-react";
+import { CloseCircleOutline, SetOutline } from "@trionesdev/antd-taro-icons-react";
 
-
-export default () => {
-  return (
-    <>
-      <DemoBlock title='通告栏语义' padding='0' background='transparent'>
+const TabBarBase = () => {
+  return <View>
+    <DemoBlock title='通告栏语义' padding='0' background='transparent'>
         <Space block direction='vertical'>
           <NoticeBar content='默认' color='default' />
           <NoticeBar content='成功' color='success' />
@@ -68,6 +62,6 @@ export default () => {
           </div>
         </Space>
       </DemoBlock>
-    </>
-  )
+  </View>
 }
+export default TabBarBase;

@@ -190,6 +190,17 @@ class Index extends Component<PropsWithChildren> {
             type={`primary`}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/notice-bar/index",
+              });
+            }}
+          >
+            NoticeBar
+          </Button>
+          <Button
+            block={true}
+            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/card/index",
               });
             }}
