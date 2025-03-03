@@ -1,13 +1,13 @@
 $class-prefix-nav-bar: 'triones-antm-nav-bar';
-
+/* prettier-ignore */
 .#{$class-prefix-nav-bar} {
-  --height: 45px;
+  --height: 45PX;
   --border-bottom: none;
   display: flex;
   align-items: center;
   height: var(--height);
   border-bottom: var(--border-bottom);
-  padding: 0 12px;
+  padding: 0 12PX;
   white-space: nowrap;
 
   &-left,
@@ -24,13 +24,12 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
   &-back {
     display: flex;
     align-items: center;
-    margin-right: 16px;
-    padding: 6px 0;
+    margin-right: 16PX;
+    padding: 6PX 0;
     cursor: pointer;
     &-arrow {
-      font-size: 24px;
-      margin-top: 2px;
-      margin-right: 5px;
+      font-size: 20PX;
+      margin-right: 5PX;
       display: flex;
       align-items: center;
     }
@@ -47,7 +46,7 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
     justify-content: center;
     white-space: nowrap;
     font-size: var(--triones-antm-font-size-10);
-    padding: 0 12px;
+    padding: 0 12PX;
   }
 
   &-right {

@@ -1,51 +1,100 @@
-$class-prefix-badge: 'triones-antm-badge';
+/* prettier-ignore */
+$color-primary: #fa2c19;
+$color-primary-text: #fff;
+$badge-height: 14PX;
+$badge-background-color: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+$badge-color: #fff;
+$badge-font-size: 10PX;
+$badge-border: 0PX solid #fff;
+$badge-border-radius: $badge-height;
+$badge-min-width: 5PX;
+$badge-padding: 0 4PX;
+$badge-icon-padding: 3PX;
+$badge-icon-size: 12PX;
+$badge-content-transform: translateY(-50%) translateX(100%);
+$badge-z-index: 1;
+$badge-dot-width: 7PX;
+$badge-dot-border: 0PX solid #fff;
 
-.#{$class-prefix-badge}-wrapper {
-  display: inline-block;
+.triones-antm-badge {
   position: relative;
-}
+  display: inline-block;
 
-.#{$class-prefix-badge} {
-  display: inline-flex;
-  vertical-align: middle;
-  box-sizing: content-box;
-  border-radius: 100px;
-  background-color: var(--color);
-  --right: 0;
-  --top: 0;
-  --color: #ff3141;
-
-  &-content {
-    color: #ffffff;
-    box-sizing: border-box;
-    min-width: 8px;
-    padding: 1px 4px;
-    font-size: 9px;
-    line-height: 12px;
-    white-space: nowrap;
-    font-weight: normal;
+  &-icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $badge-background-color;
+    top: -10%;
+    right: -15%;
+    padding: $badge-icon-padding;
     text-align: center;
+    border: $badge-border;
+    border-radius: $badge-border-radius;
+    z-index: $badge-z-index;
+
+    .triones-antm-icon {
+      width: $badge-icon-size;
+      height: $badge-icon-size;
+      font-size: $badge-icon-size;
+    }
   }
 
-  &-fixed {
+  &-sup {
+    height: $badge-height;
     position: absolute;
-    right: var(--right);
-    top: var(--top);
-    transform: translate(50%, -50%);
-    -webkit-transform: translate(50%, -50%);
-    -moz-transform: translate(50%, -50%);
-    -ms-transform: translate(50%, -50%);
-    -o-transform: translate(50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $badge-background-color;
+    color: $badge-color;
+    padding: $badge-padding;
+    font-size: $badge-font-size;
+    font-weight: normal;
+    text-align: center;
+    border: $badge-border;
+    border-radius: $badge-border-radius;
+    min-width: $badge-min-width;
+    white-space: nowrap;
+    z-index: 1;
+  }
+
+  &-one {
+    height: $badge-height;
+    width: $badge-height;
+    padding: 0;
+  }
+
+  &-content {
+    transform: $badge-content-transform;
   }
 
   &-dot {
-    min-width: 10px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: $badge-dot-width;
+    height: $badge-dot-width;
+    border: $badge-dot-border;
+    border-radius: $badge-dot-width;
+    padding: 0;
   }
 
-  &-bordered {
-    border: solid 1px #ffffff;
+  &-outline {
+    .triones-antm-badge-content {
+      background: $color-primary-text;
+      border: 1PX solid $color-primary;
+      color: $color-primary;
+    }
+  }
+}
+
+[dir='rtl'] .triones-antm-badge,
+.triones-antm-rtl .triones-antm-badge {
+  &-icon {
+    right: auto;
+    left: -15%;
+  }
+
+  &-content {
+    transform: translateY(-50%) translateX(-100%);
   }
 }

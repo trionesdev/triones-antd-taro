@@ -1,19 +1,19 @@
 $class-prefix-notice-bar: 'triones-antm-notice-bar';
-
+/* prettier-ignore */
 .#{$class-prefix-notice-bar} {
   --background-color: var(--triones-antm-color-weak);
   --border-color: var(--triones-antm-color-weak);
   --text-color: var(--triones-antm-color-text-light-solid);
   --font-size: var(--triones-antm-font-size-7);
   --icon-font-size: var(--triones-antm-font-size-10);
-  --height: 40px;
-  --triones-antm-notice-bar-border-radius: 4px;
-  --triones-antm-notice-bar-border-width: 1px;
+  --height: 40PX;
+  --triones-antm-notice-bar-border-radius: 4PX;
+  --triones-antm-notice-bar-border-width: 1PX;
 
   height: var(--height);
   box-sizing: border-box;
   font-size: var(--font-size);
-  padding: 0 12px;
+  padding: 0 12PX;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +33,7 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
     --text-color: var(--triones-antm-color-orange);
   }
   &.#{$class-prefix-notice-bar}-error {
-    --background-color: var(--triones-antm-color-danger);
+    --background-color: #d9281e;
     --border-color: #d9281e;
     --text-color: #fff;
   }
@@ -50,7 +50,7 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
 
   & .#{$class-prefix-notice-bar}-left {
     flex-shrink: 0;
-    margin-right: 8px;
+    margin-right: 8PX;
     font-size: var(--icon-font-size);
   }
   & .#{$class-prefix-notice-bar}-content {
@@ -72,13 +72,13 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    margin-left: 12px;
+    margin-left: 12PX;
   }
 
   &-close {
-    width: 24px;
-    height: 24px;
-    margin-right: -3px;
+    width: 24PX;
+    height: 24PX;
+    margin-right: -3PX;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,9 +88,9 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
   &-wrap {
     height: auto;
     align-items: flex-start;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    line-height: 22px;
+    padding-top: 8PX;
+    padding-bottom: 8PX;
+    line-height: 22PX;
   }
 
   &-neutral {
@@ -102,8 +102,12 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
   }
 
   &-rounded {
-    border-radius: 1000px;
-  }
+    border-radius: 1000PX;
+    -webkit-border-radius: 1000PX;
+    -moz-border-radius: 1000PX;
+    -ms-border-radius: 1000PX;
+    -o-border-radius: 1000PX;
+}
 
   &-bordered {
     border-left-width: var(--triones-antm-notice-bar-border-width);

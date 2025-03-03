@@ -2,9 +2,11 @@ import React, { FC, ReactNode, useContext } from 'react'
 import { Locale } from '../locales/base'
 import zhCN from '../locales/zh-CN'
 
+export type ConfigProviderDirection = 'ltr' | 'rtl' | undefined
 
 type Config = {
   locale: Locale
+  direction?: ConfigProviderDirection
   checkList?: {
     activeIcon?: ReactNode
   }
@@ -50,6 +52,7 @@ export const defaultConfigRef: {
 } = {
   current: {
     locale: zhCN,
+    direction: 'ltr',
   },
 }
 
@@ -70,6 +73,11 @@ export type ConfigProviderProps = Partial<Config> & {
 
 export function useConfig() {
   return useContext(ConfigContext) ?? getDefaultConfig()
+}
+
+export const useRtl = () => {
+  const { direction } = useConfig()
+  return direction === 'rtl'
 }
 
 export const ConfigProvider: FC<ConfigProviderProps> = props => {

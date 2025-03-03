@@ -56,26 +56,28 @@ export const Ellipsis: FC<EllipsisProps> = p => {
   const expandNode = expandText
     ? withStopPropagation(
       stopPropagationForActionButtons,
-      <a
+      <div
+        className='triones-antm-ellipsis-icon'
         onClick={() => {
           setExpanded(true)
         }}
       >
         {expandText}
-      </a>
+      </div>
     )
     : null
 
   const collapseNode = collapseText
     ? withStopPropagation(
       stopPropagationForActionButtons,
-      <a
+      <div
+        className='triones-antm-ellipsis-icon'
         onClick={() => {
           setExpanded(false)
         }}
       >
         {collapseText}
-      </a>
+      </div>
     )
     : null
 
