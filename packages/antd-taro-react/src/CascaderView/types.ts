@@ -1,8 +1,8 @@
 import React from "react";
 
 export type Column = {
-  value: any
-  options: ColumnOption[]
+  value?: ColumnOption | null
+  options?: ColumnOption[]
 }
 export type ColumnOption = {
   value?: string

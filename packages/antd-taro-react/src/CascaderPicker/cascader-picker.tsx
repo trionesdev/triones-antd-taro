@@ -59,17 +59,17 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
   }, [innerOpen]);
 
   useEffect(() => {
-    if (open == undefined) {
+    if (open === undefined) {
       return;
     }
-    if (open == innerOpen) {
+    if (open === innerOpen) {
       return;
     }
     setInnerOpen(open)
   }, [open]);
 
   useEffect(() => {
-    if (value == undefined) {
+    if (value === undefined) {
       return;
     }
     if (_.isEqual(value, internalValue)) {

@@ -27,8 +27,9 @@ $cascaderPickerCls: 'triones-antm-cascader-picker';
   &-body {
     flex: 1 1;
     width: 100%;
-    height: 100%;
     pointer-events: unset;
+    overflow: hidden;
+    padding-bottom: 16px;
   }
   &-view{
     --height: 100%;
