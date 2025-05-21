@@ -66,7 +66,6 @@ class Index extends Component<PropsWithChildren> {
         <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px' }}>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/avatar/index",
@@ -77,7 +76,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/button/index",
@@ -88,161 +86,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/tab-bar/index",
-              });
-            }}
-          >
-            TabBar
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/checkbox/index",
-              });
-            }}
-          >
-            Checkbox
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/divider/index",
-              });
-            }}
-          >
-            Divider
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/nav-bar/index",
-              });
-            }}
-          >
-            NavBar
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/grid/index",
-              });
-            }}
-          >
-            Grid
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/badge/index",
-              });
-            }}
-          >
-            Badge
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/empty/index",
-              });
-            }}
-          >
-            Empty
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/error-block/index",
-              });
-            }}
-          >
-            ErrorBlock
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/footer/index",
-              });
-            }}
-          >
-            Footer
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/notice-bar/index",
-              });
-            }}
-          >
-            NoticeBar
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/card/index",
-              });
-            }}
-          >
-            Card
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/tag/index",
-              });
-            }}
-          >
-            Tag
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/rate/index",
-              });
-            }}
-          >
-            Rate
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/progress-bar/index",
-              });
-            }}
-          >
-            ProgressBar
-          </Button>
-          <Button
-            block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/input/index",
@@ -253,7 +96,156 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/tab-bar/index",
+              });
+            }}
+          >
+            TabBar
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/checkbox/index",
+              });
+            }}
+          >
+            Checkbox
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/divider/index",
+              });
+            }}
+          >
+            Divider
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/nav-bar/index",
+              });
+            }}
+          >
+            NavBar
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/grid/index",
+              });
+            }}
+          >
+            Grid
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/badge/index",
+              });
+            }}
+          >
+            Badge
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/empty/index",
+              });
+            }}
+          >
+            Empty
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/error-block/index",
+              });
+            }}
+          >
+            ErrorBlock
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/footer/index",
+              });
+            }}
+          >
+            Footer
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/notice-bar/index",
+              });
+            }}
+          >
+            NoticeBar
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/card/index",
+              });
+            }}
+          >
+            Card
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/tag/index",
+              });
+            }}
+          >
+            Tag
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/rate/index",
+              });
+            }}
+          >
+            Rate
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/progress-bar/index",
+              });
+            }}
+          >
+            ProgressBar
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/input/index",
+              });
+            }}
+          >
+            Input
+          </Button>
+          <Button
+            block={true}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/form/index",
@@ -264,7 +256,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/popup/index",
@@ -275,7 +266,16 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/radio/index",
+              });
+            }}
+          >
+            Radio
+          </Button>
+          <Button
+            block={true}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/picker/index",
@@ -286,7 +286,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/tabs/index",
@@ -297,7 +296,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/cascader-picker/index",
@@ -308,7 +306,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/cascader-view/index",
@@ -319,7 +316,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/toast/index",
@@ -330,7 +326,6 @@ class Index extends Component<PropsWithChildren> {
           </Button>
           <Button
             block={true}
-            type={`primary`}
             onClick={() => {
               Taro.navigateTo({
                 url: "/pages/spin-loading/index",
@@ -338,6 +333,16 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             SpinLoading
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/space/index",
+              });
+            }}
+          >
+            Space
           </Button>
         </View>
       </View>

@@ -12,12 +12,12 @@ type CheckboxProps = {
 export const Checkbox: FC<CheckboxProps> = ({children, checked, shape = 'round', disabled}) => {
   const [innerChecked, setInnerChecked] = useState(checked)
   const cls = 'triones-antm-checkbox-item';
-  return <label className={classNames(cls)}>
+  return <label className={classNames(cls)}  htmlFor={`s`}>
     <div className={classNames(`${cls}-container`)} style={{pointerEvents: disabled ? 'none' : 'auto'}}>
       {shape === 'round' && <>
         <div className={classNames(`${cls}-wrap`)}>
           <span className={classNames(`${cls}-base`)}>
-            <input className={classNames(`${cls}-input`)} type={"checkbox"}
+            <input id={`s`} className={classNames(`${cls}-input`)} type={"checkbox"}
                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                      setInnerChecked(e.target.checked)
                    }}/>

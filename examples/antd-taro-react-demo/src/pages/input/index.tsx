@@ -1,12 +1,9 @@
-import {View,Input as TaroInput} from "@tarojs/components";
-import { Input } from "@trionesdev/antd-taro-react";
+import {View} from "@tarojs/components";
+import {Input} from "@trionesdev/antd-taro-react";
 import {DemoBlock} from "../../components";
 
 const InputBase = () => {
   return <View>
-    <DemoBlock title={`Taro`}>
-      <TaroInput/>
-    </DemoBlock>
     <DemoBlock title="基础用法">
       <Input placeholder="请输入内容"/>
     </DemoBlock>

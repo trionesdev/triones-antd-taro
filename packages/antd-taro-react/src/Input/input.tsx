@@ -1,6 +1,6 @@
 import { BaseInput } from './base-input';
 import { InputAffixWrapper } from './input-affix-wrapper';
-import React, { FC } from 'react';
+import React, {FC, useEffect} from 'react';
 import './index.scss';
 
 export type InputProps = {
@@ -27,6 +27,7 @@ export const Input: FC<InputProps> = ({
   value,
   onChange,
 }) => {
+
   const handleRender = () => {
     if (prefix || suffix || allowClear) {
       return (

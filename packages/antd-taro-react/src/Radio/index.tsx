@@ -1,11 +1,15 @@
-import { attachPropertiesToComponent } from '../utils/attach-properties-to-component';
-import { Group } from './group';
-import { Radio } from './radio';
+import {Radio} from './radio';
+import {RadioGroup} from './RadioGroup';
 import './style.scss';
 
-export type { RadioGroupProps } from './group';
-export type { RadioProps, RadioValue } from './radio';
+export type {RadioProps, RadioGroupProps} from './types';
 
-export default attachPropertiesToComponent(Radio, {
-  Group,
-});
+import {RadioButton} from "./RadioButton"
+import {RadioButtonGroup} from "./RadioButtonGroup"
+
+// export default attachPropertiesToComponent(Radio, {
+//   Group: RadioGroup,
+//   Button: RadioButton
+// });
+
+export {Radio, RadioGroup, RadioButton, RadioButtonGroup}

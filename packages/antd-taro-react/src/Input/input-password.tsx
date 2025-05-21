@@ -40,7 +40,7 @@ export const InputPassword: FC<InputPasswordProps> = ({
       suffix={
         <>
           {' '}
-          {visibilityToggle && toggleRender()} {suffix}{' '}
+          {visibilityToggle && <div style={{paddingLeft:4}}>{toggleRender()}</div>} {suffix}{' '}
         </>
       }
     />

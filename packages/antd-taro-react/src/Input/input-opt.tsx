@@ -34,8 +34,10 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
     if (focusIndex === index) {
       if (_.isFunction(ref.current?.select)) {
         ref.current?.select();
-      } else {
+      } else if(_.isFunction(ref.current?.setSelectionRange)) {
         ref.current?.setSelectionRange(0, ref.current!.value.length);
+      }else {
+        ref.current?.focus();
       }
     } else {
       ref.current?.blur();

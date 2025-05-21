@@ -1,58 +1,95 @@
+@import "../style/variable";
+
 $class-prefix-radio: 'triones-antm-radio';
 
 .#{$class-prefix-radio} {
-  --icon-size: 22px;
-  --font-size: var(--triones-antm-font-size-9);
-  --gap: 8px;
-  display: inline-flex;
-  vertical-align: text-bottom;
-  justify-content: flex-start;
-  align-items: center;
   cursor: pointer;
-  input[type='radio'] {
-    display: none;
-  }
-  .#{$class-prefix-radio}-icon {
-    flex: none;
-    border: 1px solid var(--triones-antm-color-light);
-    border-radius: var(--icon-size);
-    box-sizing: border-box;
-    width: var(--icon-size);
-    height: var(--icon-size);
-    color: var(--triones-antm-color-text-light-solid);
-    > svg {
-      display: block;
-      width: 100%;
-      height: 100%;
+  display: inline-flex;
+
+  &-round {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8Px;
+
+    &-wrap {
+
+    }
+
+    &-icon {
+      display: inline-flex;
+
+      &-default {
+        display: inline-flex;
+        width: 22Px;
+        height: 22Px;
+        justify-content: center;
+        align-items: center;
+
+        .#{$class-prefix-radio} {
+          &-round-icon {
+            &-checked {
+              height: 100%;
+              width: 100%;
+              background-color: $trionesColorPrimary;
+              color: white;
+              border-radius: 50vh;
+              justify-content: center;
+              align-items: center;
+              display: inline-flex;
+            }
+
+            &-unchecked {
+              height: 100%;
+              width: 100%;
+              border: 1px solid #cccccc;
+              border-radius: 50vh;
+              box-sizing: border-box;
+
+              i {
+                &::before {
+                  content: ' ';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-content {
     }
   }
-  &.#{$class-prefix-radio}-block {
-    display: flex;
-  }
-  &.#{$class-prefix-radio}-checked {
-    .#{$class-prefix-radio}-icon {
-      border-color: var(--triones-antm-color-primary);
-      background-color: var(--triones-antm-color-primary);
-    }
-  }
-  &.#{$class-prefix-radio}-disabled {
-    cursor: not-allowed;
-    .#{$class-prefix-radio}-content {
-      opacity: 0.4;
-    }
-    .#{$class-prefix-radio}-icon {
-      color: var(--triones-antm-color-light);
-      border-color: var(--triones-antm-color-light);
-      background-color: var(--triones-antm-color-fill-content);
-    }
-  }
-  .#{$class-prefix-radio}-custom-icon {
-    font-size: var(--icon-size);
+}
+
+.#{$class-prefix-radio}-group {
+}
+
+.#{$class-prefix-radio}-button-group {
+}
+
+.#{$class-prefix-radio}-button {
+  cursor: pointer;
+  display: inline-flex;
+  padding: 8px 12px;
+  border-top: 1PX solid $trionesBorderColor;
+  border-bottom: 1PX solid $trionesBorderColor;
+  border-right: 1PX solid $trionesBorderColor;
+
+  &:first-child {
+    border-left: 1PX solid $trionesBorderColor;
+    border-top-left-radius: $trionesBorderRadius;
+    border-bottom-left-radius: $trionesBorderRadius;
   }
 
-  &-content {
-    flex: 0 1 auto;
-    font-size: var(--font-size);
-    padding-left: var(--gap);
+  &:last-child {
+    border-right: 1PX solid $trionesBorderColor;
+    border-top-right-radius: $trionesBorderRadius;
+    border-bottom-right-radius: $trionesBorderRadius;
+  }
+  &-checked{
+    border-top: 1PX solid $trionesColorPrimary;
+    border-bottom: 1PX solid $trionesColorPrimary;
+    color: $trionesColorPrimary;
   }
 }

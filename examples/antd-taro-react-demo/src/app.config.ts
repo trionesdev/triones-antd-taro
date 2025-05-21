@@ -4,8 +4,8 @@ export default defineAppConfig({
     "pages/avatar/index",
     "pages/button/index",
     "pages/checkbox/index",
-    // "pages/radio/index",
-    // "pages/input/index",
+    "pages/radio/index",
+    "pages/input/index",
     "pages/tab-bar/index",
     "pages/empty/index",
     "pages/divider/index",
@@ -29,6 +29,7 @@ export default defineAppConfig({
     "pages/cascader-view/index",
     "pages/toast/index",
     "pages/spin-loading/index",
+    "pages/space/index",
   ],
   window: {
     backgroundTextStyle: "light",

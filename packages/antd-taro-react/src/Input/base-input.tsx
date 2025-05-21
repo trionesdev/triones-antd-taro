@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 
 export type BaseInputProps = {
   className?: string;
@@ -16,6 +16,7 @@ export interface BaseInputHandle {
 
 export const BaseInput = forwardRef<BaseInputHandle, BaseInputProps>(
   ({ className, placeholder, type, value, onChange }, ref) => {
+    const [keySequence,setKeySequence] = useState(0)
     const [innerValue, setInnerValue] = useState(value || '');
 
     useImperativeHandle(ref, () => ({
@@ -26,8 +27,14 @@ export const BaseInput = forwardRef<BaseInputHandle, BaseInputProps>(
     }));
 
     const cls = 'triones-antm-input';
+
+
+    useEffect(() => {
+      setKeySequence(keySequence+1)
+    }, [type]);
+
     return (
-      <input
+      <input key={keySequence}
         className={classNames([`${cls}`, className])}
         placeholder={placeholder}
         type={type}
