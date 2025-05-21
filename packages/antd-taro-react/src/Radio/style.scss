@@ -66,12 +66,12 @@ $class-prefix-radio: 'triones-antm-radio';
 }
 
 .#{$class-prefix-radio}-button-group {
+  display: flex;
 }
 
-.#{$class-prefix-radio}-button {
-  cursor: pointer;
+.#{$class-prefix-radio}-button-wrapper {
   display: inline-flex;
-  padding: 8px 12px;
+  position: relative;
   border-top: 1PX solid $trionesBorderColor;
   border-bottom: 1PX solid $trionesBorderColor;
   border-right: 1PX solid $trionesBorderColor;
@@ -87,9 +87,36 @@ $class-prefix-radio: 'triones-antm-radio';
     border-top-right-radius: $trionesBorderRadius;
     border-bottom-right-radius: $trionesBorderRadius;
   }
-  &-checked{
+
+  &-checked {
     border-top: 1PX solid $trionesColorPrimary;
     border-bottom: 1PX solid $trionesColorPrimary;
     color: $trionesColorPrimary;
+
+    &:first-child {
+      border: 1PX solid $trionesColorPrimary;
+    }
+
+    &:not(:first-child) {
+      &::before {
+        content: " ";
+        width: 0.5PX;
+        background-color: $trionesColorPrimary;
+        position: absolute;
+        inset-block-start: -0.5px;
+        inset-inline-start: -0.5px;
+        height: 100%;
+        padding-block: 0.5px;
+      }
+
+      border-right: 1PX solid $trionesColorPrimary;
+    }
+  }
+
+  .#{$class-prefix-radio}-button {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 8px 12px;
+
   }
 }

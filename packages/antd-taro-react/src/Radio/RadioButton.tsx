@@ -30,13 +30,13 @@ export const RadioButton: FC<RadioProps> = ({children, defaultChecked, checked, 
     }
   }, [groupContext?.value]);
 
-  return (<div className={classNames(`${classPrefix}-button`, {
-
-    [`${classPrefix}-button-left-border`]: leftBorderShow,
-    [`${classPrefix}-button-right-border`]: rightBorderShow,
-    [`${classPrefix}-button-checked`]: internalChecked
+  return (<div className={classNames(`${classPrefix}-button-wrapper`, {
+    [`${classPrefix}-button-wrapper-checked`]: internalChecked
   })}
                onClick={handleClick}>
-    {children}
+
+    <div className={`${classPrefix}-button`}>
+      {children}
+    </div>
   </div>);
 }
