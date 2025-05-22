@@ -44,7 +44,7 @@ export const Radio: FC<RadioProps> = ({
   }, [groupContext?.value]);
 
   return (<div className={classNames(classPrefix)} onClick={handleClick}>
-    {shape === 'round' && <div className={classNames(`${classPrefix}-round`)}>
+    <div className={classNames(`${classPrefix}-round`)}>
       <div className={classNames(`${classPrefix}-round-icon`)}>
         {icon?.(internalChecked) || <div className={classNames(`${classPrefix}-round-icon-default`)}>
           {internalChecked ? <div className={`${classPrefix}-round-icon-checked`}>
@@ -56,7 +56,6 @@ export const Radio: FC<RadioProps> = ({
         </div>}
       </div>
       <div className={classNames(`${classPrefix}-round-content`)}>{children}</div>
-    </div>}
-    {shape === 'button' && <div></div>}
+    </div>
   </div>);
 };

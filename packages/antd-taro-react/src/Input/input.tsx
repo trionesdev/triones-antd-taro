@@ -1,6 +1,6 @@
 import { BaseInput } from './base-input';
 import { InputAffixWrapper } from './input-affix-wrapper';
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import './index.scss';
 
 export type InputProps = {

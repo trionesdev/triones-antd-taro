@@ -1,50 +1,46 @@
-import "./index.scss"
-import classNames from "classnames";
-import React, {FC, useState} from "react";
-import {CheckOutline} from "@trionesdev/antd-taro-icons-react";
+import { CheckOutline } from '@trionesdev/antd-taro-icons-react';
+import classNames from 'classnames';
+import React, { FC, useState } from 'react';
+import './index.scss';
+import { CheckboxProps, cls } from './types';
 
-type CheckboxProps = {
-  children?: React.ReactNode;
-  checked?: boolean;
-  shape?: 'button' | 'round'
-  disabled?: boolean
-}
-export const Checkbox: FC<CheckboxProps> = ({children, checked, shape = 'round', disabled}) => {
-  const [innerChecked, setInnerChecked] = useState(checked)
-  const cls = 'triones-antm-checkbox-item';
-  return <label className={classNames(cls)}  htmlFor={`s`}>
-    <div className={classNames(`${cls}-container`)} style={{pointerEvents: disabled ? 'none' : 'auto'}}>
-      {shape === 'round' && <>
-        <div className={classNames(`${cls}-wrap`)}>
-          <span className={classNames(`${cls}-base`)}>
-            <input id={`s`} className={classNames(`${cls}-input`)} type={"checkbox"}
-                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                     setInnerChecked(e.target.checked)
-                   }}/>
-          </span>
+export const Checkbox: FC<CheckboxProps> = ({
+  children,
+  checked,
+  defaultChecked,
+  disabled,
+}) => {
+  const [innerChecked, setInnerChecked] = useState(checked ?? defaultChecked ?? false);
 
-          <div className={classNames(`${cls}-fake`)}>
-            <CheckOutline className={classNames(`${cls}-fake-icon`, {
-              'checkedIcon': !disabled && innerChecked,
-              'uncheckedIcon': !disabled && !innerChecked,
-              'disabledCheckedIcon': disabled && innerChecked,
-              'disabledUncheckedIcon': disabled && !innerChecked,
-            })}/>
-          </div>
+  const prefixCls = `${cls}`;
+  return (
+    <label className={classNames(`${prefixCls}-wrapper`,{
+      [`${prefixCls}-disabled`]: disabled,
+    })} onClick={() => {
+      console.log('click');
+      setInnerChecked(!innerChecked);
+    }}>
+      <div className={classNames(`${prefixCls}`)}>
+        {/*<input*/}
+        {/*  className={`${prefixCls}-input`}*/}
+        {/*  type={'checkbox'}*/}
+        {/*  checked={innerChecked}*/}
+        {/*  disabled={disabled}*/}
+        {/*  onChange={(e) => {*/}
+        {/*    setInnerChecked(e.target.checked);*/}
+        {/*  }}*/}
+        {/*/>*/}
+        <div className={classNames(`${prefixCls}-fake`)}>
+          {innerChecked ? (
+            <div className={classNames(`${prefixCls}-fake-checked`)}>
+              <CheckOutline />
+            </div>
+          ) : (
+            <div className={classNames(`${prefixCls}-fake-unchecked`)}></div>
+          )}
         </div>
-        <div className={classNames(`${cls}-content`, {[`${cls}-content-disabled`]: disabled})}>{children}</div>
-      </>}
-      {shape === 'button' && <div className={classNames(`${cls}-button`, {
-        [`${cls}-button-disabled`]: disabled,
-        [`${cls}-button-checked`]: innerChecked
-      })} onClick={() => {
-        setInnerChecked(!innerChecked)
-      }}>
-        <div className={classNames(`${cls}-button-content`)}>{children}</div>
-        {innerChecked && <div className={classNames(`${cls}-button-icon`)}>
-          <CheckOutline className={classNames(`checkedIcon`)}/>
-        </div>}
-      </div>}
-    </div>
-  </label>
-}
+      </div>
+      <div className={classNames(`${prefixCls}-content`)}>{children}</div>
+    </label>
+  );
+};

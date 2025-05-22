@@ -1,206 +1,143 @@
-$checkboxItemCls: 'triones-antm-checkbox-item';
+@import "../style/variable";
+$checkboxCls: 'triones-antm-checkbox';
 
-.#{$checkboxItemCls} {
-  display: inline-block;
-  line-height: 1.8;
-  margin-right: 8Px;
+$checkboxDisabledColor:rgba(0,0,0,0.25) !default;
+
+.#{$checkboxCls}-wrapper{
+  display: inline-flex;
+  align-items: center;
   box-sizing: border-box;
-
-  &-container {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-  }
-
-  &-wrap {
+  gap: 8Px;
+  .#{$checkboxCls}{
     position: relative;
-    width: 22Px;
-    height: 22Px;
-    flex: 0 0 22Px;
-  }
-
-  &-base {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    box-sizing: border-box;
-
-    input {
+    &-input{
+      cursor: inherit;
       position: absolute;
-      top: 0;
-      left: 0;
       opacity: 0;
       width: 100%;
       height: 100%;
-      z-index: 2;
-      border: none;
-      overflow: visible;
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-
-    &-icon {
-      position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #1677ff;
-      background-color: currentcolor;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+    }
+    &-fake{
+      width: 22PX;
+      height: 22PX;
+      &-checked{
+        height: 100%;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $trionesColorPrimary;
+        color: white;
+        border-radius: 50vh;
+        box-sizing: border-box;
+        overflow: hidden;
+        //i{
+        //  width: 100%;
+        //  height: 100%;
+        //  display: flex;
+        //  align-items: center;
+        //  justify-content: center;
+        //}
+      }
+      &-unchecked{
+        height: 100%;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50vh;
+        border: 1PX solid $trionesBorderColor;
+        box-sizing: border-box;
+      }
     }
   }
 
-  &-fake {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+
+  &.#{$checkboxCls}-disabled{
+    color: $checkboxDisabledColor;
     pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .#{$checkboxCls}-fake-checked{
+      background-color: $checkboxDisabledColor;
+    }
+  }
+}
 
-    &-icon {
-      border-radius: 50vh;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
-      &::before {
-        //font-family: "triones-ant-mini-icon" !important;
-        font-style: normal;
-        line-height: 1;
+
+.#{$checkboxCls}-group{
+  display: flex;
+}
+
+.#{$checkboxCls}-button{
+  cursor: pointer;
+  display: inline-flex;
+  padding: 4Px 12Px;
+  border-radius: 8Px;
+  position: relative;
+  overflow: hidden;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+
+  &-checked {
+    background-color: #ffffff;
+    border: 1Px solid #1677ff;
+
+    .#{$checkboxCls}-button-content {
+      color: #1677ff;
+    }
+  }
+
+  &-disabled {
+    pointer-events: none;
+    color: $checkboxDisabledColor;
+    &.#{$checkboxCls}-button  {
+        &-checked{
+          border: 1Px solid $checkboxDisabledColor;
+          .#{$checkboxCls}-button-content {
+            color: $checkboxDisabledColor;
+          }
+        }
+      .#{$checkboxCls}-button-icon{
+        border-bottom: 10Px solid $checkboxDisabledColor;
+        border-right: 10Px solid $checkboxDisabledColor;
       }
     }
+
+  }
+
+
+  &-icon {
+    align-items: flex-end;
+    border-bottom: 10Px solid $trionesColorPrimary;
+    border-left: 10Px solid transparent;
+    border-right: 10Px solid $trionesColorPrimary;
+    border-top: 10Px solid transparent;
+    bottom: 0;
+    display: flex;
+    height: 0;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    width: 0;
 
     .checkedIcon {
-      background-color: #1677ff;
-      color: #ffffff;
-      &::before {
-        font-style: normal;
-        //content: "\e75f";
-      }
-    }
-
-    .uncheckedIcon {
-      background-color: #ffffff;
-      border: 1Px solid #cccccc;
-      border-radius: 50vh;
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      &::before {
-        font-style: normal;
-        content: " ";
-      }
-    }
-
-    .disabledCheckedIcon {
-      box-sizing: border-box;
-      border: 1Px solid #cccccc;
-      border-radius: 50vh;
-      width: 100%;
-      height: 100%;
-      background-color: #f5f5f5;
-      color: #cccccc;
-
-      &::before {
-        font-style: normal;
-        //content: "\e75f";
-      }
-    }
-
-    .disabledUncheckedIcon {
-      box-sizing: border-box;
-      border: 1Px solid #cccccc;
-      border-radius: 50vh;
-      width: 100%;
-      height: 100%;
-      background-color: #f5f5f5;
-      &::before {
-        font-style: normal;
-        content: " ";
-      }
-    }
-  }
-
-  &-content {
-    font-size: 17Px;
-    margin-left: 4Px;
-
-    &-disabled {
-      opacity: 0.4;
-      pointer-events: none;
-    }
-  }
-
-  &-button {
-    padding: 4Px 12Px;
-    border-radius: 8Px;
-    position: relative;
-    overflow: hidden;
-    background-color: #f6f6f6;
-    box-sizing: border-box;
-
-    &-checked {
-      background-color: #ffffff;
-      border: 1Px solid #1677ff;
-
-      .#{$checkboxItemCls}-button-content {
-        color: #1677ff;
-      }
-    }
-
-    &-disabled {
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    &-content {
-      //color: #1677ff;
-    }
-
-    &-icon {
-      align-items: flex-end;
-      border-bottom: 10Px solid var(--nutui-color-primary, #1677ff);
-      border-left: 10Px solid transparent;
-      border-right: 10Px solid var(--nutui-color-primary, #1677ff);
-      border-top: 10Px solid transparent;
-      bottom: 0;
-      display: flex;
-      height: 0;
-      justify-content: flex-end;
+      font-size: 6Px;
       position: absolute;
-      right: 0;
-      width: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(1Px, -1Px);
+      //font-family: "triones-ant-mini-icon" !important;
+      font-style: normal;
+      color: #ffffff;
 
-      .checkedIcon {
-        font-size: 6Px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(1Px, -1Px);
-        //font-family: "triones-ant-mini-icon" !important;
+      &::before {
         font-style: normal;
-        color: #ffffff;
-
-        &::before {
-          font-style: normal;
-          //content: "\e75f";
-        }
+        //content: "\e75f";
       }
     }
   }
