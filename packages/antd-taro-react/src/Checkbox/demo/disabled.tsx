@@ -1,6 +1,8 @@
-import { DemoBlock } from '../../DemoBlock';
+
 import React from "react";
-import {Checkbox} from "../checkbox";
+import {Checkbox} from '@trionesdev/antd-taro-react';
+import { DemoBlock } from '@/DemoBlock';
+
 
 export default () => {
   return <>
@@ -9,7 +11,7 @@ export default () => {
       <Checkbox checked={false} disabled={true}>香蕉</Checkbox>
     </DemoBlock>
     <DemoBlock title='Button'>
-      <Checkbox checked={true} shape={'button'} disabled={true}>苹果</Checkbox>
+      <Checkbox.Button checked={true}  disabled={true}>苹果</Checkbox.Button>
     </DemoBlock>
   </>
 }

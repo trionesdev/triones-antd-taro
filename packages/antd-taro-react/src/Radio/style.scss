@@ -1,68 +1,62 @@
 @import "../style/variable";
 
+$checkboxDisabledColor:rgba(0,0,0,0.25) !default;
+
 $class-prefix-radio: 'triones-antm-radio';
 
-.#{$class-prefix-radio} {
+.#{$class-prefix-radio}-wrapper{
   cursor: pointer;
   display: inline-flex;
+  align-items: center;
+  gap: 8Px;
+  .#{$class-prefix-radio}{
+    &-fake{
+      width: 22PX;
+      height: 22PX;
+      .triones-antm-icon{
+        position: absolute;
+      }
 
-  &-round {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8Px;
-
-    &-wrap {
-
-    }
-
-    &-icon {
-      display: inline-flex;
-
-      &-default {
+      &-checked{
+        height: 100%;
+        width: 100%;
         display: inline-flex;
-        width: 22Px;
-        height: 22Px;
         justify-content: center;
         align-items: center;
+        background-color: $trionesColorPrimary;
+        color: white;
+        border-radius: 50vh;
+        box-sizing: border-box;
+        overflow: hidden;
 
-        .#{$class-prefix-radio} {
-          &-round-icon {
-            &-checked {
-              height: 100%;
-              width: 100%;
-              background-color: $trionesColorPrimary;
-              color: white;
-              border-radius: 50vh;
-              justify-content: center;
-              align-items: center;
-              display: inline-flex;
-            }
-
-            &-unchecked {
-              height: 100%;
-              width: 100%;
-              border: 1px solid #cccccc;
-              border-radius: 50vh;
-              box-sizing: border-box;
-
-              i {
-                &::before {
-                  content: ' ';
-                }
-              }
-            }
-          }
-        }
       }
-    }
+      &-unchecked{
+        height: 100%;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50vh;
+        border: 1PX solid $trionesBorderColor;
+        box-sizing: border-box;
+      }
 
-    &-content {
     }
   }
+
+  &.#{$class-prefix-radio}-disabled{
+    color: $checkboxDisabledColor;
+    pointer-events: none;
+    .#{$class-prefix-radio}-fake-checked{
+      background-color: $checkboxDisabledColor;
+    }
+  }
+
 }
 
+
 .#{$class-prefix-radio}-group {
+  display: flex;
 }
 
 .#{$class-prefix-radio}-button-group {

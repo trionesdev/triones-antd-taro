@@ -2,8 +2,7 @@ import {DemoBlock} from '../../DemoBlock';
 import {DemoDescription} from '../../DemoDescription';
 import React from 'react';
 import './base.scss';
-import Space from "../../Space";
-import {Radio, RadioButtonGroup, RadioGroup} from "../index";
+import { Radio, Space } from '@trionesdev/antd-taro-react';
 
 export default () => {
   return (
@@ -16,17 +15,17 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title="选项组">
-        <RadioGroup defaultValue="1">
+        <Radio.Group defaultValue="1">
           <Space direction="vertical">
             <Radio value="1">第一项</Radio>
             <Radio value="2">第二项</Radio>
             <Radio value="3">第三项</Radio>
           </Space>
-        </RadioGroup>
+        </Radio.Group>
       </DemoBlock>
 
       <DemoBlock title="选项组">
-        <RadioGroup defaultValue="1" items={[
+        <Radio.Group defaultValue="1" items={[
           {
             label: '第一项',
             value: '1'
@@ -44,7 +43,7 @@ export default () => {
 
       <DemoBlock title="占满整行宽度">
         <Space direction="vertical" block>
-          <RadioGroup>
+          <Radio.Group>
             <Space direction="vertical" block>
               <Radio value="1" block className="blockIndicator">
                 块级元素
@@ -53,7 +52,7 @@ export default () => {
                 非块级元素
               </Radio>
             </Space>
-          </RadioGroup>
+          </Radio.Group>
           <DemoDescription>
             单选框的块级元素会占满整行，而非块级元素不会。灰色的背景标识了元素所占据的空间和可点击的区域。
           </DemoDescription>
@@ -61,7 +60,7 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title="禁用状态">
-        <RadioGroup defaultValue="2">
+        <Radio.Group defaultValue="2">
           <Space direction="vertical">
             <Radio value="1" disabled>
               第一项
@@ -69,11 +68,11 @@ export default () => {
             <Radio value="2">第二项</Radio>
             <Radio value="3">第三项</Radio>
           </Space>
-        </RadioGroup>
+        </Radio.Group>
       </DemoBlock>
 
       <DemoBlock title={`按钮样式分组`}>
-        <RadioButtonGroup defaultValue="1" items={[
+        <Radio.Group defaultValue="1" shape={'button'} items={[
           {
             label: '第一项',
             value: '1'

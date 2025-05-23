@@ -17,7 +17,7 @@ export const Checkbox: FC<CheckboxProps> = ({
     <label className={classNames(`${prefixCls}-wrapper`,{
       [`${prefixCls}-disabled`]: disabled,
     })} onClick={() => {
-      console.log('click');
+
       setInnerChecked(!innerChecked);
     }}>
       <div className={classNames(`${prefixCls}`)}>

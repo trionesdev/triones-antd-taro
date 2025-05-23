@@ -1,15 +1,22 @@
-import {Radio} from './radio';
-import {RadioGroup} from './RadioGroup';
+import { Radio as InternalRadio } from './radio';
+import { RadioGroup } from './RadioGroup';
 import './style.scss';
 
-export type {RadioProps, RadioGroupProps} from './types';
+export type { RadioGroupProps, RadioProps } from './types';
 
-import {RadioButton} from "./RadioButton"
-import {RadioButtonGroup} from "./RadioButtonGroup"
+import { RadioButton } from './RadioButton';
 
 // export default attachPropertiesToComponent(Radio, {
 //   Group: RadioGroup,
 //   Button: RadioButton
 // });
 
-export {Radio, RadioGroup, RadioButton, RadioButtonGroup}
+type CompoundedComponent = typeof InternalRadio & {
+  Group: typeof RadioGroup;
+  Button: typeof RadioButton;
+};
+
+const Radio = InternalRadio as CompoundedComponent;
+Radio.Group = RadioGroup;
+Radio.Button = RadioButton;
+export default Radio;

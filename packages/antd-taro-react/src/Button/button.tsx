@@ -5,32 +5,50 @@ import classNames from "classnames";
 export type ButtonProps = {
   children?: React.ReactNode
   /**
-   * block 按钮宽高自适应
+   * @description block 按钮宽高自适应
    */
   block?: boolean
   /**
-   * 颜色
+   * @description 颜色
    */
   color?: 'default' | 'primary' | 'success' | 'warning' | 'danger'
   /**
-   * 是否危险按钮，会使用 danger 的颜色
+   * @description 是否危险按钮，会使用 danger 的颜色
    */
   danger?: boolean
   /**
-   * 是否禁用
+   * @description 是否禁用
    */
   disabled?: boolean
   /**
-   * 幽灵按钮
+   * @description 幽灵按钮
    */
   ghost?: boolean
+  /**
+   * @description 按钮类型
+   */
   type?: 'primary' | 'dashed' | 'link' | 'text' | 'default'
   className?: string,
   style?: React.CSSProperties
+  /**
+   * @description 图标
+   */
   icon?: React.ReactNode
+  /**
+   * @description 图标位置
+   */
   iconPosition?: 'start' | 'end'
+  /**
+   * @description 加载中
+   */
   loading?: boolean
+  /**
+   * @description 按钮样式
+   */
   variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link',
+  /**
+   * @description 点击事件
+   */
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
 

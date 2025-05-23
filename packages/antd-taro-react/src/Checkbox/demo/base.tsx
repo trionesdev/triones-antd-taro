@@ -2,9 +2,9 @@
  * compact: true
  */
 import React from 'react';
+import { Checkbox, Space } from '@trionesdev/antd-taro-react';
 import { DemoBlock } from '../../DemoBlock';
-import Space from '../../Space';
-import Checkbox from '../index';
+
 
 export default () => {
   return (

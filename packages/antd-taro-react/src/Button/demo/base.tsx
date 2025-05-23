@@ -3,7 +3,8 @@
  */
 import { DemoBlock } from '../../DemoBlock';
 import React from "react";
-import { Button } from '../button';
+import { Button } from '@trionesdev/antd-taro-react';
+
 
 export default () => {
   return <>

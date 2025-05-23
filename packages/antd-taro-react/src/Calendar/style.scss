@@ -1,0 +1,33 @@
+@import "../style/variable";
+$calendarCls: 'triones-antm-calendar';
+
+.#{$calendarCls}{
+  //display: flex;
+  //flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.#{$calendarCls}-cell{
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $trionesBorderRadius;
+  cursor: default;
+
+  &.#{$calendarCls}-cell{
+    &-disabled{
+      color: #999999;
+    }
+    &-selected{
+      background-color: $trionesColorPrimary;
+      color: white;
+    }
+    &-selected-range{
+      border-radius: 0;
+      background-color: $trionesColorPrimaryBg;
+      color: black;
+    }
+  }
+}
