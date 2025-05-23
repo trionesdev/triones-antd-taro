@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
+import React, {FC, ForwardedRef, forwardRef, memo, useEffect, useMemo, useRef, useState} from 'react';
 import './style.scss';
 
 const calendarCls = 'triones-antm-calendar';
@@ -80,46 +80,46 @@ const CalendarCell: FC<CalendarCellProps> = memo(
   },
 );
 
-export const Calendar: FC<CalendarProps> = memo(
-  ({ mouth = new Date(), selectedStart, selectedEnd,onSelect }) => {
-    const calendarRef = useRef<any>();
-    const [cellSize, setCellSize] = useState<number>();
+export const Calendar: FC<CalendarProps> = memo(forwardRef(({ mouth = new Date(), selectedStart, selectedEnd,onSelect },ref:ForwardedRef<any>) => {
+  const calendarRef = useRef<any>();
+  const [cellSize, setCellSize] = useState<number>();
 
-    const cells = useMemo(() => {
-      const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-      const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-      const beforeDays = Array.from({ length: firstDate.getDay() }).map(
-        (_, index): Date => {
-          const date = new Date(firstDate);
-          date.setDate(firstDate.getDate() - (firstDate.getDay()  - index));
-          return date;
-        },
-      );
+  const cells = useMemo(() => {
+    const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+    const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
+    const beforeDays = Array.from({ length: firstDate.getDay() }).map(
+      (_, index): Date => {
+        const date = new Date(firstDate);
+        date.setDate(firstDate.getDate() - (firstDate.getDay()  - index));
+        return date;
+      },
+    );
 
-      const afterDays = Array.from({ length: 6 - lastDate.getDay() }).map(
-        (_, index): Date => {
-          const date = new Date(lastDate);
-          date.setDate(lastDate.getDate() + index + 1);
-          return date;
-        },
-      );
-      const mouthDays = Array.from({ length: lastDate.getDate() }).map(
-        (_, index): Date => {
-          const date = new Date(firstDate);
-          date.setDate(date.getDate()+index );
-          return date;
-        },
-      );
-      return [...beforeDays, ...mouthDays, ...afterDays];
-    }, [mouth]);
+    const afterDays = Array.from({ length: 6 - lastDate.getDay() }).map(
+      (_, index): Date => {
+        const date = new Date(lastDate);
+        date.setDate(lastDate.getDate() + index + 1);
+        return date;
+      },
+    );
+    const mouthDays = Array.from({ length: lastDate.getDate() }).map(
+      (_, index): Date => {
+        const date = new Date(firstDate);
+        date.setDate(date.getDate()+index );
+        return date;
+      },
+    );
+    return [...beforeDays, ...mouthDays, ...afterDays];
+  }, [mouth]);
 
-    useEffect(() => {
-      const width = calendarRef.current.clientWidth;
-      console.log(width)
-      setCellSize(width / 7);
-    }, []);
+  useEffect(() => {
+    const width = calendarRef.current.clientWidth;
+    console.log(width)
+    setCellSize(width / 7);
+  }, []);
 
-    return (
+  return (
+    <div ref={ref}>
       <div ref={calendarRef} className={classNames(`${calendarCls}`)}>
         {cells.map((item, index) => {
           return (
@@ -135,6 +135,6 @@ export const Calendar: FC<CalendarProps> = memo(
           );
         })}
       </div>
-    );
-  },
-);
+    </div>
+  );
+}));
