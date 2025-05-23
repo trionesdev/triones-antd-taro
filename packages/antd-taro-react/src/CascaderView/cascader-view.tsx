@@ -22,193 +22,87 @@ export const CascaderView: FC<CascaderViewProps> = ({
   className,
   style,
   options,
-  labelInValue = false,
   value,
   onChange,
   asyncRequest,
 }) => {
   const [activeKey, setActiveKey] = useState<any>();
-  const [internalOptions, setInternalOptions] = useState<any>(options || []);
   const [columns, setColumns] = useState<Column[]>([]);
-  const [tabItems, setTabItems] = useState<any>([]);
   const [internalValue, setInternalValue] = useState<any>(value || []);
 
-  const handleComputeValue = (columns?: Column[]) => {
-    const result: any = [];
-    columns?.forEach((column: any) => {
-      if (column.value) {
-        if (labelInValue) {
-          result.push({
-            value: column.value?.value,
-            label: column.value?.label,
-          });
-        } else {
-          result.push(column.value);
+  const handleComputeValue = (columns: Column[]) => {
+    return columns
+      .filter((column) => {
+        return column.value;
+      })
+      .map((column) => {
+        return column.value?.value;
+      });
+  };
+
+  const handleGenerateColumnsByValues = (value: any): Column[] => {
+    if (!_.isEmpty(value) && _.isArray(value)) {
+      let newColumns: Column[] = [{ options }];
+      for (let i = 0; i < value.length; i++) {
+        let column = newColumns[i];
+        let option = _.find(column.options, (option: ColumnOption) => {
+          return option.value === value[i];
+        });
+        if (option) {
+          newColumns[i].value = option;
+          if (option.children) {
+            newColumns.push({ options: option.children });
+          }
         }
       }
-    });
-    return result;
-    // setInternalValue(newValue || [])
-    // onChange?.(newValue || [])
+      return newColumns;
+    }
+    return [{ options }];
   };
 
-  const handleSelect = (option: any, columnIndex: number) => {
-    if (_.isEqual(option?.value, columns[columnIndex]?.value?.value)) {
-      return;
+  const handleSelectOption = (option: any, columnIndex: number) => {
+    let newColumns = [];
+    let activeIndex = `${columnIndex}`;
+    for (let i = 0; i < columnIndex; i++) {
+      newColumns.push(columns[i]);
     }
-
-    const newColumns: any[] = [];
-    Array.from({ length: columnIndex + 1 }, (_, i) => i).forEach((i) => {
-      if (i === columnIndex) {
-        newColumns.push({ value: option, options: columns[i].options });
-      } else {
-        newColumns.push(columns[i]);
-      }
-    });
+    newColumns.push({ value: option, options: columns[columnIndex].options });
     if (!_.isEmpty(option.children)) {
       newColumns.push({ options: option.children });
-      setColumns(newColumns);
-    } else {
-      if (asyncRequest) {
-        asyncRequest?.().then((data: any) => {
-          if (_.isArray(data) && !_.isEmpty(data)) {
-            _.set(option, ['children'], data);
-            newColumns.push({ options: option.children });
-            setColumns(newColumns);
-          } else {
-            setColumns(newColumns);
-          }
-        });
-      } else {
-        setColumns(newColumns);
-      }
+      activeIndex = `${columnIndex + 1}`;
     }
-  };
-
-  const handleFindOptionByValue = (options: ColumnOption[], value: any) => {
-    if (_.isEmpty(value)) {
-      return null;
-    }
-    return _.find(options, (option: ColumnOption) => {
-      if (labelInValue) {
-        return option.value === value.value;
-      } else {
-        return option.value === value;
-      }
-    });
-  };
-
-  const handleGenerateColumnsByValues = (
-    options: any,
-    value: any,
-  ): Column[] => {
-    if (!value || _.isEmpty(value)) {
-      return [
-        {
-          options: options,
-        },
-      ];
-    }
-    const newColumns: Column[] = [];
-    let currentOptions = options;
-    for (let i = 0; i < value.length; i++) {
-      if (_.isEmpty(currentOptions)) {
-        return newColumns;
-      }
-      const option = handleFindOptionByValue(currentOptions, value[i]);
-      newColumns.push({
-        options: currentOptions,
-        value: option,
-      });
-      currentOptions = option?.children;
-    }
-    if (!_.isEmpty(currentOptions)) {
-      newColumns.push({
-        options: currentOptions,
-      });
-    }
-    return newColumns;
+    setColumns(newColumns);
+    setActiveKey(activeIndex);
+    const newValue = handleComputeValue(newColumns);
+    console.log('newValue', newValue);
+    onChange?.(newValue);
   };
 
   useEffect(() => {
-    if (internalValue === null || _.isEmpty(internalValue)) {
-      setColumns([
-        {
-          options: internalOptions,
-        },
-      ]);
-    } else {
-      const newColumns = handleGenerateColumnsByValues(
-        internalOptions,
-        internalValue,
-      );
-      setColumns([...newColumns]);
-    }
-  }, [internalOptions]);
-
-  useEffect(() => {
-    // if (_.isEqual(options, internalOptions)) {
-    //   return;
-    // }
-    if (!_.isEmpty(options)) {
-      setInternalOptions(options || []);
-    } else {
-      if (asyncRequest) {
-        asyncRequest?.().then((data: any) => {
-          if (_.isArray(data) && !_.isEmpty(data)) {
-            setInternalOptions(data || []);
-          }
-        });
-      } else {
-        setInternalOptions([]);
-      }
-    }
+    const _columns = handleGenerateColumnsByValues(internalValue);
+    setColumns(_columns);
+    setActiveKey(`${_columns.length - 1}`);
   }, [options]);
-
-  useEffect(() => {
-    if (value === undefined) {
-      return;
-    }
-    if (_.isEqual(value, internalValue)) {
-      return;
-    }
-    setInternalValue(value);
-  }, [value]);
-
-  useEffect(() => {
-    console.log('newColumns', columns);
-    if (!_.isEmpty(columns)) {
-      const items = columns.map((column, index: number) => {
-        return {
-          key: `${index}`,
-          label: column.value?.label || '请选择',
-          children: (
-            <CascaderColumn
-              index={index}
-              options={column.options}
-              value={column.value}
-              onSelect={handleSelect}
-            />
-          ),
-        };
-      });
-      setTabItems(items);
-      setActiveKey(`${_.size(columns) - 1}`);
-    }
-    const newValue = handleComputeValue(columns);
-    if (!_.isEqual(newValue || [], internalValue || [])) {
-      console.log('newValue', newValue, internalValue);
-      setInternalValue(newValue || []);
-      onChange?.(newValue || []);
-    }
-  }, [columns]);
 
   return (
     <div className={classNames(cascaderViewCls, className)} style={style}>
       <Tabs
         activeKey={activeKey}
         onChange={setActiveKey}
-        items={tabItems}
+        items={columns.map((column, index) => {
+          return {
+            key: `${index}`,
+            label: column.value?.label || '请选择',
+            children: (
+              <CascaderColumn
+                index={index}
+                options={column.options}
+                value={column.value}
+                onSelect={handleSelectOption}
+              />
+            ),
+          };
+        })}
         stretch={false}
         style={{ height: '100%' }}
       />

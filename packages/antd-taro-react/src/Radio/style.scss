@@ -100,13 +100,13 @@ $class-prefix-radio: 'triones-antm-radio';
     &:not(:first-child) {
       &::before {
         content: " ";
-        width: 0.5PX;
+        width: 1PX;
         background-color: $trionesColorPrimary;
         position: absolute;
-        inset-block-start: -0.5px;
-        inset-inline-start: -0.5px;
+        inset-block-start: -1Px;
+        inset-inline-start: -1Px;
         height: 100%;
-        padding-block: 0.5px;
+        padding-block: 1Px;
       }
 
       border-right: 1PX solid $trionesColorPrimary;
@@ -116,7 +116,7 @@ $class-prefix-radio: 'triones-antm-radio';
   .#{$class-prefix-radio}-button {
     cursor: pointer;
     display: inline-flex;
-    padding: 8px 12px;
+    padding: 8Px 12Px;
 
   }
 }
