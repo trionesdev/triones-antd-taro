@@ -25,6 +25,9 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
     &-fake{
       width: 22PX;
       height: 22PX;
+      .triones-antm-icon{
+        position: absolute;
+      }
       &-checked{
         height: 100%;
         width: 100%;

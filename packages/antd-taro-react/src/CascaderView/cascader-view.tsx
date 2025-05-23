@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import _ from 'lodash';
-import React, {CSSProperties, FC, useEffect, useState} from 'react';
+import React, { CSSProperties, FC, useEffect, useState } from 'react';
 import Tabs from '../Tabs';
-import {CascaderColumn} from './cascader-column';
+import { CascaderColumn } from './cascader-column';
 import './style.scss';
-import {Column, ColumnOption} from './types';
+import { Column, ColumnOption } from './types';
 
 const cascaderViewCls = 'triones-antm-cascader-view';
 
@@ -19,53 +19,69 @@ export type CascaderViewProps = {
 };
 
 export const CascaderView: FC<CascaderViewProps> = ({
-                                                      className,
-                                                      style,
-                                                      options,
-                                                      labelInValue = false,
-                                                      value,
-                                                      onChange,
-                                                      asyncRequest,
-                                                    }) => {
+  className,
+  style,
+  options,
+  value,
+  onChange,
+  asyncRequest,
+}) => {
   const [activeKey, setActiveKey] = useState<any>();
-  // const [internalOptions, setInternalOptions] = useState<any>(options || []);
   const [columns, setColumns] = useState<Column[]>([]);
-  const [tabItems, setTabItems] = useState<{}>([]);
   const [internalValue, setInternalValue] = useState<any>(value || []);
 
-  const handleGenerateColumnsByValues = (value:any): Column[] => {
-    if (_.isEmpty(value)) {
-      return [{options}]
-    }
-    return []
-  }
+  const handleComputeValue = (columns: Column[]) => {
+    return columns
+      .filter((column) => {
+        return column.value;
+      })
+      .map((column) => {
+        return column.value?.value;
+      });
+  };
 
-  const handleSelectOption = (option:any, columnIndex:number) => {
-    let newColumns = []
+  const handleGenerateColumnsByValues = (value: any): Column[] => {
+    if (!_.isEmpty(value) && _.isArray(value)) {
+      let newColumns: Column[] = [{ options }];
+      for (let i = 0; i < value.length; i++) {
+        let column = newColumns[i];
+        let option = _.find(column.options, (option: ColumnOption) => {
+          return option.value === value[i];
+        });
+        if (option) {
+          newColumns[i].value = option;
+          if (option.children) {
+            newColumns.push({ options: option.children });
+          }
+        }
+      }
+      return newColumns;
+    }
+    return [{ options }];
+  };
+
+  const handleSelectOption = (option: any, columnIndex: number) => {
+    let newColumns = [];
     let activeIndex = `${columnIndex}`;
     for (let i = 0; i < columnIndex; i++) {
       newColumns.push(columns[i]);
     }
-    newColumns.push({value: option, options: columns[columnIndex].options});
+    newColumns.push({ value: option, options: columns[columnIndex].options });
     if (!_.isEmpty(option.children)) {
-      newColumns.push({options: option.children});
+      newColumns.push({ options: option.children });
       activeIndex = `${columnIndex + 1}`;
     }
     setColumns(newColumns);
-    setActiveKey(activeIndex)
-    onChange?.(handleComputeValue(newColumns))
-  }
-
-  const handleComputeValue = (columns: Column[]) => {
-    return columns.filter((column) => {
-      return column.value;
-    }).map((column) => {
-      return column.value?.value;
-    })
-  }
+    setActiveKey(activeIndex);
+    const newValue = handleComputeValue(newColumns);
+    console.log('newValue', newValue);
+    onChange?.(newValue);
+  };
 
   useEffect(() => {
-    setColumns(handleGenerateColumnsByValues(internalValue))
+    const _columns = handleGenerateColumnsByValues(internalValue);
+    setColumns(_columns);
+    setActiveKey(`${_columns.length - 1}`);
   }, [options]);
 
   return (
@@ -88,7 +104,7 @@ export const CascaderView: FC<CascaderViewProps> = ({
           };
         })}
         stretch={false}
-        style={{height: '100%'}}
+        style={{ height: '100%' }}
       />
     </div>
   );
