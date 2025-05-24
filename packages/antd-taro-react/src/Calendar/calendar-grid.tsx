@@ -97,7 +97,8 @@ const CalendarCell: FC<CalendarCellProps> = memo(
           onSelect?.(date);
         }}
       >
-        {date.getDate()}
+        <div className={classNames(`${calendarCls}-cell-date`)}>{date.getDate()}</div>
+        {date.getDate()===1 && <div className={classNames(`${calendarCls}-cell-mouth`)}>{`${(date.getMonth()+1)}月`}</div>}
       </div>
     );
   },

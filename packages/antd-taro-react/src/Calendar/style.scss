@@ -1,30 +1,49 @@
 @import "../style/variable";
+
 $calendarCls: 'triones-antm-calendar';
 
-.#{$calendarCls}-grid{
+.#{$calendarCls}-grid {
   //display: flex;
   //flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
 
-.#{$calendarCls}-cell{
+.#{$calendarCls}-cell {
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: $trionesBorderRadius;
   cursor: default;
+  flex-direction: column;
 
-  &.#{$calendarCls}-cell{
-    &-disabled{
+  &-date {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-mouth {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 8Px;
+  }
+
+  &.#{$calendarCls}-cell {
+    &-disabled {
       color: #999999;
     }
-    &-selected{
+
+    &-selected {
       background-color: $trionesColorPrimary;
       color: white;
     }
-    &-selected-range{
+
+    &-selected-range {
       border-radius: 0;
       background-color: $trionesColorPrimaryBg;
       color: black;
@@ -32,18 +51,20 @@ $calendarCls: 'triones-antm-calendar';
   }
 }
 
-.#{$calendarCls}{
-  &-header{
-    &-title{
+.#{$calendarCls} {
+  &-header {
+    &-title {
       font-size: 16Px;
       padding: 8Px;
       text-align: center;
     }
   }
-  &-week{
+
+  &-week {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    &-cell{
+
+    &-cell {
       display: flex;
       justify-content: center;
       align-items: center;
