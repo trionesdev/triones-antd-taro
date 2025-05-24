@@ -1,5 +1,16 @@
+@import "../style/variable";
+
 $calendarPickerCls: 'triones-antm-calendar-picker';
 
 .#{$calendarPickerCls} {
-
+  border-top-left-radius: $trionesBorderRadius;
+  border-top-right-radius: $trionesBorderRadius;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    &-button {
+      color: $trionesColorPrimary;
+      padding: 8Px 12Px;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 @import "../style/variable";
 $calendarCls: 'triones-antm-calendar';
 
-.#{$calendarCls}{
+.#{$calendarCls}-grid{
   //display: flex;
   //flex-wrap: wrap;
   display: grid;
@@ -28,6 +28,27 @@ $calendarCls: 'triones-antm-calendar';
       border-radius: 0;
       background-color: $trionesColorPrimaryBg;
       color: black;
+    }
+  }
+}
+
+.#{$calendarCls}{
+  &-header{
+    &-title{
+      font-size: 16Px;
+      padding: 8Px;
+      text-align: center;
+    }
+  }
+  &-week{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    &-cell{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8Px;
+      padding-bottom: 8Px;
     }
   }
 }

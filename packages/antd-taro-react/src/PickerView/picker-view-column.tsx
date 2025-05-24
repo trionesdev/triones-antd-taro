@@ -39,10 +39,10 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
     }
 
     useEffect(() => {
-      if (value == undefined) {
+      if (value === undefined) {
         return;
       }
-      if (value == internalValue) {
+      if (value === internalValue) {
         return;
       }
       setInternalValue(value)

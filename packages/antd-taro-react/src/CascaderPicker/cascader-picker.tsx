@@ -3,7 +3,6 @@ import Popup from "../Popup";
 import classNames from "classnames";
 import "./style.scss"
 import _ from "lodash";
-import PickerView, {PickerColumnOption} from "../PickerView";
 import CascaderView from "../CascaderView";
 
 const cascaderPickerCls = "triones-antm-cascader-picker";

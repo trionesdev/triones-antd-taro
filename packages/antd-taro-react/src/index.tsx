@@ -4,6 +4,8 @@ export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export type { ButtonProps } from './Button';
+export { default as Calendar } from './Calendar';
+export {CalendarGrid,TouchableCalendarGrid} from "./Calendar"
 export { default as Card } from './Card';
 export { default as Checkbox } from './Checkbox';
 export { default as ConfigProvider } from './ConfigProvider';
