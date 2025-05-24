@@ -1,6 +1,7 @@
 import React from "react";
 import {DemoBlock} from "../../DemoBlock";
-import {TouchableCalendarGrid} from "@trionesdev/antd-taro-react";
+import {TouchableCalendarGrid} from "../touchable-calendar-grid";
+
 
 
 export default () => {

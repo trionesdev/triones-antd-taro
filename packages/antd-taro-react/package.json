@@ -59,10 +59,10 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@trionesdev/antd-taro-icons-react": "workspace:*",
+    "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@types/crypto-js": "^4.2.2",
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -82,7 +82,9 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
+    "@tarojs/extend": "^4.1.1",
     "@tarojs/react": "4.0.9",
+    "@tarojs/taro": "4.0.9",
     "@use-gesture/react": "10.3.0",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",

@@ -1,15 +1,13 @@
-import React, {FC, memo, useEffect, useRef, useState} from "react"
+import React, {FC, memo, useEffect, useRef} from "react"
 import Popup from "../Popup";
 import classNames from "classnames";
 import Calendar from "../Calendar";
 import "./style.scss"
-import {CalendarPickerProps} from "./types";
-
+import {CalendarPickerRangeProps} from "./types";
 
 const cls = 'triones-antm-calendar-picker';
 
-
-export const CalendarPicker: FC<CalendarPickerProps> = memo(
+export const CalendarPickerRange: FC<CalendarPickerRangeProps> = memo(
   ({
      mouth,
      open,
@@ -42,8 +40,8 @@ export const CalendarPicker: FC<CalendarPickerProps> = memo(
     }, [innerOpen]);
 
     useEffect(() => {
-      if (value != undefined) {
-        if (value != valueRef.current) {
+      if (value!=undefined){
+        if (value!=valueRef.current){
           valueRef.current = value
         }
       }
@@ -69,9 +67,9 @@ export const CalendarPicker: FC<CalendarPickerProps> = memo(
           <a className={classNames(`${cls}-header-button`)} onClick={handleOk}>确定</a>
         </div>
         <div className={classNames(`${cls}-body`)}>
-          <Calendar mouth={mouth} value={value} onChange={(date) => {
+          <Calendar.Range mouth={mouth} value={value} onChange={(date) => {
             valueRef.current = date;
-          }}/>
+          }} />
         </div>
       </div>
     </Popup>

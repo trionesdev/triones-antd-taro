@@ -3,6 +3,8 @@ export default defineAppConfig({
     "pages/index/index",
     "pages/avatar/index",
     "pages/button/index",
+    "pages/calendar/index",
+    "pages/calendar-picker/index",
     "pages/checkbox/index",
     "pages/radio/index",
     "pages/input/index",

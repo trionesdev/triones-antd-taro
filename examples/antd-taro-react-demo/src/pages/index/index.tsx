@@ -72,7 +72,7 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            Avatar
+            Avatar 头像
           </Button>
           <Button
             block={true}
@@ -82,7 +82,27 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            Button
+            Button 按钮
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/calendar/index",
+              });
+            }}
+          >
+            Calendar 日历
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/calendar-picker/index",
+              });
+            }}
+          >
+            Calendar 日历选择器
           </Button>
           <Button
             block={true}

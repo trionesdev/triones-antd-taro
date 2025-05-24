@@ -42,11 +42,11 @@ const FooterBase = () => {
 
   const onChipClick = (item: any, index: number) => {
     console.log(item, index)
-    alert(`${item?.text}被点击了`)
+    alert(`${item.text}被点击了`)
   }
   const onLinkClick = (item: any, index: number) => {
     console.log(item, index)
-    alert(`跳转到${item?.href}`)
+    alert(`跳转到${item.href}`)
   }
 
   return <View>

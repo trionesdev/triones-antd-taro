@@ -5,7 +5,7 @@ import _ from "lodash";
 
 const calendarCls = 'triones-antm-calendar';
 
-export type CalendarProps = {
+export type CalendarGridProps = {
   mouth?: Date;
   /**
    * @description 值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
@@ -104,7 +104,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
   },
 );
 
-export const CalendarGrid: FC<CalendarProps> = memo(forwardRef(({
+export const CalendarGrid: FC<CalendarGridProps> = memo(forwardRef(({
                                                                   mouth = new Date(),
                                                                   value,
                                                                   defaultValue,
