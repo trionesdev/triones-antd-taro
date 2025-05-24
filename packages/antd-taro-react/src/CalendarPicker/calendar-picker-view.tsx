@@ -16,14 +16,9 @@ export const CalendarPickerView: FC<CalendarPickerViewProps> = ({
   const [translateY, setTranslateY] = useState(-233.5)
   const [mouths, setMouths] = useState([]);
 
+  useEffect(() => {
 
-  // const mouths = useMemo(() => {
-  //   return [
-  //     new Date(currentMouth.getFullYear(), currentMouth.getMonth() - 1, 1),
-  //     new Date(currentMouth.getFullYear(), currentMouth.getMonth(), 1),
-  //     new Date(currentMouth.getFullYear(), currentMouth.getMonth() + 1, 1),
-  //   ];
-  // }, [currentMouth]);
+  }, [mouths]);
 
   useEffect(() => {
     setMouths([
