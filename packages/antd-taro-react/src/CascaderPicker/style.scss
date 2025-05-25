@@ -1,3 +1,4 @@
+@import "../style/variable";
 $cascaderPickerCls: 'triones-antm-cascader-picker';
 
 .#{$cascaderPickerCls} {
@@ -12,12 +13,13 @@ $cascaderPickerCls: 'triones-antm-cascader-picker';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1Px solid #eee;
+    border-bottom: 1Px solid $trionesBorderColor;
     padding: 4Px;
 
     &-button {
+      color: $trionesColorPrimary;
       padding: 8Px;
-      font-size: 14Px;
+      font-size: 12Px;
     }
 
     &-title {
@@ -29,7 +31,6 @@ $cascaderPickerCls: 'triones-antm-cascader-picker';
     width: 100%;
     pointer-events: unset;
     overflow: hidden;
-    padding-bottom: 16px;
   }
   &-view{
     --height: 100%;

@@ -8,9 +8,13 @@ $calendarPickerCls: 'triones-antm-calendar-picker';
   &-header {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1Px solid $trionesBorderColor;
     &-button {
       color: $trionesColorPrimary;
       padding: 8Px 12Px;
     }
+  }
+  &-body {
+    pointer-events: unset;
   }
 }

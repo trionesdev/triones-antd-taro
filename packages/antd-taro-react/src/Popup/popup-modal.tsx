@@ -1,7 +1,8 @@
-import React, {CSSProperties, FC, PropsWithChildren, useEffect} from "react";
+import React, {CSSProperties, FC, PropsWithChildren, useEffect, useMemo} from "react";
 import classNames from "classnames";
 import "./style.scss"
 import {CloseOutline} from "@trionesdev/antd-taro-icons-react";
+import SafeArea from "../SafeArea";
 
 const popupCls = "triones-antm-popup";
 
@@ -73,6 +74,14 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
                                                                      afterOpenChange,
                                                                      onDestroy
                                                                    }) => {
+  const safeAreaPosition = useMemo(() => {
+    if (position === 'bottom') {
+      return 'bottom'
+    } else if (position === 'top') {
+      return 'top'
+    }
+    return undefined
+  }, [position])
   const [internalOpen, setInternalOpen] = React.useState<boolean>(open || false);
   const handleClose = () => {
     setInternalOpen(false);
@@ -98,7 +107,7 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
     setInternalOpen(open);
   }, [open]);
 
-  return <div className={classNames(popupCls)} style={{zIndex, display: internalOpen ? 'block' : 'none'}}>
+  return (<div className={classNames(popupCls)} style={{zIndex, display: internalOpen ? 'block' : 'none'}}>
     <div className={classNames(`${popupCls}-mask`)} onClick={() => {
       if (maskClosable) {
         handleClose();
@@ -110,7 +119,10 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
           handleClose()
         }}/>
       </>}
-      {children}
+      <SafeArea position={safeAreaPosition}>
+        {children}
+      </SafeArea>
     </div>
-  </div>
+  </div>)
+
 }

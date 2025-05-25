@@ -7,5 +7,8 @@ export default ()=>{
     <DemoBlock title={`基本使用`}>
       <Calendar/>
     </DemoBlock>
+    <DemoBlock title={`基本使用（区间范围）`}>
+      <Calendar.Range/>
+    </DemoBlock>
   </div>
 }

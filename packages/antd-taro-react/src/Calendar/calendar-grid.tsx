@@ -128,6 +128,8 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(forwardRef(({
         } else {
           _value = [startDate, date]
         }
+      }else if (_value[0] && _value[1]) {
+        _value = [date]
       }
     } else {
       _value = [date]

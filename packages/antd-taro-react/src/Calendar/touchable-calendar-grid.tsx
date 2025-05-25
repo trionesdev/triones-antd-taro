@@ -50,8 +50,8 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    */
   const minTranslateY = async (): Promise<number> => {
     if (isTaroEnv) {
-      return await new Promise(resolve => Taro.createSelectorQuery()
-        .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.height)));
+      return await new Promise(resolve => {Taro.createSelectorQuery()
+        .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.height))});
 
     }
     return Promise.resolve(wrapperRef.current?.clientHeight)
@@ -107,26 +107,36 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
       new Date(currentMouth.getFullYear(), currentMouth.getMonth() + 1, 1),
     ]
 
-
-    new Promise(async resolve => {
+    Promise.all([]).then(async () => {
       setMouths(initMouths)
-      debugger
       setMouthHeight(mouthLines(currentMouth) * await cellSize())
       const firstMouthHeight = mouthLines(initMouths[0]) * await cellSize()
       setTranslateY(0 - firstMouthHeight)
     })
   }, [currentMouth]);
 
+  useEffect(() => {
+    if (mouth !== undefined) {
+      if (mouth !== currentMouth) {
+        setCurrentMouth(mouth)
+      }
+    }
+  }, [mouth]);
+
   return <div style={{boxSizing: 'border-box', overflow: 'hidden', height: mouthHeight}}>
     <div ref={wrapperRef} id={wrapperRef.current?.uid}
          style={{transform: `translate3d(0, ${translateY}px, 0)`}}
          onTouchStart={(event) => {
+           event.preventDefault();
+           event.stopPropagation();
            setTouching(true);
            const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
            setTouchStartPoint(startPoint)
            setTouchPoint(startPoint);
          }}
          onTouchMove={async (event) => {
+           event.preventDefault();
+           event.stopPropagation();
            if (touching) {
              const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
              if (translateY > 0 || translateY < (0 - await minTranslateY())) {

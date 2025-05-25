@@ -82,10 +82,8 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@tarojs/extend": "^4.1.1",
     "@tarojs/react": "4.0.9",
     "@tarojs/taro": "4.0.9",
-    "@use-gesture/react": "10.3.0",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",

@@ -53,10 +53,20 @@ $calendarCls: 'triones-antm-calendar';
 
 .#{$calendarCls} {
   &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     &-title {
       font-size: 16Px;
       padding: 8Px;
       text-align: center;
+    }
+
+    &-button {
+      padding-left: 12Px;
+      padding-right: 12Px;
+      cursor: pointer;
     }
   }
 
