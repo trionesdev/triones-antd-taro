@@ -1,56 +1,113 @@
+import {FC, ReactNode, useMemo} from 'react'
 import React from 'react'
-import type { FC, ReactNode } from 'react'
 import classNames from 'classnames'
-import { NativeProps, withNativeProps } from '../utils/native-props'
 import './style.scss'
-import { mergeProps } from '../utils/with-default-props'
 
 const classPrefix = `triones-antm-space`
 
+export type Size = 'small' | 'middle' | 'large' | number
+
 export type SpaceProps = {
+  /**
+   * @description 间距方向
+   */
   direction?: 'horizontal' | 'vertical'
+  /**
+   * @description 垂直对齐方式
+   */
   align?: 'start' | 'end' | 'center' | 'baseline'
+  /**
+   * @description 垂直对齐方式
+   */
   justify?:
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'between'
-  | 'around'
-  | 'evenly'
-  | 'stretch'
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | 'stretch';
+  /**
+   * @description 换行
+   */
   wrap?: boolean
+  /**
+   * @description 是否为块级元素
+   */
   block?: boolean
+  /**
+   * @description 点击事件
+   * @param event
+   */
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   children?: ReactNode
-} & NativeProps<'--gap' | '--gap-vertical' | '--gap-horizontal'>
-
-const defaultProps = {
-  direction: 'horizontal' as const,
+  /**
+   * @description 间距大小
+   */
+  size?: Size | Size[]
 }
 
-export const Space: FC<SpaceProps> = p => {
-  const props = mergeProps(defaultProps, p) as SpaceProps
-  const { direction, onClick } = props
-  return withNativeProps(
-    props,
-    <div
-      className={classNames(classPrefix, {
-        [`${classPrefix}-wrap`]: props.wrap,
-        [`${classPrefix}-block`]: props.block,
-        [`${classPrefix}-${direction}`]: true,
-        [`${classPrefix}-align-${props.align}`]: !!props.align,
-        [`${classPrefix}-justify-${props.justify}`]: !!props.justify,
-      })}
-      onClick={onClick}
-    >
-      {React.Children.map(props.children, child => {
-        return (
-          child !== null &&
-          child !== undefined && (
-            <div className={`${classPrefix}-item`}>{child}</div>
-          )
+
+export const Space: FC<SpaceProps> = ({
+                                        children,
+                                        direction = 'horizontal',
+                                        align,
+                                        justify,
+                                        wrap,
+                                        block,
+                                        onClick,
+                                        size = 'small',
+                                      }) => {
+
+  const sizeValue = (size: Size) => {
+    if (typeof size === 'number') {
+      return `${size}Px`
+    } else if (size === 'small') {
+      return '8Px'
+    } else if (size === 'middle') {
+      return '16Px'
+    } else if (size === 'large') {
+      return '24Px'
+    }
+  }
+  const columnGapValue = useMemo(() => {
+    if (Array.isArray(size)) {
+      return sizeValue(size[1])
+    } else {
+      return sizeValue(size)
+    }
+  }, [size])
+
+  const rowGapValue = useMemo(() => {
+    if (Array.isArray(size)) {
+      return sizeValue(size[1])
+    } else {
+      return sizeValue(size)
+    }
+  }, [size])
+
+  return (<div
+    className={classNames(classPrefix, {
+      [`${classPrefix}-wrap`]: wrap,
+      [`${classPrefix}-block`]: block,
+      [`${classPrefix}-${direction}`]: true,
+      [`${classPrefix}-align-${align}`]: !!align,
+      [`${classPrefix}-justify-${justify}`]: !!justify,
+    })}
+    style={{
+
+      columnGap: columnGapValue,
+      rowGap: rowGapValue
+    }}
+    onClick={onClick}
+  >
+    {React.Children.map(children, child => {
+      return (
+        child !== null &&
+        child !== undefined && (
+          <div className={`${classPrefix}-item`}>{child}</div>
         )
-      })}
-    </div>
-  )
+      )
+    })}
+  </div>)
 }

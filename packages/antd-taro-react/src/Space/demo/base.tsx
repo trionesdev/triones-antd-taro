@@ -42,7 +42,22 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title='自定义间距大小'>
-        <Space style={{ '--gap': '24px' }}>
+        <Space size={`small`}>
+          <Button type='primary'>按钮1</Button>
+          <Button type='primary'>按钮2</Button>
+          <Button type='primary'>按钮3</Button>
+        </Space>
+        <Space size={`middle`}>
+          <Button type='primary'>按钮1</Button>
+          <Button type='primary'>按钮2</Button>
+          <Button type='primary'>按钮3</Button>
+        </Space>
+        <Space size={`large`}>
+          <Button type='primary'>按钮1</Button>
+          <Button type='primary'>按钮2</Button>
+          <Button type='primary'>按钮3</Button>
+        </Space>
+        <Space size={30}>
           <Button type='primary'>按钮1</Button>
           <Button type='primary'>按钮2</Button>
           <Button type='primary'>按钮3</Button>

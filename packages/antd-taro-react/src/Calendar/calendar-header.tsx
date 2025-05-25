@@ -1,6 +1,7 @@
 import React from "react";
 import {FC} from "react";
 import classNames from "classnames";
+import {useConfig} from "../ConfigProvider";
 
 const calendarCls = 'triones-antm-calendar';
 type CalendarHeaderProps={
@@ -8,6 +9,7 @@ type CalendarHeaderProps={
   onChange:(mouth:Date)=>void;
 }
 export const CalendarHeader:FC<CalendarHeaderProps> = ({mouth,onChange}) => {
+  const { locale } = useConfig();
   return (<>
     <div className={classNames(`${calendarCls}-header`)}>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
