@@ -1,0 +1,63 @@
+$toastCls: 'triones-antm-toast';
+
+.#{$toastCls} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  pointer-events: none;
+
+  &-main {
+
+    padding: 12Px;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    max-width: 204px;
+    max-height: 70%;
+    overflow: auto;
+    color: #fff;
+    word-break: break-all;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 8px;
+    pointer-events: all;
+    font-size: var(--adm-font-size-7);
+    line-height: 1.5;
+    box-sizing: border-box;
+    &-icon{
+      padding: 35Px 12Px;
+      min-width: 150Px;
+      .#{$toastCls}{
+        &-center{
+          &-center{
+            text-align: initial;
+          }
+        }
+      }
+    }
+  }
+
+  &-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8Px;
+    &-icon{
+      .triones-antm-icon{
+        font-size: 36Px;
+      }
+    }
+    &-content{
+      display: inline-block;
+      color: #fff;
+      word-break: break-all;
+      pointer-events: all;
+      text-align: initial;
+    }
+  }
+}

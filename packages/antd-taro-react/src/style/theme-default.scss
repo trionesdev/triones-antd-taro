@@ -1,0 +1,54 @@
+:root {
+  // Currently internal variables:
+  --triones-antm-radius-s: 4px;
+  --triones-antm-radius-m: 8px;
+  --triones-antm-radius-l: 12px;
+
+  --triones-antm-font-size-1: 9px;
+  --triones-antm-font-size-2: 10px;
+  --triones-antm-font-size-3: 11px;
+  --triones-antm-font-size-4: 12px;
+  --triones-antm-font-size-5: 13px;
+  --triones-antm-font-size-6: 14px;
+  --triones-antm-font-size-7: 15px;
+  --triones-antm-font-size-8: 16px;
+  --triones-antm-font-size-9: 17px;
+  --triones-antm-font-size-10: 18px;
+
+  // variables should be exposed to users:
+  --triones-antm-color-primary: #1677ff;
+  --triones-antm-color-success: #00b578;
+  --triones-antm-color-warning: #ff8f1f;
+  --triones-antm-color-danger: #ff3141;
+
+  --triones-antm-color-yellow: #ff9f18;
+  --triones-antm-color-orange: #ff6430;
+  --triones-antm-color-wathet: #e7f1ff;
+
+  --triones-antm-color-text: #333333;
+  --triones-antm-color-text-secondary: #666666;
+  --triones-antm-color-weak: #999999;
+  --triones-antm-color-light: #cccccc;
+  --triones-antm-color-border: #eeeeee;
+  --triones-antm-color-background: #ffffff;
+
+  --triones-antm-color-highlight: var(--triones-antm-color-danger);
+
+  // Deprecated. We use `--triones-antm-color-text-light-solid` in code
+  // but keep here for compatible
+  --triones-antm-color-white: #ffffff;
+  --triones-antm-color-box: #f5f5f5;
+
+  --triones-antm-color-text-light-solid: var(--triones-antm-color-white);
+  --triones-antm-color-text-dark-solid: #000000;
+  --triones-antm-color-fill-content: var(--triones-antm-color-box);
+
+  --triones-antm-font-size-main: var(--triones-antm-font-size-5);
+
+  --triones-antm-font-family: -apple-system, blinkmacsystemfont,
+    'Helvetica Neue', helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui',
+    'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+
+  // The variables below are deprecated and only exist for backward compatibility:
+  --triones-antm-border-color: var(--triones-antm-color-border);
+}

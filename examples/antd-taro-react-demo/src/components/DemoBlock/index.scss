@@ -1,0 +1,20 @@
+.demoBlock {
+  font-size: 14Px;
+  margin-bottom: 12Px;
+  &:last-of-type {
+    padding-bottom: 32Px;
+  }
+  scrollbar-width: thin;
+}
+
+.demoTitle {
+  padding: 12Px 12Px 8Px;
+  color: #697b8c;
+  font-size: 14Px;
+  background: #fafbfc;
+}
+
+.demoMain {
+  border-right: none;
+  border-left: none;
+}

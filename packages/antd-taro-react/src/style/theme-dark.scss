@@ -1,0 +1,24 @@
+html[data-prefers-color-scheme='dark'] {
+  // variables should be exposed to users:
+  --triones-antm-color-primary: #3086ff;
+  --triones-antm-color-success: #34b368;
+  --triones-antm-color-warning: #ffa930;
+  --triones-antm-color-danger: #ff4a58;
+
+  --triones-antm-color-yellow: #ffa930;
+  --triones-antm-color-orange: #e65a2b;
+  --triones-antm-color-wathet: #0d2543;
+
+  --triones-antm-color-text: #e6e6e6;
+  --triones-antm-color-text-secondary: #b3b3b3;
+  --triones-antm-color-weak: #808080;
+  --triones-antm-color-light: #4d4d4d;
+  --triones-antm-color-border: #2b2b2b;
+  --triones-antm-color-box: #0a0a0a;
+  --triones-antm-color-background: #1a1a1a;
+
+  --triones-antm-color-background-body: var(--triones-antm-color-background);
+
+  // The variables below are deprecated and only exist for backward compatibility:
+  --triones-antm-border-color: var(--triones-antm-color-border);
+}

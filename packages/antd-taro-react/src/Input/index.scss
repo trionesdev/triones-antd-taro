@@ -1,0 +1,96 @@
+$inputCls: 'triones-antm-input';
+$inputAffixWrapperCls: 'triones-antm-input-affix-wrapper';
+$inputGroupWrapperCls: 'triones-antm-input-group-wrapper';
+$inputPotCls: 'triones-antm-pot';
+
+input{
+  height: auto;
+}
+.#{$inputCls} {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  transition: all .2s;
+  padding: 4Px 0Px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  //line-height: 1.5714285714285714;
+  border-radius: 6Px;
+  font-size: 14Px;
+  height: auto;
+
+  &::placeholder {
+    font-size: 14Px;
+    color: #cccccc;
+  }
+}
+
+
+.#{$inputAffixWrapperCls} {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  padding: 4Px 0Px;
+
+  .#{$inputCls} {
+    padding: 0;
+
+    &-prifix {
+    }
+
+    &-suffix {
+      display: inline-flex;
+      align-items: center;
+      gap: 4Px;
+
+      .clear-icon {
+        color: rgba(0, 0, 0, 0.25);
+
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.45);
+        }
+      }
+
+      .triones-antm-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.#{$inputGroupWrapperCls} {
+}
+
+
+.#{$inputPotCls} {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  column-gap: 8Px;
+
+  &-input {
+    text-align: center;
+    padding-inline: 4Px;
+    font-size: 14Px;
+    height: auto;
+    &::placeholder {
+      font-size: 14Px;
+    }
+  }
+
+  .#{$inputCls}-outlined {
+    font-size: 14Px;
+    color: rgba(0, 0, 0, 0.88);
+    background: #ffffff;
+    border-width: 1Px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}

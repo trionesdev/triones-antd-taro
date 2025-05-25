@@ -1,0 +1,55 @@
+$class-prefix-footer: 'triones-antm-footer';
+/* prettier-ignore */
+.#{$class-prefix-footer} {
+  --background-color: #ffffff;
+
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+
+  &-label {
+    width: 100%;
+    .triones-antm-divider {
+      color: #cccccc;
+    }
+  }
+  &-links {
+    margin: 8PX 0;
+    color: #1677ff;
+    white-space: nowrap;
+    &-item {
+      display: inline-block;
+    }
+  }
+  &-content {
+    display: flex;
+    align-items: center;
+    margin: 8PX 0;
+    color: #cccccc;
+  }
+  &-chips {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin: 8PX 0;
+  }
+  &-chip {
+    white-space: nowrap;
+    margin-right: 20PX;
+    font-size: 12PX;
+    background-color: #f5f5f5;
+    color: #999999;
+    padding: 4PX 12PX;
+    border-radius: 100PX;
+    &-link {
+      cursor: pointer;
+      background-color: #e7f1ff;
+      color: #1677ff;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

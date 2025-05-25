@@ -1,0 +1,40 @@
+$spinLoadingCls: triones-antm-spin-loading;
+
+.#{$spinLoadingCls} {
+  --size: 32Px;
+  --color: #1677ff;
+  width: var(--size);
+  height: var(--size);
+
+  &-svg {
+    width: 100%;
+    height: 100%;
+    //animation: adm-spin-loading-rotate 0.8s infinite linear;
+
+    > .#{$spinLoadingCls}-circle {
+      //stroke: #1677ff;
+      stroke: var(--color);
+    }
+  }
+
+  &-loading {
+    color: var(--color);
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: currentColor;
+    mask-image: var(--maskImage);
+    -webkit-mask-image: var(--maskImage);
+    animation: adm-spin-loading-rotate 2s infinite linear;
+  }
+
+}
+
+@keyframes adm-spin-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
