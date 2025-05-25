@@ -8,7 +8,7 @@ import {useConfig} from "../ConfigProvider";
 
 const cls = 'triones-antm-calendar-picker';
 
-export const CalendarPickerRange: FC<CalendarPickerRangeProps> = memo(
+export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
   ({
      mouth,
      open,
@@ -42,8 +42,8 @@ export const CalendarPickerRange: FC<CalendarPickerRangeProps> = memo(
     }, [innerOpen]);
 
     useEffect(() => {
-      if (value != undefined) {
-        if (value != valueRef.current) {
+      if (value !== undefined) {
+        if (value !== valueRef.current) {
           valueRef.current = value
         }
       }
