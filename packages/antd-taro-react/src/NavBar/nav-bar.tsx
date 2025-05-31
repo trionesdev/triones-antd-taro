@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { FC, ReactNode } from 'react'
+import type {CSSProperties, FC, ReactNode} from 'react'
 import React from 'react'
 import { NativeProps, withNativeProps } from '../utils/native-props'
 import { useConfig } from '../ConfigProvider'
@@ -20,8 +20,9 @@ export type NavBarProps = {
   left?: ReactNode
   right?: ReactNode
   onBack?: () => void
-  children?: ReactNode
-} & NativeProps<'--height' | '--border-bottom'>
+  children?: ReactNode,
+  style?: CSSProperties
+}
 
 const defaultBackIcon = <LeftOutline />
 

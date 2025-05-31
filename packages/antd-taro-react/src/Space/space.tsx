@@ -1,4 +1,4 @@
-import {FC, ReactNode, useMemo} from 'react'
+import {CSSProperties, FC, ReactNode, useMemo} from 'react'
 import React from 'react'
 import classNames from 'classnames'
 import './style.scss'
@@ -45,6 +45,7 @@ export type SpaceProps = {
    * @description 间距大小
    */
   size?: Size | Size[]
+  style?: CSSProperties
 }
 
 
@@ -57,6 +58,7 @@ export const Space: FC<SpaceProps> = ({
                                         block,
                                         onClick,
                                         size = 'small',
+                                        style,
                                       }) => {
 
   const sizeValue = (size: Size) => {
@@ -95,7 +97,7 @@ export const Space: FC<SpaceProps> = ({
       [`${classPrefix}-justify-${justify}`]: !!justify,
     })}
     style={{
-
+      ...style,
       columnGap: columnGapValue,
       rowGap: rowGapValue
     }}

@@ -10,7 +10,7 @@ import NavBar from "../index";
 export default () => {
   const right = (
     <div style={{ fontSize: 24 }}>
-      <Space style={{ '--gap': '16px' }}>
+      <Space>
         <MoreOutline />
       </Space>
     </div>
@@ -56,10 +56,6 @@ export default () => {
 
       <DemoBlock title='自定义高度及边框' padding='0'>
         <NavBar
-          style={{
-            '--height': '36px',
-            '--border-bottom': '1px #eee solid',
-          }}
           onBack={back}
         >
           标题
