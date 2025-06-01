@@ -7,5 +7,8 @@ export default ()=>{
     <DemoBlock title={`基本使用`}>
       <InputNumber/>
     </DemoBlock>
+    <DemoBlock title={`最大值最小值`}>
+      <InputNumber min={0} max={10}/>
+    </DemoBlock>
   </div>
 }
