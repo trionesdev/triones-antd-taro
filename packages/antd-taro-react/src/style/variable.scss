@@ -1,35 +1,128 @@
-$trionesBlue:#1677FF !default;
-$trionesPurple:#722ED1 !default;
+$trionesBlue: #1677FF !default;
+$trionesPurple: #722ED1 !default;
 
-$trionesColorText: rgba(0,0,0,0.88) !default;
-$trionesColorTextSecondary: rgba(0,0,0,0.65) !default;
-$trionesColorTextTertiary: rgba(0,0,0,0.45) !default;
-$trionesColorTextQuaternary: rgba(0,0,0,0.25) !default;
-$trionesColorTextPlaceholder: rgba(0,0,0,0.25) !default;
-$trionesColorTextDisabled: rgba(0,0,0,0.25) !default;
-$trionesColorTextHeading: rgba(0,0,0,0.88) !default;
-$trionesColorTextLabel: rgba(0,0,0,0.65) !default;
-$trionesColorTextDescription: rgba(0,0,0,0.45) !default;
+$trionesColorFillContent: rgba(0, 0, 0, 0.06) !default;
+$trionesColorFillContentHover: rgba(0, 0, 0, 0.15) !default;
+$trionesColorFillContentAlter: rgba(0, 0, 0, 0.02) !default;
+$trionesColorBgContainerDisabled: rgba(0, 0, 0, 0.04) !default;
+$trionesColorBorderBg: #fffff !default;
+$trionesColorBorderSplit: rgba(5, 5, 5, 0.06) !default;
+
+
+$trionesColorText: rgba(0, 0, 0, 0.88) !default;
+$trionesColorTextSecondary: rgba(0, 0, 0, 0.65) !default;
+$trionesColorTextTertiary: rgba(0, 0, 0, 0.45) !default;
+$trionesColorTextQuaternary: rgba(0, 0, 0, 0.25) !default;
+$trionesColorTextPlaceholder: rgba(0, 0, 0, 0.25) !default;
+$trionesColorTextDisabled: rgba(0, 0, 0, 0.25) !default;
+$trionesColorTextHeading: rgba(0, 0, 0, 0.88) !default;
+$trionesColorTextLabel: rgba(0, 0, 0, 0.65) !default;
+$trionesColorTextDescription: rgba(0, 0, 0, 0.45) !default;
 $trionesColorTextLightSolid: #fff !default;
 
-$trionesColorFill: rgba(0,0,0,0.15) !default;
 
-$trionesColorPrimary:#1777FF !default;
-$trionesColorPrimaryBg:#e6f4ff !default;
-$trionesColorPrimaryBgHover:#bae0ff !default;
-$trionesColorPrimaryBorder:#91caff !default;
-$trionesColorPrimaryBorderHover:#69b1ff !default;
-$trionesColorPrimaryActive:#0958d9 !default;
-$trionesColorPrimaryTextHover:#4096ff !default;
-$trionesColorPrimaryText:#1677ff !default;
-$trionesColorPrimaryActive:#0958d9 !default;
+$trionesColorHighlight: #ff4d4f !default;
+$trionesColorBgTextHover: rgba(0, 0, 0, 0.06) !default;
+$trionesColorBgTextActive: rgba(0, 0, 0, 0.15) !default;
 
-$trionesColorSuccess:#00b578 !default;
-$trionesColorWarning:#ff8f1f !default;
-$trionesColorDanger:#ff4d4f !default;
-$trionesColorText:#333333 !default;
-$trionesColorTextSecondary:#666666 !default;
 
-$trionesBorderRadius:6px !default;
-$trionesBorderColor:#d9d9d9 !default;
-$trionesBorderColorSecondary:#f0f0f0 !default;
+$trionesColorFill: rgba(0, 0, 0, 0.15) !default;
+$trionesColorFillSecondary: rgba(0, 0, 0, 0.06) !default;
+$trionesColorFillTertiary: rgba(0, 0, 0, 0.04) !default;
+$trionesColorFillQuaternary: rgba(0, 0, 0, 0.02) !default;
+
+$trionesColorPrimary: #1777FF !default;
+$trionesColorPrimaryBg: #e6f4ff !default;
+$trionesColorPrimaryBgHover: #bae0ff !default;
+$trionesColorPrimaryBorder: #91caff !default;
+$trionesColorPrimaryBorderHover: #69b1ff !default;
+$trionesColorPrimaryActive: #0958d9 !default;
+$trionesColorPrimaryTextHover: #4096ff !default;
+$trionesColorPrimaryText: #1677ff !default;
+$trionesColorPrimaryActive: #0958d9 !default;
+
+$trionesColorSuccess: #00b578 !default;
+$trionesColorSuccessBg: #f6ffed !default;
+$trionesColorSuccessBgHover: #d9f7be !default;
+$trionesColorSuccessBorder: #b7eb8f !default;
+$trionesColorSuccessBorderHover: #95de64 !default;
+$trionesColorSuccessHover: #95de64 !default;
+$trionesColorSuccessActive: #389e0d !default;
+$trionesColorSuccessText: #52c41a !default;
+$trionesColorSuccessTextActive: #389e0d !default;
+
+
+$trionesColorError: #ff4d4f !default;
+$trionesColorErrorBg: #fff2f0 !default;
+$trionesColorErrorBgHover: #fff1f0 !default;
+$trionesColorErrorBgFilledHover: #ffdfdc !default;
+$trionesColorErrorBgActive: #ffccc7 !default;
+$trionesColorErrorBorder: #ffccc7 !default;
+$trionesColorErrorBorderHover: #ffa39e !default;
+$trionesColorErrorHover: #ff7875 !default;
+$trionesColorErrorActive: #d9363e !default;
+$trionesColorErrorTextHover: #ff7875 !default;
+$trionesColorErrorText: #ff4d4f !default;
+$trionesColorErrorTextActive: #d9363e !default;
+
+
+$trionesColorWarning: #ff8f1f !default;
+$trionesColorWarningBg: #fffbe6 !default;
+
+$trionesColorInfo: #1677ff !default;
+$trionesColorLink: #1677ff !default;
+
+$trionesColorDanger: #ff4d4f !default;
+$trionesColorText: #333333 !default;
+$trionesColorTextBase: #000 !default;
+$trionesColorTextSecondary: #666666 !default;
+
+$trionesColorBgBase: #fff !default;
+
+$trionesBorderRadius: 6Px !default;
+$trionesBorderRadiusXs: 2Px !default;
+$trionesBorderRadiusSm: 4Px !default;
+$trionesBorderRadiusLg: 8Px !default;
+$trionesBorderRadiusOuter: 4Px !default;
+$trionesBorderColor: #d9d9d9 !default;
+$trionesBorderColorSecondary: #f0f0f0 !default;
+
+
+$trionesColorBgMask: rgba(0, 0, 0, 0.45) !default;
+
+$trionesLineHeight: 1.5714285714285714 !default;
+$trionesLineHeightLg: 1.5 !default;
+$trionesLineHeightSm: 1.6666666666666667 !default;
+
+$trionesPaddingXxs: 4Px !default;
+$trionesPaddingXs: 8Px !default;
+$trionesPaddingSm: 12Px !default;
+$trionesPadding: 16Px !default;
+$trionesPaddingMd: 20Px !default;
+$trionesPaddingLg: 24Px !default;
+$trionesPaddingXl: 32Px !default;
+$trionesPaddingContentHorizontalLg: 24Px !default;
+$trionesPaddingContentVerticalLg: 16Px !default;
+$trionesPaddingContentHorizontal: 16Px !default;
+$trionesPaddingContentVertical: 12Px !default;
+$trionesPaddingContentHorizontalSm: 16Px !default;
+$trionesPaddingContentVerticalSm: 8Px !default;
+
+
+$trionesInputPaddingBlock: 4Px !default;
+$trionesInputPaddingSm: 0Px !default;
+$trionesInputPaddingLg: 7Px !default;
+$trionesInputPaddingInline: 11Px !default;
+$trionesInputPaddingInlineSm: 7Px !default;
+$trionesInputPaddingInlineLg: 11Px !default;
+$trionesInputAddonBg: rgba(0, 0, 0, 0.02) !default;
+$trionesInputActiveBorderColor: #1677ff !default;
+$trionesInputHoverBorderColor: #4096ff !default;
+$trionesInputActiveShadow: 0 0 0 2px rgba(5, 145, 255, 0.1) !default;
+$trionesInputErrorActiveShadow: 0 0 0 2px rgba(255, 38, 5, 0.06) !default;
+$trionesInputWarringActiveShadow: 0 0 0 2px rgba(255, 215, 5, 0.1) !default;
+$trionesInputHoverBg: #fffff !default;
+$trionesInputActiveBg: #fffff !default;
+$trionesInputInputFontSize: 14Px !default;
+$trionesInputInputFontSizeLg: 16Px !default;
+$trionesInputInputFontSizeSm: 14Px !default;

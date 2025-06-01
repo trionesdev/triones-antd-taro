@@ -1,23 +1,27 @@
+@import "../style/variable";
+
 $inputCls: 'triones-antm-input';
 $inputAffixWrapperCls: 'triones-antm-input-affix-wrapper';
 $inputGroupWrapperCls: 'triones-antm-input-group-wrapper';
 $inputPotCls: 'triones-antm-pot';
 
-input{
+input {
   height: auto;
 }
+
 .#{$inputCls} {
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
   width: 100%;
   min-width: 0;
   transition: all .2s;
-  padding: 4Px 0Px;
+  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
   outline: none;
   box-shadow: none;
   border: none;
-  //line-height: 1.5714285714285714;
-  border-radius: 6Px;
+  line-height: $trionesLineHeight;
+  border-radius: $trionesBorderRadiusSm;
   font-size: 14Px;
   height: auto;
 
@@ -29,12 +33,26 @@ input{
 
 
 .#{$inputAffixWrapperCls} {
+  box-sizing: border-box;
   position: relative;
   display: inline-flex;
   width: 100%;
   min-width: 0;
-  padding: 4Px 0Px;
+  line-height: $trionesLineHeight;
+  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
   gap: 4Px;
+
+  &::before {
+
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: "\a0";
+  }
+
+  &::after {
+
+  }
 
   .#{$inputCls} {
     padding: 0;
@@ -69,19 +87,55 @@ input{
 
 
 .#{$inputPotCls} {
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  column-gap: 8Px;
-
+  &-wrapper{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    column-gap: 8Px;
+  }
   &-input {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &-item {
     text-align: center;
-    padding-inline: 4Px;
     font-size: 14Px;
-    height: auto;
+    height: 32Px;
+    width: 32Px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+
     &::placeholder {
       font-size: 14Px;
     }
+    &-focus{
+      &::after{
+        content: ' ';
+        height: 100%;
+        width: 0.5Px;
+        background-color: #0a0a0a;
+        transition: transform 0.1s ease;
+        animation: blink 1s step-end infinite;
+      }
+    }
+
   }
 
   .#{$inputCls}-outlined {
@@ -94,5 +148,11 @@ input{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+  }
+}
+
+@keyframes blink  {
+  50% {
+    background-color: transparent;
   }
 }

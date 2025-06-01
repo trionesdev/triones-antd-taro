@@ -27,6 +27,9 @@ export {default as Grid} from './Grid';
 export {default as Image} from './Images';
 export {default as Input} from './Input';
 export type {InputOPTProps, InputPasswordProps, InputProps} from './Input';
+
+export {default as InputNumber} from "./InputNumber"
+
 export {default as NavBar} from './NavBar';
 export {default as NoticeBar} from './NoticeBar';
 export {default as PageIndicator} from './PageIndicator';
