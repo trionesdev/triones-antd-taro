@@ -50,6 +50,7 @@ export type ButtonProps = {
    * @description 点击事件
    */
   onClick?: MouseEventHandler<HTMLButtonElement>
+  [key: string]: any
 }
 
 

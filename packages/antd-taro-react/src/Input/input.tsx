@@ -26,12 +26,17 @@ export const Input: FC<InputProps> = ({
   suffix,
   value,
   onChange,
+  ...rest
 }) => {
 
   const handleRender = () => {
     if (prefix || suffix || allowClear) {
       return (
         <InputAffixWrapper
+          {...rest}
+          className={className}
+          style={style}
+          placeholder={placeholder}
           prefix={prefix}
           suffix={suffix}
           allowClear={allowClear}
@@ -43,7 +48,9 @@ export const Input: FC<InputProps> = ({
     } else {
       return (
         <BaseInput
+          {...rest}
           className={className}
+          style={style}
           placeholder={placeholder}
           type={type}
           disabled={disabled}

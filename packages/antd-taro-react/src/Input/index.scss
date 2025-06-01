@@ -34,6 +34,7 @@ input{
   width: 100%;
   min-width: 0;
   padding: 4Px 0Px;
+  gap: 4Px;
 
   .#{$inputCls} {
     padding: 0;
@@ -44,6 +45,7 @@ input{
     &-suffix {
       display: inline-flex;
       align-items: center;
+      flex-shrink: 0;
       gap: 4Px;
 
       .clear-icon {

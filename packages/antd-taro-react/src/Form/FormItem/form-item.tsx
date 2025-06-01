@@ -40,8 +40,8 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemLabelWidth = labelWidth ? labelWidth : formLabelWidth
   const clsPrefix = "triones-antm-form-item"
   return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className)} style={style}>
-    <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
-                   style={{width: formItemLabelWidth}} label={label} required={required}/>
+    {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
+                             style={{width: formItemLabelWidth}} label={label} required={required}/>}
     <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}
                    errorRender={errorRender}>{children}</FormItemInput>
   </div>

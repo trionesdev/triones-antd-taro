@@ -3,6 +3,7 @@ import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react
 
 export type BaseInputProps = {
   className?: string;
+  style?: React.CSSProperties;
   placeholder?: string;
   type?: 'text' | 'password' | 'textarea';
   disabled?: boolean;
@@ -15,8 +16,8 @@ export interface BaseInputHandle {
 }
 
 export const BaseInput = forwardRef<BaseInputHandle, BaseInputProps>(
-  ({ className, placeholder, type, value, onChange }, ref) => {
-    const [keySequence,setKeySequence] = useState(0)
+  ({className, style, placeholder, type, value, onChange, ...props}, ref) => {
+    const [keySequence, setKeySequence] = useState(0)
     const [innerValue, setInnerValue] = useState(value || '');
 
     useImperativeHandle(ref, () => ({
@@ -30,19 +31,21 @@ export const BaseInput = forwardRef<BaseInputHandle, BaseInputProps>(
 
 
     useEffect(() => {
-      setKeySequence(keySequence+1)
+      setKeySequence(keySequence + 1)
     }, [type]);
 
     return (
       <input key={keySequence}
-        className={classNames([`${cls}`, className])}
-        placeholder={placeholder}
-        type={type}
-        value={innerValue}
-        onChange={(e) => {
-          setInnerValue(e.target.value);
-          onChange?.(e);
-        }}
+             {...props}
+             className={classNames([`${cls}`, className])}
+             style={style}
+             placeholder={placeholder}
+             type={type}
+             value={innerValue}
+             onChange={(e) => {
+               setInnerValue(e.target.value);
+               onChange?.(e);
+             }}
       />
     );
   },

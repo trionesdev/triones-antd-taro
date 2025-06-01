@@ -43,6 +43,9 @@ export {default as Tag} from './Tag';
 export type {TagProps} from './Tag';
 export {default as Toast} from './Toast';
 export type {ToastProps} from './Toast';
+
+export {default as ValidationCodeInput} from "./ValidationCodeInput"
+
 export {default as WaterMark} from './WaterMark';
 
 export {default as CascaderPicker} from './CascaderPicker';

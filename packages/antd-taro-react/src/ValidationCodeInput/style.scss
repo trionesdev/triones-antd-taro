@@ -1,0 +1,15 @@
+@import "../style/variable";
+$validationCodeInputCls:'triones-antm-validation-code-input';
+
+.#{$validationCodeInputCls} {
+  &-send{
+    cursor: pointer;
+    &:hover{
+      color: $trionesColorPrimary;
+    }
+  }
+  &-counting{
+    cursor: not-allowed;
+    color: $trionesColorTextDisabled;
+  }
+}
