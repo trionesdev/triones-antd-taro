@@ -11,7 +11,7 @@
 
 | 组件名称                       | 是否完成                    |
 |----------------------------|-------------------------|
-| Avatar 头像                  | <li> - [x] </li>        |
+| Avatar 头像                  | <li>- [x] </li>         |        |
 | Badge 徽标                   | <input type="checkbox"> |
 | Button 按钮                  | [x]                     |
 | Calendar 日历                | [x]                     |
