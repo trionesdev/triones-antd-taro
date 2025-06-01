@@ -28,7 +28,7 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, m
   const maxMatch = max !== undefined && internalValue >= max;
 
   const trionesInputNumberCls = 'triones-antm-input-number';
-  return <div className={classNames(trionesInputNumberCls)}>
+  return <div className={classNames(trionesInputNumberCls, className)} style={style}>
     <div
       className={classNames(`${trionesInputNumberCls}-button`, {[`${trionesInputNumberCls}-button-disabled`]: minMatch})}
       onClick={() => {
