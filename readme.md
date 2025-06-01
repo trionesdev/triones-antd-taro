@@ -9,43 +9,43 @@
 
 ## 组件列表
 
-| 组件名称                       | 是否完成             |
-|----------------------------|------------------|
-| Avatar 头像                  | <li> - [x] </li> |
-| Badge 徽标                   | [x]              |
-| Button 按钮                  | [x]              |
-| Calendar 日历                | [x]              |
-| CalendarPicker 日历选择器       | [x]              |
-| Card 卡片                    | [x]              | 
-| CascaderView 级联            | [x]              | 
-| CascaderPicker 级联选择器       | [x]              | 
-| Checkbox 复选框               | [x]              | 
-| Divider 分割线                | [x]              | 
-| Empty 空组件                  | [x]              | 
-| ErrorBlock 错误块             | [x]              | 
-| Footer 底部                  | [x]              | 
-| Form 表单                    | [x]              | 
-| Grid 网格                    | [x]              | 
-| Input 输入框                  | [x]              | 
-| InputNumber 数字输入框          | [x]              | 
-| NavBar 导航栏                 | [x]              | 
-| NoticeBar 通告栏              | [x]              | 
-| PageIndicator 分页符          | [x]              | 
-| Picker 选择器                 | [x]              | 
-| Popup 弹出层                  | [x]              | 
-| ProgressBar 进度条            | [x]              | 
-| Radio 单选框                  | [x]              | 
-| Rate 评分                    | [x]              | 
-| Result 结果                  | [x]              | 
-| SafeArea 安全区               | [x]              | 
-| Space 间距                   | [x]              | 
-| SpinLoading 加载中            | [x]              | 
-| Switch 开关                  | [x]              | 
-| TabBar 底部导航栏               | [x]              | 
-| Tabs 标签页                   | [x]              | 
-| Tag 标签                     | [x]              | 
-| ValidationCodeInput 验证码输入框 | [x]              | 
-| WaterMark 水印               | [x]              | 
+| 组件名称                       | 是否完成                    |
+|----------------------------|-------------------------|
+| Avatar 头像                  | <li> - [x] </li>        |
+| Badge 徽标                   | <input type="checkbox"> |
+| Button 按钮                  | [x]                     |
+| Calendar 日历                | [x]                     |
+| CalendarPicker 日历选择器       | [x]                     |
+| Card 卡片                    | [x]                     | 
+| CascaderView 级联            | [x]                     | 
+| CascaderPicker 级联选择器       | [x]                     | 
+| Checkbox 复选框               | [x]                     | 
+| Divider 分割线                | [x]                     | 
+| Empty 空组件                  | [x]                     | 
+| ErrorBlock 错误块             | [x]                     | 
+| Footer 底部                  | [x]                     | 
+| Form 表单                    | [x]                     | 
+| Grid 网格                    | [x]                     | 
+| Input 输入框                  | [x]                     | 
+| InputNumber 数字输入框          | [x]                     | 
+| NavBar 导航栏                 | [x]                     | 
+| NoticeBar 通告栏              | [x]                     | 
+| PageIndicator 分页符          | [x]                     | 
+| Picker 选择器                 | [x]                     | 
+| Popup 弹出层                  | [x]                     | 
+| ProgressBar 进度条            | [x]                     | 
+| Radio 单选框                  | [x]                     | 
+| Rate 评分                    | [x]                     | 
+| Result 结果                  | [x]                     | 
+| SafeArea 安全区               | [x]                     | 
+| Space 间距                   | [x]                     | 
+| SpinLoading 加载中            | [x]                     | 
+| Switch 开关                  | [x]                     | 
+| TabBar 底部导航栏               | [x]                     | 
+| Tabs 标签页                   | [x]                     | 
+| Tag 标签                     | [x]                     | 
+| ValidationCodeInput 验证码输入框 | [x]                     | 
+| WaterMark 水印               | [x]                     | 
 
 ## 本地运行
 
