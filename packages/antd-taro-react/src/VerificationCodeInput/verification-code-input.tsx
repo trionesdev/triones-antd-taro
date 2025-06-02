@@ -26,7 +26,7 @@ type ValidationCodeInputProps = Omit<InputProps, 'suffix'> & {
   onSend?: () => Promise<boolean>
 };
 
-export const ValidationCodeInput:FC<ValidationCodeInputProps> = ({
+export const VerificationCodeInput:FC<ValidationCodeInputProps> = ({
                                                             sendText = '获取验证码',
                                                             resendText = "重新发送",
                                                             waitSeconds = 60,

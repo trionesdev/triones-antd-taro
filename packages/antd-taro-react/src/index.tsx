@@ -1,5 +1,8 @@
 import './style';
 
+export {default as Alert} from './Alert';
+export type {AlertProps} from './Alert';
+
 export {default as Avatar} from './Avatar';
 export {default as Badge} from './Badge';
 
@@ -48,7 +51,7 @@ export type {TagProps} from './Tag';
 export {default as Toast} from './Toast';
 export type {ToastProps} from './Toast';
 
-export {default as ValidationCodeInput} from "./ValidationCodeInput"
+export {default as VerificationCodeInput} from "./VerificationCodeInput"
 
 export {default as WaterMark} from './WaterMark';
 

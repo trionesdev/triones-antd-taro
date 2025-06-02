@@ -30,6 +30,10 @@ $trionesColorFill: rgba(0, 0, 0, 0.15) !default;
 $trionesColorFillSecondary: rgba(0, 0, 0, 0.06) !default;
 $trionesColorFillTertiary: rgba(0, 0, 0, 0.04) !default;
 $trionesColorFillQuaternary: rgba(0, 0, 0, 0.02) !default;
+$trionesColorFillContent: rgba(0, 0, 0, 0.06) !default;
+$trionesColorFillContentHover: rgba(0, 0, 0, 0.15) !default;
+$trionesColorFillContentAlter: rgba(0, 0, 0, 0.02) !default;
+
 
 $trionesColorPrimary: #1777FF !default;
 $trionesColorPrimaryBg: #e6f4ff !default;
@@ -68,9 +72,32 @@ $trionesColorErrorTextActive: #d9363e !default;
 
 $trionesColorWarning: #ff8f1f !default;
 $trionesColorWarningBg: #fffbe6 !default;
+$trionesColorWarningBgHover: #fff1b8 !default;
+$trionesColorWarningBgActive: #d48806 !default;
+$trionesColorWarningBorder: #ffe58f !default;
+$trionesColorWarningBorderHover: #ffd666 !default;
+$trionesColorWarningHover: #ffd666 !default;
+$trionesColorWarningActive: #d48806 !default;
+$trionesColorWarningTextHover: #ffc53d !default;
+$trionesColorWarningText: #faad14 !default;
+$trionesColorWarningTextActive: #d48806 !default;
 
 $trionesColorInfo: #1677ff !default;
+$trionesColorInfoBg: #e6f4ff !default;
+$trionesColorInfoBgHover: #bae0ff !default;
+$trionesColorInfoBgActive: #bae0ff !default;
+$trionesColorInfoBorder: #91caff !default;
+$trionesColorInfoBorderHover: #69b1ff !default;
+$trionesColorInfoHover: #69b1ff !default;
+$trionesColorInfoActive: #0958d9 !default;
+$trionesColorInfoTextHover: #4096ff !default;
+$trionesColorInfoText: #1677ff !default;
+$trionesColorInfoTextActive: #0958d9 !default;
+
+
 $trionesColorLink: #1677ff !default;
+$trionesColorLinkHover: #69b1ff !default;
+$trionesColorLinkActive: #0958d9 !default;
 
 $trionesColorDanger: #ff4d4f !default;
 $trionesColorText: #333333 !default;
@@ -126,3 +153,13 @@ $trionesInputActiveBg: #fffff !default;
 $trionesInputInputFontSize: 14Px !default;
 $trionesInputInputFontSizeLg: 16Px !default;
 $trionesInputInputFontSizeSm: 14Px !default;
+
+
+$trionesFontSizeSm: 12Px !default;
+$trionesFontSizeLg: 16Px !default;
+$trionesFontSizeXl: 20Px !default;
+
+$trionesColorIcon: rgba(0, 0, 0, 0.45) !default;
+$trionesColorIconHover: rgba(0, 0, 0, 0.88) !default;
+
+$trionesFontSizeIcon: 12Px !default;
