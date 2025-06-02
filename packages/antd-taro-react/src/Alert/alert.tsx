@@ -1,8 +1,8 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 import "./style.scss"
-import {CloseOutline} from "@trionesdev/antd-taro-icons-react/src";
 import {
+  CloseOutline,
   CheckCircleFill,
   CloseCircleFill,
   ExclamationCircleFill,
