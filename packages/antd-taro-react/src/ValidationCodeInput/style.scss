@@ -3,12 +3,14 @@ $validationCodeInputCls:'triones-antm-validation-code-input';
 
 .#{$validationCodeInputCls} {
   &-send{
+    padding-inline: $trionesPaddingContentHorizontal;
     cursor: pointer;
     &:hover{
       color: $trionesColorPrimary;
     }
   }
   &-counting{
+    padding-inline: $trionesPaddingContentHorizontal;
     cursor: not-allowed;
     color: $trionesColorTextDisabled;
   }

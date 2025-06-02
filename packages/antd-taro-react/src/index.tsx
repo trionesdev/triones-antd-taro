@@ -29,6 +29,7 @@ export {default as Input} from './Input';
 export type {InputOPTProps, InputPasswordProps, InputProps} from './Input';
 
 export {default as InputNumber} from "./InputNumber"
+export type {InputNumberProps} from "./InputNumber"
 
 export {default as NavBar} from './NavBar';
 export {default as NoticeBar} from './NoticeBar';

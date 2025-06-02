@@ -1,12 +1,13 @@
+@import "../style/variable";
+
 $dividerCls: 'triones-antm-divider';
 /* prettier-ignore */
 .#{$dividerCls} {
   display: flex;
   align-items: center;
   font-size: 14PX;
-  color: #999999;
-  margin: 16PX 0;
-  border: 0 solid #eeeeee;
+  color: $trionesBorderColor;
+  border: 0 solid $trionesBorderColor ;
   width: 100%;
 
   &::before,
@@ -14,8 +15,8 @@ $dividerCls: 'triones-antm-divider';
     content: '';
     border-style: inherit;
     border-color: inherit;
-    border-width: 2PX 0 0;
-    height: 2PX;
+    border-width: 1PX 0 0;
+    height: 1PX;
     flex: 1;
   }
 

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {AddOutline, MinusOutline} from "@trionesdev/antd-taro-icons-react";
 import "./style.scss"
 
-type InputNumberProps = {
+export type InputNumberProps = {
   value?: number,
   onChange?: (value: number) => void
   step?: number
