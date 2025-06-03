@@ -364,6 +364,16 @@ class Index extends Component<PropsWithChildren> {
           >
             Space
           </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/side-bar/index",
+              });
+            }}
+          >
+            SideBar
+          </Button>
         </View>
       </View>
     );

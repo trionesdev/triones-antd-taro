@@ -92,7 +92,6 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
                setTranslateY(0 - num * itemHeight);
                selectIndex = num;
              }
-             console.log("selectIndex", selectIndex)
              const selectValue = labelInValue ? options?.[selectIndex] : options?.[selectIndex].value
              setInternalValue(selectValue);
              onChange?.(selectValue);

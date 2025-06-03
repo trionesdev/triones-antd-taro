@@ -1,8 +1,7 @@
 import classNames from 'classnames';
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { checkTaroEnv } from '../utils/taro-utils';
+import React, {FC, useEffect, useRef, useState} from 'react';
+import {checkTaroEnv} from '../utils/taro-utils';
 import './style.scss';
-import Taro from '@tarojs/taro';
 
 const sideBarCls = 'triones-antm-sidebar';
 
@@ -15,11 +14,11 @@ type SideBarTabProps = {
   onActiveChange?: (key: string) => void;
 };
 const SideBarTab: FC<SideBarTabProps> = ({
-  tabKey,
-  activeKey,
-  title,
-  onActiveChange,
-}) => {
+                                           tabKey,
+                                           activeKey,
+                                           title,
+                                           onActiveChange,
+                                         }) => {
   const tabRef = useRef<any>();
 
   return (
@@ -39,21 +38,29 @@ type SideBarContentProps = {
   tabKey: string;
   activeKey?: string;
   content?: React.ReactNode;
+  screenHeight?: number;
   scrollTop?: number;
+  touching?: boolean;
+  translateY?: number;
   mode?: sideBarMode;
   activeChangeCallback?: (offsetTop: number) => void;
   onScrollTop?: (activeKey: string) => void;
+  onMoveToTab?: (activeKey: string) => void;
 };
 
 const SideBarContent: FC<SideBarContentProps> = ({
-  tabKey,
-  activeKey,
-  content,
-  scrollTop = 0,
-  mode,
-  activeChangeCallback,
-  onScrollTop,
-}) => {
+                                                   tabKey,
+                                                   activeKey,
+                                                   content,
+                                                   scrollTop = 0,
+                                                   touching = false,
+                                                   screenHeight = 0,
+                                                   translateY = 0,
+                                                   mode,
+                                                   activeChangeCallback,
+                                                   onScrollTop,
+                                                   onMoveToTab
+                                                 }) => {
   const contentRef = useRef<any>();
 
   useEffect(() => {
@@ -63,17 +70,24 @@ const SideBarContent: FC<SideBarContentProps> = ({
   }, [activeKey]);
 
   useEffect(() => {
-    console.log('scrollTop', scrollTop);
-    if (activeKey !== tabKey) {
-      if (
-        scrollTop >= contentRef.current.offsetTop &&
-        scrollTop <
-          contentRef.current.offsetTop + contentRef.current.offsetHeight
-      ) {
-        onScrollTop?.(tabKey);
+    // console.log('scrollTop', scrollTop, screenHeight);
+    const reactiveOffsetTop1 = contentRef.current.offsetTop - Math.abs(translateY); //当前顶部相对于父容器顶部的偏移量
+    const reactiveOffsetBottom1 = contentRef.current.offsetTop + contentRef.current.offsetHeight - Math.abs(translateY);
+    console.log(tabKey, translateY, reactiveOffsetTop1, reactiveOffsetBottom1);
+    if (touching) {
+      if (activeKey !== tabKey) {
+        const reactiveOffsetTop = contentRef.current.offsetTop - Math.abs(translateY); //当前顶部相对于父容器顶部的偏移量
+        const reactiveOffsetBottom = contentRef.current.offsetTop + contentRef.current.offsetHeight - Math.abs(translateY);
+        if (
+          (-10 <= reactiveOffsetTop && reactiveOffsetTop <= 0) ||
+          (0 <= reactiveOffsetBottom && reactiveOffsetBottom <= 10)
+        ) {
+          console.log("--------", scrollTop, contentRef.current.offsetTop, contentRef.current.offsetHeight);
+          onMoveToTab?.(tabKey);
+        }
       }
     }
-  }, [scrollTop]);
+  }, [translateY]);
 
   return (
     <div
@@ -102,37 +116,43 @@ export type SideBarProps = {
   mode?: sideBarMode;
 };
 export const SideBar: FC<SideBarProps> = ({
-  activeKey,
-  defaultActiveKey,
-  items = [],
-  mode = 'switch',
-}) => {
+                                            activeKey,
+                                            defaultActiveKey,
+                                            items = [],
+                                            mode = 'switch',
+                                          }) => {
   const isTaroEnv = checkTaroEnv();
   const contentRef = useRef<any>();
+  const contentWheelRef = useRef<any>();
   const [internalItems, setInternalItems] = useState<any[]>([]);
   const [internalActiveKey, setInternalActiveKey] = useState<
     string | undefined
   >(activeKey || defaultActiveKey);
+  const max = 0;
+  const [touching, setTouching] = React.useState(false);
+  const [touchPoint, setTouchPoint] = React.useState<any>();
+  const [translateY, setTranslateY] = useState(0)
 
   const [scrollTop, setScrollTop] = useState<number>(0);
+  const [screenHeight, setScreenHeight] = useState<number>();
+
+  const computeTranslateYMin = () => {
+    return 0 - (contentWheelRef.current.offsetHeight - contentRef.current.offsetHeight);
+  }
 
   // 内容栏滚动到指定位置
   const handleSelectScroll = (offsetTop: number) => {
-
-    if (mode==='scroll'){
-      if (isTaroEnv){
-        Taro.createSelectorQuery().select(`#${contentRef.current?.id}`)
-      }else {
-        contentRef.current.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth',
-        });
-      }
+    if (touching) {
+      return
+    }
+    if (mode === 'scroll') {
+      setTranslateY(0 - offsetTop);
     }
   };
 
   const handleActiveChange = (tabKey: string) => {
     setInternalActiveKey(tabKey);
+    console.log(tabKey);
   };
 
   useEffect(() => {
@@ -171,28 +191,53 @@ export const SideBar: FC<SideBarProps> = ({
           />
         ))}
       </div>
-      <div
-        ref={contentRef}
-        id={contentRef.current?.id}
-        className={classNames(`${sideBarCls}-content`)}
-        onWheel={(e) => {
-          console.log(e);
-          if (mode === 'scroll') {
-            setScrollTop(contentRef.current.scrollTop);
-          }
-        }}
-      >
-        {internalItems.map((item, index) => (
-          <SideBarContent
-            key={`${item.tabKey}-content`}
-            tabKey={item.tabKey}
-            activeKey={internalActiveKey}
-            content={item.content}
-            scrollTop={scrollTop}
-            activeChangeCallback={handleSelectScroll}
-            onScrollTop={handleActiveChange}
-          />
-        ))}
+      <div ref={contentRef} id={contentRef.current?.uid} className={classNames(`${sideBarCls}-content`)}>
+        <div ref={contentWheelRef}
+             className={classNames(`${sideBarCls}-content-wheel`)}
+             style={{transform: `translate3d(0, ${translateY}px, 0)`}}
+             onTouchStart={(event) => {
+               setTouching(true);
+               const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+               setTouchPoint(startPoint);
+             }}
+             onTouchMove={(event) => {
+               console.log(event);
+               if (mode === 'scroll') {
+                 if (touching) {
+                   const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+                   console.log(touchPoint);
+                   console.log(movePoint);
+                   console.log((touchPoint.clientY - movePoint.clientY));
+                   // setScrollTop();
+                   // contentRef.current.scrollTo({top: scrollTop + (touchPoint.clientY-movePoint.clientY )})
+                   if (translateY > max || translateY < computeTranslateYMin()) {
+                     return;
+                   }
+                   setTranslateY(translateY + (movePoint.clientY - touchPoint.clientY));
+                   setTouchPoint(movePoint);
+                 }
+               }
+             }}
+             onTouchEnd={() => {
+               setTouching(false);
+             }}
+        >
+          {internalItems.map((item, index) => (
+            <SideBarContent
+              key={`${item.tabKey}-content`}
+              tabKey={item.tabKey}
+              activeKey={internalActiveKey}
+              content={item.content}
+              scrollTop={scrollTop}
+              touching={touching}
+              translateY={translateY}
+              screenHeight={screenHeight}
+              activeChangeCallback={handleSelectScroll}
+              onScrollTop={handleActiveChange}
+              onMoveToTab={handleActiveChange}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -58,9 +58,10 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@trionesdev/antd-taro-icons-react": "workspace:*",
+    "@tarojs/extend": "^4.0.9",
     "@tarojs/react": "4.0.9",
     "@tarojs/taro": "4.0.9",
+    "@trionesdev/antd-taro-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",

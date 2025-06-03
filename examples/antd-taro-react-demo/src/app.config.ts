@@ -32,6 +32,7 @@ export default defineAppConfig({
     "pages/toast/index",
     "pages/spin-loading/index",
     "pages/space/index",
+    "pages/side-bar/index",
   ],
   window: {
     backgroundTextStyle: "light",

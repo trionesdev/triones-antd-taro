@@ -30,9 +30,19 @@ $trionesSideBarCls: 'triones-antm-sidebar';
   &-content {
     flex: 1 auto;
     min-width: 0;
-    overflow-y: auto;
-    scrollbar-width: none;
+    overflow: hidden;
+    //overflow-y: auto;
+    //scrollbar-width: none;
     position: relative;
+    user-select: none;
+    touch-action: none;
+
+
+    &-wheel {
+      width: 100%;
+      cursor: grab;
+      position: absolute;
+    }
 
     &-item {
 
