@@ -24,8 +24,14 @@ export {default as ConfigProvider} from './ConfigProvider';
 export {default as Divider} from './Divider';
 export {default as Ellipsis} from './Ellipsis';
 export {default as Empty} from './Empty';
+
 export {default as ErrorBlock} from './ErrorBlock';
+
 export {default as Footer} from './Footer';
+
+export {default as Form} from './Form';
+export type {FormItemProps, FormProps} from './Form';
+
 export {default as Grid} from './Grid';
 export {default as Image} from './Images';
 export {default as Input} from './Input';
@@ -38,10 +44,27 @@ export {default as NavBar} from './NavBar';
 export {default as NoticeBar} from './NoticeBar';
 export {default as PageIndicator} from './PageIndicator';
 
+export {default as Picker} from './Picker';
+export type {PickerProps} from './Picker';
+
+export {default as PickerView} from './PickerView';
+
+export {default as Popup} from './Popup';
+export type {PopupProps} from './Popup';
+
 export {default as ProgressBar} from './ProgressBar';
+
 export {default as Radio} from './Radio';
+
 export {default as Rate} from './Rate';
+
 export {default as Result} from './Result';
+
+export {default as SafeArea} from './SafeArea';
+
+export {default as Scaffold} from "./Scaffold"
+export type {ScaffoldProps} from "./Scaffold"
+
 export {default as Space} from './Space';
 export {default as SpinLoading} from './SpinLoading';
 export {default as Switch} from './Switch';
@@ -59,15 +82,10 @@ export {default as CascaderPicker} from './CascaderPicker';
 export type {CascaderPickerProps} from './CascaderPicker';
 export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';
-export {default as Form} from './Form';
-export type {FormItemProps, FormProps} from './Form';
+
 
 export {default as Mark} from './Mark';
-export {default as Picker} from './Picker';
-export type {PickerProps} from './Picker';
-export {default as PickerView} from './PickerView';
-export {default as Popup} from './Popup';
-export type {PopupProps} from './Popup';
-export {default as SafeArea} from './SafeArea';
+
+
 export {default as Tabs} from './Tabs';
 export type {TabsProps} from './Tabs';

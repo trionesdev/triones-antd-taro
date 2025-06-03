@@ -1,15 +1,18 @@
 @import "../style/variable";
-$validationCodeInputCls:'triones-antm-validation-code-input';
 
-.#{$validationCodeInputCls} {
-  &-send{
+$verificationCodeInputCls: 'triones-antm-verification-code-input';
+
+.#{$verificationCodeInputCls} {
+  &-send {
     padding-inline: $trionesPaddingContentHorizontal;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       color: $trionesColorPrimary;
     }
   }
-  &-counting{
+
+  &-counting {
     padding-inline: $trionesPaddingContentHorizontal;
     cursor: not-allowed;
     color: $trionesColorTextDisabled;

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import type {CSSProperties, FC, ReactNode} from 'react'
 import React from 'react'
-import { NativeProps, withNativeProps } from '../utils/native-props'
+import { withNativeProps } from '../utils/native-props'
 import { useConfig } from '../ConfigProvider'
 import { mergeProp, mergeProps } from '../utils/with-default-props'
 import { LeftOutline } from '@trionesdev/antd-taro-icons-react'
@@ -11,15 +11,30 @@ import './style.scss'
 const classPrefix = `triones-antm-nav-bar`
 
 export type NavBarProps = {
+  /**
+   * @description 返回区域的文字，如果为 `null` 的话，`backIcon` 也不会渲染
+   */
   back?: ReactNode
+  /**
+   * @description 是否显示返回区域的箭头，也可以传入 `ReactNode` 进行自定义
+   * @default true
+   */
   backIcon?: boolean | ReactNode
   /**
-   * @deprecated use `backIcon` instead
+   * @description 左侧内容，渲染在返回区域的右侧
    */
-  backArrow?: boolean | ReactNode
   left?: ReactNode
+  /**
+   * @description 右侧内容
+   */
   right?: ReactNode
+  /**
+   * @description 点击返回区域后的回调
+   */
   onBack?: () => void
+  /**
+   * @description 标题
+   */
   children?: ReactNode,
   style?: CSSProperties
 }
@@ -29,14 +44,13 @@ const defaultBackIcon = <LeftOutline />
 export const NavBar: FC<NavBarProps> = props => {
   const { navBar: componentConfig = {} } = useConfig()
   const mergedProps = mergeProps(componentConfig, props)
-  const { back, backIcon, backArrow } = mergedProps
+  const { back, backIcon } = mergedProps
 
   const mergedDefaultBackIcon = componentConfig.backIcon || defaultBackIcon
 
   const mergedBackIcon = mergeProp<ReactNode>(
     defaultBackIcon,
     componentConfig.backIcon,
-    backArrow === true ? mergedDefaultBackIcon : backArrow,
     backIcon === true ? mergedDefaultBackIcon : backIcon
   )
 
