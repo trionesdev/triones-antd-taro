@@ -10,6 +10,7 @@ $class-prefix-notice-bar: 'triones-antm-notice-bar';
   --triones-antm-notice-bar-border-radius: 4PX;
   --triones-antm-notice-bar-border-width: 1PX;
 
+  flex: 1 auto;
   height: var(--height);
   box-sizing: border-box;
   font-size: var(--font-size);

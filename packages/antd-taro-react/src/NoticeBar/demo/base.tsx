@@ -50,7 +50,7 @@ export default () => {
             content={'自定义右侧功能区'}
             color='alert'
           />
-          <div style={{ paddingInline: 12 }}>
+          <div style={{ paddingInline: 12, width: '100%' }}>
             <NoticeBar
               color='info'
               shape='neutral'
@@ -58,7 +58,7 @@ export default () => {
               content={'圆角+全边框'}
             />
           </div>
-          <div style={{ paddingInline: 12 }}>
+          <div style={{ paddingInline: 12,width: '100%' }}>
             <NoticeBar
               color='success'
               shape='rounded'
