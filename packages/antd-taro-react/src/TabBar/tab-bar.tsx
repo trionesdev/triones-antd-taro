@@ -1,59 +1,110 @@
 import "./index.scss"
-import React, {FC} from "react";
+import React, {FC, ReactNode, useContext, useEffect} from "react";
 import classNames from "classnames";
+import {TabBarContext} from "./TabBarContext";
+import _ from "lodash";
 
 type TabBarItemType = {
   key: string
+  /**
+   * @description 文本
+   */
   label?: React.ReactNode
+  /**
+   * @description 图标
+   */
   icon?: React.ReactNode
+  /**
+   * @description 激活状态图标
+   */
   activeIcon?: React.ReactNode
+  /**
+   * @description 禁用
+   * @default false
+   */
   disabled?: boolean
-  active?: boolean
-  activeKey?: string
-  onClick?: () => void
+  /**
+   * @description 点击回调
+   * @param antKey tab的key
+   */
+  onClick?: (antKey: string) => void
 }
 
-type TabBarItemProps = Omit<TabBarItemType, 'key'> & {}
-
-export type TabBarProps = {
-  items: TabBarItemType[]
-  onClick?: (e: { item?: TabBarItemType }) => void
+type TabBarItemProps = Omit<TabBarItemType, 'key'> & {
+  className?: string,
+  /**
+   * @description 唯一标识，与key一样,避免于key的使用冲突
+   */
+  antKey: string,
+  /**
+   * @description 自定义渲染
+   */
+  render?: (active: Boolean) => React.ReactNode
 }
+
+
 const tabBarCls = 'triones-tab-bar'
 export const TabBarItem: FC<TabBarItemProps> = ({
+                                                  className,
+                                                  antKey,
                                                   label,
                                                   icon,
                                                   activeIcon,
-                                                  activeKey,
-                                                  active,
+                                                  disabled = false,
                                                   onClick,
+                                                  render,
                                                   ...props
                                                 }) => {
-  console.log(props)
-
+  const {activeKey, setActiveKey, onTabClick} = useContext(TabBarContext)
+  const active = antKey === activeKey
   const displayIcon = active ? (activeIcon ?? icon) : icon
-  return <div className={classNames(`${tabBarCls}-item`, {
+
+  return <div className={classNames(`${tabBarCls}-item`, className, {
     [`${tabBarCls}-item-active`]: active
-  })} onClick={() => onClick?.()}>
-    <div>{displayIcon}</div>
-    <div className={classNames(`${tabBarCls}-item-label`)}>{label}</div>
+  })} onClick={() => {
+    setActiveKey?.(antKey)
+    onClick?.(antKey)
+    onTabClick?.({antKey})
+  }}>
+    {render?.(active) || <>
+      <div>{displayIcon}</div>
+      <div className={classNames(`${tabBarCls}-item-label`)}>{label}</div>
+    </>}
   </div>
 }
 
+export type TabBarProps = {
+  /**
+   * @description 默认激活key
+   */
+  defaultActiveKey?: string
+  /**
+   * @description 激活key
+   */
+  activeKey?: string
+  /**
+   * @description 子项配置
+   */
+  items: TabBarItemType[]
+  onClick?: (e: { antKey: string }) => void
+  children?: ReactNode
+}
 
-export const TabBar: FC<TabBarProps> = ({items, onClick}) => {
-  const [innerActiveKey, setInnerActiveKey] = React.useState<string | undefined>()
+export const TabBar: FC<TabBarProps> = ({activeKey, defaultActiveKey, items, children, onClick}) => {
+  const [innerActiveKey, setInnerActiveKey] = React.useState<string | undefined>(activeKey ?? defaultActiveKey)
 
+  useEffect(() => {
+    setInnerActiveKey(activeKey)
+  }, [activeKey]);
 
-  return <div className={classNames(tabBarCls)}>
-    <div className={classNames(`${tabBarCls}-wrap`)}>
-      {items.map(item => <TabBarItem {...item} activeKey={innerActiveKey} active={item.key === innerActiveKey}
-                                     onClick={() => {
-                                       onClick?.({item})
-                                       setInnerActiveKey(item.key)
-                                       console.log()
-                                       console.log(item)
-                                     }}/>)}
+  return <TabBarContext.Provider
+    value={{activeKey: innerActiveKey, setActiveKey: setInnerActiveKey, onTabClick: onClick}}>
+    <div className={classNames(tabBarCls)}>
+      <div className={classNames(`${tabBarCls}-wrap`)}>
+        {!_.isEmpty(items) && items.map(item => <TabBarItem {...item} key={item.key} antKey={item.key}
+                                                            onClick={item.onClick}/>)}
+        {_.isEmpty(items) && children}
+      </div>
     </div>
-  </div>
+  </TabBarContext.Provider>
 }
