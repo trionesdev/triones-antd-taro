@@ -66,6 +66,7 @@ export * from "./MessageOutline";
 export * from "./PictureWrongOutline";
 export * from "./PayOutline";
 export * from "./MinusCircleOutline";
+export * from "./MinusOutline";
 export * from "./KouBeiOutline";
 export * from "./LoopOutline";
 export * from "./LocationOutline";

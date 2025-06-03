@@ -9,8 +9,7 @@ import {
 
 const imageRecord: Record<
   'default' | 'disconnected' | 'empty' | 'busy',
-  ReactElement
-> = {
+  String> = {
   'default': defaultImage,
   'disconnected': disconnectedImage,
   'empty': emptyImage,

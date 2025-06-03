@@ -4,6 +4,7 @@ import classNames from "classnames";
 import "./style.scss"
 import _ from "lodash";
 import CascaderView from "../CascaderView";
+import {useConfig} from "../ConfigProvider";
 
 const cascaderPickerCls = "triones-antm-cascader-picker";
 
@@ -37,6 +38,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
                                                                      onCancel,
                                                                      onClose
                                                                    }) => {
+  const { locale } = useConfig();
   const [internalValue, setInternalValue] = useState(value)
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const handleClose = () => {
@@ -87,9 +89,9 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
   }}>
     <div className={classNames(cascaderPickerCls, className)} style={style}>
       <div className={classNames(`${cascaderPickerCls}-header`)}>
-        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handelCancel}>取消</a>
+        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handelCancel}>{locale.common.cancel}</a>
         {title && <div className={classNames(`${cascaderPickerCls}-header-title`)}>{title}</div>}
-        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handleOk}>确定</a>
+        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handleOk}>{locale.common.confirm}</a>
       </div>
       <div className={classNames(`${cascaderPickerCls}-body`)}>
         <CascaderView options={options} labelInValue={labelInValue} value={internalValue} onChange={setInternalValue}

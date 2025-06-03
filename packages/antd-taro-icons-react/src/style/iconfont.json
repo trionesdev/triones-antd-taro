@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "44490182",
+      "name": "MinusOutline",
+      "font_class": "MinusOutline",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "42517653",
       "name": "AddCircleOutline",
       "font_class": "AddCircleOutline",
@@ -158,13 +165,6 @@
       "font_class": "CalculatorOutline",
       "unicode": "e765",
       "unicode_decimal": 59237
-    },
-    {
-      "icon_id": "42517670",
-      "name": "CalculatorOutline (1)",
-      "font_class": "a-CalculatorOutline1",
-      "unicode": "e766",
-      "unicode_decimal": 59238
     },
     {
       "icon_id": "42517661",
@@ -336,8 +336,8 @@
     },
     {
       "icon_id": "42518122",
-      "name": "EditSOutline",
-      "font_class": "EditSOutline",
+      "name": "EditOutline",
+      "font_class": "EditOutline",
       "unicode": "e744",
       "unicode_decimal": 59204
     },
@@ -641,13 +641,6 @@
       "font_class": "PayOutline",
       "unicode": "e720",
       "unicode_decimal": 59168
-    },
-    {
-      "icon_id": "42518361",
-      "name": "MailFill (1)",
-      "font_class": "a-MailFill1",
-      "unicode": "e721",
-      "unicode_decimal": 59169
     },
     {
       "icon_id": "42518366",

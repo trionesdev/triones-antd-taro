@@ -44,6 +44,7 @@ export function createErrorBlock(imageRecord: ImageRecord) {
         image
       );
 
+    debugger
     return withNativeProps(
       props,
       <div

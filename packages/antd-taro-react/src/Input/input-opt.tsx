@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import './index.scss';
-import _ from "lodash";
 
 const cls = 'triones-antm-pot';
 const inputCls = 'triones-antm-input';
@@ -18,7 +17,6 @@ export type InputOPTItemProps = {
   index: number;
   focusIndex?: number;
   value?: string;
-  onChange: (value: string) => void;
   onFocus?: (index: number) => void;
 };
 
@@ -26,46 +24,26 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
                                                index,
                                                focusIndex,
                                                value,
-                                               onChange,
+
                                                onFocus,
                                              }) => {
   const ref = React.useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (focusIndex === index) {
-      if (_.isFunction(ref.current?.select)) {
-        ref.current?.select();
-      } else if(_.isFunction(ref.current?.setSelectionRange)) {
-        ref.current?.setSelectionRange(0, ref.current!.value.length);
-      }else {
-        ref.current?.focus();
-      }
-    } else {
-      ref.current?.blur();
-    }
-  }, [focusIndex]);
+
 
   return (
-    <input
-      ref={ref}
-      className={classNames(
-        `${inputCls}`,
-        `${cls}-input`,
-        `${inputCls}-outlined`,
-      )}
-      size={1}
-      type={`text`}
-      maxLength={1}
-      value={value}
-      onChange={(e) => {
-        onChange(e.target.value);
-      }}
-      onInput={(e) => {
-        //onChange(e.target.value);
-      }}
-      onFocus={() => {
-        onFocus?.(index);
-      }}
-    />
+    <div ref={ref}
+         className={classNames(
+           `${inputCls}`,
+           `${cls}-item`,
+           `${inputCls}-outlined`,
+           // {
+           //   [`${cls}-item-focus`]: focusIndex === index,
+           // }
+         )}
+         onClick={() => {
+           console.log('click', index)
+      onFocus?.(index)
+    }}>{value}</div>
   );
 };
 
@@ -73,35 +51,48 @@ export const InputOPT: FC<InputOPTProps> = ({
                                               className,
                                               style,
                                               length = 6,
+                                              value,
+                                              onChange
                                             }) => {
+  const inputRef = useRef<any>()
+  const [inputValue, setInputValue] = useState(value || '')
   const [internalValue, setInternalValue] = React.useState<any>(
     Array.from({length}).map(() => ''),
   );
 
+
   const [focusIndex, setFocusIndex] = useState(0);
+
+  useEffect(() => {
+    setInternalValue(Array.from(inputValue))
+  }, [inputValue]);
 
   return (
     <div className={classNames(cls, className)} style={style}>
-      {Array.from({length}).map((_, index) => {
-        return (
-          <InputOPTItem
-            key={index}
-            index={index}
-            focusIndex={focusIndex}
-            value={internalValue?.[index] || ''}
-            onChange={(value) => {
-              internalValue[index] = value;
-              setInternalValue([...internalValue]);
-              if (value) {
-                setFocusIndex(index + 1);
-              }
-            }}
-            onFocus={(index) => {
-              setFocusIndex(index);
-            }}
-          />
-        );
-      })}
+      <div className={classNames(`${cls}-wrapper`)} onClick={() => {
+        inputRef.current?.focus()
+      }}>
+        {Array.from({length}).map((_, index) => {
+          return (
+            <InputOPTItem
+              key={index}
+              index={index}
+              focusIndex={focusIndex}
+              value={internalValue?.[index] || ''}
+              onFocus={(index) => {
+                setFocusIndex(index);
+              }}
+            />
+          );
+        })}
+      </div>
+      <input ref={inputRef} className={`${cls}-input`} type={`number`} value={inputValue} onChange={(e) => {
+        if (e.target.value.length > length) {
+          return
+        }
+        setInputValue(e.target.value)
+        onChange?.(e.target.value)
+      }}/>
     </div>
   );
 };

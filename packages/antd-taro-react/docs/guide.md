@@ -1,3 +1,8 @@
-# 介绍
+# TrioneDev Antd Taro 
 
-This is a guide example.
+## 版本
+
+## 安装
+```shell
+pnpm install @trionesdev/antd-taro-react
+```

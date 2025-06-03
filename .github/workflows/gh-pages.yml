@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: npm install -g pnpm
       - run: pnpm install
-      - run: pnpm run build
+      - run: cross-env API_PARSER=true pnpm run build
       # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
       - run: pnpm --dir packages/antd-taro-react run docs:build
       - name: Deploy

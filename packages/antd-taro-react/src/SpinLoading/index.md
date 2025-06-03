@@ -1,4 +1,4 @@
-# SpinLoading 轻提示
+# SpinLoading 加载中 
 
 ## 代码演示
 

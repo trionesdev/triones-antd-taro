@@ -42,7 +42,7 @@ export default () => {
           />
           <NoticeBar
             extra={
-              <Space style={{ '--gap': '12px' }}>
+              <Space >
                 <span>查看详情</span>
                 <span>关闭</span>
               </Space>

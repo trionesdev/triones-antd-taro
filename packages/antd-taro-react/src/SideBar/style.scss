@@ -1,0 +1,42 @@
+@import "../style/variable";
+
+$trionesSideBarCls: 'triones-antm-sidebar';
+
+.#{$trionesSideBarCls} {
+  display: flex;
+  height: 100%;
+
+  &-tabs {
+    width: 100Px;
+    min-width: 0;
+    background-color: $trionesColorFill;
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+
+  &-tab {
+    cursor: pointer;
+    padding: $trionesPadding $trionesPadding;
+    color: $trionesColorTextSecondary;
+
+    &-active {
+      color: $trionesColorPrimaryText;
+      background-color: $trionesColorBgBase;
+    }
+
+  }
+
+  &-content {
+    flex: 1 auto;
+    min-width: 0;
+
+    &-item {
+      height: 100%;
+      display: none;
+
+      &-active {
+        display: block;
+      }
+    }
+  }
+}

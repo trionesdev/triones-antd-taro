@@ -1,16 +1,20 @@
 @font-face {
   font-family: "triones-antm-icon"; /* Project id 4730738 */
-  src: url('./iconfont.woff2?t=1737614711916') format('woff2'),
-  url('./iconfont.woff?t=1737614711916') format('woff'),
-  url('./iconfont.ttf?t=1737614711916') format('truetype');
+  src: url('iconfont.woff2?t=1748785112800') format('woff2'),
+  url('iconfont.woff?t=1748785112800') format('woff'),
+  url('iconfont.ttf?t=1748785112800') format('truetype');
 }
 
 .triones-antm-icon {
   font-family: "triones-antm-icon" !important;
-  font-size: 16Px;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.triones-antm-icon-MinusOutline:before {
+  content: "\e600";
 }
 
 .triones-antm-icon-AddCircleOutline:before {
@@ -99,10 +103,6 @@
 
 .triones-antm-icon-CalculatorOutline:before {
   content: "\e765";
-}
-
-.triones-antm-icon-a-CalculatorOutline1:before {
-  content: "\e766";
 }
 
 .triones-antm-icon-AppOutline:before {
@@ -201,7 +201,7 @@
   content: "\e743";
 }
 
-.triones-antm-icon-EditSOutline:before {
+.triones-antm-icon-EditOutline:before {
   content: "\e744";
 }
 
@@ -375,10 +375,6 @@
 
 .triones-antm-icon-PayOutline:before {
   content: "\e720";
-}
-
-.triones-antm-icon-a-MailFill1:before {
-  content: "\e721";
 }
 
 .triones-antm-icon-MinusCircleOutline:before {
