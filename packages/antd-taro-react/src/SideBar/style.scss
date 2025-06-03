@@ -6,6 +6,7 @@ $trionesSideBarCls: 'triones-antm-sidebar';
   display: flex;
   height: 100%;
 
+
   &-tabs {
     width: 100Px;
     min-width: 0;
@@ -29,14 +30,47 @@ $trionesSideBarCls: 'triones-antm-sidebar';
   &-content {
     flex: 1 auto;
     min-width: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    position: relative;
 
     &-item {
-      height: 100%;
-      display: none;
 
       &-active {
         display: block;
       }
     }
   }
+
+  &-switch-mode {
+    .#{$trionesSideBarCls} {
+      &-content {
+
+        &-item {
+          height: 100%;
+          display: none;
+
+          &-active {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &-scroll-mode {
+    .#{$trionesSideBarCls} {
+      &-content {
+
+        &-item {
+
+
+          &-active {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
 }

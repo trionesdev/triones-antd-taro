@@ -6,7 +6,7 @@ export default () => {
   return (
     <DemoBlock title={`基本使用`}>
       <div style={{ height: 300 }}>
-        <SideBar
+        <SideBar mode={'scroll'}
           items={[
             { key: '1', title: 'Tab 1', content: <div style={{height: 200}}>Tab 1 Content</div> },
             { key: '2', title: 'Tab 2', content: <div style={{height: 200}}>Tab 2 Content</div> },

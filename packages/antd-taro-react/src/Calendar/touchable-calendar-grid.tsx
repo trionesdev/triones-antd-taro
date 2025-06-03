@@ -79,7 +79,6 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
     // waiting = true
     const firstMouth = mouths[0];
     const insertMouth = new Date(firstMouth.getFullYear(), firstMouth.getMonth() - 1, 1);
-    console.log(insertMouth)
     const newMouths = [insertMouth, ...mouths];
     setMouths(newMouths);
     const insertMouthLines = mouthLines(insertMouth)
