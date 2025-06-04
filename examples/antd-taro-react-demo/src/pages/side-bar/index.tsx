@@ -1,8 +1,19 @@
 import {ScrollView, View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
 import {SideBar} from "@trionesdev/antd-taro-react";
+import {useEffect, useRef} from "react";
+const taroExtend = require('@tarojs/extend');
 
 const SideBarPage = () => {
+  const scrollRef = useRef<any>();
+
+  useEffect(() => {
+    taroExtend.$(scrollRef.current).on('scroll',  (e) => {
+      console.log('scroll', e);
+    });
+  }, []);
+
+
   return <View>
     <DemoBlock title='滚动模式'>
       <view style={{height: 300}}>
@@ -17,22 +28,14 @@ const SideBarPage = () => {
         />
       </view>
     </DemoBlock>
-    <DemoBlock title={`ss`}>
-      <View  >
+    <View>sssssssssssssssss</View>
+    <DemoBlock title={`scroll`}>
+      <View ref={scrollRef} style={{height: 300,overflow: 'auto'}} >
         <View style={{height: 600}}>
           sssss
         </View>
-      </ScrollView>
+      </View>
     </DemoBlock>
-    {/*<DemoBlock title={`ss`}>*/}
-    {/*  <ScrollView style={{height: 300}} scrollY={true} showScrollbar={false} onScroll={(event) => {*/}
-    {/*    console.log(event);*/}
-    {/*  }}>*/}
-    {/*    <View style={{height: 600}}>*/}
-    {/*      sssss*/}
-    {/*    </View>*/}
-    {/*  </ScrollView>*/}
-    {/*</DemoBlock>*/}
   </View>
 }
 export default SideBarPage;
