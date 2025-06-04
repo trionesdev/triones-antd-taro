@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import _ from 'lodash';
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { checkTaroEnv } from '../utils/taro-utils';
+import _, {min} from 'lodash';
+import React, {FC, useEffect, useRef, useState} from 'react';
+import {checkTaroEnv} from '../utils/taro-utils';
 import './style.scss';
+import {ScrollView} from "@tarojs/components";
 
 const taroExtend = require('@tarojs/extend');
 
@@ -17,11 +18,11 @@ type SideBarTabProps = {
   onActiveChange?: (key: string) => void;
 };
 const SideBarTab: FC<SideBarTabProps> = ({
-  tabKey,
-  activeKey,
-  title,
-  onActiveChange,
-}) => {
+                                           tabKey,
+                                           activeKey,
+                                           title,
+                                           onActiveChange,
+                                         }) => {
   const tabRef = useRef<any>();
 
   return (
@@ -47,36 +48,33 @@ type SideBarContentProps = {
   activeChangeCallback?: (offsetTop: number) => void;
   onMoveToTab?: (activeKey: string) => void;
   asyncRender?: boolean;
-  contentOffset?: any;
+  contentEl?: any
+  contentWheelEl?: any
 };
 
 const SideBarContent: FC<SideBarContentProps> = ({
-  tabKey,
-  activeKey,
-  content,
-  touching = false,
-  translateY = 0,
-  mode,
-  activeChangeCallback,
-  onMoveToTab,
-  asyncRender = false,
-  contentOffset,
-}) => {
-  const isTaroEnv = checkTaroEnv();
+                                                   tabKey,
+                                                   activeKey,
+                                                   content,
+                                                   touching = false,
+                                                   translateY = 0,
+                                                   mode,
+                                                   activeChangeCallback,
+                                                   onMoveToTab,
+                                                   asyncRender = false,
+                                                   contentEl,
+                                                   contentWheelEl
+                                                 }) => {
+  const isTaroEnv = true;
   const [rendered, setRendered] = useState(false);
   const contentRef = useRef<any>();
+  const frameRef = useRef<any>();
 
   const computeContentOffsetTop = async (): Promise<number> => {
     if (isTaroEnv) {
+      const contentWheelOffset = await contentWheelEl.offset();
       const itemOffset = await taroExtend.$(contentRef.current).offset();
-      console.log('translateY', translateY);
-      console.log('contentOffset', contentOffset);
-      console.log('itemOffset', itemOffset);
-      console.log(
-        'reactiveOffset',
-        itemOffset.top - contentOffset?.top + Math.abs(translateY),
-      );
-      return itemOffset.top - (contentOffset?.top || 0) + Math.abs(translateY);
+      return itemOffset.top - contentWheelOffset!.top;
     } else {
       return contentRef.current.offsetTop;
     }
@@ -84,7 +82,9 @@ const SideBarContent: FC<SideBarContentProps> = ({
 
   const computeReactiveOffsetTop = async () => {
     if (isTaroEnv) {
-      return (await computeContentOffsetTop()) - Math.abs(translateY);
+      const contentOffset = await contentEl.offset();
+      const itemOffset = await taroExtend.$(contentRef.current).offset();
+      return itemOffset.top - contentOffset?.top;
     } else {
       return contentRef.current.offsetTop - Math.abs(translateY);
     }
@@ -92,12 +92,9 @@ const SideBarContent: FC<SideBarContentProps> = ({
 
   const computeReactiveOffsetBottom = async () => {
     if (isTaroEnv) {
+      const contentOffset = await contentEl.offset();
       const itemOffset = await taroExtend.$(contentRef.current).offset();
-      return (
-        (await computeContentOffsetTop()) +
-        itemOffset.height -
-        Math.abs(translateY)
-      );
+      return ((itemOffset.top - contentOffset?.top) + itemOffset.height);
     } else {
       return (
         contentRef.current.offsetTop +
@@ -112,7 +109,7 @@ const SideBarContent: FC<SideBarContentProps> = ({
       setRendered(true);
       if (mode === 'scroll') {
         Promise.all([]).then(async () => {
-          if (!isTaroEnv || (isTaroEnv && contentOffset)) {
+          if (!isTaroEnv || (isTaroEnv && contentWheelEl)) {
             activeChangeCallback?.(await computeContentOffsetTop());
           }
         });
@@ -123,25 +120,34 @@ const SideBarContent: FC<SideBarContentProps> = ({
   useEffect(() => {
     if (mode === 'scroll') {
       if (touching) {
-        if (activeKey !== tabKey) {
-          Promise.all([]).then(async () => {
+        if (frameRef.current) {
+          cancelAnimationFrame(frameRef.current);
+        }
+        frameRef.current = requestAnimationFrame(async () => {
+          // const contentWheelOffset = await contentWheelEl.offset();
+          // const itemOffset = await taroExtend.$(contentRef.current).offset();
+          // console.log(tabKey, 'translateY', translateY, 'contentWheelOffset', contentWheelOffset, 'itemOffset', itemOffset);
+          // console.log(tabKey, await computeReactiveOffsetTop(), await computeReactiveOffsetBottom())
+
+          if (activeKey !== tabKey) {
             const reactiveOffsetTop = await computeReactiveOffsetTop(); //当前顶部相对于父容器顶部的偏移量
             const reactiveOffsetBottom = await computeReactiveOffsetBottom();
-            console.log(
-              tabKey,
-              'reactiveOffsetTop',
-              reactiveOffsetTop,
-              'reactiveOffsetBottom',
-              reactiveOffsetBottom,
-            );
+            // console.log(
+            //   tabKey,
+            //   'reactiveOffsetTop',
+            //   reactiveOffsetTop,
+            //   'reactiveOffsetBottom',
+            //   reactiveOffsetBottom,
+            // );
             if (
-              (-10 <= reactiveOffsetTop && reactiveOffsetTop <= 0) ||
-              (0 <= reactiveOffsetBottom && reactiveOffsetBottom <= 10)
+              (-50 <= reactiveOffsetTop && reactiveOffsetTop <= 0) ||
+              (0 <= reactiveOffsetBottom && reactiveOffsetBottom <= 50)
             ) {
               onMoveToTab?.(tabKey);
             }
-          });
-        }
+          }
+        });
+
       }
     }
   }, [translateY]);
@@ -180,14 +186,14 @@ export type SideBarProps = {
   tabWidth?: number;
 };
 export const SideBar: FC<SideBarProps> = ({
-  activeKey,
-  defaultActiveKey,
-  items = [],
-  mode = 'switch',
-  asyncRender = false,
-  tabWidth = 100,
-}) => {
-  const isTaroEnv = checkTaroEnv();
+                                            activeKey,
+                                            defaultActiveKey,
+                                            items = [],
+                                            mode = 'switch',
+                                            asyncRender = false,
+                                            tabWidth = 100,
+                                          }) => {
+  const isTaroEnv = true;
   const contentRef = useRef<any>();
   const contentWheelRef = useRef<any>();
   const frameRef = useRef<any>();
@@ -200,7 +206,8 @@ export const SideBar: FC<SideBarProps> = ({
   const [touching, setTouching] = React.useState(false);
   const [touchPoint, setTouchPoint] = React.useState<any>();
   const [translateY, setTranslateY] = useState(0);
-  const [contentOffset, setContentOffset] = useState<any>();
+  const [contentEl, setContentEl] = useState<any>();
+  const [contentWheelEl, setContentWheelEl] = useState<any>();
 
   const computeTranslateYMin = async () => {
     if (isTaroEnv) {
@@ -218,12 +225,23 @@ export const SideBar: FC<SideBarProps> = ({
   };
 
   // 内容栏滚动到指定位置
-  const handleSelectScroll = (translateY: number) => {
+  const handleSelectScroll = (absTranslateY: number) => {
     if (touching) {
       return;
     }
     if (mode === 'scroll') {
-      if (_.isNumber(translateY)) setTranslateY(0 - translateY);
+      console.log('absTranslateY', absTranslateY, _.isNumber(absTranslateY))
+      if (_.isNumber(absTranslateY)) {
+        const newTranslateY = 0 - absTranslateY;
+        console.log("sss", newTranslateY, max, minRef.current)
+        if (newTranslateY < minRef.current) {
+          setTranslateY(minRef.current);
+        } else if (newTranslateY > max) {
+          setTranslateY(max)
+        } else {
+          setTranslateY(newTranslateY);
+        }
+      }
     }
   };
 
@@ -231,11 +249,11 @@ export const SideBar: FC<SideBarProps> = ({
     setInternalActiveKey(tabKey);
   };
 
-  const handleSyncContentOffset = async () => {
-    if (isTaroEnv) {
-      setContentOffset(await taroExtend.$(contentWheelRef.current).offset());
-    }
-  };
+  // const handleSyncContentOffset = async () => {
+  //   if (isTaroEnv) {
+  //     setContentOffset(await .offset());
+  //   }
+  // };
 
   useEffect(() => {
     setInternalItems(
@@ -259,9 +277,15 @@ export const SideBar: FC<SideBarProps> = ({
   }, [activeKey]);
 
   useEffect(() => {
+    console.log(taroExtend.$(contentWheelRef.current))
+
+    setContentEl(taroExtend.$(contentRef.current))
+    setContentWheelEl(taroExtend.$(contentWheelRef.current))
+
     Promise.all([]).then(async () => {
-      await handleSyncContentOffset();
-    });
+      minRef.current = await computeTranslateYMin();
+    })
+
     return () => {
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
@@ -275,7 +299,7 @@ export const SideBar: FC<SideBarProps> = ({
     >
       <div
         className={classNames(`${sideBarCls}-tabs`)}
-        style={{ width: tabWidth }}
+        style={{width: tabWidth}}
       >
         {internalItems.map((item, index) => (
           <SideBarTab
@@ -295,12 +319,12 @@ export const SideBar: FC<SideBarProps> = ({
         <div
           ref={contentWheelRef}
           className={classNames(`${sideBarCls}-content-wheel`)}
-          style={{ transform: `translate3d(0, ${translateY}px, 0)` }}
+          style={{transform: `translate3d(0, ${translateY}px, 0)`}}
           onTouchStart={async (event) => {
             console.log('onTouchStart', event);
             if (mode === 'scroll') {
               minRef.current = await computeTranslateYMin();
-              await handleSyncContentOffset();
+              // await handleSyncContentOffset();
               setTouching(true);
               const startPoint = {
                 clientX: event.touches[0].clientX,
@@ -358,11 +382,13 @@ export const SideBar: FC<SideBarProps> = ({
               activeChangeCallback={handleSelectScroll}
               onMoveToTab={handleActiveChange}
               asyncRender={asyncRender}
-              contentOffset={contentOffset}
+              contentEl={contentEl}
+              contentWheelEl={contentWheelEl}
             />
           ))}
         </div>
       </div>
+      {false && <ScrollView></ScrollView>}
     </div>
   );
 };

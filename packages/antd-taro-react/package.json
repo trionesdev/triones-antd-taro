@@ -61,6 +61,7 @@
     "@tarojs/extend": "^4.0.9",
     "@tarojs/react": "4.0.9",
     "@tarojs/taro": "4.0.9",
+    "@tarojs/components": "4.0.9",
     "@trionesdev/antd-taro-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
