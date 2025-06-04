@@ -388,7 +388,6 @@ export const SideBar: FC<SideBarProps> = ({
           ))}
         </div>
       </div>
-      {false && <ScrollView></ScrollView>}
     </div>
   );
 };
