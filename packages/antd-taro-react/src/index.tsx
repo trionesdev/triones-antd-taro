@@ -68,6 +68,9 @@ export { default as SafeArea } from './SafeArea';
 export { default as Scaffold } from './Scaffold';
 export type { ScaffoldProps } from './Scaffold';
 
+export { default as ScrollView } from './ScrollView';
+export type { ScrollViewProps } from './ScrollView';
+
 export { default as SideBar } from './SideBar';
 export type { SideBarProps } from './SideBar';
 

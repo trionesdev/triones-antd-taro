@@ -1,53 +1,80 @@
-import { useTimeout } from 'ahooks'
-import classNames from 'classnames'
-import type { ReactNode } from 'react'
-import React, { memo, useRef, useState } from 'react'
-import { NativeProps, withNativeProps } from '../utils/native-props'
-import { useConfig } from '../ConfigProvider'
-import { mergeProp, mergeProps } from '../utils/with-default-props'
-import { useResizeEffect } from '../utils/use-resize-effect'
-import { useMutationEffect } from '../utils/use-mutation-effect'
-import { CloseCircleOutline, SetOutline } from '@trionesdev/antd-taro-icons-react'
+import {
+  CloseCircleOutline,
+  SetOutline,
+} from '@trionesdev/antd-taro-icons-react';
+import { useTimeout } from 'ahooks';
+import classNames from 'classnames';
+import type { ReactNode } from 'react';
+import React, { memo, useRef, useState } from 'react';
+import { useConfig } from '../ConfigProvider';
+import { NativeProps, withNativeProps } from '../utils/native-props';
+import { useMutationEffect } from '../utils/use-mutation-effect';
+import { useResizeEffect } from '../utils/use-resize-effect';
+import { mergeProp, mergeProps } from '../utils/with-default-props';
 
-import './style.scss'
+import './style.scss';
 
-const classPrefix = `triones-antm-notice-bar`
+const classPrefix = `triones-antm-notice-bar`;
 
 export type NoticeBarProps = {
-  /** The type of the NoticeBar */
-  color?: 'default' | 'alert' | 'error' | 'success' | 'info'
-  /** TDelay to start scrolling, unit ms */
-  delay?: number
-  /** Scroll speed, unit px/s */
-  speed?: number
-  /** The content of the NoticeBar */
-  content: ReactNode
-  /** Whether it can be closed */
-  closeable?: boolean
-  /** Custom close icon */
-  closeIcon?: ReactNode
-  /** Callback when closed */
-  onClose?: () => void
-  /** Event when click */
-  onClick?: () => void
-  /** Additional operating area, displayed to the left of the close button */
-  extra?: ReactNode
-  /** Radio icon on the left */
-  icon?: ReactNode
-  /** Whether to display multiple lines */
-  wrap?: boolean
-  /** Block shape */
-  shape?: 'rectangular' | 'neutral' | 'rounded'
-  /** Border visibility */
-  bordered?: 'block' | boolean
-} & NativeProps<
-  | '--background-color'
-  | '--border-color'
-  | '--text-color'
-  | '--font-size'
-  | '--icon-font-size'
-  | '--height'
->
+  /**
+   * @description 通告栏的类型
+   */
+  color?: 'default' | 'alert' | 'error' | 'success' | 'info';
+  /**
+   * @description 延时展示，单位 ms
+   * @default 2000
+   */
+  delay?: number;
+  /**
+   * @description 滚动速度，单位 px/s
+   * @default 50
+   */
+  speed?: number;
+  /**
+   * @description 公告内容
+   */
+  content: ReactNode;
+  /**
+   * @description 是否可关闭
+   */
+  closeable?: boolean;
+  /**
+   * @description 自定义关闭按钮图标
+   */
+  closeIcon?: ReactNode;
+  /**
+   * @description 关闭时的回调
+   */
+  onClose?: () => void;
+  /**
+   * @description 点击事件
+   */
+  onClick?: () => void;
+  /**
+   * @description 额外操作区域，显示在关闭按钮左侧
+   */
+  extra?: ReactNode;
+  /**
+   * @description 左侧广播图标
+   */
+  icon?: ReactNode;
+  /**
+   * @description 是否多行展示
+   * @default false
+   */
+  wrap?: boolean;
+  /**
+   * @description 形状 (rectangular: 直角; neutral: 圆角; rounded: 圆形)
+   * @default rectangular
+   */
+  shape?: 'rectangular' | 'neutral' | 'rounded';
+  /**
+   * @description 边框可见性 (`block`: 上下边框; `true`: 全边框; `false`: 无边框)
+   * @default block
+   */
+  bordered?: 'block' | boolean;
+} & NativeProps;
 
 const defaultProps = {
   color: 'default',
@@ -57,82 +84,82 @@ const defaultProps = {
   wrap: false,
   shape: 'rectangular',
   bordered: 'block' as 'block' | boolean,
-}
+};
 
-export const NoticeBar = memo<NoticeBarProps>(props => {
-  const { noticeBar: componentConfig = {} } = useConfig()
-  const mergedProps = mergeProps(defaultProps, componentConfig, props)
+export const NoticeBar = memo<NoticeBarProps>((props) => {
+  const { noticeBar: componentConfig = {} } = useConfig();
+  const mergedProps = mergeProps(defaultProps, componentConfig, props);
   const closeIcon = mergeProp(
     <CloseCircleOutline className={`${classPrefix}-close-icon`} />,
     componentConfig.closeIcon,
-    props.closeIcon
-  )
+    props.closeIcon,
+  );
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(true);
 
-  const speed = mergedProps.speed
+  const speed = mergedProps.speed;
 
-  const delayLockRef = useRef(true)
-  const animatingRef = useRef(false)
+  const delayLockRef = useRef(true);
+  const animatingRef = useRef(false);
 
   function start() {
-    if (delayLockRef.current || mergedProps.wrap) return
+    if (delayLockRef.current || mergedProps.wrap) return;
 
-    const container = containerRef.current
-    const text = textRef.current
-    if (!container || !text) return
+    const container = containerRef.current;
+    const text = textRef.current;
+    if (!container || !text) return;
 
     if (container.offsetWidth >= text.offsetWidth) {
-      animatingRef.current = false
-      text.style.removeProperty('transition-duration')
-      text.style.removeProperty('transform')
-      return
+      animatingRef.current = false;
+      text.style.removeProperty('transition-duration');
+      text.style.removeProperty('transform');
+      return;
     }
 
-    if (animatingRef.current) return
+    if (animatingRef.current) return;
 
-    const initial = !text.style.transform
-    text.style.transitionDuration = '0s'
+    const initial = !text.style.transform;
+    text.style.transitionDuration = '0s';
     if (initial) {
-      text.style.transform = 'translateX(0)'
+      text.style.transform = 'translateX(0)';
     } else {
-      text.style.transform = `translateX(${container.offsetWidth}px)`
+      text.style.transform = `translateX(${container.offsetWidth}px)`;
     }
 
     const distance = initial
       ? text.offsetWidth
-      : container.offsetWidth + text.offsetWidth
-    animatingRef.current = true
+      : container.offsetWidth + text.offsetWidth;
+    animatingRef.current = true;
 
-    text.style.transitionDuration = `${Math.round(distance / speed)}s`
-    text.style.transform = `translateX(-${text.offsetWidth}px)`
+    text.style.transitionDuration = `${Math.round(distance / speed)}s`;
+    text.style.transform = `translateX(-${text.offsetWidth}px)`;
   }
 
   useTimeout(() => {
-    delayLockRef.current = false
-    start()
-  }, mergedProps.delay)
+    delayLockRef.current = false;
+    start();
+  }, mergedProps.delay);
 
   useResizeEffect(() => {
-    start()
-  }, containerRef)
+    start();
+  }, containerRef);
 
   useMutationEffect(
     () => {
-      start()
+      start();
     },
     textRef,
     {
       subtree: true,
       childList: true,
       characterData: true,
-    }
-  )
+    },
+  );
 
-  if (!visible) return null
+  if (!visible) return null;
 
   return withNativeProps(
     mergedProps,
@@ -145,18 +172,21 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
           [`${classPrefix}-wrap`]: mergedProps.wrap,
           [`${classPrefix}-bordered`]: mergedProps.bordered === true,
           [`${classPrefix}-without-border`]: mergedProps.bordered === false,
-        }
+        },
       )}
       onClick={mergedProps.onClick}
     >
       {mergedProps.icon && (
         <div className={`${classPrefix}-left`}>{mergedProps.icon}</div>
       )}
-      <div ref={containerRef as React.RefObject<HTMLDivElement>} className={`${classPrefix}-content`}>
+      <div
+        ref={containerRef as React.RefObject<HTMLDivElement>}
+        className={`${classPrefix}-content`}
+      >
         <div
           onTransitionEnd={() => {
-            animatingRef.current = false
-            start()
+            animatingRef.current = false;
+            start();
           }}
           ref={textRef}
           className={`${classPrefix}-content-inner`}
@@ -171,8 +201,8 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
             <div
               className={`${classPrefix}-close`}
               onClick={() => {
-                setVisible(false)
-                mergedProps.onClose?.()
+                setVisible(false);
+                mergedProps.onClose?.();
               }}
             >
               {closeIcon}
@@ -180,6 +210,6 @@ export const NoticeBar = memo<NoticeBarProps>(props => {
           )}
         </div>
       )}
-    </div>
-  )
-})
+    </div>,
+  );
+});

@@ -1,13 +1,13 @@
-import React, {FC} from "react";
-import classNames from "classnames";
-import "./style.scss"
 import {
-  CloseOutline,
   CheckCircleFill,
   CloseCircleFill,
+  CloseOutline,
   ExclamationCircleFill,
-  InformationCircleFill
-} from "@trionesdev/antd-taro-icons-react";
+  InformationCircleFill,
+} from '@trionesdev/antd-taro-icons-react';
+import classNames from 'classnames';
+import React, { FC, useState } from 'react';
+import './style.scss';
 
 export type AlertProps = {
   type?: 'success' | 'info' | 'warning' | 'error';
@@ -33,24 +33,52 @@ export type AlertProps = {
    * @description 关闭回调
    */
   onClose?: () => void;
+  /**
+   * @description 关闭后回调
+   */
+  afterClose?: () => void;
 };
-export const Alert: FC<AlertProps> = ({type = 'success', showIcon = false,closable=false, ...props}) => {
+export const Alert: FC<AlertProps> = ({
+  type = 'success',
+  showIcon = false,
+  closable = false,
+  ...props
+}) => {
+  const [visible, setVisible] = useState(true);
   const alertCls = 'triones-antm-alert';
 
+  if (!visible) {
+    return null;
+  }
 
-  return <div className={classNames(`${alertCls}`, `${alertCls}-${type}`, {})}>
-    {showIcon && <div className={`${alertCls}-icon`}>
-      {type==='success' && <CheckCircleFill/>}
-      {type==='info' && <InformationCircleFill/>}
-      {type==='warning' && <ExclamationCircleFill/>}
-      {type==='error' && <CloseCircleFill/>}
-    </div>}
-    <div className={`${alertCls}-content`}>
-      <div className={`${alertCls}-message`}>{props.message}</div>
-      {props.description && <div className={`${alertCls}-description`}>{props.description}</div>}
+  return (
+    <div className={classNames(`${alertCls}`, `${alertCls}-${type}`, {})}>
+      {showIcon && (
+        <div className={`${alertCls}-icon`}>
+          {type === 'success' && <CheckCircleFill />}
+          {type === 'info' && <InformationCircleFill />}
+          {type === 'warning' && <ExclamationCircleFill />}
+          {type === 'error' && <CloseCircleFill />}
+        </div>
+      )}
+      <div className={`${alertCls}-content`}>
+        <div className={`${alertCls}-message`}>{props.message}</div>
+        {props.description && (
+          <div className={`${alertCls}-description`}>{props.description}</div>
+        )}
+      </div>
+      {closable && (
+        <div
+          className={`${alertCls}-close-icon`}
+          onClick={() => {
+            props.onClose?.();
+            setVisible(false);
+            props.afterClose?.();
+          }}
+        >
+          <CloseOutline />
+        </div>
+      )}
     </div>
-    {closable && <div className={`${alertCls}-close-icon`} onClick={props.onClose}>
-      <CloseOutline/>
-    </div>}
-  </div>
-}
+  );
+};

@@ -8,17 +8,20 @@ const classPrefix = 'triones-antm-safe-area';
 
 export type SafeAreaProps = {
   children?: React.ReactNode;
+  /**
+   * @description 安全区位置
+   * @default top
+   */
   position?: 'top' | 'bottom';
 } & NativeProps;
 
-export const SafeArea: FC<SafeAreaProps> = (props) => {
+export const SafeArea: FC<SafeAreaProps> = ({ position = 'top', ...props }) => {
   return withNativeProps(
     props,
     <div
-      className={classNames(
-        classPrefix,
-        `${classPrefix}-position-${props.position}`,
-      )}
-    >{props.children}</div>,
+      className={classNames(classPrefix, `${classPrefix}-position-${position}`)}
+    >
+      {props.children}
+    </div>,
   );
 };
