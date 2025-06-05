@@ -8,6 +8,7 @@ $progressCls: 'triones-antm-progress-bar';
 
   overflow: hidden;
   display: flex;
+  flex: 1 auto;
   flex-direction: row;
   align-items: center;
   &-track {
