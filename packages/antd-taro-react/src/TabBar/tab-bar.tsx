@@ -39,7 +39,7 @@ type TabBarItemProps = Omit<TabBarItemType, 'key'> & {
   /**
    * @description 自定义渲染
    */
-  render?: (active: Boolean) => React.ReactNode
+  render?: (active: boolean) => React.ReactNode
 }
 
 
@@ -67,7 +67,7 @@ export const TabBarItem: FC<TabBarItemProps> = ({
     onTabClick?.({antKey})
   }}>
     {render?.(active) || <>
-      <div>{displayIcon}</div>
+      <div className={classNames(`${tabBarCls}-item-icon`)}>{displayIcon}</div>
       <div className={classNames(`${tabBarCls}-item-label`)}>{label}</div>
     </>}
   </div>

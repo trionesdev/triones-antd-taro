@@ -16,7 +16,13 @@ const SideBarPage = () => {
 
   return <View>
     <DemoBlock title='滚动模式'>
-      <view style={{height: 300}}>
+      <div style={{height: 300,display: 'block'}} onMouseEnter={()=>{
+        console.log('enter');
+      }}
+      onMouseLeave={()=>{
+        console.log('leave');
+      }}
+      >
         <SideBar mode={'scroll'}
                  items={[
                    {key: '1', title: 'Tab 1', content: <div style={{height: 400}}>Tab 1 Content</div>},
@@ -26,7 +32,15 @@ const SideBarPage = () => {
                    {key: '5', title: 'Tab 5', content: <div style={{height: 700}}>Tab 5 Content</div>},
                  ]}
         />
-      </view>
+      </div>
+    </DemoBlock>
+    <View>sssssssssssssssss</View>
+    <DemoBlock title={`scroll`}>
+      <ScrollView  style={{height: 300}} scrollY={true} onScroll={(e)=>{console.log('scroll', e)}} >
+        <View style={{height: 600}}>
+          sssss
+        </View>
+      </ScrollView>
     </DemoBlock>
     <View>sssssssssssssssss</View>
     <DemoBlock title={`scroll`}>
@@ -36,6 +50,7 @@ const SideBarPage = () => {
         </View>
       </View>
     </DemoBlock>
+
   </View>
 }
 export default SideBarPage;
