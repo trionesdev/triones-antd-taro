@@ -1,4 +1,7 @@
 @import "../style/variable";
+
+$trionesTabBarActiveColor: $trionesColorPrimary !default;
+
 $tabBarCls: 'triones-tab-bar';
 .#{$tabBarCls} {
   box-sizing: border-box;
@@ -14,9 +17,11 @@ $tabBarCls: 'triones-tab-bar';
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 4Px;
+    cursor: default;
 
     &-active {
-      color: $trionesColorPrimary;
+      color: $trionesTabBarActiveColor;
     }
 
     &-icon {
@@ -24,7 +29,7 @@ $tabBarCls: 'triones-tab-bar';
     }
 
     &-label {
-      font-size: 10px;
+      font-size: 12Px;
     }
   }
 }

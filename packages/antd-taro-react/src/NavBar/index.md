@@ -13,4 +13,12 @@
 ## NavBar
 
 ### 属性
+
 <API id="NavBar"></API>
+
+## SCSS变量
+
+| 变量名                       | 说明   | 默认值       |
+|---------------------------|------|-----------|
+| `$trionesNavBarColorBg`   | 背景色  | `#ffffff` |
+| `$trionesNavBarColorText` | 文本颜色 | `#000`    |

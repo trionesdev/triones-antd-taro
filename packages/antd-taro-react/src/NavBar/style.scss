@@ -1,3 +1,7 @@
+@import "../style/variable";
+$trionesNavBarColorBg:$trionesColorBorderBg !default;
+$trionesNavBarColorText:$trionesColorTextBase !default;
+
 $class-prefix-nav-bar: 'triones-antm-nav-bar';
 /* prettier-ignore */
 .#{$class-prefix-nav-bar} {
@@ -9,6 +13,8 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
   border-bottom: var(--border-bottom);
   padding: 0 12PX;
   white-space: nowrap;
+  color: $trionesNavBarColorText;
+  background-color: $trionesNavBarColorBg;
 
   &-left,
   &-right {
