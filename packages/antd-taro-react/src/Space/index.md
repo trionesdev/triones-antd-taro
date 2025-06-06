@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 布局
+  order: 2
+---
 # Space 间距
 
 元素排列中保持相同的宽度。

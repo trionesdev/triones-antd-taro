@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 信息展示
+  order: 4
+---
 # Footer 页脚
 
 ## 何时使用

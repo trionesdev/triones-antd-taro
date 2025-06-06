@@ -1,3 +1,12 @@
+---
+category: Components
+title: Divider 分割线
+subtitle: 分割线
+description: 区隔内容的分割线。
+group:
+  title: 布局
+  order: 2
+---
 # Divider 分割线
 
 区隔内容的分割线。

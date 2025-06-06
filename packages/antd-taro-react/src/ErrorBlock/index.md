@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 信息展示
+  order: 4
+---
 # ErrorBlock 异常
 
 使用场景插画表示页面异常。

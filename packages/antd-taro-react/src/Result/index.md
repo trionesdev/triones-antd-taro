@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 反馈
+  order: 6
+---
 # Result 结果
 
 对前一步操作的结果进行反馈。

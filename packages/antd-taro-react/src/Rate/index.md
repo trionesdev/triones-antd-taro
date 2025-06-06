@@ -1,6 +1,11 @@
 ---
-title: Rate 评分
+category: Components
+group:
+  title: 数据录入
+  order: 5
 ---
+# Rate 评分
+
 
 评分组件，支持选择星级。
 

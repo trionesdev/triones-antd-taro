@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 信息展示
+  order: 4
+---
 # Image 图片
 
 可预览的图片。

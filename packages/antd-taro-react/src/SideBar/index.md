@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 布局
+  order: 2
+---
 # SideBar 侧边导航栏
 
 ## 代码示例

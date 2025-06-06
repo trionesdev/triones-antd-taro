@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 信息展示
+  order: 4
+---
 # WaterMark 水印
 
 页面上添加特定的文字或图案。

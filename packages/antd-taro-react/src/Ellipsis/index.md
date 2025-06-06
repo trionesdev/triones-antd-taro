@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 信息展示
+  order: 4
+---
 # Ellipsis 文本省略
 
 展示空间不足时，隐去部分内容并用“...”替代。

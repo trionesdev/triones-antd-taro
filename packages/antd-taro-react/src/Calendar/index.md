@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 数据录入
+  order: 5
+---
 # Calendar 日历
 > 日历组件，可以通过上下滑动切换月份
 ## 日历

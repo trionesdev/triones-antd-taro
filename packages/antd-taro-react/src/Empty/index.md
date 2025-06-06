@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 反馈
+  order: 6
+---
 # Empty 空状态
 
 ## 何时使用

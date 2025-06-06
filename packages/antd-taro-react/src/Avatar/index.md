@@ -1,6 +1,11 @@
 ---
-title: Avatar 头像
+category: Components
+group:
+  title: 信息展示
+  order: 4
 ---
+
+# Avatar 头像
 
 标签用于标记和分类。
 

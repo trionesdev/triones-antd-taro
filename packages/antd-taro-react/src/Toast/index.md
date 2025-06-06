@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 反馈
+  order: 6
+---
 # Toast 轻提示
 
 ## 代码演示

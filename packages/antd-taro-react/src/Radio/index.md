@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 数据录入
+  order: 5
+---
 # Radio 单选框
 
 在一组可选项中进行单选。

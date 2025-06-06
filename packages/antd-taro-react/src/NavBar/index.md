@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 导航
+  order: 3
+---
 # NavBar 导航栏
 
 为页面提供全局性的导航功能。

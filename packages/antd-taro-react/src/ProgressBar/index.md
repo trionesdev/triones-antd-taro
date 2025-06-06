@@ -1,6 +1,11 @@
 ---
-title: ProgressBar 进度条
+category: Components
+group:
+  title: 信息展示
+  order: 4
 ---
+# ProgressBar 进度条
+
 
 进度条组件，用于显示任务的完成进度。
 

@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 反馈
+  order: 6
+---
 # Badge 徽标
 
 在右上角展示数字、文字、小红点。

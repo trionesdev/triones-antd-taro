@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 反馈
+  order: 6
+---
 # NoticeBar 通告栏
 
 展示一组消息通知。

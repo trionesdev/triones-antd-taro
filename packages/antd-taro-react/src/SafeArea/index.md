@@ -1,3 +1,9 @@
+---
+category: Components
+group:
+  title: 布局
+  order: 2
+---
 # SafeArea 安全区
 
 在全面屏下提供自适应的边距调整。

@@ -1,6 +1,11 @@
 ---
-title: Tag 标签
+category: Components
+group:
+  title: 信息展示
+  order: 4
 ---
+# Tag 标签
+
 
 标签用于标记和分类。
 
