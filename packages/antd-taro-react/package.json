@@ -53,7 +53,8 @@
   },
   "peerDependencies": {
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
@@ -62,7 +63,7 @@
     "@tarojs/extend": "^4.0.9",
     "@tarojs/react": "4.0.9",
     "@tarojs/taro": "4.0.9",
-    "@trionesdev/antd-taro-icons-react": "workspace:*",
+    "@trionesdev/antd-taro-icons-react": "0.0.1-beta.0",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
@@ -91,5 +92,9 @@
     "rc-field-form": "^2.7.0",
     "rc-util": "^5.44.3",
     "runes2": "^1.1.4"
-  }
+  },
+  "optionalDependencies": {
+    "@trionesdev/antd-taro-icons-react": "0.0.1-beta.0"
+  },
+  "gitHead": "f3d1f287a8a49da05b4b6e37d82fcfdab52f9a44"
 }

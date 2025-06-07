@@ -75,5 +75,6 @@
   },
   "dependencies": {
     "classnames": "^2.5.1"
-  }
+  },
+  "gitHead": "f3d1f287a8a49da05b4b6e37d82fcfdab52f9a44"
 }
