@@ -12,6 +12,7 @@ $trionesSideBarCls: 'triones-antm-sidebar';
     background-color: $trionesColorFill;
     overflow: auto;
     scrollbar-width: thin;
+    flex-shrink: 0;
   }
 
   &-tab {
