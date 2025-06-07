@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-taro-react",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.1",
   "description": "antd taro react ",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -52,9 +52,9 @@
     "access": "public"
   },
   "peerDependencies": {
+    "classnames": "^2.5.1",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0",
-    "classnames": "^2.5.1"
+    "react-dom": ">=16.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
@@ -94,7 +94,7 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-taro-icons-react": "0.0.1-beta.0"
+    "@trionesdev/antd-taro-icons-react": "^0.0.1-beta.1"
   },
   "gitHead": "f3d1f287a8a49da05b4b6e37d82fcfdab52f9a44"
 }
