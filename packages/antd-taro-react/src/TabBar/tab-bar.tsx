@@ -74,6 +74,8 @@ export const TabBarItem: FC<TabBarItemProps> = ({
 }
 
 export type TabBarProps = {
+  className?: string
+  style?: React.CSSProperties
   /**
    * @description 默认激活key
    */
@@ -90,7 +92,7 @@ export type TabBarProps = {
   children?: ReactNode
 }
 
-export const TabBar: FC<TabBarProps> = ({activeKey, defaultActiveKey, items, children, onClick}) => {
+export const TabBar: FC<TabBarProps> = ({className, style, activeKey, defaultActiveKey, items, children, onClick}) => {
   const [innerActiveKey, setInnerActiveKey] = React.useState<string | undefined>(activeKey ?? defaultActiveKey)
 
   useEffect(() => {
@@ -99,7 +101,7 @@ export const TabBar: FC<TabBarProps> = ({activeKey, defaultActiveKey, items, chi
 
   return <TabBarContext.Provider
     value={{activeKey: innerActiveKey, setActiveKey: setInnerActiveKey, onTabClick: onClick}}>
-    <div className={classNames(tabBarCls)}>
+    <div className={classNames(tabBarCls, className)} style={style}>
       <div className={classNames(`${tabBarCls}-wrap`)}>
         {!_.isEmpty(items) && items.map(item => <TabBarItem {...item} key={item.key} antKey={item.key}
                                                             onClick={item.onClick}/>)}
