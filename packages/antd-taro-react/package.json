@@ -55,7 +55,11 @@
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "@tarojs/components": "^4.0.9",
+    "@tarojs/extend": "^4.0.9",
+    "@tarojs/react": "^4.0.9",
+    "@tarojs/taro": "^4.0.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
