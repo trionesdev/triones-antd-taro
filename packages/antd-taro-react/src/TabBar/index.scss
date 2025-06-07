@@ -19,6 +19,7 @@ $tabBarCls: 'triones-tab-bar';
     flex-direction: column;
     gap: 4Px;
     cursor: default;
+    flex: 1 auto;
 
     &-active {
       color: $trionesTabBarActiveColor;
