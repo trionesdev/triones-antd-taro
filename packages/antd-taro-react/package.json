@@ -53,6 +53,7 @@
   },
   "peerDependencies": {
     "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
@@ -96,5 +97,5 @@
   "optionalDependencies": {
     "@trionesdev/antd-taro-icons-react": "^0.0.1-beta.1"
   },
-  "gitHead": "f3d1f287a8a49da05b4b6e37d82fcfdab52f9a44"
+  "gitHead": "0f59bf3e866f7ce4b0c3c1a2ab61cacb6cc643a9"
 }
