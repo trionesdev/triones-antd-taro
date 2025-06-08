@@ -38,7 +38,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    * 计算出每个格子的大小
    */
   const cellSize = async (): Promise<number> => {
-    if (isTaroEnv) {
+    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
       console.log(Taro)
       return await new Promise(resolve => {
         Taro.createSelectorQuery()
@@ -52,7 +52,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    * 计算出最大的translateY，默认为wrapperRef.current?.clientHeight
    */
   const minTranslateY = async (): Promise<number> => {
-    if (isTaroEnv) {
+    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
       return await new Promise(resolve => {Taro.createSelectorQuery()
         .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.height))});
 

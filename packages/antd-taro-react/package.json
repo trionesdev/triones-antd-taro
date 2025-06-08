@@ -52,10 +52,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@tarojs/components": "^4.0.9",
+    "@tarojs/components": "^4.1.2",
     "@tarojs/extend": "^4.1.2",
-    "@tarojs/react": "^4.0.9",
-    "@tarojs/taro": "^4.0.9",
+    "@tarojs/react": "^4.1.2",
+    "@tarojs/taro": "^4.1.2",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "react": ">=16.9.0",
@@ -65,10 +65,10 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@tarojs/components": "4.0.9",
+    "@tarojs/components": "4.1.2",
     "@tarojs/extend": "4.1.2",
-    "@tarojs/react": "4.0.9",
-    "@tarojs/taro": "4.0.9",
+    "@tarojs/react": "4.1.2",
+    "@tarojs/taro": "4.1.2",
     "@trionesdev/antd-taro-icons-react": "0.0.1-beta.5",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",

@@ -80,7 +80,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
 
 
   const computeContentOffsetTop = async (): Promise<number> => {
-    if (isTaroEnv) {
+    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
       console.log(Taro)
       const contentWheelOffset = await contentWheelEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
@@ -96,7 +96,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 计算当前页顶部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetTop = async () => {
-    if (isTaroEnv) {
+    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
       const contentOffset = await contentEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top - contentOffset?.top;
@@ -109,7 +109,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 计算当前页底部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetBottom = async () => {
-    if (isTaroEnv) {
+    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
       const contentOffset = await contentEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top + itemOffset.height - contentOffset?.top;
