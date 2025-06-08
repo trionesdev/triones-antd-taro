@@ -66,7 +66,7 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@tarojs/components": "4.0.9",
-    "@tarojs/extend": "^4.0.9",
+    "@tarojs/extend": "4.1.2",
     "@tarojs/react": "4.0.9",
     "@tarojs/taro": "4.0.9",
     "@trionesdev/antd-taro-icons-react": "0.0.1-beta.5",
@@ -100,7 +100,7 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-taro-icons-react": "^0.0.1-beta.4"
+    "@trionesdev/antd-taro-icons-react": "^0.0.1-beta.5"
   },
   "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
 }

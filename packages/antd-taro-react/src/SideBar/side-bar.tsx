@@ -12,6 +12,7 @@ import ScrollView from '../ScrollView';
 import { checkTaroEnv } from '../utils/taro-utils';
 import { SideBarContext } from './SideBarContext';
 import './style.scss';
+import Taro from '@tarojs/taro';
 
 const taroExtend = require('@tarojs/extend');
 
@@ -78,6 +79,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
 
   const computeContentOffsetTop = async (): Promise<number> => {
     if (isTaroEnv) {
+
       const contentWheelOffset = await contentWheelEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top - contentWheelOffset!.top;
@@ -85,6 +87,8 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
       return contentItemRef.current.offsetTop;
     }
   };
+
+
 
   /**
    * 计算当前页顶部，距离可滚动区域顶部的距离
@@ -283,6 +287,13 @@ export const SideBar: FC<SideBarProps> = ({
     }
   }, []);
 
+  Taro.createSelectorQuery().select(`#${contentEl.current?.uid}`).boundingClientRect().exec((res)=>{
+    console.log(res);
+  })
+  Taro.createSelectorQuery().select(contentEl.current).scrollOffset().exec((res)=>{
+    console.log(res);
+  })
+
   return (
     <SideBarContext.Provider
       value={{
@@ -319,6 +330,7 @@ export const SideBar: FC<SideBarProps> = ({
         </div>
         <div
           ref={contentRef}
+          id={contentRef.current?.uid}
           className={classNames(`${sideBarCls}-content`)}
           onTouchStart={(e) => {
             setManual(true);

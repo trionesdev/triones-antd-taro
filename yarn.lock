@@ -3689,7 +3689,7 @@
     swiper "11.1.15"
     tslib "^2.6.2"
 
-"@tarojs/extend@^4.0.9":
+"@tarojs/extend@4.1.2", "@tarojs/extend@^4.0.9":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@tarojs/extend/-/extend-4.1.2.tgz#7a198a1655118a4331b264b4c38099583250f029"
   integrity sha512-Bjg1cEgZmgpJX1XSNbw1+F/B+w+YanX2Im/nQKeduR538nR1jh7OiKy0kdPxG4xX0wCMUMq1dA6mc61ZlVyNqg==
@@ -4074,6 +4074,26 @@
     webpack-format-messages "^3.0.1"
     webpack-virtual-modules "^0.6.1"
     webpackbar "^5.0.2"
+
+"@trionesdev/antd-taro-icons-react@0.0.1-beta.4":
+  version "0.0.1-beta.4"
+  resolved "https://registry.yarnpkg.com/@trionesdev/antd-taro-icons-react/-/antd-taro-icons-react-0.0.1-beta.4.tgz#9fe2027dc366dbb56ed055554a9c7b7e81842d98"
+  integrity sha512-NETkArqkBoaEqKCBzvXI0jpS4t0zEt84LQSjh998n49SDsX1viUkgJlKHvb7NKW6tD6QyeNANWcsSya5hnldDQ==
+  dependencies:
+    classnames "^2.5.1"
+
+"@trionesdev/antd-taro-react@0.0.1-beta.4":
+  version "0.0.1-beta.4"
+  resolved "https://registry.yarnpkg.com/@trionesdev/antd-taro-react/-/antd-taro-react-0.0.1-beta.4.tgz#3b20758ef51db977d8859dda60ababfaabff3a15"
+  integrity sha512-6SpbWJuciUbHomzbpOgr2c9cLp7c3OEqO+5N0k4GZE3HmffWWLqghD1fdav9iXmfkcic8RWijCagkbAP8fdjAg==
+  dependencies:
+    ahooks "^3.8.4"
+    crypto-js "^4.2.0"
+    rc-field-form "^2.7.0"
+    rc-util "^5.44.3"
+    runes2 "^1.1.4"
+  optionalDependencies:
+    "@trionesdev/antd-taro-icons-react" "^0.0.1-beta.1"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
