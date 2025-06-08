@@ -77,9 +77,11 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
     manual,
   } = useContext(SideBarContext);
 
+
+
   const computeContentOffsetTop = async (): Promise<number> => {
     if (isTaroEnv) {
-
+      console.log(Taro)
       const contentWheelOffset = await contentWheelEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top - contentWheelOffset!.top;
@@ -275,6 +277,7 @@ export const SideBar: FC<SideBarProps> = ({
   }, [activeKey]);
 
   useEffect(() => {
+    console.log("Taro",Taro)
     if (mode === 'scroll') {
       setContentEl(taroExtend.$(contentRef.current));
       setContentWheelEl(taroExtend.$(contentWheelRef.current));
@@ -287,12 +290,12 @@ export const SideBar: FC<SideBarProps> = ({
     }
   }, []);
 
-  Taro.createSelectorQuery().select(`#${contentEl.current?.uid}`).boundingClientRect().exec((res)=>{
-    console.log(res);
-  })
-  Taro.createSelectorQuery().select(contentEl.current).scrollOffset().exec((res)=>{
-    console.log(res);
-  })
+  // Taro.createSelectorQuery().select(`#${contentEl.current?.uid}`).boundingClientRect().exec((res)=>{
+  //   console.log(res);
+  // })
+  // Taro.createSelectorQuery().select(contentEl.current).scrollOffset().exec((res)=>{
+  //   console.log(res);
+  // })
 
   return (
     <SideBarContext.Provider

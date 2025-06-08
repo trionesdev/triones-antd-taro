@@ -3,5 +3,7 @@ import Taro from '@tarojs/taro'
 export const checkTaroEnv = () => {
   const env = Taro.getEnv()
   console.log("env", env)
-  return env && "Unknown" !== env?.toString()
+  console.log("env", Taro.getCurrentInstance())
+  console.log("env", )
+  return env && "Unknown" !== env?.toString() && Taro?.getCurrentInstance()?.app;
 }

@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "@tarojs/components": "^4.0.9",
-    "@tarojs/extend": "^4.0.9",
+    "@tarojs/extend": "^4.1.2",
     "@tarojs/react": "^4.0.9",
     "@tarojs/taro": "^4.0.9",
     "classnames": "^2.5.1",

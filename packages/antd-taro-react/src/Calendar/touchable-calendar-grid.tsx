@@ -39,8 +39,11 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    */
   const cellSize = async (): Promise<number> => {
     if (isTaroEnv) {
-      return await new Promise(resolve => Taro.createSelectorQuery()
-        .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.width / 7)));
+      console.log(Taro)
+      return await new Promise(resolve => {
+        Taro.createSelectorQuery()
+          .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.width / 7))
+      });
 
     }
     return Promise.resolve(wrapperRef.current?.clientWidth / 7)

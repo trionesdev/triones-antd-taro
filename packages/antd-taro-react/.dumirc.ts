@@ -12,6 +12,10 @@ export default defineConfig({
     // 配置入口文件路径，API 解析将从这里开始
     entryFile: './src/index.tsx',
   },
+  define: {
+    // ...process.env,
+    'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
+  },
   themeConfig: {
     name: 'Antd Taro',
     nav: [
