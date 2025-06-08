@@ -4,6 +4,10 @@ export const checkTaroEnv = () => {
   const env = Taro.getEnv()
   console.log("env", env)
   console.log("env", Taro.getCurrentInstance())
-  console.log("env", )
+  console.log("env",)
   return env && "Unknown" !== env?.toString() && Taro?.getCurrentInstance()?.app;
+}
+
+export const isTaroWeApp = () => {
+  return Taro.getEnv() === Taro.ENV_TYPE.WEAPP
 }

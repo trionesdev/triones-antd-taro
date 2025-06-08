@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import Taro from '@tarojs/taro'
 import {CalendarGrid} from '../Calendar';
-import {checkTaroEnv} from "../utils/taro-utils";
+import {checkTaroEnv, isTaroWeApp} from "../utils/taro-utils";
 
 type CalendarPickerViewProps = {
   mouth?: Date;
@@ -38,7 +38,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    * 计算出每个格子的大小
    */
   const cellSize = async (): Promise<number> => {
-    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
+    if (isTaroWeApp()) {
       console.log(Taro)
       return await new Promise(resolve => {
         Taro.createSelectorQuery()
@@ -52,7 +52,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
    * 计算出最大的translateY，默认为wrapperRef.current?.clientHeight
    */
   const minTranslateY = async (): Promise<number> => {
-    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
+    if (isTaroWeApp()) {
       return await new Promise(resolve => {Taro.createSelectorQuery()
         .select(`#${wrapperRef.current?.uid}`).boundingClientRect().exec(res => resolve(res?.[0]?.height))});
 

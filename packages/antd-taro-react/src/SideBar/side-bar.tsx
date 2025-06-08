@@ -9,7 +9,7 @@ import React, {
   useState,
 } from 'react';
 import ScrollView from '../ScrollView';
-import { checkTaroEnv } from '../utils/taro-utils';
+import {checkTaroEnv, isTaroWeApp} from '../utils/taro-utils';
 import { SideBarContext } from './SideBarContext';
 import './style.scss';
 import Taro from '@tarojs/taro';
@@ -80,7 +80,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
 
 
   const computeContentOffsetTop = async (): Promise<number> => {
-    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
+    if (isTaroWeApp()) {
       console.log(Taro)
       const contentWheelOffset = await contentWheelEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
@@ -96,7 +96,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 计算当前页顶部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetTop = async () => {
-    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
+    if (isTaroWeApp()) {
       const contentOffset = await contentEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top - contentOffset?.top;
@@ -109,7 +109,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 计算当前页底部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetBottom = async () => {
-    if (Taro.getEnv()===TaroGeneral.ENV_TYPE.WEAPP) {
+    if (isTaroWeApp()) {
       const contentOffset = await contentEl.offset();
       const itemOffset = await taroExtend.$(contentItemRef.current).offset();
       return itemOffset.top + itemOffset.height - contentOffset?.top;
