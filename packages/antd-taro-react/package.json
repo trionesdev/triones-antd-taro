@@ -53,6 +53,7 @@
   },
   "peerDependencies": {
     "@tarojs/components": "^4.1.2",
+    "@tarojs/plugin-platform-weapp": "^4.1.2",
     "@tarojs/extend": "^4.1.2",
     "@tarojs/react": "^4.1.2",
     "@tarojs/taro": "^4.1.2",
@@ -69,7 +70,7 @@
     "@tarojs/extend": "4.1.2",
     "@tarojs/react": "4.1.2",
     "@tarojs/taro": "4.1.2",
-    "@trionesdev/antd-taro-icons-react": "0.0.1-beta.5",
+    "@trionesdev/antd-taro-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
@@ -97,10 +98,11 @@
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
     "rc-util": "^5.44.3",
-    "runes2": "^1.1.4"
+    "runes2": "^1.1.4",
+    "@tarojs/components": "^4.1.2"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-taro-icons-react": "^0.0.1-beta.5"
+    "@trionesdev/antd-taro-icons-react": "workspace:*"
   },
   "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
 }
