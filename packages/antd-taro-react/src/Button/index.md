@@ -1,7 +1,5 @@
 ---
 category: Components
-#title: Button
-#subtitle: 按钮
 description: 按钮用于开始一个即时操作。
 demo:
   cols: 2
