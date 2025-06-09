@@ -5,7 +5,7 @@ $trionesTabBarActiveColor: $trionesColorPrimary !default;
 $tabBarCls: 'triones-tab-bar';
 .#{$tabBarCls} {
   box-sizing: border-box;
-
+  padding-top: 4Px;
   &-wrap {
     display: flex;
     background-color: #ffffff;
