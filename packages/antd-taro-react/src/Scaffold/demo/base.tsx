@@ -24,7 +24,7 @@ export default () => {
                     key: 'save',
                     label: '收藏',
                   },
-                  { key: 'my', label: '我的' },
+                  { key: 'user-center', label: '我的' },
                 ]}
               />
             }

@@ -7,7 +7,7 @@ const TabBarBase = ()=>{
   return <View>
     <DemoBlock title="基础用法">
       <TabBar
-        items={[{ key: 'home', label: '首页', icon: <FaceRecognitionOutline /> }, { key: 'save', label: '收藏' }, { key: 'my', label: '我的' }]}
+        items={[{ key: 'home', label: '首页', icon: <FaceRecognitionOutline /> }, { key: 'save', label: '收藏' }, { key: 'user-center', label: '我的' }]}
       />
     </DemoBlock >
   </View>

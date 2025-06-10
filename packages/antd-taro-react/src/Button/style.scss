@@ -1,3 +1,5 @@
+@import "../style/variable";
+
 button::after {
   content: none;
   width: 100%;
@@ -82,34 +84,34 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: #ffffff;
-            background-color: #1677ff;
-            box-shadow: inset 0 0 0 1px #1677ff;
+            background-color: $trionesColorPrimaryText;
+            box-shadow: inset 0 0 0 1px $trionesColorPrimaryText;
           }
 
           &-outlined {
             color: #1677ff;
             background-color: white;
-            border: 1px solid #1677ff;
+            border: 1px solid $trionesColorPrimaryText;
           }
 
           &-dashed {
-            color: #1677ff;
-            border: 1px dashed #1677ff;
+            color: $trionesColorPrimaryText;
+            border: 1px dashed $trionesColorPrimaryText;
             background-color: #ffffff;
           }
 
           &-filled {
-            color: #1677ff;
-            background-color: #bae0ff;
+            color: $trionesColorPrimaryText;
+            background-color: $trionesColorPrimaryBg;
           }
 
           &-text {
-            color: #1677ff;
+            color: $trionesColorPrimaryText;
             background-color: #ffffff;
           }
 
           &-link {
-            color: #1677ff;
+            color: $trionesColorPrimaryText;
             background-color: #ffffff;
 
             &:active {
@@ -125,34 +127,34 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: #ffffff;
-            background-color: #ff4d4f;
-            box-shadow: inset 0 0 0 1px #ff4d4f;
+            background-color: $trionesColorErrorText;
+            box-shadow: inset 0 0 0 1px $trionesColorErrorText;
           }
 
           &-outlined {
-            color: #ff4d4f;
+            color: $trionesColorErrorText;
             background-color: #ffffff;
-            border: 1px solid #ff4d4f;
+            border: 1px solid $trionesColorErrorText;
           }
 
           &-dashed {
-            color: #ff4d4f;
-            border: 1px dashed #ff4d4f;
+            color: $trionesColorErrorText;
+            border: 1px dashed $trionesColorErrorText;
             background-color: #ffffff;
           }
 
           &-filled {
-            color: #ff4d4f;
+            color: $trionesColorErrorText;
             background-color: #ffdfdc;
           }
 
           &-text {
-            color: #ff4d4f;
+            color: $trionesColorErrorText;
             background-color: #ffffff;
           }
 
           &-link {
-            color: #ff4d4f;
+            color: $trionesColorErrorText;
             background-color: #ffffff;
 
             &:active {

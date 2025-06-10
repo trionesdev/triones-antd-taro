@@ -14,7 +14,7 @@ export default () => {
           {key: 'home', label: '首页', icon: <FaceRecognitionOutline/>},
           {key: 'services', label: '全部服务', icon: <AppstoreOutline/>},
           {
-            key: 'my',
+            key: 'user-center',
             label: '我的',
             icon: <UserOutline/>
           }
