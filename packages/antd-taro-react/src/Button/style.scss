@@ -1,5 +1,15 @@
 @import "../style/variable";
 
+$trionesButtonPendingInlineSm: 7Px;
+$trionesButtonHeightSm: 24Px;
+
+$trionesButtonPendingInline: 15Px;
+$trionesButtonHeight: 32Px;
+
+$trionesButtonContentFontSizeLg: $trionesFontSizeLg;
+$trionesButtonPendingInlineLg: 15Px;
+$trionesButtonHeightLg: 40Px;
+
 button::after {
   content: none;
   width: 100%;
@@ -12,9 +22,9 @@ $buttonCls: 'triones-antm-button';
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  justify-content: center;
   height: auto;
   line-height: normal;
-  padding: 7Px 12Px;
   border-radius: 4Px;
   border: 1Px none;
   box-sizing: border-box;
@@ -191,5 +201,25 @@ $buttonCls: 'triones-antm-button';
   &-block {
     display: flex;
     width: 100%;
+  }
+
+  &-small {
+    font-size: $trionesFontSizeSm;
+    padding-inline: $trionesButtonPendingInlineSm;
+    height: $trionesButtonHeightSm;
+    border-radius: $trionesBorderRadiusSm;
+  }
+
+  &-middle {
+    padding-inline: $trionesButtonPendingInline;
+    height: $trionesButtonHeight;
+    border-radius: $trionesBorderRadius;
+  }
+
+  &-large {
+    font-size: $trionesButtonContentFontSizeLg;
+    padding-inline: $trionesButtonPendingInlineLg;
+    height: $trionesButtonHeightLg;
+    border-radius: $trionesBorderRadiusLg;
   }
 }

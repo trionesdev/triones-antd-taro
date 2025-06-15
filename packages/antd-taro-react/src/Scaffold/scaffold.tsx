@@ -23,9 +23,7 @@ export const Scaffold: FC<ScaffoldProps> = ({
     <div className={classNames(scaffoldCls, className)} style={style}>
       {appBar && <SafeArea position={'top'}>{appBar}</SafeArea>}
       <div className={classNames(`${scaffoldCls}-body`)}>{children}</div>
-      {bottomNavigationBar && (
-        <SafeArea position={'bottom'}>{bottomNavigationBar}</SafeArea>
-      )}
+      <SafeArea position={'bottom'}>{bottomNavigationBar}</SafeArea>
     </div>
   );
 };

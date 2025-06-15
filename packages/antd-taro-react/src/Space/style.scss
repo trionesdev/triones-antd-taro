@@ -6,9 +6,7 @@ $class-prefix-space: 'triones-antm-space';
 }
 /* prettier-ignore */
 .#{$class-prefix-space} {
-  display: flex;
-  width: 100%;
-
+  display: inline-flex;
   &-vertical {
     flex-direction: column;
     > .#{$class-prefix-space}-item {
@@ -32,6 +30,8 @@ $class-prefix-space: 'triones-antm-space';
     }
   }
   &.#{$class-prefix-space}-block {
+    display: flex;
+    width: 100%;
     .#{$class-prefix-space}-item{
       display: flex;
     }

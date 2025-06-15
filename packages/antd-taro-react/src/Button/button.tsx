@@ -3,10 +3,10 @@ import {
   ButtonProps as TaroButtonProps,
 } from '@tarojs/components';
 import classNames from 'classnames';
-import React, { FC, MouseEventHandler } from 'react';
-import { useTaro } from '../utils/taro-utils';
+import React, {FC, MouseEventHandler} from 'react';
+import {useTaro} from '../utils/taro-utils';
 import './style.scss';
-import { CommonEventFunction } from '@tarojs/components/types/common';
+import {CommonEventFunction} from '@tarojs/components/types/common';
 
 export type ButtonProps = {
   children?: React.ReactNode;
@@ -52,10 +52,11 @@ export type ButtonProps = {
    * @description 按钮样式
    */
   variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link';
+  size?: 'small' | 'middle' | 'large';
   /**
    * @description 点击事件
    */
-  onClick?: (e:any)=>void;
+  onClick?: (e: any) => void;
   openType?: TaroButtonProps.OpenType;
 
   onGetPhoneNumber?: CommonEventFunction<TaroButtonProps.onGetPhoneNumberEventDetail>;
@@ -63,24 +64,25 @@ export type ButtonProps = {
 };
 
 export const Button: FC<ButtonProps> = ({
-  children,
-  block = false,
-  type = 'default',
-  color,
-  danger = false,
-  disabled,
-  className,
-  style,
-  icon,
-  iconPosition = 'start',
-  loading,
-  variant,
-  onClick,
-  openType,
-  onGetPhoneNumber,
-  ...props
-}) => {
-  const { isTaro } = useTaro();
+                                          children,
+                                          block = false,
+                                          type = 'default',
+                                          color,
+                                          danger = false,
+                                          disabled,
+                                          className,
+                                          style,
+                                          icon,
+                                          iconPosition = 'start',
+                                          loading,
+                                          variant,
+                                          size = 'middle',
+                                          onClick,
+                                          openType,
+                                          onGetPhoneNumber,
+                                          ...props
+                                        }) => {
+  const {isTaro} = useTaro();
   const clsPrefix = 'triones-antm-button';
   let finalColor = color;
   let finalVariant = variant;
@@ -109,7 +111,7 @@ export const Button: FC<ButtonProps> = ({
   if (isTaro) {
     return (
       <TaroButton
-        className={classNames(clsPrefix, className, {
+        className={classNames(clsPrefix, `${clsPrefix}-${size}`, className, {
           [`${clsPrefix}-block`]: block,
           [`${clsPrefix}-type-${type}`]: type,
           [`${clsPrefix}-color-${finalColor}`]: finalColor,
@@ -129,10 +131,10 @@ export const Button: FC<ButtonProps> = ({
   } else {
     return (
       <button
-        {...{ ...props }}
+        {...{...props}}
         type={'button'}
         onClick={onClick}
-        className={classNames(clsPrefix, className, {
+        className={classNames(clsPrefix, `${clsPrefix}-${size}`, className, {
           [`${clsPrefix}-block`]: block,
           [`${clsPrefix}-type-${type}`]: type,
           [`${clsPrefix}-color-${finalColor}`]: finalColor,
