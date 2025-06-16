@@ -10,8 +10,9 @@ type SideBarContextType = {
   activeChangeCallback?: (targetScrollTop: number) => void;
   onMoveToTab?: (activeKey: string) => void;
   asyncRender?: boolean;
-  contentEl?: any;
-  contentWheelEl?: any;
+
+  contentRef?: any;
+  contentWheelRef?: any;
 
   manual?:boolean
   setManul?:(manual:boolean)=>void

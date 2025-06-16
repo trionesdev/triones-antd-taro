@@ -9,12 +9,11 @@ import React, {
   useState,
 } from 'react';
 import ScrollView from '../ScrollView';
-import {checkTaroEnv, isTaroWeApp} from '../utils/taro-utils';
+import Taro from '@tarojs/taro';
+import { useTaro } from '../hooks/useTaro';
+import { BoundingClientRectType } from '../types';
 import { SideBarContext } from './SideBarContext';
 import './style.scss';
-import Taro from '@tarojs/taro';
-
-const taroExtend = require('@tarojs/extend');
 
 const sideBarCls = 'triones-antm-sidebar';
 
@@ -34,7 +33,6 @@ type SideBarTabProps = {
 };
 const SideBarTab: FC<SideBarTabProps> = ({
   tabKey,
-
   title,
 }) => {
   const { activeKey, setActiveKey } = useContext(SideBarContext);
@@ -61,7 +59,7 @@ type SideBarContentProps = {
 };
 
 const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
-  const isTaroEnv = checkTaroEnv();
+  const { isTaroEnv, isTaroWeApp } = useTaro();
   const [rendered, setRendered] = useState(false);
   const contentItemRef = useRef<any>();
   const frameRef = useRef<any>();
@@ -72,33 +70,75 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
     onMoveToTab,
     scrollDetail,
     asyncRender,
-    contentEl,
-    contentWheelEl,
+    contentRef,
+    contentWheelRef,
     manual,
   } = useContext(SideBarContext);
 
-
-
   const computeContentOffsetTop = async (): Promise<number> => {
-    if (isTaroWeApp()) {
-      console.log(Taro)
-      const contentWheelOffset = await contentWheelEl.offset();
-      const itemOffset = await taroExtend.$(contentItemRef.current).offset();
-      return itemOffset.top - contentWheelOffset!.top;
+    if (isTaroWeApp) {
+      console.log(Taro);
+      // const contentWheelOffset = await contentWheelEl.offset();
+      const contentWheelOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentWheelRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
+      // const itemOffset = await taroExtend.$(contentItemRef.current).offset();
+      const itemOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentItemRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
+      console.log("contentWheelOffset",contentWheelOffset);
+      console.log("itemOffset",itemOffset);
+      return itemOffset!.top - contentWheelOffset!.top;
     } else {
       return contentItemRef.current.offsetTop;
     }
   };
 
-
-
   /**
    * 计算当前页顶部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetTop = async () => {
-    if (isTaroWeApp()) {
-      const contentOffset = await contentEl.offset();
-      const itemOffset = await taroExtend.$(contentItemRef.current).offset();
+    if (isTaroWeApp) {
+      // const contentOffset = await contentEl.offset();
+      // const itemOffset = await taroExtend.$(contentItemRef.current).offset();
+      const contentOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
+      const itemOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentItemRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
       return itemOffset.top - contentOffset?.top;
     } else {
       return contentItemRef.current.offsetTop - Math.abs(scrollDetail!.top!);
@@ -109,10 +149,35 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 计算当前页底部，距离可滚动区域顶部的距离
    */
   const computeReactiveOffsetBottom = async () => {
-    if (isTaroWeApp()) {
-      const contentOffset = await contentEl.offset();
-      const itemOffset = await taroExtend.$(contentItemRef.current).offset();
+    if (isTaroWeApp) {
+      // const contentOffset = await contentEl.offset();
+      // const itemOffset = await taroExtend.$(contentItemRef.current).offset();
+
+      const contentOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
+      const itemOffset: BoundingClientRectType = await new Promise(
+        (resolve) => {
+          Taro.createSelectorQuery()
+            .select(`#${contentItemRef.current?.uid}`)
+            .boundingClientRect()
+            .exec((res) => {
+              console.log(res);
+              resolve(res?.[0]);
+            });
+        },
+      );
+
       return itemOffset.top + itemOffset.height - contentOffset?.top;
+
     } else {
       return (
         contentItemRef.current.offsetTop +
@@ -127,7 +192,7 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
       setRendered(true);
       if (mode === 'scroll' && !manual) {
         Promise.all([]).then(async () => {
-          if (!isTaroEnv || (isTaroEnv && contentWheelEl)) {
+          if (!isTaroEnv || (isTaroEnv && contentWheelRef.current)) {
             activeChangeCallback?.(await computeContentOffsetTop());
           }
         });
@@ -219,7 +284,7 @@ export const SideBar: FC<SideBarProps> = ({
   asyncRender = false,
   tabWidth = 100,
 }) => {
-  const isTaroEnv = checkTaroEnv();
+  const { isTaroEnv } = useTaro();
   const contentRef = useRef<any>();
   const contentWheelRef = useRef<any>();
   const frameRef = useRef<any>();
@@ -228,8 +293,7 @@ export const SideBar: FC<SideBarProps> = ({
     string | undefined
   >(activeKey || defaultActiveKey);
 
-  const [contentEl, setContentEl] = useState<any>();
-  const [contentWheelEl, setContentWheelEl] = useState<any>();
+
   const [manual, setManual] = useState(false);
 
   const [scrollDetail, setScrollDetail] = useState<ScrollDetail>({ top: 0 });
@@ -277,22 +341,32 @@ export const SideBar: FC<SideBarProps> = ({
   }, [activeKey]);
 
   useEffect(() => {
-    console.log("Taro",Taro)
-    if (mode === 'scroll') {
-      setContentEl(taroExtend.$(contentRef.current));
-      setContentWheelEl(taroExtend.$(contentWheelRef.current));
+    console.log('Taro', Taro);
 
-      return () => {
-        if (frameRef.current) {
-          cancelAnimationFrame(frameRef.current);
-        }
-      };
+    if (mode === 'scroll') {
+      // setContentEl(taroExtend.$(contentRef.current));
+      // setContentWheelEl(taroExtend.$(contentWheelRef.current));
     }
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, []);
 
-  // Taro.createSelectorQuery().select(`#${contentEl.current?.uid}`).boundingClientRect().exec((res)=>{
-  //   console.log(res);
-  // })
+  // Taro.createSelectorQuery()
+  //   .select(`#${contentRef.current?.uid}`)
+  //   .boundingClientRect()
+  //   .exec((res) => {
+  //     console.log(res);
+  //   });
+  // Taro.createSelectorQuery()
+  //   .select(`#${contentRef.current?.uid}`)
+  //   .scrollOffset()
+  //   .exec((res) => {
+  //     console.log(res);
+  //   });
+
   // Taro.createSelectorQuery().select(contentEl.current).scrollOffset().exec((res)=>{
   //   console.log(res);
   // })
@@ -305,8 +379,8 @@ export const SideBar: FC<SideBarProps> = ({
         mode: mode,
         scrollDetail: scrollDetail,
         setScrollDetail: setScrollDetail,
-        contentEl: contentEl,
-        contentWheelEl: contentWheelEl,
+        contentWheelRef: contentWheelRef,
+        contentRef: contentRef,
         activeChangeCallback: handleSelectScroll,
         asyncRender: asyncRender,
         onMoveToTab: handleActiveChange,

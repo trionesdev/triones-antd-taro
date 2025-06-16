@@ -8,8 +8,8 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { checkTaroEnv } from '../utils/taro-utils';
 import './style.scss';
+import { useTaro } from '../hooks/useTaro';
 
 export type ScrollEvent = {
   target?: any;
@@ -48,7 +48,8 @@ export const ScrollView: FC<ScrollViewProps> = forwardRef(
     },
     ref: ForwardedRef<any>,
   ) => {
-    const isTaroEnv = checkTaroEnv();
+    const {isTaroEnv} = useTaro()
+
     const scrollRef = useRef<any>();
     const handleRef = (node: any) => {
       scrollRef.current = node;
@@ -62,7 +63,6 @@ export const ScrollView: FC<ScrollViewProps> = forwardRef(
     };
 
     useEffect(() => {
-      console.log('scrollTop', scrollTop);
       if (scrollTop !== undefined) {
         if (!isTaroEnv) {
           scrollRef.current.scrollTo({
