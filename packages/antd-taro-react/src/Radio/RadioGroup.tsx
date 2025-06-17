@@ -1,24 +1,32 @@
 import classNames from 'classnames';
-import React, { FC, useState } from 'react';
-import { RadioGroupContext } from './GroupContext';
-import { Radio } from './radio';
-import { RadioButton } from './RadioButton';
-import { classPrefix, RadioGroupProps } from './types';
+import React, {FC, useEffect, useState} from 'react';
+import {RadioGroupContext} from './GroupContext';
+import {Radio} from './radio';
+import {RadioButton} from './RadioButton';
+import {classPrefix, RadioGroupProps} from './types';
 
 export const RadioGroup: FC<RadioGroupProps> = ({
-  value,
-  onChange,
-  defaultValue,
-  children,
-  shape,
-  items,
-}) => {
+                                                  value,
+                                                  onChange,
+                                                  defaultValue,
+                                                  children,
+                                                  shape,
+                                                  items,
+                                                }) => {
   const [internalValue, setInternalValue] = useState(defaultValue ?? value);
 
   const handleCheck = (val: any) => {
     setInternalValue(val);
     onChange?.(val);
   };
+
+  useEffect(() => {
+    if (value !== undefined) {
+      if (value !== internalValue) {
+        setInternalValue(value);
+      }
+    }
+  }, [value]);
 
   return (
     <RadioGroupContext.Provider

@@ -1,12 +1,13 @@
+@import "../style/variable";
 $tagCls: 'triones-antm-tag';
 
 .#{$tagCls} {
   display: inline-block;
   align-items: center;
-  padding: 2px 4px;
-  font-size: 11px;
+  padding: 2Px 8Px;
+  font-size: 11Px;
   line-height: 1.2;
-  border-radius: 2px;
+  border-radius: $trionesBorderRadius;
   box-sizing: border-box;
   white-space: nowrap;
 
