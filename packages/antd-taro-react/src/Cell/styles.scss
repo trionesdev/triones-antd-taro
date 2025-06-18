@@ -1,0 +1,23 @@
+@import "../style/variable";
+$cellCls: 'triones-antm-cell';
+
+.#{$cellCls}{
+  display: flex;
+  padding: 4Px 4Px;
+  gap: 4Px;
+  &-wrapper{
+    display: flex;
+    flex: 1 auto;
+  }
+  &-content{
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+  }
+  &-extra{}
+  &-arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
