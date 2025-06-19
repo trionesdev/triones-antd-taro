@@ -119,8 +119,9 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(({
 
   useEffect(() => {
     if (mouth !== undefined) {
-      if (mouth !== currentMouth) {
-        setCurrentMouth(mouth)
+      const newMouth = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+      if ( currentMouth===null || !(currentMouth.getFullYear() === newMouth.getFullYear() && currentMouth.getMonth() === newMouth.getMonth()) ) {
+        setCurrentMouth(newMouth)
       }
     }
   }, [mouth]);

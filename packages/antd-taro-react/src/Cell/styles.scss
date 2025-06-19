@@ -1,23 +1,48 @@
 @import "../style/variable";
+
 $cellCls: 'triones-antm-cell';
 
-.#{$cellCls}{
+.#{$cellCls} {
   display: flex;
   padding: 4Px 4Px;
   gap: 4Px;
-  &-wrapper{
+
+  &-wrapper {
     display: flex;
     flex: 1 auto;
   }
-  &-content{
+
+  &-content {
     flex: 1 auto;
     display: flex;
     align-items: center;
   }
-  &-extra{}
-  &-arrow{
+
+  &-extra {
+  }
+
+  &-arrow {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.#{$cellCls}-group {
+  display: flex;
+  flex-direction: column;
+  border-radius: $trionesBorderRadius;
+  padding: 4Px 4Px;
+
+  &-title {
+    padding: 4Px 4Px;
+    display: flex;
+    justify-content: space-between;
+
+    &-text {
+    }
+
+    &-extra {
+    }
   }
 }
