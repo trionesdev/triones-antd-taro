@@ -77,7 +77,7 @@ pnpm --dir examples/antd-taro-react-demo run dev:h5
 
 ### 感谢贡献者
 
-<a href="https://github.com/KuangPF/dumi-theme-antd/graphs/contributors">
+<a href="https://github.com/trionesdev/triones-antd-taro/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=trionesdev/triones-antd-taro" />
 </a>
 
