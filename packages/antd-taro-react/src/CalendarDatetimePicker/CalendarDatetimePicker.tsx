@@ -8,6 +8,8 @@ import { DatetimeUtils } from '../utils/datetime-utils';
 import { DateTimeSwitch } from './DateTimeSwitch';
 import './style.scss';
 import { cls, Mode } from './types';
+import {useTaro} from "../hooks/useTaro";
+import Taro from '@tarojs/taro';
 
 export type CalendarDatetimePickerProps = {
   open?: boolean;
@@ -25,6 +27,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   onClose,
 }) => {
   const { locale } = useConfig();
+  const {isTaroWeApp} = useTaro()
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<any>(value || new Date());
@@ -43,6 +46,14 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   };
 
   const handleComputeBodyHeight = async (): Promise<number> => {
+    if (isTaroWeApp){
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .select(`#${bodyRef.current?.uid}`)
+          .boundingClientRect()
+          .exec((res) => resolve(res?.[0]?.height));
+      })
+    }
     return Promise.resolve(bodyRef.current!.offsetHeight);
   };
 
