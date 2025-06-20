@@ -153,6 +153,13 @@ input {
   }
 }
 
+
+.#{$inputCls}-textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+}
+
 @keyframes blink  {
   50% {
     background-color: transparent;

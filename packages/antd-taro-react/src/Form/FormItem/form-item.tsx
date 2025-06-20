@@ -34,7 +34,7 @@ export const FormItem: FC<FormItemProps> = ({
                                               errorRender,
                                               ...props
                                             }) => {
-  const {layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth} = useFormContext()
+  const {layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth,hiddenError} = useFormContext()
   const formItemLayout = layout ? layout : (formLayout === 'inline' ? 'horizontal' : formLayout)
   const formItemAlign = labelAlign ? labelAlign : formLayoutAlign || 'left'
   const formItemLabelWidth = labelWidth ? labelWidth : formLabelWidth
@@ -43,6 +43,6 @@ export const FormItem: FC<FormItemProps> = ({
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
                              style={{width: formItemLabelWidth}} label={label} required={required}/>}
     <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}
-                   errorRender={errorRender}>{children}</FormItemInput>
+                   errorRender={errorRender} hiddenError={hiddenError}>{children}</FormItemInput>
   </div>
 }

@@ -1,3 +1,4 @@
+@import "../style/variable";
 $pickerCls: 'triones-antm-picker';
 
 .#{$pickerCls} {
@@ -17,7 +18,10 @@ $pickerCls: 'triones-antm-picker';
 
     &-button {
       padding: 8Px;
-      font-size: 14Px;
+      font-size: 12Px;
+      &-ok{
+        color: $trionesColorPrimary;
+      }
     }
 
     &-title {

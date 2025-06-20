@@ -20,6 +20,9 @@ export default () => {
       <DemoBlock title="OPT模式">
         <Input.OPT/>
       </DemoBlock>
+      <DemoBlock title="Textarea">
+        <Input.TextArea placeholder={'请输入内容'}/>
+      </DemoBlock>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { defineConfig } from 'dumi';
-import { defineThemeConfig } from 'dumi-theme-antd/dist/defineThemeConfig';
+
 import * as process from 'node:process';
 import pkgJSON from './package.json';
 
@@ -18,7 +18,7 @@ export default defineConfig({
   define: {
     'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
   },
-  themeConfig: defineThemeConfig({
+  themeConfig:{
     name: 'Antd Taro',
     hd: { rules: [{ mode: 'vw', options: [100, 750] }] },
     // 配置 demo 预览器的设备宽度，默认为 375px
@@ -137,5 +137,5 @@ export default defineConfig({
         ],
       },
     ],
-  }),
+  }
 });

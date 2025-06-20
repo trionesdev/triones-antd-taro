@@ -1,7 +1,15 @@
 import classNames from 'classnames';
-import React, {FC, ForwardedRef, forwardRef, memo, useEffect, useMemo, useState} from 'react';
+import _ from 'lodash';
+import React, {
+  FC,
+  ForwardedRef,
+  forwardRef,
+  memo,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import './style.scss';
-import _ from "lodash";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -19,7 +27,7 @@ export type CalendarGridProps = {
   /**
    * @description 是否为范围选择
    */
-  range?: boolean
+  range?: boolean;
   onSelect?: (date: Date) => void;
 };
 
@@ -27,54 +35,50 @@ export type CalendarCellProps = {
   mouth?: Date;
   date?: Date;
   value?: Date[];
-  range?: boolean
+  range?: boolean;
   onSelect?: (date: Date) => void;
 };
 
 const CalendarCell: FC<CalendarCellProps> = memo(
-  ({
-     mouth = new Date(),
-     date = new Date(),
-     value,
-     range,
-     onSelect,
-   }) => {
+  ({ mouth = new Date(), date = new Date(), value, range, onSelect }) => {
     const disabled = useMemo(() => {
       return date.getMonth() !== mouth.getMonth();
     }, [date, mouth]);
 
     const selected = useMemo(() => {
       if (disabled || _.isEmpty(value)) {
-        return false
+        return false;
       }
       if (value?.[0]) {
-        value?.[0]?.setHours(0, 0, 0, 0)
+        value?.[0]?.setHours(0, 0, 0, 0);
       }
       if (value?.[1]) {
-        value?.[1]?.setHours(0, 0, 0, 0)
+        value?.[1]?.setHours(0, 0, 0, 0);
       }
 
       date.setHours(0, 0, 0, 0);
       if (range) {
-        const startDate = value?.[0]
-        const endDate = value?.[1]
-        console.log('value', value)
+        const startDate = value?.[0];
+        const endDate = value?.[1];
+        console.log('value', value);
 
-        return date.getTime() === startDate?.getTime() || date.getTime() === endDate?.getTime();
+        return (
+          date.getTime() === startDate?.getTime() ||
+          date.getTime() === endDate?.getTime()
+        );
       } else {
         return date.getTime() === value?.[0]?.getTime();
       }
-
     }, [mouth, date, value]);
 
     const selectedRange = useMemo(() => {
       if (disabled || !range) {
-        return false
+        return false;
       }
-      const startDate = value?.[0]
-      const endDate = value?.[1]
+      const startDate = value?.[0];
+      const endDate = value?.[1];
       if (!startDate || !endDate) {
-        return false
+        return false;
       }
       date.setHours(0, 0, 0, 0);
       startDate.setHours(0, 0, 0, 0);
@@ -97,98 +101,110 @@ const CalendarCell: FC<CalendarCellProps> = memo(
           onSelect?.(date);
         }}
       >
-        <div className={classNames(`${calendarCls}-cell-date`)}>{date.getDate()}</div>
-        {date.getDate()===1 && <div className={classNames(`${calendarCls}-cell-mouth`)}>{`${(date.getMonth()+1)}月`}</div>}
+        <div className={classNames(`${calendarCls}-cell-date`)}>
+          {date.getDate()}
+        </div>
+        {date.getDate() === 1 && (
+          <div
+            className={classNames(`${calendarCls}-cell-mouth`)}
+          >{`${date.getMonth() + 1}月`}</div>
+        )}
       </div>
     );
   },
 );
 
-export const CalendarGrid: FC<CalendarGridProps> = memo(forwardRef(({
-                                                                  mouth = new Date(),
-                                                                  value,
-                                                                  defaultValue,
-                                                                  range = false,
-                                                                  onChange,
-                                                                  onSelect
-                                                                }, ref: ForwardedRef<any>) => {
+export const CalendarGrid: FC<CalendarGridProps> = memo(
+  forwardRef(
+    (
+      {
+        mouth = new Date(),
+        value,
+        defaultValue,
+        range = false,
+        onChange,
+        onSelect,
+      },
+      ref: ForwardedRef<any>,
+    ) => {
+      const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? []);
 
-  const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? [])
-
-  const handleSelect = (date: Date) => {
-    date.setHours(0, 0, 0, 0)
-    let _value: Date[] = innerValue
-    if (range) {
-      if (!_value[0]) {
-        _value = [date]
-      } else if (!_value[1]) {
-        let startDate = _value[0]
-        if (date.getTime() < startDate.getTime()) {
-          _value = [date, startDate]
+      const handleSelect = (date: Date) => {
+        date.setHours(0, 0, 0, 0);
+        let _value: Date[] = innerValue;
+        if (range) {
+          if (!_value[0]) {
+            _value = [date];
+          } else if (!_value[1]) {
+            let startDate = _value[0];
+            if (date.getTime() < startDate.getTime()) {
+              _value = [date, startDate];
+            } else {
+              _value = [startDate, date];
+            }
+          } else if (_value[0] && _value[1]) {
+            _value = [date];
+          }
         } else {
-          _value = [startDate, date]
+          _value = [date];
         }
-      }else if (_value[0] && _value[1]) {
-        _value = [date]
-      }
-    } else {
-      _value = [date]
-    }
-    setInnerValue(_value)
-    onSelect?.(date)
-    onChange?.(_value)
-  }
+        setInnerValue(_value);
+        onSelect?.(date);
+        onChange?.(_value);
+      };
 
-  const cells = useMemo(() => {
-    const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-    const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-    const beforeDays = Array.from({length: firstDate.getDay()}).map(
-      (_, index): Date => {
-        const date = new Date(firstDate);
-        date.setDate(firstDate.getDate() - (firstDate.getDay() - index));
-        return date;
-      },
-    );
-
-    const afterDays = Array.from({length: 6 - lastDate.getDay()}).map(
-      (_, index): Date => {
-        const date = new Date(lastDate);
-        date.setDate(lastDate.getDate() + index + 1);
-        return date;
-      },
-    );
-    const mouthDays = Array.from({length: lastDate.getDate()}).map(
-      (_, index): Date => {
-        const date = new Date(firstDate);
-        date.setDate(date.getDate() + index);
-        return date;
-      },
-    );
-    return [...beforeDays, ...mouthDays, ...afterDays];
-  }, [mouth]);
-
-  useEffect(() => {
-    if (value !== undefined) {
-      if (value !== innerValue) {
-        setInnerValue(value)
-      }
-    }
-  }, [value]);
-
-  return (
-    <div ref={ref} className={classNames(`${calendarCls}-grid`)}>
-      {cells.map((item, index) => {
-        return (
-          <CalendarCell
-            key={index}
-            mouth={mouth}
-            date={item}
-            value={innerValue}
-            range={range}
-            onSelect={handleSelect}
-          />
+      const cells = useMemo(() => {
+        const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+        const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
+        const beforeDays = Array.from({ length: firstDate.getDay() }).map(
+          (_, index): Date => {
+            const date = new Date(firstDate);
+            date.setDate(firstDate.getDate() - (firstDate.getDay() - index));
+            return date;
+          },
         );
-      })}
-    </div>
-  );
-}));
+
+        const afterDays = Array.from({ length: 6 - lastDate.getDay() }).map(
+          (_, index): Date => {
+            const date = new Date(lastDate);
+            date.setDate(lastDate.getDate() + index + 1);
+            return date;
+          },
+        );
+        const mouthDays = Array.from({ length: lastDate.getDate() }).map(
+          (_, index): Date => {
+            const date = new Date(firstDate);
+            date.setDate(date.getDate() + index);
+            return date;
+          },
+        );
+        return [...beforeDays, ...mouthDays, ...afterDays];
+      }, [mouth]);
+
+      useEffect(() => {
+        if (value !== undefined) {
+          if (value !== innerValue) {
+            setInnerValue(value);
+          }
+        }
+      }, [value]);
+
+      return (
+        <div ref={ref} className={classNames(`${calendarCls}-grid`)}>
+          {cells.map((item, index) => {
+            return (
+              <CalendarCell
+                key={index}
+                mouth={mouth}
+                date={item}
+                value={innerValue}
+                range={range}
+                onSelect={handleSelect}
+              />
+            );
+          })}
+        </div>
+      );
+    },
+  ),
+);

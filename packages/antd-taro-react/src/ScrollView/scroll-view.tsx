@@ -46,7 +46,7 @@ export const ScrollView: FC<ScrollViewProps> = forwardRef(
       scrollY,
       scrollTop,
     },
-    ref: ForwardedRef<any>,
+    ref ,
   ) => {
     const {isTaroEnv} = useTaro()
 

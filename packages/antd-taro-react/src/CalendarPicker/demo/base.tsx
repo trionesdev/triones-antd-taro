@@ -10,7 +10,7 @@ export default () => {
   return (
     <div>
       <div ref={toastContainer}/>
-      <DemoBlock title={`日历选择器`}>
+      <DemoBlock title={`日期选择器`}>
         <CalendarPicker open={open} afterOpenChange={(o) => {
           setOpen(o);
         }} onOk={(date) => {

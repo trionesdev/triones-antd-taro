@@ -5,15 +5,26 @@ $calendarPickerCls: 'triones-antm-calendar-picker';
 .#{$calendarPickerCls} {
   border-top-left-radius: $trionesBorderRadius;
   border-top-right-radius: $trionesBorderRadius;
+
   &-header {
     display: flex;
     justify-content: space-between;
     border-bottom: 1Px solid $trionesBorderColor;
+    padding: 4Px;
     &-button {
-      color: $trionesColorPrimary;
       padding: 8Px 12Px;
+
+      &-cancel {
+      }
+
+      &-ok {
+        color: $trionesColorPrimary;
+      }
     }
+
+
   }
+
   &-body {
     pointer-events: unset;
   }

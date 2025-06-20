@@ -8,6 +8,7 @@ export interface FormContextProps {
   labelWidth?: number
   requiredMark?: RequiredMark;
   form?: any;
+  hiddenError?: boolean
 }
 
 export const FormContext = React.createContext<FormContextProps>({
