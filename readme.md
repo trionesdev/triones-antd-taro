@@ -9,6 +9,7 @@
 
 ## 组件列表
 
+- [x] ActionSheet 操作面板
 - [x] Avatar 头像
 - [x] Badge 徽标
 - [x] Button 按钮

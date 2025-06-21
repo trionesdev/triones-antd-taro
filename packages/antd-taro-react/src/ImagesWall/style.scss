@@ -1,0 +1,38 @@
+@import "../style/variable";
+
+$imagesWallCls: 'triones-antm-images-wall';
+
+.#{$imagesWallCls} {
+  display: grid;
+  grid-gap: 4PX;
+  grid-template-columns: repeat(5, 1fr);
+
+  &-item {
+    aspect-ratio: 1;
+    border-radius: $trionesBorderRadius;
+
+    &-input {
+      //position: absolute;
+      //opacity: 0;
+      //width: 100%;
+      //height: 100%;
+      //top: 0;
+      //left: 0;
+      //margin: 0;
+      //padding: 0;
+      //z-index: 1;
+    }
+  }
+
+  &-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $trionesColorBgTextActive;
+  }
+  &-action-sheet{
+
+  }
+}
+
+

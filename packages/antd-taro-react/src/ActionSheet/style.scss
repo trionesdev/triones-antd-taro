@@ -1,0 +1,48 @@
+@import "../style/variable";
+$actionSheetCls: 'triones-antm-action-sheet';
+
+.#{$actionSheetCls} {
+  display: flex;
+  flex-direction: column;
+  background-color: $trionesColorFill;
+  border-top-left-radius: $trionesBorderRadius;
+  border-top-right-radius: $trionesBorderRadius;
+  overflow: hidden;
+  gap: 2Px;
+  &-body{
+
+  }
+  &-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40Px;
+    background-color: white;
+    border-bottom: 1Px solid $trionesBorderColor;
+  }
+  &-actions{
+    &-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 40Px;
+      background-color: white;
+      cursor: default;
+      position: relative;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+  &-cancel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40Px;
+    background-color: white;
+    cursor: default;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
