@@ -23,7 +23,7 @@ export const Popup: FC<PropsWithChildren<PopupProps>> = ({
 
   const Portal = () => {
     if (!mountRef.current) {
-      mountRef.current = document.createElement("div");
+      mountRef.current = document.createElement('div');
       rootContainer.appendChild(mountRef.current);
     }
 

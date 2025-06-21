@@ -5,12 +5,13 @@ import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {useTaro} from "../hooks/useTaro";
 import Taro from "@tarojs/taro";
+import {CameraModal} from "./CameraModal";
 
 const cls = 'triones-antm-images-wall'
 
 type ImagesWallItemType = {
   src?: string;
-  status?: 'uploading' | 'success' | 'error';
+  status?: 'uploading' | 'success' | 'done' | 'error';
 }
 
 type ImagesWallItemProps = {
@@ -34,6 +35,7 @@ type ImagesWallProps = {
 
 export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onChange}) => {
   const {isTaroEnv, isTaroWeApp} = useTaro()
+  const [cameraOpen, setCameraOpen] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
   const [images, setImages] = useState<ImagesWallItemType[]>(value || [])
 
@@ -49,17 +51,20 @@ export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onC
   }
 
   const handleSelectCamera = () => {
-    const cameraCtx = Taro.createCameraContext()
-    cameraCtx.takePhoto({
-      quality: 'high',
-      success: res => {
-        console.log('照片临时路径:', res.tempImagePath)
-        // 可在此处调用上传接口
-      }
-    })
+    setSheetOpen(false)
+    setCameraOpen(true)
+    // const cameraCtx = Taro.createCameraContext()
+    // cameraCtx.takePhoto({
+    //   quality: 'high',
+    //   success: res => {
+    //     console.log('照片临时路径:', res.tempImagePath)
+    //     // 可在此处调用上传接口
+    //   }
+    // })
   }
 
   return <>
+    <CameraModal open={true} />
     <ActionSheet className={`${cls}-action-sheet`} open={sheetOpen}
                  afterOpenChange={setSheetOpen}
                  closeAfterClickAction={Boolean(isTaroWeApp)}
@@ -82,15 +87,13 @@ export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onC
                      {
                        key: 'camera', children: <>
                          <div>拍摄照片</div>
-                         {!isTaroEnv &&
-                           <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} capture={`camera`}
-                                  onChange={(e) => {
-                                    console.log(e.target.files)
-                                  }}/>}
+                         {/*{!isTaroEnv &&*/}
+                         {/*  <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} capture={`camera`}*/}
+                         {/*         onChange={(e) => {*/}
+                         {/*           console.log(e.target.files)*/}
+                         {/*         }}/>}*/}
                        </>, onClick: () => {
-                         if (isTaroEnv) {
-                           handleSelectCamera()
-                         }
+                         handleSelectCamera()
                        }
                      }
                    ]}/>
