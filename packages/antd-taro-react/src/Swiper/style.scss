@@ -1,0 +1,27 @@
+@import "../style/variable";
+$swiperCls: 'triones-antm-swiper';
+
+.#{$swiperCls} {
+
+}
+.#{$swiperCls}-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  &-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition-property: transform;
+    &-horizontal{
+      flex-direction: row;
+      touch-action: pan-x;
+    }
+    &-vertical{
+      flex-direction: column;
+      touch-action: pan-y;
+    }
+  }
+}
