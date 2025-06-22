@@ -10,6 +10,7 @@ export type Position = "top" | "bottom" | "left" | "right";
 
 
 export type PopupModalProps = {
+  className?: string;
   /**
    * @description 样式
    * @default horizontal
@@ -42,6 +43,7 @@ export type PopupModalProps = {
    * @default true
    */
   maskClosable?: boolean
+  onMaskClick?: () => void;
   /**
    * @description 关闭时销毁 Modal 里的子元素
    * @default false
@@ -69,6 +71,7 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
                                                                      position = 'bottom',
                                                                      closable = false,
                                                                      maskClosable = true,
+                                                                     onMaskClick,
                                                                      destroyOnClose = false,
                                                                      zIndex = 1000,
                                                                      afterOpenChange,
@@ -110,6 +113,7 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
   return (<div className={classNames(popupCls)} style={{zIndex, display: internalOpen ? 'block' : 'none'}}>
     <div className={classNames(`${popupCls}-mask`)} onClick={() => {
       if (maskClosable) {
+        onMaskClick?.();
         handleClose();
       }
     }}></div>

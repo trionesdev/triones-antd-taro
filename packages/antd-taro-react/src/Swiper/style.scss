@@ -9,6 +9,7 @@ $swiperCls: 'triones-antm-swiper';
   width: 100%;
   height: 100%;
   overflow: hidden;
+  box-sizing: border-box;
   &-wrapper{
     position: relative;
     width: 100%;
@@ -23,5 +24,9 @@ $swiperCls: 'triones-antm-swiper';
       flex-direction: column;
       touch-action: pan-y;
     }
+  }
+  &-item {
+    position: relative;
+    flex-shrink: 0;
   }
 }

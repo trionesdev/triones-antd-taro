@@ -42,7 +42,7 @@ export { default as Form } from './Form';
 export type { FormItemProps, FormProps } from './Form';
 
 export { default as Grid } from './Grid';
-export { default as Image } from './Images';
+export { default as Image } from './Image';
 export { default as Input } from './Input';
 export type { InputOPTProps, InputPasswordProps, InputProps } from './Input';
 
