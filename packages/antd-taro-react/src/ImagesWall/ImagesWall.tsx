@@ -108,10 +108,15 @@ export const ImagesWall: FC<ImagesWallProps> = ({
     if (value === undefined) {
       return
     }
-    if (_.isEqual(images, value)) {
+    const newImages = value.map((item) => {
+      item.uid ??= uuid4()
+      item.status ??= 'done'
+      return item;
+    })
+    if (_.isEqual(newImages, value)) {
       return;
     }
-    setImages(value || [])
+    setImages(newImages || [])
   }, [value]);
 
   return <>
@@ -127,7 +132,6 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                          {!isTaroEnv &&
                            <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} multiple={true}
                                   onChange={async (e) => {
-                                    console.log(e.target.files)
                                     if (e.target.files) {
                                       const files = Array.from(e.target.files)
                                       const promises: any[] = files.map(file => {
@@ -186,7 +190,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                      }
                    ]}/>
     <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
-                  items={images.map(item => item.src) || []} activeIndex={previewIndex}/>
+                   items={images.map(item => item.src) || []} activeIndex={previewIndex}/>
     <div className={classNames(cls, className)}>
       {images.map((image, index) => <ImagesWallItem key={index}
                                                     disabled={disabled} images={images} image={image}
