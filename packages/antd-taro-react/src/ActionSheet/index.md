@@ -1,7 +1,7 @@
 ---
 category: Components
 group:
-  title: 数据录入
+  title: 信息展示
   order: 5
 ---
 
@@ -11,4 +11,6 @@ group:
 
 <code src="./demo/base.tsx"></code>
 
-## Grid
+## ActionSheet
+### 属性
+<API id="ActionSheet"></API>

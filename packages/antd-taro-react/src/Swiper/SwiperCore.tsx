@@ -10,8 +10,16 @@ export type SwiperItemType = {
 }
 
 export type SwiperCoreProps = {
+  className?: string
+  style?: React.CSSProperties
   direction?: 'horizontal' | 'vertical'
+  /**
+   * @description 高度
+   */
+  height?: number
   items?: SwiperItemType[]
+  activeIndex?: number
+  onChange?: (value: number) => void
 }
 
 export type SwiperCoreItemProps = {
@@ -19,14 +27,25 @@ export type SwiperCoreItemProps = {
 }
 
 export const SwiperCoreItem: FC<PropsWithChildren<SwiperCoreItemProps>> = ({children, style}) => {
-  return <div className={classNames(`${cls}-core-item`)} style={style}>{children}</div>
+  return <div className={classNames(`${cls}-core-item`)} style={style}>
+    {children}
+  </div>
 }
 
-export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, direction = 'horizontal', items}) => {
+export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
+                                                                     children,
+                                                                     direction = 'horizontal',
+                                                                     height,
+                                                                     items,
+                                                                     activeIndex,
+                                                                     onChange
+                                                                   }) => {
+  const [innerActiveIndex, setInnerActiveIndex] = useState<number>(activeIndex || 0)
+  const boxRef = React.createRef<HTMLDivElement>()
   const wrapperRef = React.createRef<HTMLDivElement>()
   const [itemWidth, setItemWidth] = useState<number>()
   const [wrapperWidth, setWrapperWidth] = useState<number>()
-  const [itemHeight, setItemHeight] = useState<number>()
+  const [itemHeight, setItemHeight] = useState<number | undefined>(height)
   const [wrapperHeight, setWrapperHeight] = useState<number>()
 
 
@@ -38,12 +57,12 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, di
   const minTranslateX = useRef<number>();
   const minTranslateY = useRef<number>();
 
-  const computeItemWidth = async (): Promise<number> => {
-    return Promise.resolve(wrapperRef.current?.clientWidth!)
+  const computeItemWidth = async (): Promise<number | undefined> => {
+    return Promise.resolve(boxRef.current?.clientWidth)
   }
 
-  const computeItemHeight = async (): Promise<number> => {
-    return Promise.resolve(wrapperRef.current?.clientHeight!)
+  const computeItemHeight = async (): Promise<number | undefined> => {
+    return Promise.resolve(boxRef.current?.clientHeight)
   }
 
   useEffect(() => {
@@ -51,8 +70,8 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, di
       if (items && items?.length > 0) {
         setWrapperWidth(itemWidth * items.length)
         minTranslateX.current = -(itemWidth * (items.length - 1))
-      }else {
-        if (children && React.Children.count(children) > 0){
+      } else {
+        if (children && React.Children.count(children) > 0) {
           setWrapperWidth(itemWidth * React.Children.count(children))
           minTranslateX.current = -(itemWidth * (React.Children.count(children) - 1))
         }
@@ -62,14 +81,40 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, di
       if (items && items?.length > 0) {
         setWrapperHeight(itemHeight * items.length)
         minTranslateY.current = -(itemHeight * (items.length - 1))
-      }else {
-        if (children && React.Children.count(children) > 0){
+      } else {
+        if (children && React.Children.count(children) > 0) {
           setWrapperHeight(itemHeight * React.Children.count(children))
           minTranslateY.current = -(itemHeight * (React.Children.count(children) - 1))
         }
       }
     }
-  }, [children, items, itemWidth, itemWidth]);
+  }, [children, items, itemWidth, itemHeight]);
+
+  useEffect(() => {
+    if (activeIndex === undefined) {
+      return
+    }
+    if (activeIndex === innerActiveIndex) {
+      return;
+    }
+    setInnerActiveIndex(activeIndex)
+
+  }, [activeIndex]);
+
+
+  useEffect(() => {
+    if (direction === 'vertical') {
+      if (itemHeight) {
+        setTranslateY(-(innerActiveIndex * itemHeight!))
+      }
+
+    } else {
+      if (itemWidth) {
+        setTranslateX(-(innerActiveIndex * itemWidth!))
+      }
+    }
+  }, [innerActiveIndex, itemWidth, itemHeight]);
+
 
   useEffect(() => {
     computeItemHeight().then((height) => {
@@ -83,7 +128,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, di
   const handlerRender = () => {
     if (items?.length) {
       return <>{items.map((item, index) => {
-        return <SwiperCoreItem  key={index}
+        return <SwiperCoreItem key={index}
                                style={{width: itemWidth, height: itemHeight}}>{item?.content}</SwiperCoreItem>
       })}</>
     } else {
@@ -99,53 +144,59 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({children, di
   }
 
   return <div className={classNames(`${cls}-core`,)}>
-    <div ref={wrapperRef} className={classNames(`${cls}-core-wrapper`, `${cls}-core-wrapper-${direction}`)}
-         style={{
-           width: direction === 'horizontal' ? wrapperWidth : undefined,
-           height: direction === 'vertical' ? wrapperHeight : undefined,
-           transform: `translate3d(${translateX}Px, ${translateY}Px, 0)`
-         }}
-         onTouchStart={(event) => {
-           setTouching(true)
-           const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
-           setTouchPoint(startPoint);
-         }}
-         onTouchMove={(event) => {
-           if (touching) {
-             const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+    <div ref={boxRef} className={classNames(`${cls}-core-box`)}>
+      <div ref={wrapperRef} className={classNames(`${cls}-core-wrapper`, `${cls}-core-wrapper-${direction}`)}
+           style={{
+             width: direction === 'horizontal' ? wrapperWidth : undefined,
+             height: direction === 'vertical' ? wrapperHeight : undefined,
+             transform: `translate3d(${translateX}Px, ${translateY}Px, 0)`
+           }}
+           onTouchStart={(event) => {
+             setTouching(true)
+             const startPoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
+             setTouchPoint(startPoint);
+           }}
+           onTouchMove={(event) => {
+             if (touching) {
+               const movePoint = {clientX: event.touches[0].clientX, clientY: event.touches[0].clientY}
 
+               if (direction === 'vertical') {
+                 setTranslateY(translateY + (movePoint.clientY - touchPoint.clientY))
+               } else {
+                 setTranslateX(translateX + (movePoint.clientX - touchPoint.clientX));
+               }
+               setTouchPoint(movePoint);
+             }
+           }}
+           onTouchEnd={(event) => {
+             setTouching(false)
              if (direction === 'vertical') {
-               setTranslateY(translateY + (movePoint.clientY - touchPoint.clientY))
+               if (translateY > max) {
+                 setTranslateY(0)
+               } else if (translateY < minTranslateY.current!) {
+                 setTranslateY(minTranslateY.current!)
+               } else {
+                 const index = Math.round(Math.abs(translateY) / Math.abs(itemHeight!))
+                 setTranslateY(-(index * itemHeight!))
+                 setInnerActiveIndex(index)
+                 onChange?.(index)
+               }
              } else {
-               setTranslateX(translateX + (movePoint.clientX - touchPoint.clientX));
+               if (translateX > max) {
+                 setTranslateX(0)
+               } else if (translateX < minTranslateX.current!) {
+                 setTranslateX(minTranslateX.current!)
+               } else {
+                 const index = Math.round(Math.abs(translateX) / Math.abs(itemWidth!))
+                 setTranslateX(-(index * itemWidth!))
+                 setInnerActiveIndex(index)
+                 onChange?.(index)
+               }
              }
-             setTouchPoint(movePoint);
-           }
-         }}
-         onTouchEnd={(event) => {
-           setTouching(false)
-           if (direction === 'vertical') {
-             if (translateY > max) {
-               setTranslateY(0)
-             } else if (translateY < minTranslateY.current!) {
-               setTranslateY(minTranslateY.current!)
-             } else {
-               const index = Math.round(Math.abs(translateY) / Math.abs(itemHeight!))
-               setTranslateY(-(index * itemHeight!))
-             }
-           } else {
-             if (translateX > max) {
-               setTranslateX(0)
-             } else if (translateX < minTranslateX.current!) {
-               setTranslateX(minTranslateX.current!)
-             } else {
-               const index = Math.round(Math.abs(translateX) / Math.abs(itemWidth!))
-               setTranslateX(-(index * itemWidth!))
-             }
-           }
-         }}
-    >
-      {handlerRender()}
+           }}
+      >
+        {handlerRender()}
+      </div>
     </div>
   </div>
 }

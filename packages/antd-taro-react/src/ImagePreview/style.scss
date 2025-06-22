@@ -1,0 +1,24 @@
+$imagePreviewCls: 'triones-antm-image-preview';
+
+.#{$imagePreviewCls} {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &-head{
+    position: fixed;
+    top: 50Px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14Px;
+  }
+  &-content{
+    flex: 1;
+    display: flex;
+  }
+  &-foot{}
+}

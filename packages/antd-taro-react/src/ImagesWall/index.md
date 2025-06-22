@@ -11,4 +11,4 @@ group:
 
 <code src="./demo/base.tsx"></code>
 
-## Grid
+## ImagesWall
