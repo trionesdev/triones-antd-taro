@@ -2,6 +2,8 @@ import React, {FC, PropsWithChildren, useEffect, useRef, useState} from "react"
 
 import "./style.scss"
 import classNames from "classnames";
+import {useTaro} from "../hooks/useTaro";
+import Taro from "@tarojs/taro";
 
 const cls = "triones-antm-swiper";
 
@@ -40,8 +42,9 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
                                                                      activeIndex,
                                                                      onChange
                                                                    }) => {
+  const {isTaroWeApp} = useTaro()
   const [innerActiveIndex, setInnerActiveIndex] = useState<number>(activeIndex || 0)
-  const boxRef = React.createRef<HTMLDivElement>()
+  const boxRef = React.createRef<any>()
   const wrapperRef = React.createRef<HTMLDivElement>()
   const [itemWidth, setItemWidth] = useState<number>()
   const [wrapperWidth, setWrapperWidth] = useState<number>()
@@ -59,17 +62,33 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   const minTranslateY = useRef<number>();
 
   const computeItemWidth = async (): Promise<number | undefined> => {
+    if (isTaroWeApp) {
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .select(`#${boxRef.current?.uid}`)
+          .boundingClientRect()
+          .exec((res) => resolve(res?.[0]?.width));
+      })
+    }
     return Promise.resolve(boxRef.current?.clientWidth)
   }
 
   const computeItemHeight = async (): Promise<number | undefined> => {
+    if (isTaroWeApp) {
+      return new Promise((resolve) => {
+        Taro.createSelectorQuery()
+          .select(`#${boxRef.current?.uid}`)
+          .boundingClientRect()
+          .exec((res) => resolve(res?.[0]?.height));
+      })
+    }
     return Promise.resolve(boxRef.current?.clientHeight)
   }
 
   useEffect(() => {
-    if (items?.length){
+    if (items?.length) {
       setCount(items.length)
-    }else {
+    } else {
       setCount(React.Children.count(children))
     }
     if (itemWidth) {
