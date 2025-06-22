@@ -1,26 +1,53 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
-import {AddOutline} from "@trionesdev/antd-taro-icons-react";
+import {AddOutline, CloseOutline} from "@trionesdev/antd-taro-icons-react";
 import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {useTaro} from "../hooks/useTaro";
 import Taro from "@tarojs/taro";
 import {CameraModal} from "./CameraModal";
+import ImagesPreview from "../ImagesPreview";
+import _ from "lodash";
+import {v4 as uuid4} from "uuid"
 
 const cls = 'triones-antm-images-wall'
 
 type ImagesWallItemType = {
+  uid?: string;
   src?: string;
-  status?: 'uploading' | 'success' | 'done' | 'error';
+  status?: 'uploading' | 'done' | 'error';
 }
 
 type ImagesWallItemProps = {
+  preview?: boolean;
+  disabled?: boolean;
+  images: ImagesWallItemType[];
   image: ImagesWallItemType;
+  onChange?: (image: ImagesWallItemType) => void;
+  onPreview?: (image: ImagesWallItemType) => void;
+  onClose?: () => void
 }
 
-const ImagesWallItem: FC<ImagesWallItemProps> = ({image}) => {
+const ImagesWallItem: FC<ImagesWallItemProps> = ({
+                                                   preview,
+                                                   disabled,
+                                                   images,
+                                                   image,
+                                                   onChange,
+                                                   onPreview,
+                                                   onClose
+                                                 }) => {
   return <div className={classNames(`${cls}-item`,)}>
-    {image.src && <img src={image.src} alt=""/>}
+    {!disabled && <div className={`${cls}-item-close`} onClick={onClose}>
+      <CloseOutline/>
+    </div>}
+    <div className={classNames(`${cls}-item-inner`,)} onClick={() => {
+      if (preview) {
+        onPreview?.(image)
+      }
+    }}>
+      {image.src && <img className={`${cls}-item-image`} src={image.src} alt=""/>}
+    </div>
   </div>
 }
 
@@ -29,14 +56,28 @@ type ImagesWallProps = {
   disabled?: boolean;
   value?: ImagesWallItemType[];
   onChange?: (value: ImagesWallItemType[]) => void;
-  onRequest?: () => Promise<string>
+  preview?: boolean;
+  onRequest?: (file: File) => Promise<string>
+  customUploadAction?: () => void;
+  customPreviewAction?: (urls: (string | undefined)[], current?: string) => void;
 }
 
 
-export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onChange}) => {
+export const ImagesWall: FC<ImagesWallProps> = ({
+                                                  className,
+                                                  disabled,
+                                                  value,
+                                                  onChange,
+                                                  preview,
+                                                  onRequest,
+                                                  customUploadAction,
+                                                  customPreviewAction
+                                                }) => {
   const {isTaroEnv, isTaroWeApp} = useTaro()
   const [cameraOpen, setCameraOpen] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
+  const [imagePreviewOpen, setImagePreviewOpen] = useState(false)
+  const [previewIndex, setPreviewIndex] = useState(0)
   const [images, setImages] = useState<ImagesWallItemType[]>(value || [])
 
   const handleSelectPhoto = () => {
@@ -63,8 +104,18 @@ export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onC
     // })
   }
 
+  useEffect(() => {
+    if (value === undefined) {
+      return
+    }
+    if (_.isEqual(images, value)) {
+      return;
+    }
+    setImages(value || [])
+  }, [value]);
+
   return <>
-    <CameraModal open={true} />
+    <CameraModal open={cameraOpen}/>
     <ActionSheet className={`${cls}-action-sheet`} open={sheetOpen}
                  afterOpenChange={setSheetOpen}
                  closeAfterClickAction={Boolean(isTaroWeApp)}
@@ -75,8 +126,45 @@ export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onC
                          <div>从相册选择</div>
                          {!isTaroEnv &&
                            <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} multiple={true}
-                                  onChange={(e) => {
+                                  onChange={async (e) => {
                                     console.log(e.target.files)
+                                    if (e.target.files) {
+                                      const files = Array.from(e.target.files)
+                                      const promises: any[] = files.map(file => {
+                                        const uid = uuid4()
+                                        onRequest?.(file).then(res => {
+                                          const newImages = [...images.map((item) => {
+                                            if (item.uid === uid) {
+                                              item.src = res;
+                                              item.status = 'done';
+                                              return item;
+                                            }
+                                            return item;
+                                          })];
+                                          setImages(newImages)
+                                          onChange?.(newImages)
+                                        })
+                                        return new Promise((resolve) => {
+                                          const reader = new FileReader();
+                                          reader.onload = (event) => {
+                                            resolve({
+                                              uid: uid,
+                                              name: file.name,
+                                              src: event.target?.result,
+                                              type: file.type,
+                                              status: 'uploading',
+                                            });
+                                          };
+                                          reader.readAsDataURL(file);
+                                        });
+                                      });
+                                      Promise.all(promises).then(results => {
+                                        console.log(results)
+                                        const newImages = [...images, ...results];
+                                        setImages(newImages);
+                                        onChange?.(newImages)
+                                      });
+                                    }
                                   }}/>}
                        </>, onClick: () => {
                          if (isTaroEnv) {
@@ -97,10 +185,32 @@ export const ImagesWall: FC<ImagesWallProps> = ({className, disabled, value, onC
                        }
                      }
                    ]}/>
+    <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
+                  items={images.map(item => item.src) || []} activeIndex={previewIndex}/>
     <div className={classNames(cls, className)}>
-      {images.map((image, index) => <ImagesWallItem key={index} image={image}/>)}
+      {images.map((image, index) => <ImagesWallItem key={index}
+                                                    disabled={disabled} images={images} image={image}
+                                                    preview={preview}
+                                                    onPreview={(image) => {
+                                                      if (customPreviewAction) {
+                                                        customPreviewAction(images.map((item) => item.src) || [], image.src)
+                                                      } else {
+                                                        setPreviewIndex(index)
+                                                        setImagePreviewOpen(true)
+                                                      }
+                                                    }}
+                                                    onClose={() => {
+                                                      images.splice(index, 1)
+                                                      const newImages = [...images]
+                                                      setImages(newImages)
+                                                      onChange?.(newImages)
+                                                    }}/>)}
       {!disabled && <div className={classNames(`${cls}-item`, `${cls}-upload`)} onClick={() => {
-        setSheetOpen(true)
+        if (customUploadAction) {
+          customUploadAction()
+        } else {
+          setSheetOpen(true)
+        }
       }}>
         <AddOutline/>
       </div>}

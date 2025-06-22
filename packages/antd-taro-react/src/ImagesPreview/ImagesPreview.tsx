@@ -11,13 +11,13 @@ const cls = 'triones-antm-image-preview';
 type ImagePreviewProps = {
   className?: string;
   open?: boolean;
-  items?: string[];
+  items?: (string|undefined)[];
   width?: number;
   height?: number;
   activeIndex?: number;
   afterOpenChange?: (open: boolean) => void;
 }
-export const ImagePreview: FC<ImagePreviewProps> = ({className, open, items, activeIndex, afterOpenChange}) => {
+export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, activeIndex, afterOpenChange}) => {
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [innerActiveIndex, setInnerActiveIndex] = React.useState(activeIndex || 0)
 
@@ -34,6 +34,16 @@ export const ImagePreview: FC<ImagePreviewProps> = ({className, open, items, act
   useEffect(() => {
     afterOpenChange?.(innerOpen);
   }, [innerOpen]);
+
+  useEffect(() => {
+    if (activeIndex === undefined) {
+      return;
+    }
+    if (activeIndex === innerActiveIndex) {
+      return;
+    }
+    setInnerActiveIndex(activeIndex);
+  }, [activeIndex]);
 
   return <Mask open={innerOpen}>
     <div className={classNames(cls, className)} onClick={() => {
@@ -57,12 +67,6 @@ export const ImagePreview: FC<ImagePreviewProps> = ({className, open, items, act
                   }
                 })}/>
       </div>
-      {/*<Swiper items={[*/}
-      {/*  {content: <div style={{height:'100%',width:'100%',background:'red',display:'flex',justifyContent:'center',alignItems:'center'}}>1</div>},*/}
-      {/*  {content: <div style={{height:'100%',width:'100%',background:'green',display:'flex',justifyContent:'center',alignItems:'center'}}>2</div>},*/}
-      {/*  {content: <div style={{height:'100%',width:'100%',background:'yellow',display:'flex',justifyContent:'center',alignItems:'center'}}>3</div>},*/}
-      {/*  {content: <div style={{height:'100%',width:'100%',background:'blue',display:'flex',justifyContent:'center',alignItems:'center'}}>4</div>},*/}
-      {/*]}/>*/}
     </div>
   </Mask>;
 }

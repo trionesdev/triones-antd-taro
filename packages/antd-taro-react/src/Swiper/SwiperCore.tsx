@@ -47,6 +47,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   const [wrapperWidth, setWrapperWidth] = useState<number>()
   const [itemHeight, setItemHeight] = useState<number | undefined>(height)
   const [wrapperHeight, setWrapperHeight] = useState<number>()
+  const [count, setCount] = useState<number>(0)
 
 
   const [touching, setTouching] = useState<boolean>(false);
@@ -66,6 +67,11 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   }
 
   useEffect(() => {
+    if (items?.length){
+      setCount(items.length)
+    }else {
+      setCount(React.Children.count(children))
+    }
     if (itemWidth) {
       if (items && items?.length > 0) {
         setWrapperWidth(itemWidth * items.length)
@@ -173,8 +179,12 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
              if (direction === 'vertical') {
                if (translateY > max) {
                  setTranslateY(0)
+                 setInnerActiveIndex(0)
+                 onChange?.(0)
                } else if (translateY < minTranslateY.current!) {
                  setTranslateY(minTranslateY.current!)
+                 setInnerActiveIndex(count - 1)
+                 onChange?.(count - 1)
                } else {
                  const index = Math.round(Math.abs(translateY) / Math.abs(itemHeight!))
                  setTranslateY(-(index * itemHeight!))
@@ -184,8 +194,12 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
              } else {
                if (translateX > max) {
                  setTranslateX(0)
+                 setInnerActiveIndex(0)
+                 onChange?.(0)
                } else if (translateX < minTranslateX.current!) {
                  setTranslateX(minTranslateX.current!)
+                 setInnerActiveIndex(count - 1)
+                 onChange?.(count - 1)
                } else {
                  const index = Math.round(Math.abs(translateX) / Math.abs(itemWidth!))
                  setTranslateX(-(index * itemWidth!))
