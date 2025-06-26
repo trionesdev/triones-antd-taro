@@ -1,8 +1,9 @@
+@import "../style/variable";
 $class-prefix-card: 'triones-antm-card';
 
 .#{$class-prefix-card} {
   background: var(--triones-antm-color-background);
-  border-radius: var(--triones-antm-card-border-radius, 8px);
+  border-radius: $trionesBorderRadius;
   padding: 0 var(--triones-antm-card-padding-inline, 12px);
   &-header {
     position: relative;
