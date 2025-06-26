@@ -5,7 +5,7 @@ $imagesWallCls: 'triones-antm-images-wall';
 .#{$imagesWallCls} {
   display: grid;
   grid-gap: 4PX;
-  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
 
   &-item {
     aspect-ratio: 1;

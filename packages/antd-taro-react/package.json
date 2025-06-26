@@ -100,8 +100,7 @@
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
     "rc-util": "^5.44.3",
-    "runes2": "^1.1.4",
-    "uuid": "^11.1.0"
+    "runes2": "^1.1.4"
   },
   "optionalDependencies": {
     "@trionesdev/antd-taro-icons-react": "workspace:*"

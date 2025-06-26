@@ -8,13 +8,12 @@ import Taro from "@tarojs/taro";
 import {CameraModal} from "./CameraModal";
 import ImagesPreview from "../ImagesPreview";
 import _ from "lodash";
-import {v4 as uuid4} from "uuid"
 
 const cls = 'triones-antm-images-wall'
 
 type ImagesWallItemType = {
   uid?: string;
-  src?: string;
+  url?: string;
   status?: 'uploading' | 'done' | 'error';
 }
 
@@ -46,7 +45,7 @@ const ImagesWallItem: FC<ImagesWallItemProps> = ({
         onPreview?.(image)
       }
     }}>
-      {image.src && <img className={`${cls}-item-image`} src={image.src} alt=""/>}
+      {image.url && <img className={`${cls}-item-image`} src={image.url} alt=""/>}
     </div>
   </div>
 }
@@ -56,6 +55,7 @@ type ImagesWallProps = {
   disabled?: boolean;
   value?: ImagesWallItemType[];
   onChange?: (value: ImagesWallItemType[]) => void;
+  columns?: number;
   preview?: boolean;
   onRequest?: (file: File) => Promise<string>
   customUploadAction?: () => void;
@@ -68,7 +68,8 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                                                   disabled,
                                                   value,
                                                   onChange,
-                                                  preview,
+  columns=5,
+                                                  preview=true,
                                                   onRequest,
                                                   customUploadAction,
                                                   customPreviewAction
@@ -109,7 +110,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
       return
     }
     const newImages = value.map((item) => {
-      item.uid ??= uuid4()
+      item.uid ??= Math.random().toString(36)
       item.status ??= 'done'
       return item;
     })
@@ -135,11 +136,11 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                                     if (e.target.files) {
                                       const files = Array.from(e.target.files)
                                       const promises: any[] = files.map(file => {
-                                        const uid = uuid4()
+                                        const uid = Math.random().toString(36)
                                         onRequest?.(file).then(res => {
                                           const newImages = [...images.map((item) => {
                                             if (item.uid === uid) {
-                                              item.src = res;
+                                              item.url = res;
                                               item.status = 'done';
                                               return item;
                                             }
@@ -190,14 +191,14 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                      }
                    ]}/>
     <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
-                   items={images.map(item => item.src) || []} activeIndex={previewIndex}/>
-    <div className={classNames(cls, className)}>
+                   items={images.map(item => item.url) || []} activeIndex={previewIndex}/>
+    <div className={classNames(cls, className)} style={{gridTemplateColumns: `repeat(${columns}, 1fr)`}}>
       {images.map((image, index) => <ImagesWallItem key={index}
                                                     disabled={disabled} images={images} image={image}
                                                     preview={preview}
                                                     onPreview={(image) => {
                                                       if (customPreviewAction) {
-                                                        customPreviewAction(images.map((item) => item.src) || [], image.src)
+                                                        customPreviewAction(images.map((item) => item.url) || [], image.url)
                                                       } else {
                                                         setPreviewIndex(index)
                                                         setImagePreviewOpen(true)

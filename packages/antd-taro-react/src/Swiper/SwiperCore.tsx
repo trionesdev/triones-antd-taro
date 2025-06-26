@@ -63,11 +63,15 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
 
   const computeItemWidth = async (): Promise<number | undefined> => {
     if (isTaroWeApp) {
-      return new Promise((resolve) => {
+      return await new Promise((resolve) => {
+        console.log(boxRef.current?.uid);
         Taro.createSelectorQuery()
           .select(`#${boxRef.current?.uid}`)
           .boundingClientRect()
-          .exec((res) => resolve(res?.[0]?.width));
+          .exec((res) => {
+            console.log(res);
+            resolve(res?.[0]?.width)
+          });
       })
     }
     return Promise.resolve(boxRef.current?.clientWidth)
@@ -75,7 +79,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
 
   const computeItemHeight = async (): Promise<number | undefined> => {
     if (isTaroWeApp) {
-      return new Promise((resolve) => {
+      return await new Promise((resolve) => {
         Taro.createSelectorQuery()
           .select(`#${boxRef.current?.uid}`)
           .boundingClientRect()
@@ -169,7 +173,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   }
 
   return <div className={classNames(`${cls}-core`,)}>
-    <div ref={boxRef} className={classNames(`${cls}-core-box`)}>
+    <div ref={boxRef} id={boxRef.current?.uid} className={classNames(`${cls}-core-box`)}>
       <div ref={wrapperRef} className={classNames(`${cls}-core-wrapper`, `${cls}-core-wrapper-${direction}`)}
            style={{
              width: direction === 'horizontal' ? wrapperWidth : undefined,

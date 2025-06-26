@@ -2,17 +2,17 @@
 $class-prefix-card: 'triones-antm-card';
 
 .#{$class-prefix-card} {
-  background: var(--triones-antm-color-background);
+  background: $trionesColorBgBase;
   border-radius: $trionesBorderRadius;
-  padding: 0 var(--triones-antm-card-padding-inline, 12px);
+  padding: 0 $trionesPaddingSm;
   &-header {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--triones-antm-card-header-gap, 8px);
+    gap: 8Px;
     box-sizing: border-box;
-    padding: var(--triones-antm-card-header-padding-block, 12px) 0;
+    padding: $trionesPaddingSm 0;
     &:not(:last-child) {
       border-bottom: solid var(--triones-antm-card-header-border-width, 0.5px)
         var(
@@ -21,12 +21,12 @@ $class-prefix-card: 'triones-antm-card';
         );
     }
     &-title {
-      font-size: var(--triones-antm-font-size-7);
+      font-size: $trionesFontSizeLg;
       line-height: 1.4;
       font-weight: bold;
     }
   }
   &-body {
-    padding: var(--triones-antm-card-body-padding-block, 12px) 0;
+    padding: $trionesPaddingSm 0;
   }
 }
