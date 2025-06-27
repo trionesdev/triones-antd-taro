@@ -8,14 +8,18 @@ $descriptionsCls: 'triones-antm-descriptions';
       &-table{
         display: table;
       }
-      &-tr{
-        display: table-row;
+      &-row{
+        display: flex;
       }
-      &-th{
-        display: table-cell;
-      }
-      &-td{
-        display: table-cell;
+      &-item{
+        display: flex;
+        flex: 1 auto;
+        &-label{
+
+        }
+        &-content{
+          flex: 1 auto;
+        }
       }
     }
   }
