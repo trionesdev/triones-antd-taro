@@ -1,8 +1,8 @@
 ---
 category: Components
 group:
-  title: 反馈
-  order: 6
+  title: 信息展示
+#  order: 6
 ---
 # Descriptions 描述列表
 

@@ -30,6 +30,9 @@ export {default as Checkbox} from './Checkbox';
 
 export {default as ConfigProvider} from './ConfigProvider';
 
+export {default as Descriptions} from "./Descriptions"
+export type {DescriptionsProps} from "./Descriptions"
+
 export {default as Divider} from './Divider';
 export {default as Ellipsis} from './Ellipsis';
 export {default as Empty} from './Empty';

@@ -16,7 +16,7 @@ $descriptionsCls: 'triones-antm-descriptions';
       &-item {
         display: flex;
         align-items: baseline;
-        padding: 8Px 14Px;
+        padding: 4Px 4Px;
         overflow: hidden;
         &-label {
           color: $trionesColorTextSecondary;
@@ -52,11 +52,11 @@ $descriptionsCls: 'triones-antm-descriptions';
           display: flex;
           background-color: rgb(250, 250, 250);
           align-items: center;
-          padding: 8Px 14Px;
+          padding: 4Px 4Px;
         }
         &-content {
           background-color: white;
-          padding: 8Px 14Px;
+          padding: 4Px 4Px;
         }
       }
     }

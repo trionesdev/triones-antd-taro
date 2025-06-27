@@ -1,8 +1,7 @@
 ---
 category: Components
 group:
-  title: 信息展示
-  order: 5
+  title: 反馈
 ---
 
 # ActionSheet 动作面板

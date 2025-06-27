@@ -8,49 +8,76 @@
 > 主要Api 参考了antd,组件效果参考ant-mini.
 
 ## 组件列表
+- 通用
+  - [x] Button 按钮
+- 布局
+  - [x] Divider 分割线
+  - [x] Grid 网格
+  - [x] SafeArea 安全区
+  - [x] Scaffold 脚手架
+  - [x] SideBar 侧边导航栏
+  - [x] Space 间距
+- 导航
+  - [x] NavBar 导航栏
+  - [x] TabBar 底部导航栏
+  - [x] Tabs 标签页
+- 信息展示
+  - [x] Alert 告警提示
+  - [x] Avatar 头像
+  - [x] Card 卡片
+  - [x] Descriptions 描述
+  - [x] Ellipsis 文本省略
+  - [x] ErrorBlock 异常
+  - [x] Footer 底部
+  - [x] Image 图片
+  - [x] ImagesPreview 图片预览
+  - [x] ProgressBar 进度条
+  - [x] SpinLoading 加载中
+  - [x] WaterMark 水印
+- 数据录入
+  - [x] Calendar 日历
+  - [x] CalendarDatetimePicker 日期时间选择器
+  - [x] CalendarPicker 日历选择器
+  - [x] CascaderView 级联
+  - [x] CascaderPicker 级联选择器
+  - [x] Cell 单元格
+  - [x] Checkbox 复选框
+  - [x] Form 表单
+  - [x] ImagesWall 图片墙
+  - [x] Input 输入框
+  - [x] InputNumber 数字输入框
+  - [x] Picker 选择器
+  - [x] Radio 单选框
+  - [x] Rate 评分
+  - [x] Switch 开关
+  - [x] ValidationCodeInput 验证码输入框
+- 反馈
+  - [x] ActionSheet 操作面板
+  - [x] Badge 徽标
+  - [x] Empty 空组件
+  - [x] NoticeBar 通告栏
+  - [x] Popup 弹出层
+  - [x] Result 结果
+  - [x] Swiper 轮播
+  - [x] Toast 轻提示
+- 其他
+  - [x] PageIndicator 分页符
 
-- [x] ActionSheet 操作面板
-- [x] Avatar 头像
-- [x] Badge 徽标
-- [x] Button 按钮
-- [x] Calendar 日历
-- [x] CalendarDatetimePicker 日期时间选择器
-- [x] CalendarPicker 日历选择器
-- [x] Card 卡片
-- [x] CascaderView 级联
-- [x] CascaderPicker 级联选择器
-- [x] Cell 单元格
-- [x] Checkbox 复选框
-- [x] Divider 分割线
-- [x] Empty 空组件
-- [x] ErrorBlock 错误块
-- [x] Footer 底部
-- [x] Form 表单
-- [x] Grid 网格
-- [x] ImagesPreview 图片预览
-- [x] ImagesWall 图片墙
-- [x] Input 输入框
-- [x] InputNumber 数字输入框
-- [x] NavBar 导航栏
-- [x] NoticeBar 通告栏
-- [x] PageIndicator 分页符
-- [x] Picker 选择器
-- [x] Popup 弹出层
-- [x] ProgressBar 进度条
-- [x] Radio 单选框
-- [x] Rate 评分
-- [x] Result 结果
-- [x] SafeArea 安全区
-- [x] Scaffold 脚手架
-- [x] SideBar 侧边导航栏
-- [x] Space 间距
-- [x] SpinLoading 加载中
-- [x] Switch 开关
-- [x] TabBar 底部导航栏
-- [x] Tabs 标签页
-- [x] Tag 标签
-- [x] ValidationCodeInput 验证码输入框
-- [x] WaterMark 水印
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 本地运行
 

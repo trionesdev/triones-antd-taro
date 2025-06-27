@@ -6,18 +6,9 @@ import {
     DescriptionItemLabel,
 } from './DescriptionItem';
 import './style.scss';
-import {DescriptionItemProps, cls} from './types';
+import {DescriptionItemProps, cls, DescriptionsProps} from './types';
 
-type DescriptionsProps = {
-    colon?: boolean;
-    columns?: number;
-    layout?: 'horizontal' | 'vertical';
-    labelAlign?: 'left' | 'right';
-    size?: 'small' | 'middle' | 'large';
-    bordered?: boolean;
-    labelWidth?: number;
-    items: DescriptionItemProps[];
-};
+
 
 export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
                                                                            children,
@@ -49,7 +40,7 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
     }, [layout, labelWidth, columns]);
 
 
-    const handleBuildCells=(items: DescriptionItemProps[],itemMode:boolean=false)=>{
+    const handleBuildCells = (items: DescriptionItemProps[], itemMode: boolean = false) => {
         const elements: {
             span: number;
             label?: React.ReactElement;
@@ -62,16 +53,14 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
                 .map((item) => item.span)
                 .reduce((acc, cur) => acc + cur, 0);
             if (countSpan === columns) {
-                elements.push([
-                    {
-                        span,
-                        label: <DescriptionItemLabel label={item.label}/>,
-                        children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                    },
-                ]);
-            } else {
-                if (countSpan + span > columns) {
-                    rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
+                if (itemMode) {
+                    elements.push([
+                        {
+                            span,
+                            children: <DescriptionItem labelWidth={labelWidth} label={item.label}>{item.children}</DescriptionItem>,
+                        },
+                    ]);
+                } else {
                     elements.push([
                         {
                             span,
@@ -79,12 +68,41 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
                             children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
                         },
                     ]);
+                }
+            } else {
+                if (countSpan + span > columns) {
+                    rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
+                    if (itemMode) {
+                        elements.push([
+                            {
+                                span,
+                                children: <DescriptionItem labelWidth={labelWidth} label={item.label}>{item.children}</DescriptionItem>,
+                            },
+                        ]);
+                    } else {
+                        elements.push([
+                            {
+                                span,
+                                label: <DescriptionItemLabel label={item.label}/>,
+                                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
+                            },
+                        ]);
+                    }
                 } else {
-                    rowElements.push({
-                        span,
-                        label: <DescriptionItemLabel label={item.label}/>,
-                        children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                    });
+                    if (itemMode) {
+                        elements.push([
+                            {
+                                span,
+                                children: <DescriptionItem labelWidth={labelWidth} label={item.label}>{item.children}</DescriptionItem>,
+                            },
+                        ]);
+                    } else {
+                        rowElements.push({
+                            span,
+                            label: <DescriptionItemLabel label={item.label}/>,
+                            children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
+                        });
+                    }
                 }
             }
             if (index === items.length - 1) {
@@ -101,99 +119,21 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
     const handleItemsRender = () => {
         if (children && Array.isArray(children)) {
         }
-
         if (layout === 'horizontal') {
-            const elements: {
+            let elements: {
                 span: number;
                 label?: React.ReactElement;
                 children: React.ReactElement;
             }[][] = [[]];
             if (bordered) {
-                items.forEach((item, index) => {
-                    const span = (item.span ?? 1) > columns ? columns : (item.span ?? 1);
-                    const rowElements = elements[elements.length - 1];
-                    const countSpan = rowElements
-                        .map((item) => item.span)
-                        .reduce((acc, cur) => acc + cur, 0);
-                    if (countSpan === columns) {
-                        elements.push([
-                            {
-                                span,
-                                label: <DescriptionItemLabel label={item.label}/>,
-                                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                            },
-                        ]);
-                    } else {
-                        if (countSpan + span > columns) {
-                            rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                            elements.push([
-                                {
-                                    span,
-                                    label: <DescriptionItemLabel label={item.label}/>,
-                                    children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                                },
-                            ]);
-                        } else {
-                            rowElements.push({
-                                span,
-                                label: <DescriptionItemLabel label={item.label}/>,
-                                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                            });
-                        }
-                    }
-                    if (index === items.length - 1) {
-                        const rowElements = elements[elements.length - 1];
-                        const countSpan = rowElements
-                            .map((item) => item.span)
-                            .reduce((acc, cur) => acc + cur, 0);
-                        rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                    }
-                })
+                elements = handleBuildCells(items, false);
                 return elements.map((rowElements: any) => {
                     return rowElements.map((cellElement: any) => {
                         return [React.cloneElement(cellElement.label, {}), React.cloneElement(cellElement.children, {span: (cellElement.span * 2 - 1)})]
                     })
                 });
             } else {
-                items.forEach((item, index) => {
-                    const span = (item.span ?? 1) > columns ? columns : (item.span ?? 1);
-                    const rowElements = elements[elements.length - 1];
-                    const countSpan = rowElements
-                        .map((item) => item.span)
-                        .reduce((acc, cur) => acc + cur, 0);
-                    if (countSpan === columns) {
-                        elements.push([
-                            {
-                                span,
-                                children: <DescriptionItem label={item.label}>{item.children}</DescriptionItem>,
-                            },
-                        ]);
-                    } else {
-                        if (countSpan + span > columns) {
-                            rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                            elements.push([
-                                {
-                                    span,
-                                    children: <DescriptionItem label={item.label}>{item.children}</DescriptionItem>,
-                                },
-                            ]);
-                        } else {
-                            rowElements.push({
-                                span,
-                                children: <DescriptionItem label={item.label}>{item.children}</DescriptionItem>,
-                            });
-                        }
-                    }
-                    if (index === items.length - 1) {
-                        const rowElements = elements[elements.length - 1];
-                        const countSpan = rowElements
-                            .map((item) => item.span)
-                            .reduce((acc, cur) => acc + cur, 0);
-                        rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                    }
-                    debugger
-
-                });
+                elements = handleBuildCells(items, true);
                 return elements.map((rowElements: any) => {
                     return rowElements.map((cellElement: any) => {
                         return React.cloneElement(cellElement.children, {span: (cellElement.span)})
@@ -202,77 +142,37 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
 
             }
         } else if (layout === 'vertical') {
-            const elements: {
+            let elements: {
                 span: number;
-                label: React.ReactElement;
+                label?: React.ReactElement;
                 children: React.ReactElement;
             }[][] = [[]];
 
             if (bordered) {
             } else {
-                items.forEach((item, index) => {
-                    const span = (item.span ?? 1) > columns ? columns : (item.span ?? 1);
-                    const rowElements = elements[elements.length - 1];
-                    const countSpan = rowElements
-                        .map((item) => item.span)
-                        .reduce((acc, cur) => acc + cur, 0);
-                    if (countSpan === columns) {
-                        elements.push([
-                            {
-                                span,
-                                label: <DescriptionItemLabel label={item.label}/>,
-                                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                            },
-                        ]);
-                    } else {
-                        if (countSpan + span > columns) {
-                            rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                            elements.push([
-                                {
-                                    span,
-                                    label: <DescriptionItemLabel label={item.label}/>,
-                                    children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                                },
-                            ]);
-                        } else {
-                            rowElements.push({
-                                span,
-                                label: <DescriptionItemLabel label={item.label}/>,
-                                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
-                            });
-                        }
-                    }
-                    if (index === items.length - 1) {
-                        const rowElements = elements[elements.length - 1];
-                        const countSpan = rowElements
-                            .map((item) => item.span)
-                            .reduce((acc, cur) => acc + cur, 0);
-                        rowElements[rowElements.length - 1].span = rowElements[rowElements.length - 1].span + (columns - countSpan);
-                    }
-                });
+                elements = handleBuildCells(items, false);
+                return elements.map((rowElements) => {
+                    const labels = rowElements.map((item) => {
+                        return React.cloneElement(item.label!, {span: item.span});
+                    });
+                    const contents = rowElements.map((item) => {
+                        return React.cloneElement(item.children, {span: item.span});
+                    });
+                    return [...labels, ...contents]
+                })
             }
-            debugger
-            return elements.map((rowElements) => {
-                const labels = rowElements.map((item) => {
-                    return React.cloneElement(item.label, {span: item.span});
-                });
-                const contents = rowElements.map((item) => {
-                    return React.cloneElement(item.children, {span: item.span});
-                });
-                return [...labels, ...contents]
-            })
+            return <></>;
         }
-        return <></>;
-    };
+    }
 
-    return (
-        <div className={classNames(cls, {[`${cls}-bordered`]: bordered})}>
-            <div
-                className={classNames(`${cls}-view`)}
-                style={{gridTemplateColumns: gridTemplateColumns}}
-            >
-                {handleItemsRender()}
+        return (
+            <div className={classNames(cls, {[`${cls}-bordered`]: bordered})}>
+                <div
+                    className={classNames(`${cls}-view`)}
+                    style={{gridTemplateColumns: gridTemplateColumns}}
+                >
+                    {handleItemsRender()}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    };
