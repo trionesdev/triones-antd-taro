@@ -1,0 +1,22 @@
+@import "../style/variable";
+
+$descriptionsCls: 'triones-antm-descriptions';
+.#{$descriptionsCls}{
+  &-header{}
+  &-view{
+    .#{$descriptionsCls}{
+      &-table{
+        display: table;
+      }
+      &-tr{
+        display: table-row;
+      }
+      &-th{
+        display: table-cell;
+      }
+      &-td{
+        display: table-cell;
+      }
+    }
+  }
+}
