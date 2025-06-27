@@ -100,7 +100,7 @@ export default () => {
         },
         {
           label: '地址',
-          span: 3,
+          span: 2,
           children: '中国 上海 浦东新区 陆家嘴 XXXXXX'
         },
         {
@@ -117,7 +117,7 @@ export default () => {
         },
         {
           label: '地址',
-          span: 3,
+          span: 2,
           children: '中国 上海 浦东新区 陆家嘴 XXXXXX'
         },
 

@@ -40,15 +40,17 @@ $descriptionsCls: 'triones-antm-descriptions';
   &-bordered {
     border: 1Px solid $trionesBorderColor;
     border-radius: $trionesBorderRadius;
+    overflow: hidden;
 
     .#{$descriptionsCls} {
       &-view{
-
+        background-color: rgba(5,5,5,0.06);
+        grid-gap: 1Px;
       }
       &-item {
         &-label {
           display: flex;
-          background-color: rgba(0, 0, 0, 0.02);
+          background-color: rgb(250, 250, 250);
           align-items: center;
           padding: 8Px 14Px;
         }
