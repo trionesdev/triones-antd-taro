@@ -8,6 +8,7 @@ import Taro from "@tarojs/taro";
 import {CameraModal} from "./CameraModal";
 import ImagesPreview from "../ImagesPreview";
 import _ from "lodash";
+import { RandomUtils } from '../utils/random-utils';
 
 const cls = 'triones-antm-images-wall'
 
@@ -110,7 +111,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
       return
     }
     const newImages = value.map((item) => {
-      item.uid ??= Math.random().toString(36)
+      item.uid ??= RandomUtils.random()
       item.status ??= 'done'
       return item;
     })
@@ -136,7 +137,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                                     if (e.target.files) {
                                       const files = Array.from(e.target.files)
                                       const promises: any[] = files.map(file => {
-                                        const uid = Math.random().toString(36)
+                                        const uid = RandomUtils.random()
                                         onRequest?.(file).then(res => {
                                           const newImages = [...images.map((item) => {
                                             if (item.uid === uid) {

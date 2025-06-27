@@ -1,5 +1,5 @@
 import React from 'react'
-import type { FC, ReactNode, CSSProperties } from 'react'
+import type { FC, ReactNode } from 'react'
 import { NativeProps, toCSSLength, withNativeProps } from '../utils/native-props'
 
 import './style.scss'
@@ -41,20 +41,16 @@ export type GridItemProps = {
   children?: ReactNode
 } & NativeProps
 
-type GridItemStyle = CSSProperties &
-  Record<'--item-span', GridItemProps['span']>
 
 export const GridItem: FC<GridItemProps> = p => {
   const props = mergeProps({ span: 1 }, p) as GridItemProps
 
-  const itemStyle: GridItemStyle = {
-    '--item-span': props.span,
-  }
+
   return withNativeProps(
     props,
     <div
       className={`${classPrefix}-item`}
-      style={itemStyle}
+      style={{gridColumnEnd: `span ${props.span}`}}
       onClick={props.onClick}
     >
       {props.children}

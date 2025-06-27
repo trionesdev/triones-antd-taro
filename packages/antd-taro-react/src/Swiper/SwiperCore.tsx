@@ -4,6 +4,7 @@ import "./style.scss"
 import classNames from "classnames";
 import {useTaro} from "../hooks/useTaro";
 import Taro from "@tarojs/taro";
+import { RandomUtils } from '../utils/random-utils';
 
 const cls = "triones-antm-swiper";
 
@@ -45,6 +46,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   const {isTaroWeApp} = useTaro()
   const [innerActiveIndex, setInnerActiveIndex] = useState<number>(activeIndex || 0)
   const boxRef = React.createRef<any>()
+  const boxIdRef = React.useRef<string>(RandomUtils.random())
   const wrapperRef = React.createRef<HTMLDivElement>()
   const [itemWidth, setItemWidth] = useState<number>()
   const [wrapperWidth, setWrapperWidth] = useState<number>()
@@ -66,7 +68,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
       return await new Promise((resolve) => {
         console.log(boxRef.current?.uid);
         Taro.createSelectorQuery()
-          .select(`#${boxRef.current?.uid}`)
+          .select(`#${boxIdRef.current}`)
           .boundingClientRect()
           .exec((res) => {
             console.log(res);
@@ -81,7 +83,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
     if (isTaroWeApp) {
       return await new Promise((resolve) => {
         Taro.createSelectorQuery()
-          .select(`#${boxRef.current?.uid}`)
+          .select(`#${boxIdRef.current}`)
           .boundingClientRect()
           .exec((res) => resolve(res?.[0]?.height));
       })
@@ -173,7 +175,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   }
 
   return <div className={classNames(`${cls}-core`,)}>
-    <div ref={boxRef} id={boxRef.current?.uid} className={classNames(`${cls}-core-box`)}>
+    <div ref={boxRef} id={boxIdRef.current} className={classNames(`${cls}-core-box`)}>
       <div ref={wrapperRef} className={classNames(`${cls}-core-wrapper`, `${cls}-core-wrapper-${direction}`)}
            style={{
              width: direction === 'horizontal' ? wrapperWidth : undefined,

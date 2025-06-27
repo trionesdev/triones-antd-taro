@@ -14,5 +14,6 @@ group:
 ## 示例
 
 <code src="./demo/base.tsx"></code>
+<code src="./demo/vertical.tsx"></code>
 
 ## 属性

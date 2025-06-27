@@ -1,26 +1,63 @@
 @import "../style/variable";
 
 $descriptionsCls: 'triones-antm-descriptions';
-.#{$descriptionsCls}{
-  &-header{}
-  &-view{
-    .#{$descriptionsCls}{
-      &-table{
-        display: table;
-      }
-      &-row{
-        display: flex;
-      }
-      &-item{
-        display: flex;
-        flex: 1 auto;
-        &-label{
+.#{$descriptionsCls} {
+  &-header {
+  }
 
+  &-view {
+    display: grid;
+
+    .#{$descriptionsCls} {
+      &-row {
+        display: flex;
+      }
+
+      &-item {
+        display: flex;
+        align-items: baseline;
+        padding: 8Px 14Px;
+        overflow: hidden;
+        &-label {
+          color: $trionesColorTextSecondary;
+          word-wrap: break-word; /* 允许长单词或URL换行 */
+          overflow-wrap: break-word; /* 更标准的属性名 */
+          white-space: normal; /* 默认换行行为 */
+          flex-shrink: 0;
         }
-        &-content{
+
+        &-content {
+          word-wrap: break-word; /* 允许长单词或URL换行 */
+          overflow-wrap: break-word; /* 更标准的属性名 */
+          white-space: normal; /* 默认换行行为 */
           flex: 1 auto;
+          min-width: 0;
         }
       }
     }
+  }
+
+  &-bordered {
+    border: 1Px solid $trionesBorderColor;
+    border-radius: $trionesBorderRadius;
+
+    .#{$descriptionsCls} {
+      &-view{
+
+      }
+      &-item {
+        &-label {
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.02);
+          align-items: center;
+          padding: 8Px 14Px;
+        }
+        &-content {
+          background-color: white;
+          padding: 8Px 14Px;
+        }
+      }
+    }
+
   }
 }
