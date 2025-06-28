@@ -83,30 +83,16 @@ export const ImagesWall: FC<ImagesWallProps> = ({
   const [images, setImages] = useState<ImagesWallItemType[]>(value || [])
 
   const handleSelectPhoto = () => {
-    Taro.chooseImage({
-      count: 9,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album'],
-      success: (res) => {
-        console.log(res)
-      }
-    })
+
   }
 
   const handleSelectCamera = () => {
     setSheetOpen(false)
     setCameraOpen(true)
-    // const cameraCtx = Taro.createCameraContext()
-    // cameraCtx.takePhoto({
-    //   quality: 'high',
-    //   success: res => {
-    //     console.log('照片临时路径:', res.tempImagePath)
-    //     // 可在此处调用上传接口
-    //   }
-    // })
   }
 
   useEffect(() => {
+    debugger
     if (value === undefined) {
       return
     }
@@ -115,7 +101,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
       item.status ??= 'done'
       return item;
     })
-    if (_.isEqual(newImages, value)) {
+    if (_.isEqual(newImages, images)) {
       return;
     }
     setImages(newImages || [])
@@ -181,11 +167,6 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                      {
                        key: 'camera', children: <>
                          <div>拍摄照片</div>
-                         {/*{!isTaroEnv &&*/}
-                         {/*  <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} capture={`camera`}*/}
-                         {/*         onChange={(e) => {*/}
-                         {/*           console.log(e.target.files)*/}
-                         {/*         }}/>}*/}
                        </>, onClick: () => {
                          handleSelectCamera()
                        }

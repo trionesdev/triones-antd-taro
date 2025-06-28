@@ -16,8 +16,9 @@ $actionSheetCls: 'triones-antm-action-sheet';
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40Px;
+    min-height: 48Px;
     background-color: white;
+    font-size: 18Px;
     border-bottom: 1Px solid $trionesBorderColor;
   }
   &-actions{
@@ -25,10 +26,11 @@ $actionSheetCls: 'triones-antm-action-sheet';
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 40Px;
+      min-height: 48Px;
       background-color: white;
       cursor: default;
       position: relative;
+      font-size: 18Px;
       &:hover{
         opacity: 0.8;
       }
@@ -38,7 +40,8 @@ $actionSheetCls: 'triones-antm-action-sheet';
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40Px;
+    min-height: 48Px;
+    font-size: 18Px;
     background-color: white;
     cursor: default;
     &:hover{
