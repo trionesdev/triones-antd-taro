@@ -4,7 +4,7 @@ $class-prefix-card: 'triones-antm-card';
 .#{$class-prefix-card} {
   background: $trionesColorBgBase;
   border-radius: $trionesBorderRadius;
-  padding: 0 $trionesPaddingSm;
+  //padding: $trionesPadding $trionesPadding;
   &-header {
     position: relative;
     display: flex;
@@ -12,21 +12,24 @@ $class-prefix-card: 'triones-antm-card';
     align-items: center;
     gap: 8Px;
     box-sizing: border-box;
-    padding: $trionesPaddingSm 0;
+    padding: $trionesPadding $trionesPadding;
     &:not(:last-child) {
-      border-bottom: solid var(--triones-antm-card-header-border-width, 0.5px)
-        var(
-          --triones-antm-card-header-border-color,
-          var(--triones-antm-color-border)
-        );
+      border-bottom: solid 0.5Px $trionesBorderColor;
     }
     &-title {
-      font-size: $trionesFontSizeLg;
+      font-size: $trionesFontSize;
       line-height: 1.4;
-      font-weight: bold;
+      font-weight: 500;
     }
   }
   &-body {
-    padding: $trionesPaddingSm 0;
+    padding: $trionesPaddingXs $trionesPadding;
+  }
+  &-footer {
+    padding: $trionesPaddingXs $trionesPadding;
+  }
+  &-footer {
+    border-top: solid 0.5Px $trionesBorderColor;
+    padding: $trionesPaddingXs $trionesPadding;
   }
 }

@@ -3,10 +3,11 @@
  */
 import classNames from 'classnames';
 import React from 'react';
-import { DemoBlock } from '../../DemoBlock';
+import {DemoBlock} from '../../DemoBlock';
 
-import { Card } from '../card';
+import {Card} from '../card';
 import './base.scss';
+
 const classPrefix = `card-demo`;
 
 export default () => {
@@ -29,17 +30,17 @@ export default () => {
         </Card>
       </DemoBlock>
       <DemoBlock title="没有卡片内容">
-        <Card title="卡片标题" onClick={onClick} />
+        <Card title="卡片标题" onClick={onClick}/>
       </DemoBlock>
       <DemoBlock title="没有卡片标题">
         <Card onClick={onClick}>卡片内容</Card>
       </DemoBlock>
       <DemoBlock title="自定义卡片内容">
         <Card
-          title={<div style={{ fontWeight: 'normal' }}>卡片标题</div>}
+          title={<div style={{fontWeight: 'normal'}}>卡片标题</div>}
           onBodyClick={onBodyClick}
           onHeaderClick={onHeaderClick}
-          style={{ borderRadius: '16px' }}
+          style={{borderRadius: '16px'}}
         >
           <div className={classNames(`${classPrefix}-content`)}>卡片内容</div>
           <div
@@ -50,8 +51,10 @@ export default () => {
       </DemoBlock>
       <DemoBlock title="自定义卡片样式">
         <Card
-          headerStyle={{
-            color: '#1677ff',
+          styles={{
+            header: {
+              color: '#1677ff',
+            }
           }}
           bodyClassName={classNames(`${classPrefix}-customBody`)}
           title="卡片标题"

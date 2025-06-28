@@ -1,10 +1,13 @@
 import React, {CSSProperties, FC} from 'react';
 import {DescriptionItemProps, cls, DescriptionItemLabelProps} from './types';
 
-export const DescriptionItemLabel: FC<DescriptionItemLabelProps> = ({label, labelWidth, span = 1}) => {
+export const DescriptionItemLabel: FC<DescriptionItemLabelProps> = ({label, labelWidth, style, span = 1}) => {
   const labelStyle: CSSProperties = {
-    width: labelWidth ? labelWidth + 'px' : 'auto',
+    ...style,
   };
+  if (labelWidth) {
+    labelStyle.width = `${labelWidth}Px`;
+  }
   if (span > 1) {
     labelStyle.gridColumnEnd = `span ${span}`;
   }
@@ -30,16 +33,18 @@ export const DescriptionItem: FC<DescriptionItemProps> = ({
                                                             children,
                                                             label,
                                                             labelWidth,
+                                                            labelStyle,
+                                                            style,
                                                             span = 1,
                                                             colon = true,
                                                           }) => {
-  const itemStyle: CSSProperties = {};
+  const itemStyle: CSSProperties = {...style};
   if (span > 1) {
     itemStyle.gridColumnEnd = `span ${span}`;
   }
   return (
     <div className={`${cls}-item`} style={itemStyle}>
-      <DescriptionItemLabel labelWidth={labelWidth} label={<>{label}{colon ? ':' : ''}</>}/>
+      <DescriptionItemLabel style={labelStyle} labelWidth={labelWidth} label={<>{label}{colon ? ':' : ''}</>}/>
       <DescriptionItemContent>{children}</DescriptionItemContent>
     </div>
   );

@@ -11,7 +11,7 @@ html {
 
 body {
   color: var(--triones-antm-color-text);
-  font-size: var(--triones-antm-font-size-main);
+  font-size: 14Px;
   font-family: var(--triones-antm-font-family);
 }
 
@@ -42,7 +42,7 @@ body.triones-antm-overflow-hidden {
 
 div.triones-antm-px-tester {
   --size: 1;
-  height: calc(var(--size) / 2 * 2px);
+  height: calc(var(--size) / 2 * 2Px);
   width: 0;
   position: fixed;
   left: -100vw;

@@ -6,12 +6,16 @@ import { NativeProps, withNativeProps } from './native-props';
 const classPrefix = `triones-antm-card`;
 
 export type CardProps = {
+  styles?:{
+    header?: CSSProperties;
+    body?: CSSProperties;
+    footer?: CSSProperties;
+  }
   title?: ReactNode;
   icon?: ReactNode;
   extra?: ReactNode;
-  headerStyle?: CSSProperties;
+  footer?: ReactNode;
   headerClassName?: string;
-  bodyStyle?: CSSProperties;
   bodyClassName?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onBodyClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -27,7 +31,7 @@ export const Card: FC<CardProps> = (props) => {
     return (
       <div
         className={classNames(`${classPrefix}-header`, props.headerClassName)}
-        style={props.headerStyle}
+        style={props?.styles?.header}
         onClick={props.onHeaderClick}
       >
         {props.icon && (
@@ -48,7 +52,7 @@ export const Card: FC<CardProps> = (props) => {
     return (
       <div
         className={classNames(`${classPrefix}-body`, props.bodyClassName)}
-        style={props.bodyStyle}
+        style={props?.styles?.body}
         onClick={props.onBodyClick}
       >
         {props.children}
@@ -56,11 +60,21 @@ export const Card: FC<CardProps> = (props) => {
     );
   };
 
+  const renderFooter = () => {
+    if (!props.footer){
+      return null;
+    }
+    return <div className={classNames(`${classPrefix}-footer`)} style={props?.styles?.footer}>
+      {props.footer}
+    </div>
+  }
+
   return withNativeProps(
     props,
     <div className={classPrefix} onClick={props.onClick}>
       {renderHeader()}
       {renderBody()}
+      {renderFooter()}
     </div>,
   );
 };
