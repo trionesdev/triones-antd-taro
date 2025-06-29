@@ -17,7 +17,7 @@ export type ButtonProps = {
   /**
    * @description 颜色
    */
-  color?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
+  color?: 'default' | 'primary' | 'success' | 'warning' | 'danger'|string;
   /**
    * @description 是否危险按钮，会使用 danger 的颜色
    */

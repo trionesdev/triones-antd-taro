@@ -57,16 +57,19 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
           elements.push([
             {
               span,
-              children: <DescriptionItem style={styles?.item} labelStyle={styles?.label} labelWidth={labelWidth}
-                                         label={item.label}>{item.children}</DescriptionItem>,
+              children: <DescriptionItem style={styles?.item}
+                                         styles={{label: styles?.label, content: styles?.content}}
+                                         labelWidth={labelWidth}
+                                         label={item.label} colon={colon}>{item.children}</DescriptionItem>,
             },
           ]);
         } else {
           elements.push([
             {
               span,
-              label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}/>,
-              children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
+              label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}
+                                           colon={colon}/>,
+              children: <DescriptionItemContent style={styles?.content}>{item.children}</DescriptionItemContent>,
             },
           ]);
         }
@@ -77,16 +80,19 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
             elements.push([
               {
                 span,
-                children: <DescriptionItem style={styles?.item} labelStyle={styles?.label} labelWidth={labelWidth}
-                                           label={item.label}>{item.children}</DescriptionItem>,
+                children: <DescriptionItem style={styles?.item}
+                                           styles={{label: styles?.label, content: styles?.content}}
+                                           labelWidth={labelWidth}
+                                           label={item.label} colon={colon}>{item.children}</DescriptionItem>,
               },
             ]);
           } else {
             elements.push([
               {
                 span,
-                label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}/>,
-                children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
+                label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}
+                                             colon={colon}/>,
+                children: <DescriptionItemContent style={styles?.content}>{item.children}</DescriptionItemContent>,
               },
             ]);
           }
@@ -95,15 +101,18 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
             elements.push([
               {
                 span,
-                children: <DescriptionItem style={styles?.item} labelStyle={styles?.label} labelWidth={labelWidth}
-                                           label={item.label}>{item.children}</DescriptionItem>,
+                children: <DescriptionItem style={styles?.item}
+                                           styles={{label: styles?.label, content: styles?.content}}
+                                           labelWidth={labelWidth}
+                                           label={item.label} colon={colon}>{item.children}</DescriptionItem>,
               },
             ]);
           } else {
             rowElements.push({
               span,
-              label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}/>,
-              children: <DescriptionItemContent>{item.children}</DescriptionItemContent>,
+              label: <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={item.label}
+                                           colon={colon}/>,
+              children: <DescriptionItemContent style={styles?.content}>{item.children}</DescriptionItemContent>,
             });
           }
         }
@@ -142,7 +151,7 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
         elements = handleBuildCells(items, true);
         return elements.map((rowElements: any) => {
           return rowElements.map((cellElement: any) => {
-            return React.cloneElement(cellElement.children, {key: cellElement.children.key,span: (cellElement.span)})
+            return React.cloneElement(cellElement.children, {key: cellElement.children.key, span: (cellElement.span)})
           })
         });
 
@@ -159,10 +168,10 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
         elements = handleBuildCells(items, false);
         return elements.map((rowElements) => {
           const labels = rowElements.map((item) => {
-            return React.cloneElement(item.label!, {key: item.children.key,span: item.span});
+            return React.cloneElement(item.label!, {key: item.children.key, span: item.span});
           });
           const contents = rowElements.map((item) => {
-            return React.cloneElement(item.children, {key: item.children.key,span: item.span});
+            return React.cloneElement(item.children, {key: item.children.key, span: item.span});
           });
           return [...labels, ...contents]
         })

@@ -35,6 +35,9 @@ $buttonCls: 'triones-antm-button';
   &:active {
     filter: brightness(92%);
   }
+  &::after{
+    content: none;
+  }
 
   &[disabled] {
     opacity: 0.4;

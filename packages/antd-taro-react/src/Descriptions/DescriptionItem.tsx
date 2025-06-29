@@ -1,7 +1,13 @@
 import React, {CSSProperties, FC} from 'react';
-import {DescriptionItemProps, cls, DescriptionItemLabelProps} from './types';
+import {DescriptionItemProps, cls, DescriptionItemLabelProps, DescriptionItemContentProps} from './types';
 
-export const DescriptionItemLabel: FC<DescriptionItemLabelProps> = ({label, labelWidth, style, span = 1}) => {
+export const DescriptionItemLabel: FC<DescriptionItemLabelProps> = ({
+                                                                      label,
+                                                                      labelWidth,
+                                                                      style,
+                                                                      span = 1,
+                                                                      colon = false
+                                                                    }) => {
   const labelStyle: CSSProperties = {
     ...style,
   };
@@ -11,14 +17,15 @@ export const DescriptionItemLabel: FC<DescriptionItemLabelProps> = ({label, labe
   if (span > 1) {
     labelStyle.gridColumnEnd = `span ${span}`;
   }
-  return <div className={`${cls}-item-label`} style={labelStyle}>{label}</div>;
+  return <div className={`${cls}-item-label`} style={labelStyle}>{<>{label}{colon ? ':' : ''}</>}</div>;
 };
 
-export const DescriptionItemContent: FC<DescriptionItemProps> = ({
-                                                                   children,
-                                                                   span = 1,
-                                                                 }) => {
-  const contentStyle: CSSProperties = {};
+export const DescriptionItemContent: FC<DescriptionItemContentProps> = ({
+                                                                          children,
+                                                                          style,
+                                                                          span = 1,
+                                                                        }) => {
+  const contentStyle: CSSProperties = {...style};
   if (span > 1) {
     contentStyle.gridColumnEnd = `span ${span}`;
   }
@@ -33,7 +40,7 @@ export const DescriptionItem: FC<DescriptionItemProps> = ({
                                                             children,
                                                             label,
                                                             labelWidth,
-                                                            labelStyle,
+                                                            styles,
                                                             style,
                                                             span = 1,
                                                             colon = true,
@@ -44,8 +51,8 @@ export const DescriptionItem: FC<DescriptionItemProps> = ({
   }
   return (
     <div className={`${cls}-item`} style={itemStyle}>
-      <DescriptionItemLabel style={labelStyle} labelWidth={labelWidth} label={<>{label}{colon ? ':' : ''}</>}/>
-      <DescriptionItemContent>{children}</DescriptionItemContent>
+      <DescriptionItemLabel style={styles?.label} labelWidth={labelWidth} label={label}/>
+      <DescriptionItemContent style={styles?.content}>{children}</DescriptionItemContent>
     </div>
   );
 };

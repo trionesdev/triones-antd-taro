@@ -44,6 +44,7 @@ export type DescriptionsProps = {
   styles?:{
     item?: React.CSSProperties;
     label?: React.CSSProperties;
+    content?: React.CSSProperties;
   }
 };
 
@@ -59,7 +60,10 @@ export type DescriptionItemProps = PropsWithChildren<{
   /**
    * @description label的样式
    */
-  labelStyle?: React.CSSProperties;
+  styles?:{
+    label?: React.CSSProperties;
+    content?: React.CSSProperties;
+  }
   /**
    * @description 内容的样式
    */
@@ -82,4 +86,9 @@ export type DescriptionItemLabelProps = PropsWithChildren<{
   style?: React.CSSProperties;
   span?: number;
   colon?: boolean;
+}>;
+
+export type DescriptionItemContentProps = PropsWithChildren<{
+  style?: React.CSSProperties;
+  span?: number;
 }>;
