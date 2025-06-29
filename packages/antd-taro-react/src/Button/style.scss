@@ -46,6 +46,7 @@ $buttonCls: 'triones-antm-button';
       filter: none;
     }
   }
+  &:not([disabled]):active{}
 
   &-color {
     &-default {
