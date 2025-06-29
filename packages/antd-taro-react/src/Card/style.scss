@@ -12,7 +12,7 @@ $class-prefix-card: 'triones-antm-card';
     align-items: center;
     gap: 8Px;
     box-sizing: border-box;
-    padding: $trionesPadding $trionesPadding;
+    padding: $trionesPaddingXs $trionesPaddingXs;
     &:not(:last-child) {
       border-bottom: solid 0.5Px $trionesBorderColor;
     }
@@ -23,13 +23,13 @@ $class-prefix-card: 'triones-antm-card';
     }
   }
   &-body {
-    padding: $trionesPaddingXs $trionesPadding;
+    padding: $trionesPaddingXs $trionesPaddingXs;
   }
   &-footer {
-    padding: $trionesPaddingXs $trionesPadding;
+    padding: $trionesPaddingXs $trionesPaddingXs;
   }
   &-footer {
     border-top: solid 0.5Px $trionesBorderColor;
-    padding: $trionesPaddingXs $trionesPadding;
+    padding: $trionesPaddingXs $trionesPaddingXs;
   }
 }
