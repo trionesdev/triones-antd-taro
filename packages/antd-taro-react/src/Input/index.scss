@@ -155,9 +155,15 @@ input {
 
 
 .#{$inputCls}-textarea {
+  box-sizing: border-box;
   width: 100%;
   border: 0;
   outline: 0;
+  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
+  &::placeholder {
+    font-size: 14Px;
+    color: #cccccc;
+  }
 }
 
 @keyframes blink  {

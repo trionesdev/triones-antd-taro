@@ -26,6 +26,8 @@ export const CellGroup: FC<CellGroupProps> = ({
           }
         }
         return childrenArray;
+      }else {
+        return children
       }
     }
     return null;
