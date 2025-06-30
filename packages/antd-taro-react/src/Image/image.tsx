@@ -90,7 +90,7 @@ export const Image = staged<ImageProps>((p) => {
     const img = (
       <img
         ref={imgRef}
-        id={props.id}
+        // id={props.id}
         className={`${classPrefix}-img`}
         src={src}
         alt={props.alt}
@@ -127,11 +127,9 @@ export const Image = staged<ImageProps>((p) => {
 
   const style: ImageProps['style'] = {};
   if (props.width) {
-    style['--width'] = toCSSLength(props.width);
     style['width'] = toCSSLength(props.width);
   }
   if (props.height) {
-    style['--height'] = toCSSLength(props.height);
     style['height'] = toCSSLength(props.height);
   }
   return withNativeProps(

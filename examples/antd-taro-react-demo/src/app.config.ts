@@ -8,10 +8,11 @@ export default defineAppConfig({
     "pages/checkbox/index",
     "pages/radio/index",
     "pages/input/index",
-    "pages/tab-bar/index",
+
     "pages/empty/index",
     "pages/divider/index",
     "pages/grid/index",
+    "pages/images-wall/index",
     "pages/ellipsis/index",
     "pages/nav-bar/index",
     "pages/badge/index",
@@ -26,13 +27,19 @@ export default defineAppConfig({
     "pages/form/index",
     "pages/popup/index",
     "pages/picker/index",
-    "pages/tabs/index",
+
     "pages/cascader-picker/index",
     "pages/cascader-view/index",
-    "pages/toast/index",
-    "pages/spin-loading/index",
+
+
+
     "pages/space/index",
+    "pages/spin-loading/index",
+    "pages/swiper/index",
     "pages/side-bar/index",
+    "pages/tab-bar/index",
+    "pages/tabs/index",
+    "pages/toast/index",
   ],
   window: {
     backgroundTextStyle: "light",

@@ -4,11 +4,10 @@ import {AddOutline, CloseOutline} from "@trionesdev/antd-taro-icons-react";
 import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {useTaro} from "../hooks/useTaro";
-import Taro from "@tarojs/taro";
 import {CameraModal} from "./CameraModal";
-import ImagesPreview from "../ImagesPreview";
+import {ImagesPreview} from "../index"
 import _ from "lodash";
-import { RandomUtils } from '../utils/random-utils';
+import {RandomUtils} from '../utils/random-utils';
 
 const cls = 'triones-antm-images-wall'
 
@@ -69,8 +68,8 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                                                   disabled,
                                                   value,
                                                   onChange,
-  columns=5,
-                                                  preview=true,
+                                                  columns = 5,
+                                                  preview = true,
                                                   onRequest,
                                                   customUploadAction,
                                                   customPreviewAction
@@ -92,7 +91,6 @@ export const ImagesWall: FC<ImagesWallProps> = ({
   }
 
   useEffect(() => {
-    debugger
     if (value === undefined) {
       return
     }

@@ -91,6 +91,7 @@ export type {SideBarProps} from './SideBar';
 
 export {default as Space} from './Space';
 export {default as SpinLoading} from './SpinLoading';
+export {default as Swiper} from "./Swiper"
 export {default as Switch} from './Switch';
 export {default as TabBar} from './TabBar';
 export {default as Tag} from './Tag';

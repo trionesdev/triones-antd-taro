@@ -168,6 +168,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/images-wall/index",
+              });
+            }}
+          >
+            ImagesWall 图片墙
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/badge/index",
               });
             }}
@@ -363,6 +373,16 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             Space
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/swiper/index",
+              });
+            }}
+          >
+            Swiper 轮播
           </Button>
           <Button
             block={true}

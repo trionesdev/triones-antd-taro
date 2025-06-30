@@ -2,8 +2,7 @@ import React, {useEffect} from "react";
 import {FC} from "react";
 import Mask from "../Mask";
 import classNames from "classnames";
-import Swiper from "../Swiper";
-import Image from "../Image";
+import {Swiper,Image} from "../index"
 import "./style.scss"
 
 const cls = 'triones-antm-image-preview';
@@ -62,7 +61,7 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
                       e.stopPropagation();
                       e.preventDefault();
                     }}>
-                      <Image src={item} alt=""/>
+                      <Image src={item} alt="" />
                     </div>
                   }
                 })}/>

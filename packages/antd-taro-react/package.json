@@ -52,11 +52,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@tarojs/components": "^4.1.2",
-    "@tarojs/extend": "^4.1.2",
-    "@tarojs/plugin-platform-weapp": "^4.1.2",
-    "@tarojs/react": "^4.1.2",
-    "@tarojs/taro": "^4.1.2",
+    "@tarojs/components": "^4.1.3",
+    "@tarojs/extend": "^4.1.3",
+    "@tarojs/plugin-platform-weapp": "^4.1.3",
+    "@tarojs/react": "^4.1.3",
+    "@tarojs/taro": "^4.1.3",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "react": ">=16.9.0",
@@ -66,10 +66,10 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@tarojs/components": "4.1.2",
-    "@tarojs/extend": "4.1.2",
-    "@tarojs/react": "4.1.2",
-    "@tarojs/taro": "4.1.2",
+    "@tarojs/components": "4.1.3",
+    "@tarojs/extend": "4.1.3",
+    "@tarojs/react": "4.1.3",
+    "@tarojs/taro": "4.1.3",
     "@trionesdev/antd-taro-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
@@ -94,7 +94,7 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@tarojs/components": "^4.1.2",
+    "@tarojs/components": "^4.1.3",
     "@types/uuid": "^10.0.0",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",

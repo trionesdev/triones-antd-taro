@@ -1,8 +1,10 @@
 import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import Taro from '@tarojs/taro'
+import {$} from "@tarojs/extend"
 import {CalendarGrid} from '../Calendar';
-import {checkTaroEnv, isTaroWeApp} from "../utils/taro-utils";
 import { useTaro } from '../hooks/useTaro';
+import {RandomUtils} from "../utils/random-utils";
+import classNames from "classnames";
 
 type CalendarPickerViewProps = {
   mouth?: Date;
@@ -27,6 +29,8 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
   }) => {
     const { isTaroEnv,isTaroWeApp} = useTaro();
     const wrapperRef = useRef<any>();
+    const wrapperUniqueRef = React.useRef<string>(RandomUtils.random())
+
     const [currentMouth, setCurrentMouth] = useState(mouth);
     let waiting = false;
     const [mouthHeight, setMouthHeight] = useState(200); //当前选中的月份的展示高度
@@ -42,12 +46,13 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
     const cellSize = async (): Promise<number> => {
       if (isTaroWeApp) {
         console.log(Taro);
-        return await new Promise((resolve) => {
-          Taro.createSelectorQuery()
-            .select(`#${wrapperRef.current?.uid}`)
-            .boundingClientRect()
-            .exec((res) => resolve(res?.[0]?.width / 7));
-        });
+        // return await new Promise((resolve) => {
+        //   Taro.createSelectorQuery()
+        //     .select(`.${wrapperUniqueRef.current}`)
+        //     .boundingClientRect()
+        //     .exec((res) => resolve(res?.[0]?.width / 7));
+        // });
+        return $(`.${wrapperUniqueRef.current}`).width()
       }
       return Promise.resolve(wrapperRef.current?.clientWidth / 7);
     };
@@ -56,12 +61,13 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
      */
     const minTranslateY = async (): Promise<number> => {
       if (isTaroWeApp) {
-        return await new Promise((resolve) => {
-          Taro.createSelectorQuery()
-            .select(`#${wrapperRef.current?.uid}`)
-            .boundingClientRect()
-            .exec((res) => resolve(res?.[0]?.height));
-        });
+        // return await new Promise((resolve) => {
+        //   Taro.createSelectorQuery()
+        //       .select(`.${wrapperUniqueRef.current}`)
+        //     .boundingClientRect()
+        //     .exec((res) => resolve(res?.[0]?.height));
+        // });
+        return $(`.${wrapperUniqueRef.current}`).height()
       }
       return Promise.resolve(wrapperRef.current?.clientHeight);
     };
@@ -162,6 +168,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
         <div
           ref={wrapperRef}
           id={wrapperRef.current?.uid}
+          className={classNames(`${wrapperUniqueRef.current}`)}
           style={{ transform: `translate3d(0, ${translateY}px, 0)` }}
           onTouchStart={(event) => {
             event.preventDefault();

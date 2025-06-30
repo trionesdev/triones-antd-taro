@@ -4,7 +4,8 @@ import "./style.scss"
 import classNames from "classnames";
 import {useTaro} from "../hooks/useTaro";
 import Taro from "@tarojs/taro";
-import { RandomUtils } from '../utils/random-utils';
+import {$} from "@tarojs/extend"
+import {RandomUtils} from '../utils/random-utils';
 
 const cls = "triones-antm-swiper";
 
@@ -46,7 +47,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   const {isTaroWeApp} = useTaro()
   const [innerActiveIndex, setInnerActiveIndex] = useState<number>(activeIndex || 0)
   const boxRef = React.createRef<any>()
-  const boxIdRef = React.useRef<string>(RandomUtils.random())
+  const boxUniqueRef = React.useRef<string>(RandomUtils.random())
   const wrapperRef = React.createRef<HTMLDivElement>()
   const [itemWidth, setItemWidth] = useState<number>()
   const [wrapperWidth, setWrapperWidth] = useState<number>()
@@ -65,28 +66,37 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
 
   const computeItemWidth = async (): Promise<number | undefined> => {
     if (isTaroWeApp) {
-      return await new Promise((resolve) => {
-        console.log(boxRef.current?.uid);
-        Taro.createSelectorQuery()
-          .select(`#${boxIdRef.current}`)
-          .boundingClientRect()
-          .exec((res) => {
-            console.log(res);
-            resolve(res?.[0]?.width)
-          });
-      })
+      // return await new Promise((resolve) => {
+      //   console.log(boxRef.current?.uid);
+      //   Taro.createSelectorQuery()
+      //     .select(`.${boxUniqueRef.current}`)
+      //     .boundingClientRect()
+      //     .exec((res) => {
+      //       console.log(res);
+      //       resolve(res?.[0]?.width)
+      //     });
+      // })
+
+      // console.log(boxRef.current);
+      // console.log(boxRef.current?.uid);
+      // const ss = $(`.${boxUniqueRef.current}`);
+      // console.log(ss);
+      // console.log(ss.width())
+      // return $(`[data-sid='${boxRef.current.uid}']`).width()
+      return $(`.${boxUniqueRef.current}`).width()
     }
     return Promise.resolve(boxRef.current?.clientWidth)
   }
 
   const computeItemHeight = async (): Promise<number | undefined> => {
     if (isTaroWeApp) {
-      return await new Promise((resolve) => {
-        Taro.createSelectorQuery()
-          .select(`#${boxIdRef.current}`)
-          .boundingClientRect()
-          .exec((res) => resolve(res?.[0]?.height));
-      })
+      // return await new Promise((resolve) => {
+      //   Taro.createSelectorQuery()
+      //     .select(`.${boxUniqueRef.current}`)
+      //     .boundingClientRect()
+      //     .exec((res) => resolve(res?.[0]?.height));
+      // })
+      return $(`.${boxUniqueRef.current}`).height()
     }
     return Promise.resolve(boxRef.current?.clientHeight)
   }
@@ -175,7 +185,8 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   }
 
   return <div className={classNames(`${cls}-core`,)}>
-    <div ref={boxRef} id={boxIdRef.current} className={classNames(`${cls}-core-box`)}>
+    <div ref={boxRef} id={boxRef.current?.uid}
+         className={classNames(`${cls}-core-box`,`${boxUniqueRef.current}`)}>
       <div ref={wrapperRef} className={classNames(`${cls}-core-wrapper`, `${cls}-core-wrapper-${direction}`)}
            style={{
              width: direction === 'horizontal' ? wrapperWidth : undefined,
