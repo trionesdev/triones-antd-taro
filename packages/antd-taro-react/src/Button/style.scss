@@ -17,6 +17,7 @@ button::after {
 
 $buttonCls: 'triones-antm-button';
 .#{$buttonCls} {
+  width: auto;
   position: relative;
   display: inline-flex;
   flex-direction: column;
