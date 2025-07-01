@@ -45,14 +45,16 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
      */
     const cellSize = async (): Promise<number> => {
       if (isTaroWeApp) {
-        console.log(Taro);
-        // return await new Promise((resolve) => {
-        //   Taro.createSelectorQuery()
-        //     .select(`.${wrapperUniqueRef.current}`)
-        //     .boundingClientRect()
-        //     .exec((res) => resolve(res?.[0]?.width / 7));
-        // });
-        return $(`.${wrapperUniqueRef.current}`).width()
+
+        return await new Promise((resolve) => {
+          Taro.createSelectorQuery()
+            .select(`.${wrapperUniqueRef.current}`)
+            .boundingClientRect()
+            .exec((res) => {
+              resolve(res?.[0]?.width / 7)
+            });
+        });
+        // return $(`.${wrapperUniqueRef.current}`).width()
       }
       return Promise.resolve(wrapperRef.current?.clientWidth / 7);
     };
@@ -61,13 +63,13 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
      */
     const minTranslateY = async (): Promise<number> => {
       if (isTaroWeApp) {
-        // return await new Promise((resolve) => {
-        //   Taro.createSelectorQuery()
-        //       .select(`.${wrapperUniqueRef.current}`)
-        //     .boundingClientRect()
-        //     .exec((res) => resolve(res?.[0]?.height));
-        // });
-        return $(`.${wrapperUniqueRef.current}`).height()
+        return await new Promise((resolve) => {
+          Taro.createSelectorQuery()
+              .select(`.${wrapperUniqueRef.current}`)
+            .boundingClientRect()
+            .exec((res) => resolve(res?.[0]?.height));
+        });
+        // return $(`.${wrapperUniqueRef.current}`).height()
       }
       return Promise.resolve(wrapperRef.current?.clientHeight);
     };

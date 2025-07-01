@@ -2,7 +2,7 @@
  * compact: true
  */
 import { DemoBlock } from '../../DemoBlock';
-import React from "react";
+import React from 'react';
 import { Button } from '@trionesdev/antd-taro-react';
 
 

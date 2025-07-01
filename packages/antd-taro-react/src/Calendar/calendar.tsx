@@ -1,3 +1,4 @@
+import { CalendarGrid } from '@trionesdev/antd-taro-react';
 import classNames from 'classnames';
 import React, { forwardRef, memo, useState } from 'react';
 import { CalendarHeader } from './calendar-header';
@@ -11,27 +12,41 @@ export type CalendarProps = {
   value?: Date;
   onChange?: (date: Date) => void;
   onMouthChange?: (mouth: Date) => void;
+  slideable?: boolean;
 };
 
 export const Calendar = memo(
   forwardRef<HTMLDivElement, CalendarProps>(
-    ({ mouth = new Date(), value, onChange, onMouthChange }, ref) => {
+    (
+      { mouth = new Date(), value, onChange, onMouthChange, slideable = false },
+      ref,
+    ) => {
       const [currentMouth, setCurrentMouth] = useState(mouth);
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
           <CalendarHeader mouth={currentMouth} onChange={setCurrentMouth} />
-          <TouchableCalendarGrid
-            mouth={currentMouth}
-            value={value ? [value] : []}
-            onMouthChange={(newMouth) => {
-              setCurrentMouth(newMouth);
-              onMouthChange?.(newMouth);
-            }}
-            onChange={(value) => {
-              onChange?.(value?.[0]);
-            }}
-          />
+          {slideable ? (
+            <TouchableCalendarGrid
+              mouth={currentMouth}
+              value={value ? [value] : []}
+              onMouthChange={(newMouth) => {
+                setCurrentMouth(newMouth);
+                onMouthChange?.(newMouth);
+              }}
+              onChange={(value) => {
+                onChange?.(value?.[0]);
+              }}
+            />
+          ) : (
+            <CalendarGrid
+              mouth={currentMouth}
+              value={value ? [value] : []}
+              onChange={(value) => {
+                onChange?.(value?.[0]);
+              }}
+            />
+          )}
         </div>
       );
     },
