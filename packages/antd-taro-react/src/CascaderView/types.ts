@@ -8,4 +8,5 @@ export type ColumnOption = {
   value?: string
   label?: React.ReactNode
   children?: ColumnOption[]
+  [key: string]:any
 }

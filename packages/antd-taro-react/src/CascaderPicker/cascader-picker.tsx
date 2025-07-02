@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react"
+import React, {FC, useEffect, useRef, useState} from "react"
 import Popup from "../Popup";
 import classNames from "classnames";
 import "./style.scss"
@@ -20,10 +20,16 @@ export type CascaderPickerProps = {
    * @default false
    */
   labelInValue?: boolean
+  fieldNames?: {
+    value?: string;
+    label?: string;
+    children?: string;
+  };
   value?: any[],
   onOk?: (value?: any[]) => void,
   onCancel?: () => void,
   onClose?: () => void,
+  asyncRequest?: (parentValue?: any) => Promise<any>;
 }
 
 export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
@@ -34,19 +40,22 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
                                                                      title,
                                                                      options,
                                                                      labelInValue = false,
+                                                                     fieldNames,
                                                                      value, onOk,
                                                                      onCancel,
-                                                                     onClose
+                                                                     onClose,
+                                                                     asyncRequest
                                                                    }) => {
-  const { locale } = useConfig();
-  const [internalValue, setInternalValue] = useState(value)
+  const {locale} = useConfig();
+  // const [internalValue, setInternalValue] = useState(value)
+  const internalValueRf = useRef(value)
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const handleClose = () => {
     setInnerOpen(false)
     onClose?.()
   }
   const handleOk = () => {
-    onOk?.(internalValue)
+    onOk?.(internalValueRf.current)
     handleClose()
   }
 
@@ -73,10 +82,10 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
     if (value === undefined) {
       return;
     }
-    if (_.isEqual(value, internalValue)) {
+    if (_.isEqual(value, internalValueRf.current)) {
       return;
     }
-    setInternalValue(value)
+    internalValueRf.current= value
   }, [value])
 
   return <Popup open={innerOpen} afterOpenChange={(o) => {
@@ -89,12 +98,20 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
   }}>
     <div className={classNames(cascaderPickerCls, className)} style={style}>
       <div className={classNames(`${cascaderPickerCls}-header`)}>
-        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handelCancel}>{locale.common.cancel}</a>
+        <a className={classNames(`${cascaderPickerCls}-header-button`)}
+           onClick={handelCancel}>{locale.common.cancel}</a>
         {title && <div className={classNames(`${cascaderPickerCls}-header-title`)}>{title}</div>}
         <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handleOk}>{locale.common.confirm}</a>
       </div>
       <div className={classNames(`${cascaderPickerCls}-body`)}>
-        <CascaderView options={options} labelInValue={labelInValue} value={internalValue} onChange={setInternalValue}
+        <CascaderView fieldNames={fieldNames}
+                      options={options}
+                      labelInValue={labelInValue}
+                      value={value}
+                      onChange={(newVal)=>{
+                        internalValueRf.current = newVal
+                      }}
+                      asyncRequest={asyncRequest}
                       style={{height: '100%'}}/>
       </div>
     </div>

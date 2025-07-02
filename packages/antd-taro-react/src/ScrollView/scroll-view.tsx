@@ -1,38 +1,10 @@
-import { ScrollView as TaroScrollView } from '@tarojs/components';
+import {ScrollView as TaroScrollView} from '@tarojs/components';
 import classNames from 'classnames';
-import React, {
-  FC,
-  ForwardedRef,
-  forwardRef,
-  ReactNode,
-  useEffect,
-  useRef,
-} from 'react';
+import React, {FC, forwardRef, useEffect, useRef,} from 'react';
 import './style.scss';
-import { useTaro } from '../hooks/useTaro';
+import {useTaro} from '../hooks/useTaro';
+import {ScrollViewProps} from "./types";
 
-export type ScrollEvent = {
-  target?: any;
-  detail: {
-    deltaX?: number;
-    deltaY?: number;
-    scrollLeft?: number;
-    scrollTop?: number;
-    scrollHeight?: number;
-    scrollWidth?: number;
-  };
-};
-
-export type ScrollViewProps = {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: ReactNode;
-  onScroll?: (e: ScrollEvent) => void;
-  showScrollbar?: boolean;
-  scrollX?: boolean;
-  scrollY?: boolean;
-  scrollTop?: number;
-};
 
 export const ScrollView: FC<ScrollViewProps> = forwardRef(
   (
@@ -45,8 +17,12 @@ export const ScrollView: FC<ScrollViewProps> = forwardRef(
       scrollX,
       scrollY,
       scrollTop,
+      upperThreshold = 50,
+      lowerThreshold = 50,
+      onScrollToUpper,
+      onScrollToLower,
     },
-    ref ,
+    ref,
   ) => {
     const {isTaroEnv} = useTaro()
 
@@ -97,6 +73,10 @@ export const ScrollView: FC<ScrollViewProps> = forwardRef(
           scrollX={scrollX}
           scrollY={scrollY}
           scrollTop={scrollTop}
+          upperThreshold={upperThreshold}
+          lowerThreshold={lowerThreshold}
+          onScrollToUpper={onScrollToUpper}
+          onScrollToLower={onScrollToLower}
         >
           {children}
         </TaroScrollView>

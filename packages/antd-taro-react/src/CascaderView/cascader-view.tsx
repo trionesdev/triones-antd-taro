@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import _ from 'lodash';
-import React, { CSSProperties, FC, useEffect, useState } from 'react';
+import React, {CSSProperties, FC, useEffect, useState} from 'react';
 import Tabs from '../Tabs';
-import { CascaderColumn } from './cascader-column';
+import {CascaderColumn} from './cascader-column';
 import './style.scss';
-import { Column, ColumnOption } from './types';
+import {Column, ColumnOption} from './types';
 
 const cascaderViewCls = 'triones-antm-cascader-view';
 
@@ -13,19 +13,31 @@ export type CascaderViewProps = {
   style?: CSSProperties;
   options?: any[];
   labelInValue?: boolean;
+  fieldNames?: {
+    value?: string;
+    label?: string;
+    children?: string;
+  };
   value?: any;
   onChange?: (value: any) => void;
   asyncRequest?: (parentValue?: any) => Promise<any>;
 };
 
 export const CascaderView: FC<CascaderViewProps> = ({
-  className,
-  style,
-  options,
-  value,
-  onChange,
-  asyncRequest,
-}) => {
+                                                      className,
+                                                      style,
+                                                      options,
+                                                      fieldNames,
+                                                      labelInValue,
+                                                      value,
+                                                      onChange,
+                                                      asyncRequest,
+                                                    }) => {
+  const internalFieldNames = Object.assign({}, {
+    value: 'value',
+    label: 'label',
+    children: 'children'
+  }, fieldNames)
   const [activeKey, setActiveKey] = useState<any>();
   const [columns, setColumns] = useState<Column[]>([]);
   const [internalValue, setInternalValue] = useState<any>(value || []);
@@ -40,9 +52,20 @@ export const CascaderView: FC<CascaderViewProps> = ({
       });
   };
 
+  const handleConvertOptions = (options: any[]): ColumnOption[] => {
+    return options.map((option) => {
+      return {
+        value: option[internalFieldNames.value],
+        label: option[internalFieldNames.label],
+        children: option[internalFieldNames.children] && handleConvertOptions(option[internalFieldNames.children]),
+      };
+    });
+  }
+
   const handleGenerateColumnsByValues = (value: any): Column[] => {
     if (!_.isEmpty(value) && _.isArray(value)) {
-      let newColumns: Column[] = [{ options }];
+      let newColumns: Column[] = [{options: handleConvertOptions(options || [])}];
+      debugger
       for (let i = 0; i < value.length; i++) {
         let column = newColumns[i];
         let option = _.find(column.options, (option: ColumnOption) => {
@@ -51,25 +74,30 @@ export const CascaderView: FC<CascaderViewProps> = ({
         if (option) {
           newColumns[i].value = option;
           if (option.children) {
-            newColumns.push({ options: option.children });
+            newColumns.push({options: option.children});
           }
         }
       }
       return newColumns;
     }
-    return [{ options }];
+    return [{options: handleConvertOptions(options || [])}];
   };
 
-  const handleSelectOption = (option: any, columnIndex: number) => {
-    let newColumns = [];
+  const handleSelectOption = async (option: any, columnIndex: number) => {
+    let newColumns:Column[] = [];
     let activeIndex = `${columnIndex}`;
     for (let i = 0; i < columnIndex; i++) {
       newColumns.push(columns[i]);
     }
-    newColumns.push({ value: option, options: columns[columnIndex].options });
+    newColumns.push({value: option, options: columns[columnIndex].options});
     if (!_.isEmpty(option.children)) {
-      newColumns.push({ options: option.children });
+      newColumns.push({options: option.children});
       activeIndex = `${columnIndex + 1}`;
+    } else {
+      await asyncRequest?.(option.value).then((options) => {
+        newColumns.push({options: handleConvertOptions(options)});
+        activeIndex = `${columnIndex + 1}`;
+      })
     }
     setColumns(newColumns);
     setActiveKey(activeIndex);
@@ -80,6 +108,7 @@ export const CascaderView: FC<CascaderViewProps> = ({
 
   useEffect(() => {
     const _columns = handleGenerateColumnsByValues(internalValue);
+    console.log('_columns', _columns);
     setColumns(_columns);
     setActiveKey(`${_columns.length - 1}`);
   }, [options]);
@@ -104,7 +133,7 @@ export const CascaderView: FC<CascaderViewProps> = ({
           };
         })}
         stretch={false}
-        style={{ height: '100%' }}
+        style={{height: '100%'}}
       />
     </div>
   );
