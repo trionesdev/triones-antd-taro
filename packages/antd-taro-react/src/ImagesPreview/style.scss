@@ -3,9 +3,10 @@ $imagePreviewCls: 'triones-antm-image-preview';
 .#{$imagePreviewCls} {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  &-head{
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &-head {
     position: fixed;
     top: 50Px;
     left: 0;
@@ -15,10 +16,15 @@ $imagePreviewCls: 'triones-antm-image-preview';
     align-items: center;
     color: white;
     font-size: 14Px;
+    z-index: 1000;
   }
-  &-content{
-    flex: 1;
-    display: flex;
+
+  &-content {
+    height: 100%;
+    width: 100%;
+
   }
-  &-foot{}
+
+  &-foot {
+  }
 }

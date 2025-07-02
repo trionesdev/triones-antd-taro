@@ -29,6 +29,7 @@ export type SwiperCoreProps = {
   height?: number;
   items?: SwiperItemType[];
   activeIndex?: number;
+  autoplay?: boolean;
   onChange?: (value: number) => void;
 };
 

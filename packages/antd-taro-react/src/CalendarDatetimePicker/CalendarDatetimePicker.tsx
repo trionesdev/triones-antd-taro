@@ -1,15 +1,16 @@
+import { CustomWrapper } from '@tarojs/components';
+import Taro from '@tarojs/taro';
 import classNames from 'classnames';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Calendar from '../Calendar';
 import { useConfig } from '../ConfigProvider';
+import { useTaro } from '../hooks/useTaro';
 import PickerView from '../PickerView';
 import Popup from '../Popup';
 import { DatetimeUtils } from '../utils/datetime-utils';
 import { DateTimeSwitch } from './DateTimeSwitch';
 import './style.scss';
 import { cls, Mode } from './types';
-import {useTaro} from "../hooks/useTaro";
-import Taro from '@tarojs/taro';
 
 export type CalendarDatetimePickerProps = {
   open?: boolean;
@@ -27,7 +28,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   onClose,
 }) => {
   const { locale } = useConfig();
-  const {isTaroWeApp} = useTaro()
+  const { isTaroEnv, isTaroWeApp } = useTaro();
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<any>(value || new Date());
@@ -46,13 +47,18 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   };
 
   const handleComputeBodyHeight = async (): Promise<number> => {
-    if (isTaroWeApp){
+    if (isTaroEnv) {
       return new Promise((resolve) => {
         Taro.createSelectorQuery()
-          .select(`#${bodyRef.current?.uid}`)
+          .in(bodyRef.current.ctx)
+          .select(`.${cls}-body`)
           .boundingClientRect()
-          .exec((res) => resolve(res?.[0]?.height));
-      })
+          // .fields({ node: true, size: true })
+          .exec((res) => {
+            console.log(res);
+            resolve(res?.[0]?.height);
+          });
+      });
     }
     return Promise.resolve(bodyRef.current!.offsetHeight);
   };
@@ -79,6 +85,70 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
       datetimeSwitchRef.current.setDatetime(valueRef.current);
     }
   }, []);
+
+  const bodyRender = () => {
+    return (
+      <>
+        {mode === Mode.date && (
+          <div style={{}}>
+            <Calendar
+              mouth={value}
+              value={value}
+              onChange={(date) => {
+                valueRef.current = new Date(
+                  date.getFullYear(),
+                  date.getMonth(),
+                  date.getDate(),
+                  valueRef.current.getHours(),
+                  valueRef.current.getMinutes(),
+                );
+                datetimeSwitchRef.current?.setDatetime(valueRef.current);
+              }}
+            />
+          </div>
+        )}
+        {mode === Mode.time && (
+          <div style={{ height: bodyHeight }}>
+            <PickerView
+              columns={[
+                Array(24)
+                  .fill(0)
+                  .map((_, i) => {
+                    return {
+                      label: `${DatetimeUtils.twoDigits(i)}`,
+                      value: `${i}`,
+                    };
+                  }),
+                Array(60)
+                  .fill(0)
+                  .map((_, i) => {
+                    return {
+                      label: `${DatetimeUtils.twoDigits(i)}`,
+                      value: `${i}`,
+                    };
+                  }),
+              ]}
+              labelInValue={false}
+              value={[
+                `${valueRef?.current.getHours()}`,
+                `${valueRef?.current.getMinutes()}`,
+              ]}
+              onChange={(v) => {
+                valueRef.current = new Date(
+                  valueRef.current.getFullYear(),
+                  valueRef.current.getMonth(),
+                  valueRef.current.getDate(),
+                  v[0],
+                  v[1],
+                );
+                datetimeSwitchRef.current?.setDatetime(valueRef.current);
+              }}
+            />
+          </div>
+        )}
+      </>
+    );
+  };
 
   return (
     <Popup
@@ -112,65 +182,19 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
             {locale.common.confirm}
           </a>
         </div>
-        <div className={`${cls}-body`} ref={bodyRef} id={bodyRef.current?.uid}>
-          {mode === Mode.date && (
-            <div style={{}}>
-              <Calendar
-                mouth={value}
-                value={value}
-                onChange={(date) => {
-                  valueRef.current = new Date(
-                    date.getFullYear(),
-                    date.getMonth(),
-                    date.getDate(),
-                    valueRef.current.getHours(),
-                    valueRef.current.getMinutes(),
-                  );
-                  datetimeSwitchRef.current?.setDatetime(valueRef.current);
-                }}
-              />
-            </div>
-          )}
-          {mode === Mode.time && (
-            <div style={{ height: bodyHeight }}>
-              <PickerView
-                columns={[
-                  Array(24)
-                    .fill(0)
-                    .map((_, i) => {
-                      return {
-                        label: `${DatetimeUtils.twoDigits(i)}`,
-                        value: `${i}`,
-                      };
-                    }),
-                  Array(60)
-                    .fill(0)
-                    .map((_, i) => {
-                      return {
-                        label: `${DatetimeUtils.twoDigits(i)}`,
-                        value: `${i}`,
-                      };
-                    }),
-                ]}
-                labelInValue={false}
-                value={[
-                  `${valueRef?.current.getHours()}`,
-                  `${valueRef?.current.getMinutes()}`,
-                ]}
-                onChange={(v) => {
-                  valueRef.current = new Date(
-                    valueRef.current.getFullYear(),
-                    valueRef.current.getMonth(),
-                    valueRef.current.getDate(),
-                    v[0],
-                    v[1],
-                  );
-                  datetimeSwitchRef.current?.setDatetime(valueRef.current);
-                }}
-              />
-            </div>
-          )}
-        </div>
+        {isTaroEnv ? (
+          <CustomWrapper ref={bodyRef}>
+            <div className={`${cls}-body`}>{bodyRender()}</div>
+          </CustomWrapper>
+        ) : (
+          <div
+            className={`${cls}-body`}
+            ref={bodyRef}
+            id={bodyRef.current?.uid}
+          >
+            {bodyRender()}
+          </div>
+        )}
       </div>
     </Popup>
   );

@@ -52,12 +52,12 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
         {`${innerActiveIndex+1}/${items?.length}`}
       </div>
       <div className={classNames(`${cls}-content`)}>
-        <Swiper style={{width: '100%'}}
+        <Swiper style={{width: '100%',height: '100%'}}
                 activeIndex={innerActiveIndex}
                 onChange={setInnerActiveIndex}
                 items={items?.map((item) => {
                   return {
-                    content: <div onClick={(e) => {
+                    content: <div style={{width: '100%'}} onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                     }}>
