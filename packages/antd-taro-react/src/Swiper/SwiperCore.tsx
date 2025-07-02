@@ -9,9 +9,6 @@ import React, {
 import './style.scss';
 import classNames from 'classnames';
 import { useTaro } from '../hooks/useTaro';
-import Taro from '@tarojs/taro';
-import {$} from "@tarojs/extend"
-import { RandomUtils } from '../utils/random-utils';
 
 const cls = 'triones-antm-swiper';
 
@@ -61,7 +58,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
     activeIndex || 0,
   );
   const boxRef = React.createRef<any>();
-  const boxUniqueRef = React.useRef<string>("swiper-box");
+  const boxUniqueRef = React.useRef<string>('swiper-box');
   const wrapperRef = React.createRef<HTMLDivElement>();
   const [itemWidth, setItemWidth] = useState<number>();
   const [wrapperWidth, setWrapperWidth] = useState<number>();
@@ -78,41 +75,10 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   const minTranslateY = useRef<number>();
 
   const computeItemWidth = async (): Promise<number | undefined> => {
-    if (isTaroWeApp) {
-      console.log('boxRef.current', boxRef.current);
-
-      // return await new Promise((resolve) => {
-      //   console.log('boxUniqueRef.current', boxUniqueRef.current);
-      //   Taro.createSelectorQuery().in(boxRef.current)
-      //     .select(`.${boxUniqueRef.current}`)
-      //     .boundingClientRect()
-      //     .exec((res) => {
-      //       console.log(res);
-      //       resolve(res?.[0]?.width);
-      //     });
-      //   // debugger
-      //   // resolve(390)
-      // });
-
-
-      return $(`.${boxUniqueRef.current}`).width()
-    }
     return Promise.resolve(boxRef.current?.clientWidth);
   };
 
   const computeItemHeight = async (): Promise<number | undefined> => {
-    if (isTaroWeApp) {
-      // return await new Promise((resolve) => {
-      //   console.log('boxUniqueRef.current', boxUniqueRef.current);
-      //   Taro.createSelectorQuery().in(boxRef.current)
-      //     .select(`.${boxUniqueRef.current}`)
-      //     .boundingClientRect()
-      //     .exec((res) => resolve(res?.[0]?.height));
-      // });
-      return $(`.${boxUniqueRef.current}`).height()
-      // debugger
-      // return Promise.resolve(753)
-    }
     return Promise.resolve(boxRef.current?.clientHeight);
   };
 
@@ -214,7 +180,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
   };
 
   return (
-    <div className={classNames(`${cls}-core`)} >
+    <div className={classNames(`${cls}-core`)}>
       <div
         ref={boxRef}
         id={boxRef.current?.uid}

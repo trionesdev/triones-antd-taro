@@ -98,6 +98,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/calendar-datetime-picker/index",
+              });
+            }}
+          >
+            CalendarDatetimePicker 日历时间选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/calendar-picker/index",
               });
             }}

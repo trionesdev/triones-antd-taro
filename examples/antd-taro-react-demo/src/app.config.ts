@@ -4,6 +4,7 @@ export default defineAppConfig({
     "pages/avatar/index",
     "pages/button/index",
     "pages/calendar/index",
+    "pages/calendar-datetime-picker/index",
     "pages/calendar-picker/index",
     "pages/checkbox/index",
     "pages/radio/index",

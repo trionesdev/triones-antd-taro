@@ -182,6 +182,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
             {locale.common.confirm}
           </a>
         </div>
+
         {isTaroEnv ? (
           <CustomWrapper ref={bodyRef}>
             <div className={`${cls}-body`}>{bodyRender()}</div>
