@@ -87,7 +87,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
     if (_.isEqual(value, internalValueRf.current)) {
       return;
     }
-    internalValueRf.current= value
+    internalValueRf.current = value
   }, [value])
 
   return <Popup open={innerOpen} afterOpenChange={(o) => {
@@ -103,7 +103,8 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
         <a className={classNames(`${cascaderPickerCls}-header-button`)}
            onClick={handelCancel}>{locale.common.cancel}</a>
         {title && <div className={classNames(`${cascaderPickerCls}-header-title`)}>{title}</div>}
-        <a className={classNames(`${cascaderPickerCls}-header-button`)} onClick={handleOk}>{locale.common.confirm}</a>
+        <a className={classNames(`${cascaderPickerCls}-header-button`, `${cascaderPickerCls}-header-button-ok`)}
+           onClick={handleOk}>{locale.common.confirm}</a>
       </div>
       <div className={classNames(`${cascaderPickerCls}-body`)}>
         <CascaderView fieldNames={fieldNames}
@@ -111,7 +112,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
                       labelInValue={labelInValue}
                       columnsCount={columnsCount}
                       value={value}
-                      onChange={(newVal)=>{
+                      onChange={(newVal) => {
                         internalValueRf.current = newVal
                       }}
                       asyncRequest={asyncRequest}
