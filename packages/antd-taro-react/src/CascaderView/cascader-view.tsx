@@ -18,6 +18,7 @@ export type CascaderViewProps = {
     label?: string;
     children?: string;
   };
+  columnsCount?: number
   value?: any;
   onChange?: (value: any) => void;
   asyncRequest?: (parentValue?: any) => Promise<any>;
@@ -29,6 +30,7 @@ export const CascaderView: FC<CascaderViewProps> = ({
                                                       options,
                                                       fieldNames,
                                                       labelInValue,
+                                                      columnsCount,
                                                       value,
                                                       onChange,
                                                       asyncRequest,
@@ -84,20 +86,22 @@ export const CascaderView: FC<CascaderViewProps> = ({
   };
 
   const handleSelectOption = async (option: any, columnIndex: number) => {
-    let newColumns:Column[] = [];
+    let newColumns: Column[] = [];
     let activeIndex = `${columnIndex}`;
     for (let i = 0; i < columnIndex; i++) {
       newColumns.push(columns[i]);
     }
     newColumns.push({value: option, options: columns[columnIndex].options});
-    if (!_.isEmpty(option.children)) {
-      newColumns.push({options: option.children});
-      activeIndex = `${columnIndex + 1}`;
-    } else {
-      await asyncRequest?.(option.value).then((options) => {
-        newColumns.push({options: handleConvertOptions(options)});
+    if (!columnsCount || (newColumns.length < columnsCount)) {
+      if (!_.isEmpty(option.children)) {
+        newColumns.push({options: option.children});
         activeIndex = `${columnIndex + 1}`;
-      })
+      } else {
+        await asyncRequest?.(option.value).then((options) => {
+          newColumns.push({options: handleConvertOptions(options)});
+          activeIndex = `${columnIndex + 1}`;
+        })
+      }
     }
     setColumns(newColumns);
     setActiveKey(activeIndex);

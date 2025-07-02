@@ -25,6 +25,7 @@ export type CascaderPickerProps = {
     label?: string;
     children?: string;
   };
+  columnsCount?: number
   value?: any[],
   onOk?: (value?: any[]) => void,
   onCancel?: () => void,
@@ -41,6 +42,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
                                                                      options,
                                                                      labelInValue = false,
                                                                      fieldNames,
+                                                                     columnsCount,
                                                                      value, onOk,
                                                                      onCancel,
                                                                      onClose,
@@ -107,6 +109,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(({
         <CascaderView fieldNames={fieldNames}
                       options={options}
                       labelInValue={labelInValue}
+                      columnsCount={columnsCount}
                       value={value}
                       onChange={(newVal)=>{
                         internalValueRf.current = newVal
