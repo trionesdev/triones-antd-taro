@@ -1,6 +1,6 @@
 import { CheckOutline } from '@trionesdev/antd-taro-icons-react';
 import classNames from 'classnames';
-import  React,{ FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import './index.scss';
 import { CheckboxProps, cls } from './types';
 
@@ -9,8 +9,13 @@ export const Checkbox: FC<CheckboxProps> = ({
   checked,
   defaultChecked,
   disabled,
+  onChange
 }) => {
   const [innerChecked, setInnerChecked] = useState(checked ?? defaultChecked ?? false);
+
+  useEffect(() => {
+    onChange?.(innerChecked)
+  }, [innerChecked]);
 
   const prefixCls = `${cls}`;
   return (

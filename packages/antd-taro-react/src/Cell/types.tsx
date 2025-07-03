@@ -5,6 +5,7 @@ export const cls = 'triones-antm-cell';
 export type CellProps = {
   className?: string;
   style?: React.CSSProperties;
+  placeholder?:string
   children?: React.ReactNode;
   /**
    * @description 右侧内容
@@ -20,6 +21,7 @@ export type CellProps = {
    * @description 点击事件
    */
   onClick?: () => void;
+  picker?:React.ReactNode;
 };
 
 export type CellGroupProps = {

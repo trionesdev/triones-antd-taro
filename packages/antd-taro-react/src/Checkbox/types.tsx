@@ -20,4 +20,5 @@ export type CheckboxProps = {
   defaultChecked?: boolean;
   value?: any;
   disabled?: boolean
+  onChange?: (e:any)=>void;
 }

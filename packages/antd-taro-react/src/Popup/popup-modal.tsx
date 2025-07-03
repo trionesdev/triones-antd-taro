@@ -1,13 +1,18 @@
-import React, {CSSProperties, FC, PropsWithChildren, useEffect, useMemo} from "react";
-import classNames from "classnames";
-import "./style.scss"
-import {CloseOutline} from "@trionesdev/antd-taro-icons-react";
-import SafeArea from "../SafeArea";
+import { CloseOutline } from '@trionesdev/antd-taro-icons-react';
+import classNames from 'classnames';
+import React, {
+  CSSProperties,
+  FC,
+  memo,
+  PropsWithChildren,
+  useMemo,
+} from 'react';
+import SafeArea from '../SafeArea';
+import './style.scss';
 
-const popupCls = "triones-antm-popup";
+const popupCls = 'triones-antm-popup';
 
-export type Position = "top" | "bottom" | "left" | "right";
-
+export type Position = 'top' | 'bottom' | 'left' | 'right';
 
 export type PopupModalProps = {
   className?: string;
@@ -17,7 +22,7 @@ export type PopupModalProps = {
    */
   styles?: {
     body?: CSSProperties;
-  }
+  };
   /**
    * @description Modal 完全关闭后的回调
    * @default
@@ -27,106 +32,114 @@ export type PopupModalProps = {
    * @description 是否打开
    * @default false
    */
-  open?: boolean,
+  open?: boolean;
   /**
    * @description 打开位置
    * @default bottom
    */
-  position?: Position
+  position?: Position;
   /**
    * @description 是否可以关闭(显示关闭按钮)
    * @default false
    */
-  closable?: boolean
+  closable?: boolean;
   /**
    * @description 是否蒙层关闭
    * @default true
    */
-  maskClosable?: boolean
+  maskClosable?: boolean;
   onMaskClick?: () => void;
   /**
    * @description 关闭时销毁 Modal 里的子元素
    * @default false
    */
-  destroyOnClose?: boolean
+  destroyOnClose?: boolean;
   /**
    * @description 设置 Modal 的 z-index
    * @default 1000
    */
   zIndex?: number;
+  onClose?: () => void;
   /**
    * @description 打开和关闭 Modal 时动画结束后的回调
    * @default
    */
   afterOpenChange?: (open: boolean) => void;
   onDestroy?: () => void;
+};
 
-}
+export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = memo(
+  ({
+    children,
+    styles,
+    afterClose,
+    open = false,
+    position = 'bottom',
+    closable = false,
+    maskClosable = true,
+    onMaskClick,
+    destroyOnClose = false,
+    zIndex = 1000,
+    onClose,
+    afterOpenChange,
+    onDestroy,
+  }) => {
+    const safeAreaPosition = useMemo(() => {
+      if (position === 'bottom') {
+        return 'bottom';
+      } else if (position === 'top') {
+        return 'top';
+      }
+      return undefined;
+    }, [position]);
 
-export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = ({
-                                                                     children,
-                                                                     styles,
-                                                                     afterClose,
-                                                                     open,
-                                                                     position = 'bottom',
-                                                                     closable = false,
-                                                                     maskClosable = true,
-                                                                     onMaskClick,
-                                                                     destroyOnClose = false,
-                                                                     zIndex = 1000,
-                                                                     afterOpenChange,
-                                                                     onDestroy
-                                                                   }) => {
-  const safeAreaPosition = useMemo(() => {
-    if (position === 'bottom') {
-      return 'bottom'
-    } else if (position === 'top') {
-      return 'top'
-    }
-    return undefined
-  }, [position])
-  const [internalOpen, setInternalOpen] = React.useState<boolean>(open || false);
-  const handleClose = () => {
-    setInternalOpen(false);
-    afterClose?.()
-  }
-
-  useEffect(() => {
-    afterOpenChange?.(internalOpen!);
-    if (!internalOpen) {
+    const handleClose = () => {
+      onClose?.();
+      afterClose?.();
       if (destroyOnClose) {
-        onDestroy?.()
+        onDestroy?.();
       }
-    }
-  }, [internalOpen]);
+    };
 
-  useEffect(() => {
-    if (open === undefined) {
-      return
-    }
-    if (open === internalOpen) {
-      return;
-    }
-    setInternalOpen(open);
-  }, [open]);
-
-  return (<div className={classNames(popupCls)} style={{zIndex, display: internalOpen ? 'block' : 'none'}}>
-    <div className={classNames(`${popupCls}-mask`)} onClick={() => {
-      if (maskClosable) {
-        onMaskClick?.();
-        handleClose();
-      }
-    }}></div>
-    <div className={classNames(`${popupCls}-body`, `${popupCls}-${position}`)} style={styles?.body}>
-      {closable && <>
-        <CloseOutline className={classNames(`${popupCls}-close`)} onClick={() => {
-          handleClose()
-        }}/>
-      </>}
-      <SafeArea position={safeAreaPosition}>
-        {children}
-      </SafeArea>
-    </div>
-  </div>)
-
-}
+    return (
+      <div
+        className={classNames(popupCls)}
+        style={{ zIndex, display: open ? 'block' : 'none' }}
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
+      >
+        <div
+          className={classNames(`${popupCls}-mask`)}
+          onClick={() => {
+            if (maskClosable) {
+              onMaskClick?.();
+              handleClose();
+            }
+          }}
+        ></div>
+        <div
+          className={classNames(`${popupCls}-body`, `${popupCls}-${position}`)}
+          style={styles?.body}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+          }}
+        >
+          {closable && (
+            <>
+              <CloseOutline
+                className={classNames(`${popupCls}-close`)}
+                onClick={() => {
+                  handleClose();
+                }}
+              />
+            </>
+          )}
+          <SafeArea position={safeAreaPosition}>{children}</SafeArea>
+        </div>
+      </div>
+    );
+  },
+);
