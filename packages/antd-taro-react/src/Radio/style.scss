@@ -6,7 +6,7 @@ $class-prefix-radio: 'triones-antm-radio';
 
 .#{$class-prefix-radio}-wrapper{
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8Px;
   .#{$class-prefix-radio}{

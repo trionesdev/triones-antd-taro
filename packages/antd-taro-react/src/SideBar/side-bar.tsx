@@ -452,9 +452,7 @@ export const SideBar: FC<SideBarProps> = ({
             </ScrollView>
           )}
           {mode === 'switch' && (
-            <div>
-              <SideBarContents items={internalItems} />
-            </div>
+            <SideBarContents items={internalItems} />
           )}
         </div>
       </div>
