@@ -37,6 +37,7 @@ export const Swiper: FC<PropsWithChildren<SwiperProps>> = ({ ...props }) => {
             return (
               <TaroSwiperItem
                 className={classNames(`${cls}-taro-item`)}
+                style={{display: 'flex'}}
                 key={index}
               >
                 {item.content}
