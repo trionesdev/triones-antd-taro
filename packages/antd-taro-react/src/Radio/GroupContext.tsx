@@ -4,6 +4,7 @@ type RadioGroupContextType={
   value?: any;
   defaultValue?: any;
   disabled?: boolean;
+  labelPosition?: 'left'|'right'
   handleCheck?: (v:any)=>void;
 }
 

@@ -37,6 +37,7 @@ export type RadioProps = {
    * @description 子元素
    */
   children?: ReactNode;
+  labelPosition?: 'left'|'right',
   /**
    * @description 点击事件
    */
@@ -50,8 +51,9 @@ export interface RadioGroupProps {
   onChange?: (val: any) => void;
   defaultValue?: any;
   disabled?: boolean;
-
   shape?: 'button' | 'round';
+  labelPosition?: 'left'|'right',
+  direction?: 'vertical' | 'horizontal';
   items?: {
     label: React.ReactNode;
     value: any;

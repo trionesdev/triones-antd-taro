@@ -1,18 +1,20 @@
 import classNames from 'classnames';
-import React, {FC, useEffect, useState} from 'react';
-import {RadioGroupContext} from './GroupContext';
-import {Radio} from './radio';
-import {RadioButton} from './RadioButton';
-import {classPrefix, RadioGroupProps} from './types';
+import React, { FC, useEffect, useState } from 'react';
+import { RadioGroupContext } from './GroupContext';
+import { Radio } from './radio';
+import { RadioButton } from './RadioButton';
+import { classPrefix, RadioGroupProps } from './types';
 
 export const RadioGroup: FC<RadioGroupProps> = ({
-                                                  value,
-                                                  onChange,
-                                                  defaultValue,
-                                                  children,
-                                                  shape,
-                                                  items,
-                                                }) => {
+  value,
+  onChange,
+  defaultValue,
+  children,
+  shape,
+  labelPosition = 'right',
+  direction = 'horizontal',
+  items,
+}) => {
   const [internalValue, setInternalValue] = useState(defaultValue ?? value);
 
   const handleCheck = (val: any) => {
@@ -32,6 +34,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
     <RadioGroupContext.Provider
       value={{
         value: internalValue,
+        labelPosition,
         handleCheck: handleCheck,
       }}
     >
@@ -47,7 +50,12 @@ export const RadioGroup: FC<RadioGroupProps> = ({
             })}
         </div>
       ) : (
-        <div className={classNames(`${classPrefix}-group`)}>
+        <div
+          className={classNames(
+            `${classPrefix}-group`,
+            `${classPrefix}-group-${direction}`,
+          )}
+        >
           {children ||
             items?.map((item) => {
               return (

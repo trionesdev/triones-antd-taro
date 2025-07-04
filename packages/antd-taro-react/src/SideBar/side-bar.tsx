@@ -102,8 +102,6 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
             });
         },
       );
-      console.log("contentWheelOffset",contentWheelOffset);
-      console.log("itemOffset",itemOffset);
       return itemOffset!.top - contentWheelOffset!.top;
     } else {
       return contentItemRef.current.offsetTop;
@@ -354,23 +352,6 @@ export const SideBar: FC<SideBarProps> = ({
     };
   }, []);
 
-  // Taro.createSelectorQuery()
-  //   .select(`#${contentRef.current?.uid}`)
-  //   .boundingClientRect()
-  //   .exec((res) => {
-  //     console.log(res);
-  //   });
-  // Taro.createSelectorQuery()
-  //   .select(`#${contentRef.current?.uid}`)
-  //   .scrollOffset()
-  //   .exec((res) => {
-  //     console.log(res);
-  //   });
-
-  // Taro.createSelectorQuery().select(contentEl.current).scrollOffset().exec((res)=>{
-  //   console.log(res);
-  // })
-
   return (
     <SideBarContext.Provider
       value={{
@@ -452,9 +433,7 @@ export const SideBar: FC<SideBarProps> = ({
             </ScrollView>
           )}
           {mode === 'switch' && (
-            <div>
-              <SideBarContents items={internalItems} />
-            </div>
+            <SideBarContents items={internalItems} />
           )}
         </div>
       </div>

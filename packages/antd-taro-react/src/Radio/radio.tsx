@@ -13,9 +13,11 @@ export const Radio: FC<RadioProps> = ({
   defaultChecked,
   onChange,
   value,
+  block,
   disabled,
   icon,
   children,
+  labelPosition,
   onClick,
 }) => {
   const groupContext = useContext(RadioGroupContext);
@@ -31,6 +33,9 @@ export const Radio: FC<RadioProps> = ({
   }, [disabled, groupContext.disabled]);
 
   const handleClick = (e: any) => {
+    if (internalChecked){
+      return
+    }
     setInternalChecked(!internalChecked);
     onChange?.(!internalChecked);
     groupContext?.handleCheck?.(value);
@@ -51,29 +56,39 @@ export const Radio: FC<RadioProps> = ({
     }
   }, [groupContext?.value]);
 
+  const finalLabelPosition = useMemo(() => {
+    return labelPosition ?? groupContext?.labelPosition ?? 'right';
+  }, [labelPosition, groupContext?.labelPosition]);
+
+  const fakeIcon = (
+    <div className={classNames(`${classPrefix}`)}>
+      <div className={classNames(`${classPrefix}-fake`)}>
+        {icon?.(internalChecked) || (
+          <>
+            {internalChecked ? (
+              <div className={`${classPrefix}-fake-checked`}>
+                <CheckOutline />
+              </div>
+            ) : (
+              <div className={`${classPrefix}-fake-unchecked`}></div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <label
       className={classNames(`${classPrefix}-wrapper`, {
         [`${classPrefix}-disabled`]: innerDisabled,
+        [`${classPrefix}-block`]: block,
       })}
       onClick={handleClick}
     >
-      <div className={classNames(`${classPrefix}`)}>
-        <div className={classNames(`${classPrefix}-fake`)}>
-          {icon?.(internalChecked) || (
-            <>
-              {internalChecked ? (
-                <div className={`${classPrefix}-fake-checked`}>
-                  <CheckOutline />
-                </div>
-              ) : (
-                <div className={`${classPrefix}-fake-unchecked`}></div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
+      {finalLabelPosition === 'right' && fakeIcon}
       <div className={classNames(`${classPrefix}-label`)}>{children}</div>
+      {finalLabelPosition === 'left' && fakeIcon}
     </label>
   );
 };
