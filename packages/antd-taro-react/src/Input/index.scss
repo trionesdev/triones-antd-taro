@@ -21,12 +21,12 @@ input {
   box-shadow: none;
   border: none;
   line-height: $trionesLineHeight;
-  border-radius: $trionesBorderRadiusSm;
-  font-size: 14Px;
+  border-radius: $trionesBorderRadius;
+  font-size: $trionesInputInputFontSize;
   height: auto;
 
   &::placeholder {
-    font-size: 14Px;
+    font-size: $trionesInputInputFontSize;
     color: #cccccc;
   }
 }
@@ -116,7 +116,7 @@ input {
 
   &-item {
     text-align: center;
-    font-size: 14Px;
+    font-size: $trionesInputInputFontSize;
     height: 32Px;
     width: 32Px;
     display: inline-flex;
@@ -125,7 +125,7 @@ input {
 
 
     &::placeholder {
-      font-size: 14Px;
+      font-size: $trionesInputInputFontSize;
     }
     &-focus{
       &::after{
@@ -141,7 +141,7 @@ input {
   }
 
   .#{$inputCls}-outlined {
-    font-size: 14Px;
+    font-size: $trionesInputInputFontSize;
     color: rgba(0, 0, 0, 0.88);
     background: #ffffff;
     border-width: 1Px;
@@ -161,7 +161,7 @@ input {
   outline: 0;
   padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
   &::placeholder {
-    font-size: 14Px;
+    font-size: $trionesInputInputFontSize;
     color: #cccccc;
   }
 }

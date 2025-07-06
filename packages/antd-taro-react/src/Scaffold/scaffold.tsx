@@ -9,6 +9,7 @@ export type ScaffoldProps = {
   appBar?: React.ReactNode;
   children?: React.ReactNode;
   bottomNavigationBar?: React.ReactNode;
+  bottomSafeArea?: boolean;
 };
 
 export const Scaffold: FC<ScaffoldProps> = ({
@@ -17,13 +18,14 @@ export const Scaffold: FC<ScaffoldProps> = ({
                                               appBar,
                                               children,
                                               bottomNavigationBar,
+                                              bottomSafeArea = true,
                                             }) => {
   const scaffoldCls = 'triones-antm-scaffold';
   return (
     <div className={classNames(scaffoldCls, className)} style={style}>
       {appBar && <SafeArea position={'top'}>{appBar}</SafeArea>}
       <div className={classNames(`${scaffoldCls}-body`)}>{children}</div>
-      <SafeArea position={'bottom'}>{bottomNavigationBar}</SafeArea>
+      {bottomSafeArea ? <SafeArea position={'bottom'}>{bottomNavigationBar}</SafeArea> : bottomNavigationBar}
     </div>
   );
 };

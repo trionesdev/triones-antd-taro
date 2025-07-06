@@ -22,7 +22,11 @@ $imagePreviewCls: 'triones-antm-image-preview';
   &-content {
     height: 100%;
     width: 100%;
-
+    :global{
+      .triones-antm-image-img{
+        height: auto!important;
+      }
+    }
   }
 
   &-foot {
