@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "44904396",
+      "name": "WalletOutline",
+      "font_class": "WalletOutline",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "44904380",
+      "name": "CustomerSupportOutline",
+      "font_class": "CustomerSupportOutline",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "44904385",
+      "name": "AcceptanceOutline",
+      "font_class": "AcceptanceOutline",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "44904384",
+      "name": "PendingOutline",
+      "font_class": "PendingOutline",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "44904381",
+      "name": "PayPendingOutline",
+      "font_class": "PayPendingOutline",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "44904383",
+      "name": "InProcessOutline",
+      "font_class": "InProcessOutline",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "44904382",
+      "name": "CompletedOutline",
+      "font_class": "CompletedOutline",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "44865280",
+      "name": "RefundOutline",
+      "font_class": "RefundOutline",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "44539186",
       "name": "HomeOutline",
       "font_class": "HomeOutline",
