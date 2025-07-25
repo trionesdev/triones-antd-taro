@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "44966387",
+      "name": "WechatPayCircleFill",
+      "font_class": "WechatPayCircleFill",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "44966385",
+      "name": "WechatPaySquareFill",
+      "font_class": "WechatPaySquareFill",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "44966260",
+      "name": "WechatPayFill",
+      "font_class": "WechatPayFill",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "44966259",
+      "name": "WechatPayOutline",
+      "font_class": "WechatPayOutline",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
       "icon_id": "44904396",
       "name": "WalletOutline",
       "font_class": "WalletOutline",

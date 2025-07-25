@@ -1,3 +1,6 @@
+export * from "./WechatPayCircleFill";
+export * from "./WechatPaySquareFill";
+export * from "./WechatPayFill";
 export * from "./AudioFill";
 export * from "./AlipayCircleFill";
 export * from "./AddressBookFill";

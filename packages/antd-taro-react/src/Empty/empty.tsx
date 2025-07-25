@@ -2,53 +2,9 @@ import * as React from 'react';
 
 
 const Empty: React.FC = () => {
-
+  const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAApCAYAAACFki9MAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABVNJREFUaIHtmk9sFFUcx7+/Nzu7s7PbTUst2IQ2bdk/DQnV0INeIFWJxkTg4EFDkGBAAc8m6EUiCRfUs2lsQD150lAOxIQbiRfFhJo0ndk/ICStf6hs9s/sn868nwdbsNplpzszLRo+p8nue9/5vu+8efPevCFmhl8sLCzopVLpdQB9vomu5vdEIvFVf3+/5Zcg+RXAzMxMTNO0bwHcJaI5X0T/ATOPAniiXq+/NDY2VvVD05cArl+/rnZ1dU0DuJNOp08A8K9brYZM05wEMFAulw+Mj48veRUUfpiKx+OTAOT8/Pw7CK7xAMDpdPoUgHoikbgIgLwKeg7ANM0zRLTLtu3XJiYmbK96LnB0XT8kpRwxTfOMVzFPARiGcQzAG6qqvrJz586KVzNu2b59e42IDhDRIcMwTnnR6ngMME3zZQAXmHkik8kYXkx0Si6X2yGlvMbMJzOZzHQnGh31gFwutxvAF1LKVzer8QCQTCbzAA4S0VQ2m32mE411BzA3NzckpZwmopOjo6PfdXJSP0mn098LIY4x8zf5fD653vrrCmB2dnaLEOIKEZ1PpVJfr/dkQZFMJi8T0YeO41zJ5XLrmoS5HgNmZ2fDoVDoChH9kEqlTnfkNGAMwzhPRM+Gw+EXh4aG6m7quO0BpKrqBQB3U6nU+51bDJZMJnMawK2lpaUv4bJtrgqZpvkJMw8IIY4AkB48Bg3btn2cmbeYpvmRmwptbwHDMM4S0Qkp5adEVGsnKIS4FwqFLg0PD//q0rQrbt68uc227YNSyp52ZZk5KoQ4xcyTmUzmg4eVDbk4915N07ZqmuZq1mXbds2yrHOFQmF8ZGTktps67SgUCoO2bf8Yj8f1UCgUdVOnXq+jVqvtbVfOTQCIRqPo7u52UxQAosViMVQsFs8COOq20sOQUp7r6elJdHd3q27rFItF1GptO6wvi6F/oeu6SkQTfukR0R5d1103fj0EEoCqqmDmfp/0FSllv6oG0v5gAiAiqKraMAzjkFetbDZ7RFXVBpHnle+auBoDOqGvr69rYWFhMp/Pvw2g3ImGlDIhhNjd19en+2zvPoEFEA6HMTAwoNfr9T2drjiJCJqmQYhAOiqAAAMAACEEdD2wi+cLwUX7H6FtAETky2RmM3Dj3U0PKPjgZbNo6/3xLbDZBjabxwFstoHNptU8QFiW9TQzvxCLxQ5vqCMficVih6vVapWIruq6fgNrvMxZ9UKk0WjskFK+xcxHAWwDgFKpBEVR1rMcfiQoFotwHAeJRGLlp1+I6HMhxGeRSOT+00EAQKPRSFuWddlxHJOZT2O58f8znmTm9xzHyVqWNd1oNFIAEKpUKs8LIS4BiK9Vi4jgOM6GOvUDx3HQYgUpAOyXUk5UKpWDQggxhRaNB/5a2zebzaB8Bkaz2UQ4HG75PzN3CSGmBNpsZ0ciEdi2Dcvy7aOMwLEsC47jPDSAZZjK5fJziqJcYuauVqWazSYWFxeh6zpCoUAXkJ5ZuVi9vb3tAigJIQ4QM6PRaCQdx/kYwH60mBs4joNarfbIjweKoiAajUJRlFZFJIBpRVHejUQi+VWPwXq9PiylPA7gTQD9wdvdUOYBXBRCTGmadmvlx1YbI1StVscA7COifQD2AIhtiE3/qAK4xsxXAVyNxWIzWGO8c7s5qixPkp5i5jEAu4holJkHAbjaqAiQGhH9zMwGgBki+kkIcSMSieQBtL1fPX8lVqlUtgohBoloEMAAM/cC6CGiLczcs3zcw8wqgDAe9CQND8KrAVjZza0CaBLREjPfA3CPiP742/EigDvMfFtKeTsej//mxf+fNBMadGdF07wAAAAASUVORK5CYII=";
   return (
-    <svg
-      width="184"
-      height="152"
-      viewBox="0 0 184 152"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>{'暂无数据'}</title>
-      <g fill="none" fillRule="evenodd">
-        <g transform="translate(24 31.67)">
-          <ellipse
-            fillOpacity=".8"
-            fill="#F5F5F7"
-            cx="67.797"
-            cy="106.89"
-            rx="67.797"
-            ry="12.668"
-          />
-          <path
-            d="M122.034 69.674L98.109 40.229c-1.148-1.386-2.826-2.225-4.593-2.225h-51.44c-1.766 0-3.444.839-4.592 2.225L13.56 69.674v15.383h108.475V69.674z"
-            fill="#AEB8C2"
-          />
-          <path
-            d="M101.537 86.214L80.63 61.102c-1.001-1.207-2.507-1.867-4.048-1.867H31.724c-1.54 0-3.047.66-4.048 1.867L6.769 86.214v13.792h94.768V86.214z"
-            fill="url(#linearGradient-1)"
-            transform="translate(13.56)"
-          />
-          <path
-            d="M33.83 0h67.933a4 4 0 0 1 4 4v93.344a4 4 0 0 1-4 4H33.83a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"
-            fill="#F5F5F7"
-          />
-          <path
-            d="M42.678 9.953h50.237a2 2 0 0 1 2 2V36.91a2 2 0 0 1-2 2H42.678a2 2 0 0 1-2-2V11.953a2 2 0 0 1 2-2zM42.94 49.767h49.713a2.262 2.262 0 1 1 0 4.524H42.94a2.262 2.262 0 0 1 0-4.524zM42.94 61.53h49.713a2.262 2.262 0 1 1 0 4.525H42.94a2.262 2.262 0 0 1 0-4.525zM121.813 105.032c-.775 3.071-3.497 5.36-6.735 5.36H20.515c-3.238 0-5.96-2.29-6.734-5.36a7.309 7.309 0 0 1-.222-1.79V69.675h26.318c2.907 0 5.25 2.448 5.25 5.42v.04c0 2.971 2.37 5.37 5.277 5.37h34.785c2.907 0 5.277-2.421 5.277-5.393V75.1c0-2.972 2.343-5.426 5.25-5.426h26.318v33.569c0 .617-.077 1.216-.221 1.789z"
-            fill="#DCE0E6"
-          />
-        </g>
-        <path
-          d="M149.121 33.292l-6.83 2.65a1 1 0 0 1-1.317-1.23l1.937-6.207c-2.589-2.944-4.109-6.534-4.109-10.408C138.802 8.102 148.92 0 161.402 0 173.881 0 184 8.102 184 18.097c0 9.995-10.118 18.097-22.599 18.097-4.528 0-8.744-1.066-12.28-2.902z"
-          fill="#DCE0E6"
-        />
-        <g transform="translate(149.65 15.383)" fill="#FFF">
-          <ellipse cx="20.654" cy="3.167" rx="2.849" ry="2.815" />
-          <path d="M5.698 5.63H0L2.898.704zM9.259.704h4.985V5.63H9.259z" />
-        </g>
-      </g>
-    </svg>
+    <img src={defaultImage} style={{ width: 128, height: 82 }}/>
   );
 };
 
