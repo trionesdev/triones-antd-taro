@@ -1,3 +1,4 @@
+@import "../style/variable";
 $tabsCls: 'triones-antm-tabs';
 
 .#{$tabsCls} {
@@ -41,7 +42,7 @@ $tabsCls: 'triones-antm-tabs';
   &-ink-bar {
     position: absolute;
     bottom: 0;
-    background-color: #1677ff;
+    background-color: $trionesColorPrimary;
     height: 2px;
     //width: 100px;
     &-animated {
@@ -68,7 +69,7 @@ $tabsCls: 'triones-antm-tabs';
     }
 
     &-active {
-      color: #1677ff;
+      color: $trionesColorPrimary;
       &::after{
         content: ' ';
         position: absolute;
@@ -79,7 +80,7 @@ $tabsCls: 'triones-antm-tabs';
         font-size: 0;
         border-radius: 50vh;
         box-sizing: border-box;
-        background-color: var(--tabs-active-decorate-color, #1677ff);
+        background-color: $trionesColorPrimary;
       }
     }
 

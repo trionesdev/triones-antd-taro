@@ -35,12 +35,12 @@ $tagCls: 'triones-antm-tag';
   // Primary variant styles
   &-primary {
     &.#{$tagCls}-solid {
-      background: #1677ff;
+      background: $trionesColorPrimary;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: #1677ff;
-      border: 1px solid #1677ff;
+      color: $trionesColorPrimary;
+      border: 1px solid $trionesColorPrimary;
       background: transparent;
     }
   }
@@ -48,12 +48,12 @@ $tagCls: 'triones-antm-tag';
   // Success variant styles
   &-success {
     &.#{$tagCls}-solid {
-      background: #00b578;
+      background: $trionesColorSuccess;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: #00b578;
-      border: 1px solid #00b578;
+      color: $trionesColorSuccess;
+      border: 1px solid $trionesColorSuccess;
       background: transparent;
     }
   }
@@ -61,12 +61,12 @@ $tagCls: 'triones-antm-tag';
   // Warning variant styles
   &-warning {
     &.#{$tagCls}-solid {
-      background: #ff8f1f;
+      background: $trionesColorWarning;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: #ff8f1f;
-      border: 1px solid #ff8f1f;
+      color: $trionesColorWarning;
+      border: 1px solid $trionesColorWarning;
       background: transparent;
     }
   }
@@ -74,12 +74,12 @@ $tagCls: 'triones-antm-tag';
   // Danger variant styles
   &-danger {
     &.#{$tagCls}-solid {
-      background: #ff3141;
+      background: $trionesColorError;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: #ff3141;
-      border: 1px solid #ff3141;
+      color: $trionesColorError;
+      border: 1px solid $trionesColorError;
       background: transparent;
     }
   }
