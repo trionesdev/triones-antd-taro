@@ -35,7 +35,9 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, m
         if (minMatch) {
           return
         }
-        setInternalValue(internalValue - (step || 1));
+        const newValue = internalValue - (step || 1);
+        setInternalValue(newValue);
+        onChange?.(newValue);
       }}>
       <MinusOutline/>
     </div>
@@ -52,7 +54,9 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, m
         if (maxMatch) {
           return
         }
-        setInternalValue(internalValue + (step || 1));
+        const newVal = internalValue + (step || 1);
+        setInternalValue(newVal);
+        onChange?.(newVal)
       }}>
       <AddOutline/>
     </div>

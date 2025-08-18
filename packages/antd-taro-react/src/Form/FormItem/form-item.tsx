@@ -5,6 +5,7 @@ import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
 import {useFormContext} from "../hooks/useFormContext";
 import {FormItemLayout, FormLayoutAlign} from "../form";
+import {Field} from "rc-field-form";
 
 export type FormItemProps = {
   className?: string;
@@ -16,7 +17,10 @@ export type FormItemProps = {
   labelWidth?: number
   name?: NamePath;
   required?: boolean
+  hidden?: boolean
+  noStyle?: boolean
   rules?: Rule[]
+  initialValue?: any
   errorRender?: (errors?: any[]) => React.ReactNode;
 }
 
@@ -30,19 +34,36 @@ export const FormItem: FC<FormItemProps> = ({
                                               labelWidth,
                                               name,
                                               required,
+                                              hidden = false,
+                                              noStyle = false,
                                               rules,
+                                              initialValue,
                                               errorRender,
                                               ...props
                                             }) => {
-  const {layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth,hiddenError} = useFormContext()
+  const {layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError} = useFormContext()
   const formItemLayout = layout ? layout : (formLayout === 'inline' ? 'horizontal' : formLayout)
   const formItemAlign = labelAlign ? labelAlign : formLayoutAlign || 'left'
   const formItemLabelWidth = labelWidth ? labelWidth : formLabelWidth
   const clsPrefix = "triones-antm-form-item"
-  return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className)} style={style}>
+
+  if (noStyle) {
+    return <Field
+      name={name}
+      rules={rules}
+      trigger={'onChange'}
+      initialValue={initialValue}
+    >
+      {children}
+    </Field>
+  }
+
+  return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className, {
+    [`${clsPrefix}-hidden`]: hidden
+  })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
                              style={{width: formItemLabelWidth}} label={label} required={required}/>}
     <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}
-                   errorRender={errorRender} hiddenError={hiddenError}>{children}</FormItemInput>
+                   errorRender={errorRender} initialValue={initialValue} hiddenError={hiddenError}>{children}</FormItemInput>
   </div>
 }

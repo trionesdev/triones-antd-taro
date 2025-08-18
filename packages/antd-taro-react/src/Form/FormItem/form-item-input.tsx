@@ -9,6 +9,7 @@ type FormItemInputProps = {
   className?: string;
   name?: string;
   rules?: Rule[];
+  initialValue?:any,
   errors?: React.ReactNode[];
   errorRender?: (errors?: any[]) => React.ReactNode;
   hiddenError?: boolean;
@@ -19,6 +20,7 @@ export const FormItemInput: FC<FormItemInputProps> = ({
   className,
   name,
   rules,
+  initialValue,
   errorRender,
   hiddenError,
 }) => {
@@ -35,6 +37,7 @@ export const FormItemInput: FC<FormItemInputProps> = ({
           onMetaChange={(meta) => {
             setMeta(meta);
           }}
+          initialValue={initialValue}
         >
           {children}
         </Field>

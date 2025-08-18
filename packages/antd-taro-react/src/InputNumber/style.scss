@@ -5,6 +5,8 @@ $trionesInputNumberCls: 'triones-antm-input-number';
   display: inline-flex;
   align-items: center;
   gap: 4Px;
+  border-radius: $trionesBorderRadius;
+  background-color: $trionesColorTextQuaternary;
 
   input {
     &::-webkit-outer-spin-button,
@@ -24,9 +26,18 @@ $trionesInputNumberCls: 'triones-antm-input-number';
 
   &-button {
     cursor: pointer;
+    display: flex;
+    font-size: 10Px;
+    height: 20Px;
+    width: 20Px;
+    justify-content: center;
+    align-items: center;
     &-disabled{
       cursor: not-allowed;
       color: $trionesColorTextDisabled;
+    }
+    .triones-antm-icon{
+      font-size: 10Px!important;
     }
   }
 }
