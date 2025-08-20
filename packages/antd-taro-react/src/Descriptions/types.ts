@@ -78,6 +78,7 @@ export type DescriptionItemProps = PropsWithChildren<{
    * @default false
    */
   colon?: boolean;
+  hidden?: boolean;
 }>;
 
 export type DescriptionItemLabelProps = PropsWithChildren<{

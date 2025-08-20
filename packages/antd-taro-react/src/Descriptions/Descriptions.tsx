@@ -46,7 +46,7 @@ export const Descriptions: FC<PropsWithChildren<DescriptionsProps>> = ({
       label?: React.ReactElement;
       children: React.ReactElement;
     }[][] = [[]];
-    items.forEach((item, index) => {
+    items?.filter(item => item.hidden !== true)?.forEach((item, index) => {
       const span = (item.span ?? 1) > columns ? columns : (item.span ?? 1);
       const rowElements = elements[elements.length - 1];
       const countSpan = rowElements
