@@ -16,7 +16,7 @@ export default defineConfig({
     entryFile: './src/index.tsx',
   },
   define: {
-    // 'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
+    'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
   },
   themeConfig:{
     name: 'Antd Taro',
