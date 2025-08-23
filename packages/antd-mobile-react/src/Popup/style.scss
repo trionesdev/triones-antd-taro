@@ -1,0 +1,53 @@
+@import "../style/variable";
+$popupCls: 'triones-antm-popup';
+
+.#{$popupCls} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &-mask {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .55);
+  }
+
+  &-close {
+    position: absolute;
+    right: 10Px;
+    top: 10Px;
+  }
+
+  &-body {
+    background-color: white;
+    position: fixed;
+    border-top-left-radius: $trionesBorderRadius;
+    border-top-right-radius: $trionesBorderRadius;
+  }
+
+  &-top {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &-left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}

@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
-import {AddOutline, CloseOutline} from "@trionesdev/antd-taro-icons-react";
+import {AddOutline, CloseOutline} from "../../../antd-mobile-icons-react";
 import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {useTaro} from "../hooks/useTaro";

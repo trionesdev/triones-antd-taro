@@ -1,5 +1,5 @@
 import React from 'react'
-import { CloseOutline, MoreOutline } from '@trionesdev/antd-taro-icons-react'
+import { CloseOutline, MoreOutline } from '../../../../antd-mobile-icons-react'
 
 import './base.scss'
 import { DemoBlock } from '../../DemoBlock';

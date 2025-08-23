@@ -1,7 +1,7 @@
 
 import {View} from "@tarojs/components";
 import {Avatar} from "@trionesdev/antd-taro-react";
-import {AntOutline} from "@trionesdev/antd-taro-icons-react";
+import {AntOutline} from "packages/antd-mobile-icons-react";
 import {DemoBlock} from "../../components";
 
 const url =

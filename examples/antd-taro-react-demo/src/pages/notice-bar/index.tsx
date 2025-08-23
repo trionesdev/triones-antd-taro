@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import { DemoBlock } from "../../components";
 import { NoticeBar, Space } from "@trionesdev/antd-taro-react";
-import { CloseCircleOutline, SetOutline } from "@trionesdev/antd-taro-icons-react";
+import { CloseCircleOutline, SetOutline } from "packages/antd-mobile-icons-react";
 
 const TabBarBase = () => {
   return <View>

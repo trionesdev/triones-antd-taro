@@ -1,0 +1,138 @@
+@import "../style/variable";
+
+$checkboxDisabledColor: rgba(0, 0, 0, 0.25) !default;
+
+$class-prefix-radio: 'triones-antm-radio';
+
+.#{$class-prefix-radio}-wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8Px;
+
+  .#{$class-prefix-radio} {
+    &-fake {
+      width: 22PX;
+      height: 22PX;
+
+      .triones-antm-icon {
+        position: absolute;
+      }
+
+      &-checked {
+        height: 100%;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $trionesColorPrimary;
+        color: white;
+        border-radius: 50vh;
+        box-sizing: border-box;
+        overflow: hidden;
+
+      }
+
+      &-unchecked {
+        height: 100%;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50vh;
+        border: 1PX solid $trionesBorderColor;
+        box-sizing: border-box;
+      }
+
+    }
+
+
+
+    &-label {
+      flex: 1 auto;
+    }
+  }
+
+  &.#{$class-prefix-radio} {
+    &-disabled {
+      color: $checkboxDisabledColor;
+      pointer-events: none;
+
+      .#{$class-prefix-radio}-fake-checked {
+        background-color: $checkboxDisabledColor;
+      }
+    }
+    &-block {
+      width: 100%;
+    }
+  }
+
+}
+
+
+.#{$class-prefix-radio}-group {
+  display: flex;
+  gap: 8Px;
+  &-horizontal{
+    flex-direction: row;
+  }
+  &-vertical{
+    flex-direction: column;
+  }
+}
+
+.#{$class-prefix-radio}-button-group {
+  display: flex;
+}
+
+.#{$class-prefix-radio}-button-wrapper {
+  display: inline-flex;
+  position: relative;
+  border-top: 1PX solid $trionesBorderColor;
+  border-bottom: 1PX solid $trionesBorderColor;
+  border-right: 1PX solid $trionesBorderColor;
+
+  &:first-child {
+    border-left: 1PX solid $trionesBorderColor;
+    border-top-left-radius: $trionesBorderRadius;
+    border-bottom-left-radius: $trionesBorderRadius;
+  }
+
+  &:last-child {
+    border-right: 1PX solid $trionesBorderColor;
+    border-top-right-radius: $trionesBorderRadius;
+    border-bottom-right-radius: $trionesBorderRadius;
+  }
+
+  &-checked {
+    border-top: 1PX solid $trionesColorPrimary;
+    border-bottom: 1PX solid $trionesColorPrimary;
+    color: $trionesColorPrimary;
+
+    &:first-child {
+      border: 1PX solid $trionesColorPrimary;
+    }
+
+    &:not(:first-child) {
+      &::before {
+        content: " ";
+        width: 1PX;
+        background-color: $trionesColorPrimary;
+        position: absolute;
+        inset-block-start: -1Px;
+        inset-inline-start: -1Px;
+        height: 100%;
+        padding-block: 1Px;
+      }
+
+      border-right: 1PX solid $trionesColorPrimary;
+    }
+  }
+
+  .#{$class-prefix-radio}-button {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 8Px 12Px;
+
+  }
+}

@@ -1,0 +1,45 @@
+$cls-prefix-form: 'triones-antm-form';
+$cls-prefix-form-item: 'triones-antm-form-item';
+
+.#{$cls-prefix-form}{
+
+}
+
+.#{$cls-prefix-form-item}{
+  &-label{
+    font-size: 14Px;
+    //line-height: 1.5;
+    color: #6F6F6F;
+    &-left{}
+    &-right{
+      text-align: right;
+    }
+    &-required-mark{
+      display: inline-block;
+      color: red;
+      margin-right: 4Px;
+    }
+  }
+  &-input{
+    .#{$cls-prefix-form-item}{
+      &-error{
+        font-size: 12Px;
+        color: red;
+      }
+    }
+  }
+  &-horizontal{
+    display: flex;
+    .#{$cls-prefix-form-item}{
+      &-label{
+        padding: 4Px;
+      }
+      &-input{
+        flex: auto 1;
+      }
+    }
+  }
+  &-hidden{
+    display: none;
+  }
+}

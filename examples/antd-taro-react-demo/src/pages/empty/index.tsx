@@ -2,7 +2,7 @@
 import { View } from "@tarojs/components";
 import { Empty } from "@trionesdev/antd-taro-react";
 import { DemoBlock } from "../../components";
-import { QuestionCircleOutline } from "@trionesdev/antd-taro-icons-react";
+import { QuestionCircleOutline } from "packages/antd-mobile-icons-react";
 import {useEffect, useRef} from "react";
 import Taro from "@tarojs/taro";
 

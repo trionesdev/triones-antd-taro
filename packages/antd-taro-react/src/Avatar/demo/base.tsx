@@ -5,7 +5,7 @@ import React from 'react';
 import { DemoBlock } from '../../DemoBlock';
 
 import './style.scss'
-import { AntOutline } from '@trionesdev/antd-taro-icons-react';
+import { AntOutline } from '../../../../antd-mobile-icons-react';
 import Avatar from "../index";
 import {Space} from "@trionesdev/antd-taro-react";
 

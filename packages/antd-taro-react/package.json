@@ -70,7 +70,7 @@
     "@tarojs/extend": "4.1.3",
     "@tarojs/react": "4.1.3",
     "@tarojs/taro": "4.1.3",
-    "@trionesdev/antd-taro-icons-react": "workspace:*",
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
@@ -103,7 +103,7 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-taro-icons-react": "workspace:*"
+    "@trionesdev/antd-mobile-icons-react": "workspace:*"
   },
   "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
 }
