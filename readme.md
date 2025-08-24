@@ -10,6 +10,12 @@
 由于Taro中，有些组件必须依赖Taro提供的基础组件。所以，我们先创建一个基础的Mobile组件库，然后，创建一个Taro的Antd组件库，
 用于对必须依赖Taro的组件进行适配。
 
+## 模块说明
+- [Antd 图标组件库 react版本](packages/antd-mobile-icons-react)
+- [Antd 基础组件库 react版本](packages/antd-mobile-base-react)
+- [Antd 移动组件库(H5) react版本](packages/antd-mobile-react) 如果开发H5，引入此依赖
+- [Antd 移动组件库(Taro) react版本](packages/antd-taro-react) 开发Taro项目，引入此依赖
+
 ## 组件列表
 - 通用
   - [x] Button 按钮
