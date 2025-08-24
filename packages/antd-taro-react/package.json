@@ -24,8 +24,6 @@
   },
   "peerDependencies": {
     "@tarojs/components": "^4.1.3",
-    "@tarojs/extend": "^4.1.3",
-    "@tarojs/plugin-platform-weapp": "^4.1.3",
     "@tarojs/react": "^4.1.3",
     "@tarojs/taro": "^4.1.3",
     "classnames": "^2.5.1",
@@ -34,7 +32,6 @@
   },
   "devDependencies": {
     "@tarojs/components": "4.1.3",
-    "@tarojs/extend": "4.1.3",
     "@tarojs/react": "4.1.3",
     "@tarojs/taro": "4.1.3",
     "@trionesdev/antd-mobile-icons-react": "workspace:*",
