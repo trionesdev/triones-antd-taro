@@ -1,4 +1,4 @@
-import {Swiper,SwiperProps } from "@trionesdev/antd-mobile-react"
+import {Swiper,SwiperProps } from "@trionesdev/antd-mobile-base-react"
 
 export type {SwiperProps}
 export default Swiper

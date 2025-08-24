@@ -1,4 +1,4 @@
-import {Alert, AlertProps} from "@trionesdev/antd-mobile-react"
+import {Alert, AlertProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {
   AlertProps

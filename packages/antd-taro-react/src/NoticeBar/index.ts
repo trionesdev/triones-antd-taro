@@ -1,4 +1,4 @@
-import { NoticeBar,NoticeBarProps } from '@trionesdev/antd-mobile-react'
+import { NoticeBar,NoticeBarProps } from '@trionesdev/antd-mobile-base-react'
 
 export type { NoticeBarProps }
 

@@ -1,6 +1,7 @@
 import './style';
 
 export {default as ActionSheet} from "./ActionSheet"
+export type {ActionSheetProps} from "./ActionSheet"
 
 export {default as Alert} from './Alert';
 export type {AlertProps} from './Alert';
@@ -60,7 +61,7 @@ export {default as Grid} from './Grid';
 export type {GridProps,GridItemProps} from './Grid';
 
 export {default as Image} from './Image';
-export {ImageProps} from "./Image"
+export type {ImageProps} from "./Image"
 
 export {default as ImagesPreview} from './ImagesPreview';
 export type {ImagePreviewProps} from './ImagesPreview';

@@ -62,6 +62,7 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@trionesdev/antd-mobile-icons-react": "workspace:*",
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
@@ -85,6 +86,7 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
     "@types/uuid": "^10.0.0",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",
@@ -93,7 +95,8 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "workspace:*"
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
+    "@trionesdev/antd-mobile-base-react": "workspace:*"
   },
   "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
 }

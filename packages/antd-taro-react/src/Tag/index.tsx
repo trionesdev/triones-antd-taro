@@ -1,4 +1,4 @@
-import {Tag, TagProps} from "@trionesdev/antd-mobile-react"
+import {Tag, TagProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {
   TagProps

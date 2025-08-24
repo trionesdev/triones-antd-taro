@@ -2,7 +2,7 @@ import {
   Button as TaroButton,
   ButtonProps as TaroButtonProps,
 } from '@tarojs/components';
-import {ButtonProps as MobileButtonProps} from "@trionesdev/antd-mobile-react/dist/Button"
+import {ButtonProps as MobileButtonProps} from "@trionesdev/antd-mobile-base-react/dist/Button"
 import classNames from 'classnames';
 import React, {FC, MouseEventHandler, PropsWithChildren} from 'react';
 import './style.scss';

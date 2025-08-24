@@ -1,4 +1,4 @@
-import {SafeArea, SafeAreaProps} from '@trionesdev/antd-mobile-react';
+import {SafeArea, SafeAreaProps} from '@trionesdev/antd-mobile-base-react';
 
 
 export type {SafeAreaProps};

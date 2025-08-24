@@ -1,4 +1,4 @@
-import { Image } from '@trionesdev/antd-mobile-react';
-export type { ImageProps } from '@trionesdev/antd-mobile-react';
+import { Image,ImageProps } from '@trionesdev/antd-mobile-base-react';
 
+export type { ImageProps };
 export default Image;

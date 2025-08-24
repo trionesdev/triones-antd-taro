@@ -1,0 +1,16 @@
+$avatarCls: 'triones-antm-avatar';
+
+.#{$avatarCls} {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &-circle {
+    border-radius: 50%;
+  }
+
+  &-shape-square {
+    border-radius: 6Px;
+  }
+}

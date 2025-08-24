@@ -1,4 +1,4 @@
-import {Form,FormProps,FormItemProps} from "@trionesdev/antd-mobile-react";
+import {Form,FormProps,FormItemProps} from "@trionesdev/antd-mobile-base-react";
 
 export type {
   FormProps,

@@ -1,4 +1,4 @@
-import {Grid,GridProps, GridItemProps} from '@trionesdev/antd-mobile-react'
+import {Grid,GridProps, GridItemProps} from '@trionesdev/antd-mobile-base-react'
 
 export type {GridProps, GridItemProps};
 

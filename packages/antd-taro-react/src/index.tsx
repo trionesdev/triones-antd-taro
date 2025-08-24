@@ -122,8 +122,8 @@ export type {TabBarProps} from './TabBar';
 export {default as Tag} from './Tag';
 export type {TagProps} from './Tag';
 
-export {default as Toast} from './Toast';
-export type {ToastProps} from './Toast';
+// export {default as Toast} from './Toast';
+// export type {ToastProps} from './Toast';
 
 export {default as VerificationCodeInput} from './VerificationCodeInput';
 

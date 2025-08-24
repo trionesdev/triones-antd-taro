@@ -1,0 +1,36 @@
+@import "../style/variable";
+
+$trionesTabBarActiveColor: $trionesColorPrimary !default;
+
+$tabBarCls: 'triones-tab-bar';
+.#{$tabBarCls} {
+  box-sizing: border-box;
+  padding-top: 4Px;
+  &-wrap {
+    display: flex;
+    background-color: #ffffff;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4Px;
+    cursor: default;
+    flex: 1 auto;
+
+    &-active {
+      color: $trionesTabBarActiveColor;
+    }
+
+    &-icon {
+      flex-grow: 1;
+    }
+
+    &-label {
+      font-size: 12Px;
+    }
+  }
+}

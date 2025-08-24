@@ -1,4 +1,4 @@
-import { Cell   } from '@trionesdev/antd-mobile-react';
+import { Cell   } from '@trionesdev/antd-mobile-base-react';
 
 
 export default Cell;

@@ -11,7 +11,7 @@ type ActionSheetActionItemType = {
   onClick?: () => void;
 }
 
-type ActionSheetProps = {
+export type ActionSheetProps = {
   className?: string;
   style?: React.CSSProperties;
   open?: boolean;

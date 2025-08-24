@@ -1,4 +1,4 @@
-import {CascaderView,CascaderViewProps} from "@trionesdev/antd-mobile-react"
+import {CascaderView,CascaderViewProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {
   CascaderViewProps,

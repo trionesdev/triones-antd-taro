@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2017",
     "strict": true,
     "declaration": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "moduleResolution": "nodenext",
-    "module": "nodenext",
     "jsx": "react",
     "baseUrl": "./",
+    "lib": ["es2016", "dom"],
+//    "module": "ESNext",
+//    "moduleResolution": "bundler",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@trionesdev/antd-taro-react": ["src"],

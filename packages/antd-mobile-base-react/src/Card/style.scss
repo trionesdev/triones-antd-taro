@@ -1,0 +1,35 @@
+@import "../style/variable";
+$class-prefix-card: 'triones-antm-card';
+
+.#{$class-prefix-card} {
+  background: $trionesColorBgBase;
+  border-radius: $trionesBorderRadius;
+  //padding: $trionesPadding $trionesPadding;
+  &-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8Px;
+    box-sizing: border-box;
+    padding: $trionesPaddingXs $trionesPaddingXs;
+    &:not(:last-child) {
+      border-bottom: solid 0.5Px $trionesBorderColor;
+    }
+    &-title {
+      font-size: $trionesFontSize;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+  }
+  &-body {
+    padding: $trionesPaddingXs $trionesPaddingXs;
+  }
+  &-footer {
+    padding: $trionesPaddingXs $trionesPaddingXs;
+  }
+  &-footer {
+    border-top: solid 0.5Px $trionesBorderColor;
+    padding: $trionesPaddingXs $trionesPaddingXs;
+  }
+}

@@ -1,4 +1,4 @@
-import {CascaderPicker,CascaderPickerProps} from "@trionesdev/antd-mobile-react"
+import {CascaderPicker,CascaderPickerProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {
   CascaderPickerProps

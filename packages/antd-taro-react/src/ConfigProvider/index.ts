@@ -1,11 +1,11 @@
-import { ConfigProvider } from '@trionesdev/antd-mobile-react'
+import { ConfigProvider } from '@trionesdev/antd-mobile-base-react'
 
-export type { ConfigProviderProps } from '@trionesdev/antd-mobile-react'
+export type { ConfigProviderProps } from '@trionesdev/antd-mobile-base-react'
 
 export {
   useConfig,
   setDefaultConfig,
   getDefaultConfig,
-} from '@trionesdev/antd-mobile-react'
+} from '@trionesdev/antd-mobile-base-react'
 
 export default ConfigProvider

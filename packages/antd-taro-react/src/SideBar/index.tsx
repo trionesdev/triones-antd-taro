@@ -1,4 +1,4 @@
-import {SideBar,SideBarProps} from "@trionesdev/antd-mobile-react"
+import {SideBar,SideBarProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {SideBarProps}
 

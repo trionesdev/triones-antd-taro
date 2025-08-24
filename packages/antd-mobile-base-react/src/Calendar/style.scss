@@ -1,0 +1,85 @@
+@import "../style/variable";
+
+$calendarCls: 'triones-antm-calendar';
+
+.#{$calendarCls}-grid {
+  //display: flex;
+  //flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.#{$calendarCls}-cell {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $trionesBorderRadius;
+  cursor: default;
+  flex-direction: column;
+
+  &-date {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-mouth {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 8Px;
+  }
+
+  &.#{$calendarCls}-cell {
+    &-disabled {
+      color: #999999;
+    }
+
+    &-selected {
+      background-color: $trionesColorPrimary;
+      color: white;
+    }
+
+    &-selected-range {
+      border-radius: 0;
+      background-color: $trionesColorPrimaryBg;
+      color: black;
+    }
+  }
+}
+
+.#{$calendarCls} {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      font-size: 16Px;
+      padding: 8Px;
+      text-align: center;
+    }
+
+    &-button {
+      padding-left: 12Px;
+      padding-right: 12Px;
+      cursor: pointer;
+    }
+  }
+
+  &-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    &-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8Px;
+      padding-bottom: 8Px;
+    }
+  }
+}

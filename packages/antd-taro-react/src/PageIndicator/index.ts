@@ -1,4 +1,4 @@
-import { PageIndicator ,PageIndicatorProps} from '@trionesdev/antd-mobile-react'
+import { PageIndicator ,PageIndicatorProps} from '@trionesdev/antd-mobile-base-react'
 
 export type { PageIndicatorProps }
 
