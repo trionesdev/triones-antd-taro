@@ -1,3 +1,4 @@
-import { Rate } from "./rate"
+import { Rate,RateProps } from "./rate"
 
+export type { RateProps };
 export default Rate;

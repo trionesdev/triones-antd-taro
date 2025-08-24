@@ -4,7 +4,7 @@ import {SwiperCore, SwiperCoreProps} from './SwiperCore';
 
 const cls = 'triones-antm-swiper';
 
-type SwiperProps = SwiperCoreProps & {
+export type SwiperProps = SwiperCoreProps & {
   /**
    * @description 是否显示指示器
    * @default true

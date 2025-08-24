@@ -46,6 +46,7 @@ export const Popup: FC<PropsWithChildren<PopupProps>> = memo(
       if (open && !renderEnable) {
         setRenderEnable(true);
       }
+      // rest.afterOpenChange?.(open);
     }, [open]);
 
     return (

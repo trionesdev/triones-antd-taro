@@ -5,7 +5,7 @@ import { NativeProps, withNativeProps } from '../utils/native-props';
 import { mergeProps } from '../utils/with-default-props';
 import './style.scss';
 
-type RateProps = {
+export type RateProps = {
   /**
    * 评分值
    */

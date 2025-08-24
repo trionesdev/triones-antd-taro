@@ -136,9 +136,8 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   return (
     <Popup
       open={innerOpen}
-      afterOpenChange={(o) => {
-        setInnerOpen(o);
-        // afterOpenChange?.(o);
+      onClose={() => {
+        setInnerOpen(false);
       }}
     >
       <div className={classNames(cls)}>

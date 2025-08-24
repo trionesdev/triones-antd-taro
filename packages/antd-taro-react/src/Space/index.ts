@@ -1,5 +1,4 @@
-import { Space } from './space'
+import { Space,SpaceProps } from '@trionesdev/antd-mobile-react'
 
-export type { SpaceProps } from './space'
-
+export type { SpaceProps }
 export default Space

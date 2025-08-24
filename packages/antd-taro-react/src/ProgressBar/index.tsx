@@ -1,2 +1,3 @@
-import { ProgressBar } from './progress-bar'; 
+import { ProgressBar,ProgressBarProps } from '@trionesdev/antd-mobile-react';
+export type { ProgressBarProps };
 export default ProgressBar;

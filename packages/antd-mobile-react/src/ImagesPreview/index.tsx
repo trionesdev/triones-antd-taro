@@ -1,3 +1,3 @@
-import {ImagesPreview} from './ImagesPreview';
-
+import {ImagesPreview,ImagePreviewProps} from './ImagesPreview';
+export type {ImagePreviewProps};
 export default ImagesPreview;

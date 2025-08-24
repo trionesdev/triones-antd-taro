@@ -11,7 +11,7 @@ const cascaderViewCls = 'triones-antm-cascader-view';
 export type CascaderViewProps = {
   className?: string;
   style?: CSSProperties;
-  open?: boolean;
+  // open?: boolean;
   options?: any[];
   labelInValue?: boolean;
   fieldNames?: {
@@ -29,7 +29,7 @@ export const CascaderView: FC<CascaderViewProps> = memo(
   ({
     className,
     style,
-    open,
+    // open,
     options,
     fieldNames,
     labelInValue,
@@ -39,7 +39,6 @@ export const CascaderView: FC<CascaderViewProps> = memo(
     asyncRequest,
   }) => {
     const internalFieldNames = Object.assign(
-      {},
       {
         value: 'value',
         label: 'label',
@@ -138,14 +137,11 @@ export const CascaderView: FC<CascaderViewProps> = memo(
     };
 
     useEffect(() => {
-      if (open) {
-        handleGenerateColumnsByValues(internalValue).then((_columns) => {
-          console.log('_columns', _columns);
-          setColumns(_columns);
-          setActiveKey(`${_columns.length - 1}`);
-        });
-      }
-    }, [options, open]);
+      handleGenerateColumnsByValues(internalValue).then((_columns) => {
+        setColumns(_columns);
+        setActiveKey(`${_columns.length - 1}`);
+      });
+    }, [options]);
 
     useEffect(() => {
       if (value === undefined) {

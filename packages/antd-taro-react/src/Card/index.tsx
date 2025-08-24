@@ -1,5 +1,4 @@
-import { Card } from './card';
-import './style.scss';
-export type { CardProps } from './card';
+import { Card } from '@trionesdev/antd-mobile-react';
+export type { CardProps,GridItemProps } from '@trionesdev/antd-mobile-react';
 
 export default Card;

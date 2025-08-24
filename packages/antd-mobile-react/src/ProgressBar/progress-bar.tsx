@@ -4,7 +4,7 @@ import { NativeProps, withNativeProps } from '../utils/native-props';
 import { mergeProps } from '../utils/with-default-props';
 import './style.scss';
 
-type ProgressBarProps = {
+ export type ProgressBarProps = {
   /**
    * 进度百分比
    */

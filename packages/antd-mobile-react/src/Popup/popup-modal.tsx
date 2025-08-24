@@ -1,12 +1,6 @@
-import { CloseOutline } from '../../../antd-mobile-icons-react';
+import {CloseOutline} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
-import React, {
-  CSSProperties,
-  FC,
-  memo,
-  PropsWithChildren,
-  useMemo,
-} from 'react';
+import React, {CSSProperties, FC, memo, PropsWithChildren, useMemo,} from 'react';
 import SafeArea from '../SafeArea';
 import './style.scss';
 
@@ -60,11 +54,6 @@ export type PopupModalProps = {
    */
   zIndex?: number;
   onClose?: () => void;
-  /**
-   * @description 打开和关闭 Modal 时动画结束后的回调
-   * @default
-   */
-  afterOpenChange?: (open: boolean) => void;
   onDestroy?: () => void;
 };
 
@@ -81,7 +70,6 @@ export const PopupModal: FC<PropsWithChildren<PopupModalProps>> = memo(
     destroyOnClose = false,
     zIndex = 1000,
     onClose,
-    afterOpenChange,
     onDestroy,
   }) => {
     const safeAreaPosition = useMemo(() => {

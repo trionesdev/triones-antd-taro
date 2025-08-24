@@ -1,5 +1,4 @@
-import { NavBar } from './nav-bar'
+import { NavBar,NavBarProps } from '@trionesdev/antd-mobile-react'
 
-export type { NavBarProps } from './nav-bar'
-
+export type { NavBarProps }
 export default NavBar

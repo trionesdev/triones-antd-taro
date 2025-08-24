@@ -1,6 +1,4 @@
-import { Image } from './image';
-import './style.scss';
-
-export type { ImageProps } from './image';
+import { Image } from '@trionesdev/antd-mobile-react';
+export type { ImageProps } from '@trionesdev/antd-mobile-react';
 
 export default Image;

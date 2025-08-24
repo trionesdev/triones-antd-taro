@@ -113,7 +113,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
           </div>
           <div className={classNames(`${cascaderPickerCls}-body`)}>
             <CascaderView
-              open={ open}
+              // open={ open}
               fieldNames={fieldNames}
               options={options}
               labelInValue={labelInValue}

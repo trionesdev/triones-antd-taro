@@ -53,8 +53,8 @@ export const CalendarPicker: FC<CalendarPickerProps> = memo(
     return (
       <Popup
         open={innerOpen}
-        afterOpenChange={(o) => {
-          setInnerOpen(o);
+        onClose={() => {
+          setInnerOpen(false);
         }}
       >
         <div className={classNames(`${cls}`)}>

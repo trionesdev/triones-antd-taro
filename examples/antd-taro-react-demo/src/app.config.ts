@@ -1,6 +1,7 @@
 export default defineAppConfig({
   pages: [
     "pages/index/index",
+    "pages/alert/index",
     "pages/avatar/index",
     "pages/button/index",
     "pages/calendar/index",

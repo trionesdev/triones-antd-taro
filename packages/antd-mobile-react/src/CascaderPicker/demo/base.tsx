@@ -73,11 +73,12 @@ export default () => {
   ]
   return <>
     <DemoBlock title={`基本使用`}>
-      <CascaderPicker open={open} afterOpenChange={(o) => {
-        setOpen(o);
-      }} options={options} onOk={(value) => {
+      <CascaderPicker open={open}
+                      options={options} onOk={(value) => {
         console.log(value);
-      }} style={{height: 300}}/>
+      }} style={{height: 300}} onClose={() => {
+        setOpen(false)
+      }}/>
       <Button block={true} onClick={() => {
         setOpen(true);
       }}>

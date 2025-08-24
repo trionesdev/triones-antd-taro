@@ -6,7 +6,7 @@ import { PickerColumnOption} from "./types";
 import "./style.scss"
 
 const pickerViewCls = "triones-antm-picker-view";
-type PickerViewProps = {
+export type PickerViewProps = {
   className?: string
   style?: React.CSSProperties
   columns?: PickerColumnOption[][]

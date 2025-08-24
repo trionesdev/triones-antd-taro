@@ -1,3 +1,4 @@
-import {ImagesWall} from "./ImagesWall"
+import {ImagesWall,ImagesWallProps,ImagesWallItemProps} from "./ImagesWall"
 
+export type {ImagesWallProps,ImagesWallItemProps}
 export default ImagesWall

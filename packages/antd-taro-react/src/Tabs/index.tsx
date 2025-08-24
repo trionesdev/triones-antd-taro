@@ -1,15 +1,4 @@
-import {Tabs as InternalTabs,TabsProps} from "./tabs"
-import {Tab} from "./tab";
+import {Tabs,TabsProps} from "@trionesdev/antd-mobile-react"
 
-type InternalTabsType = typeof InternalTabs
-type CompoundedComponent = InternalTabsType & {
-  Tab: typeof Tab
-}
-
-
-export type {
-  TabsProps
-}
-const Tabs = InternalTabs as CompoundedComponent
-Tabs.Tab = Tab
+export type {TabsProps}
 export default Tabs;

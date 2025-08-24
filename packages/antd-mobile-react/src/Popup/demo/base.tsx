@@ -18,9 +18,13 @@ export default () => {
   return (
     <>
       <DemoBlock title="基础用法">
-        <Popup open={topOpen} destroyOnClose={true} afterOpenChange={(o) => {
-          setTopOpen(o);
-        }}>
+        <Popup open={topOpen}
+               destroyOnClose={true}
+               onClose={() => {
+                 setTopOpen(false);
+               }}
+
+               maskClosable={true}>
           <div style={{minHeight: "200px"}}>
             顶部弹出
           </div>
@@ -29,8 +33,8 @@ export default () => {
           setTopOpen(true)
         }}>顶部弹出</Button>
 
-        <Popup open={bottomOpen} position={`bottom`} closable={true} afterOpenChange={(o) => {
-          setBottomOpen(o);
+        <Popup open={bottomOpen} position={`bottom`} closable={true} onClose={() => {
+          setBottomOpen(false);
         }}>
           <div style={{minHeight: "200px"}}>
             底部弹出
@@ -38,11 +42,14 @@ export default () => {
         </Popup>
         <Button block={true} onClick={() => {
           setBottomOpen(true)
-        }}>底部弹出</Button>
+        }}
+        >底部弹出</Button>
 
-        <Popup open={leftOpen} position={`left`} afterOpenChange={(o) => {
-          setLeftOpen(o);
-        }}>
+        <Popup open={leftOpen} position={`left`}
+               onClose={() => {
+                 setLeftOpen(false);
+               }}
+        >
           <div style={{minWidth: "200px"}}>
             左部弹出
           </div>
@@ -50,8 +57,8 @@ export default () => {
         <Button block={true} onClick={() => {
           setLeftOpen(true)
         }}>左部弹出</Button>
-        <Popup open={rightOpen} position={`right`} afterOpenChange={(o) => {
-          setRightOpen(o);
+        <Popup open={rightOpen} position={`right`} onClose={() => {
+          setRightOpen(false);
         }}>
           <div style={{minWidth: "200px"}}>
             右部弹出
@@ -59,7 +66,8 @@ export default () => {
         </Popup>
         <Button block={true} onClick={() => {
           setRightOpen(true)
-        }}>右部弹出</Button>
+        }}
+        >右部弹出</Button>
       </DemoBlock>
     </>
   );

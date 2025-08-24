@@ -5,7 +5,7 @@ import {
 import {ButtonProps as MobileButtonProps} from "@trionesdev/antd-mobile-react/dist/Button"
 import classNames from 'classnames';
 import React, {FC, MouseEventHandler, PropsWithChildren} from 'react';
-import '@trionesdev/antd-mobile-react/dist/Button/style.scss';
+import './style.scss';
 import {CommonEventFunction} from '@tarojs/components/types/common';
 
 export type ButtonProps = MobileButtonProps & {

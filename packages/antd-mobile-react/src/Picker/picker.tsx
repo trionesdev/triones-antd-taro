@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import _ from 'lodash';
-import React, { FC, useEffect, useState } from 'react';
-import { useConfig } from '../ConfigProvider';
-import PickerView, { PickerColumnOption } from '../PickerView';
+import React, {FC, useEffect, useState} from 'react';
+import {useConfig} from '../ConfigProvider';
+import PickerView, {PickerColumnOption} from '../PickerView';
 import Popup from '../Popup';
 import './style.scss';
 
@@ -26,19 +26,19 @@ export type PickerProps = {
 
 export const Picker: FC<PickerProps> = React.memo(
   ({
-    open,
-    afterOpenChange,
-    title,
-    columns,
-    labelInValue = false,
-    value,
-    onOk,
-    onCancel,
-    onClose,
-  }) => {
-    const { locale } = useConfig();
+     open,
+     afterOpenChange,
+     title,
+     columns,
+     labelInValue = false,
+     value,
+     onOk,
+     onCancel,
+     onClose,
+   }) => {
+    const {locale} = useConfig();
     const [internalValue, setInternalValue] = useState(
-      value || Array.from({ length: _.size(columns) }).map(() => null),
+      value || Array.from({length: _.size(columns)}).map(() => null),
     );
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const handleClose = () => {
@@ -72,9 +72,10 @@ export const Picker: FC<PickerProps> = React.memo(
     return (
       <Popup
         open={innerOpen}
-        afterOpenChange={(o) => {
-          setInnerOpen(o);
-        }}
+        onClose={() => {
+          setInnerOpen(false)
+        }
+        }
         styles={{
           body: {
             borderTopLeftRadius: 6,

@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "strict": true,
     "declaration": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@trionesdev/antd-taro-react": ["src"],
-//      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
+      //      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
     }
   },
   "include": [".dumirc.ts", "src/**/*"]

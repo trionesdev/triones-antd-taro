@@ -16,7 +16,7 @@ type ImagesWallItemType = {
   status?: 'uploading' | 'done' | 'error';
 }
 
-type ImagesWallItemProps = {
+export type ImagesWallItemProps = {
   preview?: boolean;
   disabled?: boolean;
   images: ImagesWallItemType[];
@@ -49,7 +49,7 @@ const ImagesWallItem: FC<ImagesWallItemProps> = ({
   </div>
 }
 
-type ImagesWallProps = {
+export type ImagesWallProps = {
   className?: string;
   disabled?: boolean;
   value?: ImagesWallItemType[];

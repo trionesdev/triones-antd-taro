@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import './style.scss';
 
-type AvatarProps = {
+export type AvatarProps = {
   alt?: string;
   icon?: React.ReactNode;
   shape?: 'circle' | 'square';

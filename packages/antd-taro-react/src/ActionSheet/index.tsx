@@ -1,3 +1,3 @@
-import {ActionSheet} from "./ActionSheet"
+import {ActionSheet} from "@trionesdev/antd-mobile-react"
 
 export default ActionSheet

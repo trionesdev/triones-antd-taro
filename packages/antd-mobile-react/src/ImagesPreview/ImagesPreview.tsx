@@ -7,7 +7,7 @@ import "./style.scss"
 
 const cls = 'triones-antm-image-preview';
 
-type ImagePreviewProps = {
+export type ImagePreviewProps = {
   className?: string;
   open?: boolean;
   items?: (string|undefined)[];

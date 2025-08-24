@@ -1,10 +1,9 @@
-import React from "react";
-import {DemoBlock} from "../../DemoBlock";
-import Alert from "../index";
-import {Space} from "@trionesdev/antd-taro-react";
+import {View} from "@tarojs/components";
+import {DemoBlock} from "../../components";
+import { Alert, Space } from "@trionesdev/antd-taro-react";
 
-export default () => {
-  return <div>
+const AlertBase = () => {
+  return <View>
     <DemoBlock title={`基本使用`}>
       <Alert message={`Success Text`}/>
     </DemoBlock>
@@ -31,5 +30,6 @@ export default () => {
         <Alert showIcon={true} type={`error`} message={`Error Text`}/>
       </Space>
     </DemoBlock>
-  </div>
+  </View>
 }
+export default AlertBase

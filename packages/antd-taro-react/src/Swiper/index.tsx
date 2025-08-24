@@ -1,11 +1,4 @@
-import {Swiper as InternalSwiper} from "./Swiper"
-import {SwiperCoreItem} from "./SwiperCore";
+import {Swiper,SwiperProps } from "@trionesdev/antd-mobile-react"
 
-type CompoundedComponent = typeof InternalSwiper & {
-  Item: typeof SwiperCoreItem
-}
-
-const Swiper = InternalSwiper as CompoundedComponent
-Swiper.Item = SwiperCoreItem
-
+export type {SwiperProps}
 export default Swiper

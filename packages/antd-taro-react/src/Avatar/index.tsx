@@ -1,3 +1,3 @@
-import { Avatar } from "./avatar"
+import { Avatar } from "@trionesdev/antd-mobile-react"
 
-export default Avatar 
+export default Avatar

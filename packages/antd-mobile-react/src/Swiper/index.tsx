@@ -1,4 +1,4 @@
-import {Swiper as InternalSwiper} from "./Swiper"
+import {Swiper as InternalSwiper,SwiperProps} from "./Swiper"
 import {SwiperCoreItem} from "./SwiperCore";
 
 type CompoundedComponent = typeof InternalSwiper & {
@@ -8,4 +8,5 @@ type CompoundedComponent = typeof InternalSwiper & {
 const Swiper = InternalSwiper as CompoundedComponent
 Swiper.Item = SwiperCoreItem
 
+export type {SwiperProps}
 export default Swiper

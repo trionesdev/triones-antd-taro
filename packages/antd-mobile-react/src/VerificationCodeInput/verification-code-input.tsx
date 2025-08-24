@@ -4,7 +4,7 @@ import { InputProps } from '..';
 import Input from '../Input';
 import './style.scss';
 
-type ValidationCodeInputProps = Omit<InputProps, 'suffix'> & {
+export type ValidationCodeInputProps = Omit<InputProps, 'suffix'> & {
   /**
    * @description 发送文本
    * @default 获取验证码
