@@ -1,5 +1,5 @@
-import { Switch } from './switch'
+import { Switch } from '@trionesdev/antd-mobile-base-react'
 
-export type { SwitchProps } from './switch'
+export type { SwitchProps } from '@trionesdev/antd-mobile-base-react'
 
 export default Switch

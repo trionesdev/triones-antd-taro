@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { CheckOutline, CloseOutline } from '../../../../antd-mobile-icons-react'
+import { CheckOutline, CloseOutline } from '@trionesdev/antd-mobile-icons-react'
 import { DemoBlock } from '../../DemoBlock';
 import React, { useState } from 'react'
 import Switch from "../index";
