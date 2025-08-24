@@ -1,13 +1,9 @@
-import {Button as TaroButton, View} from "@tarojs/components";
+import {View} from "@tarojs/components";
 import {Button} from "@trionesdev/antd-taro-react";
 import {DemoBlock} from "../../components";
 
 const ButtonBase = () => {
   return <View style={{padding: '8px'}}>
-    <DemoBlock title={`Taro`}>
-      <TaroButton>按钮</TaroButton>
-      <TaroButton size={`mini`}>按钮</TaroButton>
-    </DemoBlock>
     <DemoBlock title={`按钮类型`}>
       <View style={{gap: '8px', rowGap: '8px', display: 'flex', flexWrap: 'wrap'}}>
         <Button type={`primary`}>Primary</Button>

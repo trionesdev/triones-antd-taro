@@ -1,5 +1,5 @@
 import {View} from "@tarojs/components";
-import {FaceRecognitionOutline} from "packages/antd-mobile-icons-react";
+import {FaceRecognitionOutline} from "@trionesdev/antd-mobile-icons-react";
 import {DemoBlock} from "../../components";
 import { TabBar } from "@trionesdev/antd-taro-react";
 

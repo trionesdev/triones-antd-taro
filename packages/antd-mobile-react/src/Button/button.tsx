@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import React, {FC} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 import './style.scss';
 
 export type ButtonProps = {
-  children?: React.ReactNode;
   /**
    * @description block 按钮宽高自适应
    */
@@ -54,7 +53,7 @@ export type ButtonProps = {
   [key: string]: any;
 };
 
-export const Button: FC<ButtonProps> = ({
+export const Button: FC<PropsWithChildren<ButtonProps>> = ({
                                           children,
                                           block = false,
                                           type = 'default',
@@ -69,8 +68,6 @@ export const Button: FC<ButtonProps> = ({
                                           variant,
                                           size = 'middle',
                                           onClick,
-                                          openType,
-                                          onGetPhoneNumber,
                                           ...props
                                         }) => {
   const clsPrefix = 'triones-antm-button';

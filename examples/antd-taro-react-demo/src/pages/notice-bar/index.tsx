@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import { DemoBlock } from "../../components";
 import { NoticeBar, Space } from "@trionesdev/antd-taro-react";
-import { CloseCircleOutline, SetOutline } from "packages/antd-mobile-icons-react";
+import { CloseCircleOutline, SetOutline } from "@trionesdev/antd-mobile-icons-react";
 
 const TabBarBase = () => {
   return <View>
@@ -36,7 +36,7 @@ const TabBarBase = () => {
           />
           <NoticeBar
             extra={
-              <Space style={{ '--gap': '12px' }}>
+              <Space>
                 <span>查看详情</span>
                 <span>关闭</span>
               </Space>

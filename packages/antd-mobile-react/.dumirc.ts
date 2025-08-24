@@ -7,7 +7,7 @@ const apiParserEnable =
   process.env.NODE_ENV === 'production' || process.env.API_PARSER == 'true';
 
 export default defineConfig({
-  base: '/triones-antd-taro/',
+  base: '/triones-antd-mobile/',
   publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
   apiParser: apiParserEnable ? {} : false,

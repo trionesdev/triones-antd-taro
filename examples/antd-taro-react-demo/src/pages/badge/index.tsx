@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import { DemoBlock } from "../../components";
 import { Badge, Avatar } from "@trionesdev/antd-taro-react";
-import { UserOutline } from 'packages/antd-mobile-icons-react';
+import { UserOutline } from '@trionesdev/antd-mobile-icons-react';
 
 const TabBarBase = () => {
   return <View><DemoBlock title='基础用法'>

@@ -9,7 +9,7 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@trionesdev/antd-taro-react": ["src"],
+      "@trionesdev/antd-mobile-react": ["src"],
 //      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
     }
   },

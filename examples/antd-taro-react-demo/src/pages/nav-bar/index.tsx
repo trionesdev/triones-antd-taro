@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import { DemoBlock } from "../../components";
 import { NavBar, Space } from "@trionesdev/antd-taro-react";
-import { CloseOutline, MoreOutline } from "packages/antd-mobile-icons-react";
+import { CloseOutline, MoreOutline } from "@trionesdev/antd-mobile-icons-react";
 
 const TabBarBase = () => {
   const right = (

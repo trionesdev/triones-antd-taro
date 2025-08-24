@@ -1,6 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
-import {Cell} from "@trionesdev/antd-mobile-react";
+import Cell from "../index";
+
 
 export default () => {
   return <div>

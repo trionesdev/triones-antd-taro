@@ -2,8 +2,9 @@
  * compact: true
  */
 import React from 'react';
-import { Checkbox, Space } from '@trionesdev/antd-mobile-react';
 import { DemoBlock } from '../../DemoBlock';
+import Checkbox from "../index";
+import {Space} from "../../index";
 
 
 export default () => {
