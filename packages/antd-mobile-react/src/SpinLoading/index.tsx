@@ -1,4 +1,4 @@
-import {SpinLoading,SpinLoadingProps} from "./spin-loading"
+import {SpinLoading,SpinLoadingProps} from "@trionesdev/antd-mobile-base-react"
 
 export type {SpinLoadingProps}
 export default SpinLoading

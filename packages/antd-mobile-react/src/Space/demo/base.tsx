@@ -3,7 +3,7 @@
  */
 import { DemoBlock } from '../../DemoBlock';
 import React from 'react'
-import {Space} from "../space";
+import Space from "../index";
 import Button from "../../Button";
 
 export default () => {

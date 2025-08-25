@@ -1,5 +1,5 @@
-import { WaterMark } from './water-mark'
+import { WaterMark,WaterMarkProps } from '@trionesdev/antd-mobile-base-react'
 
-export type { WaterMarkProps } from './water-mark'
+export type { WaterMarkProps }
 
 export default WaterMark

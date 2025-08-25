@@ -1,13 +1,7 @@
-import {Descriptions as InternalDescriptions} from "./Descriptions"
-import { DescriptionItem } from './DescriptionItem';
-import {DescriptionsProps} from "./types"
+import {
+  Descriptions,
+  DescriptionsProps,
+} from '@trionesdev/antd-mobile-base-react';
 
-type CompoundedComponent = typeof InternalDescriptions & {
-  Item: typeof DescriptionItem
-}
-const Descriptions = InternalDescriptions as CompoundedComponent
-Descriptions.Item = DescriptionItem
-
-export type {DescriptionsProps}
-
-export default Descriptions
+export type { DescriptionsProps };
+export default Descriptions;

@@ -1,6 +1,6 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
-import {SpinLoading} from "../spin-loading";
+import SpinLoading from "../index";
 import Space from "../../Space";
 
 export default () => {

@@ -1,12 +1,8 @@
-import {Grid as InternalGrid, GridItem} from './grid'
+import { Grid } from '@trionesdev/antd-mobile-base-react';
 
-export type {GridProps, GridItemProps} from './grid'
+export type {
+  GridItemProps,
+  GridProps,
+} from '@trionesdev/antd-mobile-base-react';
 
-type CompoundedComponent = typeof InternalGrid & {
-  Item: typeof GridItem;
-};
-
-const Grid = InternalGrid as CompoundedComponent;
-Grid.Item = GridItem;
-
-export default Grid
+export default Grid;

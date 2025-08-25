@@ -1,6 +1,4 @@
-import { SafeArea } from './safe-area';
-import './style.scss';
+import { SafeArea, SafeAreaProps } from '@trionesdev/antd-mobile-base-react';
 
-export type { SafeAreaProps } from './safe-area';
-
+export type { SafeAreaProps };
 export default SafeArea;

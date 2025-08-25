@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeArea } from '../safe-area';
+import SafeArea from '../index';
 
 export default () => {
   return (

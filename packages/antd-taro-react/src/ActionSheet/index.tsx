@@ -1,3 +1,4 @@
-import {ActionSheet} from "@trionesdev/antd-mobile-base-react"
+import {ActionSheet,ActionSheetProps} from "@trionesdev/antd-mobile-base-react"
 
+export type {ActionSheetProps}
 export default ActionSheet

@@ -1,7 +1,7 @@
 import {Checkbox as InternalCheckbox} from "./checkbox"
-import { CheckboxGroup } from './checkbox-group';
-import { CheckboxButton } from './checkbox-button';
-
+import {CheckboxGroup} from './checkbox-group';
+import {CheckboxButton} from './checkbox-button';
+import {CheckboxProps} from "./types";
 
 
 type CompoundedComponent = typeof InternalCheckbox & {
@@ -13,7 +13,5 @@ const Checkbox = InternalCheckbox as CompoundedComponent;
 Checkbox.Group = CheckboxGroup;
 Checkbox.Button = CheckboxButton;
 
-// export default attachPropertiesToComponent(Checkbox,{
-//   Group: CheckboxGroup
-// })
+export type {CheckboxProps}
 export default Checkbox

@@ -2,7 +2,7 @@
  * compact: true
  */
 import React from 'react'
-import { ChipItem, LinkItem } from '../footer'
+import { ChipItem, LinkItem } from '../index'
 import { DemoBlock } from '../../DemoBlock';
 import Footer from "../index";
 

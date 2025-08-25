@@ -1,4 +1,4 @@
-import { Cell   } from '@trionesdev/antd-mobile-base-react';
+import { Cell,CellProps, CellGroupProps   } from '@trionesdev/antd-mobile-base-react';
 
-
+export type {CellProps, CellGroupProps}
 export default Cell;

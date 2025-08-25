@@ -1,6 +1,6 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
-import {PickerView} from "../picker-view";
+import PickerView from "../index";
 
 export default () => {
   const basicColumns = [

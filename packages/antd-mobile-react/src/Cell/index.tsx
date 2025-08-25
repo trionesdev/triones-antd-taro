@@ -1,12 +1,4 @@
-import { Cell as InternalCell } from './cell';
-import { CellGroup } from './CellGroup';
-import {CellProps,CellGroupProps} from "./types"
-
-type CompoundedComponent = typeof InternalCell & {
-  Group: typeof CellGroup;
-};
-const Cell = InternalCell as CompoundedComponent;
-Cell.Group = CellGroup;
+import { Cell,CellProps,CellGroupProps } from '@trionesdev/antd-mobile-base-react';
 
 export type { CellProps, CellGroupProps };
 export default Cell;

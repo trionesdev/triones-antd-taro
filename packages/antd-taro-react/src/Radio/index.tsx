@@ -1,4 +1,4 @@
-import { Radio,RadioProps } from '@trionesdev/antd-mobile-base-react';
+import { Radio,RadioProps,RadioGroupProps } from '@trionesdev/antd-mobile-base-react';
 
-export type { RadioProps };
+export type { RadioProps,RadioGroupProps };
 export default Radio;

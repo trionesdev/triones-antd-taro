@@ -1,6 +1,5 @@
 import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import Taro from '@tarojs/taro'
-import {$} from "@tarojs/extend"
 import {CalendarGrid} from '../Calendar';
 import { useTaro } from '../hooks/useTaro';
 import {RandomUtils} from "../utils/random-utils";

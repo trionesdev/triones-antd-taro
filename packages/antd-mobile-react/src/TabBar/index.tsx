@@ -1,10 +1,4 @@
-import { TabBar as InternalTabBar, TabBarItem,TabBarProps } from "./tab-bar"
+import { TabBar, TabBarProps } from '@trionesdev/antd-mobile-base-react';
 
-type CompoundedComponent = typeof InternalTabBar & {
-  Item: typeof TabBarItem
-}
-
-const TabBar = InternalTabBar as CompoundedComponent
-
-export type { TabBarProps }
-export default TabBar
+export type { TabBarProps };
+export default TabBar;

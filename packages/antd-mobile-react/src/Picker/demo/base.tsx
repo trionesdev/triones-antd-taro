@@ -1,7 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
-import {Picker} from "../picker";
-import Button from "../../Button";
+import Picker from "../index";
+import {Button} from "../../index";
 
 export default () => {
   const [open, setOpen] = React.useState(false);

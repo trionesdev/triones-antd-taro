@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import React from 'react';
 import {DemoBlock} from '../../DemoBlock';
 
-import {Card} from '../card';
+import {Card} from '@trionesdev/antd-mobile-react';
 import './base.scss';
 
 const classPrefix = `card-demo`;

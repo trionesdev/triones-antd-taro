@@ -1,11 +1,5 @@
-import type { ReactNode } from 'react'
-import { ErrorBlock } from './error-block'
+import { ErrorBlock,ErrorBlockStatus,ErrorBlockProps,createErrorBlock } from '@trionesdev/antd-mobile-base-react'
 
-export { createErrorBlock } from './create-error-block'
-
-export type { ErrorBlockProps } from './create-error-block'
-
-export type ErrorBlockStatus = 'default' | 'disconnected' | 'empty' | 'busy'
-export type ImageRecord = Partial<Record<ErrorBlockStatus, string | ReactNode>>
-
+export {createErrorBlock}
+export type { ErrorBlockStatus, ErrorBlockProps }
 export default ErrorBlock
