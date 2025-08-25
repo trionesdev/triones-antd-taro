@@ -63,7 +63,7 @@
 - 反馈
   - [x] ActionSheet 操作面板
   - [x] Badge 徽标
-  - [x] EmptyIcon 空组件
+  - [x] Empty 空组件
   - [x] NoticeBar 通告栏
   - [x] Popup 弹出层
   - [x] Result 结果
