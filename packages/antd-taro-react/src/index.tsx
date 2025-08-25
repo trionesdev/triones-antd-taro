@@ -1,5 +1,3 @@
-import './style';
-
 export {default as ActionSheet} from "./ActionSheet"
 export type {ActionSheetProps} from './ActionSheet';
 
