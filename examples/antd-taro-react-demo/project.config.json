@@ -1,5 +1,5 @@
 {
-  "miniprogramRoot": "./dist",
+  "miniprogramRoot": "dist/",
   "projectname": "antd-taro-react-demo",
   "description": "antd-taro-react-demo",
   "appid": "wx08b199625847bec1",

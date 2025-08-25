@@ -1,5 +1,5 @@
-import {Swiper as InternalSwiper,SwiperProps,SwiperItem,SwiperItemProps } from "@tarojs/components"
-
+import {SwiperProps, SwiperItem, SwiperItemProps} from "@tarojs/components"
+import {Swiper as InternalSwiper} from "./swiper";
 
 type CompoundedComponent = typeof InternalSwiper & {
   Item: typeof SwiperItem
@@ -8,5 +8,5 @@ type CompoundedComponent = typeof InternalSwiper & {
 const Swiper = InternalSwiper as CompoundedComponent
 Swiper.Item = SwiperItem
 
-export type {SwiperProps,SwiperItemProps}
+export type {SwiperProps, SwiperItemProps}
 export default Swiper

@@ -30,10 +30,11 @@ export type SwiperCoreProps = {
 };
 
 export type SwiperCoreItemProps = {
+  children: React.ReactNode;
   style?: React.CSSProperties;
 };
 
-export const SwiperCoreItem: FC<PropsWithChildren<SwiperCoreItemProps>> = ({
+export const SwiperCoreItem: FC<SwiperCoreItemProps> = ({
   children,
   style,
 }) => {
