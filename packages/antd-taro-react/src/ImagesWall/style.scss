@@ -1,0 +1,70 @@
+@import "@trionesdev/antd-mobile-base-react/dist/Button/style";
+
+$imagesWallCls: 'triones-antm-images-wall';
+
+.#{$imagesWallCls} {
+  display: grid;
+  grid-gap: 4PX;
+  width: 100%;
+
+  &-item {
+    aspect-ratio: 1;
+    border-radius: $trionesBorderRadius;
+    overflow: hidden;
+    position: relative;
+
+    &-inner {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgb(0 0 0 / 63%);
+      width: 20Px;
+      height: 20Px;
+      border-bottom-left-radius: $trionesBorderRadius;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .triones-antm-icon {
+        color: white;
+        font-size: 12Px;
+      }
+    }
+
+    &-input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $trionesColorBgTextActive;
+  }
+
+  &-action-sheet {
+
+  }
+}
+
+

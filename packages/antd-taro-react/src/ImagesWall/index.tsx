@@ -1,4 +1,4 @@
-import {ImagesWall,ImagesWallProps,ImagesWallItemProps} from "@trionesdev/antd-mobile-base-react"
+import {ImagesWall,ImagesWallProps,ImagesWallItemProps} from "./ImagesWall"
 
 export type {ImagesWallProps,ImagesWallItemProps}
 export default ImagesWall
