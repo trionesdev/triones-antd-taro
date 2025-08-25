@@ -1,7 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Button from "../../Button";
-import {CascaderPicker} from "../cascader-picker";
+import CascaderPicker from "../index";
 
 export default () => {
   const [open, setOpen] = React.useState(false);
