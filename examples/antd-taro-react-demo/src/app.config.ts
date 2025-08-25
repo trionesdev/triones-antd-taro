@@ -9,6 +9,7 @@ export default defineAppConfig({
     "pages/calendar-picker/index",
     "pages/checkbox/index",
     "pages/radio/index",
+    "pages/rate/index",
     "pages/input/index",
 
     "pages/empty/index",
@@ -23,7 +24,7 @@ export default defineAppConfig({
     "pages/notice-bar/index",
     // "pages/tag/index",
     // "pages/card/index",
-    // "pages/rate/index",
+
     // "pages/progress-bar/index",
     // "pages/input/index",
     "pages/form/index",
