@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro';
 import classNames from 'classnames';
 import React, {
   FC,
@@ -8,9 +9,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import ScrollView from '../ScrollView';
-import Taro from '@tarojs/taro';
 import { useTaro } from '../hooks/useTaro';
+import ScrollView from '../ScrollView';
 import { BoundingClientRectType } from '../types';
 import { SideBarContext } from './SideBarContext';
 import './style.scss';
@@ -31,10 +31,7 @@ type SideBarTabProps = {
   tabKey: string;
   title?: string;
 };
-const SideBarTab: FC<SideBarTabProps> = ({
-  tabKey,
-  title,
-}) => {
+const SideBarTab: FC<SideBarTabProps> = ({ tabKey, title }) => {
   const { activeKey, setActiveKey } = useContext(SideBarContext);
   const tabRef = useRef<any>();
 
@@ -63,6 +60,9 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
   const [rendered, setRendered] = useState(false);
   const contentItemRef = useRef<any>();
   const frameRef = useRef<any>();
+  const debounceTimerRef = useRef<any>();
+  const lastActiveKeyRef = useRef<string>();
+
   const {
     activeKey,
     mode,
@@ -175,7 +175,6 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
       );
 
       return itemOffset.top + itemOffset.height - contentOffset?.top;
-
     } else {
       return (
         contentItemRef.current.offsetTop +
@@ -202,25 +201,89 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
    * 监听滚动变化，只有在人为操作的时候才监听滚动的位置是否需要切换tab，如果是切换tab 引发的滚动则不执行
    */
   useEffect(() => {
-    // return;
-    if (mode === 'scroll' && manual) {
+    if (mode === 'scroll' && manual && scrollDetail?.manual) {
+      // 清除之前的防抖定时器
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
       }
-      frameRef.current = requestAnimationFrame(async () => {
-        if (activeKey !== tabKey) {
-          const reactiveOffsetTop = await computeReactiveOffsetTop(); //当前顶部相对于父容器顶部的偏移量
-          const reactiveOffsetBottom = await computeReactiveOffsetBottom();
-          if (
-            (-50 <= reactiveOffsetTop && reactiveOffsetTop <= 0) ||
-            (0 <= reactiveOffsetBottom && reactiveOffsetBottom <= 50)
-          ) {
-            onMoveToTab?.(tabKey);
+
+      // 添加防抖延迟，减少频繁切换
+      debounceTimerRef.current = setTimeout(() => {
+        frameRef.current = requestAnimationFrame(async () => {
+          if (activeKey !== tabKey) {
+            const reactiveOffsetTop = await computeReactiveOffsetTop();
+            const reactiveOffsetBottom = await computeReactiveOffsetBottom();
+
+            // 获取视口高度
+            const viewportHeight = isTaroEnv
+              ? await new Promise<number>((resolve) => {
+                  Taro.getSystemInfo().then((res) => resolve(res.windowHeight));
+                })
+              : window.innerHeight || 667;
+
+            // 计算内容在视口中的可见高度
+            const visibleTop = Math.max(0, -reactiveOffsetTop);
+            const visibleBottom = Math.min(
+              viewportHeight,
+              reactiveOffsetBottom,
+            );
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+            // 优化快速滚动检测：适应不同滚动速度
+            // 1. 内容顶部进入视口时激活（适合快速滚动）
+            const topEntersView =
+              reactiveOffsetTop >= -60 &&
+              reactiveOffsetTop <= viewportHeight * 0.5;
+
+            // 2. 内容底部在视口中时激活（适合快速滚动）
+            const bottomInView =
+              reactiveOffsetBottom >= viewportHeight * 0.4 &&
+              reactiveOffsetBottom <= viewportHeight + 60;
+
+            // 3. 内容区域基本可见性（降低要求以适应快速滚动）
+            const hasBasicVisibility =
+              visibleHeight >= Math.max(80, viewportHeight * 0.15);
+
+            // 4. 内容中心点检测（快速滚动时的主要判断）
+            const contentCenter =
+              (reactiveOffsetTop + reactiveOffsetBottom) / 2;
+            const viewportCenter = viewportHeight / 2;
+            const centerInView =
+              Math.abs(contentCenter - viewportCenter) <= viewportHeight * 0.4;
+
+            // 5. 快速滚动优化：更宽松的激活条件
+            const shouldActivate =
+              hasBasicVisibility &&
+              (centerInView ||
+                (topEntersView && visibleHeight >= viewportHeight * 0.2) ||
+                (bottomInView && visibleHeight >= viewportHeight * 0.2));
+
+            if (shouldActivate) {
+              onMoveToTab?.(tabKey);
+            }
           }
-        }
-      });
+        });
+      }, 50); // 50ms防抖延迟，提高快速滚动响应性
     }
+
+    // 清理函数
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
   }, [scrollDetail]);
+
+  // 记录当前激活的tab
+  useEffect(() => {
+    if (activeKey === tabKey) {
+      lastActiveKeyRef.current = tabKey;
+    }
+  }, [activeKey, tabKey]);
 
   return (
     <div
@@ -242,12 +305,11 @@ type SideBarContentsProps = {
 const SideBarContents: FC<SideBarContentsProps> = memo(({ items }) => {
   return (
     <>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <SideBarContent
           key={`${item.tabKey}-content`}
           tabKey={item.tabKey}
           content={item.content}
-          // activeChangeCallback={handleSelectScroll}
         />
       ))}
     </>
@@ -291,9 +353,7 @@ export const SideBar: FC<SideBarProps> = ({
     string | undefined
   >(activeKey || defaultActiveKey);
 
-
   const [manual, setManual] = useState(false);
-
   const [scrollDetail, setScrollDetail] = useState<ScrollDetail>({ top: 0 });
 
   const scrollTop = useMemo(() => {
@@ -366,7 +426,7 @@ export const SideBar: FC<SideBarProps> = ({
         asyncRender: asyncRender,
         onMoveToTab: handleActiveChange,
         manual: manual,
-        setManul: setManual,
+        setManual: setManual,
       }}
     >
       <div
@@ -376,7 +436,7 @@ export const SideBar: FC<SideBarProps> = ({
           className={classNames(`${sideBarCls}-tabs`)}
           style={{ width: tabWidth }}
         >
-          {internalItems.map((item, index) => (
+          {internalItems.map((item) => (
             <SideBarTab
               key={`${item.tabKey}-tab`}
               {...item}
@@ -390,25 +450,25 @@ export const SideBar: FC<SideBarProps> = ({
           ref={contentRef}
           id={contentRef.current?.uid}
           className={classNames(`${sideBarCls}-content`)}
-          onTouchStart={(e) => {
+          onTouchStart={() => {
             setManual(true);
           }}
-          onTouchEnd={(e) => {
+          onTouchEnd={() => {
             setManual(false);
           }}
-          onMouseEnter={(e) => {
+          onMouseEnter={() => {
             setManual(true);
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={() => {
             setManual(false);
           }}
-          onMouseOut={(e) => {
+          onMouseOut={() => {
             setManual(false);
           }}
-          onMouseOver={(e) => {
+          onMouseOver={() => {
             setManual(true);
           }}
-          onMouseMove={(e) => {
+          onMouseMove={() => {
             setManual(true);
           }}
         >
@@ -432,9 +492,7 @@ export const SideBar: FC<SideBarProps> = ({
               </div>
             </ScrollView>
           )}
-          {mode === 'switch' && (
-            <SideBarContents items={internalItems} />
-          )}
+          {mode === 'switch' && <SideBarContents items={internalItems} />}
         </div>
       </div>
     </SideBarContext.Provider>

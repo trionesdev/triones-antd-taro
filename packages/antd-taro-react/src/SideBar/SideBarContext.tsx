@@ -5,7 +5,7 @@ type SideBarContextType = {
   activeKey?: string;
   setActiveKey?: (key: string) => void;
   mode?: 'switch' | 'scroll';
-  scrollDetail?:ScrollDetail,
+  scrollDetail?: ScrollDetail;
   setScrollDetail?: (detail: ScrollDetail) => void;
   activeChangeCallback?: (targetScrollTop: number) => void;
   onMoveToTab?: (activeKey: string) => void;
@@ -14,8 +14,7 @@ type SideBarContextType = {
   contentRef?: any;
   contentWheelRef?: any;
 
-  manual?:boolean
-  setManul?:(manual:boolean)=>void
-
+  manual?: boolean;
+  setManual?: (manual: boolean) => void;
 };
 export const SideBarContext = createContext<SideBarContextType>({});
