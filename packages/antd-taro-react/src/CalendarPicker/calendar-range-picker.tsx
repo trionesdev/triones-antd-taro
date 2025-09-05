@@ -59,9 +59,13 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
       setInnerOpen(open)
     }, [open]);
 
-    return <Popup open={innerOpen} afterOpenChange={(o) => {
-      setInnerOpen(o);
-    }}>
+    return <Popup
+      open={innerOpen}
+      onClose={() => {
+        setInnerOpen(false);
+        onClose?.();
+      }}
+    >
       <div className={classNames(`${cls}`)}>
         <div className={classNames(`${cls}-header`)}>
           <a className={classNames(`${cls}-header-button`)} onClick={handelCancel}>{locale.common.cancel}</a>

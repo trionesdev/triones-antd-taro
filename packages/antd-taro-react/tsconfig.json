@@ -7,10 +7,13 @@
     "esModuleInterop": true,
     "jsx": "react",
     "baseUrl": "./",
+    "lib": ["es2016", "dom"],
+//    "module": "ESNext",
+//    "moduleResolution": "bundler",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@trionesdev/antd-taro-react": ["src"],
-//      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
+      //      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
     }
   },
   "include": [".dumirc.ts", "src/**/*"]

@@ -18,6 +18,8 @@ const FormPage = () => {
       <Button type={`primary`} block={true} onClick={() => {
         verticalForm.validateFields().then(values => {
           console.log(values)
+        }).catch((ex)=>{
+          console.log(ex)
         })
       }}>提交</Button>
     </View>

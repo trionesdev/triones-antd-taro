@@ -1,13 +1,11 @@
 import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
-import {AddOutline, CloseOutline} from "@trionesdev/antd-taro-icons-react";
+import {AddOutline, CloseOutline} from "../../../antd-mobile-icons-react";
 import "./style.scss"
-import ActionSheet from "../ActionSheet";
-import {useTaro} from "../hooks/useTaro";
-import {CameraModal} from "./CameraModal";
 import {ImagesPreview} from "../index"
 import _ from "lodash";
 import {RandomUtils} from '../utils/random-utils';
+import Taro from "@tarojs/taro";
 
 const cls = 'triones-antm-images-wall'
 
@@ -17,7 +15,7 @@ type ImagesWallItemType = {
   status?: 'uploading' | 'done' | 'error';
 }
 
-type ImagesWallItemProps = {
+export type ImagesWallItemProps = {
   preview?: boolean;
   disabled?: boolean;
   images: ImagesWallItemType[];
@@ -50,14 +48,14 @@ const ImagesWallItem: FC<ImagesWallItemProps> = ({
   </div>
 }
 
-type ImagesWallProps = {
+export type ImagesWallProps = {
   className?: string;
   disabled?: boolean;
   value?: ImagesWallItemType[];
   onChange?: (value: ImagesWallItemType[]) => void;
   columns?: number;
   preview?: boolean;
-  onRequest?: (file: File) => Promise<string>
+  onRequest?: (file: File[]) => Promise<string>
   customUploadAction?: () => void;
   customPreviewAction?: (urls: (string | undefined)[], current?: string) => void;
 }
@@ -74,21 +72,12 @@ export const ImagesWall: FC<ImagesWallProps> = ({
                                                   customUploadAction,
                                                   customPreviewAction
                                                 }) => {
-  const {isTaroEnv, isTaroWeApp} = useTaro()
-  const [cameraOpen, setCameraOpen] = useState(false)
-  const [sheetOpen, setSheetOpen] = useState(false)
+
+
   const [imagePreviewOpen, setImagePreviewOpen] = useState(false)
   const [previewIndex, setPreviewIndex] = useState(0)
   const [images, setImages] = useState<ImagesWallItemType[]>(value || [])
 
-  const handleSelectPhoto = () => {
-
-  }
-
-  const handleSelectCamera = () => {
-    setSheetOpen(false)
-    setCameraOpen(true)
-  }
 
   useEffect(() => {
     if (value === undefined) {
@@ -106,70 +95,6 @@ export const ImagesWall: FC<ImagesWallProps> = ({
   }, [value]);
 
   return <>
-    <CameraModal open={cameraOpen}/>
-    <ActionSheet className={`${cls}-action-sheet`} open={sheetOpen}
-                 afterOpenChange={setSheetOpen}
-                 closeAfterClickAction={Boolean(isTaroWeApp)}
-                 actions={
-                   [
-                     {
-                       key: 'photo', children: <>
-                         <div>从相册选择</div>
-                         {!isTaroEnv &&
-                           <input className={`${cls}-item-input`} type={`file`} accept={`image/*`} multiple={true}
-                                  onChange={async (e) => {
-                                    if (e.target.files) {
-                                      const files = Array.from(e.target.files)
-                                      const promises: any[] = files.map(file => {
-                                        const uid = RandomUtils.random()
-                                        onRequest?.(file).then(res => {
-                                          const newImages = [...images.map((item) => {
-                                            if (item.uid === uid) {
-                                              item.url = res;
-                                              item.status = 'done';
-                                              return item;
-                                            }
-                                            return item;
-                                          })];
-                                          setImages(newImages)
-                                          onChange?.(newImages)
-                                        })
-                                        return new Promise((resolve) => {
-                                          const reader = new FileReader();
-                                          reader.onload = (event) => {
-                                            resolve({
-                                              uid: uid,
-                                              name: file.name,
-                                              src: event.target?.result,
-                                              type: file.type,
-                                              status: 'uploading',
-                                            });
-                                          };
-                                          reader.readAsDataURL(file);
-                                        });
-                                      });
-                                      Promise.all(promises).then(results => {
-                                        console.log(results)
-                                        const newImages = [...images, ...results];
-                                        setImages(newImages);
-                                        onChange?.(newImages)
-                                      });
-                                    }
-                                  }}/>}
-                       </>, onClick: () => {
-                         if (isTaroEnv) {
-                           handleSelectPhoto()
-                         }
-                       }
-                     },
-                     {
-                       key: 'camera', children: <>
-                         <div>拍摄照片</div>
-                       </>, onClick: () => {
-                         handleSelectCamera()
-                       }
-                     }
-                   ]}/>
     <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
                    items={images.map(item => item.url) || []} activeIndex={previewIndex}/>
     <div className={classNames(cls, className)} style={{gridTemplateColumns: `repeat(${columns}, 1fr)`}}>
@@ -194,7 +119,15 @@ export const ImagesWall: FC<ImagesWallProps> = ({
         if (customUploadAction) {
           customUploadAction()
         } else {
-          setSheetOpen(true)
+          Taro.chooseImage({
+            count: 9,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['camera', 'album'],
+            success: (res) => {
+              const files = res.tempFiles
+              // onRequest( files)
+            }
+          })
         }
       }}>
         <AddOutline/>

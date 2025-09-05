@@ -1,5 +1,4 @@
-import { Ellipsis } from './ellipsis'
+import { Ellipsis,EllipsisProps } from '@trionesdev/antd-mobile-base-react'
 
-export type { EllipsisProps } from './ellipsis'
-
+export type { EllipsisProps }
 export default Ellipsis

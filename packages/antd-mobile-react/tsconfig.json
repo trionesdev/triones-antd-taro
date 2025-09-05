@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "@trionesdev/antd-mobile-react": ["src"],
+//      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
+    }
+  },
+  "include": [".dumirc.ts", "src/**/*"]
+}

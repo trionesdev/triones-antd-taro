@@ -1,5 +1,5 @@
-import { PageIndicator } from './page-indicator'
+import { PageIndicator ,PageIndicatorProps} from '@trionesdev/antd-mobile-base-react'
 
-export type { PageIndicatorProps } from './page-indicator'
+export type { PageIndicatorProps }
 
 export default PageIndicator

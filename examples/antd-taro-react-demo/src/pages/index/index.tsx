@@ -68,6 +68,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/alert/index",
+              });
+            }}
+          >
+            Alert 告警提示
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/avatar/index",
               });
             }}

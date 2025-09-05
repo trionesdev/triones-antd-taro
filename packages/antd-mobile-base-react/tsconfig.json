@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "lib": ["es2016", "dom"],
+    //    "module": "ESNext",
+    //    "moduleResolution": "bundler",
+    "paths": {
+      "@trionesdev/antd-mobile-base-react": ["src"],
+      //      "@trionesdev/antd-taro-react/*": ["src/*", "*"],
+    }
+  },
+  "include": [".dumirc.ts", "src/**/*"]
+}

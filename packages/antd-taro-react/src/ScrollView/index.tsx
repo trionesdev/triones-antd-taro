@@ -1,5 +1,4 @@
-import {ScrollView} from "./scroll-view"
-import type {ScrollViewProps} from "./types"
+import {ScrollView,ScrollViewProps} from "@tarojs/components"
 
 export type {ScrollViewProps}
 

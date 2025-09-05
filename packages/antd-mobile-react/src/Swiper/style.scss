@@ -1,0 +1,54 @@
+@import "@trionesdev/antd-mobile-base-react/dist/style/variable";
+$swiperCls: 'triones-antm-swiper';
+
+.#{$swiperCls} {
+  max-height: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.#{$swiperCls}-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  &-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  &-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition-property: transform;
+    justify-content: center;
+    align-items: center;
+    &-horizontal{
+      flex-direction: row;
+      touch-action: pan-x;
+    }
+    &-vertical{
+      flex-direction: column;
+      touch-action: pan-y;
+    }
+  }
+  &-item {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.#{$swiperCls}-taro {
+  width: 100%;
+  height: 100%;
+  &-item{
+    display: flex;
+    align-items: center;
+  }
+}
