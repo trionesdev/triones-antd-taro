@@ -34,6 +34,16 @@ export const BaseInput = forwardRef<BaseInputHandle, BaseInputProps>(
       setKeySequence(keySequence + 1)
     }, [type]);
 
+    useEffect(() => {
+      if (value === undefined) {
+        return;
+      }
+      if (value === innerValue) {
+        return;
+      }
+      setInnerValue(value);
+    }, [value]);
+
     return (
       <input key={keySequence}
              {...props}

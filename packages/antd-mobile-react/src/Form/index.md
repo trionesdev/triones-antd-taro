@@ -10,6 +10,9 @@ group:
 ## 基础用法
 <code src="./demo/base.tsx"></code>
 
+## Input
+<code src="./demo/input.tsx"></code>
+
 ### Form
 <API id="Form"></API>
 

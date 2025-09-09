@@ -64,6 +64,9 @@ export const InputOPT: FC<InputOPTProps> = ({
   const [focusIndex, setFocusIndex] = useState(0);
 
   useEffect(() => {
+    if (value === undefined) {
+      return;
+    }
     setInternalValue(Array.from(inputValue))
   }, [inputValue]);
 

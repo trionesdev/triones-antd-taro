@@ -21,6 +21,7 @@ export type FormItemProps = {
   noStyle?: boolean
   rules?: Rule[]
   initialValue?: any
+  valuePropName?: string
   errorRender?: (errors?: any[]) => React.ReactNode;
 }
 
@@ -38,6 +39,7 @@ export const FormItem: FC<FormItemProps> = ({
                                               noStyle = false,
                                               rules,
                                               initialValue,
+                                              valuePropName,
                                               errorRender,
                                               ...props
                                             }) => {

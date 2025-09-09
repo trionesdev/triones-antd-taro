@@ -7,6 +7,7 @@ import Button from "../../Button";
 export default () => {
   const [verticalForm] = Form.useForm();
   const [horizontalForm] = Form.useForm();
+  const [form2] = Form.useForm();
   return <div>
     <DemoBlock title='水平表单'>
       <Form form={verticalForm} labelWidth={80}>
@@ -37,6 +38,20 @@ export default () => {
           console.log(values)
         })
       }}>提交</Button>
+    </DemoBlock>
+    <DemoBlock title={`设置值`}>
+      <Form form={form2} layout={'horizontal'}>
+        <Form.Item label={'姓名'} name={'name'} initialValue={'张三'}>
+          <Input placeholder={`请输入姓名`}/>
+          {/*<input/>*/}
+        </Form.Item>
+      </Form>
+      <Button type={'primary'} block={true} onClick={() => {
+        form2.setFieldsValue({
+          name: '李四'
+        })
+        // form2.setFieldValue('name', '王五')
+      }}>设置值</Button>
     </DemoBlock>
   </div>
 }

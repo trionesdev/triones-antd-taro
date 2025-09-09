@@ -42,7 +42,8 @@ export const Textarea: FC<InputTextareaProps> = ({
       disabled={disabled}
       rows={rows}
       value={internalValue}
-      onChange={(e) => {
+      onInput={(e:any) => {
+        console.log(e);
         setInternalValue(e.target.value);
         onChange?.(e.target.value);
       }}

@@ -85,7 +85,7 @@ export const CascaderView: FC<CascaderViewProps> = memo(
         ];
         for (let i = 0; i < value.length; i++) {
           let column = newColumns[i];
-          let option = _.find(column.options, (option: ColumnOption) => {
+          let option = _.find(column?.options, (option: ColumnOption) => {
             if (labelInValue) {
               return option.value === value[i].value;
             } else {
@@ -137,10 +137,12 @@ export const CascaderView: FC<CascaderViewProps> = memo(
     };
 
     useEffect(() => {
-      handleGenerateColumnsByValues(internalValue).then((_columns) => {
-        setColumns(_columns);
-        setActiveKey(`${_columns.length - 1}`);
-      });
+      if (!_.isEmpty(options)){
+        handleGenerateColumnsByValues(internalValue).then((_columns) => {
+          setColumns(_columns);
+          setActiveKey(`${_columns.length - 1}`);
+        });
+      }
     }, [options]);
 
     useEffect(() => {
