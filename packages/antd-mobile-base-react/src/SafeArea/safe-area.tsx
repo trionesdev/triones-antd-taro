@@ -1,6 +1,6 @@
-import type { FC } from 'react';
+import type {FC} from 'react';
 import React from 'react';
-import { NativeProps, withNativeProps } from '../utils/native-props';
+import {NativeProps, withNativeProps} from '../utils/native-props';
 
 import classNames from 'classnames';
 
@@ -13,13 +13,18 @@ export type SafeAreaProps = {
    * @default top
    */
   position?: 'top' | 'bottom';
+  top?: boolean
+  bottom?: boolean
 } & NativeProps;
 
-export const SafeArea: FC<SafeAreaProps> = ({ position = 'top', ...props }) => {
+export const SafeArea: FC<SafeAreaProps> = ({position = 'top', top = true, bottom = true, ...props}) => {
   return withNativeProps(
     props,
     <div
-      className={classNames(classPrefix, `${classPrefix}-position-${position}`)}
+      className={classNames(classPrefix, `${classPrefix}-position-${position}`, {
+        [`${classPrefix}-position-top`]: top,
+        [`${classPrefix}-position-bottom`]: bottom
+      })}
     >
       {props.children}
     </div>,

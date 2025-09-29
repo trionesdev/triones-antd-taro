@@ -47,7 +47,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   };
 
   const handleComputeBodyHeight = async (): Promise<number> => {
-    if (isTaroEnv) {
+    if (isTaroEnv && isTaroWeApp) {
       return new Promise((resolve) => {
         Taro.createSelectorQuery()
           .in(bodyRef.current.ctx)
