@@ -43,7 +43,6 @@ export const Textarea: FC<InputTextareaProps> = ({
       rows={rows}
       value={internalValue}
       onInput={(e:any) => {
-        console.log(e);
         setInternalValue(e.target.value);
         onChange?.(e.target.value);
       }}

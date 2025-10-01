@@ -8,8 +8,8 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "@trionesdev/antd-taro-icons-react": ["src"],
-      "@trionesdev/antd-taro-icons-react/*": ["src/*", "*"]
+      "@trionesdev/antd-mobile-icons-react": ["src"],
+      "@trionesdev/antd-mobile-icons-react/*": ["src/*", "*"]
     }
   },
   "include": [".dumirc.ts", "src/**/*"]
