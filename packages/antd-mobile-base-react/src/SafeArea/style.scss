@@ -6,6 +6,7 @@ $class-prefix-safe-area: 'triones-antm-safe-area';
   height: 100%;
   display: block;
   width: 100%;
+  box-sizing: border-box;
 
   &-position-top {
     padding-top: calc(env(safe-area-inset-top) * $trionesSafeAreaMultiple);
