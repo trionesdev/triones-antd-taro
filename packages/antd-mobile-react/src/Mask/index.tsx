@@ -1,4 +1,4 @@
-import {Mask,MaskProps} from "@trionesdev/antd-mobile-base-react"
+import {Mask,MaskProps} from "./mask"
 
 export type {MaskProps}
 export default Mask

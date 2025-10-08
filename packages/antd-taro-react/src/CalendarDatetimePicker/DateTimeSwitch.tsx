@@ -43,7 +43,7 @@ export const DateTimeSwitch = forwardRef<
         })}
         onClick={onTimeTabTap}
       >
-        {datetime ? `${datetime.getHours()}:${datetime.getMinutes()}` : ''}
+        {datetime ? `${DatetimeUtils.twoDigits(datetime.getHours()) }:${DatetimeUtils.twoDigits(datetime.getMinutes())}` : ''}
       </div>
     </div>
   );
