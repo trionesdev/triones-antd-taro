@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {find, isArray, isEmpty, isEqual} from 'lodash';
 import React, { CSSProperties, FC, memo, useEffect, useState } from 'react';
 import Tabs from '../Tabs';
 import { CascaderColumn } from './cascader-column';
@@ -79,13 +79,13 @@ export const CascaderView: FC<CascaderViewProps> = memo(
     const handleGenerateColumnsByValues = async (
       value: any,
     ): Promise<Column[]> => {
-      if (!_.isEmpty(value) && _.isArray(value)) {
+      if (!isEmpty(value) && isArray(value)) {
         let newColumns: Column[] = [
           { options: handleConvertOptions(options || []) },
         ];
         for (let i = 0; i < value.length; i++) {
           let column = newColumns[i];
-          let option = _.find(column?.options, (option: ColumnOption) => {
+          let option = find(column?.options, (option: ColumnOption) => {
             if (labelInValue) {
               return option.value === value[i].value;
             } else {
@@ -120,7 +120,7 @@ export const CascaderView: FC<CascaderViewProps> = memo(
       }
       newColumns.push({ value: option, options: columns[columnIndex].options });
       if (!columnsCount || newColumns.length < columnsCount) {
-        if (!_.isEmpty(option.children)) {
+        if (!isEmpty(option.children)) {
           newColumns.push({ options: option.children });
           activeIndex = `${columnIndex + 1}`;
         } else {
@@ -137,7 +137,7 @@ export const CascaderView: FC<CascaderViewProps> = memo(
     };
 
     useEffect(() => {
-      if (!_.isEmpty(options)){
+      if (!isEmpty(options)){
         handleGenerateColumnsByValues(internalValue).then((_columns) => {
           setColumns(_columns);
           setActiveKey(`${_columns.length - 1}`);
@@ -149,7 +149,7 @@ export const CascaderView: FC<CascaderViewProps> = memo(
       if (value === undefined) {
         return;
       }
-      if (_.isEqual(internalValue, value)) {
+      if (isEqual(internalValue, value)) {
         return;
       }
       setInternalValue(value);

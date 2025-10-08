@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react"
 import classNames from "classnames";
 import {PickerViewColumnItem} from "./picker-view-column-item";
-import _ from "lodash";
+import {findIndex, isEmpty, size} from "lodash";
 import {PickerColumnOption} from "./types";
 
 const pickerViewCls = "triones-antm-picker-view";
@@ -23,13 +23,13 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
     const [internalValue, setInternalValue] = useState<any>(value || null);
     const itemHeight = 34;
     const max = 0;
-    const min = 0 - (itemHeight * (_.size(options) - 1));
+    const min = 0 - (itemHeight * (size(options) - 1));
     const [touching, setTouching] = useState<boolean>(false);
     const [touchPoint, setTouchPoint] = React.useState<any>();
     const [translateY, setTranslateY] = useState(0)
 
     const handleSelectOption = (selectValue: any) => {
-      const valueIndex = _.findIndex(options, (option) => {
+      const valueIndex = findIndex(options, (option) => {
         if (labelInValue) {
           return option.value === selectValue.value;
         }
@@ -84,9 +84,9 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
              if (translateY > 0) {
                setTranslateY(0);
                selectIndex = 0;
-             } else if (translateY < (0 - itemHeight * (_.size(options) - 1))) {
-               setTranslateY(0 - itemHeight * (_.size(options) - 1));
-               selectIndex = _.size(options) - 1;
+             } else if (translateY < (0 - itemHeight * (size(options) - 1))) {
+               setTranslateY(0 - itemHeight * (size(options) - 1));
+               selectIndex = size(options) - 1;
              } else {
                const num = Math.abs(Math.round(translateY / itemHeight));
                setTranslateY(0 - num * itemHeight);
@@ -97,7 +97,7 @@ export const PickerViewColumn: FC<PickerViewColumnProps> = React.memo(
              onChange?.(selectValue);
            }}
       >
-        {!_.isEmpty(options) && options?.map((option: any, index: number) => {
+        {!isEmpty(options) && options?.map((option: any, index: number) => {
           return <PickerViewColumnItem option={option} key={`view-column-${index}`}/>
         })}
       </div>

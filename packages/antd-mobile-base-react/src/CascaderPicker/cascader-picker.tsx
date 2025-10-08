@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {isEqual} from 'lodash';
 import React, { FC, useEffect, useRef } from 'react';
 import CascaderView from '../CascaderView';
 import { useConfig } from '../ConfigProvider';
@@ -71,7 +71,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
       if (value === undefined) {
         return;
       }
-      if (_.isEqual(value, internalValueRf.current)) {
+      if (isEqual(value, internalValueRf.current)) {
         return;
       }
       internalValueRf.current = value;

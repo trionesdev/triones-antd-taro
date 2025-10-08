@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {isEqual} from 'lodash';
 import React, { FC, memo, useEffect, useRef, useState } from 'react';
 import { CalendarGrid } from './calendar-grid';
 import { CalendarHeader } from './calendar-header';
@@ -22,7 +22,7 @@ export const CalendarRange: FC<CalendarProps> = memo(
 
     useEffect(() => {
       if (value !== undefined) {
-        if (!_.isEqual(value, valueRef.current)) {
+        if (!isEqual(value, valueRef.current)) {
           valueRef.current = value;
         }
       }

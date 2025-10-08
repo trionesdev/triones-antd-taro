@@ -169,14 +169,11 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
                 translateY + (movePoint.clientY - touchPoint.clientY);
               setTranslateY(newTranslateY);
               setTouchPoint(movePoint);
-              // console.log(newTranslateY,minTranslateY())
               if (newTranslateY > -10) {
                 //当向下滑动，顶部距离视窗顶部距离小于10，则插入上一个月份
-                console.log('insert');
                 await handleInsertMouth();
               } else if (newTranslateY < 0 - (await minTranslateY()) + 10) {
                 //当向下滑动，底部距离视窗底部距离小于10，则追加下一个月份
-                console.log('append');
                 handleAppendMouth();
               }
             }
@@ -197,43 +194,28 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
             //region 判断当前月份是否在视窗内
             let _mouthHeightSum = 0;
             for (let i = 0; i < mouths.length; i++) {
-              console.log('mouthHeight', mouthHeight);
-              console.log('mouths[i]', mouths[i], i);
               const _mouthHeight = mouthLines(mouths[i]) * (await cellSize());
               _mouthHeightSum += _mouthHeight;
-              console.log('_mouthHeightSum', _mouthHeightSum);
-              console.log('translateY', translateY);
               const _topLineY = 0 - (_mouthHeightSum - _mouthHeight); //该月份区域顶部，对于顶点的偏移量
-              console.log('_topLineY', _topLineY);
               if (
                 _topLineY <= translateY &&
                 _topLineY >= translateY - mouthHeight
               ) {
                 //该月份区域的顶部在视窗内
-                console.log('top_in');
                 const _windowDisplayHeight = _mouthHeightSum - (0 - translateY); //该月份区域底部距离视窗顶部的距离
-                console.log('_windowDisplayHeight——top', _windowDisplayHeight);
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
                   displayMouth = mouths[i];
                   break;
                 }
               }
               const _bottomLineY = 0 - _mouthHeightSum; //该月份区域底部，对于顶点的偏移量
-              console.log('_bottomLineY', _bottomLineY);
               if (
                 _bottomLineY <= translateY &&
                 _bottomLineY >= translateY - mouthHeight
               ) {
                 //该月份区域的底部在视窗内
-                console.log('bottom_in');
                 const _windowDisplayHeight = _mouthHeightSum - (0 - translateY); //该月份区域底部距离视窗顶部的距离
-                console.log(
-                  '_windowDisplayHeight-bottom',
-                  _windowDisplayHeight,
-                );
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
                   displayMouth = mouths[i];
                   break;
                 }

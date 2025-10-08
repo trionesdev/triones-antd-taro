@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import _ from "lodash";
+import {isEmpty, size} from "lodash";
 import {PickerViewColumn} from "./picker-view-column";
 import React, {FC, useEffect, useState} from "react";
 import { PickerColumnOption} from "./types";
@@ -15,7 +15,7 @@ export type PickerViewProps = {
   onChange?: (value: any[]) => void
 }
 export const PickerView: FC<PickerViewProps> = React.memo(({className,style,columns, labelInValue, value, onChange}) => {
-  const [internalValue, setInternalValue] = useState(value || Array.from({length: _.size(columns)}).map(() => null))
+  const [internalValue, setInternalValue] = useState(value || Array.from({length: size(columns)}).map(() => null))
   useEffect(() => {
     if (value === undefined) {
       return;
@@ -26,7 +26,7 @@ export const PickerView: FC<PickerViewProps> = React.memo(({className,style,colu
     setInternalValue(value);
   }, [value]);
   return <div className={classNames(`${pickerViewCls}`,className)}  style={ style}>
-    {!_.isEmpty(columns) && columns?.map((column: any, index: number) => {
+    {!isEmpty(columns) && columns?.map((column: any, index: number) => {
       return <PickerViewColumn key={`column-${index}`} labelInValue={labelInValue}
                                options={column}
                                value={value?.[index]}

@@ -2,7 +2,7 @@ import "./index.scss"
 import React, {FC, ReactNode, useContext, useEffect} from "react";
 import classNames from "classnames";
 import {TabBarContext} from "./TabBarContext";
-import _ from "lodash";
+import {isEmpty} from "lodash";
 
 type TabBarItemType = {
   key: string
@@ -103,9 +103,9 @@ export const TabBar: FC<TabBarProps> = ({className, style, activeKey, defaultAct
     value={{activeKey: innerActiveKey, setActiveKey: setInnerActiveKey, onTabClick: onClick}}>
     <div className={classNames(tabBarCls, className)} style={style}>
       <div className={classNames(`${tabBarCls}-wrap`)}>
-        {!_.isEmpty(items) && items.map(item => <TabBarItem {...item} key={item.key} antKey={item.key}
+        {!isEmpty(items) && items.map(item => <TabBarItem {...item} key={item.key} antKey={item.key}
                                                             onClick={item.onClick}/>)}
-        {_.isEmpty(items) && children}
+        {isEmpty(items) && children}
       </div>
     </div>
   </TabBarContext.Provider>

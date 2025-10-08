@@ -5,7 +5,7 @@ import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {CameraModal} from "./CameraModal";
 import {ImagesPreview} from "../index"
-import _ from "lodash";
+import {isEqual} from "lodash";
 import {RandomUtils} from '../utils/random-utils';
 
 const cls = 'triones-antm-images-wall'
@@ -97,7 +97,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
       item.status ??= 'done'
       return item;
     })
-    if (_.isEqual(newImages, images)) {
+    if (isEqual(newImages, images)) {
       return;
     }
     setImages(newImages || [])

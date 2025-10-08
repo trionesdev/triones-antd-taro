@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {isEmpty,isEqual,isArray} from 'lodash';
 import React, {
   FC,
   MouseEvent,
@@ -104,7 +104,7 @@ export const Tabs: FC<TabsProps> = ({
     if (items === undefined) {
       return;
     }
-    if (_.isEqual(items, internalItems)) {
+    if (isEqual(items, internalItems)) {
       return;
     }
     handleSetItems(items);
@@ -120,7 +120,7 @@ export const Tabs: FC<TabsProps> = ({
 
   useEffect(() => {
     if (children) {
-      if (_.isArray(children)) {
+      if (isArray(children)) {
         const tabItems = children
           .filter((tab) => {
             return tab.type === Tab;
@@ -154,7 +154,7 @@ export const Tabs: FC<TabsProps> = ({
         <div className={classNames(`${tabsCls}-nav`)}>
           <div className={classNames(`${tabsCls}-nav-wrap`)}>
             <div ref={tabNavRef} className={classNames(`${tabsCls}-nav-list`)}>
-              {!_.isEmpty(internalItems) &&
+              {!isEmpty(internalItems) &&
                 internalItems?.map((item: any, index: number) => {
                   return (
                     <TabNav
@@ -173,7 +173,7 @@ export const Tabs: FC<TabsProps> = ({
         </div>
         <div className={classNames(`${tabsCls}-content-holder`)}>
           <div className={classNames(`${tabsCls}-content`)}>
-            {!_.isEmpty(internalItems) &&
+            {!isEmpty(internalItems) &&
               internalItems?.map((item: any, index: number) => {
                 return (
                   <TabPane key={`tab-panel-${item.key}`} tabKey={item.key}>

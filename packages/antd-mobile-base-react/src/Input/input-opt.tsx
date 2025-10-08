@@ -41,7 +41,6 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
            // }
          )}
          onClick={() => {
-           console.log('click', index)
       onFocus?.(index)
     }}>{value}</div>
   );

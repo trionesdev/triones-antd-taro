@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {isEmpty} from 'lodash';
 import {Field} from 'rc-field-form';
 import {Meta, Rule} from 'rc-field-form/lib/interface';
 import React, {FC, useState} from 'react';
@@ -45,7 +45,7 @@ export const FormItemInput: FC<FormItemInputProps> = ({
           {children}
         </Field>
       </div>
-      {!hiddenError && !_.isEmpty(meta?.errors) && (
+      {!hiddenError && !isEmpty(meta?.errors) && (
         <div className={classNames(`${clsPrefix}-error`)}>
           {errorRender?.(meta?.errors) || meta?.errors.join(',')}
         </div>
