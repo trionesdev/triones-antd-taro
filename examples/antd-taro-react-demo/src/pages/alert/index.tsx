@@ -28,6 +28,7 @@ const AlertBase = () => {
         <Alert showIcon={true} type={'info'} message={`Info Text`}/>
         <Alert showIcon={true} type={`warning`} message={`Warring Text`}/>
         <Alert showIcon={true} type={`error`} message={`Error Text`}/>
+
       </Space>
     </DemoBlock>
   </View>
