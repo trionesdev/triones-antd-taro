@@ -43,9 +43,6 @@ export default () => {
         <Switch
           defaultChecked
           style={{
-            '--checked-color': '#00b578',
-            '--height': '36px',
-            '--width': '60px',
           }}
         />
       </DemoBlock>

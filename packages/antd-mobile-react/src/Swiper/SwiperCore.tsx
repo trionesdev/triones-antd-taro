@@ -12,7 +12,7 @@ import classNames from 'classnames';
 const cls = 'triones-antm-swiper';
 
 export type SwiperItemType = {
-  content: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export type SwiperCoreProps = {
@@ -159,7 +159,7 @@ export const SwiperCore: FC<PropsWithChildren<SwiperCoreProps>> = ({
                 key={index}
                 style={{ width: itemWidth, height: itemHeight }}
               >
-                {item?.content}
+                {item?.children}
               </SwiperCoreItem>
             );
           })}

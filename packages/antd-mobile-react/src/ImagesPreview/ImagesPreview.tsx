@@ -57,7 +57,7 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
                 onChange={setInnerActiveIndex}
                 items={items?.map((item) => {
                   return {
-                    content: <div style={{width: '100%'}} onClick={(e) => {
+                    children: <div style={{width: '100%'}} onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                     }}>

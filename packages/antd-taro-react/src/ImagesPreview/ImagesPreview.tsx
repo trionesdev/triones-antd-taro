@@ -3,6 +3,7 @@ import Mask from "../Mask";
 import classNames from "classnames";
 import "./style.scss"
 import Swiper from "../Swiper";
+import Image from "../Image";
 
 const cls = 'triones-antm-image-preview';
 
@@ -51,9 +52,18 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
         {`${innerActiveIndex + 1}/${items?.length}`}
       </div>
       <div className={classNames(`${cls}-content`)}>
-        <Swiper style={{width: '100%', height: '100%'}}
-
-        />
+        <Swiper style={{width: '100%', height: '100%'}} >
+          {items?.map((item) => {
+            return <Swiper.Item style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}  as React.CSSProperties}>
+              <div onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}>
+                <Image src={item??""} mode={'aspectFill'}/>
+              </div>
+            </Swiper.Item>
+          })}
+        </Swiper>
       </div>
     </div>
   </Mask>;
