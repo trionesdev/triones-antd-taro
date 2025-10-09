@@ -30,6 +30,9 @@ const SwitchBase = () => {
       <Switch
         defaultChecked
         style={{}}
+        checkedColor='#00b578'
+        height={36}
+        width={60}
       />
     </DemoBlock>
 
@@ -49,7 +52,7 @@ const SwitchBase = () => {
         <Switch
           checked={checked}
           onChange={async val => {
-            await mockRequest()
+
             setChecked(val)
           }}
         />

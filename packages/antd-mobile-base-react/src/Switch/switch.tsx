@@ -54,13 +54,19 @@ export const Switch: FC<SwitchProps> = (p) => {
 
   const completedStyle: any = React.useMemo(() => {
     const maskImageSvg = createSvgStr({stroke: '#1677ff'});
-
-    return {
-      '--width': p.width? toCSSLength(p.width!):null,
-      '--height': p.height? toCSSLength(p.height!):null,
-      '--checked-color': p.checkedColor ?? '#1677ff',
+    const style: any = {
       '--maskImage': `url(data:image/svg+xml;base64,${Base64.stringify(Utf8.parse(maskImageSvg))})`,
     };
+    if (props.checkedColor) {
+      style['--checked-color'] = props.checkedColor;
+    }
+    if (props.width){
+      style['--width'] = toCSSLength(props.width);
+    }
+    if (props.height){
+      style['--height'] = toCSSLength(props.height);
+    }
+    return style;
   }, []);
 
   return withNativeProps(
