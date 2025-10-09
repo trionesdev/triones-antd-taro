@@ -12,22 +12,6 @@ export type {AvatarProps} from './Avatar';
 export {default as Badge} from './Badge';
 export type {BadgeFill, BadgeProps} from './Badge';
 
-export {default as Button} from './Button';
-export type {ButtonProps} from './Button';
-
-export {
-  default as Calendar,
-  CalendarGrid,
-  TouchableCalendarGrid,
-} from './Calendar';
-export type {CalendarGridProps, CalendarProps} from './Calendar';
-
-export {default as CalendarDatetimePicker} from './CalendarDatetimePicker';
-export type {CalendarDatetimePickerProps} from './CalendarDatetimePicker';
-
-export {default as CalendarPicker} from './CalendarPicker';
-export type {CalendarPickerProps} from './CalendarPicker';
-
 export {default as Card} from './Card';
 export type {CardProps} from './Card';
 

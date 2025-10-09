@@ -1,4 +1,3 @@
-import {ImagesPreview,ImagePreviewProps} from '@trionesdev/antd-mobile-base-react';
-
+import {ImagesPreview,ImagePreviewProps} from './ImagesPreview';
 export type {ImagePreviewProps};
 export default ImagesPreview;

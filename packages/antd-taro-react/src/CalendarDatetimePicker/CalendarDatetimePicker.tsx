@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro';
 import classNames from 'classnames';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Calendar from '../Calendar';
-import { useConfig } from '../ConfigProvider';
+import ConfigProvider from '../ConfigProvider';
 import { useTaro } from '../hooks/useTaro';
 import PickerView from '../PickerView';
 import Popup from '../Popup';
@@ -27,7 +27,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   onOk,
   onClose,
 }) => {
-  const { locale } = useConfig();
+  const { locale } = ConfigProvider.useConfig();
   const { isTaroEnv, isTaroWeApp } = useTaro();
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
