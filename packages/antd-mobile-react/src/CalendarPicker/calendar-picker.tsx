@@ -1,16 +1,17 @@
 import classNames from 'classnames';
 import React, { FC, memo, useEffect, useRef } from 'react';
 import Calendar from '../Calendar';
-import { useConfig } from '../ConfigProvider';
-import Popup from '../Popup';
+
 import './style.scss';
 import { CalendarPickerProps } from './types';
+import ConfigProvider from '../ConfigProvider';
+import Popup from '../Popup';
 
 const cls = 'triones-antm-calendar-picker';
 
 export const CalendarPicker: FC<CalendarPickerProps> = memo(
   ({ mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose }) => {
-    const { locale } = useConfig();
+    const { locale } = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();
 

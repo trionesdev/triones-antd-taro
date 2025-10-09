@@ -1,7 +1,7 @@
-import { Text, View } from "@tarojs/components";
-import { inject, observer } from "mobx-react";
-import { Component, PropsWithChildren } from "react";
-import { Button } from "@trionesdev/antd-taro-react";
+import {Text, View} from "@tarojs/components";
+import {inject, observer} from "mobx-react";
+import {Component, PropsWithChildren} from "react";
+import {Button, SafeArea} from "@trionesdev/antd-taro-react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
@@ -37,33 +37,34 @@ class Index extends Component<PropsWithChildren> {
   }
 
   increment = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.increment();
   };
 
   decrement = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.decrement();
   };
 
   incrementAsync = () => {
-    const { counterStore } = this.props.store;
+    const {counterStore} = this.props.store;
     counterStore.incrementAsync();
   };
 
   render() {
     const {
-      counterStore: { counter },
+      counterStore: {counter},
     } = this.props.store;
     return (
+
       <View className="index">
-        <View style={{ display: 'none' }}>
+        <View style={{display: 'none'}}>
           <Button onClick={this.increment}>+</Button>
           <Button onClick={this.decrement}>-</Button>
           <Button onClick={this.incrementAsync}>Add Async</Button>
           <Text>{counter}</Text>
         </View>
-        <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px' }}>
+        <View style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px'}}>
           <Button
             block={true}
             onClick={() => {
@@ -164,16 +165,7 @@ class Index extends Component<PropsWithChildren> {
           >
             Divider
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/nav-bar/index",
-              });
-            }}
-          >
-            NavBar
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -234,16 +226,7 @@ class Index extends Component<PropsWithChildren> {
           >
             Footer
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/notice-bar/index",
-              });
-            }}
-          >
-            NoticeBar
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -258,42 +241,13 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/tag/index",
-              });
-            }}
-          >
-            Tag
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/rate/index",
-              });
-            }}
-          >
-            Rate
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
                 url: "/pages/progress-bar/index",
               });
             }}
           >
             ProgressBar
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/input/index",
-              });
-            }}
-          >
-            Input
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -304,46 +258,7 @@ class Index extends Component<PropsWithChildren> {
           >
             Form
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/popup/index",
-              });
-            }}
-          >
-            Popup
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/radio/index",
-              });
-            }}
-          >
-            Radio
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/picker/index",
-              });
-            }}
-          >
-            Picker
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/tabs/index",
-              });
-            }}
-          >
-            Tabs
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -368,21 +283,81 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/toast/index",
+                url: "/pages/input/index",
               });
             }}
           >
-            Toast
+            Input 输入框
           </Button>
           <Button
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/spin-loading/index",
+                url: "/pages/nav-bar/index",
               });
             }}
           >
-            SpinLoading
+            NavBar 导航栏
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/notice-bar/index",
+              });
+            }}
+          >
+            NoticeBar 通告栏
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/picker/index",
+              });
+            }}
+          >
+            Picker 选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/popup/index",
+              });
+            }}
+          >
+            Popup 弹出层
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/radio/index",
+              });
+            }}
+          >
+            Radio 单选框
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/rate/index",
+              });
+            }}
+          >
+            Rate 评分
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/side-bar/index",
+              });
+            }}
+          >
+            SideBar
           </Button>
           <Button
             block={true}
@@ -392,7 +367,17 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            Space
+            Space 间距
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/spin-loading/index",
+              });
+            }}
+          >
+            SpinLoading 加载中
           </Button>
           <Button
             block={true}
@@ -408,14 +393,45 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/side-bar/index",
+                url: "/pages/switch/index",
               });
             }}
           >
-            SideBar
+            Switch 开关
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/tabs/index",
+              });
+            }}
+          >
+            Tabs 标签页
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/tag/index",
+              });
+            }}
+          >
+            Tag 标签
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/toast/index",
+              });
+            }}
+          >
+            Toast 轻提示
           </Button>
         </View>
       </View>
+
     );
   }
 }

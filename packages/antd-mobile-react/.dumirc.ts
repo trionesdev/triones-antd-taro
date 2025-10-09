@@ -19,7 +19,7 @@ export default defineConfig({
     // 'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
   },
   themeConfig:{
-    name: 'Antd Taro',
+    name: 'TrionesDev Antd Mobile',
     hd: { rules: [{ mode: 'vw', options: [100, 750] }] },
     // 配置 demo 预览器的设备宽度，默认为 375px
     deviceWidth: 375,

@@ -12,22 +12,6 @@ export type {AvatarProps} from './Avatar';
 export {default as Badge} from './Badge';
 export type {BadgeFill, BadgeProps} from './Badge';
 
-export {default as Button} from './Button';
-export type {ButtonProps} from './Button';
-
-export {
-  default as Calendar,
-  CalendarGrid,
-  TouchableCalendarGrid,
-} from './Calendar';
-export type {CalendarGridProps, CalendarProps} from './Calendar';
-
-export {default as CalendarDatetimePicker} from './CalendarDatetimePicker';
-export type {CalendarDatetimePickerProps} from './CalendarDatetimePicker';
-
-export {default as CalendarPicker} from './CalendarPicker';
-export type {CalendarPickerProps} from './CalendarPicker';
-
 export {default as Card} from './Card';
 export type {CardProps} from './Card';
 
@@ -43,7 +27,7 @@ export type {CellProps, CellGroupProps} from './Cell';
 export {default as Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
 
-export {default as ConfigProvider, useConfig, setDefaultConfig, getDefaultConfig} from './ConfigProvider';
+export {default as ConfigProvider} from './ConfigProvider';
 export type {ConfigProviderProps} from './ConfigProvider';
 
 export {default as Descriptions} from "./Descriptions"
@@ -70,23 +54,11 @@ export type {FormItemProps, FormProps} from './Form';
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
 
-export {default as Image} from './Image';
-export type {ImageProps} from "./Image"
-
-export {default as ImagesPreview} from './ImagesPreview';
-export type {ImagePreviewProps} from './ImagesPreview';
-
-export {default as ImagesWall} from './ImagesWall';
-export type {ImagesWallProps, ImagesWallItemProps} from './ImagesWall';
-
 export {default as Input} from './Input';
 export type {InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} from './Input';
 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
-
-export {default as Mark} from './Mark';
-export type {MaskProps as MarkProps} from './Mark';
 
 export {default as Mask} from "./Mask"
 export type {MaskProps} from "./Mask"
@@ -138,9 +110,6 @@ export type {SpaceProps} from './Space';
 
 export {default as SpinLoading} from './SpinLoading';
 export type {SpinLoadingProps} from './SpinLoading';
-
-export {default as Swiper} from "./Swiper"
-export type {SwiperProps} from './Swiper';
 
 export {default as Switch} from './Switch';
 export type {SwitchProps} from './Switch';

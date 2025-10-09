@@ -1,6 +1,6 @@
 
-import { Result } from './result'
+import { Result } from '@trionesdev/antd-mobile-base-react'
 
-export type { ResultProps } from './result'
+export type { ResultProps } from '@trionesdev/antd-mobile-base-react'
 
 export default Result

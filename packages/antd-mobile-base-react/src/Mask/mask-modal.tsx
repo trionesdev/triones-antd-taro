@@ -25,16 +25,6 @@ export type MaskModalProps = {
    */
   open?: boolean,
   /**
-   * @description 打开位置
-   * @default bottom
-   */
-  position?: Position
-  /**
-   * @description 是否可以关闭(显示关闭按钮)
-   * @default false
-   */
-  closable?: boolean
-  /**
    * @description 是否蒙层关闭
    * @default true
    */
@@ -59,9 +49,22 @@ export type MaskModalProps = {
 
 }
 
-export const MaskModal: FC<PropsWithChildren<MaskModalProps>> = ({className, style, children, zIndex,open, onMaskClick}) => {
+export const MaskModal: FC<PropsWithChildren<MaskModalProps>> = ({
+                                                                   children,
+                                                                   className,
+                                                                   style,
+                                                                   zIndex,
+                                                                   open,
+
+                                                                   maskClosable = true,
+                                                                   onMaskClick
+                                                                 }) => {
   return <div className={classNames(maskCls, {[`${maskCls}-open`]: open})} style={{...style, zIndex}}
-              onClick={onMaskClick}>
+              onClick={(e) => {
+                if (maskClosable) {
+                  onMaskClick?.(e)
+                }
+              }}>
     <div className={classNames(`${maskCls}-inner`, className)}>
       {children}
     </div>

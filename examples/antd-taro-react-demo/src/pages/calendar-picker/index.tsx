@@ -1,7 +1,8 @@
 import {View} from "@tarojs/components";
 import React from "react";
 import {DemoBlock} from "../../components";
-import {Button, CalendarPicker, Toast } from "@trionesdev/antd-taro-react";
+import {Button, CalendarPicker } from "@trionesdev/antd-taro-react";
+import Taro from "@tarojs/taro";
 
 const CalendarBase = () => {
   const toastContainer = React.useRef<any>()
@@ -13,9 +14,8 @@ const CalendarBase = () => {
       <CalendarPicker open={open} afterOpenChange={(o) => {
         setOpen(o);
       }} onOk={(date) => {
-        Toast.show({
-          getContainer: () => toastContainer.current,
-          content: `${date!.getFullYear()}-${date!.getMonth()  +1}-${date!.getDate()}`,
+        Taro.showToast({
+          title: `${date!.getFullYear()}-${date!.getMonth()  +1}-${date!.getDate()}`,
         })
       }}/>
       <Button block={true} onClick={() => {
@@ -28,12 +28,8 @@ const CalendarBase = () => {
       <CalendarPicker.Range open={open2} afterOpenChange={(o) => {
         setOpen2(o);
       }} onOk={(date) => {
-        Toast.show({
-          getContainer: () => toastContainer.current,
-          content: <div>
-            <div>{`${date![0].getFullYear()}-${date![0].getMonth() +1}-${date![0].getDate()}`}</div>
-            <div>{`${date![1].getFullYear()}-${date![1].getMonth()  +1}-${date![1].getDate()}`}</div>
-          </div>,
+        Taro.showToast({
+          title: `${date![0].getFullYear()}-${date![0].getMonth() +1}-${date![0].getDate()} ~ ${date![1].getFullYear()}-${date![1].getMonth()  +1}-${date![1].getDate()}`,
         })
       }}/>
       <Button block={true} onClick={() => {

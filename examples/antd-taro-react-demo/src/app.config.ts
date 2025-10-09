@@ -22,7 +22,7 @@ export default defineAppConfig({
     "pages/error-block/index",
     "pages/footer/index",
     "pages/notice-bar/index",
-    // "pages/tag/index",
+    "pages/tag/index",
     // "pages/card/index",
 
     // "pages/progress-bar/index",
@@ -40,6 +40,7 @@ export default defineAppConfig({
     "pages/spin-loading/index",
     "pages/swiper/index",
     "pages/side-bar/index",
+    "pages/switch/index",
     "pages/tab-bar/index",
     "pages/tabs/index",
     "pages/toast/index",

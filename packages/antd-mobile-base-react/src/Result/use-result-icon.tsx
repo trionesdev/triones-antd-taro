@@ -1,12 +1,12 @@
 import React from 'react'
-import { useConfig } from '../ConfigProvider'
+import ConfigProvider from '../ConfigProvider'
 import { CheckCircleOutline, CloseCircleOutline, InformationCircleOutline, ClockCircleOutline, ExclamationTriangleOutline } from '../../../antd-mobile-icons-react'
 
 
 export const useResultIcon = (
   status?: 'success' | 'error' | 'info' | 'waiting' | 'warning'
 ) => {
-  const { result: componentConfig = {} } = useConfig()
+  const { result: componentConfig = {} } = ConfigProvider.useConfig()
   const {
     successIcon = <CheckCircleOutline style={{ fontSize: "48PX" }} />,
     errorIcon = <CloseCircleOutline style={{ fontSize: "48PX" }} />,

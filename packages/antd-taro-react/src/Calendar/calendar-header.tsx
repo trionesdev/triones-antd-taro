@@ -1,7 +1,6 @@
-import React from "react";
-import {FC} from "react";
+import React,{FC} from "react";
 import classNames from "classnames";
-import {useConfig} from "../ConfigProvider";
+import ConfigProvider from "../ConfigProvider";
 
 const calendarCls = 'triones-antm-calendar';
 type CalendarHeaderProps={
@@ -9,7 +8,7 @@ type CalendarHeaderProps={
   onChange:(mouth:Date)=>void;
 }
 export const CalendarHeader:FC<CalendarHeaderProps> = ({mouth,onChange}) => {
-  const { locale } = useConfig();
+  const { locale } = ConfigProvider.useConfig();
   return (<>
     <div className={classNames(`${calendarCls}-header`)}>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {

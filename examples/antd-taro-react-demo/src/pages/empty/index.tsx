@@ -1,23 +1,13 @@
-
-import { View } from "@tarojs/components";
-import { Empty } from "@trionesdev/antd-taro-react";
-import { DemoBlock } from "../../components";
-import { QuestionCircleOutline } from "@trionesdev/antd-mobile-icons-react";
+import {View} from "@tarojs/components";
+import {Empty} from "@trionesdev/antd-taro-react";
+import {DemoBlock} from "../../components";
+import {QuestionCircleOutline} from "@trionesdev/antd-mobile-icons-react";
 import {useEffect, useRef} from "react";
-import Taro from "@tarojs/taro";
 
 const DividerBase = () => {
   const ref = useRef<any>()
   useEffect(() => {
-    console.log(ref.current)
-    console.log(ref.current?.id)
-    console.log("Taro",Taro)
-    Taro.createSelectorQuery().select(`#s122`).scrollOffset().exec((res)=>{
-      console.log(res);
-    })
-    Taro.createSelectorQuery().select(ref.current).scrollOffset().exec((res)=>{
-      console.log(res);
-    })
+
   }, []);
 
 
