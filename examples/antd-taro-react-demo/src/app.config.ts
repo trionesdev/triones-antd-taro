@@ -40,6 +40,7 @@ export default defineAppConfig({
     "pages/spin-loading/index",
     "pages/swiper/index",
     "pages/side-bar/index",
+    "pages/switch/index",
     "pages/tab-bar/index",
     "pages/tabs/index",
     "pages/toast/index",

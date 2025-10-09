@@ -42,8 +42,14 @@ export default () => {
       <DemoBlock title='自定义样式'>
         <Switch
           defaultChecked
-          style={{
-          }}
+          // style={{
+          //   '--checked-color': '#00b578',
+          //   '--height': '36px',
+          //   '--width': '60px',
+          // }}
+          checkedColor='#00b578'
+          height={36}
+          width={60}
         />
       </DemoBlock>
 

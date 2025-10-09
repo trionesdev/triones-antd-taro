@@ -1,3 +1,5 @@
+@import "../style/variable";
+
 $class-prefix-switch: 'triones-antm-switch';
 
 @keyframes loading-rotate {
@@ -5,9 +7,9 @@ $class-prefix-switch: 'triones-antm-switch';
     transform: rotate(1turn);
   }
 }
+
 /* prettier-ignore */
 .#{$class-prefix-switch} {
-  --checked-color: var(--triones-antm-color-primary);
   --height: 24PX;
   --width: 42PX;
   --border-width: 2PX;
@@ -28,10 +30,11 @@ $class-prefix-switch: 'triones-antm-switch';
     height: var(--height);
     box-sizing: border-box;
     border-radius: 31PX;
-    background: var(--triones-antm-color-border);
+    background: $trionesBorderColor;
     z-index: 0;
     overflow: hidden;
     line-height: var(--height);
+
     &:before {
       content: ' ';
       position: absolute;
@@ -55,16 +58,26 @@ $class-prefix-switch: 'triones-antm-switch';
     width: calc(var(--height) - 2 * var(--border-width));
     height: calc(var(--height) - 2 * var(--border-width));
     border-radius: calc(var(--height) - 2 * var(--border-width));
-    background: var(--triones-antm-color-text-light-solid);
+    background: $trionesColorTextLightSolid;
     position: absolute;
     z-index: 2;
     top: var(--border-width);
     left: var(--border-width);
     transition: all 200ms;
-    box-shadow:
-      0 0 2PX 0 rgba(0, 0, 0, 0.2),
-      0 2PX 11.5PX 0 rgba(0, 0, 0, 0.08),
-      -1PX 2PX 2PX 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2PX 0 rgba(0, 0, 0, 0.2),
+    0 2PX 11.5PX 0 rgba(0, 0, 0, 0.08),
+    -1PX 2PX 2PX 0 rgba(0, 0, 0, 0.1);
+
+    &-loading {
+      color: var(--color,$trionesColorPrimary);
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      background: currentColor;
+      mask-image: var(--maskImage);
+      -webkit-mask-image: var(--maskImage);
+      animation: adm-spin-loading-rotate 2s infinite linear;
+    }
   }
 
   &-inner {
@@ -83,18 +96,20 @@ $class-prefix-switch: 'triones-antm-switch';
   /* 选中状态 */
   &.#{$class-prefix-switch}-checked {
     .#{$class-prefix-switch}-checkbox {
-      background: var(--checked-color);
+      background: var(--checked-color, $trionesColorPrimary);
+
       &:before {
         transform: scale(0);
       }
     }
+
     .#{$class-prefix-switch}-handle {
       left: calc(100% - (var(--height) - var(--border-width)));
     }
 
     .#{$class-prefix-switch}-inner {
       margin: 0 calc(var(--height) - var(--border-width) + 5PX) 0 8PX;
-      color: var(--triones-antm-color-text-light-solid);
+      color: $trionesColorTextLightSolid;
     }
   }
 
