@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import type {CSSProperties, FC, ReactNode} from 'react'
 import React from 'react'
 import { withNativeProps } from '../utils/native-props'
-import { useConfig } from '../ConfigProvider'
+import ConfigProvider from '../ConfigProvider'
 import { mergeProp, mergeProps } from '../utils/with-default-props'
 import { LeftOutline } from '../../../antd-mobile-icons-react'
 
@@ -42,7 +42,7 @@ export type NavBarProps = {
 const defaultBackIcon = <LeftOutline />
 
 export const NavBar: FC<NavBarProps> = props => {
-  const { navBar: componentConfig = {} } = useConfig()
+  const { navBar: componentConfig = {} } = ConfigProvider.useConfig()
   const mergedProps = mergeProps(componentConfig, props)
   const { back, backIcon } = mergedProps
 

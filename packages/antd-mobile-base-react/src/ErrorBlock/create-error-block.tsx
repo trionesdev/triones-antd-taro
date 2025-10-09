@@ -5,7 +5,7 @@ import type { ErrorBlockStatus, ImageRecord } from '.';
 import './style.scss';
 import { NativeProps, withNativeProps } from '../utils/native-props';
 import { mergeProps } from '../utils/with-default-props';
-import { useConfig } from '../ConfigProvider';
+import ConfigProvider from '../ConfigProvider';
 
 const classPrefix = `triones-antm-error-block`;
 
@@ -30,7 +30,7 @@ const defaultProps = {
 export function createErrorBlock(imageRecord: ImageRecord) {
   const ErrorBlock: FC<ErrorBlockProps> = (p) => {
     const props = mergeProps(defaultProps, p);
-    const { locale } = useConfig();
+    const { locale } = ConfigProvider.useConfig();
     const contentPack = locale.ErrorBlock[props.status];
     const desc =
       'description' in props ? props.description : contentPack.description;

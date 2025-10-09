@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Calendar from "../Calendar";
 import "./style.scss"
 import {CalendarPickerRangeProps} from "./types";
-import {useConfig} from "../ConfigProvider";
+import ConfigProvider from "../ConfigProvider";
 
 const cls = 'triones-antm-calendar-picker';
 
@@ -19,7 +19,7 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
      onCancel,
      onClose
    }) => {
-    const {locale} = useConfig();
+    const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();
 

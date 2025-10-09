@@ -1,8 +1,8 @@
-import {CloseOutline} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, {CSSProperties, FC, memo, PropsWithChildren, useMemo,} from 'react';
 import SafeArea from '../SafeArea';
 import './style.scss';
+import { CloseOutline } from "@trionesdev/antd-mobile-icons-react";
 
 const popupCls = 'triones-antm-popup';
 

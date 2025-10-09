@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {isEqual} from 'lodash';
 import React, { FC, useEffect, useRef } from 'react';
 import CascaderView from '../CascaderView';
-import { useConfig } from '../ConfigProvider';
+import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
 
@@ -50,7 +50,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
     onClose,
     asyncRequest,
   }) => {
-    const { locale } = useConfig();
+    const { locale } = ConfigProvider.useConfig();
 
     const internalValueRf = useRef(value);
 

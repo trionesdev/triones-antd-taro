@@ -1,59 +1,51 @@
-import React, { FC, memo, PropsWithChildren, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { PopupModal, PopupModalProps } from './popup-modal';
+import React, {FC, memo, PropsWithChildren} from 'react';
+import {PopupModal, PopupModalProps} from './popup-modal';
 
-export type PopupProps = Omit<PopupModalProps, 'onDestroy'> & {
-  /**
-   * @description 获取容器
-   * @default null
-   */
-  getContainer?: () => HTMLElement;
-};
+export type PopupProps = Omit<PopupModalProps, 'onDestroy'> ;
 export const Popup: FC<PropsWithChildren<PopupProps>> = memo(
-  ({ children, getContainer, open = false, ...rest }) => {
-    const [renderEnable, setRenderEnable] = React.useState(false);
-    const containerRef = React.useRef<HTMLDivElement>(null);
-    const mountRef = React.useRef<HTMLDivElement | null>(null);
-    const rootContainer = getContainer?.() || containerRef.current!;
+  ({ children, open = false, ...rest }) => {
+    // const [renderEnable, setRenderEnable] = React.useState(false);
+    // const containerRef = React.useRef<HTMLDivElement>(null);
+    // const mountRef = React.useRef<HTMLDivElement | null>(null);
+    // const rootContainer = getContainer?.() || containerRef.current!;
+    //
+    // const Portal = () => {
+    //   if (!mountRef.current) {
+    //     mountRef.current = document.createElement('div');
+    //     rootContainer.appendChild(mountRef.current);
+    //   }
+    //
+    //   const destroy = () => {
+    //     if (rootContainer && mountRef.current) {
+    //       rootContainer.removeChild(mountRef.current);
+    //     }
+    //     mountRef.current = null;
+    //     setRenderEnable(false);
+    //   };
+    //
+    //   return (
+    //     <>
+    //       {createPortal(
+    //         <PopupModal {...rest} onDestroy={destroy} open={open}>
+    //           {children}
+    //         </PopupModal>,
+    //         mountRef.current!,
+    //       )}
+    //     </>
+    //   );
+    // };
 
-    const Portal = () => {
-      if (!mountRef.current) {
-        mountRef.current = document.createElement('div');
-        rootContainer.appendChild(mountRef.current);
-      }
+    // useEffect(() => {
+    //   if (open && !renderEnable) {
+    //     setRenderEnable(true);
+    //   }
+    //   // rest.afterOpenChange?.(open);
+    // }, [open]);
 
-      const destroy = () => {
-        if (rootContainer && mountRef.current) {
-          rootContainer.removeChild(mountRef.current);
-        }
-        mountRef.current = null;
-        setRenderEnable(false);
-      };
+    if (!open){
+      return null;
+    }
 
-      return (
-        <>
-          {createPortal(
-            <PopupModal {...rest} onDestroy={destroy} open={open}>
-              {children}
-            </PopupModal>,
-            mountRef.current!,
-          )}
-        </>
-      );
-    };
-
-    useEffect(() => {
-      if (open && !renderEnable) {
-        setRenderEnable(true);
-      }
-      // rest.afterOpenChange?.(open);
-    }, [open]);
-
-    return (
-      <>
-        {!getContainer?.() && <div ref={containerRef}></div>}
-        {renderEnable && <Portal />}
-      </>
-    );
+    return <PopupModal {...rest} open={open}>{children}</PopupModal>;
   },
 );

@@ -42,7 +42,7 @@ export type {CellProps, CellGroupProps} from './Cell';
 export {default as Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
 
-export {default as ConfigProvider, useConfig, setDefaultConfig, getDefaultConfig} from './ConfigProvider';
+export {default as ConfigProvider} from './ConfigProvider';
 export type {ConfigProviderProps} from './ConfigProvider';
 
 export {default as Descriptions} from "./Descriptions"
@@ -83,9 +83,6 @@ export type {InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} 
 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
-
-export {default as Mark} from './Mark';
-export type {MaskProps as MarkProps} from './Mark';
 
 export {default as Mask} from "./Mask"
 export type {MaskProps} from "./Mask"

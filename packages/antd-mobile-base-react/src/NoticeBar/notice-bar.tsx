@@ -1,15 +1,14 @@
 import {
   CloseCircleOutline,
   SetOutline,
-} from '../../../antd-mobile-icons-react';
-import { useTimeout } from 'ahooks';
+} from '@trionesdev/antd-mobile-icons-react';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
 import React, { memo, useRef, useState } from 'react';
-import { useConfig } from '../ConfigProvider';
+import ConfigProvider from '../ConfigProvider';
 import { NativeProps, withNativeProps } from '../utils/native-props';
-import { useMutationEffect } from '../utils/use-mutation-effect';
-import { useResizeEffect } from '../utils/use-resize-effect';
+// import { useMutationEffect } from '../utils/use-mutation-effect';
+// import { useResizeEffect } from '../utils/use-resize-effect';
 import { mergeProp, mergeProps } from '../utils/with-default-props';
 
 import './style.scss';
@@ -87,7 +86,7 @@ const defaultProps = {
 };
 
 export const NoticeBar = memo<NoticeBarProps>((props) => {
-  const { noticeBar: componentConfig = {} } = useConfig();
+  const { noticeBar: componentConfig = {} } = ConfigProvider.useConfig();
   const mergedProps = mergeProps(defaultProps, componentConfig, props);
   const closeIcon = mergeProp(
     <CloseCircleOutline className={`${classPrefix}-close-icon`} />,
@@ -138,26 +137,26 @@ export const NoticeBar = memo<NoticeBarProps>((props) => {
     text.style.transform = `translateX(-${text.offsetWidth}px)`;
   }
 
-  useTimeout(() => {
-    delayLockRef.current = false;
-    start();
-  }, mergedProps.delay);
+  // useTimeout(() => {
+  //   delayLockRef.current = false;
+  //   start();
+  // }, mergedProps.delay);
 
-  useResizeEffect(() => {
-    start();
-  }, containerRef);
-
-  useMutationEffect(
-    () => {
-      start();
-    },
-    textRef,
-    {
-      subtree: true,
-      childList: true,
-      characterData: true,
-    },
-  );
+  // useResizeEffect(() => {
+  //   start();
+  // }, containerRef);
+  //
+  // useMutationEffect(
+  //   () => {
+  //     start();
+  //   },
+  //   textRef,
+  //   {
+  //     subtree: true,
+  //     childList: true,
+  //     characterData: true,
+  //   },
+  // );
 
   if (!visible) return null;
 

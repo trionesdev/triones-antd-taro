@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {size} from 'lodash';
 import React, {FC, useEffect, useState} from 'react';
-import {useConfig} from '../ConfigProvider';
+import ConfigProvider from '../ConfigProvider';
 import PickerView, {PickerColumnOption} from '../PickerView';
 import Popup from '../Popup';
 import './style.scss';
@@ -36,7 +36,7 @@ export const Picker: FC<PickerProps> = React.memo(
      onCancel,
      onClose,
    }) => {
-    const {locale} = useConfig();
+    const {locale} = ConfigProvider.useConfig();
     const [internalValue, setInternalValue] = useState(
       value || Array.from({length: size(columns)}).map(() => null),
     );
