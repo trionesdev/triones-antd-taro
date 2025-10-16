@@ -8,10 +8,14 @@ export type ImageProps = Omit<TaroImageProps, 'style'> & {
   height?: string | number
 }
 export const Image: FC<ImageProps> = ({...rest}) => {
-  rest.style = {
-    ...rest.style,
-    width: rest.width,
-    height: rest.height
+  const style = {
+    ...rest.style
   }
-  return <TaroImage {...rest}/>
+  if (rest.width) {
+    style.width = rest.width;
+  }
+  if (rest.height) {
+    style.height = rest.height;
+  }
+  return <TaroImage {...rest} style={style}/>
 }

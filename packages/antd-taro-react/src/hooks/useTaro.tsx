@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 
 export const useTaro = () => {
   const env = Taro.getEnv();
@@ -13,9 +13,14 @@ export const useTaro = () => {
     return isTaroEnv && env === Taro.ENV_TYPE.WEAPP;
   }, []);
 
+  const isTaroWeb = useMemo(() => {
+    return isTaroEnv && env === Taro.ENV_TYPE.WEB;
+  }, []);
+
   return {
     env,
     isTaroEnv,
     isTaroWeApp,
+    isTaroWeb
   };
 };
