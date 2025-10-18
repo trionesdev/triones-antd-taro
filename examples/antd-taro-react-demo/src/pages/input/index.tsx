@@ -1,6 +1,7 @@
-import {View} from "@tarojs/components";
+import {View,Input as TaroInput} from "@tarojs/components";
 import {Input} from "@trionesdev/antd-taro-react";
 import {DemoBlock} from "../../components";
+
 
 const InputBase = () => {
   return <View>
@@ -15,6 +16,11 @@ const InputBase = () => {
     </DemoBlock>
     <DemoBlock title="OPT模式">
       <Input.OPT/>
+    </DemoBlock>
+    <DemoBlock title={`数字`}>
+      <Input.Digit />
+      <TaroInput type={`digit`} />
+      <TaroInput type={`idcard`} />
     </DemoBlock>
   </View>
 }

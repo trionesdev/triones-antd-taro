@@ -1,23 +1,27 @@
-import { CloseCircleFill } from '../../../antd-mobile-icons-react';
+import {CloseCircleFill} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
-import React, { FC, useRef } from 'react';
-import { BaseInput, BaseInputHandle, BaseInputProps } from './base-input';
+import React, {FC, PropsWithChildren} from 'react';
 
-export type InputAffixWrapperProps = BaseInputProps & {
+export type InputAffixWrapperProps = {
+  className?: string;
+  style?: React.CSSProperties;
+  value?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   allowClear?: boolean;
+  onClear?: () => void;
 };
-export const InputAffixWrapper: FC<InputAffixWrapperProps> = ({
+export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
+  children,
+  className,
+  style,
   prefix,
   suffix,
   allowClear,
   value,
-  onChange,
-  ...rest
+  onClear
 }) => {
-  const [innerValue, setInnerValue] = React.useState(value);
-  const baseInputRef = useRef({} as BaseInputHandle);
+
   const cls = 'triones-antm-input-affix-wrapper';
   const inputCls = 'triones-antm-input';
   return (
@@ -25,23 +29,13 @@ export const InputAffixWrapper: FC<InputAffixWrapperProps> = ({
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>
       )}
-      <BaseInput
-        ref={baseInputRef}
-        {...rest}
-        value={value}
-        onChange={(value) => {
-          setInnerValue(value);
-          onChange?.(value);
-        }}
-      />
+      {children}
       {(suffix || allowClear) && (
         <div className={classNames([`${inputCls}-suffix`])}>
-          {allowClear && innerValue && (
+          {allowClear && value && (
             <CloseCircleFill
               className="clear-icon"
-              onClick={() => {
-                baseInputRef.current.clear?.();
-              }}
+              onClick={onClear}
             />
           )}
           {suffix}

@@ -54,8 +54,8 @@ export type {FormItemProps, FormProps} from './Form';
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
 
-export {default as Input} from './Input';
-export type {InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} from './Input';
+export {default as Input,InputAffixWrapper} from './Input';
+export type {InputAffixWrapperProps,InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} from './Input';
 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';

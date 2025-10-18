@@ -1,3 +1,4 @@
+import {InputAffixWrapperProps,InputAffixWrapper} from "./input-affix-wrapper"
 import { InputProps, Input as InternalInput } from './input';
 import { InputOPT, InputOPTProps } from './input-opt';
 import { InputPassword, InputPasswordProps } from './input-password';
@@ -15,9 +16,11 @@ Input.OPT = InputOPT;
 Input.TextArea = Textarea;
 
 export type {
+  InputAffixWrapperProps,
   InputOPTProps,
   InputPasswordProps,
   InputProps,
   InputTextareaProps,
 };
+export { InputAffixWrapper };
 export default Input;

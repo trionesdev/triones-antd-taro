@@ -63,7 +63,7 @@ export const InputOPT: FC<InputOPTProps> = ({
   const [focusIndex, setFocusIndex] = useState(0);
 
   useEffect(() => {
-    if (value === undefined) {
+    if (inputValue === undefined) {
       return;
     }
     setInternalValue(Array.from(inputValue))
@@ -88,12 +88,11 @@ export const InputOPT: FC<InputOPTProps> = ({
           );
         })}
       </div>
-      <input ref={inputRef} className={`${cls}-input`} type={`number`} value={inputValue} onChange={(e) => {
+      <input ref={inputRef} className={`${cls}-input`} type={`number`}  onChange={(e) => {
         if (e.target.value.length > length) {
           return
         }
         setInputValue(e.target.value)
-        onChange?.(e.target.value)
       }}/>
     </div>
   );
