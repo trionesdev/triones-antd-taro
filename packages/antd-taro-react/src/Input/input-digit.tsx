@@ -20,6 +20,7 @@ export const InputDigit: FC<InputDigitProps> = ({value, onChange, ...rest}) => {
           value={innerValue}
           onClear={() => {
 
+
           }}
         >
           <TaroInput type={`digit`} value={innerValue} onInput={(e: any) => {
