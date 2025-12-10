@@ -29,6 +29,7 @@ export default defineAppConfig({
     // "pages/input/index",
     "pages/form/index",
     "pages/popup/index",
+    "pages/progress/index",
     "pages/picker/index",
 
     "pages/cascader-picker/index",

@@ -1,3 +1,3 @@
-import { ProgressBar,ProgressBarProps } from './progress-bar';
+import { ProgressBar,ProgressBarProps } from './ProgressBar';
 export type { ProgressBarProps };
 export default ProgressBar;

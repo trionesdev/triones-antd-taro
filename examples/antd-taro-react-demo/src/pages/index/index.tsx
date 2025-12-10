@@ -333,6 +333,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/progress/index",
+              });
+            }}
+          >
+            Progress 进度条
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/radio/index",
               });
             }}
