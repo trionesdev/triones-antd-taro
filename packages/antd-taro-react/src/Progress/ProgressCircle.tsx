@@ -1,69 +1,128 @@
-import React, {CSSProperties, FC, useRef} from "react"
+import React, {CSSProperties, FC, useEffect, useRef} from "react"
 import {Canvas} from "@tarojs/components";
 import {Size} from "../types";
-import {useReady} from "@tarojs/taro";
 import Taro from "@tarojs/taro";
+import classNames from "classnames";
+import './style.scss';
+import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 
 type ProcessCircleProps = {
+  format?: (percent: number) => string;
   percent?: number;
+  strokeWidth?: number;
   size?: Size;
-  diameter?: number;
+  showInfo?: boolean;
+  railColor?: string;
+  strokeColor?: string;
+  strokeLineCap?: 'butt' | 'round' | 'square';
+  status?: 'normal' | 'active' | 'success' | 'exception';
 }
 
-export const ProgressCircle: FC<ProcessCircleProps> = ({percent, size = 'middle', diameter}) => {
-  const canvasRef = useRef<any>("canvas_"+Math.random());
+export const ProgressCircle: FC<ProcessCircleProps> = ({
+                                                         format,
+                                                         percent = 0,
+                                                         strokeWidth = 6,
+                                                         size = 'middle',
+                                                         showInfo = true,
+                                                         railColor = '#eee',
+                                                         strokeColor = '#1777FF',
+                                                         strokeLineCap = 'round',
+                                                         status
+                                                       }) => {
+  const clsPrefix = 'triones-antm-progress-circle';
+  const canvasRef = useRef<any>("canvas_" + Math.random());
   const computedWidth = () => {
-    if (diameter) {
-      return diameter;
-    }
     switch (size) {
       case 'small':
-        return 60;
+        return 50;
       case 'middle':
-        return 120;
+        return 100;
       case 'large':
-        return 160;
-
+        return 150;
+      default:
+        return size;
     }
   }
 
   const computedHeight = () => {
-    if (diameter) {
-      return diameter;
-    }
     switch (size) {
       case 'small':
-        return 60;
+        return 50;
       case 'middle':
-        return 120;
+        return 100;
       case 'large':
-        return 160;
-
+        return 150;
+      default:
+        return size;
     }
   }
 
   const style: CSSProperties = {width: computedWidth(), height: computedHeight()}
 
-  useReady(() => {
-    const context = Taro.createCanvasContext(canvasRef.current)
-    context.setStrokeStyle("#00ff00")
-    context.setLineWidth(5)
-    context.rect(0, 0, 200, 200)
-    context.stroke()
-    context.setStrokeStyle("#ff0000")
-    context.setLineWidth(2)
-    context.moveTo(160, 100)
-    context.arc(100, 100, 60, 0, 2 * Math.PI, true)
-    context.moveTo(140, 100)
-    context.arc(100, 100, 40, 0, Math.PI, false)
-    context.moveTo(85, 80)
-    context.arc(80, 80, 5, 0, 2 * Math.PI, true)
-    context.moveTo(125, 80)
-    context.arc(120, 80, 5, 0, 2 * Math.PI, true)
-    context.stroke()
-    context.draw()
-  })
+  const computedSize = () => {
+    const iconSize = (computedWidth()! - strokeWidth) / 2 / 3;
+    if (iconSize < 24) {
+      return 24;
+    }
+    return iconSize;
+  }
+
+  const handleIndicator = () => {
+    const iconSize = computedSize();
+    if (format) {
+      return format(percent)
+    }
+    if (status === 'exception') {
+      return <CloseOutline style={{color: 'red', fontSize: iconSize}}/>
+    }
+    if (percent >= 100) {
+      return <CheckOutline style={{color: 'green', fontSize: iconSize}}/>
+    }
+    return <div style={{color: '#333', fontSize: iconSize}}>{percent}%</div>
+  }
+
+  useEffect(() => {
+    const centerX = computedWidth()! / 2;
+    const centerY = computedHeight()! / 2;
+    const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
+
+    const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
+
+    const startAngle = -Math.PI / 2;  // 从顶部开始
+
+    const ctx = Taro.createCanvasContext(canvasRef.current)
+    ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = '#eee';
+    ctx.lineWidth = strokeWidth;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, startAngle, startAngle + sweepAngle);
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeWidth;
+    ctx.lineCap = strokeLineCap;
+    ctx.stroke();
+
+    // if (showInfo && computedWidth()! > 20) {
+    //   ctx.beginPath();
+    //   ctx.save();
+    //   ctx.fillStyle = '#333';
+    //   ctx.setFontSize(24);
+    //   ctx.setTextAlign('center');
+    //   ctx.setTextBaseline('middle');
+    //   ctx.fillText(`${percent}%`, centerX, centerY);
+    //   ctx.restore();
+    // }
+
+    ctx.draw()
+  }, [percent])
 
 
-  return <Canvas style={style}   canvasId={canvasRef.current}/>
+  return <div className={classNames(`${clsPrefix}`)} style={style}>
+    <Canvas style={style} canvasId={canvasRef.current}/>
+    {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
+  </div>
 }

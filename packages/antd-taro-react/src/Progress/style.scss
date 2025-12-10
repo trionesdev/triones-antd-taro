@@ -1,0 +1,29 @@
+$progressLineCls: 'triones-antm-progress-line';
+$progressCircleCls: 'triones-antm-progress-circle';
+
+.#{$progressLineCls}{
+  &-rail{
+    display: flex;
+    flex-direction: column;
+  }
+  &-track{
+    flex: 1 auto;
+  }
+  &-indicator{}
+}
+
+.#{$progressCircleCls} {
+  position: relative;
+  &-indicator {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    white-space: normal;
+    text-align: center;
+    transform: translatey(-50%);
+  }
+}
