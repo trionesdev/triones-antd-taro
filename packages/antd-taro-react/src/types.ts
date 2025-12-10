@@ -1,4 +1,4 @@
-type Size=  'small' | 'middle' | 'large'| number;
+export type Size=  'small' | 'middle' | 'large'| number;
 
 export type BoundingClientRectType={
   top: number;
