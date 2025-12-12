@@ -135,3 +135,5 @@ export type {ValidationCodeInputProps} from './VerificationCodeInput';
 
 export {default as WaterMark} from './WaterMark';
 export type {WaterMarkProps} from './WaterMark';
+
+export * from './types';

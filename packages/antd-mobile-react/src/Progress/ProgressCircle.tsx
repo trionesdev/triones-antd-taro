@@ -1,0 +1,134 @@
+import React, {CSSProperties, FC, memo, useEffect, useRef} from "react"
+import { Size } from "@trionesdev/antd-mobile-base-react";
+import classNames from "classnames";
+import './style.scss';
+import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
+import {exceptionColor, ProgressStatus, successColor} from "./types";
+
+type ProcessCircleProps = {
+  format?: (percent: number) => string;
+  percent?: number;
+  strokeWidth?: number;
+  size?: Size;
+  showInfo?: boolean;
+  railColor?: string;
+  strokeColor?: string;
+  strokeLineCap?: 'butt' | 'round' | 'square';
+  status?: ProgressStatus;
+}
+
+export const ProgressCircle: FC<ProcessCircleProps> = memo(({
+                                                              format,
+                                                              percent = 0,
+                                                              strokeWidth = 6,
+                                                              size = 'middle',
+                                                              showInfo = true,
+                                                              railColor = '#E5E5E5',
+                                                              strokeColor = '#1777FF',
+                                                              strokeLineCap = 'round',
+                                                              status
+                                                            }) => {
+  const clsPrefix = 'triones-antm-progress-circle';
+  const canvasRef = useRef<any>(("canvas_" + Math.random()).replace('.', ''));
+  const computedWidth = () => {
+    switch (size) {
+      case 'small':
+        return 50;
+      case 'middle':
+        return 100;
+      case 'large':
+        return 150;
+      default:
+        return size || 50;
+    }
+  }
+
+  const computedHeight = () => {
+    switch (size) {
+      case 'small':
+        return 50;
+      case 'middle':
+        return 100;
+      case 'large':
+        return 150;
+      default:
+        return size || 50;
+    }
+  }
+
+  const style: CSSProperties = {width: computedWidth(), height: computedHeight()}
+
+  const computedSize = () => {
+    const iconSize = (computedWidth()! - strokeWidth) / 2 / 3;
+    if (iconSize < 24) {
+      return 24;
+    }
+    return iconSize;
+  }
+
+  const handleIndicator = () => {
+    const iconSize = computedSize();
+    let indicatorColor = '#333';
+    if (status === 'exception') {
+      indicatorColor = exceptionColor;
+    }
+    if (percent >= 100) {
+      indicatorColor = successColor;
+    }
+    if (format) {
+      return <div style={{color: indicatorColor, fontSize: iconSize}}>{format(percent)}</div>
+    }
+    if (status === 'exception') {
+      return <CloseOutline style={{color: indicatorColor, fontSize: iconSize}}/>
+    }
+    if (percent >= 100) {
+      return <CheckOutline style={{color: indicatorColor, fontSize: iconSize}}/>
+    }
+    return <div style={{color: indicatorColor, fontSize: iconSize}}>{percent}%</div>
+  }
+
+  const handleDraw = () => {
+    console.log(canvasRef.current);
+    const centerX = computedWidth()! / 2;
+    const centerY = computedHeight()! / 2;
+    const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
+
+    const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
+
+    const startAngle = -Math.PI / 2;  // 从顶部开始
+
+    // 创建画布上下文，不能使用Taro.createCanvasContext(),否则h5下会报错
+    const ctx = createCanvasContext(canvasRef.current, this)
+    console.log(ctx);
+    ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
+
+    //region 画背景圈
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = railColor;
+    ctx.lineWidth = strokeWidth;
+    ctx.stroke();
+    //endregion
+
+    //region 画进度圈
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, startAngle, startAngle + sweepAngle);
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeWidth;
+    ctx.lineCap = strokeLineCap;
+    ctx.stroke();
+    //endregion
+
+    ctx.draw()
+  }
+
+  useEffect(() => {
+
+  }, [percent])
+
+
+  return <div className={classNames(`${clsPrefix}`)} style={style}>
+    <canvas style={style} id={canvasRef.current}/>
+    {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
+  </div>
+});
