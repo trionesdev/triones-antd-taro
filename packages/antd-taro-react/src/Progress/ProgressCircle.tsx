@@ -1,10 +1,11 @@
-import React, {CSSProperties, FC, useEffect, useRef} from "react"
+import React, {CSSProperties, FC, memo, useEffect, useRef} from "react"
 import {Canvas} from "@tarojs/components";
 import {Size} from "../types";
-import Taro from "@tarojs/taro";
+import {createCanvasContext} from "@tarojs/taro";
 import classNames from "classnames";
 import './style.scss';
 import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
+import {useTaro} from "../hooks";
 
 type ProcessCircleProps = {
   format?: (percent: number) => string;
@@ -18,17 +19,18 @@ type ProcessCircleProps = {
   status?: 'normal' | 'active' | 'success' | 'exception';
 }
 
-export const ProgressCircle: FC<ProcessCircleProps> = ({
-                                                         format,
-                                                         percent = 0,
-                                                         strokeWidth = 6,
-                                                         size = 'middle',
-                                                         showInfo = true,
-                                                         railColor = '#eee',
-                                                         strokeColor = '#1777FF',
-                                                         strokeLineCap = 'round',
-                                                         status
-                                                       }) => {
+export const ProgressCircle: FC<ProcessCircleProps> = memo(({
+                                                              format,
+                                                              percent = 0,
+                                                              strokeWidth = 6,
+                                                              size = 'middle',
+                                                              showInfo = true,
+                                                              railColor = '#eee',
+                                                              strokeColor = '#1777FF',
+                                                              strokeLineCap = 'round',
+                                                              status
+                                                            }) => {
+  const { isTaroEnv,isTaroWeApp} = useTaro();
   const clsPrefix = 'triones-antm-progress-circle';
   const canvasRef = useRef<any>("canvas_" + Math.random());
   const computedWidth = () => {
@@ -81,7 +83,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = ({
     return <div style={{color: '#333', fontSize: iconSize}}>{percent}%</div>
   }
 
-  useEffect(() => {
+  const handleDraw = () => {
     const centerX = computedWidth()! / 2;
     const centerY = computedHeight()! / 2;
     const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
@@ -90,13 +92,13 @@ export const ProgressCircle: FC<ProcessCircleProps> = ({
 
     const startAngle = -Math.PI / 2;  // 从顶部开始
 
-    const ctx = Taro.createCanvasContext(canvasRef.current)
+    const ctx =  createCanvasContext(canvasRef.current)
     ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
 
     //region 画背景圈
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = '#eee';
+    ctx.strokeStyle = railColor;
     ctx.lineWidth = strokeWidth;
     ctx.stroke();
     //endregion
@@ -111,11 +113,15 @@ export const ProgressCircle: FC<ProcessCircleProps> = ({
     //endregion
 
     ctx.draw()
+  }
+
+  useEffect(() => {
+    handleDraw();
   }, [percent])
 
 
   return <div className={classNames(`${clsPrefix}`)} style={style}>
-    <Canvas style={style} canvasId={canvasRef.current}/>
+    <Canvas style={style} canvasId={canvasRef.current} id={canvasRef.current} />
     {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
   </div>
-}
+});
