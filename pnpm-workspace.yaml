@@ -1,9 +1,11 @@
 packages:
   - packages/*
   - examples/*
+
 ignoredBuiltDependencies:
   - '@swc/core'
   - '@tarojs/binding'
+  - '@tarojs/cli'
   - core-js
   - core-js-pure
   - esbuild

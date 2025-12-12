@@ -81,8 +81,6 @@ export type {PickerViewProps, PickerColumnOption} from './PickerView';
 export {default as Popup} from './Popup';
 export type {PopupProps} from './Popup';
 
-export {default as ProgressBar} from './ProgressBar';
-export type {ProgressBarProps} from './ProgressBar';
 
 export {default as Radio} from './Radio';
 export type {RadioGroupProps, RadioProps} from './Radio';

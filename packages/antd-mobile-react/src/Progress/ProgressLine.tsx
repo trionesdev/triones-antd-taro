@@ -2,7 +2,7 @@ import React from "react";
 import { Size } from "@trionesdev/antd-mobile-base-react";
 import {FC} from "react";
 import classNames from "classnames";
-import {exceptionColor, PositionAlign, ProgressStatus, successColor} from "./types";
+import {exceptionColor, PercentPositionAlign, ProgressStatus, successColor} from "./types";
 import {CloseCircleFill,CheckCircleFill} from "@trionesdev/antd-mobile-icons-react";
 
 type ProgressLineProps = {
@@ -13,7 +13,7 @@ type ProgressLineProps = {
   railColor?: string;
   strokeColor?: string;
   status?: ProgressStatus;
-  positionAlign?:PositionAlign;
+  percentPositionAlign?: PercentPositionAlign;
 }
 export const ProgressLine: FC<ProgressLineProps> = ({
                                                       format,
@@ -23,7 +23,7 @@ export const ProgressLine: FC<ProgressLineProps> = ({
                                                       railColor = '#E5E5E5',
                                                       strokeColor = '#1777FF',
                                                       status,
-                                                      positionAlign = 'end'
+                                                      percentPositionAlign = 'end'
                                                     }) => {
   const clsPrefix = 'triones-antm-progress-line';
 
@@ -69,7 +69,7 @@ export const ProgressLine: FC<ProgressLineProps> = ({
   </div>
 
   return <div className={classNames(clsPrefix)}>
-    {showInfo && positionAlign === 'start' && info}
+    {showInfo && percentPositionAlign === 'start' && info}
     <div className={classNames(`${clsPrefix}-rail`)} style={{backgroundColor: railColor}}>
       <div className={classNames(`${clsPrefix}-track`)} style={{
         width: `${percent}%`,
@@ -77,6 +77,6 @@ export const ProgressLine: FC<ProgressLineProps> = ({
         height: handleComputeLineHeight(),
       }}/>
     </div>
-    {showInfo && positionAlign === 'end' && info}
+    {showInfo && percentPositionAlign === 'end' && info}
   </div>
 }

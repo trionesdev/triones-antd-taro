@@ -1,9 +1,9 @@
-import React, {CSSProperties, FC, memo, useEffect, useRef} from "react"
+import React, { CSSProperties, FC, memo, useEffect, useRef } from "react"
 import { Size } from "@trionesdev/antd-mobile-base-react";
 import classNames from "classnames";
 import './style.scss';
-import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
-import {exceptionColor, ProgressStatus, successColor} from "./types";
+import { CheckOutline, CloseOutline } from "@trionesdev/antd-mobile-icons-react";
+import { exceptionColor, ProgressStatus, successColor } from "./types";
 
 type ProcessCircleProps = {
   format?: (percent: number) => string;
@@ -18,18 +18,18 @@ type ProcessCircleProps = {
 }
 
 export const ProgressCircle: FC<ProcessCircleProps> = memo(({
-                                                              format,
-                                                              percent = 0,
-                                                              strokeWidth = 6,
-                                                              size = 'middle',
-                                                              showInfo = true,
-                                                              railColor = '#E5E5E5',
-                                                              strokeColor = '#1777FF',
-                                                              strokeLineCap = 'round',
-                                                              status
-                                                            }) => {
+  format,
+  percent = 0,
+  strokeWidth = 6,
+  size = 'middle',
+  showInfo = true,
+  railColor = '#E5E5E5',
+  strokeColor = '#1777FF',
+  strokeLineCap = 'round',
+  status
+}) => {
   const clsPrefix = 'triones-antm-progress-circle';
-  const canvasRef = useRef<any>(("canvas_" + Math.random()).replace('.', ''));
+  const canvasRef = useRef<any>();
   const computedWidth = () => {
     switch (size) {
       case 'small':
@@ -56,7 +56,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
     }
   }
 
-  const style: CSSProperties = {width: computedWidth(), height: computedHeight()}
+  const style: CSSProperties = { width: computedWidth(), height: computedHeight() }
 
   const computedSize = () => {
     const iconSize = (computedWidth()! - strokeWidth) / 2 / 3;
@@ -76,37 +76,40 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       indicatorColor = successColor;
     }
     if (format) {
-      return <div style={{color: indicatorColor, fontSize: iconSize}}>{format(percent)}</div>
+      return <div style={{ color: indicatorColor, fontSize: iconSize }}>{format(percent)}</div>
     }
     if (status === 'exception') {
-      return <CloseOutline style={{color: indicatorColor, fontSize: iconSize}}/>
+      return <CloseOutline style={{ color: indicatorColor, fontSize: iconSize }} />
     }
     if (percent >= 100) {
-      return <CheckOutline style={{color: indicatorColor, fontSize: iconSize}}/>
+      return <CheckOutline style={{ color: indicatorColor, fontSize: iconSize }} />
     }
-    return <div style={{color: indicatorColor, fontSize: iconSize}}>{percent}%</div>
+    return <div style={{ color: indicatorColor, fontSize: iconSize }}>{percent}%</div>
   }
 
   const handleDraw = () => {
-    console.log(canvasRef.current);
+
     const centerX = computedWidth()! / 2;
     const centerY = computedHeight()! / 2;
     const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
+
+    console.log(centerX, centerY, radius);
 
     const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
 
     const startAngle = -Math.PI / 2;  // 从顶部开始
 
-    // 创建画布上下文，不能使用Taro.createCanvasContext(),否则h5下会报错
-    const ctx = createCanvasContext(canvasRef.current, this)
-    console.log(ctx);
+
+    const ctx = canvasRef.current.getContext('2d');
+
     ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
 
     //region 画背景圈
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.arc(100, 100, 47, 0, 2 * Math.PI);
     ctx.strokeStyle = railColor;
     ctx.lineWidth = strokeWidth;
+    ctx.closePath();
     ctx.stroke();
     //endregion
 
@@ -119,16 +122,19 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
     ctx.stroke();
     //endregion
 
-    ctx.draw()
+
   }
 
   useEffect(() => {
-
-  }, [percent])
+    console.log(canvasRef.current);
+    if (canvasRef.current) {
+      handleDraw();
+    }
+  }, [percent, canvasRef.current])
 
 
   return <div className={classNames(`${clsPrefix}`)} style={style}>
-    <canvas style={style} id={canvasRef.current}/>
+    <canvas ref={canvasRef} style={style} />
     {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
   </div>
 });
