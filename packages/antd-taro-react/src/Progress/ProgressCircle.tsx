@@ -30,7 +30,6 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
                                                               strokeLineCap = 'round',
                                                               status
                                                             }) => {
-  const { isTaroEnv,isTaroWeApp} = useTaro();
   const clsPrefix = 'triones-antm-progress-circle';
   const canvasRef = useRef<any>("canvas_" + Math.random());
   const computedWidth = () => {
@@ -92,6 +91,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
     const startAngle = -Math.PI / 2;  // 从顶部开始
 
+    // 创建画布上下文，不能使用Taro.createCanvasContext(),否则h5下会报错
     const ctx =  createCanvasContext(canvasRef.current)
     ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
 
