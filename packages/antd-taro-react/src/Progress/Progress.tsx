@@ -4,6 +4,7 @@ import {Size} from "../types";
 import "./style.scss"
 import {ProgressLine} from "./ProgressLine";
 import {exceptionColor, PercentPositionAlign, ProgressStatus, successColor} from "./types";
+import "./style.scss"
 
 export type ProgressProps = {
   /**

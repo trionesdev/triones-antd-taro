@@ -1,0 +1,145 @@
+$clsPrefixSteps: 'triones-antm-steps';
+$clsPrefixStep: 'triones-antm-step';
+
+.#{$clsPrefixSteps} {
+  &-horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .#{$clsPrefixStep} {
+      //flex: 1 auto;
+      &-indicator {
+        display: flex;
+        flex-direction: row;
+
+        &-icon-before {
+          flex: 1 auto;
+          display: flex;
+          align-items: center;
+          min-width: 16Px;
+
+          &-line {
+            height: 1Px;
+            width: 100%;
+          }
+        }
+
+        &-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 24Px;
+        }
+
+        &-icon-after {
+          flex: 1 auto;
+          display: flex;
+          align-items: center;
+          min-width: 16Px;
+
+          &-line {
+            height: 1Px;
+            width: 100%;
+          }
+        }
+      }
+
+      &-content {
+        text-align: center;
+      }
+
+      &:first-child {
+        .#{$clsPrefixStep} {
+          &-indicator {
+            &-icon-before {
+              &-line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        .#{$clsPrefixStep} {
+          &-indicator {
+            &-icon-after {
+              &-line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-vertical {
+    .#{$clsPrefixStep} {
+      display: flex;
+      flex-direction: row;
+
+      &-indicator {
+        display: flex;
+        flex-direction: column;
+
+        &-icon-before {
+          display: flex;
+          justify-content: center;
+          min-height: 8Px;
+
+          &-line {
+            width: 1Px;
+            height: 100%;
+          }
+        }
+
+        &-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 24Px;
+        }
+
+        &-icon-after {
+          flex: 1 auto;
+          display: flex;
+          justify-content: center;
+
+          &-line {
+            width: 1Px;
+            height: 100%;
+          }
+        }
+      }
+
+      &-content {
+        padding: 4Px;
+      }
+
+      &:first-child {
+        .#{$clsPrefixStep} {
+          &-indicator {
+            &-icon-before {
+              &-line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        .#{$clsPrefixStep} {
+          &-indicator {
+            &-icon-after {
+              &-line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

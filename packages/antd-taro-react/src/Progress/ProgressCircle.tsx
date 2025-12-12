@@ -1,9 +1,8 @@
-import React, {CSSProperties, FC, memo, useEffect, useRef} from "react"
+import React, {CSSProperties, FC, memo, useEffect, useMemo, useRef} from "react"
 import {Canvas} from "@tarojs/components";
 import {Size} from "../types";
 import Taro, {createCanvasContext, useReady} from "@tarojs/taro";
 import classNames from "classnames";
-import './style.scss';
 import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 import {exceptionColor, ProgressStatus, successColor} from "./types";
 
@@ -32,7 +31,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
                                                             }) => {
   const clsPrefix = 'triones-antm-progress-circle';
   const canvasRef = useRef<any>(("canvas_" + Math.random()).replace('.', ''));
-  const computedWidth = () => {
+  const computedWidth = useMemo(() => {
     switch (size) {
       case 'small':
         return 50;
@@ -43,9 +42,9 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       default:
         return size || 50;
     }
-  }
+  },[size])
 
-  const computedHeight = () => {
+  const computedHeight = useMemo(() => {
     switch (size) {
       case 'small':
         return 50;
@@ -54,14 +53,14 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       case 'large':
         return 150;
       default:
-        return size || 50;
+        return 50;
     }
-  }
+  },[size])
 
-  const style: CSSProperties = {width: computedWidth(), height: computedHeight()}
+  const style: CSSProperties = {width: computedWidth, height: computedHeight}
 
   const computedSize = () => {
-    const iconSize = (computedWidth()! - strokeWidth) / 2 / 3;
+    const iconSize = (computedWidth - strokeWidth) / 2 / 3;
     if (iconSize < 24) {
       return 24;
     }
@@ -91,9 +90,9 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
   const handleDraw = () => {
     console.log(canvasRef.current);
-    const centerX = computedWidth()! / 2;
-    const centerY = computedHeight()! / 2;
-    const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
+    const centerX = computedWidth / 2;
+    const centerY = computedHeight / 2;
+    const radius = (Math.min(computedWidth, computedHeight) - strokeWidth) / 2;
 
     const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
 
@@ -101,8 +100,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
     // 创建画布上下文，不能使用Taro.createCanvasContext(),否则h5下会报错
     const ctx = createCanvasContext(canvasRef.current, this)
-    console.log(ctx);
-    ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
+    ctx.clearRect(0, 0, computedWidth, computedHeight);
 
     //region 画背景圈
     ctx.beginPath();
@@ -132,7 +130,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
 
   return <div className={classNames(`${clsPrefix}`)} style={style}>
-    <Canvas style={style} canvasId={canvasRef.current}/>
-    {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
+    <Canvas style={style}  canvasId={canvasRef.current}/>
+    {(showInfo && computedWidth > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
   </div>
 });

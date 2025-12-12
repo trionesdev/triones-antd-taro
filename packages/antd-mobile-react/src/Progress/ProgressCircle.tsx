@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, memo, useEffect, useRef } from "react"
+import React, {CSSProperties, FC, memo, useEffect, useMemo, useRef} from "react"
 import { Size } from "@trionesdev/antd-mobile-base-react";
 import classNames from "classnames";
 import './style.scss';
@@ -30,7 +30,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 }) => {
   const clsPrefix = 'triones-antm-progress-circle';
   const canvasRef = useRef<any>();
-  const computedWidth = () => {
+  const computedWidth = useMemo(() => {
     switch (size) {
       case 'small':
         return 50;
@@ -41,9 +41,9 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       default:
         return size || 50;
     }
-  }
+  },[size])
 
-  const computedHeight = () => {
+  const computedHeight = useMemo(() => {
     switch (size) {
       case 'small':
         return 50;
@@ -52,14 +52,14 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       case 'large':
         return 150;
       default:
-        return size || 50;
+        return 50;
     }
-  }
+  },[size])
 
-  const style: CSSProperties = { width: computedWidth(), height: computedHeight() }
+  const style: CSSProperties = { width: computedWidth, height: computedHeight }
 
   const computedSize = () => {
-    const iconSize = (computedWidth()! - strokeWidth) / 2 / 3;
+    const iconSize = (computedWidth - strokeWidth) / 2 / 3;
     if (iconSize < 24) {
       return 24;
     }
@@ -88,10 +88,11 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
   }
 
   const handleDraw = () => {
-
-    const centerX = computedWidth()! / 2;
-    const centerY = computedHeight()! / 2;
-    const radius = (Math.min(computedWidth()!, computedHeight()!) - strokeWidth) / 2;
+    const width = computedWidth!;
+    const height = computedHeight!;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = (Math.min(width, height) - strokeWidth) / 2;
 
     console.log(centerX, centerY, radius);
 
@@ -101,15 +102,16 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
 
     const ctx = canvasRef.current.getContext('2d');
+    ctx.width = width;
+    ctx.height = height;
 
-    ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
+    ctx.clearRect(0, 0, computedWidth, computedHeight);
 
     //region 画背景圈
     ctx.beginPath();
-    ctx.arc(100, 100, 47, 0, 2 * Math.PI);
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.strokeStyle = railColor;
     ctx.lineWidth = strokeWidth;
-    ctx.closePath();
     ctx.stroke();
     //endregion
 
@@ -134,7 +136,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
 
   return <div className={classNames(`${clsPrefix}`)} style={style}>
-    <canvas ref={canvasRef} style={style} />
-    {(showInfo && computedWidth()! > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
+    <canvas ref={canvasRef} width={computedWidth} height={computedHeight} />
+    {(showInfo && computedWidth > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
   </div>
 });

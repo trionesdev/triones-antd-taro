@@ -138,6 +138,9 @@ export type {SpinLoadingProps} from './SpinLoading';
 export {default as Swiper} from "./Swiper"
 export type {SwiperProps} from './Swiper';
 
+export {default as Steps} from "./Steps";
+export type {StepsProps, StepsItemProps} from './Steps';
+
 export {default as Switch} from './Switch';
 export type {SwitchProps} from './Switch';
 

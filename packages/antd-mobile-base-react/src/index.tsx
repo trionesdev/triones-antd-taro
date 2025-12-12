@@ -42,11 +42,11 @@ export type {EllipsisProps} from './Ellipsis';
 export {default as Empty} from './Empty';
 export type {EmptyProps} from './Empty';
 
-export {default as ErrorBlock,createErrorBlock} from './ErrorBlock';
+export {default as ErrorBlock, createErrorBlock} from './ErrorBlock';
 export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 
 export {default as Footer} from './Footer';
-export type {FooterProps,ChipItem, LinkItem} from './Footer';
+export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
 export {default as Form} from './Form';
 export type {FormItemProps, FormProps} from './Form';
@@ -109,6 +109,9 @@ export type {SpaceProps} from './Space';
 export {default as SpinLoading} from './SpinLoading';
 export type {SpinLoadingProps} from './SpinLoading';
 
+export {default as Steps} from './Steps';
+export type {StepsProps, StepsItemProps} from './Steps';
+
 export {default as Switch} from './Switch';
 export type {SwitchProps} from './Switch';
 
@@ -120,9 +123,6 @@ export type {TagProps} from './Tag';
 
 export {default as Toast} from './Toast';
 export type {ToastProps} from './Toast';
-
-
-
 
 
 export {default as Tabs} from './Tabs';
