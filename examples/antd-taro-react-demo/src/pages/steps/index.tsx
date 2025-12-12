@@ -1,10 +1,10 @@
-import React from "react";
-import {DemoBlock} from "../../DemoBlock";
-import {Steps} from "@trionesdev/antd-mobile-react";
-import {ClockCircleFill} from "@trionesdev/antd-mobile-icons-react";
+import {View} from "@tarojs/components";
+import {DemoBlock} from "../../components";
+import {Steps} from "@trionesdev/antd-taro-react";
+import { ClockCircleFill } from "@trionesdev/antd-mobile-icons-react";
 
-export default () => {
-  return <>
+const BaseSteps = ()=>{
+  return <View>
     <DemoBlock title={`基础用法(不拉伸)`}>
       <Steps stretch={false} items={[{
         icon: <ClockCircleFill/>,
@@ -38,5 +38,6 @@ export default () => {
         description: '描述信息时候红红火火恍恍惚惚哈哈哈哈哈哈哈哈哈'
       }, {icon: <ClockCircleFill/>, title: '步骤4还是啥还是事实上事实上少时诵诗书少时诵诗书洒洒'}]}/>
     </DemoBlock>
-  </>;
-};
+  </View>
+}
+export default BaseSteps;

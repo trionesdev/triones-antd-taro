@@ -39,6 +39,7 @@ export default defineAppConfig({
 
     "pages/space/index",
     "pages/spin-loading/index",
+    "pages/steps/index",
     "pages/swiper/index",
     "pages/side-bar/index",
     "pages/switch/index",

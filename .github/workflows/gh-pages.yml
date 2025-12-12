@@ -17,11 +17,11 @@ jobs:
       - run: pnpm install
       - run: API_PARSER=true pnpm run build
       # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
-      - run: pnpm --dir packages/antd-taro-react run docs:build
+      - run: pnpm --dir packages/antd-mobile-react run docs:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 #          github_token: ${{ secrets.GITHUB_TOKEN }}
           # 文档目录，如果是 react 模板需要修改为 docs-dist
-          publish_dir: ./packages/antd-taro-react/docs-dist
+          publish_dir: ./packages/antd-mobile-react/docs-dist

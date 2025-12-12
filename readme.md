@@ -30,6 +30,7 @@
   - [x] NavBar 导航栏
   - [x] TabBar 底部导航栏
   - [x] Tabs 标签页
+  - [x] Steps 步骤
 - 信息展示
   - [x] Alert 告警提示
   - [x] Avatar 头像
@@ -40,7 +41,6 @@
   - [x] Footer 底部
   - [x] Image 图片
   - [x] ImagesPreview 图片预览
-  - [x] ProgressBar 进度条
   - [x] SpinLoading 加载中
   - [x] WaterMark 水印
 - 数据录入
@@ -68,6 +68,7 @@
   - [x] Popup 弹出层
   - [x] Result 结果
   - [x] Swiper 轮播
+  - [x] Progress 进度条
   - [x] Toast 轻提示
 - 其他
   - [x] PageIndicator 分页符

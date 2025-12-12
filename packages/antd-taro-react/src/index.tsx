@@ -134,6 +134,9 @@ export type {SpaceProps} from './Space';
 export {default as SpinLoading} from './SpinLoading';
 export type {SpinLoadingProps} from './SpinLoading';
 
+export {default as Steps} from "./Steps"
+export type {StepsProps, StepsItemProps} from "./Steps"
+
 export {default as Swiper} from "./Swiper"
 export type {SwiperProps} from './Swiper';
 

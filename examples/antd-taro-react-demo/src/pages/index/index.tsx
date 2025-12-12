@@ -235,19 +235,8 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            Card
+            Card 卡片
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/progress-bar/index",
-              });
-            }}
-          >
-            ProgressBar
-          </Button>
-
           <Button
             block={true}
             onClick={() => {
@@ -388,6 +377,16 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             SpinLoading 加载中
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/steps/index",
+              });
+            }}
+          >
+            Steps 步骤条
           </Button>
           <Button
             block={true}
