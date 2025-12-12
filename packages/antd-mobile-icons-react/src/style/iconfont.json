@@ -2,9 +2,23 @@
   "id": "4730738",
   "name": "triones-ant-mini",
   "font_family": "triones-antm-icon",
-  "css_prefix_text": "triones-antm-icon-",
+  "css_prefix_text": "antm-icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "45635533",
+      "name": "HomeFill",
+      "font_class": "Homefill",
+      "unicode": "e74d",
+      "unicode_decimal": 59213
+    },
+    {
+      "icon_id": "45635534",
+      "name": "UserFill",
+      "font_class": "UserFill",
+      "unicode": "e74f",
+      "unicode_decimal": 59215
+    },
     {
       "icon_id": "44966387",
       "name": "WechatPayCircleFill",
@@ -490,8 +504,8 @@
     },
     {
       "icon_id": "42518139",
-      "name": "FillinOutline",
-      "font_class": "FillinOutline",
+      "name": "FormOutlined",
+      "font_class": "FormOutlined",
       "unicode": "e738",
       "unicode_decimal": 59192
     },
@@ -966,7 +980,7 @@
     },
     {
       "icon_id": "42518406",
-      "name": "ShopbagOutline",
+      "name": "ShopBagOutline",
       "font_class": "ShopBagOutline",
       "unicode": "e70b",
       "unicode_decimal": 59147
@@ -1015,8 +1029,8 @@
     },
     {
       "icon_id": "42518422",
-      "name": "SystemQRcodeOutline",
-      "font_class": "SystemQRcodeOutline",
+      "name": "SystemQRCodeOutline",
+      "font_class": "SystemQRCodeOutline",
       "unicode": "e6e7",
       "unicode_decimal": 59111
     },
@@ -1134,8 +1148,8 @@
     },
     {
       "icon_id": "42518516",
-      "name": "TransportQRcodeOutline",
-      "font_class": "TransportQRcodeOutline",
+      "name": "TransportQRCodeOutline",
+      "font_class": "TransportQRCodeOutline",
       "unicode": "e6f3",
       "unicode_decimal": 59123
     },

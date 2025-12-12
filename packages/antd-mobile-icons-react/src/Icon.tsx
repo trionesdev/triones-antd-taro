@@ -2,7 +2,7 @@ import "./style/global.scss"
 import React, {FC} from "react";
 import classNames from "classnames";
 
-export const IconClsPrefix = "triones-antm-icon-";
+export const IconClsPrefix = "antm-icon-";
 
 export type IconProps = {
   className?: string

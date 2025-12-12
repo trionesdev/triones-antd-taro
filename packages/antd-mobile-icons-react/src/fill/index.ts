@@ -1,3 +1,5 @@
+export * from "./HomeFill";
+export * from "./UserFill";
 export * from "./WechatPayCircleFill";
 export * from "./WechatPaySquareFill";
 export * from "./WechatPayFill";

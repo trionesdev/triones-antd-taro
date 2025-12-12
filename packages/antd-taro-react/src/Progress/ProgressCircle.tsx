@@ -93,29 +93,22 @@ export const ProgressCircle: FC<ProcessCircleProps> = ({
     const ctx = Taro.createCanvasContext(canvasRef.current)
     ctx.clearRect(0, 0, computedWidth()!, computedHeight()!);
 
+    //region 画背景圈
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.strokeStyle = '#eee';
     ctx.lineWidth = strokeWidth;
     ctx.stroke();
+    //endregion
 
+    //region 画进度圈
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, startAngle, startAngle + sweepAngle);
     ctx.strokeStyle = strokeColor;
     ctx.lineWidth = strokeWidth;
     ctx.lineCap = strokeLineCap;
     ctx.stroke();
-
-    // if (showInfo && computedWidth()! > 20) {
-    //   ctx.beginPath();
-    //   ctx.save();
-    //   ctx.fillStyle = '#333';
-    //   ctx.setFontSize(24);
-    //   ctx.setTextAlign('center');
-    //   ctx.setTextBaseline('middle');
-    //   ctx.fillText(`${percent}%`, centerX, centerY);
-    //   ctx.restore();
-    // }
+    //endregion
 
     ctx.draw()
   }, [percent])
