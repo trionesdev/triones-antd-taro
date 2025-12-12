@@ -82,6 +82,7 @@ $clsPrefixStep: 'triones-antm-step';
       &-indicator {
         display: flex;
         flex-direction: column;
+        padding-inline: 4Px;
 
         &-icon-before {
           display: flex;
