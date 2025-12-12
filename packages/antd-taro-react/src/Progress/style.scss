@@ -2,12 +2,16 @@ $progressLineCls: 'triones-antm-progress-line';
 $progressCircleCls: 'triones-antm-progress-circle';
 
 .#{$progressLineCls}{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4Px;
   &-rail{
-    display: flex;
-    flex-direction: column;
+    flex: 1 auto;
+    border-radius: 90Px;
   }
   &-track{
-    flex: 1 auto;
+    border-radius: 90Px;
   }
   &-indicator{}
 }

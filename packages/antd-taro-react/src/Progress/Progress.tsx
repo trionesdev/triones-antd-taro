@@ -3,6 +3,7 @@ import {ProgressCircle} from "./ProgressCircle";
 import {Size} from "../types";
 import "./style.scss"
 import {ProgressLine} from "./ProgressLine";
+import {exceptionColor, PositionAlign, ProgressStatus, successColor} from "./types";
 
 export type ProgressProps = {
   format?: (percent: number) => string;
@@ -12,7 +13,8 @@ export type ProgressProps = {
   showInfo?: boolean;
   railColor?: string;
   strokeColor?: string;
-  status?: 'normal' | 'active' | 'success' | 'exception';
+  status?: ProgressStatus;
+  positionAlign?: PositionAlign;
 }
 
 export const Progress: FC<ProgressProps> = ({
@@ -20,23 +22,29 @@ export const Progress: FC<ProgressProps> = ({
                                               type = 'line', percent = 0,
                                               size = 'middle',
                                               showInfo = true,
-                                              railColor = '#eee',
-                                              strokeColor = '#1777FF', status
+                                              railColor = '#E5E5E5',
+                                              strokeColor = '#1777FF', status,
+                                              positionAlign
                                             }) => {
 
   const handleComputedStrokeColor = () => {
     if (status === 'exception') {
-      return 'red'
+      return exceptionColor
     }
     if (percent >= 100) {
-      return 'green'
+      return successColor
     }
     return strokeColor
   }
 
   if (type === 'line') {
-    return <ProgressLine percent={percent} size={size} strokeColor={handleComputedStrokeColor()} showInfo={showInfo}/>
+    return <ProgressLine format={format} percent={percent} size={size} railColor={railColor}
+                         strokeColor={handleComputedStrokeColor()}
+                         status={status}
+                         showInfo={showInfo} positionAlign={positionAlign}/>
   }
-  return <ProgressCircle percent={percent} size={size} strokeColor={handleComputedStrokeColor()} showInfo={showInfo}
+  return <ProgressCircle format={format} percent={percent} size={size} railColor={railColor}
+                         strokeColor={handleComputedStrokeColor()}
+                         showInfo={showInfo}
                          status={status}/>
 }
