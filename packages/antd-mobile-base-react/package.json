@@ -26,18 +26,17 @@
   },
   "peerDependencies": {
     "classnames": "^2.5.1",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "react": ">=16.9.0"
   },
   "devDependencies": {
     "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
-    "@types/lodash": "^4.17.14",
     "@types/node": "^18.19.123",
     "@types/react": "^18.0.0",
+    "@types/lodash-es": "^4.17.12",
     "classnames": "^2.5.1",
     "father": "^4.6.3",
-    "lodash": "^4.17.21",
     "react": "^18.0.0",
     "stylelint": "^16.12.0"
   },

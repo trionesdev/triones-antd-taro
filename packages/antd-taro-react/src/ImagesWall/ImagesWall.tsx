@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {AddOutline, CloseOutline} from "../../../antd-mobile-icons-react";
 import "./style.scss"
 import {ImagesPreview} from "../index"
-import _ from "lodash";
+import {isEqual} from "lodash-es";
 import {RandomUtils} from '../utils/random-utils';
 import Taro from "@tarojs/taro";
 
@@ -88,7 +88,7 @@ export const ImagesWall: FC<ImagesWallProps> = ({
       item.status ??= 'done'
       return item;
     })
-    if (_.isEqual(newImages, images)) {
+    if (isEqual(newImages, images)) {
       return;
     }
     setImages(newImages || [])

@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react"
 import classNames from "classnames";
 import {PickerViewColumnItem} from "./picker-view-column-item";
-import {findIndex, isEmpty, size} from "lodash";
+import {findIndex, isEmpty, size} from "lodash-es";
 import {PickerColumnOption} from "./types";
 
 const pickerViewCls = "triones-antm-picker-view";

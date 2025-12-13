@@ -25,9 +25,9 @@
     "lerna": "^8.2.2"
   },
   "resolutions": {
-    "sass": "1.59.3"
+    "sass": "1.96.0"
   },
   "overrides": {
-    "sass": "1.59.3"
+    "sass": "1.96.0"
   }
 }

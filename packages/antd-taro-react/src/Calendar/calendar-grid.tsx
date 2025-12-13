@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {isEmpty} from 'lodash';
+import {isEmpty} from 'lodash-es';
 import React, {
   FC,
   ForwardedRef,

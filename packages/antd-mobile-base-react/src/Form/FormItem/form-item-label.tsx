@@ -2,7 +2,7 @@ import React, {CSSProperties, FC} from "react"
 import classNames from "classnames";
 import {NamePath} from "rc-field-form/lib/interface";
 import {useFormContext} from "../hooks/useFormContext";
-import {isFunction} from "lodash";
+import {isFunction} from "lodash-es";
 import {FormItemLayout} from "../form";
 
 type FormItemLabelProps = {

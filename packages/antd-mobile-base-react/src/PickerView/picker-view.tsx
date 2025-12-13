@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import {isEmpty, size} from "lodash";
+import {isEmpty, size} from "lodash-es";
 import {PickerViewColumn} from "./picker-view-column";
 import React, {FC, useEffect, useState} from "react";
 import { PickerColumnOption} from "./types";

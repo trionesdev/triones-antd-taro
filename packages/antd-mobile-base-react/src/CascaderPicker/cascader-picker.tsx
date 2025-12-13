@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {isEqual} from 'lodash';
+import {isEqual} from 'lodash-es';
 import React, { FC, useEffect, useRef } from 'react';
 import CascaderView from '../CascaderView';
 import ConfigProvider from '../ConfigProvider';

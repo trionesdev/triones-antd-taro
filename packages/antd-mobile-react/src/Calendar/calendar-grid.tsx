@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import {isEmpty} from 'lodash-es';
 import React, {
   FC,
   ForwardedRef,
@@ -46,7 +46,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
     }, [date, mouth]);
 
     const selected = useMemo(() => {
-      if (disabled || _.isEmpty(value)) {
+      if (disabled || isEmpty(value)) {
         return false;
       }
       if (value?.[0]) {

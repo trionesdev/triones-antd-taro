@@ -1,4 +1,4 @@
-import React, {FC, MouseEvent, useEffect, useRef} from "react";
+import React, {FC, MouseEvent, useRef} from "react";
 import classNames from "classnames";
 
 const tabsCls = `triones-antm-tabs`

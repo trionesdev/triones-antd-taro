@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import _ from 'lodash';
+import _ from 'lodash-es';
 import React, { FC, memo, useEffect, useRef, useState } from 'react';
 import { CalendarGrid } from './calendar-grid';
 import { CalendarHeader } from './calendar-header';

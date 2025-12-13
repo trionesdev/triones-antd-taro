@@ -2,7 +2,7 @@ import "./index.scss"
 import React, {FC, ReactNode, useContext, useEffect} from "react";
 import classNames from "classnames";
 import {TabBarContext} from "./TabBarContext";
-import {isEmpty} from "lodash";
+import {isEmpty} from "lodash-es";
 
 type TabBarItemType = {
   key: string
