@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-base-react",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.2-beta.0",
   "description": "antd mobile base react",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
