@@ -87,12 +87,20 @@ export type TabBarProps = {
   /**
    * @description 子项配置
    */
-  items: TabBarItemType[]
+  items?: TabBarItemType[]
   onClick?: (e: { antKey: string }) => void
   children?: ReactNode
 }
 
-export const TabBar: FC<TabBarProps> = ({className, style, activeKey, defaultActiveKey, items, children, onClick}) => {
+export const TabBar: FC<TabBarProps> = ({
+                                          className,
+                                          style,
+                                          activeKey,
+                                          defaultActiveKey,
+                                          items = [],
+                                          children,
+                                          onClick
+                                        }) => {
   const [innerActiveKey, setInnerActiveKey] = React.useState<string | undefined>(activeKey ?? defaultActiveKey)
 
   useEffect(() => {
@@ -104,7 +112,7 @@ export const TabBar: FC<TabBarProps> = ({className, style, activeKey, defaultAct
     <div className={classNames(tabBarCls, className)} style={style}>
       <div className={classNames(`${tabBarCls}-wrap`)}>
         {!isEmpty(items) && items.map(item => <TabBarItem {...item} key={item.key} antKey={item.key}
-                                                            onClick={item.onClick}/>)}
+                                                          onClick={item.onClick}/>)}
         {isEmpty(items) && children}
       </div>
     </div>
