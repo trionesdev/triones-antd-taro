@@ -2,4 +2,6 @@ node_modules/
 package-lock.json
 .idea
 .npmrc
+.yarnrc
+.pnpmrc
 pnpm-lock.yaml
