@@ -1,4 +1,4 @@
-@import "@trionesdev/antd-mobile-base-react/dist/style/variable";
+@use "../style/variable" as *;
 
 $trionesButtonPendingInlineSm: 7Px;
 $trionesButtonHeightSm: 24Px;
@@ -9,6 +9,11 @@ $trionesButtonHeight: 32Px;
 $trionesButtonContentFontSizeLg: $trionesFontSizeLg;
 $trionesButtonPendingInlineLg: 15Px;
 $trionesButtonHeightLg: 40Px;
+
+// 定义常用颜色变量以提高可维护性
+$buttonBackgroundColor: #ffffff;
+$buttonDarkTextColor: rgba(0, 0, 0, 0.75);
+$buttonLightTextColor: rgba(0, 0, 0, 0.06);
 
 button::after {
   content: none;
@@ -47,45 +52,44 @@ $buttonCls: 'triones-antm-button';
       filter: none;
     }
   }
-  &:not([disabled]):active{}
 
   &-color {
     &-default {
-      background-color: #ffffff;
+      background-color: $buttonBackgroundColor;
 
       &.#{$buttonCls} {
         &-variant {
           &-solid {
-            color: #ffffff;
-            background-color: rgba(0, 0, 0, 0.75);
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75);
+            color: $buttonBackgroundColor;
+            background-color: $buttonDarkTextColor;
+            box-shadow: inset 0 0 0 1px $buttonDarkTextColor;
           }
 
           &-outlined {
-            color: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(0, 0, 0, 0.75);
-            background-color: white;
+            color: $buttonDarkTextColor;
+            border: 1px solid $buttonDarkTextColor;
+            background-color: $buttonBackgroundColor;
           }
 
           &-dashed {
-            color: rgba(0, 0, 0, 0.75);
-            border: 1px dashed rgba(0, 0, 0, 0.75);
-            background-color: #ffffff;
+            color: $buttonDarkTextColor;
+            border: 1px dashed $buttonDarkTextColor;
+            background-color: $buttonBackgroundColor;
           }
 
           &-filled {
-            color: rgba(0, 0, 0, 0.75);
-            background-color: rgba(0, 0, 0, 0.06);
+            color: $buttonDarkTextColor;
+            background-color: $buttonLightTextColor;
           }
 
           &-text {
-            color: rgba(0, 0, 0, 0.75);
-            background-color: #ffffff;
+            color: $buttonDarkTextColor;
+            background-color: $buttonBackgroundColor;
           }
 
           &-link {
-            color: rgba(0, 0, 0, 0.75);
-            background-color: #ffffff;
+            color: $buttonDarkTextColor;
+            background-color: $buttonBackgroundColor;
 
             &:active {
               filter: none;
@@ -99,21 +103,21 @@ $buttonCls: 'triones-antm-button';
       &.#{$buttonCls} {
         &-variant {
           &-solid {
-            color: #ffffff;
+            color: $buttonBackgroundColor;
             background-color: $trionesColorPrimaryText;
             box-shadow: inset 0 0 0 1px $trionesColorPrimaryText;
           }
 
           &-outlined {
             color: #1677ff;
-            background-color: white;
+            background-color: $buttonBackgroundColor;
             border: 1px solid $trionesColorPrimaryText;
           }
 
           &-dashed {
             color: $trionesColorPrimaryText;
             border: 1px dashed $trionesColorPrimaryText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
           }
 
           &-filled {
@@ -123,12 +127,12 @@ $buttonCls: 'triones-antm-button';
 
           &-text {
             color: $trionesColorPrimaryText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
           }
 
           &-link {
             color: $trionesColorPrimaryText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
 
             &:active {
               filter: none;
@@ -142,21 +146,21 @@ $buttonCls: 'triones-antm-button';
       &.#{$buttonCls} {
         &-variant {
           &-solid {
-            color: #ffffff;
+            color: $buttonBackgroundColor;
             background-color: $trionesColorErrorText;
             box-shadow: inset 0 0 0 1px $trionesColorErrorText;
           }
 
           &-outlined {
             color: $trionesColorErrorText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
             border: 1px solid $trionesColorErrorText;
           }
 
           &-dashed {
             color: $trionesColorErrorText;
             border: 1px dashed $trionesColorErrorText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
           }
 
           &-filled {
@@ -166,12 +170,12 @@ $buttonCls: 'triones-antm-button';
 
           &-text {
             color: $trionesColorErrorText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
           }
 
           &-link {
             color: $trionesColorErrorText;
-            background-color: #ffffff;
+            background-color: $buttonBackgroundColor;
 
             &:active {
               filter: none;
@@ -183,24 +187,21 @@ $buttonCls: 'triones-antm-button';
   }
 
   &-variant {
-    &-solid {
-    }
-
     &-outlined {
-      background-color: #ffffff;
+      background-color: $buttonBackgroundColor;
     }
 
     &-dashed {
       border: 1px dashed #d9d9d9;
-      background-color: #ffffff;
+      background-color: $buttonBackgroundColor;
     }
 
     &-text {
-      background-color: #ffffff;
+      background-color: $buttonBackgroundColor;
     }
 
     &-link {
-      background-color: #ffffff;
+      background-color: $buttonBackgroundColor;
     }
   }
 

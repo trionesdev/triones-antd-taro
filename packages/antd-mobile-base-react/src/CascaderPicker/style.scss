@@ -1,4 +1,4 @@
-@use "../style/variable";
+@use "../style/variable" as *;
 $cascaderPickerCls: 'triones-antm-cascader-picker';
 
 .#{$cascaderPickerCls} {

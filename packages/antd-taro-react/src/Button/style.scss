@@ -1,4 +1,4 @@
-@import "@trionesdev/antd-mobile-base-react/dist/style/variable";
+@use "../style/variable" as *;
 
 $trionesButtonPendingInlineSm: 7Px;
 $trionesButtonHeightSm: 24Px;

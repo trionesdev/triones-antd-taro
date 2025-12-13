@@ -1,4 +1,4 @@
-@import "../style/variable";
+@use "../style/variable" as *;
 $tagCls: 'triones-antm-tag';
 
 .#{$tagCls} {

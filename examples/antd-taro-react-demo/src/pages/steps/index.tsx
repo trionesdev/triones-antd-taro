@@ -17,7 +17,7 @@ const BaseSteps = ()=>{
         title: '步骤3'
       }]}/>
     </DemoBlock>
-    <DemoBlock title={`基础用法(不拉伸)`}>
+    <DemoBlock title={`基础用法`}>
       <Steps current={1}
              items={[{title: '步骤1'}, {title: '步骤2', description: '描述信息'}, {title: '步骤3'}, {title: '步骤4'}]}/>
     </DemoBlock>

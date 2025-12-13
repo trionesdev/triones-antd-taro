@@ -1,4 +1,4 @@
-@import "../style/variable";
+@use "../style/variable" as *;
 $pickerCls: 'triones-antm-picker';
 
 .#{$pickerCls} {

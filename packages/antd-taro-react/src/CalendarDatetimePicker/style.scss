@@ -1,15 +1,15 @@
-@import "@trionesdev/antd-mobile-base-react/dist/style/variable";
+@use "../style/variable" as variable;
 
 $calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
 
 .#{$calendarDatetimePickerCls} {
-  border-top-left-radius: $trionesBorderRadius;
-  border-top-right-radius: $trionesBorderRadius;
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
 
   &-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1Px solid $trionesBorderColor;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
 
 
     &-display {
@@ -31,9 +31,9 @@ $calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
       }
 
       &-active {
-        color: $trionesColorText;
+        color: variable.$trionesColorText;
         font-weight: bold;
-        background-color: $trionesColorBgTextActive;
+        background-color: variable.$trionesColorBgTextActive;
       }
     }
 
@@ -44,7 +44,7 @@ $calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
       }
 
       &-ok {
-        color: $trionesColorPrimary;
+        color: variable.$trionesColorPrimary;
       }
     }
   }

@@ -1,4 +1,4 @@
-@use "../style/variable";
+@use "../style/variable" as *;
 $tabsCls: 'triones-antm-tabs';
 
 .#{$tabsCls} {
