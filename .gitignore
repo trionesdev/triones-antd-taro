@@ -5,3 +5,4 @@ package-lock.json
 .yarnrc
 .pnpmrc
 pnpm-lock.yaml
+examples/hs-user-miniprogram
