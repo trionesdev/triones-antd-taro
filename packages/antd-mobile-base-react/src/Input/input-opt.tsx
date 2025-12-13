@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React, {CSSProperties, FC, useEffect, useMemo, useRef, useState} from 'react';
 import './index.scss';
+import {Size} from "../types";
 
 const cls = 'triones-antm-pot';
 const inputCls = 'triones-antm-input';
@@ -9,6 +10,7 @@ export type InputOPTProps = {
   className?: string;
   style?: React.CSSProperties;
   length?: number;
+  size?: Size
   value?: string;
   onChange?: (value: string) => void;
 };
@@ -17,6 +19,7 @@ export type InputOPTItemProps = {
   index: number;
   focusIndex?: number;
   value?: string;
+  size?: Size
   onFocus?: (index: number) => void;
 };
 
@@ -24,10 +27,25 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
                                                index,
                                                focusIndex,
                                                value,
-
+                                               size,
                                                onFocus,
                                              }) => {
   const ref = React.useRef<HTMLInputElement>(null);
+  const innerStyle: CSSProperties = {};
+  const itemSize = useMemo(() => {
+    switch (size) {
+      case 'small':
+        return 24;
+      case 'middle':
+        return 32;
+      case 'large':
+        return 48;
+      default:
+        return 32;
+    }
+  }, [size])
+  innerStyle.width = itemSize;
+  innerStyle.height = itemSize;
 
 
   return (
@@ -40,9 +58,10 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
            //   [`${cls}-item-focus`]: focusIndex === index,
            // }
          )}
+         style={innerStyle}
          onClick={() => {
-      onFocus?.(index)
-    }}>{value}</div>
+           onFocus?.(index)
+         }}>{value}</div>
   );
 };
 
@@ -50,6 +69,7 @@ export const InputOPT: FC<InputOPTProps> = ({
                                               className,
                                               style,
                                               length = 6,
+                                              size = 'middle',
                                               value,
                                               onChange
                                             }) => {
@@ -80,6 +100,7 @@ export const InputOPT: FC<InputOPTProps> = ({
               key={index}
               index={index}
               focusIndex={focusIndex}
+              size={size}
               value={internalValue?.[index] || ''}
               onFocus={(index) => {
                 setFocusIndex(index);

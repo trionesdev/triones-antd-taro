@@ -16,11 +16,9 @@ input {
   width: 100%;
   min-width: 0;
   transition: all .2s;
-  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
   outline: none;
   box-shadow: none;
   border: none;
-  line-height: $trionesLineHeight;
   border-radius: $trionesBorderRadius;
   font-size: $trionesInputInputFontSize;
   height: auto;
