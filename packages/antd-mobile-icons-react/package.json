@@ -16,7 +16,9 @@
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepublishOnly": "father doctor && npm run build",
+    "publish": "npm publish --registry=https://registry.npmjs.org/",
+    "publishOnly": "npm publish --ignore-scripts --registry=https://registry.npmjs.org/"
   },
   "authors": [
     "fengxiaotx@163.com"
@@ -76,5 +78,5 @@
   "dependencies": {
     "classnames": "^2.5.1"
   },
-  "gitHead": "a64f02e7981ce6438be396299374b38a081d7ebe"
+  "gitHead": "da2a550efd271dd12a531211096e4c975d3d72a7"
 }

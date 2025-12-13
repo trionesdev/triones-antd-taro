@@ -8,7 +8,9 @@
     "dev": "father dev",
     "build": "father build",
     "build:deps": "father prebundle",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepublishOnly": "father doctor && npm run build",
+    "publish": "npm publish --registry=https://registry.npmjs.org/",
+    "publishOnly": "npm publish --ignore-scripts --registry=https://registry.npmjs.org/"
   },
   "keywords": [],
   "authors": [
@@ -49,5 +51,5 @@
   "optionalDependencies": {
     "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.0"
   },
-  "gitHead": "a64f02e7981ce6438be396299374b38a081d7ebe"
+  "gitHead": "da2a550efd271dd12a531211096e4c975d3d72a7"
 }
