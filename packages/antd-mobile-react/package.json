@@ -86,7 +86,7 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@trionesdev/antd-mobile-base-react": "workspace:*",
+    "@trionesdev/antd-mobile-base-react": "0.0.2-beta.0",
     "@types/uuid": "^10.0.0",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",
@@ -96,7 +96,7 @@
   },
   "optionalDependencies": {
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*"
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.0"
   },
-  "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
+  "gitHead": "a64f02e7981ce6438be396299374b38a081d7ebe"
 }
