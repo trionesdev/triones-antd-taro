@@ -1,9 +1,9 @@
 # @trionesdev/antd-taro-react
 
-[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
-[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-taro-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-react)
+[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-mobile-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-mobile-react)
+[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-mobile-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-mobile-react)
 
-antd taro react 
+antd mobile react 
 
 ## Usage
 

@@ -1,7 +1,7 @@
 # @trionesdev/antd-taro-icons-react
 
-[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-taro-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-icons-react)
-[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-taro-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-taro-icons-react)
+[![NPM version](https://img.shields.io/npm/v/@trionesdev/antd-mobile-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-mobile-icons-react)
+[![NPM downloads](http://img.shields.io/npm/dm/@trionesdev/antd-mobile-icons-react.svg?style=flat)](https://npmjs.org/package/@trionesdev/antd-mobile-icons-react)
 
 A react library developed with dumi
 
