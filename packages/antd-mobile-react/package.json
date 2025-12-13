@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-react",
-  "version": "0.0.1-beta.5",
+  "version": "0.0.1-beta.6",
   "description": "antd mobile react ",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -61,8 +61,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@trionesdev/antd-mobile-base-react": "workspace:*",
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash": "^4.17.14",
     "@types/react": "^18.0.0",
@@ -95,8 +95,8 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
-    "@trionesdev/antd-mobile-base-react": "workspace:*"
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
+    "@trionesdev/antd-mobile-icons-react": "workspace:*"
   },
   "gitHead": "f39d2296cdac8eafd2e7427ab4c6baf39249e837"
 }
