@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
-import {AddOutline, CloseOutline} from "../../../antd-mobile-icons-react";
+import {AddOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 import "./style.scss"
 import {ImagesPreview} from "../index"
 import {isEqual} from "lodash-es";
