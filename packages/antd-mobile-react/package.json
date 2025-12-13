@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-react",
-  "version": "0.0.2-beta.1",
+  "version": "0.0.2-beta.2",
   "description": "antd mobile react ",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -89,7 +89,7 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.1",
+    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.2",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
