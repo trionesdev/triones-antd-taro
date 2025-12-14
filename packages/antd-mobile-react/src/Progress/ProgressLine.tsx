@@ -1,5 +1,5 @@
 import React from "react";
-import { Size } from "@trionesdev/antd-mobile-base-react";
+import { SizeType } from "@trionesdev/antd-mobile-base-react";
 import {FC} from "react";
 import classNames from "classnames";
 import {exceptionColor, PercentPositionAlign, ProgressStatus, successColor} from "./types";
@@ -8,7 +8,7 @@ import {CloseCircleFill,CheckCircleFill} from "@trionesdev/antd-mobile-icons-rea
 type ProgressLineProps = {
   format?: (percent: number) => string;
   percent?: number;
-  size?: Size;
+  size?: SizeType | number;
   showInfo?: boolean;
   railColor?: string;
   strokeColor?: string;

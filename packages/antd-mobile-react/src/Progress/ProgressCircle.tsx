@@ -1,5 +1,5 @@
 import React, {CSSProperties, FC, memo, useEffect, useMemo, useRef} from "react"
-import { Size } from "@trionesdev/antd-mobile-base-react";
+import { SizeType } from "@trionesdev/antd-mobile-base-react";
 import classNames from "classnames";
 import './style.scss';
 import { CheckOutline, CloseOutline } from "@trionesdev/antd-mobile-icons-react";
@@ -9,7 +9,7 @@ type ProcessCircleProps = {
   format?: (percent: number) => string;
   percent?: number;
   strokeWidth?: number;
-  size?: Size;
+  size?: SizeType | number ;
   showInfo?: boolean;
   railColor?: string;
   strokeColor?: string;

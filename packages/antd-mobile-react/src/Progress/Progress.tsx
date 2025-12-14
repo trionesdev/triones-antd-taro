@@ -3,7 +3,7 @@ import { ProgressCircle } from "./ProgressCircle";
 import "./style.scss"
 import { ProgressLine } from "./ProgressLine";
 import { exceptionColor, PercentPositionAlign, ProgressStatus, successColor } from "./types";
-import { Size } from "@trionesdev/antd-mobile-base-react";
+import { SizeType } from "@trionesdev/antd-mobile-base-react";
 
 export type ProgressProps = {
   /**
@@ -17,7 +17,7 @@ export type ProgressProps = {
    * @default 0
    */
   percent?: number;
-  size?: Size;
+  size?: SizeType | number;
   /**
    * @description 是否显示进度数值或状态图标
    * @default true
