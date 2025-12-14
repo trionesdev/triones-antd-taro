@@ -1,4 +1,4 @@
-import {VerificationCodeInput,ValidationCodeInputProps}  from "./verification-code-input";
+import {VerificationCodeInput,VerificationCodeInputProps}  from "./verification-code-input";
 
-export type {ValidationCodeInputProps};
+export type {VerificationCodeInputProps};
 export default VerificationCodeInput;

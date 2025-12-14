@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, {CSSProperties, FC, useEffect, useMemo, useRef, useState} from 'react';
 import './index.scss';
-import {Size} from "../types";
+import {SizeType} from "../types";
 
 const cls = 'triones-antm-pot';
 const inputCls = 'triones-antm-input';
@@ -10,7 +10,7 @@ export type InputOPTProps = {
   className?: string;
   style?: React.CSSProperties;
   length?: number;
-  size?: Size
+  size?: SizeType
   value?: string;
   onChange?: (value: string) => void;
 };
@@ -19,7 +19,7 @@ export type InputOPTItemProps = {
   index: number;
   focusIndex?: number;
   value?: string;
-  size?: Size
+  size?: SizeType
   onFocus?: (index: number) => void;
 };
 
@@ -31,22 +31,6 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
                                                onFocus,
                                              }) => {
   const ref = React.useRef<HTMLInputElement>(null);
-  const innerStyle: CSSProperties = {};
-  const itemSize = useMemo(() => {
-    switch (size) {
-      case 'small':
-        return 24;
-      case 'middle':
-        return 32;
-      case 'large':
-        return 48;
-      default:
-        return 32;
-    }
-  }, [size])
-  innerStyle.width = itemSize;
-  innerStyle.height = itemSize;
-
 
   return (
     <div ref={ref}
@@ -54,11 +38,11 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
            `${inputCls}`,
            `${cls}-item`,
            `${inputCls}-outlined`,
-           // {
-           //   [`${cls}-item-focus`]: focusIndex === index,
-           // }
+           {
+             [`${cls}-item-sm`]: size === 'small',
+             [`${cls}-item-lg`]: size === 'large',
+           }
          )}
-         style={innerStyle}
          onClick={() => {
            onFocus?.(index)
          }}>{value}</div>

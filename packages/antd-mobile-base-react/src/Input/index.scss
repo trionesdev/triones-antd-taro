@@ -5,6 +5,9 @@ $inputAffixWrapperCls: 'triones-antm-input-affix-wrapper';
 $inputGroupWrapperCls: 'triones-antm-input-group-wrapper';
 $inputPotCls: 'triones-antm-pot';
 
+$inputSm: 24Px;
+$inputLg: 40Px;
+
 input {
   height: auto;
 }
@@ -21,7 +24,15 @@ input {
   border: none;
   border-radius: $trionesBorderRadius;
   font-size: $trionesInputInputFontSize;
-  height: auto;
+  height: 32Px;
+
+  &-sm {
+    height: $inputSm;
+  }
+
+  &-lg {
+    height: $inputLg;
+  }
 
   &::placeholder {
     font-size: $trionesInputInputFontSize;
@@ -39,6 +50,14 @@ input {
   line-height: $trionesLineHeight;
   padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
   gap: 4Px;
+
+  &-sm {
+    height: $inputSm;
+  }
+
+  &-lg {
+    height: $inputLg;
+  }
 
   &::before {
 
@@ -88,13 +107,15 @@ input {
 .#{$inputPotCls} {
   position: relative;
   display: inline-flex;
-  &-wrapper{
+
+  &-wrapper {
     position: relative;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
     column-gap: 8Px;
   }
+
   &-input {
     position: absolute;
     background-color: transparent;
@@ -105,6 +126,7 @@ input {
     bottom: 0;
     opacity: 0;
     -moz-appearance: textfield;
+
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
@@ -121,12 +143,22 @@ input {
     align-items: center;
     justify-content: center;
 
+    &-sm {
+      width: $inputSm;
+      height: $inputSm;
+    }
+
+    &-lg {
+      width: $inputLg;
+      height: $inputLg;
+    }
 
     &::placeholder {
       font-size: $trionesInputInputFontSize;
     }
-    &-focus{
-      &::after{
+
+    &-focus {
+      &::after {
         content: ' ';
         height: 100%;
         width: 0.5Px;
@@ -158,13 +190,14 @@ input {
   border: 0;
   outline: 0;
   padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
+
   &::placeholder {
     font-size: $trionesInputInputFontSize;
     color: #cccccc;
   }
 }
 
-@keyframes blink  {
+@keyframes blink {
   50% {
     background-color: transparent;
   }

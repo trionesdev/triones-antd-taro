@@ -1,6 +1,6 @@
-export type Size=  'small' | 'middle' | 'large'| number;
+export type SizeType = 'small' | 'middle' | 'large' | undefined;
 
-export type BoundingClientRectType={
+export type BoundingClientRectType = {
   top: number;
   left: number;
   right: number;

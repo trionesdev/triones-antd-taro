@@ -1,6 +1,6 @@
 import React, {CSSProperties, FC, memo, useEffect, useMemo, useRef} from "react"
 import {Canvas} from "@tarojs/components";
-import {Size} from "../types";
+import {Size} from "./types";
 import Taro, {createCanvasContext, useReady} from "@tarojs/taro";
 import classNames from "classnames";
 import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";

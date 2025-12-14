@@ -160,7 +160,7 @@ export {default as Tabs} from './Tabs';
 export type {TabsProps} from './Tabs';
 
 export {default as VerificationCodeInput} from './VerificationCodeInput';
-export type {ValidationCodeInputProps} from './VerificationCodeInput';
+export type {VerificationCodeInputProps} from './VerificationCodeInput';
 
 export {default as WaterMark} from './WaterMark';
 export type {WaterMarkProps} from './WaterMark';

@@ -2,19 +2,19 @@ import {
   EyeInvisibleOutline,
   EyeOutline,
 } from '../../../antd-mobile-icons-react';
-import React, { FC, useState } from 'react';
-import { Input, InputProps } from './input';
+import React, {FC, useState} from 'react';
+import {Input, InputProps} from './input';
 
 export type InputPasswordProps = Omit<InputProps, 'type'> & {
   iconRender?: (visible: boolean) => React.ReactNode;
   visibilityToggle?: boolean;
 };
 export const InputPassword: FC<InputPasswordProps> = ({
-  iconRender,
-  visibilityToggle = true,
-  suffix,
-  ...rest
-}) => {
+                                                        iconRender,
+                                                        visibilityToggle = true,
+                                                        suffix,
+                                                        ...rest
+                                                      }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleRender = () => {
@@ -24,9 +24,9 @@ export const InputPassword: FC<InputPasswordProps> = ({
       return (
         <>
           {visible ? (
-            <EyeOutline onClick={() => setVisible(false)} />
+            <EyeOutline onClick={() => setVisible(false)}/>
           ) : (
-            <EyeInvisibleOutline onClick={() => setVisible(true)} />
+            <EyeInvisibleOutline onClick={() => setVisible(true)}/>
           )}
         </>
       );
@@ -40,7 +40,7 @@ export const InputPassword: FC<InputPasswordProps> = ({
       suffix={
         <>
           {' '}
-          {visibilityToggle && <div style={{paddingLeft:4}}>{toggleRender()}</div>} {suffix}{' '}
+          {visibilityToggle && <div style={{paddingLeft: 4, paddingRight: 4}}>{toggleRender()}</div>} {suffix}{' '}
         </>
       }
     />

@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import {ProgressCircle} from "./ProgressCircle";
-import {Size} from "../types";
+import {Size} from "./types";
 import "./style.scss"
 import {ProgressLine} from "./ProgressLine";
 import {exceptionColor, PercentPositionAlign, ProgressStatus, successColor} from "./types";

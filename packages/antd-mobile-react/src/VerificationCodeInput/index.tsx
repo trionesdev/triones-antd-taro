@@ -1,4 +1,4 @@
-import {VerificationCodeInput,ValidationCodeInputProps}  from "@trionesdev/antd-mobile-base-react";
+import {VerificationCodeInput,VerificationCodeInputProps}  from "@trionesdev/antd-mobile-base-react";
 
-export type {ValidationCodeInputProps};
+export type {VerificationCodeInputProps};
 export default VerificationCodeInput;

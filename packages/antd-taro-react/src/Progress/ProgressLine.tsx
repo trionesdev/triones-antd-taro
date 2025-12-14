@@ -1,5 +1,5 @@
 import React from "react";
-import {Size} from "../types";
+import {Size} from "./types";
 import {FC} from "react";
 import classNames from "classnames";
 import {exceptionColor, PercentPositionAlign, ProgressStatus, successColor} from "./types";

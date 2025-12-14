@@ -1,12 +1,16 @@
 @use "../style/variable" as *;
 $trionesInputNumberCls: 'triones-antm-input-number';
 
+$inputNumberBg: #EEEEEE;
+$inputSm: 24Px;
+$inputLg: 40Px;
+
 .#{$trionesInputNumberCls} {
   display: inline-flex;
   align-items: center;
   gap: 4Px;
   border-radius: $trionesBorderRadius;
-  background-color: $trionesColorTextQuaternary;
+  background-color: $inputNumberBg;
 
   input {
     &::-webkit-outer-spin-button,
@@ -14,10 +18,11 @@ $trionesInputNumberCls: 'triones-antm-input-number';
       -webkit-appearance: none;
       margin: 0;
     }
-
+    background-color: transparent;
     border: 0;
     text-align: center;
-    width: 30Px;
+    width: 32Px;
+
 
     &:focus {
       outline: none;
@@ -28,10 +33,18 @@ $trionesInputNumberCls: 'triones-antm-input-number';
     cursor: pointer;
     display: flex;
     font-size: 10Px;
-    height: 20Px;
-    width: 20Px;
+    height: 32Px;
+    width: 32Px;
     justify-content: center;
     align-items: center;
+    &-sm{
+      width: $inputSm;
+      height: $inputSm;
+    }
+    &-lg{
+      width: $inputLg;
+      height: $inputLg;
+    }
     &-disabled{
       cursor: not-allowed;
       color: $trionesColorTextDisabled;

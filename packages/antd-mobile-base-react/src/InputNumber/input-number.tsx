@@ -3,17 +3,30 @@ import {FC} from "react";
 import classNames from "classnames";
 import {AddOutline, MinusOutline} from "../../../antd-mobile-icons-react";
 import "./style.scss"
+import {SizeType} from "../types";
 
 export type InputNumberProps = {
+  size?: SizeType
   value?: number,
   onChange?: (value: number) => void
   step?: number
   min?: number
   max?: number
+  disabled?: boolean
   className?: string
   style?: React.CSSProperties
 }
-export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, max, className, style}) => {
+export const InputNumber: FC<InputNumberProps> = ({
+                                                    size,
+                                                    value,
+                                                    onChange,
+                                                    step,
+                                                    min,
+                                                    max,
+                                                    disabled = false,
+                                                    className,
+                                                    style
+                                                  }) => {
   const [internalValue, setInternalValue] = React.useState<number>(value || 0);
 
   useEffect(() => {
@@ -30,7 +43,11 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, m
   const trionesInputNumberCls = 'triones-antm-input-number';
   return <div className={classNames(trionesInputNumberCls, className)} style={style}>
     <div
-      className={classNames(`${trionesInputNumberCls}-button`, {[`${trionesInputNumberCls}-button-disabled`]: minMatch})}
+      className={classNames(`${trionesInputNumberCls}-button`, {
+        [`${trionesInputNumberCls}-button-sm`]: size == 'small',
+        [`${trionesInputNumberCls}-button-lg`]: size == 'large',
+        [`${trionesInputNumberCls}-button-disabled`]: minMatch || disabled,
+      })}
       onClick={() => {
         if (minMatch) {
           return
@@ -42,14 +59,18 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, step, min, m
       <MinusOutline/>
     </div>
     <div>
-      <input type={`number`} value={internalValue} onChange={(e) => {
+      <input type={`number`} disabled={disabled} value={internalValue} onChange={(e) => {
         const newVal = Number(e.target.value);
         setInternalValue(newVal);
         onChange?.(newVal)
       }}/>
     </div>
     <div
-      className={classNames(`${trionesInputNumberCls}-button`, {[`${trionesInputNumberCls}-button-disabled`]: maxMatch})}
+      className={classNames(`${trionesInputNumberCls}-button`, {
+        [`${trionesInputNumberCls}-button-sm`]: size == 'small',
+        [`${trionesInputNumberCls}-button-lg`]: size == 'large',
+        [`${trionesInputNumberCls}-button-disabled`]: maxMatch || disabled,
+      })}
       onClick={() => {
         if (maxMatch) {
           return

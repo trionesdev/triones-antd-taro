@@ -2,14 +2,14 @@ import {BaseInput} from './base-input';
 import {InputAffixWrapper} from './input-affix-wrapper';
 import React, {FC} from 'react';
 import './index.scss';
-import {Size} from "../types";
+import {SizeType} from "../types";
 
 export type InputProps = {
   className?: string;
   style?: React.CSSProperties;
   placeholder?: string;
   type?: 'text' | 'password' | 'textarea';
-  size?: Size
+  size?: SizeType
   disabled?: boolean;
   allowClear?: boolean;
   prefix?: React.ReactNode;

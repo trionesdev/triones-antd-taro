@@ -4,7 +4,7 @@ import { InputProps } from '..';
 import Input from '../Input';
 import './style.scss';
 
-export type ValidationCodeInputProps = Omit<InputProps, 'suffix'> & {
+export type VerificationCodeInputProps = Omit<InputProps, 'suffix'> & {
   /**
    * @description 发送文本
    * @default 获取验证码
@@ -25,7 +25,7 @@ export type ValidationCodeInputProps = Omit<InputProps, 'suffix'> & {
   onSend?: () => Promise<boolean>;
 };
 
-export const VerificationCodeInput: FC<ValidationCodeInputProps> = ({
+export const VerificationCodeInput: FC<VerificationCodeInputProps> = ({
   sendText = '获取验证码',
   resendText = '重新发送',
   waitSeconds = 60,
