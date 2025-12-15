@@ -214,22 +214,22 @@ $buttonCls: 'triones-antm-button';
   }
 
   &-small {
-    font-size: $trionesFontSizeSm;
+    font-size: variable.$trionesFontSizeSm;
     padding-inline: $trionesButtonPendingInlineSm;
     height: $trionesButtonHeightSm;
-    border-radius: $trionesBorderRadiusSm;
+    border-radius: variable.$trionesBorderRadiusSm;
   }
 
   &-middle {
     padding-inline: $trionesButtonPendingInline;
     height: $trionesButtonHeight;
-    border-radius: $trionesBorderRadius;
+    border-radius: variable.$trionesBorderRadius;
   }
 
   &-large {
     font-size: $trionesButtonContentFontSizeLg;
     padding-inline: $trionesButtonPendingInlineLg;
     height: $trionesButtonHeightLg;
-    border-radius: $trionesBorderRadiusLg;
+    border-radius: variable.$trionesBorderRadiusLg;
   }
 }
