@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunk_trionesdev_antd_taro_react=self.webpackChunk_trionesdev_antd_taro_react||[]).push([[1904],{7849:function(a,n,t){t.r(n),t.d(n,{demos:function(){return r}});var o=t(44194),_=t(1e3),r={}},72705:function(a,n,t){t.r(n),t.d(n,{demos:function(){return r}});var o=t(44194),_=t(37917),r={}},72699:function(a,n,t){t.r(n),t.d(n,{texts:function(){return _}});var o=t(1e3);const _=[{value:`pnpm install @trionesdev/antd-taro-react
-`,paraId:0,tocIndex:2}]},56696:function(a,n,t){t.r(n),t.d(n,{texts:function(){return _}});var o=t(37917);const _=[]}}]);
