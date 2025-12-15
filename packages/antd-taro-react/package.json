@@ -51,7 +51,7 @@
     "@types/node": "^18.19.123",
     "@types/react": "^18.0.0",
     "classnames": "^2.5.1",
-    "father": "^4.6.3",
+    "father": "^4.6.9",
     "lodash-es": "^4.17.21"
   },
   "dependencies": {
