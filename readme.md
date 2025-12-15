@@ -11,8 +11,8 @@
 创建一个H5的组件库，用于对H5的组件进行适配。 然后，创建一个Taro的Antd组件库， 用于对必须依赖Taro的组件进行适配。
 
 ## 模块说明
-- [Antd 图标组件库 react版本](packages/antd-mobile-icons-react)
-- [Antd 基础组件库 react版本](packages/antd-mobile-base-react)
+- [Antd 图标组件库 react版本](packages/antd-mobile-icons-react) 移动端的图表组件库
+- [Antd 基础组件库 react版本](packages/antd-mobile-base-react) 移动端的基础组件库，H5组件库和Taro的组件库都依赖此基础组件库
 - [Antd 移动组件库(H5) react版本](packages/antd-mobile-react) 如果开发H5，引入此依赖
 - [Antd 移动组件库(Taro) react版本](packages/antd-taro-react) 开发Taro项目，引入此依赖
 
