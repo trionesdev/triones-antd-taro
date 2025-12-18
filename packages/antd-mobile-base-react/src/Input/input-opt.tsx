@@ -59,7 +59,7 @@ export const InputOPT: FC<InputOPTProps> = ({
                                             }) => {
   const inputRef = useRef<any>()
   const [inputValue, setInputValue] = useState(value || '')
-  const [internalValue, setInternalValue] = React.useState<any>(
+  const [optValue, setOptValue] = React.useState<any>(
     Array.from({length}).map(() => ''),
   );
 
@@ -67,10 +67,7 @@ export const InputOPT: FC<InputOPTProps> = ({
   const [focusIndex, setFocusIndex] = useState(0);
 
   useEffect(() => {
-    if (value === undefined) {
-      return;
-    }
-    setInternalValue(Array.from(inputValue))
+    setOptValue(Array.from(inputValue ?? ''))
   }, [inputValue]);
 
   return (
@@ -85,7 +82,7 @@ export const InputOPT: FC<InputOPTProps> = ({
               index={index}
               focusIndex={focusIndex}
               size={size}
-              value={internalValue?.[index] || ''}
+              value={optValue?.[index] || ''}
               onFocus={(index) => {
                 setFocusIndex(index);
               }}
