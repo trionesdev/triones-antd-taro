@@ -1,6 +1,6 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
-$trionesTabBarActiveColor: $trionesColorPrimary !default;
+$trionesTabBarActiveColor: variable.$trionesColorPrimary !default;
 
 $tabBarCls: 'triones-tab-bar';
 .#{$tabBarCls} {

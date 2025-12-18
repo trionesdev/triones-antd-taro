@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $trionesInputNumberCls: 'triones-antm-input-number';
 
 $inputNumberBg: #EEEEEE;
@@ -9,7 +9,7 @@ $inputLg: 40Px;
   display: inline-flex;
   align-items: center;
   gap: 4Px;
-  border-radius: $trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadius;
   background-color: $inputNumberBg;
 
   input {
@@ -47,7 +47,7 @@ $inputLg: 40Px;
     }
     &-disabled{
       cursor: not-allowed;
-      color: $trionesColorTextDisabled;
+      color: variable.$trionesColorTextDisabled;
     }
     .triones-antm-icon{
       font-size: 10Px!important;

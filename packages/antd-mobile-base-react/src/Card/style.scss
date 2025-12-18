@@ -1,10 +1,10 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $class-prefix-card: 'triones-antm-card';
 
 .#{$class-prefix-card} {
-  background: $trionesColorBgBase;
-  border-radius: $trionesBorderRadius;
-  //padding: $trionesPadding $trionesPadding;
+  background: variable.$trionesColorBgBase;
+  border-radius: variable.$trionesBorderRadius;
+  //padding: variable.$trionesPadding variable.$trionesPadding;
   &-header {
     position: relative;
     display: flex;
@@ -12,24 +12,24 @@ $class-prefix-card: 'triones-antm-card';
     align-items: center;
     gap: 8Px;
     box-sizing: border-box;
-    padding: $trionesPaddingXs $trionesPaddingXs;
+    padding: variable.$trionesPaddingXs variable.$trionesPaddingXs;
     &:not(:last-child) {
-      border-bottom: solid 0.5Px $trionesBorderColor;
+      border-bottom: solid 0.5Px variable.$trionesBorderColor;
     }
     &-title {
-      font-size: $trionesFontSize;
+      font-size: variable.$trionesFontSize;
       line-height: 1.4;
       font-weight: 500;
     }
   }
   &-body {
-    padding: $trionesPaddingXs $trionesPaddingXs;
+    padding: variable.$trionesPaddingXs variable.$trionesPaddingXs;
   }
   &-footer {
-    padding: $trionesPaddingXs $trionesPaddingXs;
+    padding: variable.$trionesPaddingXs variable.$trionesPaddingXs;
   }
   &-footer {
-    border-top: solid 0.5Px $trionesBorderColor;
-    padding: $trionesPaddingXs $trionesPaddingXs;
+    border-top: solid 0.5Px variable.$trionesBorderColor;
+    padding: variable.$trionesPaddingXs variable.$trionesPaddingXs;
   }
 }

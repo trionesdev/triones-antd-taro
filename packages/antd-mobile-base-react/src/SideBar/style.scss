@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $trionesSideBarCls: 'triones-antm-sidebar';
 
@@ -9,7 +9,7 @@ $trionesSideBarCls: 'triones-antm-sidebar';
 
   &-tabs {
     min-width: 0;
-    background-color: $trionesColorFill;
+    background-color: variable.$trionesColorFill;
     overflow: auto;
     scrollbar-width: thin;
     flex-shrink: 0;
@@ -17,12 +17,12 @@ $trionesSideBarCls: 'triones-antm-sidebar';
 
   &-tab {
     cursor: pointer;
-    padding: $trionesPadding $trionesPadding;
-    color: $trionesColorTextSecondary;
+    padding: variable.$trionesPadding variable.$trionesPadding;
+    color: variable.$trionesColorTextSecondary;
 
     &-active {
-      color: $trionesColorPrimaryText;
-      background-color: $trionesColorBgBase;
+      color: variable.$trionesColorPrimaryText;
+      background-color: variable.$trionesColorBgBase;
     }
 
   }

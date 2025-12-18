@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $trionesButtonPendingInlineSm: 7Px;
 $trionesButtonHeightSm: 24Px;
@@ -6,14 +6,16 @@ $trionesButtonHeightSm: 24Px;
 $trionesButtonPendingInline: 15Px;
 $trionesButtonHeight: 32Px;
 
-$trionesButtonContentFontSizeLg: $trionesFontSizeLg;
+$trionesButtonContentFontSizeLg: variable.$trionesFontSizeLg;
 $trionesButtonPendingInlineLg: 15Px;
 $trionesButtonHeightLg: 40Px;
 
 // 定义常用颜色变量以提高可维护性
 $buttonBackgroundColor: #ffffff;
-$buttonDarkTextColor: rgba(0, 0, 0, 0.75);
-$buttonLightTextColor: rgba(0, 0, 0, 0.06);
+$buttonColorPrimary: variable.$trionesColorPrimary!default;
+$buttonColorError: variable.$trionesColorError!default;
+$buttonDarkColor: rgba(0, 0, 0, 0.75);
+$buttonLightColor: rgba(0, 0, 0, 0.06);
 
 button::after {
   content: none;
@@ -61,34 +63,34 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: $buttonBackgroundColor;
-            background-color: $buttonDarkTextColor;
-            box-shadow: inset 0 0 0 1px $buttonDarkTextColor;
+            background-color: $buttonDarkColor;
+            box-shadow: inset 0 0 0 1px $buttonDarkColor;
           }
 
           &-outlined {
-            color: $buttonDarkTextColor;
-            border: 1px solid $buttonDarkTextColor;
+            color: $buttonDarkColor;
+            border: 1px solid $buttonDarkColor;
             background-color: $buttonBackgroundColor;
           }
 
           &-dashed {
-            color: $buttonDarkTextColor;
-            border: 1px dashed $buttonDarkTextColor;
+            color: $buttonDarkColor;
+            border: 1px dashed $buttonDarkColor;
             background-color: $buttonBackgroundColor;
           }
 
           &-filled {
-            color: $buttonDarkTextColor;
-            background-color: $buttonLightTextColor;
+            color: $buttonDarkColor;
+            background-color: $buttonLightColor;
           }
 
           &-text {
-            color: $buttonDarkTextColor;
+            color: $buttonDarkColor;
             background-color: $buttonBackgroundColor;
           }
 
           &-link {
-            color: $buttonDarkTextColor;
+            color: $buttonDarkColor;
             background-color: $buttonBackgroundColor;
 
             &:active {
@@ -104,34 +106,34 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: $buttonBackgroundColor;
-            background-color: $trionesColorPrimaryText;
-            box-shadow: inset 0 0 0 1px $trionesColorPrimaryText;
+            background-color: $buttonColorPrimary;
+            box-shadow: inset 0 0 0 1px $buttonColorPrimary;
           }
 
           &-outlined {
-            color: #1677ff;
+            color: $buttonColorPrimary;
             background-color: $buttonBackgroundColor;
-            border: 1px solid $trionesColorPrimaryText;
+            border: 1px solid $buttonColorPrimary;
           }
 
           &-dashed {
-            color: $trionesColorPrimaryText;
-            border: 1px dashed $trionesColorPrimaryText;
+            color: $buttonColorPrimary;
+            border: 1px dashed $buttonColorPrimary;
             background-color: $buttonBackgroundColor;
           }
 
           &-filled {
-            color: $trionesColorPrimaryText;
-            background-color: $trionesColorPrimaryBg;
+            color: $buttonColorPrimary;
+            background-color: variable.$trionesColorPrimaryBg;
           }
 
           &-text {
-            color: $trionesColorPrimaryText;
+            color: $buttonColorPrimary;
             background-color: $buttonBackgroundColor;
           }
 
           &-link {
-            color: $trionesColorPrimaryText;
+            color: $buttonColorPrimary;
             background-color: $buttonBackgroundColor;
 
             &:active {
@@ -147,34 +149,34 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: $buttonBackgroundColor;
-            background-color: $trionesColorErrorText;
-            box-shadow: inset 0 0 0 1px $trionesColorErrorText;
+            background-color: $buttonColorError;
+            box-shadow: inset 0 0 0 1px $buttonColorError;
           }
 
           &-outlined {
-            color: $trionesColorErrorText;
+            color: $buttonColorError;
             background-color: $buttonBackgroundColor;
-            border: 1px solid $trionesColorErrorText;
+            border: 1px solid $buttonColorError;
           }
 
           &-dashed {
-            color: $trionesColorErrorText;
-            border: 1px dashed $trionesColorErrorText;
+            color: $buttonColorError;
+            border: 1px dashed $buttonColorError;
             background-color: $buttonBackgroundColor;
           }
 
           &-filled {
-            color: $trionesColorErrorText;
+            color: $buttonColorError;
             background-color: #ffdfdc;
           }
 
           &-text {
-            color: $trionesColorErrorText;
+            color: $buttonColorError;
             background-color: $buttonBackgroundColor;
           }
 
           &-link {
-            color: $trionesColorErrorText;
+            color: $buttonColorError;
             background-color: $buttonBackgroundColor;
 
             &:active {
@@ -211,22 +213,22 @@ $buttonCls: 'triones-antm-button';
   }
 
   &-small {
-    font-size: $trionesFontSizeSm;
+    font-size: variable.$trionesFontSizeSm;
     padding-inline: $trionesButtonPendingInlineSm;
     height: $trionesButtonHeightSm;
-    border-radius: $trionesBorderRadiusSm;
+    border-radius: variable.$trionesBorderRadiusSm;
   }
 
   &-middle {
     padding-inline: $trionesButtonPendingInline;
     height: $trionesButtonHeight;
-    border-radius: $trionesBorderRadius;
+    border-radius: variable.$trionesBorderRadius;
   }
 
   &-large {
     font-size: $trionesButtonContentFontSizeLg;
     padding-inline: $trionesButtonPendingInlineLg;
     height: $trionesButtonHeightLg;
-    border-radius: $trionesBorderRadiusLg;
+    border-radius: variable.$trionesBorderRadiusLg;
   }
 }

@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $pickerCls: 'triones-antm-picker';
 
 .#{$pickerCls} {
@@ -20,7 +20,7 @@ $pickerCls: 'triones-antm-picker';
       padding: 8Px;
       font-size: 12Px;
       &-ok{
-        color: $trionesColorPrimary;
+        color: variable.$trionesColorPrimary;
       }
     }
 

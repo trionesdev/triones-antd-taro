@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $popupCls: 'triones-antm-popup';
 
 .#{$popupCls} {
@@ -23,8 +23,8 @@ $popupCls: 'triones-antm-popup';
   &-body {
     background-color: white;
     position: fixed;
-    border-top-left-radius: $trionesBorderRadius;
-    border-top-right-radius: $trionesBorderRadius;
+    border-top-left-radius: variable.$trionesBorderRadius;
+    border-top-right-radius: variable.$trionesBorderRadius;
   }
 
   &-top {

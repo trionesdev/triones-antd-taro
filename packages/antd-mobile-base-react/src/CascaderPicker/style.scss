@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $cascaderPickerCls: 'triones-antm-cascader-picker';
 
 .#{$cascaderPickerCls} {
@@ -13,7 +13,7 @@ $cascaderPickerCls: 'triones-antm-cascader-picker';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1Px solid $trionesBorderColor;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
     padding: 4Px;
 
     &-button {
@@ -21,7 +21,7 @@ $cascaderPickerCls: 'triones-antm-cascader-picker';
       padding: 8Px;
       font-size: 12Px;
       &-ok{
-        color: $trionesColorPrimary;
+        color: variable.$trionesColorPrimary;
       }
     }
 

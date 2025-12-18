@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $descriptionsCls: 'triones-antm-descriptions';
 .#{$descriptionsCls} {
@@ -19,7 +19,7 @@ $descriptionsCls: 'triones-antm-descriptions';
         padding: 4Px 4Px;
         overflow: hidden;
         &-label {
-          color: $trionesColorTextSecondary;
+          color: variable.$trionesColorTextSecondary;
           word-wrap: break-word; /* 允许长单词或URL换行 */
           overflow-wrap: break-word; /* 更标准的属性名 */
           white-space: normal; /* 默认换行行为 */
@@ -38,8 +38,8 @@ $descriptionsCls: 'triones-antm-descriptions';
   }
 
   &-bordered {
-    border: 1Px solid $trionesBorderColor;
-    border-radius: $trionesBorderRadius;
+    border: 1Px solid variable.$trionesBorderColor;
+    border-radius: variable.$trionesBorderRadius;
     overflow: hidden;
 
     .#{$descriptionsCls} {

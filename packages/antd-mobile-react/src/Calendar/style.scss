@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $calendarCls: 'triones-antm-calendar';
 
@@ -14,7 +14,7 @@ $calendarCls: 'triones-antm-calendar';
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: $trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadius;
   cursor: default;
   flex-direction: column;
 
@@ -39,13 +39,13 @@ $calendarCls: 'triones-antm-calendar';
     }
 
     &-selected {
-      background-color: $trionesColorPrimary;
+      background-color: variable.$trionesColorPrimary;
       color: white;
     }
 
     &-selected-range {
       border-radius: 0;
-      background-color: $trionesColorPrimaryBg;
+      background-color: variable.$trionesColorPrimaryBg;
       color: black;
     }
   }

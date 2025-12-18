@@ -1,15 +1,15 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $calendarPickerCls: 'triones-antm-calendar-picker';
 
 .#{$calendarPickerCls} {
-  border-top-left-radius: $trionesBorderRadius;
-  border-top-right-radius: $trionesBorderRadius;
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
 
   &-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1Px solid $trionesBorderColor;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
     padding: 4Px;
     &-button {
       padding: 8Px 12Px;
@@ -18,7 +18,7 @@ $calendarPickerCls: 'triones-antm-calendar-picker';
       }
 
       &-ok {
-        color: $trionesColorPrimary;
+        color: variable.$trionesColorPrimary;
       }
     }
 

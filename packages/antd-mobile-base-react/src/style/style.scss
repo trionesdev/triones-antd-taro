@@ -1,5 +1,5 @@
-@use './theme-default.scss' as *;
-@use './theme-dark.scss' as *;
+@use './theme-default.scss' as default;
+@use './theme-dark.scss' as dark;
 
 :root {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

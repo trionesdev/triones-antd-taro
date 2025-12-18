@@ -1,6 +1,7 @@
-@use "../style/variable" as *;
-$trionesNavBarColorBg:$trionesColorBorderBg !default;
-$trionesNavBarColorText:$trionesColorTextBase !default;
+@use "../style/variable" as variable;
+
+$trionesNavBarColorBg: variable.$trionesColorBorderBg !default;
+$trionesNavBarColorText: variable.$trionesColorTextBase !default;
 
 $class-prefix-nav-bar: 'triones-antm-nav-bar';
 /* prettier-ignore */
@@ -20,6 +21,7 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
   &-right {
     flex: 1;
   }
+
   &-title {
     flex: auto;
     text-align: center;
@@ -33,6 +35,7 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
     margin-right: 16PX;
     padding: 6PX 0;
     cursor: pointer;
+
     &-arrow {
       font-size: 20PX;
       margin-right: 5PX;

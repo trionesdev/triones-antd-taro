@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $dividerCls: 'triones-antm-divider';
 /* prettier-ignore */
@@ -6,8 +6,8 @@ $dividerCls: 'triones-antm-divider';
   display: flex;
   align-items: center;
   font-size: 14PX;
-  color: $trionesBorderColor;
-  border: 0 solid $trionesBorderColor ;
+  color: variable.$trionesBorderColor;
+  border: 0 solid variable.$trionesBorderColor ;
   width: 100%;
 
   &::before,

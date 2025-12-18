@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $cascaderViewCls: 'triones-antm-cascader-view';
 .#{$cascaderViewCls} {
@@ -15,7 +15,7 @@ $cascaderViewCls: 'triones-antm-cascader-view';
       padding: 0Px 8Px;
 
       &-selected {
-        color: $trionesColorPrimary;
+        color: variable.$trionesColorPrimary;
       }
     }
   }

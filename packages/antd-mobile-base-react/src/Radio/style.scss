@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $checkboxDisabledColor: rgba(0, 0, 0, 0.25) !default;
 
@@ -25,7 +25,7 @@ $class-prefix-radio: 'triones-antm-radio';
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        background-color: $trionesColorPrimary;
+        background-color: variable.$trionesColorPrimary;
         color: white;
         border-radius: 50vh;
         box-sizing: border-box;
@@ -40,7 +40,7 @@ $class-prefix-radio: 'triones-antm-radio';
         justify-content: center;
         align-items: center;
         border-radius: 50vh;
-        border: 1PX solid $trionesBorderColor;
+        border: 1PX solid variable.$trionesBorderColor;
         box-sizing: border-box;
       }
 
@@ -88,36 +88,36 @@ $class-prefix-radio: 'triones-antm-radio';
 .#{$class-prefix-radio}-button-wrapper {
   display: inline-flex;
   position: relative;
-  border-top: 1PX solid $trionesBorderColor;
-  border-bottom: 1PX solid $trionesBorderColor;
-  border-right: 1PX solid $trionesBorderColor;
+  border-top: 1PX solid variable.$trionesBorderColor;
+  border-bottom: 1PX solid variable.$trionesBorderColor;
+  border-right: 1PX solid variable.$trionesBorderColor;
 
   &:first-child {
-    border-left: 1PX solid $trionesBorderColor;
-    border-top-left-radius: $trionesBorderRadius;
-    border-bottom-left-radius: $trionesBorderRadius;
+    border-left: 1PX solid variable.$trionesBorderColor;
+    border-top-left-radius: variable.$trionesBorderRadius;
+    border-bottom-left-radius: variable.$trionesBorderRadius;
   }
 
   &:last-child {
-    border-right: 1PX solid $trionesBorderColor;
-    border-top-right-radius: $trionesBorderRadius;
-    border-bottom-right-radius: $trionesBorderRadius;
+    border-right: 1PX solid variable.$trionesBorderColor;
+    border-top-right-radius: variable.$trionesBorderRadius;
+    border-bottom-right-radius: variable.$trionesBorderRadius;
   }
 
   &-checked {
-    border-top: 1PX solid $trionesColorPrimary;
-    border-bottom: 1PX solid $trionesColorPrimary;
-    color: $trionesColorPrimary;
+    border-top: 1PX solid variable.$trionesColorPrimary;
+    border-bottom: 1PX solid variable.$trionesColorPrimary;
+    color: variable.$trionesColorPrimary;
 
     &:first-child {
-      border: 1PX solid $trionesColorPrimary;
+      border: 1PX solid variable.$trionesColorPrimary;
     }
 
     &:not(:first-child) {
       &::before {
         content: " ";
         width: 1PX;
-        background-color: $trionesColorPrimary;
+        background-color: variable.$trionesColorPrimary;
         position: absolute;
         inset-block-start: -1Px;
         inset-inline-start: -1Px;
@@ -125,7 +125,7 @@ $class-prefix-radio: 'triones-antm-radio';
         padding-block: 1Px;
       }
 
-      border-right: 1PX solid $trionesColorPrimary;
+      border-right: 1PX solid variable.$trionesColorPrimary;
     }
   }
 

@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $tagCls: 'triones-antm-tag';
 
 .#{$tagCls} {
@@ -7,7 +7,7 @@ $tagCls: 'triones-antm-tag';
   padding: 2Px 8Px;
   font-size: 11Px;
   line-height: 1.2;
-  border-radius: $trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadius;
   box-sizing: border-box;
   white-space: nowrap;
 
@@ -35,12 +35,12 @@ $tagCls: 'triones-antm-tag';
   // Primary variant styles
   &-primary {
     &.#{$tagCls}-solid {
-      background: $trionesColorPrimary;
+      background: variable.$trionesColorPrimary;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: $trionesColorPrimary;
-      border: 1px solid $trionesColorPrimary;
+      color: variable.$trionesColorPrimary;
+      border: 1px solid variable.$trionesColorPrimary;
       background: transparent;
     }
   }
@@ -48,12 +48,12 @@ $tagCls: 'triones-antm-tag';
   // Success variant styles
   &-success {
     &.#{$tagCls}-solid {
-      background: $trionesColorSuccess;
+      background: variable.$trionesColorSuccess;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: $trionesColorSuccess;
-      border: 1px solid $trionesColorSuccess;
+      color: variable.$trionesColorSuccess;
+      border: 1px solid variable.$trionesColorSuccess;
       background: transparent;
     }
   }
@@ -61,12 +61,12 @@ $tagCls: 'triones-antm-tag';
   // Warning variant styles
   &-warning {
     &.#{$tagCls}-solid {
-      background: $trionesColorWarning;
+      background: variable.$trionesColorWarning;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: $trionesColorWarning;
-      border: 1px solid $trionesColorWarning;
+      color: variable.$trionesColorWarning;
+      border: 1px solid variable.$trionesColorWarning;
       background: transparent;
     }
   }
@@ -74,12 +74,12 @@ $tagCls: 'triones-antm-tag';
   // Danger variant styles
   &-danger {
     &.#{$tagCls}-solid {
-      background: $trionesColorError;
+      background: variable.$trionesColorError;
       color: #fff;
     }
     &.#{$tagCls}-outline {
-      color: $trionesColorError;
-      border: 1px solid $trionesColorError;
+      color: variable.$trionesColorError;
+      border: 1px solid variable.$trionesColorError;
       background: transparent;
     }
   }

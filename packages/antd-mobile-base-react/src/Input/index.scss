@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $inputCls: 'triones-antm-input';
 $inputAffixWrapperCls: 'triones-antm-input-affix-wrapper';
@@ -22,20 +22,20 @@ input {
   outline: none;
   box-shadow: none;
   border: none;
-  border-radius: $trionesBorderRadius;
-  font-size: $trionesInputInputFontSize;
+  border-radius: variable.$trionesBorderRadius;
+  font-size: variable.$trionesInputInputFontSize;
   height: 32Px;
 
   &-sm {
-    height: $inputSm;
+    height:  $inputSm;
   }
 
   &-lg {
-    height: $inputLg;
+    height:  $inputLg;
   }
 
   &::placeholder {
-    font-size: $trionesInputInputFontSize;
+    font-size: variable.$trionesInputInputFontSize;
     color: #cccccc;
   }
 }
@@ -47,8 +47,8 @@ input {
   display: inline-flex;
   width: 100%;
   min-width: 0;
-  line-height: $trionesLineHeight;
-  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
+  line-height: variable.$trionesLineHeight;
+  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
   gap: 4Px;
 
   &-sm {
@@ -136,7 +136,7 @@ input {
 
   &-item {
     text-align: center;
-    font-size: $trionesInputInputFontSize;
+    font-size: variable.$trionesInputInputFontSize;
     height: 32Px;
     width: 32Px;
     display: inline-flex;
@@ -154,7 +154,7 @@ input {
     }
 
     &::placeholder {
-      font-size: $trionesInputInputFontSize;
+      font-size: variable.$trionesInputInputFontSize;
     }
 
     &-focus {
@@ -171,7 +171,7 @@ input {
   }
 
   .#{$inputCls}-outlined {
-    font-size: $trionesInputInputFontSize;
+    font-size: variable.$trionesInputInputFontSize;
     color: rgba(0, 0, 0, 0.88);
     background: #ffffff;
     border-width: 1Px;
@@ -189,10 +189,10 @@ input {
   width: 100%;
   border: 0;
   outline: 0;
-  padding: $trionesInputPaddingBlock $trionesInputPaddingInline;
+  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
 
   &::placeholder {
-    font-size: $trionesInputInputFontSize;
+    font-size: variable.$trionesInputInputFontSize;
     color: #cccccc;
   }
 }

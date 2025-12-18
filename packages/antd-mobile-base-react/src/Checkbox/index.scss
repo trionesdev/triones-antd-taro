@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 $checkboxCls: 'triones-antm-checkbox';
 
 $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
@@ -34,7 +34,7 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        background-color: $trionesColorPrimary;
+        background-color: variable.$trionesColorPrimary;
         color: white;
         border-radius: 50vh;
         box-sizing: border-box;
@@ -54,7 +54,7 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
         justify-content: center;
         align-items: center;
         border-radius: 50vh;
-        border: 1PX solid $trionesBorderColor;
+        border: 1PX solid variable.$trionesBorderColor;
         box-sizing: border-box;
       }
     }
@@ -62,10 +62,10 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
 
 
   &.#{$checkboxCls}-disabled{
-    color: $checkboxDisabledColor;
+    color:  $checkboxDisabledColor;
     pointer-events: none;
     .#{$checkboxCls}-fake-checked{
-      background-color: $checkboxDisabledColor;
+      background-color:  $checkboxDisabledColor;
     }
   }
 
@@ -101,17 +101,17 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
 
   &-disabled {
     pointer-events: none;
-    color: $checkboxDisabledColor;
+    color:  $checkboxDisabledColor;
     &.#{$checkboxCls}-button  {
         &-checked{
-          border: 1Px solid $checkboxDisabledColor;
+          border: 1Px solid  $checkboxDisabledColor;
           .#{$checkboxCls}-button-content {
-            color: $checkboxDisabledColor;
+            color:  $checkboxDisabledColor;
           }
         }
       .#{$checkboxCls}-button-icon{
-        border-bottom: 10Px solid $checkboxDisabledColor;
-        border-right: 10Px solid $checkboxDisabledColor;
+        border-bottom: 10Px solid  $checkboxDisabledColor;
+        border-right: 10Px solid  $checkboxDisabledColor;
       }
     }
 
@@ -120,9 +120,9 @@ $checkboxDisabledColor:rgba(0,0,0,0.25) !default;
 
   &-icon {
     align-items: flex-end;
-    border-bottom: 10Px solid $trionesColorPrimary;
+    border-bottom: 10Px solid variable.$trionesColorPrimary;
     border-left: 10Px solid transparent;
-    border-right: 10Px solid $trionesColorPrimary;
+    border-right: 10Px solid variable.$trionesColorPrimary;
     border-top: 10Px solid transparent;
     bottom: 0;
     display: flex;

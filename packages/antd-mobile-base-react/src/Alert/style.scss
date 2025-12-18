@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $trionesAlertCls: 'triones-antm-alert';
 
@@ -6,7 +6,7 @@ $trionesAlertDefaultPadding: 8Px 12Px;
 
 .#{$trionesAlertCls} {
   padding: $trionesAlertDefaultPadding;
-  border-radius: $trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadius;
   display: flex;
   flex: 1 auto;
   border: 1Px solid;
@@ -15,38 +15,38 @@ $trionesAlertDefaultPadding: 8Px 12Px;
   gap: 4Px;
 
   &-success {
-    border-color: $trionesColorSuccessBorder;
-    background-color: $trionesColorSuccessBg;
+    border-color: variable.$trionesColorSuccessBorder;
+    background-color: variable.$trionesColorSuccessBg;
 
     .#{$trionesAlertCls}-icon {
-      color: $trionesColorSuccess;
+      color: variable.$trionesColorSuccess;
     }
   }
 
   &-info {
-    border-color: $trionesColorInfoBorder;
-    background-color: $trionesColorInfoBg;
+    border-color: variable.$trionesColorInfoBorder;
+    background-color: variable.$trionesColorInfoBg;
 
     .#{$trionesAlertCls}-icon {
-      color: $trionesColorInfo;
+      color: variable.$trionesColorInfo;
     }
   }
 
   &-warning {
-    border-color: $trionesColorWarningBorder;
-    background-color: $trionesColorWarningBg;
+    border-color: variable.$trionesColorWarningBorder;
+    background-color: variable.$trionesColorWarningBg;
 
     .#{$trionesAlertCls}-icon {
-      color: $trionesColorWarning;
+      color: variable.$trionesColorWarning;
     }
   }
 
   &-error {
-    border-color: $trionesColorErrorBorder;
-    background-color: $trionesColorErrorBg;
+    border-color: variable.$trionesColorErrorBorder;
+    background-color: variable.$trionesColorErrorBg;
 
     .#{$trionesAlertCls}-icon {
-      color: $trionesColorError;
+      color: variable.$trionesColorError;
     }
   }
 
@@ -58,12 +58,12 @@ $trionesAlertDefaultPadding: 8Px 12Px;
   }
 
   &-close-icon {
-    color: $trionesColorIcon;
-    font-size: $trionesFontSizeIcon;
+    color: variable.$trionesColorIcon;
+    font-size: variable.$trionesFontSizeIcon;
     cursor: pointer;
 
     .triones-antm-icon {
-      font-size: $trionesFontSizeIcon;
+      font-size: variable.$trionesFontSizeIcon;
     }
   }
 }

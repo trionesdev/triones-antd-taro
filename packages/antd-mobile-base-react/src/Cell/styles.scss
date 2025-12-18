@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $cellCls: 'triones-antm-cell';
 
@@ -35,7 +35,7 @@ $cellCls: 'triones-antm-cell';
 .#{$cellCls}-group {
   display: flex;
   flex-direction: column;
-  border-radius: $trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadius;
   padding: 4Px 4Px;
 
   &-title {

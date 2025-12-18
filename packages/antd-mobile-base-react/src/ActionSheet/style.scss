@@ -1,12 +1,13 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
+
 $actionSheetCls: 'triones-antm-action-sheet';
 
 .#{$actionSheetCls} {
   display: flex;
   flex-direction: column;
-  background-color: $trionesColorFill;
-  border-top-left-radius: $trionesBorderRadius;
-  border-top-right-radius: $trionesBorderRadius;
+  background-color: variable.$trionesColorFill;
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
   overflow: hidden;
   gap: 2Px;
   &-body{
@@ -19,7 +20,7 @@ $actionSheetCls: 'triones-antm-action-sheet';
     min-height: 48Px;
     background-color: white;
     font-size: 18Px;
-    border-bottom: 1Px solid $trionesBorderColor;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
   }
   &-actions{
     &-item{

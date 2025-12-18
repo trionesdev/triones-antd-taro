@@ -1,4 +1,4 @@
-@use "../style/variable" as *;
+@use "../style/variable" as variable;
 
 $class-prefix-switch: 'triones-antm-switch';
 
@@ -30,7 +30,7 @@ $class-prefix-switch: 'triones-antm-switch';
     height: var(--height);
     box-sizing: border-box;
     border-radius: 31PX;
-    background: $trionesBorderColor;
+    background: variable.$trionesBorderColor;
     z-index: 0;
     overflow: hidden;
     line-height: var(--height);
@@ -58,7 +58,7 @@ $class-prefix-switch: 'triones-antm-switch';
     width: calc(var(--height) - 2 * var(--border-width));
     height: calc(var(--height) - 2 * var(--border-width));
     border-radius: calc(var(--height) - 2 * var(--border-width));
-    background: $trionesColorTextLightSolid;
+    background: variable.$trionesColorTextLightSolid;
     position: absolute;
     z-index: 2;
     top: var(--border-width);
@@ -69,7 +69,7 @@ $class-prefix-switch: 'triones-antm-switch';
     -1PX 2PX 2PX 0 rgba(0, 0, 0, 0.1);
 
     &-loading {
-      color: var(--color,$trionesColorPrimary);
+      color: var(--color,variable.$trionesColorPrimary);
       display: inline-block;
       height: 100%;
       width: 100%;
@@ -96,7 +96,7 @@ $class-prefix-switch: 'triones-antm-switch';
   /* 选中状态 */
   &.#{$class-prefix-switch}-checked {
     .#{$class-prefix-switch}-checkbox {
-      background: var(--checked-color, $trionesColorPrimary);
+      background: var(--checked-color, variable.$trionesColorPrimary);
 
       &:before {
         transform: scale(0);
@@ -109,7 +109,7 @@ $class-prefix-switch: 'triones-antm-switch';
 
     .#{$class-prefix-switch}-inner {
       margin: 0 calc(var(--height) - var(--border-width) + 5PX) 0 8PX;
-      color: $trionesColorTextLightSolid;
+      color: variable.$trionesColorTextLightSolid;
     }
   }
 
