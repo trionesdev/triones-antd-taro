@@ -53,8 +53,8 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
       </div>
       <div className={classNames(`${cls}-content`)}>
         <Swiper style={{width: '100%', height: '100%'}} >
-          {items?.map((item) => {
-            return <Swiper.Item style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}  as React.CSSProperties}>
+          {items?.map((item,index) => {
+            return <Swiper.Item key={ index} style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}  as React.CSSProperties}>
               <div onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();

@@ -89,7 +89,6 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
   }
 
   const handleDraw = () => {
-    console.log(canvasRef.current);
     const centerX = computedWidth / 2;
     const centerY = computedHeight / 2;
     const radius = (Math.min(computedWidth, computedHeight) - strokeWidth) / 2;

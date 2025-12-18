@@ -1,16 +1,2 @@
-@forward "@trionesdev/antd-taro-react/dist/style/variable" with (
-$trionesColorBorderBg: #fff,
-$trionesColorPrimaryText: #349564,
-
-$trionesColorPrimary: #349564,
-$trionesColorPrimaryBg: #e6f4ff,
-$trionesColorFillContent: rgb(0 0 0 / 6%),
-
-$trionesBorderRadius: 6Px,
-
-
-);
-:root,page{
-  --trioens-color-primary: #349564 ;
-}
+@forward "@trionesdev/antd-taro-react/dist/style/variable";
 

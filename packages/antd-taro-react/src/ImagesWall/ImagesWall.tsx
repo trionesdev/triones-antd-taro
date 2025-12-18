@@ -95,8 +95,8 @@ export const ImagesWall: FC<ImagesWallProps> = ({
   }, [value]);
 
   return <>
-    <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
-                   items={images.map(item => item.url) || []} activeIndex={previewIndex}/>
+    {preview && <ImagesPreview open={imagePreviewOpen} afterOpenChange={setImagePreviewOpen}
+                               items={images.map(item => item.url) || []} activeIndex={previewIndex}/>}
     <div className={classNames(cls, className)} style={{gridTemplateColumns: `repeat(${columns}, 1fr)`}}>
       {images.map((image, index) => <ImagesWallItem key={index}
                                                     disabled={disabled} images={images} image={image}
