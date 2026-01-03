@@ -4,7 +4,6 @@ $cellCls: 'triones-antm-cell';
 
 .#{$cellCls} {
   display: flex;
-  padding: 4Px 11Px;
   gap: 4Px;
 
   &-wrapper {
@@ -41,7 +40,6 @@ $cellCls: 'triones-antm-cell';
   display: flex;
   flex-direction: column;
   border-radius: variable.$trionesBorderRadius;
-  padding: 4Px 4Px;
 
   &-title {
     padding: 4Px 4Px;

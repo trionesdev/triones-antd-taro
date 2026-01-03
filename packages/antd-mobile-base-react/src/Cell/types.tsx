@@ -49,6 +49,7 @@ export type CellGroupProps = {
    * @default false
    */
   divider?: boolean | React.ReactNode;
+  arrow?: boolean;
   labelCol?: Col;
   labelAlign?: labelAlign;
 };

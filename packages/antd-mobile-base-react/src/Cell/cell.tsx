@@ -14,12 +14,12 @@ export const Cell: FC<CellProps> = ({
                                       children,
                                       label,
                                       extra,
-                                      arrow = true,
+                                      arrow,
                                       labelCol,
                                       labelAlign = 'left',
                                       onClick,
                                     }) => {
-  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign} = useContext(CellGroupContext);
+  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign, arrow: ctxArrow} = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
     return labelCol?.flex || ctxLabelCol?.flex || 'auto';
   }, [labelCol, ctxLabelCol])
@@ -35,6 +35,15 @@ export const Cell: FC<CellProps> = ({
         return 'end'
     }
   }, [labelAlign, ctxLabelAlign])
+  const arrowCompute = useMemo(() => {
+    if (arrow !== undefined) {
+      return arrow;
+    }
+    if (ctxArrow !== undefined) {
+      return ctxArrow;
+    }
+    return true;
+  }, [arrow])
 
   return (
     <div className={classNames(cls, className)} style={style} onClick={onClick}>
@@ -55,7 +64,7 @@ export const Cell: FC<CellProps> = ({
         </div>
         {extra && <div className={classNames(`${cls}-extra`)}>{extra}</div>}
       </div>
-      {arrow && (
+      {arrowCompute && (
         <div className={classNames(`${cls}-arrow`)}>
           <RightOutline/>
         </div>

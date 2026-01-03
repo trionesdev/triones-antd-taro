@@ -11,6 +11,7 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 title,
                                                 extra,
                                                 divider,
+                                                arrow,
                                                 labelCol,
                                                 labelAlign
                                               }) => {
@@ -38,6 +39,7 @@ export const CellGroup: FC<CellGroupProps> = ({
 
   return (
     <CellGroupContext.Provider value={{
+      arrow,
       labelCol,
       labelAlign
     }}>
