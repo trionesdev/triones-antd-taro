@@ -8,3 +8,8 @@ export type BoundingClientRectType = {
   width: number;
   height: number;
 }
+
+export type Col={
+  flex?: number | string;
+  span?: number;
+}

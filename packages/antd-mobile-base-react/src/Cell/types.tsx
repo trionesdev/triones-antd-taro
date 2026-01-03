@@ -1,12 +1,19 @@
 import React from 'react';
+import {Col} from "../types";
 
 export const cls = 'triones-antm-cell';
+
+export type labelAlign = 'left' | 'center' | 'right';
 
 export type CellProps = {
   className?: string;
   style?: React.CSSProperties;
-  placeholder?:string
+  placeholder?: string
   children?: React.ReactNode;
+  /**
+   * @description 左侧内容
+   */
+  label?: React.ReactNode;
   /**
    * @description 右侧内容
    * @default
@@ -21,7 +28,8 @@ export type CellProps = {
    * @description 点击事件
    */
   onClick?: () => void;
-  picker?:React.ReactNode;
+  labelCol?: Col;
+  labelAlign?: labelAlign;
 };
 
 export type CellGroupProps = {
@@ -41,4 +49,6 @@ export type CellGroupProps = {
    * @default false
    */
   divider?: boolean | React.ReactNode;
+  labelCol?: Col;
+  labelAlign?: labelAlign;
 };

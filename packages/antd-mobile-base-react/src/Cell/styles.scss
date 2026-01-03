@@ -12,6 +12,11 @@ $cellCls: 'triones-antm-cell';
     flex: 1 auto;
   }
 
+  &-label {
+    display: flex;
+    align-items: center;
+  }
+
   &-content {
     flex: 1 auto;
     display: flex;
