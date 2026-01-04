@@ -5,7 +5,6 @@ import {Point} from "./Point";
 import {StepsContext} from "./context";
 
 
-
 const HorizontalStepItem: FC<StepsItemProps & { index: number }> = ({icon, title, description, index}) => {
   const {current, iconSize, stretch} = useContext(StepsContext)
 
@@ -47,8 +46,8 @@ const HorizontalStepItem: FC<StepsItemProps & { index: number }> = ({icon, title
       </div>
     </div>
     <div className={classNames(`${clsPrefixStep}-content`)}>
-      {title && <div>{title}</div>}
-      {description && <div>{description}</div>}
+      {title && <div className={classNames(`${clsPrefixStep}-content-title`)}>{title}</div>}
+      {description && <div className={classNames(`${clsPrefixStep}-content-desc`)}>{description}</div>}
     </div>
   </div>
 }

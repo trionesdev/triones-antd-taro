@@ -8,6 +8,9 @@ $clsPrefixStep: 'triones-antm-step';
 
     .#{$clsPrefixStep} {
       //flex: 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4Px;
       &-indicator {
         display: flex;
         flex-direction: row;
@@ -46,6 +49,10 @@ $clsPrefixStep: 'triones-antm-step';
 
       &-content {
         text-align: center;
+        &-title{
+
+        }
+        &-desc{}
       }
 
       &:first-child {

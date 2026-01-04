@@ -32,6 +32,7 @@ export type ProgressProps = {
    * @description 进度条的色彩
    */
   strokeColor?: string;
+  strokeWidth?: number;
   status?: ProgressStatus;
   /**
    * @description 进度数值位置
@@ -45,7 +46,9 @@ export const Progress: FC<ProgressProps> = ({
                                               size = 'middle',
                                               showInfo = true,
                                               railColor = '#E5E5E5',
-                                              strokeColor = '#1777FF', status,
+                                              strokeColor = '#1777FF',
+                                              strokeWidth = 6,
+                                              status,
                                               percentPositionAlign
                                             }) => {
 
@@ -67,6 +70,7 @@ export const Progress: FC<ProgressProps> = ({
   }
   return <ProgressCircle format={format} percent={percent} size={size} railColor={railColor}
                          strokeColor={handleComputedStrokeColor()}
+                         strokeWidth={strokeWidth}
                          showInfo={showInfo}
                          status={status}/>
 }
