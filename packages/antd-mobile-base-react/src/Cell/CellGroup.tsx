@@ -3,6 +3,8 @@ import React, {FC} from 'react';
 import Divider from '../Divider';
 import {CellGroupProps, cls} from './types';
 import {CellGroupContext} from "./context";
+import Cell from '.';
+import {Cell as InternalCell} from "./cell"
 
 export const CellGroup: FC<CellGroupProps> = ({
                                                 className,
@@ -19,16 +21,17 @@ export const CellGroup: FC<CellGroupProps> = ({
     if (children) {
       if (Array.isArray(children)) {
         const childrenArray: React.ReactElement[] = [];
-        for (let i = 0; i < children.length; i++) {
-          childrenArray.push(React.cloneElement(children[i]));
-          if (divider && i !== children.length - 1) {
+
+        children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell)).forEach((child, index) => {
+          childrenArray.push(React.cloneElement(child));
+          if (divider && index !== children.length - 1) {
             if (React.isValidElement(divider)) {
               childrenArray.push(divider);
             } else {
               childrenArray.push(<Divider/>);
             }
           }
-        }
+        });
         return childrenArray;
       } else {
         return children
