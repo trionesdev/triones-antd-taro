@@ -5,6 +5,7 @@ type CompoundedComponent = typeof InternalTabBar & {
 }
 
 const TabBar = InternalTabBar as CompoundedComponent
+TabBar.Item = TabBarItem
 
 export type { TabBarProps }
 export default TabBar
