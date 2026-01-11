@@ -13,14 +13,16 @@ $inputLg: 40Px;
   background-color: $inputNumberBg;
 
   input {
+
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
     background-color: transparent;
     border: 0;
-    text-align: center;
+    text-align: center ;
     width: 32Px;
 
 
@@ -28,6 +30,7 @@ $inputLg: 40Px;
       outline: none;
     }
   }
+
 
   &-button {
     cursor: pointer;
@@ -37,20 +40,24 @@ $inputLg: 40Px;
     width: 32Px;
     justify-content: center;
     align-items: center;
-    &-sm{
+
+    &-sm {
       width: $inputSm;
       height: $inputSm;
     }
-    &-lg{
+
+    &-lg {
       width: $inputLg;
       height: $inputLg;
     }
-    &-disabled{
+
+    &-disabled {
       cursor: not-allowed;
       color: variable.$trionesColorTextDisabled;
     }
-    .triones-antm-icon{
-      font-size: 10Px!important;
+
+    .triones-antm-icon {
+      font-size: 10Px !important;
     }
   }
 }
