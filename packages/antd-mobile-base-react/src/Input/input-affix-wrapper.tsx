@@ -1,6 +1,6 @@
 import {CloseCircleFill} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
-import React, {FC, useRef} from 'react';
+import React, {FC, PropsWithChildren, useRef} from 'react';
 import {BaseInput, BaseInputHandle, BaseInputProps} from './base-input';
 
 export type InputAffixWrapperProps = BaseInputProps & {
@@ -8,14 +8,15 @@ export type InputAffixWrapperProps = BaseInputProps & {
   suffix?: React.ReactNode;
   allowClear?: boolean;
 };
-export const InputAffixWrapper: FC<InputAffixWrapperProps> = ({
-                                                                prefix,
-                                                                suffix,
-                                                                allowClear,
-                                                                value,
-                                                                onChange,
-                                                                ...rest
-                                                              }) => {
+export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
+                                                                                   children,
+                                                                                   prefix,
+                                                                                   suffix,
+                                                                                   allowClear,
+                                                                                   value,
+                                                                                   onChange,
+                                                                                   ...rest
+                                                                                 }) => {
   const [innerValue, setInnerValue] = React.useState(value);
   const baseInputRef = useRef({} as BaseInputHandle);
   const cls = 'triones-antm-input-affix-wrapper';
@@ -31,15 +32,7 @@ export const InputAffixWrapper: FC<InputAffixWrapperProps> = ({
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>
       )}
-      <BaseInput
-        ref={baseInputRef}
-        {...rest}
-        value={value}
-        onChange={(value) => {
-          setInnerValue(value);
-          onChange?.(value);
-        }}
-      />
+      {children}
       {(suffix || allowClear) && (
         <div className={classNames([`${inputCls}-suffix`])}>
           {allowClear && innerValue && (

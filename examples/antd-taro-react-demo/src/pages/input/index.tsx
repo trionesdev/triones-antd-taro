@@ -13,6 +13,12 @@ const InputBase = () => {
     <DemoBlock title="密码模式">
       <Input.Password placeholder="请输入内容" allowClear={true}/>
     </DemoBlock>
+    <DemoBlock title="小数模式">
+      <Input.Digit placeholder="请输入内容" allowClear={true}/>
+    </DemoBlock>
+    <DemoBlock title="整数模式">
+      <Input.Number placeholder="请输入内容" allowClear={true}/>
+    </DemoBlock>
     <DemoBlock title="OPT模式">
       <Input.OPT/>
     </DemoBlock>

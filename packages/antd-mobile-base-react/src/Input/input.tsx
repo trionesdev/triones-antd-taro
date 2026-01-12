@@ -1,6 +1,6 @@
-import {BaseInput} from './base-input';
+import {BaseInput, BaseInputHandle} from './base-input';
 import {InputAffixWrapper} from './input-affix-wrapper';
-import React, {FC} from 'react';
+import React, {FC, useRef} from 'react';
 import './index.scss';
 import {SizeType} from "../types";
 
@@ -31,7 +31,8 @@ export const Input: FC<InputProps> = ({
                                         onChange,
                                         ...rest
                                       }) => {
-
+  const [innerValue, setInnerValue] = React.useState(value);
+  const baseInputRef = useRef({} as BaseInputHandle);
   const handleRender = () => {
     if (prefix || suffix || allowClear) {
       return (
@@ -45,9 +46,19 @@ export const Input: FC<InputProps> = ({
           suffix={suffix}
           allowClear={allowClear}
           type={type}
-          value={value}
+          value={innerValue}
           onChange={onChange}
-        />
+        >
+          <BaseInput
+            ref={baseInputRef}
+            {...rest}
+            value={value}
+            onChange={(value) => {
+              setInnerValue(value);
+              onChange?.(value);
+            }}
+          />
+        </InputAffixWrapper>
       );
     } else {
       return (
