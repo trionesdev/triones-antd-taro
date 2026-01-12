@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {Col} from "../types";
 
 export const cls = 'triones-antm-cell';
@@ -48,7 +48,7 @@ export type CellGroupProps = {
    * @description 是否显示分割线
    * @default false
    */
-  divider?: boolean | React.ReactNode;
+  separator?: ReactNode;
   arrow?: boolean;
   labelCol?: Col;
   labelAlign?: labelAlign;

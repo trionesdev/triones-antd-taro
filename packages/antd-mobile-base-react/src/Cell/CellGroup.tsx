@@ -12,7 +12,7 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 children,
                                                 title,
                                                 extra,
-                                                divider,
+                                                separator,
                                                 arrow,
                                                 labelCol,
                                                 labelAlign
@@ -20,18 +20,15 @@ export const CellGroup: FC<CellGroupProps> = ({
   const handleRender = () => {
     if (children) {
       if (Array.isArray(children)) {
-        const childrenArray: React.ReactElement[] = [];
+        const childrenArray: React.ReactNode[] = [];
 
-        children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell)).forEach((child, index) => {
-          childrenArray.push(React.cloneElement(child));
-          if (divider && index !== children.length - 1) {
-            if (React.isValidElement(divider)) {
-              childrenArray.push(divider);
-            } else {
-              childrenArray.push(<Divider/>);
+        children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell))
+          .forEach((child, index) => {
+            childrenArray.push(React.cloneElement(child));
+            if (separator && (index < React.Children.count(children) - 1)) {
+              childrenArray.push(separator);
             }
-          }
-        });
+          });
         return childrenArray;
       } else {
         return children

@@ -14,6 +14,7 @@ export type InputProps = {
   allowClear?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  defaultValue?: any;
   value?: any;
   onChange?: (e: any) => void;
 };
@@ -27,6 +28,7 @@ export const Input: FC<InputProps> = ({
                                         allowClear,
                                         prefix,
                                         suffix,
+                                        defaultValue,
                                         value,
                                         onChange,
                                         ...rest

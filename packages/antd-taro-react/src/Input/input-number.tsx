@@ -20,9 +20,10 @@ export const InputNumber: FC<InputNumberProps> = ({value, onChange, ...rest}) =>
           value={innerValue}
 
         >
-          <TaroInput type={`number`} value={innerValue} onInput={(e: any) => {
-            setInnerValue(e.target.value);
-          }}/>
+          <TaroInput style={ {flex: 1}} type={`number`} value={innerValue} placeholder={rest.placeholder} defaultValue={rest.defaultValue}
+                     onInput={(e: any) => {
+                       setInnerValue(e.target.value);
+                     }}/>
         </InputAffixWrapper>
       );
     } else {

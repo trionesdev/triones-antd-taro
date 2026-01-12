@@ -20,7 +20,9 @@ export const InputDigit: FC<InputDigitProps> = ({value, onChange, ...rest}) => {
           value={innerValue}
 
         >
-          <TaroInput type={`digit`} value={innerValue} onInput={(e: any) => {
+          <TaroInput style={ {flex: 1}} type={`digit`} value={innerValue}
+                     placeholder={rest.placeholder} defaultValue={rest.defaultValue}
+                     onInput={(e: any) => {
             setInnerValue(e.target.value);
           }}/>
         </InputAffixWrapper>

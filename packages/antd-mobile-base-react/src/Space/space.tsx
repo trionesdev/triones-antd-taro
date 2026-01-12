@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { CSSProperties, FC, ReactNode, useMemo } from 'react';
+import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
 import './style.scss';
 
 const classPrefix = `triones-antm-space`;
@@ -47,20 +47,22 @@ export type SpaceProps = {
    */
   size?: Size | Size[];
   style?: CSSProperties;
+  separator?: ReactNode;
 };
 
 export const Space: FC<SpaceProps> = ({
-  children,
-  className,
-  direction = 'horizontal',
-  align,
-  justify,
-  wrap,
-  block,
-  onClick,
-  size = 'small',
-  style,
-}) => {
+                                        children,
+                                        className,
+                                        direction = 'horizontal',
+                                        align,
+                                        justify,
+                                        wrap,
+                                        block,
+                                        onClick,
+                                        size = 'small',
+                                        style,
+                                        separator
+                                      }) => {
   const sizeValue = (size: Size) => {
     if (typeof size === 'number') {
       return `${size}Px`;
@@ -104,11 +106,14 @@ export const Space: FC<SpaceProps> = ({
       }}
       onClick={onClick}
     >
-      {React.Children.map(children, (child) => {
+      {React.Children.map(children, (child, index) => {
         return (
           child !== null &&
           child !== undefined && (
-            <div className={`${classPrefix}-item`}>{child}</div>
+            <>
+              <div className={`${classPrefix}-item`}>{child}</div>
+              {(separator && index < React.Children.count(children) - 1) && separator}
+            </>
           )
         );
       })}

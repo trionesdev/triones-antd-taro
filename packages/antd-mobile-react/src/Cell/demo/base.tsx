@@ -1,6 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Cell from "../index";
+import {Divider} from "@trionesdev/antd-mobile-base-react";
 
 
 export default () => {
@@ -10,15 +11,15 @@ export default () => {
     </DemoBlock>
 
     <DemoBlock title={`分组`}>
-      <Cell.Group title={'标题'} divider={ true}>
+      <Cell.Group title={'标题'} separator={<Divider/>}>
         <Cell>标题</Cell>
         <Cell>标题</Cell>
         <Cell>标题</Cell>
       </Cell.Group>
     </DemoBlock>
     <DemoBlock title={`分组带Label`}>
-      <Cell.Group title={'标题'} divider={ true} labelCol={{flex:100}}>
-        <Cell label={'Label'} >标题</Cell>
+      <Cell.Group title={'标题'} labelCol={{flex: 100}}>
+        <Cell label={'Label'}>标题</Cell>
         <Cell label={'Label'}>标题</Cell>
         <Cell label={'Label'}>标题</Cell>
       </Cell.Group>
