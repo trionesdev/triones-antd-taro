@@ -2,6 +2,7 @@ import {CloseCircleFill} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, {FC, PropsWithChildren, useRef} from 'react';
 import {BaseInputHandle, BaseInputProps} from './base-input';
+import {inputAffixWrapperCls, inputCls} from "./types";
 
 export type InputAffixWrapperProps = BaseInputProps & {
   prefix?: React.ReactNode;
@@ -10,6 +11,7 @@ export type InputAffixWrapperProps = BaseInputProps & {
 };
 export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
                                                                                    children,
+                                                                                   size = 'middle',
                                                                                    prefix,
                                                                                    suffix,
                                                                                    allowClear,
@@ -18,15 +20,15 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
                                                                                    ...rest
                                                                                  }) => {
   const baseInputRef = useRef({} as BaseInputHandle);
-  const cls = 'triones-antm-input-affix-wrapper';
-  const inputCls = 'triones-antm-input';
+
 
   const innerStyle = rest.style || {};
 
   return (
-    <div className={classNames([cls, {
-      [`${cls}-sm`]: rest.size === 'small',
-      [`${cls}-lg`]: rest.size === 'large',
+    <div className={classNames([inputAffixWrapperCls, {
+      [`${inputAffixWrapperCls}-sm`]: size === 'small',
+      [`${inputAffixWrapperCls}-md`]: size === 'middle',
+      [`${inputAffixWrapperCls}-lg`]: size === 'large',
     }])} style={innerStyle}>
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>

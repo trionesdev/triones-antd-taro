@@ -6,6 +6,7 @@ $inputGroupWrapperCls: 'triones-antm-input-group-wrapper';
 $inputPotCls: 'triones-antm-pot';
 
 $inputSm: 24Px;
+$inputMd: 32Px;
 $inputLg: 40Px;
 
 input {
@@ -24,7 +25,8 @@ input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  height: 32Px;
+  height: $inputMd;
+  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
 
   &-sm {
     height:  $inputSm;
@@ -47,14 +49,17 @@ input {
   display: inline-flex;
   width: 100%;
   min-width: 0;
-  line-height: variable.$trionesLineHeight;
+  //line-height: variable.$trionesLineHeight;
   padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
   gap: 4Px;
+
 
   &-sm {
     height: $inputSm;
   }
-
+  &-md{
+    height: $inputMd;
+  }
   &-lg {
     height: $inputLg;
   }
@@ -96,6 +101,11 @@ input {
       .triones-antm-icon {
         cursor: pointer;
       }
+    }
+  }
+  taro-input-core{
+    .weui-input{
+      height: 100%;
     }
   }
 }

@@ -23,5 +23,6 @@ export type {
   InputProps,
   InputTextareaProps,
 };
+export * from './types';
 export { InputAffixWrapper };
 export default Input;
