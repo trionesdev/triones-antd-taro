@@ -8,6 +8,7 @@ $trionesScaffoldCls: 'triones-antm-scaffold';
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: variable.$trionesColorBgScaffold;
 
   &-body {
     flex: 1 auto;
