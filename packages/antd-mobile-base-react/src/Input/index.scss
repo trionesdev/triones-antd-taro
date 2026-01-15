@@ -47,6 +47,7 @@ input {
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
+  align-items: center;
   width: 100%;
   min-width: 0;
   //line-height: variable.$trionesLineHeight;
@@ -79,6 +80,8 @@ input {
   .#{$inputCls} {
     padding: 0;
     background-color: transparent;
+    height: 100%;
+    line-height: 1.5;
 
     &-prifix {
     }
@@ -104,6 +107,7 @@ input {
     }
   }
   taro-input-core{
+    height: 100%;
     .weui-input{
       height: 100%;
     }

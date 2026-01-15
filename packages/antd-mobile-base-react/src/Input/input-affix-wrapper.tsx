@@ -8,6 +8,7 @@ export type InputAffixWrapperProps = BaseInputProps & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   allowClear?: boolean;
+  onClear?: () => void;
 };
 export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
                                                                                    children,
@@ -17,9 +18,9 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
                                                                                    allowClear,
                                                                                    value,
                                                                                    onChange,
+                                                                                   onClear,
                                                                                    ...rest
                                                                                  }) => {
-  const baseInputRef = useRef({} as BaseInputHandle);
 
 
   const innerStyle = rest.style || {};
@@ -40,7 +41,7 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
             <CloseCircleFill
               className="clear-icon"
               onClick={() => {
-                baseInputRef.current.clear?.();
+                onClear?.()
               }}
             />
           )}
