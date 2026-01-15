@@ -26,7 +26,7 @@ input {
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
   height: $inputMd;
-  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
+  padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
     height:  $inputSm;
@@ -65,13 +65,13 @@ input {
     height: $inputLg;
   }
 
-  &::before {
+  // &::before {
 
-    display: inline-block;
-    width: 0;
-    visibility: hidden;
-    content: "\a0";
-  }
+  //   display: inline-block;
+  //   width: 0;
+  //   visibility: hidden;
+  //   content: "\a0";
+  // }
 
   &::after {
 

@@ -1,8 +1,8 @@
-import {BaseInput, BaseInputHandle} from './base-input';
-import {InputAffixWrapper} from './input-affix-wrapper';
-import React, {FC, useEffect, useRef} from 'react';
+import React, { FC, useEffect } from 'react';
+import { SizeType } from "../types";
+import { BaseInput } from './base-input';
 import './index.scss';
-import {SizeType} from "../types";
+import { InputAffixWrapper } from './input-affix-wrapper';
 
 export type InputProps = {
   className?: string;
@@ -19,22 +19,21 @@ export type InputProps = {
   onChange?: (e: any) => void;
 };
 export const Input: FC<InputProps> = ({
-                                        className,
-                                        style,
-                                        placeholder,
-                                        type,
-                                        size = 'middle',
-                                        disabled,
-                                        allowClear,
-                                        prefix,
-                                        suffix,
-                                        defaultValue,
-                                        value,
-                                        onChange,
-                                        ...rest
-                                      }) => {
+  className,
+  style,
+  placeholder,
+  type,
+  size = 'middle',
+  disabled,
+  allowClear,
+  prefix,
+  suffix,
+  defaultValue,
+  value,
+  onChange,
+  ...rest
+}) => {
   const [innerValue, setInnerValue] = React.useState(value);
-  const baseInputRef = useRef({} as BaseInputHandle);
 
   useEffect(() => {
     if (value == undefined) {
@@ -65,8 +64,10 @@ export const Input: FC<InputProps> = ({
           }}
         >
           <BaseInput
-            ref={baseInputRef}
             {...rest}
+            placeholder={placeholder}
+            type={type}
+            disabled={disabled}
             value={innerValue}
             onChange={(value) => {
               setInnerValue(value);
