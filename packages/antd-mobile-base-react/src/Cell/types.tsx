@@ -44,12 +44,8 @@ export type CellGroupProps = {
    * @description 分组右侧内容
    */
   extra?: React.ReactNode;
-  /**
-   * @description 是否显示分割线
-   * @default false
-   */
-  separator?: ReactNode;
   arrow?: boolean;
   labelCol?: Col;
   labelAlign?: labelAlign;
+  divider?: ReactNode;
 };

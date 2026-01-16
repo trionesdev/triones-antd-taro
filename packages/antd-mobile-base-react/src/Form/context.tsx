@@ -9,6 +9,7 @@ export interface FormContextProps {
   requiredMark?: RequiredMark;
   form?: any;
   hiddenError?: boolean
+  extra?: React.ReactNode;
 }
 
 export const FormContext = React.createContext<FormContextProps>({

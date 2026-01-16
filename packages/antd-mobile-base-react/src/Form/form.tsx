@@ -46,6 +46,7 @@ export interface FormProps<Values = any>
    * @default false
    */
   hiddenError?: boolean;
+  extra?: React.ReactNode;
 }
 
 export const InternalForm: React.ForwardRefRenderFunction<
@@ -59,6 +60,7 @@ export const InternalForm: React.ForwardRefRenderFunction<
     labelWidth,
     requiredMark,
     hiddenError = false,
+    extra,
     ...props
   },
   ref,
@@ -71,6 +73,7 @@ export const InternalForm: React.ForwardRefRenderFunction<
         labelWidth: labelWidth,
         requiredMark: requiredMark || true,
         hiddenError: hiddenError,
+        extra: extra,
       }}
     >
       <FieldForm {...props} component={false}>

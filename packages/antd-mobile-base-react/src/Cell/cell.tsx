@@ -1,4 +1,3 @@
-import {RightOutline} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, {FC, useContext, useMemo} from 'react';
 import './styles.scss';
@@ -14,12 +13,11 @@ export const Cell: FC<CellProps> = ({
                                       children,
                                       label,
                                       extra,
-                                      arrow,
                                       labelCol,
                                       labelAlign = 'left',
                                       onClick,
                                     }) => {
-  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign, arrow: ctxArrow} = useContext(CellGroupContext);
+  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign, arrow: ctxArrow, extra: ctxExtra} = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
     return labelCol?.flex || ctxLabelCol?.flex || 'auto';
   }, [labelCol, ctxLabelCol])
@@ -35,15 +33,7 @@ export const Cell: FC<CellProps> = ({
         return 'end'
     }
   }, [labelAlign, ctxLabelAlign])
-  const arrowCompute = useMemo(() => {
-    if (arrow !== undefined) {
-      return arrow;
-    }
-    if (ctxArrow !== undefined) {
-      return ctxArrow;
-    }
-    return true;
-  }, [arrow])
+
 
   return (
     <div className={classNames(cls, className)} style={style} onClick={onClick}>
@@ -62,13 +52,8 @@ export const Cell: FC<CellProps> = ({
               </div>
             ))}
         </div>
-        {extra && <div className={classNames(`${cls}-extra`)}>{extra}</div>}
+        {extra || ctxExtra}
       </div>
-      {arrowCompute && (
-        <div className={classNames(`${cls}-arrow`)}>
-          <RightOutline/>
-        </div>
-      )}
     </div>
   );
 };

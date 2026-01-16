@@ -36,6 +36,7 @@ export type NavBarProps = {
    * @description 标题
    */
   children?: ReactNode,
+  className?: string
   style?: CSSProperties
 }
 
@@ -56,7 +57,7 @@ export const NavBar: FC<NavBarProps> = props => {
 
   return withNativeProps(
     mergedProps,
-    <div className={classNames(classPrefix)}>
+    <div className={classNames(classPrefix, mergedProps.className)} style={mergedProps.style}>
       <div className={`${classPrefix}-left`} role='button'>
         {back !== null && (
           <div className={`${classPrefix}-back`} onClick={mergedProps.onBack}>

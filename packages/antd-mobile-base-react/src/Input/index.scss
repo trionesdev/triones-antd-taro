@@ -29,16 +29,22 @@ input {
   padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
-    height:  $inputSm;
+    height: $inputSm;
   }
 
   &-lg {
-    height:  $inputLg;
+    height: $inputLg;
   }
 
   &::placeholder {
     font-size: variable.$trionesInputInputFontSize;
     color: #cccccc;
+  }
+
+  .weui-input {
+    &::placeholder {
+      color: #cccccc;
+    }
   }
 }
 
@@ -51,16 +57,18 @@ input {
   width: 100%;
   min-width: 0;
   //line-height: variable.$trionesLineHeight;
-  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
+  padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
 
 
   &-sm {
     height: $inputSm;
   }
-  &-md{
+
+  &-md {
     height: $inputMd;
   }
+
   &-lg {
     height: $inputLg;
   }
@@ -106,10 +114,20 @@ input {
       }
     }
   }
-  taro-input-core{
+
+  taro-input-core {
+    &::placeholder {
+      color: #cccccc;
+    }
+
     height: 100%;
-    .weui-input{
+
+    .weui-input {
       height: 100%;
+
+      &::placeholder {
+        color: #cccccc;
+      }
     }
   }
 }
@@ -169,6 +187,7 @@ input {
 
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;
+      color: #cccccc;
     }
 
     &-focus {
@@ -203,10 +222,10 @@ input {
   width: 100%;
   border: 0;
   outline: 0;
-  padding: variable.$trionesInputPaddingBlock variable.$trionesInputPaddingInline;
+  padding: variable.$trionesInputPaddingBlock 0;
 
   &::placeholder {
-    font-size: variable.$trionesInputInputFontSize;
+    //font-size: variable.$trionesInputInputFontSize;
     color: #cccccc;
   }
 }

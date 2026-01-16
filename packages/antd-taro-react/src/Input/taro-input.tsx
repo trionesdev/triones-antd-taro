@@ -1,15 +1,15 @@
-import {InputAffixWrapper, InputProps} from "@trionesdev/antd-mobile-base-react";
-import React, {FC, useEffect} from "react";
-import {Input as InternalTaroInput} from '@tarojs/components'
+import { InputAffixWrapper, InputProps } from "@trionesdev/antd-mobile-base-react";
+import React, { FC, useEffect } from "react";
+import { Input as InternalTaroInput } from '@tarojs/components'
 import classNames from "classnames";
-import {inputCls} from "./types";
+import { inputCls } from "./types";
 
 export type TaroInputProps = Omit<InputProps, 'type'> & {
-  type?:  'number' | 'digit';
+  type?: 'number' | 'digit';
 };
 
-export const TaroInput: FC<TaroInputProps> = ({value, onChange,type, size = 'middle', ...rest}) => {
-  const [innerValue, setInnerValue] = React.useState(value);
+export const TaroInput: FC<TaroInputProps> = ({ value, onChange, type, size = 'middle', ...rest }) => {
+  const [innerValue, setInnerValue] = React.useState<any>(value);
 
   useEffect(() => {
     onChange?.(innerValue);
@@ -26,27 +26,29 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange,type, size = 'mid
           suffix={rest.suffix}
           allowClear={rest.allowClear}
           value={innerValue}
-
+          onClear={() => {
+            setInnerValue(null)
+          }}
         >
-          <InternalTaroInput style={{flex: 1}} type={type}
-                             defaultValue={rest.defaultValue}
-                             value={innerValue} placeholder={rest.placeholder}
-                             onInput={(e: any) => {
-                               setInnerValue(e.target.value);
-                             }}/>
+          <InternalTaroInput style={{ flex: 1 }} type={type}
+            defaultValue={rest.defaultValue}
+            value={innerValue} placeholder={rest.placeholder}
+            onInput={(e: any) => {
+              setInnerValue(e.target.value);
+            }} />
         </InputAffixWrapper>
       );
     } else {
       return (
-        <InternalTaroInput className={classNames(rest.className, {
+        <InternalTaroInput className={classNames(inputCls,rest.className, {
           [`${inputCls}-sm`]: size === 'small',
           [`${inputCls}-md`]: size === 'middle',
           [`${inputCls}-lg`]: size === 'large',
         })} style={rest.style}
-                           placeholder={rest.placeholder}
-                           type={type} defaultValue={rest.defaultValue} value={value} onInput={(e: any) => {
-          onChange?.(e.target.value);
-        }}/>
+          placeholder={rest.placeholder}
+          type={type} defaultValue={rest.defaultValue} value={value} onInput={(e: any) => {
+            onChange?.(e.target.value);
+          }} />
       );
     }
   };

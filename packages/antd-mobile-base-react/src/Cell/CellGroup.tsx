@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React, {FC} from 'react';
-import Divider from '../Divider';
 import {CellGroupProps, cls} from './types';
 import {CellGroupContext} from "./context";
 import Cell from '.';
@@ -12,10 +11,10 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 children,
                                                 title,
                                                 extra,
-                                                separator,
-                                                arrow,
+                              
                                                 labelCol,
-                                                labelAlign
+                                                labelAlign,
+                                                divider
                                               }) => {
   const handleRender = () => {
     if (children) {
@@ -25,8 +24,8 @@ export const CellGroup: FC<CellGroupProps> = ({
         children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell))
           .forEach((child, index) => {
             childrenArray.push(React.cloneElement(child));
-            if (separator && (index < React.Children.count(children) - 1)) {
-              childrenArray.push(separator);
+            if (divider && (index < React.Children.count(children) - 1)) {
+              childrenArray.push(divider);
             }
           });
         return childrenArray;
@@ -39,18 +38,16 @@ export const CellGroup: FC<CellGroupProps> = ({
 
   return (
     <CellGroupContext.Provider value={{
-      arrow,
       labelCol,
-      labelAlign
+      labelAlign,
+      extra
     }}>
       <div className={classNames(`${cls}-group`, className)} style={style}>
         {title && (
           <>
             <div className={classNames(`${cls}-group-title`)}>
               <div>{title}</div>
-              <div className={classNames(`${cls}-group-extra`)}>{extra}</div>
-            </div>
-            <Divider/>
+            </div>   
           </>
         )}
         {handleRender()}
