@@ -44,7 +44,7 @@ $buttonCls: 'triones-antm-button';
     content: none;
   }
 
-  &[disabled] {
+  &[disabled=true] {
     opacity: 0.4;
 
     &:active {

@@ -1,12 +1,13 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useMemo } from 'react';
 import './style.scss';
+import { SizeType } from 'src/types';
 
 export type AvatarProps = {
   alt?: string;
   icon?: React.ReactNode;
   shape?: 'circle' | 'square';
-  size?: number;
+  size?: SizeType | number;
   src?: string | React.ReactNode;
   srcSet?: string;
   style?: React.CSSProperties;
@@ -17,21 +18,33 @@ export const Avatar: React.FC<AvatarProps> = ({
   alt,
   icon,
   shape = 'circle',
-  size = 40,
+  size = 32,
   src,
   srcSet,
   style,
   children,
 }) => {
   const clsPrefix = 'triones-antm-avatar';
+
+  const avatarSize = useMemo(() => {
+    if (typeof size === 'number') {
+      return size;
+    }
+    return {
+      small: 24,
+      middle: 32,
+      large: 40,
+    }[size];
+  }, [size]);
+
   return (
     <div
       className={classNames(clsPrefix, {
         [`${clsPrefix}-${shape !== 'square' ? 'circle' : 'square'}`]: true,
       })}
       style={{
-        width: size,
-        height: size,
+        width: avatarSize,
+        height: avatarSize,
         backgroundColor: src ? undefined : '#ccc',
         ...style,
       }}

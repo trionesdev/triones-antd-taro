@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
+import React, { CSSProperties, FC, ReactNode, useMemo } from 'react';
 import './style.scss';
 
 const classPrefix = `triones-antm-space`;
@@ -21,13 +21,13 @@ export type SpaceProps = {
    * @description 垂直对齐方式
    */
   justify?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'between'
-    | 'around'
-    | 'evenly'
-    | 'stretch';
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
   /**
    * @description 换行
    */
@@ -51,18 +51,18 @@ export type SpaceProps = {
 };
 
 export const Space: FC<SpaceProps> = ({
-                                        children,
-                                        className,
-                                        direction = 'horizontal',
-                                        align,
-                                        justify,
-                                        wrap,
-                                        block,
-                                        onClick,
-                                        size = 'small',
-                                        style,
-                                        separator
-                                      }) => {
+  children,
+  className,
+  direction = 'horizontal',
+  align,
+  justify,
+  wrap,
+  block,
+  onClick,
+  size = 'small',
+  style,
+  separator
+}) => {
   const sizeValue = (size: Size) => {
     if (typeof size === 'number') {
       return `${size}Px`;
@@ -106,17 +106,18 @@ export const Space: FC<SpaceProps> = ({
       }}
       onClick={onClick}
     >
-      {React.Children.map(children, (child, index) => {
-        return (
-          child !== null &&
-          child !== undefined && (
-              <div key={index} className={`${classPrefix}-item`}>
-                {child}
-                {(separator && index < React.Children.count(children) - 1) && separator}
-              </div>
-          )
-        );
-      })}
+      {(() => {
+        const items: any[] = [];
+        React.Children.map(children, (child, index) => {
+          if (child !== null && child !== undefined) {
+            items.push(<div key={`space-item-${index}`} className={`${classPrefix}-item`}>{child}</div>)
+            if (separator && index < React.Children.count(children) - 1) {
+              items.push(separator);
+            }
+          }
+        })
+        return items;
+      })()}
     </div>
   );
 };

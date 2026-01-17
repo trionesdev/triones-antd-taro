@@ -7,6 +7,7 @@ $class-prefix-space: 'triones-antm-space';
 /* prettier-ignore */
 .#{$class-prefix-space} {
   display: inline-flex;
+  vertical-align: middle;
   &-vertical {
     flex-direction: column;
     > .#{$class-prefix-space}-item {
