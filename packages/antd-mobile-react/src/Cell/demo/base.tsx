@@ -11,7 +11,7 @@ export default () => {
     </DemoBlock>
 
     <DemoBlock title={`分组`}>
-      <Cell.Group title={'标题'} separator={<Divider/>}>
+      <Cell.Group title={'标题'} divider={<Divider/>}>
         <Cell>标题</Cell>
         <Cell>标题</Cell>
         <Cell>标题</Cell>

@@ -110,10 +110,10 @@ export const Space: FC<SpaceProps> = ({
         return (
           child !== null &&
           child !== undefined && (
-            <>
-              <div className={`${classPrefix}-item`}>{child}</div>
-              {(separator && index < React.Children.count(children) - 1) && separator}
-            </>
+              <div key={index} className={`${classPrefix}-item`}>
+                {child}
+                {(separator && index < React.Children.count(children) - 1) && separator}
+              </div>
           )
         );
       })}

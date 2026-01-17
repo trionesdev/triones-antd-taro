@@ -23,7 +23,7 @@ export const CellGroup: FC<CellGroupProps> = ({
 
         children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell))
           .forEach((child, index) => {
-            childrenArray.push(React.cloneElement(child));
+            childrenArray.push(child);
             if (divider && (index < React.Children.count(children) - 1)) {
               childrenArray.push(divider);
             }
