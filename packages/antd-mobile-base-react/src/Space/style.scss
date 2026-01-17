@@ -3,6 +3,8 @@ $class-prefix-space: 'triones-antm-space';
 .#{$class-prefix-space}-item {
   flex: none;
   display: inline-flex;
+  flex-shrink: 1;
+  min-width: 0;
 }
 /* prettier-ignore */
 .#{$class-prefix-space} {

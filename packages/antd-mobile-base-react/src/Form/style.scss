@@ -1,47 +1,57 @@
 $cls-prefix-form: 'triones-antm-form';
 $cls-prefix-form-item: 'triones-antm-form-item';
 
-.#{$cls-prefix-form}{
+.#{$cls-prefix-form} {}
 
-}
+.#{$cls-prefix-form-item} {
 
-.#{$cls-prefix-form-item}{
-  &-label{
+  &-label {
     font-size: 14Px;
-    //line-height: 1.5;
+    line-height: 1.5;
     color: #6F6F6F;
-    &-left{}
-    &-right{
+
+ 
+
+    &-left {}
+
+    &-right {
       text-align: right;
     }
-    &-required-mark{
+
+    &-required-mark {
       display: inline-block;
       color: red;
       margin-right: 4Px;
     }
+    &-wrapper {
+      display: flex;
+      min-height: 32Px;
+      align-items: center;
+    }
   }
-  &-input{
-    .#{$cls-prefix-form-item}{
-      &-error{
+
+  &-input {
+    .#{$cls-prefix-form-item} {
+      &-error {
         font-size: 12Px;
         color: red;
       }
     }
   }
-  &-horizontal{
+
+  &-horizontal {
     display: flex;
-    .#{$cls-prefix-form-item}{
-      &-label{
-        padding: 4Px;
-      }
-      &-input{
+
+    .#{$cls-prefix-form-item} {
+      &-input {
         flex: auto 1;
         display: flex;
         align-items: center;
       }
     }
   }
-  &-hidden{
+
+  &-hidden {
     display: none;
   }
 }

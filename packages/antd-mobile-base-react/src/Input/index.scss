@@ -9,8 +9,25 @@ $inputSm: 24Px;
 $inputMd: 32Px;
 $inputLg: 40Px;
 
+$placeholderColor : #808080;
+
 input {
   height: auto;
+  font-size: variable.$trionesInputInputFontSize;
+
+  &::placeholder {
+    font-size: variable.$trionesInputInputFontSize;
+    color: $placeholderColor
+  }
+}
+
+wx-input {
+  height: auto;
+
+  &::placeholder {
+    font-size: variable.$trionesInputInputFontSize;
+    color: $placeholderColor
+  }
 }
 
 .#{$inputCls} {
@@ -25,25 +42,26 @@ input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  height: $inputMd;
+  max-height: $inputMd;
   padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
-    height: $inputSm;
+    max-height: $inputSm;
   }
 
   &-lg {
-    height: $inputLg;
+    max-height: $inputLg;
   }
 
   &::placeholder {
     font-size: variable.$trionesInputInputFontSize;
-    color: #cccccc;
+    color: $placeholderColor
   }
 
   .weui-input {
     &::placeholder {
-      color: #cccccc;
+      font-size: variable.$trionesInputInputFontSize;
+      color: $placeholderColor
     }
   }
 }
@@ -62,15 +80,15 @@ input {
 
 
   &-sm {
-    height: $inputSm;
+    max-height: $inputSm;
   }
 
   &-md {
-    height: $inputMd;
+    max-height: $inputMd;
   }
 
   &-lg {
-    height: $inputLg;
+    max-height: $inputLg;
   }
 
   // &::before {
@@ -81,9 +99,7 @@ input {
   //   content: "\a0";
   // }
 
-  &::after {
-
-  }
+  &::after {}
 
   .#{$inputCls} {
     padding: 0;
@@ -91,8 +107,7 @@ input {
     height: 100%;
     line-height: 1.5;
 
-    &-prifix {
-    }
+    &-prifix {}
 
     &-suffix {
       display: inline-flex;
@@ -117,7 +132,8 @@ input {
 
   taro-input-core {
     &::placeholder {
-      color: #cccccc;
+      font-size: variable.$trionesInputInputFontSize;
+      color: $placeholderColor
     }
 
     height: 100%;
@@ -126,14 +142,14 @@ input {
       height: 100%;
 
       &::placeholder {
-        color: #cccccc;
+        font-size: variable.$trionesInputInputFontSize;
+        color: $placeholderColor
       }
     }
   }
 }
 
-.#{$inputGroupWrapperCls} {
-}
+.#{$inputGroupWrapperCls} {}
 
 
 .#{$inputPotCls} {
@@ -187,7 +203,7 @@ input {
 
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;
-      color: #cccccc;
+      color: $placeholderColor
     }
 
     &-focus {
@@ -223,10 +239,11 @@ input {
   border: 0;
   outline: 0;
   padding: variable.$trionesInputPaddingBlock 0;
+  font-size: variable.$trionesInputInputFontSize;
 
   &::placeholder {
-    //font-size: variable.$trionesInputInputFontSize;
-    color: #cccccc;
+    font-size: variable.$trionesInputInputFontSize;
+    color: $placeholderColor
   }
 }
 
