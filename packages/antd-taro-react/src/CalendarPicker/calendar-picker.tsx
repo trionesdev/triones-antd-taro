@@ -9,7 +9,7 @@ import { CalendarPickerProps } from './types';
 const cls = 'triones-antm-calendar-picker';
 
 export const CalendarPicker: FC<CalendarPickerProps> = memo(
-  ({ mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose }) => {
+  ({ mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose }) => {
     const { locale } = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();

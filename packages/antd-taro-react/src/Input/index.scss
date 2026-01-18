@@ -14,6 +14,8 @@ $placeholderColor : #808080;
 input {
   height: auto;
   font-size: variable.$trionesInputInputFontSize;
+  height: 1.4rem;
+  min-height: 1.4rem;
 
   &::placeholder {
     font-size: variable.$trionesInputInputFontSize;
@@ -42,7 +44,6 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  max-height: $inputMd;
   padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
@@ -74,46 +75,31 @@ wx-input {
   align-items: center;
   width: 100%;
   min-width: 0;
+  flex-shrink: 1;
   //line-height: variable.$trionesLineHeight;
   padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
+  box-sizing: border-box;
 
 
-  &-sm {
-    max-height: $inputSm;
-  }
 
-  &-md {
-    max-height: $inputMd;
-  }
-
-  &-lg {
-    max-height: $inputLg;
-  }
-
-  // &::before {
-
-  //   display: inline-block;
-  //   width: 0;
-  //   visibility: hidden;
-  //   content: "\a0";
-  // }
-
-  &::after {}
 
   .#{$inputCls} {
     padding: 0;
     background-color: transparent;
     height: 100%;
-    line-height: 1.5;
+
 
     &-prifix {}
 
     &-suffix {
       display: inline-flex;
       align-items: center;
+      vertical-align: middle;
       flex-shrink: 0;
-      gap: 4Px;
+      row-gap: 4Px;
+      // padding-inline: 4Px;
+      line-height: normal;
 
       .clear-icon {
         color: rgba(0, 0, 0, 0.25);
@@ -126,6 +112,7 @@ wx-input {
 
       .triones-antm-icon {
         cursor: pointer;
+        padding-inline: 4Px;
       }
     }
   }
@@ -136,17 +123,21 @@ wx-input {
       color: $placeholderColor
     }
 
-    height: 100%;
+
 
     .weui-input {
-      height: 100%;
-
       &::placeholder {
         font-size: variable.$trionesInputInputFontSize;
         color: $placeholderColor
       }
     }
   }
+
+
+  .triones-antm-icon {
+    font-size: 14Px;
+  }
+
 }
 
 .#{$inputGroupWrapperCls} {}
@@ -155,6 +146,7 @@ wx-input {
 .#{$inputPotCls} {
   position: relative;
   display: inline-flex;
+  vertical-align: middle;
 
   &-wrapper {
     position: relative;
@@ -241,10 +233,15 @@ wx-input {
   padding: variable.$trionesInputPaddingBlock 0;
   font-size: variable.$trionesInputInputFontSize;
 
-  &::placeholder {
-    font-size: variable.$trionesInputInputFontSize;
-    color: $placeholderColor
+  textarea {
+    padding: variable.$trionesInputPaddingBlock 0;
+
+    &::placeholder {
+      font-size: variable.$trionesInputInputFontSize;
+      color: $placeholderColor
+    }
   }
+
 }
 
 @keyframes blink {

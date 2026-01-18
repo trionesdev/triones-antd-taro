@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, {CSSProperties, FC, useEffect, useMemo, useRef, useState} from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { SizeType } from "../types";
 import './index.scss';
-import {SizeType} from "../types";
 
 const cls = 'triones-antm-pot';
 const inputCls = 'triones-antm-input';

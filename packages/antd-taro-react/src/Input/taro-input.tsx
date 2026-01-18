@@ -1,11 +1,11 @@
-import { InputAffixWrapper, InputProps } from "@trionesdev/antd-mobile-base-react";
+import { Input as InternalTaroInput, InputProps as InternalTaroInputProps } from '@tarojs/components';
 import React, { FC, useEffect } from "react";
-import { Input as InternalTaroInput } from '@tarojs/components'
-import classNames from "classnames";
-import { inputCls } from "./types";
+import { InputAffixWrapper } from "./input-affix-wrapper";
+import { InputProps } from "./types";
 
 export type TaroInputProps = Omit<InputProps, 'type'> & {
-  type?: 'number' | 'digit';
+  type?: keyof InternalTaroInputProps.Type;
+  password?: boolean;
 };
 
 export const TaroInput: FC<TaroInputProps> = ({ value, onChange, type, size = 'middle', ...rest }) => {
@@ -15,43 +15,26 @@ export const TaroInput: FC<TaroInputProps> = ({ value, onChange, type, size = 'm
     onChange?.(innerValue);
   }, [innerValue]);
 
-  const handleRender = () => {
-    if (rest.prefix || rest.suffix || rest.allowClear) {
-      return (
-        <InputAffixWrapper
-          {...rest}
-          className={rest.className}
-          style={rest.style}
-          prefix={rest.prefix}
-          suffix={rest.suffix}
-          allowClear={rest.allowClear}
-          value={innerValue}
-          onClear={() => {
-            setInnerValue(null)
-          }}
-        >
-          <InternalTaroInput style={{ flex: 1 }} type={type}
-            defaultValue={rest.defaultValue}
-            value={innerValue} placeholder={rest.placeholder}
-            onInput={(e: any) => {
-              setInnerValue(e.target.value);
-            }} />
-        </InputAffixWrapper>
-      );
-    } else {
-      return (
-        <InternalTaroInput className={classNames(inputCls,rest.className, {
-          [`${inputCls}-sm`]: size === 'small',
-          [`${inputCls}-md`]: size === 'middle',
-          [`${inputCls}-lg`]: size === 'large',
-        })} style={rest.style}
-          placeholder={rest.placeholder}
-          type={type} defaultValue={rest.defaultValue} value={value} onInput={(e: any) => {
-            onChange?.(e.target.value);
-          }} />
-      );
-    }
-  };
-  return handleRender();
+
+  return <InputAffixWrapper
+    {...rest}
+    className={rest.className}
+    style={rest.style}
+    prefix={rest.prefix}
+    suffix={rest.suffix}
+    allowClear={rest.allowClear}
+    value={innerValue}
+    onClear={() => {
+      setInnerValue(null)
+    }}
+  >
+    <InternalTaroInput style={{ flex: 1 }} type={type}
+      defaultValue={rest.defaultValue}
+      value={innerValue} placeholder={rest.placeholder}
+      password={rest.password}
+      onInput={(e: any) => {
+        setInnerValue(e.target.value);
+      }} />
+  </InputAffixWrapper>;
 }
 

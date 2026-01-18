@@ -1,3 +1,4 @@
+@use "../style/variable" as variable;
 $cls-prefix-form: 'triones-antm-form';
 $cls-prefix-form-item: 'triones-antm-form-item';
 
@@ -6,11 +7,17 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 .#{$cls-prefix-form-item} {
 
   &-label {
-    font-size: 14Px;
-    line-height: 1.5;
+    font-size: variable.$trionesFontSize;
+    padding-block: 4Px;
     color: #6F6F6F;
 
- 
+
+    &-wrapper {
+      height: 1.4rem;
+      min-height: 1.4rem;
+      display: flex;
+      align-items: center;
+    }
 
     &-left {}
 
@@ -23,17 +30,14 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       color: red;
       margin-right: 4Px;
     }
-    &-wrapper {
-      display: flex;
-      min-height: 32Px;
-      align-items: center;
-    }
+
   }
 
   &-input {
+
     .#{$cls-prefix-form-item} {
       &-error {
-        font-size: 12Px;
+        font-size: variable.$trionesFontSizeSm;
         color: red;
       }
     }
@@ -43,10 +47,15 @@ $cls-prefix-form-item: 'triones-antm-form-item';
     display: flex;
 
     .#{$cls-prefix-form-item} {
+      &-label {
+        flex-shrink: 1;
+        min-width: 0;
+      }
+
       &-input {
         flex: auto 1;
-        display: flex;
-        align-items: center;
+        flex-shrink: 1;
+        min-width: 0;
       }
     }
   }
