@@ -3,9 +3,8 @@ import { FormItemLabel } from "./form-item-label";
 import { FormItemInput } from "./form-item-input";
 import { NamePath, Rule } from "rc-field-form/lib/interface";
 import classNames from "classnames";
-import { useFormContext } from "../hooks/useFormContext";
-import { FormItemLayout, FormLayoutAlign } from "../form";
 import { Field } from "rc-field-form";
+import {FormItemLayout, FormLayoutAlign, useFormContext} from "@trionesdev/antd-mobile-base-react";
 
 export type FormItemProps = {
   className?: string;

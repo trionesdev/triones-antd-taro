@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { SizeType } from "../types";
 import './index.scss';
 
 const cls = 'triones-antm-pot';
@@ -10,7 +9,7 @@ export type InputOPTProps = {
   className?: string;
   style?: React.CSSProperties;
   length?: number;
-  size?: SizeType
+
   value?: string;
   onChange?: (value: string) => void;
 };
@@ -19,7 +18,6 @@ export type InputOPTItemProps = {
   index: number;
   focusIndex?: number;
   value?: string;
-  size?: SizeType
   onFocus?: (index: number) => void;
 };
 
@@ -27,7 +25,7 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
                                                index,
                                                focusIndex,
                                                value,
-                                               size,
+
                                                onFocus,
                                              }) => {
   const ref = React.useRef<HTMLInputElement>(null);
@@ -38,10 +36,7 @@ const InputOPTItem: FC<InputOPTItemProps> = ({
            `${inputCls}`,
            `${cls}-item`,
            `${inputCls}-outlined`,
-           {
-             [`${cls}-item-sm`]: size === 'small',
-             [`${cls}-item-lg`]: size === 'large',
-           }
+ 
          )}
          onClick={() => {
            onFocus?.(index)
@@ -53,7 +48,7 @@ export const InputOPT: FC<InputOPTProps> = ({
                                               className,
                                               style,
                                               length = 6,
-                                              size = 'middle',
+
                                               value,
                                               onChange
                                             }) => {
@@ -81,7 +76,7 @@ export const InputOPT: FC<InputOPTProps> = ({
               key={index}
               index={index}
               focusIndex={focusIndex}
-              size={size}
+
               value={optValue?.[index] || ''}
               onFocus={(index) => {
                 setFocusIndex(index);

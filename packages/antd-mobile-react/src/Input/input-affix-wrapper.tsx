@@ -12,7 +12,7 @@ export type InputAffixWrapperProps = BaseInputProps & {
 };
 export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
                                                                                    children,
-                                                                                   size = 'middle',
+
                                                                                    prefix,
                                                                                    suffix,
                                                                                    allowClear,
@@ -26,11 +26,7 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
   const innerStyle = rest.style || {};
 
   return (
-    <div className={classNames([inputAffixWrapperCls, {
-      [`${inputAffixWrapperCls}-sm`]: size === 'small',
-      [`${inputAffixWrapperCls}-md`]: size === 'middle',
-      [`${inputAffixWrapperCls}-lg`]: size === 'large',
-    }])} style={innerStyle}>
+    <div className={classNames([inputAffixWrapperCls])} style={innerStyle}>
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>
       )}

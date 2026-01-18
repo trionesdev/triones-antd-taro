@@ -1,9 +1,8 @@
 import React, { CSSProperties, FC } from "react"
 import classNames from "classnames";
 import { NamePath } from "rc-field-form/lib/interface";
-import { useFormContext } from "../hooks/useFormContext";
 import { isFunction } from "lodash-es";
-import { FormItemLayout } from "../form";
+import {FormItemLayout, useFormContext} from "@trionesdev/antd-mobile-base-react";
 
 type FormItemLabelProps = {
   className?: string
@@ -17,7 +16,7 @@ export const FormItemLabel: FC<FormItemLabelProps> = ({ className, style, label,
   const { requiredMark, colon } = useFormContext()
   const clsPrefix = `triones-antm-form-item-label`
   return <div className={classNames(className, { required: `${clsPrefix}-required` })} style={style}>
- 
+
       <div className={classNames(`${clsPrefix}-wrapper`)}>
         {required && <div className={`${clsPrefix}-required-mark`}>
           {isFunction(requiredMark) ? requiredMark(label, { required }) : '*'}
@@ -25,6 +24,6 @@ export const FormItemLabel: FC<FormItemLabelProps> = ({ className, style, label,
         {label}
         {layout == 'horizontal' && colon && ':'}
       </div>
- 
+
   </div>
 }

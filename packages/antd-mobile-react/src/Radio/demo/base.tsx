@@ -26,7 +26,7 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title="选项组">
-        <Radio.Group defaultValue="1" items={[
+        <Radio.Group defaultValue="1" options={[
           {
             label: '第一项',
             value: '1'
@@ -73,7 +73,7 @@ export default () => {
       </DemoBlock>
 
       <DemoBlock title={`按钮样式分组`}>
-        <Radio.Group defaultValue="1" shape={'button'} items={[
+        <Radio.Group defaultValue="1" shape={'button'} options={[
           {
             label: '第一项',
             value: '1'
