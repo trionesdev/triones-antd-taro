@@ -1,13 +1,14 @@
 import FieldForm from 'rc-field-form';
 import InternalForm, { FormProps, useWatch } from "./form";
-import FormItem, { FormItemProps } from "./FormItem";
 import useForm from "./hooks/useForm";
+import {FormItemLayout, FormLayout, FormLayoutAlign } from "./types";
+export {useFormContext} from  "./hooks/useFormContext";
 
 type InternalFormType = typeof InternalForm;
 
 type CompoundedComponent = InternalFormType & {
   useForm: typeof useForm;
-  Item: typeof FormItem;
+  // Item: typeof FormItem;
   List: typeof FieldForm.List;
   useWatch: typeof useWatch;
 }
@@ -15,11 +16,13 @@ type CompoundedComponent = InternalFormType & {
 const Form = InternalForm as CompoundedComponent;
 Form.List = FieldForm.List;
 Form.useForm = useForm;
-Form.Item = FormItem;
+// Form.Item = FormItem;
 Form.useWatch = useWatch;
 
 export type {
   FormProps,
-  FormItemProps
+  FormLayout,
+  FormLayoutAlign,
+  FormItemLayout
 }
 export default Form;

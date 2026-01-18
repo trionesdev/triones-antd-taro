@@ -40,15 +40,23 @@ $calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
     &-button {
       padding: 12Px 16Px;
 
-      &-cancel {
-      }
+      &-cancel {}
 
       &-ok {
         color: variable.$trionesColorPrimary;
       }
     }
   }
-  &-body {
 
+  &-body {
+    .time-picker {
+      .time-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32Px;
+      }
+    }
   }
 }

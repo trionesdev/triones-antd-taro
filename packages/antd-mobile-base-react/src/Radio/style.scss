@@ -12,11 +12,12 @@ $class-prefix-radio: 'triones-antm-radio';
 
   .#{$class-prefix-radio} {
     &-fake {
-      width: 22PX;
-      height: 22PX;
+      width: 20PX;
+      height: 20PX;
 
       .triones-antm-icon {
         //position: absolute;
+        font-size: variable.$trionesFontSize;
       }
 
       &-checked {

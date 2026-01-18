@@ -1,16 +1,17 @@
-import { CustomWrapper } from '@tarojs/components';
+import { CustomWrapper, PickerView, PickerViewColumn, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classNames from 'classnames';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
-import { useTaro } from '../hooks/useTaro';
-import PickerView from '../PickerView';
+import { useTaro } from '../hooks';
 import Popup from '../Popup';
-import { DatetimeUtils } from '../utils/datetime-utils';
 import { DateTimeSwitch } from './DateTimeSwitch';
 import './style.scss';
 import { cls, Mode } from './types';
+import { DatetimeUtils } from "../utils/datetime-utils";
+
+
 
 export type CalendarDatetimePickerProps = {
   open?: boolean;
@@ -109,31 +110,12 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
         )}
         {mode === Mode.time && (
           <div style={{ height: bodyHeight }}>
-            <PickerView
-              columns={[
-                Array(24)
-                  .fill(0)
-                  .map((_, i) => {
-                    return {
-                      label: `${DatetimeUtils.twoDigits(i)}`,
-                      value: `${i}`,
-                    };
-                  }),
-                Array(60)
-                  .fill(0)
-                  .map((_, i) => {
-                    return {
-                      label: `${DatetimeUtils.twoDigits(i)}`,
-                      value: `${i}`,
-                    };
-                  }),
-              ]}
-              labelInValue={false}
-              value={[
-                `${valueRef?.current.getHours()}`,
-                `${valueRef?.current.getMinutes()}`,
-              ]}
-              onChange={(v) => {
+            <PickerView className={`time-picker`} indicatorStyle='height: 32Px;'
+              style={{ height: bodyHeight }} value={[
+                valueRef?.current.getHours(),
+                valueRef?.current.getMinutes(),
+              ]} onChange={(e) => {
+                const v = e.detail.value
                 valueRef.current = new Date(
                   valueRef.current.getFullYear(),
                   valueRef.current.getMonth(),
@@ -142,8 +124,25 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
                   v[1],
                 );
                 datetimeSwitchRef.current?.setDatetime(valueRef.current);
-              }}
-            />
+              }}>
+              <PickerViewColumn>
+                {Array(24)
+                  .fill(0)
+                  .map((_, i) => {
+                    return <View key={`hour-${i}`} className={`time-item`}>{DatetimeUtils.twoDigits(i)}</View>;
+                  })
+                }
+              </PickerViewColumn>
+              <PickerViewColumn>
+                {Array(60)
+                  .fill(0)
+                  .map((_, i) => {
+                    return <View key={`minute-${i}`} className={`time-item`}>{DatetimeUtils.twoDigits(i)}</View>;
+                  })
+                }
+              </PickerViewColumn>
+
+            </PickerView>
           </div>
         )}
       </>

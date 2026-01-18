@@ -4,18 +4,9 @@ import type { FormRef } from 'rc-field-form/lib/interface';
 import React from 'react';
 import { FormContext } from './context';
 import { FormInstance } from './interface';
-import './style.scss';
+import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
 
-export type RequiredMark =
-  | boolean
-  | 'optional'
-  | ((
-      labelNode: React.ReactNode,
-      info: { required: boolean },
-    ) => React.ReactNode);
-export type FormLayout = 'horizontal' | 'inline' | 'vertical';
-export type FormItemLayout = 'horizontal' | 'vertical';
-export type FormLayoutAlign = 'left' | 'right';
+
 
 export interface FormProps<Values = any>
   extends Omit<RcFormProps<Values>, 'form' | 'component'> {

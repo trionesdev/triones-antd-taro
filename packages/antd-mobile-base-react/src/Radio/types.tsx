@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { RadioValue } from './radio';
+import React, {ReactNode} from 'react';
+import {RadioValue} from './radio';
 
 export const classPrefix = `triones-antm-radio`;
 
@@ -37,11 +37,17 @@ export type RadioProps = {
    * @description 子元素
    */
   children?: ReactNode;
-  labelPosition?: 'left'|'right',
+  labelPosition?: 'left' | 'right',
   /**
    * @description 点击事件
    */
   onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
+};
+
+export type RadioOptionProps = {
+  label?: React.ReactNode;
+  value?: any;
+  [key: string]: any
 };
 
 export interface RadioGroupProps {
@@ -52,10 +58,7 @@ export interface RadioGroupProps {
   defaultValue?: any;
   disabled?: boolean;
   shape?: 'button' | 'round';
-  labelPosition?: 'left'|'right',
+  labelPosition?: 'left' | 'right',
   direction?: 'vertical' | 'horizontal';
-  items?: {
-    label: React.ReactNode;
-    value: any;
-  }[];
+  options?: RadioOptionProps[];
 }

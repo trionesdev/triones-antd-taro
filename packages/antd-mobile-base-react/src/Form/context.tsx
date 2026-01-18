@@ -1,5 +1,6 @@
 import React from "react";
-import {FormLayout, FormLayoutAlign, RequiredMark} from "./form";
+import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
+
 
 export interface FormContextProps {
   colon?: boolean;

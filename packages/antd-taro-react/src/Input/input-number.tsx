@@ -20,11 +20,11 @@ export const InputNumber: FC<InputNumberProps> = ({ min, max, ...rest }) => {
   }, [rest.value]);
   
   return <TaroInput {...rest} type={`number`} value={internalValue} onChange={(value: any) => {
-    let newValue = value;
-    if (min && value < min) {
+    let newValue = Number(value);
+    if (min && newValue < min) {
       newValue = min;
     }
-    if (max && value > max) {
+    if (max && newValue > max) {
       newValue = max;
     }
     setInternalValue(newValue)

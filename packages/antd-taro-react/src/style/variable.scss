@@ -1,10 +1,20 @@
 @forward "@trionesdev/antd-mobile-base-react/dist/style/variable";
 
+@mixin h5-input-size {
+  height: 1.47059em;
+  line-height: 1.47059;
+}
+
+@mixin wx-input-size {
+  min-height: 1.4rem;
+  line-height: 1.4rem;
+}
+
 page {
-    font-size: 14Px;
+  font-size: 14Px;
 }
 
 view {
-    box-sizing: border-box;
-    font-size: 14Px;
+  box-sizing: border-box;
+  font-size: 14Px;
 }

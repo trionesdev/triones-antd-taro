@@ -14,8 +14,7 @@ $placeholderColor : #808080;
 input {
   height: auto;
   font-size: variable.$trionesInputInputFontSize;
-  height: 1.4rem;
-  min-height: 1.4rem;
+
 
   &::placeholder {
     font-size: variable.$trionesInputInputFontSize;
