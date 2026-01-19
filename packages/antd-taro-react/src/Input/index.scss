@@ -9,7 +9,7 @@ $inputSm: 24Px;
 $inputMd: 32Px;
 $inputLg: 40Px;
 
-$placeholderColor : #808080;
+$placeholderColor: #808080;
 
 input {
   height: auto;
@@ -23,8 +23,6 @@ input {
 }
 
 wx-input {
-  height: auto;
-
   &::placeholder {
     font-size: variable.$trionesInputInputFontSize;
     color: $placeholderColor
@@ -81,15 +79,14 @@ wx-input {
   box-sizing: border-box;
 
 
-
-
   .#{$inputCls} {
     padding: 0;
     background-color: transparent;
     height: 100%;
 
 
-    &-prifix {}
+    &-prifix {
+    }
 
     &-suffix {
       display: inline-flex;
@@ -123,7 +120,6 @@ wx-input {
     }
 
 
-
     .weui-input {
       &::placeholder {
         font-size: variable.$trionesInputInputFontSize;
@@ -139,7 +135,8 @@ wx-input {
 
 }
 
-.#{$inputGroupWrapperCls} {}
+.#{$inputGroupWrapperCls} {
+}
 
 
 .#{$inputPotCls} {

@@ -75,7 +75,7 @@ export type {PickerProps} from './Picker';
 export {default as PickerView} from './PickerView';
 export type {PickerViewProps, PickerColumnOption} from './PickerView';
 
-export {default as Popup} from './Popup';
+export {default as Popup,PopupModal} from './Popup';
 export type {PopupProps} from './Popup';
 
 
