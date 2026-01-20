@@ -6,3 +6,4 @@ package-lock.json
 .pnpmrc
 pnpm-lock.yaml
 examples/hs-user-miniprogram
+**/dist
