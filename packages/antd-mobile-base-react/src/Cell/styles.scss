@@ -7,8 +7,7 @@ $cellCls: 'triones-antm-cell';
   gap: 4Px;
 
   &-wrapper {
-    display: flex;
-    flex: 1 auto;
+
   }
 
   &-label {
@@ -25,15 +24,10 @@ $cellCls: 'triones-antm-cell';
   &-extra {
   }
 
-  &-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: grey;
-  }
+
   &-placeholder{
-    font-size: 14Px;
-    color: #cccccc;
+    font-size: variable.$trionesFontSize;
+    color: variable.$trionesColorTextPlaceholder;
   }
 }
 

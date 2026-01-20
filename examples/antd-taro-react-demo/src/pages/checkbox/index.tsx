@@ -1,6 +1,6 @@
 import {View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
-import { Checkbox } from "@trionesdev/antd-taro-react";
+import {Checkbox} from "@trionesdev/antd-taro-react";
 
 const CheckboxBase = () => {
   return <View>
@@ -17,6 +17,14 @@ const CheckboxBase = () => {
     </DemoBlock>
     <DemoBlock title='Button'>
       <Checkbox checked={true} shape={'button'}>苹果</Checkbox>
+    </DemoBlock>
+
+    <DemoBlock title='CheckboxGroup'>
+      <Checkbox.Group defaultValue={['1']} options={[{label: '苹果', value: '1'}, {label: '香蕉', value: '2'}]}/>
+    </DemoBlock>
+    <DemoBlock title='CheckboxGroup'>
+      <Checkbox.Group shape={'button'} defaultValue={['1']}
+                      options={[{label: '苹果', value: '1'}, {label: '香蕉', value: '2'}]}/>
     </DemoBlock>
   </View>
 }

@@ -4,7 +4,6 @@ import {labelAlign} from "./types";
 
 type CellGroupContextType = {
 
-  arrow?: boolean,
   labelCol?: Col,
   labelAlign?: labelAlign,
   extra?: React.ReactNode,

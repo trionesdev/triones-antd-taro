@@ -1,7 +1,7 @@
-import {Text, View} from "@tarojs/components";
-import {inject, observer} from "mobx-react";
-import {Component, PropsWithChildren} from "react";
-import {Button, SafeArea} from "@trionesdev/antd-taro-react";
+import { Text, View } from "@tarojs/components";
+import { inject, observer } from "mobx-react";
+import { Component, PropsWithChildren } from "react";
+import { Button, SafeArea } from "@trionesdev/antd-taro-react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
@@ -37,34 +37,34 @@ class Index extends Component<PropsWithChildren> {
   }
 
   increment = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.increment();
   };
 
   decrement = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.decrement();
   };
 
   incrementAsync = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.incrementAsync();
   };
 
   render() {
     const {
-      counterStore: {counter},
+      counterStore: { counter },
     } = this.props.store;
     return (
 
       <View className="index">
-        <View style={{display: 'none'}}>
+        <View style={{ display: 'none' }}>
           <Button onClick={this.increment}>+</Button>
           <Button onClick={this.decrement}>-</Button>
           <Button onClick={this.incrementAsync}>Add Async</Button>
           <Text>{counter}</Text>
         </View>
-        <View style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px'}}>
+        <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px' }}>
           <Button
             block={true}
             onClick={() => {
@@ -129,6 +129,26 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/cell/index",
+              });
+            }}
+          >
+            Cell 单元格
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/checkbox/index",
+              });
+            }}
+          >
+            Checkbox 复选框
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/input/index",
               });
             }}
@@ -145,16 +165,7 @@ class Index extends Component<PropsWithChildren> {
           >
             TabBar
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/checkbox/index",
-              });
-            }}
-          >
-            Checkbox
-          </Button>
+
           <Button
             block={true}
             onClick={() => {

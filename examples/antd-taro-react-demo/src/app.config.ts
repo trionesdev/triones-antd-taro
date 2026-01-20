@@ -7,6 +7,10 @@ export default defineAppConfig({
     "pages/calendar/index",
     "pages/calendar-datetime-picker/index",
     "pages/calendar-picker/index",
+    "pages/card/index",
+    "pages/cascader-picker/index",
+    "pages/cascader-view/index",
+    "pages/cell/index",
     "pages/checkbox/index",
     "pages/radio/index",
     "pages/rate/index",
@@ -32,8 +36,7 @@ export default defineAppConfig({
     "pages/progress/index",
     "pages/picker/index",
 
-    "pages/cascader-picker/index",
-    "pages/cascader-view/index",
+
 
 
 

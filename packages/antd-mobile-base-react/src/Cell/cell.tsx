@@ -17,7 +17,7 @@ export const Cell: FC<CellProps> = ({
                                       labelAlign = 'left',
                                       onClick,
                                     }) => {
-  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign, arrow: ctxArrow, extra: ctxExtra} = useContext(CellGroupContext);
+  const {labelCol: ctxLabelCol, labelAlign: ctxLabelAlign, extra: ctxExtra} = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
     return labelCol?.flex || ctxLabelCol?.flex || 'auto';
   }, [labelCol, ctxLabelCol])

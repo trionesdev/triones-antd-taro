@@ -9,7 +9,7 @@ $inputSm: 24Px;
 $inputMd: 32Px;
 $inputLg: 40Px;
 
-$placeholderColor: #808080;
+$placeholderColor: variable.$trionesColorTextPlaceholder;
 
 input {
   height: auto;
