@@ -85,8 +85,7 @@ wx-input {
     height: 100%;
 
 
-    &-prifix {
-    }
+    &-prifix {}
 
     &-suffix {
       display: inline-flex;
@@ -135,8 +134,7 @@ wx-input {
 
 }
 
-.#{$inputGroupWrapperCls} {
-}
+.#{$inputGroupWrapperCls} {}
 
 
 .#{$inputPotCls} {
@@ -228,6 +226,10 @@ wx-input {
   outline: 0;
   padding: variable.$trionesInputPaddingBlock 0;
   font-size: variable.$trionesInputInputFontSize;
+
+  taro-textarea-core {
+    width: 100%;
+  }
 
   textarea {
     padding: variable.$trionesInputPaddingBlock 0;
