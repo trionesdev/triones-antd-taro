@@ -11,9 +11,9 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 children,
                                                 title,
                                                 extra,
-                              
                                                 labelCol,
                                                 labelAlign,
+                                                wrapperAlign,
                                                 divider
                                               }) => {
   const handleRender = () => {
@@ -40,6 +40,7 @@ export const CellGroup: FC<CellGroupProps> = ({
     <CellGroupContext.Provider value={{
       labelCol,
       labelAlign,
+      wrapperAlign,
       extra
     }}>
       <div className={classNames(`${cls}-group`, className)} style={style}>
@@ -47,7 +48,7 @@ export const CellGroup: FC<CellGroupProps> = ({
           <>
             <div className={classNames(`${cls}-group-title`)}>
               <div>{title}</div>
-            </div>   
+            </div>
           </>
         )}
         {handleRender()}

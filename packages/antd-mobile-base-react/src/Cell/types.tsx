@@ -3,7 +3,7 @@ import {Col} from "../types";
 
 export const cls = 'triones-antm-cell';
 
-export type labelAlign = 'left' | 'center' | 'right';
+export type align = 'left' | 'center' | 'right';
 
 export type CellProps = {
   className?: string;
@@ -29,7 +29,8 @@ export type CellProps = {
    */
   onClick?: () => void;
   labelCol?: Col;
-  labelAlign?: labelAlign;
+  labelAlign?: align;
+  wrapperAlign?: align;
 };
 
 export type CellGroupProps = {
@@ -46,6 +47,7 @@ export type CellGroupProps = {
   extra?: React.ReactNode;
   arrow?: boolean;
   labelCol?: Col;
-  labelAlign?: labelAlign;
+  labelAlign?: align;
+  wrapperAlign?: align;
   divider?: ReactNode;
 };

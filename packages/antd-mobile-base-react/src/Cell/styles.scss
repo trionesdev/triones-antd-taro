@@ -3,12 +3,10 @@
 $cellCls: 'triones-antm-cell';
 
 .#{$cellCls} {
+  padding-block: 4Px;
   display: flex;
   gap: 4Px;
 
-  &-wrapper {
-
-  }
 
   &-label {
     display: flex;
@@ -25,7 +23,7 @@ $cellCls: 'triones-antm-cell';
   }
 
 
-  &-placeholder{
+  &-placeholder {
     font-size: variable.$trionesFontSize;
     color: variable.$trionesColorTextPlaceholder;
   }
