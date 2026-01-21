@@ -13,7 +13,7 @@ export default ()=>{
           <Input placeholder='请输入用户名'/>
         </Form.Item>
         <Form.Item label='说明' name='description'>
-          <Input.TextArea placeholder='请输入说明'/>
+          <Input.Textarea placeholder='请输入说明'/>
         </Form.Item>
       </Form>
       <Button type={`primary`} block={true} onClick={() => {

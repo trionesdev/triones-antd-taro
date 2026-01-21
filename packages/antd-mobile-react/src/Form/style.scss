@@ -13,8 +13,8 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
 
     &-wrapper {
-      height: 1.4rem;
-      min-height: 1.4rem;
+      // height: 1.47059em;
+      line-height: 1.47059;
       display: flex;
       align-items: center;
     }
@@ -45,6 +45,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
   &-horizontal {
     display: flex;
+    flex-direction: row;
 
     .#{$cls-prefix-form-item} {
       &-label {

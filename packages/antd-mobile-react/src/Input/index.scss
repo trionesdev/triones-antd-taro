@@ -11,25 +11,6 @@ $inputLg: 40Px;
 
 $placeholderColor : #808080;
 
-input {
-  height: auto;
-  font-size: variable.$trionesInputInputFontSize;
-
-  &::placeholder {
-    font-size: variable.$trionesInputInputFontSize;
-    color: $placeholderColor
-  }
-}
-
-wx-input {
-  height: auto;
-
-  &::placeholder {
-    font-size: variable.$trionesInputInputFontSize;
-    color: $placeholderColor
-  }
-}
-
 .#{$inputCls} {
   box-sizing: border-box;
   display: inline-block;
@@ -42,7 +23,6 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  max-height: $inputMd;
   padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
@@ -58,12 +38,7 @@ wx-input {
     color: $placeholderColor
   }
 
-  .weui-input {
-    &::placeholder {
-      font-size: variable.$trionesInputInputFontSize;
-      color: $placeholderColor
-    }
-  }
+
 }
 
 
@@ -79,33 +54,10 @@ wx-input {
   gap: 4Px;
 
 
-  &-sm {
-    max-height: $inputSm;
-  }
-
-  &-md {
-    max-height: $inputMd;
-  }
-
-  &-lg {
-    max-height: $inputLg;
-  }
-
-  // &::before {
-
-  //   display: inline-block;
-  //   width: 0;
-  //   visibility: hidden;
-  //   content: "\a0";
-  // }
-
-  &::after {}
 
   .#{$inputCls} {
     padding: 0;
     background-color: transparent;
-    height: 100%;
-    line-height: 1.5;
 
     &-prifix {}
 
@@ -130,21 +82,13 @@ wx-input {
     }
   }
 
-  taro-input-core {
+  input {
+    // height: 1.47059em;
+    line-height: 1.47059;
+
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;
       color: $placeholderColor
-    }
-
-    height: 100%;
-
-    .weui-input {
-      height: 100%;
-
-      &::placeholder {
-        font-size: variable.$trionesInputInputFontSize;
-        color: $placeholderColor
-      }
     }
   }
 }

@@ -7,6 +7,11 @@ interface Props {
   padding?: string
   background?: string
   children?: ReactNode
+  className?: string
+  style?: React.CSSProperties
+  styles?:{
+    body?: React.CSSProperties
+  }
 }
 
 export const DemoBlock: FC<Props> = props => {
@@ -18,6 +23,7 @@ export const DemoBlock: FC<Props> = props => {
         style={{
           padding: '12px 12px',
           background: '#ffffff',
+          ...props.styles?.body
         }}
       >
         {props.children}

@@ -1,5 +1,6 @@
 import {Form as InternalForm, FormProps} from "@trionesdev/antd-mobile-base-react";
 import FormItem, { FormItemProps } from "./FormItem";
+import "./style.scss"
 
 type InternalFormType = typeof InternalForm;
 
