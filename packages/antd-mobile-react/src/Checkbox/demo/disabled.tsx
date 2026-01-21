@@ -10,7 +10,7 @@ export default () => {
       <Checkbox checked={false} disabled={true}>香蕉</Checkbox>
     </DemoBlock>
     <DemoBlock title='Button'>
-      <Checkbox.Button checked={true}  disabled={true}>苹果</Checkbox.Button>
+      <Checkbox shape='button' checked={true}  disabled={true}>苹果</Checkbox>
     </DemoBlock>
   </>
 }
