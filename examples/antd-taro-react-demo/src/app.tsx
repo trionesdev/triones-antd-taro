@@ -12,7 +12,8 @@ const store = {
 class App extends Component<PropsWithChildren> {
   componentDidMount () {}
 
-  componentDidShow () {}
+  componentDidShow () {
+  }
 
   componentDidHide () {}
 

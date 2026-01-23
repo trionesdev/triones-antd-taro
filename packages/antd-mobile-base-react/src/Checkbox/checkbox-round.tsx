@@ -35,7 +35,7 @@ export const CheckboxRound: FC<CheckboxRoundProps> = ({
           )}
         </div>
       </div>
-      <div className={classNames(`${prefixCls}-content`)}>{children}</div>
+      {children && <div className={classNames(`${prefixCls}-content`)}>{children}</div>}
     </label>
   );
 };

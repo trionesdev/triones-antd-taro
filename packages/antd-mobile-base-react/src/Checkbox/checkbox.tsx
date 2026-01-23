@@ -18,6 +18,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   const handleClick = () => {
     let newValue = !innerChecked
     setInnerChecked(newValue)
+    rest.onChange?.(newValue)
     if (ctx.group) {
       let ctxValue = [...(ctx.value || [])]
       if (newValue) {

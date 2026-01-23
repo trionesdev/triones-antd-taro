@@ -31,7 +31,9 @@ $class-prefix-radio: 'triones-antm-radio';
         border-radius: 50vh;
         box-sizing: border-box;
         overflow: hidden;
-
+        .triones-antm-icon{
+          font-size: 14Px;
+        }
       }
 
       &-unchecked {
