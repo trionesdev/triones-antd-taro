@@ -9,7 +9,7 @@ $inputSm: 24Px;
 $inputMd: 32Px;
 $inputLg: 40Px;
 
-$placeholderColor : #808080;
+$placeholderColor: #808080;
 
 .#{$inputCls} {
   box-sizing: border-box;
@@ -53,13 +53,12 @@ $placeholderColor : #808080;
   padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
 
-
-
   .#{$inputCls} {
     padding: 0;
     background-color: transparent;
 
-    &-prifix {}
+    &-prifix {
+    }
 
     &-suffix {
       display: inline-flex;
@@ -93,7 +92,33 @@ $placeholderColor : #808080;
   }
 }
 
-.#{$inputGroupWrapperCls} {}
+.#{$inputCls} {
+  &-outlined {
+    border-radius: variable.$trionesBorderRadius;
+    border: 1Px solid variable.$trionesBorderColor;
+    padding-inline: 4Px;
+  }
+
+  &-filled {
+    border-radius: variable.$trionesBorderRadius;
+    background-color: variable.$trionesColorFillTertiary;
+    padding-inline: 4Px;
+    border: 0;
+  }
+  &-borderless {
+    border: 0;
+  }
+
+  &-underlined {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+  }
+}
+
+.#{$inputGroupWrapperCls} {
+}
 
 
 .#{$inputPotCls} {
@@ -181,9 +206,8 @@ $placeholderColor : #808080;
 .#{$inputCls}-textarea {
   box-sizing: border-box;
   width: 100%;
-  border: 0;
   outline: 0;
-  padding: variable.$trionesInputPaddingBlock 0;
+  padding-block: variable.$trionesInputPaddingBlock;
   font-size: variable.$trionesInputInputFontSize;
 
   &::placeholder {

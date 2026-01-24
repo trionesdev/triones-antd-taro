@@ -134,6 +134,24 @@ wx-input {
 
 }
 
+.#{$inputCls} {
+  &-outlined {
+    border-radius: variable.$trionesBorderRadius;
+    border: 1Px solid variable.$trionesBorderColor;
+    padding-inline: 4Px;
+  }
+
+  &-filled {
+    border-radius: variable.$trionesBorderRadius;
+    background-color: variable.$trionesColorFillTertiary;
+    padding-inline: 4Px;
+  }
+
+  &-underlined {
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+  }
+}
+
 .#{$inputGroupWrapperCls} {}
 
 
@@ -222,18 +240,18 @@ wx-input {
 .#{$inputCls}-textarea {
   box-sizing: border-box;
   width: 100%;
-  border: 0;
   outline: 0;
-  padding: variable.$trionesInputPaddingBlock 0;
   font-size: variable.$trionesInputInputFontSize;
 
   taro-textarea-core {
     width: 100%;
   }
-
+  .taro-textarea{
+    background-color: transparent;
+  }
   textarea {
     padding: variable.$trionesInputPaddingBlock 0;
-
+    background-color: transparent;
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;
       color: $placeholderColor

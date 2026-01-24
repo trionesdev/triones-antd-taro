@@ -2,13 +2,14 @@ import React, {FC, useEffect} from 'react';
 import {BaseInput} from './base-input';
 import './index.scss';
 import {InputAffixWrapper} from './input-affix-wrapper';
+import {variantType} from "./types";
 
 export type InputProps = {
   className?: string;
   style?: React.CSSProperties;
   placeholder?: string;
   type?: 'text' | 'password' | 'textarea';
-
+  variant?: variantType
   disabled?: boolean;
   allowClear?: boolean;
   prefix?: React.ReactNode;
@@ -48,7 +49,6 @@ export const Input: FC<InputProps> = ({
     {...rest}
     className={className}
     style={style}
-
     placeholder={placeholder}
     prefix={prefix}
     suffix={suffix}

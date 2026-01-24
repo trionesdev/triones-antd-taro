@@ -1,11 +1,12 @@
 import React, { FC, useEffect } from 'react';
 import { Textarea as TaroTextarea } from "@tarojs/components"
-import { inputCls } from './types';
+import {inputCls, variantType} from './types';
 import classNames from 'classnames';
 
 export type InputTextareaProps = {
   className?: string;
   style?: React.CSSProperties;
+  variant?: variantType
   placeholder?: string;
   disabled?: boolean;
   allowClear?: boolean;
@@ -18,6 +19,7 @@ export type InputTextareaProps = {
 export const Textarea: FC<InputTextareaProps> = ({
   className,
   style,
+  variant,
   placeholder,
   disabled,
   allowClear,
@@ -37,7 +39,9 @@ export const Textarea: FC<InputTextareaProps> = ({
     setInternalValue(value);
   }, [value]);
   return (
-    <div className={classNames(`${inputCls}-textarea`, className)}
+    <div className={classNames(`${inputCls}-textarea`,{
+      [`${inputCls}-${variant}`]: variant
+    }, className)}
       style={style}>
       <TaroTextarea
         placeholder={placeholder}

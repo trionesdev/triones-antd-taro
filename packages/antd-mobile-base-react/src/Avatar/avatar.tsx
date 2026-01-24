@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useMemo } from 'react';
 import './style.scss';
-import { SizeType } from 'src/types';
+import { SizeType } from '../types';
 
 export type AvatarProps = {
   alt?: string;
