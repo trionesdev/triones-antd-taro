@@ -65,7 +65,7 @@
   },
   "optionalDependencies": {
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.5"
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.6"
   },
-  "gitHead": "bb239f0d341425c448c11af6493b5c6246517e79"
+  "gitHead": "67e8a0eb804b24ce8aeeb8c2c7aac8046da5be5d"
 }
