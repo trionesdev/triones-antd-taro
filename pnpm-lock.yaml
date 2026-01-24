@@ -188,8 +188,8 @@ importers:
         version: 1.1.4
     optionalDependencies:
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.4
-        version: 0.0.2-beta.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.5
+        version: 0.0.2-beta.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/crypto-js':
         specifier: ^4.2.2
@@ -293,8 +293,8 @@ importers:
         specifier: workspace:*
         version: link:../antd-mobile-base-react
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.4
-        version: 0.0.2-beta.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.5
+        version: 0.0.2-beta.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.6.1
@@ -394,8 +394,8 @@ importers:
         specifier: workspace:*
         version: link:../antd-mobile-base-react
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.4
-        version: 0.0.2-beta.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.5
+        version: 0.0.2-beta.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@tarojs/plugin-framework-react':
         specifier: ^4.1.8
@@ -3428,8 +3428,8 @@ packages:
       stylus:
         optional: true
 
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.4':
-    resolution: {integrity: sha512-ZgU5lo3OxdOXymUzwtlPQVFiK8D+GNKpjWiyOsFj71nur/msH2gGMt+a9dMMJfvUz3OjbKqpB4GOHpvLr8Eo9g==}
+  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.5':
+    resolution: {integrity: sha512-JBv8sZPzCK4m3v88b/X5zJDNIsn+NJimcRRbkN38ghup2enr9rZxTqRCer1O7rtgER1B6BESciEdAJaMRNdgiw==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -15327,7 +15327,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       classnames: 2.5.1
       react: 18.3.1
