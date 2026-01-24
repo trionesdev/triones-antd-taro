@@ -9,7 +9,7 @@
     "build": "father build",
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build",
-    "publish": "npm publish --registry=https://registry.npmjs.org/",
+    "publish": "npm publish --tag latest --registry=https://registry.npmjs.org/",
     "publishOnly": "npm publish --ignore-scripts --registry=https://registry.npmjs.org/"
   },
   "keywords": [],
@@ -48,7 +48,7 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "workspace:*"
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.3"
   },
-  "gitHead": "a3a7f520ac020660ce26376fd6432b910b574bf4"
+  "gitHead": "41478e4d65bb95d1b8987245b0e1eb15f16d1e05"
 }
