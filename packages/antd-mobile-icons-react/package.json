@@ -17,7 +17,7 @@
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepublishOnly": "father doctor && npm run build",
-    "publish": "npm publish --registry=https://registry.npmjs.org/",
+    "publish": "npm publish --tag latest --registry=https://registry.npmjs.org/",
     "publishOnly": "npm publish --ignore-scripts --registry=https://registry.npmjs.org/"
   },
   "authors": [
