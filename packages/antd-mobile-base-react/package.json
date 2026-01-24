@@ -48,7 +48,7 @@
     "runes2": "^1.1.4"
   },
   "optionalDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.4"
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.5"
   },
-  "gitHead": "13a28e0095a6b4c1b3d4bdf9ff0e63512fc2c8ac"
+  "gitHead": "7191dad6168c9878075f8acd2862d95687a2ff85"
 }
