@@ -94,8 +94,6 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
     const centerY = height / 2;
     const radius = (Math.min(width, height) - strokeWidth) / 2;
 
-    console.log(centerX, centerY, radius);
-
     const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
 
     const startAngle = -Math.PI / 2;  // 从顶部开始
