@@ -1,4 +1,4 @@
-import React, {CSSProperties, FC, memo, useMemo, useRef} from "react"
+import React, {CSSProperties, FC, memo, useMemo} from "react"
 import {exceptionColor, ProgressStatus, Size, successColor} from "./types";
 import classNames from "classnames";
 import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
