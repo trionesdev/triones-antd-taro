@@ -1,10 +1,7 @@
-import React, {CSSProperties, FC, memo, useEffect, useMemo, useRef} from "react"
-import {Canvas} from "@tarojs/components";
-import {Size} from "./types";
-import Taro, {createCanvasContext, useReady} from "@tarojs/taro";
+import React, {CSSProperties, FC, memo, useMemo, useRef} from "react"
+import {exceptionColor, ProgressStatus, Size, successColor} from "./types";
 import classNames from "classnames";
 import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
-import {exceptionColor, ProgressStatus, successColor} from "./types";
 
 type ProcessCircleProps = {
   format?: (percent: number) => string;
@@ -30,7 +27,6 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
                                                               status
                                                             }) => {
   const clsPrefix = 'triones-antm-progress-circle';
-  const canvasRef = useRef<any>(("canvas_" + Math.random()).replace('.', ''));
   const computedDiameter = useMemo(() => {
     switch (size) {
       case 'small':
@@ -56,7 +52,7 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
 
   const computePercentSize = () => {
     const percentSize = (computedDiameter - strokeWidth) / 2 / 3;
-    if (percentSize<10){
+    if (percentSize < 10) {
       return 10
     }
     return percentSize || 10;
@@ -83,49 +79,36 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
     }
     return <div style={{color: indicatorColor, fontSize: percentSize}}>{percent}%</div>
   }
+  const radius = (computedDiameter - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius; // 圆周长
 
-  const handleDraw = () => {
-    const centerX = computedDiameter / 2;
-    const centerY = computedDiameter / 2;
-    const radius = (Math.min(computedDiameter, computedDiameter) - strokeWidth) / 2;
+  // 计算偏移量：(1 - 比例) * 周长
+  const offset = circumference - (percent / 100) * circumference;
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width="${computedDiameter}" height="${computedDiameter}">
+        <circle
+            cx="${computedDiameter / 2}"
+            cy="${computedDiameter / 2}"
+            r="${radius}"
+            stroke="#e5e7eb"
+            stroke-width="${strokeWidth}"
+            fill="transparent"
+        />
+        <circle
+          cx="${computedDiameter / 2}"
+          cy="${computedDiameter / 2}"
+          r="${radius}"
+          stroke="${strokeColor}"
+          stroke-width="${strokeWidth}"
+          fill="transparent"
+          stroke-dasharray="${circumference}"
+          stroke-dashoffset="${offset}"
+          stroke-linecap="${strokeLineCap}"
+          transform="rotate(-90, ${computedDiameter / 2}, ${computedDiameter / 2})"
+        />
+</svg>`
 
-    const sweepAngle = (percent ? percent / 100 : 0) * 2 * Math.PI;
-
-    const startAngle = -Math.PI / 2;  // 从顶部开始
-
-    // 创建画布上下文，不能使用Taro.createCanvasContext(),否则h5下会报错
-    const ctx = createCanvasContext(canvasRef.current, this)
-    ctx.clearRect(0, 0, computedDiameter, computedDiameter);
-
-    //region 画背景圈
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = railColor;
-    ctx.lineWidth = strokeWidth;
-    ctx.stroke();
-    //endregion
-
-    //region 画进度圈
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, startAngle, startAngle + sweepAngle);
-    ctx.strokeStyle = strokeColor;
-    ctx.lineWidth = strokeWidth;
-    ctx.lineCap = strokeLineCap;
-    ctx.stroke();
-    //endregion
-
-    ctx.draw()
-  }
-
-  useEffect(() => {
-    Taro.nextTick(() => {
-      handleDraw();
-    });
-  }, [percent])
-
-
-  return <div className={classNames(`${clsPrefix}`)} style={style}>
-    <Canvas style={style} canvasId={canvasRef.current}/>
+  return <div className={classNames(`${clsPrefix}`)}
+              style={{...style, backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`}}>
     {(showInfo && computedDiameter > 20) && <div className={`${clsPrefix}-indicator`}>{handleIndicator()}</div>}
   </div>
 });
