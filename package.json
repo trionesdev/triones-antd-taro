@@ -18,7 +18,7 @@
     "publishOnly:force": "lerna publish from-package --yes  --ignore-scripts --no-git-tag-version  --registry=https://registry.npmjs.org/",
     "publishOnly": "lerna publish --ignore-scripts --no-git-tag-version --force-publish --registry=https://registry.npmjs.org/",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,css,less}\"",
-    "triones:publishOnly": "lerna publish --ignore-scripts --no-git-tag-version --force-publish --registry=https://moensun-npm.pkg.coding.net/npm/moensun/"
+    "triones:publishOnly": "lerna publish from-package --yes --force-publish --registry=https://registry.npmjs.org/"
   },
   "dependencies": {},
   "devDependencies": {
