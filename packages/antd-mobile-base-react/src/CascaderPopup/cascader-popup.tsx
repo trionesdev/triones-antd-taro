@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import {isEqual} from 'lodash-es';
-import React, { FC, useEffect, useRef } from 'react';
+import React, {FC, useEffect, useRef} from 'react';
 import CascaderView from '../CascaderView';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
 
-const cascaderPickerCls = 'triones-antm-cascader-picker';
+const cascaderPopupCls = 'triones-antm-cascader-popup';
 
-export type CascaderPickerProps = {
+export type CascaderPopupProps = {
   className?: string;
   style?: React.CSSProperties;
   open?: boolean;
@@ -33,24 +33,24 @@ export type CascaderPickerProps = {
   asyncRequest?: (parentValue?: any) => Promise<any>;
 };
 
-export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
+export const CascaderPopup: FC<CascaderPopupProps> = React.memo(
   ({
-    className,
-    style,
-    open = false,
-    afterOpenChange,
-    title,
-    options,
-    labelInValue = false,
-    fieldNames,
-    columnsCount,
-    value,
-    onOk,
-    onCancel,
-    onClose,
-    asyncRequest,
-  }) => {
-    const { locale } = ConfigProvider.useConfig();
+     className,
+     style,
+     open = false,
+     afterOpenChange,
+     title,
+     options,
+     labelInValue = false,
+     fieldNames,
+     columnsCount,
+     value,
+     onOk,
+     onCancel,
+     onClose,
+     asyncRequest,
+   }) => {
+    const {locale} = ConfigProvider.useConfig();
 
     const internalValueRf = useRef(value);
 
@@ -81,6 +81,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
       <Popup
         open={open}
         onClose={handleClose}
+        maskClosable={true}
         styles={{
           body: {
             borderTopLeftRadius: 6,
@@ -88,30 +89,30 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
           },
         }}
       >
-        <div className={classNames(cascaderPickerCls, className)} style={style}>
-          <div className={classNames(`${cascaderPickerCls}-header`)}>
+        <div className={classNames(cascaderPopupCls, className)} style={style}>
+          <div className={classNames(`${cascaderPopupCls}-header`)}>
             <a
-              className={classNames(`${cascaderPickerCls}-header-button`)}
+              className={classNames(`${cascaderPopupCls}-header-button`, `${cascaderPopupCls}-header-button-cancel`,)}
               onClick={handelCancel}
             >
               {locale.common.cancel}
             </a>
             {title && (
-              <div className={classNames(`${cascaderPickerCls}-header-title`)}>
+              <div className={classNames(`${cascaderPopupCls}-header-title`)}>
                 {title}
               </div>
             )}
             <a
               className={classNames(
-                `${cascaderPickerCls}-header-button`,
-                `${cascaderPickerCls}-header-button-ok`,
+                `${cascaderPopupCls}-header-button`,
+                `${cascaderPopupCls}-header-button-ok`,
               )}
               onClick={handleOk}
             >
               {locale.common.confirm}
             </a>
           </div>
-          <div className={classNames(`${cascaderPickerCls}-body`)}>
+          <div className={classNames(`${cascaderPopupCls}-body`)}>
             <CascaderView
               // open={ open}
               fieldNames={fieldNames}
@@ -123,7 +124,7 @@ export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
                 internalValueRf.current = newVal;
               }}
               asyncRequest={asyncRequest}
-              style={{ height: '100%' }}
+              style={{height: '100%'}}
             />
           </div>
         </div>

@@ -31,6 +31,11 @@ export type CellProps = {
   labelCol?: Col;
   labelAlign?: align;
   wrapperAlign?: align;
+  styles?: {
+    label?: React.CSSProperties;
+    content?: React.CSSProperties;
+    extra?: React.CSSProperties;
+  }
 };
 
 export type CellGroupProps = {
@@ -50,4 +55,12 @@ export type CellGroupProps = {
   labelAlign?: align;
   wrapperAlign?: align;
   divider?: ReactNode;
+  styles?: {
+    container?: React.CSSProperties;
+    title?: React.CSSProperties;
+    cell?: React.CSSProperties;
+    label?: React.CSSProperties;
+    content?: React.CSSProperties;
+    extra?: React.CSSProperties;
+  }
 };

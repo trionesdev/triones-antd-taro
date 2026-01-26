@@ -18,6 +18,9 @@ export type {CardProps} from './Card';
 export {default as CascaderPicker} from './CascaderPicker';
 export type {CascaderPickerProps} from './CascaderPicker';
 
+export {default as CascaderPopup} from './CascaderPopup';
+export type {CascaderPopupProps} from './CascaderPopup';
+
 export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';
 
@@ -53,6 +56,9 @@ export type { FormProps, FormLayout, FormLayoutAlign,FormItemLayout} from './For
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
+
+export {default as IndexedStack} from './IndexedStack';
+export type {IndexedStackProps} from './IndexedStack';
 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';

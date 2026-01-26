@@ -1,6 +1,4 @@
-import {CascaderPicker,CascaderPickerProps} from "./cascader-picker"
+import {CascaderPicker, CascaderPickerProps} from "./CascaderPicker"
 
-export type {
-  CascaderPickerProps
-}
-export default CascaderPicker
+export type {CascaderPickerProps}
+export default CascaderPicker;

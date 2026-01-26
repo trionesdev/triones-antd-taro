@@ -92,6 +92,7 @@
     "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.7",
     "ahooks": "^3.8.4",
     "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.19",
     "rc-field-form": "^2.7.0",
     "rc-util": "^5.44.3",
     "runes2": "^1.1.4"

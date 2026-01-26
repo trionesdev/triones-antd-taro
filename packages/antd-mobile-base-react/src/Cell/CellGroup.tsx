@@ -14,7 +14,8 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 labelCol,
                                                 labelAlign,
                                                 wrapperAlign,
-                                                divider
+                                                divider,
+                                                styles
                                               }) => {
   const handleRender = () => {
     if (children) {
@@ -41,13 +42,19 @@ export const CellGroup: FC<CellGroupProps> = ({
       labelCol,
       labelAlign,
       wrapperAlign,
-      extra
+      extra,
+      styles: {
+        cell: styles?.cell,
+        label: styles?.label,
+        content: styles?.content,
+        extra: styles?.extra
+      }
     }}>
-      <div className={classNames(`${cls}-group`, className)} style={style}>
+      <div className={classNames(`${cls}-group`, className)} style={{...style, ...styles?.container}}>
         {title && (
           <>
-            <div className={classNames(`${cls}-group-title`)}>
-              <div>{title}</div>
+            <div className={classNames(`${cls}-group-title`)} style={styles?.title}>
+              {title}
             </div>
           </>
         )}

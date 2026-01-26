@@ -2,6 +2,7 @@ import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Cell from "../index";
 import {Divider} from "@trionesdev/antd-mobile-base-react";
+import {RightOutline} from "@trionesdev/antd-mobile-icons-react";
 
 
 export default () => {
@@ -19,6 +20,21 @@ export default () => {
     </DemoBlock>
     <DemoBlock title={`分组带Label`}>
       <Cell.Group title={'标题'} labelCol={{flex: 100}}>
+        <Cell label={'Label'}>标题</Cell>
+        <Cell label={'Label'}>标题</Cell>
+        <Cell label={'Label'}>标题</Cell>
+      </Cell.Group>
+    </DemoBlock>
+    <DemoBlock title={`样式`}>
+      <Cell.Group title={'标题'} labelCol={{flex: 100}}
+                  styles={{
+                    cell: {
+                      minHeight: 40
+                    }
+                  }}
+                  divider={<Divider/>}
+                  extra={<RightOutline style={{fontSize:12}}/>}
+      >
         <Cell label={'Label'}>标题</Cell>
         <Cell label={'Label'}>标题</Cell>
         <Cell label={'Label'}>标题</Cell>

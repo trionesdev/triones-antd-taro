@@ -3,6 +3,7 @@ import React, {FC, useContext, useMemo} from 'react';
 import './styles.scss';
 import {CellProps} from './types';
 import {CellGroupContext} from "./context";
+import {assign} from "lodash-es";
 
 const cls = 'triones-antm-cell';
 
@@ -17,12 +18,13 @@ export const Cell: FC<CellProps> = ({
                                       labelAlign,
                                       wrapperAlign,
                                       onClick,
+                                      styles
                                     }) => {
   const {
     labelCol: ctxLabelCol,
     labelAlign: ctxLabelAlign,
     wrapperAlign: ctxWrapperAlign,
-    extra: ctxExtra
+    extra: ctxExtra, styles: ctxStyles
   } = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
     return labelCol?.flex || ctxLabelCol?.flex || 'auto';
@@ -56,16 +58,24 @@ export const Cell: FC<CellProps> = ({
     }
   }, [wrapperAlign, ctxWrapperAlign])
 
+  const mergedStyles = assign({}, ctxStyles, styles)
+  if (style) {
+    mergedStyles.cell = assign(mergedStyles.cell, style)
+  }
+
+
   return (
-    <div className={classNames(cls, className)} style={style} onClick={onClick}>
+    <div className={classNames(cls, className)} style={{...mergedStyles.cell}} onClick={onClick}>
       {label && (
         <div className={classNames(`${cls}-label`)} style={{
           width: labelWidth,
           justifyContent: labelAlignStyle
+          , ...mergedStyles?.label
         }}>{label}</div>
       )}
       <div className={classNames(`${cls}-content`)} style={{
-        justifyContent: wrapperAlignStyle
+        justifyContent: wrapperAlignStyle,
+        ...mergedStyles?.content
       }}>
         {children ||
           (placeholder && (
@@ -74,7 +84,8 @@ export const Cell: FC<CellProps> = ({
             </div>
           ))}
       </div>
-      {extra || ctxExtra}
+      {(extra || ctxExtra) &&
+        <div className={classNames(`${cls}-extra`)} style={mergedStyles?.extra}>{extra || ctxExtra}</div>}
     </div>
   );
 };

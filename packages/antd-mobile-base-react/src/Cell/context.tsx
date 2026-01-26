@@ -8,5 +8,11 @@ type CellGroupContextType = {
   labelAlign?: align,
   wrapperAlign?: align,
   extra?: React.ReactNode,
+  styles?: {
+    cell?: React.CSSProperties,
+    label?: React.CSSProperties,
+    content?: React.CSSProperties,
+    extra?: React.CSSProperties,
+  },
 };
 export const CellGroupContext = React.createContext<CellGroupContextType>({});

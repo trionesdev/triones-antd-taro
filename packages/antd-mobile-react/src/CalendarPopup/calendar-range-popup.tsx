@@ -3,12 +3,12 @@ import Popup from "../Popup";
 import classNames from "classnames";
 import Calendar from "../Calendar";
 import "./style.scss"
-import {CalendarPickerRangeProps} from "./types";
+import {CalendarPopupRangeProps} from "./types";
 import ConfigProvider from "../ConfigProvider";
 
-const cls = 'triones-antm-calendar-picker';
+const cls = 'triones-antm-calendar-popup';
 
-export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
+export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
   ({
      mouth,
      open,

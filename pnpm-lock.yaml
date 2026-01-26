@@ -188,8 +188,8 @@ importers:
         version: 1.1.4
     optionalDependencies:
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.6
-        version: 0.0.2-beta.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.7
+        version: 0.0.2-beta.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/crypto-js':
         specifier: ^4.2.2
@@ -279,6 +279,9 @@ importers:
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
+      dayjs:
+        specifier: ^1.11.19
+        version: 1.11.19
       rc-field-form:
         specifier: ^2.7.0
         version: 2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -293,8 +296,8 @@ importers:
         specifier: workspace:*
         version: link:../antd-mobile-base-react
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.6
-        version: 0.0.2-beta.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.7
+        version: 0.0.2-beta.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.6.1
@@ -394,8 +397,8 @@ importers:
         specifier: workspace:*
         version: link:../antd-mobile-base-react
       '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.6
-        version: 0.0.2-beta.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.2-beta.7
+        version: 0.0.2-beta.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@tarojs/plugin-framework-react':
         specifier: ^4.1.8
@@ -3428,8 +3431,8 @@ packages:
       stylus:
         optional: true
 
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.6':
-    resolution: {integrity: sha512-C3MbDliZC1hCjexg06weBYq2pOPkM5X7GG7mS+0FpScVOty9yU3OaCVO77iPTrfkOxEoFbjZqvuMSjzxL/8EcQ==}
+  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.7':
+    resolution: {integrity: sha512-fcSWkbezNe1pSXuoTWF1cX1jZ/TmkLkRVMobdPfIhUqrsOM4Rj3wJkyAqzk0n8gH4CiRJZJJAQ9AbWtnx6YkeQ==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -15327,7 +15330,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       classnames: 2.5.1
       react: 18.3.1

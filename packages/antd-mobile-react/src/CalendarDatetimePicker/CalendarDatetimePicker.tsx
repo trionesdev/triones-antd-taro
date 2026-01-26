@@ -1,178 +1,60 @@
 import classNames from 'classnames';
-import React, { FC, useEffect, useRef, useState } from 'react';
-import Calendar from '../Calendar';
-import ConfigProvider from '../ConfigProvider';
-import PickerView from '../PickerView';
-import Popup from '../Popup';
-import { DatetimeUtils } from '../utils/datetime-utils';
-import { DateTimeSwitch } from './DateTimeSwitch';
+import React, {FC, useEffect, useState} from 'react';
 import './style.scss';
-import { cls, Mode } from './types';
+import {cls} from './types';
+import CalendarDatetimePopup from "../CalendarDatetimePopup";
+import dayjs from "dayjs";
 
-export type CalendarDatetimePickerProps = {
-  open?: boolean;
-  afterOpenChange?: (open: boolean) => void;
+export type CalendarDatetimePopupProps = {
+  placeholder?: string;
   value?: Date;
-  onOk?: (value?: Date) => void;
-  onClose?: () => void;
+  format?: string;
+  onChange?: (value?: Date) => void;
 };
 
-export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
-  open,
-  afterOpenChange,
-  value = new Date(),
-  onOk,
-  onClose,
-}) => {
-  const { locale } = ConfigProvider.useConfig();
-  const [innerOpen, setInnerOpen] = React.useState(open || false);
-  const [mode, setMode] = useState<Mode>(Mode.date);
-  const valueRef = useRef<any>(value || new Date());
-  const bodyRef = useRef<any>(null);
-  const datetimeSwitchRef = useRef<any>();
-  const [bodyHeight, setBodyHeight] = useState(300);
+export const CalendarDatetimePicker: FC<CalendarDatetimePopupProps> = ({
+                                                                         placeholder = '请选择',
+                                                                         value ,
+                                                                          format = 'YYYY-MM-DD HH:mm',
+                                                                         onChange
+                                                                       }) => {
+  const [innerOpen, setInnerOpen] = React.useState(false);
+  const [internalValue, setInternalValue] = useState<any>(value)
 
-  const handleClose = () => {
-    setInnerOpen(false);
-    onClose?.();
-  };
-
-  const handleOk = () => {
-    onOk?.(valueRef.current);
-    handleClose();
-  };
-
-  const handleComputeBodyHeight = async (): Promise<number> => {
-    return Promise.resolve(bodyRef.current!.offsetHeight);
-  };
+  const handleValueRender = () => {
+    if (internalValue) {
+      return dayjs(internalValue).format(format)
+    }
+    return null;
+  }
 
   useEffect(() => {
-    afterOpenChange?.(innerOpen);
-    if (!innerOpen) {
-      onClose?.();
+    if ( value === undefined){
+      return
     }
-  }, [innerOpen]);
-
-  useEffect(() => {
-    if (open === undefined) {
-      return;
+    if (value !== internalValue) {
+      setInternalValue(value)
     }
-    if (open === innerOpen) {
-      return;
-    }
-    setInnerOpen(open!);
-  }, [open]);
-
-  useEffect(() => {
-    if (datetimeSwitchRef.current) {
-      datetimeSwitchRef.current.setDatetime(valueRef.current);
-    }
-  }, []);
-
-  const bodyRender = () => {
-    return (
-      <>
-        {mode === Mode.date && (
-          <div style={{}}>
-            <Calendar
-              mouth={value}
-              value={value}
-              onChange={(date) => {
-                valueRef.current = new Date(
-                  date.getFullYear(),
-                  date.getMonth(),
-                  date.getDate(),
-                  valueRef.current.getHours(),
-                  valueRef.current.getMinutes(),
-                );
-                datetimeSwitchRef.current?.setDatetime(valueRef.current);
-              }}
-            />
-          </div>
-        )}
-        {mode === Mode.time && (
-          <div style={{ height: bodyHeight }}>
-            <PickerView
-              columns={[
-                Array(24)
-                  .fill(0)
-                  .map((_, i) => {
-                    return {
-                      label: `${DatetimeUtils.twoDigits(i)}`,
-                      value: `${i}`,
-                    };
-                  }),
-                Array(60)
-                  .fill(0)
-                  .map((_, i) => {
-                    return {
-                      label: `${DatetimeUtils.twoDigits(i)}`,
-                      value: `${i}`,
-                    };
-                  }),
-              ]}
-              labelInValue={false}
-              value={[
-                `${valueRef?.current.getHours()}`,
-                `${valueRef?.current.getMinutes()}`,
-              ]}
-              onChange={(v) => {
-                valueRef.current = new Date(
-                  valueRef.current.getFullYear(),
-                  valueRef.current.getMonth(),
-                  valueRef.current.getDate(),
-                  v[0],
-                  v[1],
-                );
-                datetimeSwitchRef.current?.setDatetime(valueRef.current);
-              }}
-            />
-          </div>
-        )}
-      </>
-    );
-  };
+  }, [value])
 
   return (
-    <Popup
-      open={innerOpen}
-      onClose={() => {
-        setInnerOpen(false);
-      }}
-    >
-      <div className={classNames(cls)}>
-        <div className={`${cls}-header`}>
-          <DateTimeSwitch
-            ref={datetimeSwitchRef}
-            mode={mode}
-            value={valueRef.current}
-            onDateTabTap={() => setMode(Mode.date)}
-            onTimeTabTap={() => {
-              handleComputeBodyHeight().then((height) => {
-                setBodyHeight(height);
-                setMode(Mode.time);
-              });
-            }}
-          />
-          <a
-            className={classNames(
-              `${cls}-header-button`,
-              `${cls}-header-button-ok`,
-            )}
-            onClick={handleOk}
-          >
-            {locale.common.confirm}
-          </a>
-        </div>
-
-        <div
-          className={`${cls}-body`}
-          ref={bodyRef}
-          id={bodyRef.current?.uid}
-        >
-          {bodyRender()}
-        </div>
+    <>
+      <CalendarDatetimePopup open={innerOpen}
+                             value={internalValue}
+                             onClose={() => {
+                               setInnerOpen(false)
+                             }}
+                             onOk={(date) => {
+                               setInternalValue(date)
+                               setInnerOpen(false)
+                               onChange?.(date)
+                             }}/>
+      <div className={classNames(cls)} onClick={() => {
+        setInnerOpen(true)
+      }}>
+        {!internalValue ? <div className={`${cls}-placeholder`}>{placeholder}</div> :
+          <div>{handleValueRender()}</div>}
       </div>
-    </Popup>
+    </>
   );
 };

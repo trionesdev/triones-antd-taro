@@ -1,7 +1,7 @@
 import React from 'react';
 import {DemoBlock} from '../../DemoBlock';
 import Button from "../../Button";
-import CalendarPicker from "../index";
+import CalendarPopup from "../index";
 import Toast from "../../Toast";
 
 export default () => {
@@ -12,7 +12,7 @@ export default () => {
     <div>
       <div ref={toastContainer}/>
       <DemoBlock title={`日期选择器`}>
-        <CalendarPicker open={open} afterOpenChange={(o) => {
+        <CalendarPopup open={open} afterOpenChange={(o) => {
           setOpen(o);
         }} onOk={(date) => {
           Toast.show({
@@ -27,7 +27,7 @@ export default () => {
         </Button>
       </DemoBlock>
       <DemoBlock title={`日历选择器(区间)`}>
-        <CalendarPicker.Range open={open2} afterOpenChange={(o) => {
+        <CalendarPopup.Range open={open2} afterOpenChange={(o) => {
           setOpen2(o);
         }} onOk={(date) => {
           Toast.show({
