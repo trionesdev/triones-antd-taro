@@ -28,6 +28,7 @@ export default defineAppConfig({
     "pages/error-block/index",
     "pages/footer/index",
     "pages/notice-bar/index",
+    "pages/picker-view/index",
     "pages/tag/index",
     // "pages/card/index",
 

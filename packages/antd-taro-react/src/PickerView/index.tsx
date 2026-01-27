@@ -1,6 +1,5 @@
-import {PickerView,PickerViewProps,PickerColumnOption} from "@trionesdev/antd-mobile-base-react"
+import {PickerView } from "./PickerView"
 export type {
-  PickerViewProps,
-  PickerColumnOption
-}
+  PickerViewProps
+} from "./types";
 export default PickerView

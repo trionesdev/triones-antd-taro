@@ -344,6 +344,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/picker-view/index",
+              });
+            }}
+          >
+            PickerView 选择器视图
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/popup/index",
               });
             }}

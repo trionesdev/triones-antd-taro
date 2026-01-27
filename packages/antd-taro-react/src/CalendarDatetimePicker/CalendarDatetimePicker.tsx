@@ -5,7 +5,7 @@ import { cls } from './types';
 import CalendarDatetimePopup from "../CalendarDatetimePopup";
 import dayjs from "dayjs";
 
-export type CalendarDatetimePopupProps = {
+export type CalendarDatetimePickerProps = {
   placeholder?: string;
   value?: Date;
   format?: string;
@@ -13,7 +13,7 @@ export type CalendarDatetimePopupProps = {
   align?: 'left' | 'right' | 'center';
 };
 
-export const CalendarDatetimePicker: FC<CalendarDatetimePopupProps> = ({
+export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   placeholder = '请选择',
   value,
   format = 'YYYY-MM-DD HH:mm',

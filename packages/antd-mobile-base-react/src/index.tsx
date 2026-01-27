@@ -75,11 +75,6 @@ export type {NoticeBarProps} from './NoticeBar';
 export {default as PageIndicator} from './PageIndicator';
 export type {PageIndicatorProps} from './PageIndicator';
 
-export {default as Picker} from './Picker';
-export type {PickerProps} from './Picker';
-
-export {default as PickerView} from './PickerView';
-export type {PickerViewProps, PickerColumnOption} from './PickerView';
 
 export {default as Popup,PopupModal} from './Popup';
 export type {PopupProps} from './Popup';
@@ -101,12 +96,6 @@ export type {SafeAreaProps} from './SafeArea';
 
 export {default as Scaffold} from './Scaffold';
 export type {ScaffoldProps} from './Scaffold';
-
-export {default as ScrollView} from './ScrollView';
-export type {ScrollViewProps} from './ScrollView';
-
-export {default as SideBar} from './SideBar';
-export type {SideBarProps} from './SideBar';
 
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';

@@ -1,16 +1,15 @@
-import { CustomWrapper, PickerView, PickerViewColumn, View } from '@tarojs/components';
+import {CustomWrapper, PickerView, PickerViewColumn, View} from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classNames from 'classnames';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
-import { useTaro } from '../hooks';
+import {useTaro} from '../hooks';
 import Popup from '../Popup';
-import { DateTimeSwitch } from './DateTimeSwitch';
+import {DateTimeSwitch} from './DateTimeSwitch';
 import './style.scss';
-import { cls, Mode } from './types';
-import { DatetimeUtils } from "../utils/datetime-utils";
-
+import {cls, Mode} from './types';
+import {DatetimeUtils} from "../utils/datetime-utils";
 
 
 export type CalendarDatetimePopupProps = {
@@ -22,14 +21,14 @@ export type CalendarDatetimePopupProps = {
 };
 
 export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
-  open,
-  afterOpenChange,
-  value = new Date(),
-  onOk,
-  onClose,
-}) => {
-  const { locale } = ConfigProvider.useConfig();
-  const { isTaroEnv, isTaroWeApp } = useTaro();
+                                                                        open,
+                                                                        afterOpenChange,
+                                                                        value = new Date(),
+                                                                        onOk,
+                                                                        onClose,
+                                                                      }) => {
+  const {locale} = ConfigProvider.useConfig();
+  const {isTaroEnv, isTaroWeApp} = useTaro();
   const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<any>(value || new Date());
@@ -109,22 +108,24 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
           </div>
         )}
         {mode === Mode.time && (
-          <div style={{ height: bodyHeight }}>
+          <div style={{height: bodyHeight}}>
             <PickerView className={`time-picker`} indicatorStyle='height: 32Px;'
-              style={{ height: bodyHeight }} value={[
-                valueRef?.current.getHours(),
-                valueRef?.current.getMinutes(),
-              ]} onChange={(e) => {
-                const v = e.detail.value
-                valueRef.current = new Date(
-                  valueRef.current.getFullYear(),
-                  valueRef.current.getMonth(),
-                  valueRef.current.getDate(),
-                  v[0],
-                  v[1],
-                );
-                datetimeSwitchRef.current?.setDatetime(valueRef.current);
-              }}>
+                        style={{height: bodyHeight}}
+                        value={[
+                          valueRef?.current.getHours(),
+                          valueRef?.current.getMinutes(),
+                        ]}
+                        onChange={(e) => {
+                          const v = e.detail.value
+                          valueRef.current = new Date(
+                            valueRef.current.getFullYear(),
+                            valueRef.current.getMonth(),
+                            valueRef.current.getDate(),
+                            v[0],
+                            v[1],
+                          );
+                          datetimeSwitchRef.current?.setDatetime(valueRef.current);
+                        }}>
               <PickerViewColumn>
                 {Array(24)
                   .fill(0)
