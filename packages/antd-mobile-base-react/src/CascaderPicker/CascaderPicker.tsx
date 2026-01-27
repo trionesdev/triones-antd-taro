@@ -1,6 +1,6 @@
-import React, {FC, useEffect, useState} from "react"
+import React, { FC, useEffect, useState } from "react"
 import classNames from "classnames";
-import {isEmpty} from "lodash-es";
+import { isEmpty } from "lodash-es";
 import CascaderPopup from "../CascaderPopup";
 import "./style.scss"
 
@@ -9,6 +9,7 @@ const cls = 'triones-antm-cascader-picker';
 export type CascaderPickerProps = {
   placeholder?: string;
   onChange?: (value: any[]) => void;
+  align?: 'left' | 'right' | 'center';
   className?: string;
   style?: React.CSSProperties;
   title?: React.ReactNode;
@@ -29,12 +30,13 @@ export type CascaderPickerProps = {
 }
 
 export const CascaderPicker: FC<CascaderPickerProps> = ({
-                                                          placeholder = '请选择',
-                                                          onChange,
-                                                          value,
-                                                          labelInValue = true,
-                                                          ...rest
-                                                        }) => {
+  placeholder = '请选择',
+  onChange,
+  align = 'left',
+  value,
+  labelInValue = true,
+  ...rest
+}) => {
   const mergedFieldNames = {
     value: 'value',
     label: 'label',
@@ -58,15 +60,15 @@ export const CascaderPicker: FC<CascaderPickerProps> = ({
 
   return <>
     <CascaderPopup {...rest} open={open} value={internalValue} labelInValue={labelInValue}
-                   onCancel={() => {
-                     setOpen(false)
-                   }}
-                   onOk={(value) => {
-                     setInternalValue(value || [])
-                     setOpen(false)
-                     onChange?.(value || [])
-                   }}/>
-    <div className={classNames(cls)} onClick={() => {
+      onCancel={() => {
+        setOpen(false)
+      }}
+      onOk={(value) => {
+        setInternalValue(value || [])
+        setOpen(false)
+        onChange?.(value || [])
+      }} />
+    <div className={classNames(cls, `${cls}-${align}`)} onClick={() => {
       setOpen(true)
     }}>
       {isEmpty(internalValue) ? <div className={`${cls}-placeholder`}>{placeholder}</div> : <div>{valueText()}</div>}

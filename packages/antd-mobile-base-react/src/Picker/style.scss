@@ -19,6 +19,9 @@ $pickerCls: 'triones-antm-picker';
     &-button {
       padding: 8Px;
       font-size: 12Px;
+      &-cancel{ 
+        color: variable.$trionesColorTextSecondary;
+      }
       &-ok{
         color: variable.$trionesColorPrimary;
       }

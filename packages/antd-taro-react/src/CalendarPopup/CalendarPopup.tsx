@@ -4,11 +4,11 @@ import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
-import { CalendarPickerProps } from './types';
+import { CalendarPopupProps } from './types';
 
 const cls = 'triones-antm-calendar-picker';
 
-export const CalendarPicker: FC<CalendarPickerProps> = memo(
+export const CalendarPopup: FC<CalendarPopupProps> = memo(
   ({ mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose }) => {
     const { locale } = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);

@@ -1,6 +1,6 @@
 import React from "react";
 
-export type CalendarPickerProps = {
+export type CalendarPopupProps = {
   mouth?: Date;
   open?: boolean
   title?: React.ReactNode
@@ -11,7 +11,7 @@ export type CalendarPickerProps = {
   onClose?: () => void,
 }
 
-export type CalendarPickerRangeProps = {
+export type CalendarPopupRangeProps = {
   mouth?: Date;
   open?: boolean
   title?: React.ReactNode
