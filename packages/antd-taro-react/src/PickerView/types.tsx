@@ -9,7 +9,9 @@ export type PickerColumnOption = {
 export type PickerViewProps = {
   className?: string
   style?: React.CSSProperties
+
   columns?: PickerColumnOption[][]
+  height?: number
   labelInValue?: boolean
   value?: any[]
   onChange?: (value: any[]) => void

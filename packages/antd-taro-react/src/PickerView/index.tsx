@@ -1,5 +1,6 @@
 import {PickerView } from "./PickerView"
 export type {
-  PickerViewProps
+  PickerViewProps,
+  PickerColumnOption
 } from "./types";
 export default PickerView

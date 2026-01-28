@@ -14,6 +14,7 @@ export default defineAppConfig({
     "pages/cascader-view/index",
     "pages/cell/index",
     "pages/checkbox/index",
+    "pages/date-picker/index",
     "pages/radio/index",
     "pages/rate/index",
     "pages/input/index",

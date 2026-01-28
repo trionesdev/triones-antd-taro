@@ -19,11 +19,11 @@ const PickerBase = () => {
   ]
   return <>
     <DemoBlock title={`基本使用`}>
-      {/*<Picker open={open} afterOpenChange={(o) => {*/}
-      {/*  setOpen(o);*/}
-      {/*}} columns={basicColumns} value={["Fri"]} onOk={(v)=>{*/}
-      {/*  console.log(v)*/}
-      {/*}}/>*/}
+      <Picker open={open} afterOpenChange={(o) => {
+        setOpen(o);
+      }} columns={basicColumns} value={["Fri"]} onOk={(v)=>{
+        console.log(v)
+      }}/>
       <Button block={true} onClick={() => {
         setOpen(true);
       }}>选择</Button>

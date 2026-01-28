@@ -1,0 +1,19 @@
+$trionesScrollViewCls: 'triones-antm-scroll-view';
+
+.#{$trionesScrollViewCls} {
+  scrollbar-width: thin;
+
+  &-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &-scroll-y {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-scroll-bar-hidden {
+    scrollbar-width: none;
+  }
+}

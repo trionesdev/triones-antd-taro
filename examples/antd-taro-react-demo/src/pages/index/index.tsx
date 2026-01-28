@@ -189,6 +189,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/date-picker/index",
+              });
+            }}
+          >
+            DatePicker 日期选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/input/index",
               });
             }}

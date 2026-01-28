@@ -1,7 +1,5 @@
 import {DemoBlock} from "../../components";
 import {PickerView} from "@trionesdev/antd-taro-react";
-import {PickerViewColumn, View,PickerView as TaroPickerView} from "@tarojs/components";
-import React from "react";
 
 const PickerViewBase = () => {
 
@@ -20,7 +18,7 @@ const PickerViewBase = () => {
   ]
   return <>
     <DemoBlock title={`基本使用`}>
-      <PickerView columns={basicColumns}   style={{height: 300}}/>
+      <PickerView columns={basicColumns}    />
     </DemoBlock>
   </>
 }

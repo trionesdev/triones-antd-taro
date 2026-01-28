@@ -1,0 +1,64 @@
+@use "../style/variable" as variable;
+$datePickerCls: 'triones-antm-date-picker';
+
+.#{$datePickerCls} {
+  width: 100%;
+  line-height: 1.4;
+  display: flex;
+
+  &-left {
+    justify-content: flex-start;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+
+  &-right {
+    justify-content: flex-end;
+  }
+
+  &-placeholder {
+    color: variable.$trionesColorTextPlaceholder;
+  }
+}
+
+$datePickerPopupCls: 'triones-antm-date-picker-popup';
+
+.#{$datePickerPopupCls} {
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4Px;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+    &-title {
+      font-size: 16Px;
+      padding: 8Px;
+      text-align: center;
+    }
+
+    &-button {
+      padding: 8Px 12Px;
+      cursor: pointer;
+      &-cancel{
+        color: variable.$trionesColorTextSecondary;
+      }
+    }
+  }
+
+  &-body {
+    .time-picker {
+      .time-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32Px;
+      }
+    }
+  }
+}

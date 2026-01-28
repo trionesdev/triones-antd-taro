@@ -51,6 +51,8 @@ export type {CheckboxProps} from './Checkbox';
 export {default as ConfigProvider} from './ConfigProvider';
 export type {ConfigProviderProps} from './ConfigProvider';
 
+export {default as DatePicker} from './DatePicker';
+
 export {default as Descriptions} from "./Descriptions"
 export type {DescriptionsProps} from "./Descriptions"
 
