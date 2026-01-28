@@ -23,13 +23,12 @@ export type CalendarDatetimePopupProps = {
 export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
                                                                         open,
                                                                         afterOpenChange,
-                                                                        value = new Date(),
+                                                                        value,
                                                                         onOk,
                                                                         onClose,
                                                                       }) => {
   const {locale} = ConfigProvider.useConfig();
   const {isTaroEnv, isTaroWeApp} = useTaro();
-  const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<any>(value || new Date());
   const bodyRef = useRef<any>(null);
@@ -37,7 +36,6 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   const [bodyHeight, setBodyHeight] = useState(300);
 
   const handleClose = () => {
-    setInnerOpen(false);
     onClose?.();
   };
 
@@ -62,23 +60,6 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
     }
     return Promise.resolve(bodyRef.current!.offsetHeight);
   };
-
-  useEffect(() => {
-    afterOpenChange?.(innerOpen);
-    if (!innerOpen) {
-      onClose?.();
-    }
-  }, [innerOpen]);
-
-  useEffect(() => {
-    if (open === undefined) {
-      return;
-    }
-    if (open === innerOpen) {
-      return;
-    }
-    setInnerOpen(open!);
-  }, [open]);
 
   useEffect(() => {
     if (datetimeSwitchRef.current) {
@@ -152,9 +133,8 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
 
   return (
     <Popup
-      open={innerOpen}
+      open={open}
       onClose={() => {
-        setInnerOpen(false);
         onClose?.();
       }}
     >

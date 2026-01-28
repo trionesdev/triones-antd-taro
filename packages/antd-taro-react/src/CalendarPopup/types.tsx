@@ -1,5 +1,7 @@
 import React from "react";
 
+export const cls = 'triones-antm-calendar-popup';
+
 export type CalendarPopupProps = {
   mouth?: Date;
   open?: boolean

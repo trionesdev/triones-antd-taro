@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react"
+import React, {FC, useEffect, useMemo, useState} from "react"
 import classNames from "classnames";
 import {cls} from "../CalendarDatetimePicker/types";
 import dayjs from "dayjs";
@@ -18,7 +18,7 @@ export type DatePickerPops = {
 export const DatePicker: FC<DatePickerPops> = ({
                                                  placeholder,
                                                  value,
-                                                 format = 'YYYY-MM-DD HH:mm',
+                                                 format,
                                                  onChange,
                                                  align = 'left',
                                                  mode = 'date',
@@ -26,11 +26,22 @@ export const DatePicker: FC<DatePickerPops> = ({
                                                }) => {
 
   const [innerOpen, setInnerOpen] = React.useState(false);
-  const [internalValue, setInternalValue] = useState<dayjs.Dayjs>(value || dayjs())
+  const [internalValue, setInternalValue] = useState<dayjs.Dayjs | undefined>(value)
+  const renderFormat = useMemo(() => {
+    if (format) {
+      return format;
+    }
+    if (mode === 'date') {
+      return showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'
+    } else if (mode === 'time') {
+      return 'HH:mm:ss'
+    }
+    return 'YYYY-MM-DD'
+  }, [mode, format, showTime])
 
   const handleValueRender = () => {
     if (internalValue) {
-      return dayjs(internalValue).format(format)
+      return dayjs(internalValue).format(renderFormat)
     }
     return null;
   }
@@ -51,6 +62,7 @@ export const DatePicker: FC<DatePickerPops> = ({
         setInnerOpen(false)
       }}
       mode={mode}
+      format={format}
       showTime={showTime}
       value={internalValue}
       onOk={(value) => {

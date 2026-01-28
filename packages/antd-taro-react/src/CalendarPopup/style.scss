@@ -14,7 +14,8 @@ $calendarPopupCls: 'triones-antm-calendar-popup';
     &-button {
       padding: 8Px 12Px;
 
-      &-cancel {
+      &-cancel{
+        color: variable.$trionesColorTextSecondary;
       }
 
       &-ok {

@@ -3,10 +3,8 @@ import Popup from "../Popup";
 import classNames from "classnames";
 import Calendar from "../Calendar";
 import "./style.scss"
-import {CalendarPopupRangeProps} from "./types";
+import {CalendarPopupRangeProps, cls} from "./types";
 import ConfigProvider from "../ConfigProvider";
-
-const cls = 'triones-antm-calendar-popup';
 
 export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
   ({
@@ -68,9 +66,11 @@ export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
     >
       <div className={classNames(`${cls}`)}>
         <div className={classNames(`${cls}-header`)}>
-          <a className={classNames(`${cls}-header-button`)} onClick={handelCancel}>{locale.common.cancel}</a>
+          <a className={classNames(`${cls}-header-button`, `${cls}-header-button-cancel`)}
+             onClick={handelCancel}>{locale.common.cancel}</a>
           {title && <div className={classNames(`${cls}-header-title`)}>{title}</div>}
-          <a className={classNames(`${cls}-header-button`)} onClick={handleOk}>{locale.common.confirm}</a>
+          <a className={classNames(`${cls}-header-button`, `${cls}-header-button-ok`)}
+             onClick={handleOk}>{locale.common.confirm}</a>
         </div>
         <div className={classNames(`${cls}-body`)}>
           <Calendar.Range mouth={mouth} value={value} onChange={(date) => {

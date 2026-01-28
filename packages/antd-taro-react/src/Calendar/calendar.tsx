@@ -4,6 +4,7 @@ import React, { forwardRef, memo, useState } from 'react';
 import { CalendarHeader } from './calendar-header';
 import './style.scss';
 import { TouchableCalendarGrid } from './touchable-calendar-grid';
+import {cloneDeep} from "lodash-es";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -18,10 +19,10 @@ export type CalendarProps = {
 export const Calendar = memo(
   forwardRef<HTMLDivElement, CalendarProps>(
     (
-      { mouth = new Date(), value, onChange, onMouthChange, slideable = false },
+      { mouth, value, onChange, onMouthChange, slideable = false },
       ref,
     ) => {
-      const [currentMouth, setCurrentMouth] = useState(mouth);
+      const [currentMouth, setCurrentMouth] = useState(mouth || new Date());
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
@@ -29,7 +30,7 @@ export const Calendar = memo(
           {slideable ? (
             <TouchableCalendarGrid
               mouth={currentMouth}
-              value={value ? [value] : []}
+              value={value ? [cloneDeep( value)] : []}
               onMouthChange={(newMouth) => {
                 setCurrentMouth(newMouth);
                 onMouthChange?.(newMouth);
@@ -41,7 +42,7 @@ export const Calendar = memo(
           ) : (
             <CalendarGrid
               mouth={currentMouth}
-              value={value ? [value] : []}
+              value={value ? [cloneDeep( value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}

@@ -16,6 +16,7 @@ type DatePickerPopupPops = {
   onClose?: () => void
   title?: React.ReactNode
   mode?: Mode
+  format?: string
   showTime?: boolean
   value?: dayjs.Dayjs,
   onOk?: (value: dayjs.Dayjs) => void
@@ -29,6 +30,7 @@ type InternalValueType = {
   date?: number,
   hour?: number,
   minute?: number
+  second?: number
 }
 
 const DatePickerPopup: FC<DatePickerPopupPops> = ({
@@ -36,12 +38,25 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
                                                     onClose,
                                                     title,
                                                     mode = 'date',
+                                                    format,
                                                     showTime,
                                                     value,
                                                     onOk,
                                                     minDate,
                                                     maxDate
                                                   }) => {
+  const cleanFormat = format?.replace(/\[([^\]]+)\]/g, '')
+  const hasYear = cleanFormat?.includes('Y')
+  const hasMouth = cleanFormat?.includes('M')
+  const hasDate = cleanFormat?.includes('D')
+
+  const hasHour = cleanFormat?.includes('H')
+  const hasMinute = cleanFormat?.includes('m')
+  const hasSecond = cleanFormat?.includes('s')
+
+  console.log("format", format)
+  console.log("hasYear",hasYear,"hasMouth",hasMouth,"hasDate",hasDate,"hasHour",hasHour,"hasMinute",hasMinute,"hasSecond",hasSecond)
+
   const {locale} = ConfigProvider.useConfig();
   const [internalValue, setInternalValue] = useState<InternalValueType>({
     year: value?.year() || dayjs().year(),
@@ -49,12 +64,14 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
     date: value?.date() || dayjs().date(),
     hour: value?.hour() || dayjs().hour(),
     minute: value?.minute() || dayjs().minute(),
+    second: value?.second() || dayjs().second(),
   })
   const [years, setYears] = useState<any[]>([])
   const mouths = Array.from({length: 12}, (_, i) => i + 1)
   const [days, setDays] = useState<any[]>([])
   const hours = Array.from({length: 24}, (_, i) => i)
   const minutes = Array.from({length: 60}, (_, i) => i)
+  const seconds = Array.from({length: 60}, (_, i) => i)
 
   useEffect(() => {
     const startYear = new Date().getFullYear() + 30 - 100;
@@ -69,24 +86,76 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
   }, [internalValue.year, internalValue.mouth]);
 
   const columns: any[] = useMemo(() => {
+
     if (mode === 'date') {
-      const dateColumns = [
-        years.map((v) => ({label: `${v}年`, value: v})),
-        mouths.map((v) => ({label: `${v}月`, value: v})),
-        days.map((v) => ({label: `${v}日`, value: v})),
-      ]
-      if (showTime) {
+      const dateColumns = []
+      if (!format) {
         dateColumns.push(
-          hours.map((v) => ({label: `${v}时`, value: v})),
-          minutes.map((v) => ({label: `${v}分`, value: v})),
+          years.map((v) => ({label: `${v}年`, value: v})),
+          mouths.map((v) => ({label: `${v}月`, value: v})),
+          days.map((v) => ({label: `${v}日`, value: v})),
         )
+      } else {
+        if (hasYear) {
+          dateColumns.push(
+            years.map((v) => ({label: `${v}年`, value: v})),
+          )
+        }
+        if (hasMouth) {
+          dateColumns.push(
+            mouths.map((v) => ({label: `${v}月`, value: v})),
+          )
+        }
+        if (hasDate) {
+          dateColumns.push(
+            days.map((v) => ({label: `${v}日`, value: v})),
+          )
+        }
+      }
+      if (showTime) {
+        if (hasHour) {
+          dateColumns.push(
+            hours.map((v) => ({label: `${v}时`, value: v})),
+          )
+        }
+        if (hasMinute) {
+          dateColumns.push(
+            minutes.map((v) => ({label: `${v}分`, value: v})),
+          )
+        }
+        if (hasSecond) {
+          dateColumns.push(
+            seconds.map((v) => ({label: `${v}秒`, value: v})),
+          )
+        }
       }
       return dateColumns
     } else if (mode === 'time') {
-      return [
-        hours.map((v) => ({label: `${v}时`, value: v})),
-        minutes.map((v) => ({label: `${v}分`, value: v})),
-      ]
+      const timeColumns = [];
+      if (!format){
+        timeColumns.push(
+          hours.map((v) => ({label: `${v}时`, value: v})),
+          minutes.map((v) => ({label: `${v}分`, value: v})),
+          seconds.map((v) => ({label: `${v}秒`, value: v})),
+        )
+      }else {
+        if (hasHour) {
+          timeColumns.push(
+            hours.map((v) => ({label: `${v}时`, value: v})),
+          )
+        }
+        if (hasMinute) {
+          timeColumns.push(
+            minutes.map((v) => ({label: `${v}分`, value: v})),
+          )
+        }
+        if (hasSecond) {
+          timeColumns.push(
+            seconds.map((v) => ({label: `${v}秒`, value: v})),
+          )
+        }
+      }
+      return timeColumns
     }
     return []
   }, [mode, showTime, years, days])
@@ -134,6 +203,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
       || value.date() !== internalValue.date
       || value.hour() !== internalValue.hour
       || value.minute() !== internalValue.minute
+      || value.second() !== internalValue.second
     ) {
       setInternalValue({
         year: value.year(),
@@ -141,6 +211,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
         date: value.date(),
         hour: value.hour(),
         minute: value.minute(),
+        second: value.second(),
       })
     }
 
@@ -151,6 +222,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
       return [
         internalValue.hour,
         internalValue.minute,
+        internalValue.second,
       ]
     } else if (mode === 'date') {
       if (showTime) {
@@ -160,6 +232,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
           internalValue.date,
           internalValue.hour,
           internalValue.minute,
+          internalValue.second,
         ]
       } else {
         return [

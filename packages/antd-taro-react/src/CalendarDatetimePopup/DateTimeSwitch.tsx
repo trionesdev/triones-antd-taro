@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import { DatetimeUtils } from '../utils/datetime-utils';
 import './style.scss';
 import { cls, Mode } from './types';

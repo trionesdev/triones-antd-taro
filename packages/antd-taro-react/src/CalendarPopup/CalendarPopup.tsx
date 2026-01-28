@@ -4,9 +4,7 @@ import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
-import { CalendarPopupProps } from './types';
-
-const cls = 'triones-antm-calendar-picker';
+import {CalendarPopupProps, cls} from './types';
 
 export const CalendarPopup: FC<CalendarPopupProps> = memo(
   ({ mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose }) => {
@@ -63,7 +61,7 @@ export const CalendarPopup: FC<CalendarPopupProps> = memo(
             <a
               className={classNames(
                 `${cls}-header-button`,
-                `${cls}-header-cancel`,
+                `${cls}-header-button-cancel`,
               )}
               onClick={handelCancel}
             >

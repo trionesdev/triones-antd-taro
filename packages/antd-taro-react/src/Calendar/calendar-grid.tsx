@@ -60,7 +60,6 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       if (range) {
         const startDate = value?.[0];
         const endDate = value?.[1];
-        console.log('value', value);
 
         return (
           date.getTime() === startDate?.getTime() ||
