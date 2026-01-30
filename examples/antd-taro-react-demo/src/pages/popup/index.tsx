@@ -11,8 +11,8 @@ const PopupBase = () => {
 
   return <View style={{padding: '8px'}}>
     <DemoBlock title="基础用法">
-      <Popup open={topOpen} destroyOnClose={true} afterOpenChange={(o) => {
-        setTopOpen(o);
+      <Popup open={topOpen} destroyOnClose={true} afterClose={() => {
+        setTopOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>
           顶部弹出
@@ -22,8 +22,8 @@ const PopupBase = () => {
         setTopOpen(true)
       }}>顶部弹出</Button>
 
-      <Popup open={bottomOpen} position={`bottom`} closable={true} afterOpenChange={(o) => {
-        setBottomOpen(o);
+      <Popup open={bottomOpen} position={`bottom`} closable={true} afterClose={() => {
+        setBottomOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>
           底部弹出
@@ -33,8 +33,8 @@ const PopupBase = () => {
         setBottomOpen(true)
       }}>底部弹出</Button>
 
-      <Popup open={leftOpen} position={`left`} afterOpenChange={(o) => {
-        setLeftOpen(o);
+      <Popup open={leftOpen} position={`left`} afterClose={() => {
+        setLeftOpen(false);
       }}>
         <View style={{minWidth: "200px"}}>
           左部弹出
@@ -43,8 +43,8 @@ const PopupBase = () => {
       <Button block={true} onClick={() => {
         setLeftOpen(true)
       }}>左部弹出</Button>
-      <Popup open={rightOpen} position={`right`} afterOpenChange={(o) => {
-        setRightOpen(o);
+      <Popup open={rightOpen} position={`right`} afterClose={() => {
+        setRightOpen(false);
       }}>
         <View style={{minWidth: "200px"}}>
           右部弹出

@@ -92,14 +92,14 @@ export type {InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
 
-export {default as Mask} from "./Mask"
-export type {MaskProps} from "./Mask"
-
 export {default as NavBar} from './NavBar';
 export type {NavBarProps} from './NavBar';
 
 export {default as NoticeBar} from './NoticeBar';
 export type {NoticeBarProps} from './NoticeBar';
+
+export {default as Overlay} from './Overlay';
+export type {OverlayProps} from './Overlay';
 
 export {default as PageIndicator} from './PageIndicator';
 export type {PageIndicatorProps} from './PageIndicator';

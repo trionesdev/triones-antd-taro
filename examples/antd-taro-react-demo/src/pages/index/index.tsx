@@ -344,6 +344,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/overlay/index",
+              });
+            }}
+          >
+            Overlay 遮罩层
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/picker/index",
               });
             }}

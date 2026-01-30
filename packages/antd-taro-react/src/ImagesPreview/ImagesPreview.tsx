@@ -1,9 +1,9 @@
 import React, {FC, useEffect} from "react";
-import Mask from "../Mask";
 import classNames from "classnames";
 import "./style.scss"
 import Swiper from "../Swiper";
 import Image from "../Image";
+import {Mask} from "@trionesdev/antd-mobile-base-react";
 
 const cls = 'triones-antm-image-preview';
 
