@@ -22,7 +22,7 @@ const PopupBase = () => {
         setTopOpen(true)
       }}>顶部弹出</Button>
 
-      <Popup open={bottomOpen} position={`bottom`} closable={true} afterClose={() => {
+      <Popup open={bottomOpen} position={`bottom`} closeable={true} afterClose={() => {
         setBottomOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>

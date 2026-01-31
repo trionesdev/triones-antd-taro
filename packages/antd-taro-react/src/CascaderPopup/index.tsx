@@ -1,4 +1,4 @@
-import {CascaderPopup,CascaderPopupProps} from "@trionesdev/antd-mobile-base-react"
+import {CascaderPopup,CascaderPopupProps} from "./cascader-popup"
 
 export type {
   CascaderPopupProps

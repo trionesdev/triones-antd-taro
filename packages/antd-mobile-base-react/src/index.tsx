@@ -1,8 +1,5 @@
 import './style';
 
-export {default as ActionSheet} from "./ActionSheet"
-export type {ActionSheetProps} from './ActionSheet';
-
 export {default as Alert} from './Alert';
 export type {AlertProps} from './Alert';
 
@@ -14,12 +11,6 @@ export type {BadgeFill, BadgeProps} from './Badge';
 
 export {default as Card} from './Card';
 export type {CardProps} from './Card';
-
-export {default as CascaderPicker} from './CascaderPicker';
-export type {CascaderPickerProps} from './CascaderPicker';
-
-export {default as CascaderPopup} from './CascaderPopup';
-export type {CascaderPopupProps} from './CascaderPopup';
 
 export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';

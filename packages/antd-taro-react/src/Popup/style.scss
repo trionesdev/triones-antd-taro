@@ -2,6 +2,22 @@
 
 $trionesPopupCls: 'triones-antm-popup';
 
-.#{$trionesPopupCls}{
+.#{$trionesPopupCls} {
+  display: flex;
+  &-top {
+  }
 
+  &-bottom {
+  }
+
+  &-left {
+  }
+
+  &-right {
+  }
+
+  &-center {
+  }
+
+  &-wrapper{}
 }

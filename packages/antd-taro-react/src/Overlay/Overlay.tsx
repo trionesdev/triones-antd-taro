@@ -12,6 +12,8 @@ export type OverlayProps = {
   zIndex?: number;
   closeOnOverlayClick?: boolean;
   onClick?: () => void;
+  afterClose?: () => void;
+  afterOpenChange?: (open: boolean) => void;
 }
 
 export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
@@ -21,7 +23,9 @@ export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
                                                                open = false,
                                                                zIndex = 1000,
                                                                closeOnOverlayClick = true,
-                                                               onClick
+                                                               onClick,
+                                                               afterClose,
+                                                               afterOpenChange,
                                                              }) => {
   const [internalOpen, setInternalOpen] = React.useState(open);
 
@@ -39,7 +43,7 @@ export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
   }, [open]);
 
   useEffect(() => {
-    if (!internalOpen){
+    if (!internalOpen) {
 
     }
   }, [internalOpen]);
