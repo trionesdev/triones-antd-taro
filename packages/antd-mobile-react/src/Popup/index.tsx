@@ -1,4 +1,4 @@
-import {Popup,PopupProps} from "@trionesdev/antd-mobile-base-react";
+import {Popup,PopupProps} from "./popup";
 
 export type {PopupProps}
 export default Popup;

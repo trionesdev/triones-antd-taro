@@ -75,10 +75,6 @@ export type {NoticeBarProps} from './NoticeBar';
 export {default as PageIndicator} from './PageIndicator';
 export type {PageIndicatorProps} from './PageIndicator';
 
-
-export {default as Popup,PopupModal} from './Popup';
-export type {PopupProps} from './Popup';
-
 export {default as Progress} from './Progress';
 export type {ProgressProps} from './Progress';
 
