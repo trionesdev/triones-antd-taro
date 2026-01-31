@@ -9,5 +9,12 @@ $trionesOverlayCls: 'triones-antm-overlay';
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, .55);
-  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; // 初始状态不可点击
+  
+  &-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
