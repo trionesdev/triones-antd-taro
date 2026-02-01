@@ -81,7 +81,7 @@ export const CascaderPopup: FC<CascaderPopupProps> = React.memo(
       <Popup
         open={open}
         onClose={handleClose}
-        maskClosable={true}
+        overlayClosable={true}
         styles={{
           body: {
             borderTopLeftRadius: 6,

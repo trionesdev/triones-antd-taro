@@ -1,11 +1,10 @@
 import {FC, memo, useEffect, useMemo, useRef, useState} from "react";
 import classNames from "classnames";
 import React from "react";
-
 import "./style.scss"
-import Mask from "../Mask";
-import {CheckOutline, CloseOutline} from "../../../antd-mobile-icons-react";
 import {SpinLoading} from "../index";
+import Overlay from "../Overlay";
+import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 
 const toastCls = "triones-antm-toast";
 
@@ -89,7 +88,7 @@ export const ToastModal: FC<ToastModalProps> = memo(({
   }, [position])
 
 
-  return <Mask className={maskClassName} open={internalOpen} onMaskClick={() => {
+  return <Overlay className={maskClassName} open={internalOpen} onClick={() => {
     if (maskClosable) {
       setInternalOpen(false)
     }
@@ -106,5 +105,5 @@ export const ToastModal: FC<ToastModalProps> = memo(({
         </div>
       </div>
     </div>
-  </Mask>
+  </Overlay>
 })

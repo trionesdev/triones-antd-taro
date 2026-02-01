@@ -1,7 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Button from "../../Button";
-import {CascaderPopup} from "@trionesdev/antd-mobile-base-react";
+import {CascaderPopup} from "../cascader-popup";
 
 export default () => {
   const [open, setOpen] = React.useState(false);

@@ -3,13 +3,13 @@ import classNames from "classnames";
 import React from "react";
 
 import "./style.scss"
-import Mask from "../Mask";
-import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 import {SpinLoading} from "../index";
+import Overlay from "../Overlay";
+import {CheckOutline, CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 
 const toastCls = "triones-antm-toast";
 
-export type ToastModalProps = {
+export type ToastProps = {
   open?: boolean,
   maskClosable?: boolean
   content?: React.ReactNode
@@ -23,7 +23,7 @@ export type ToastModalProps = {
   afterOpenChange?: (open: boolean) => void
   onDestroy?: () => void;
 }
-export const ToastModal: FC<ToastModalProps> = memo(({
+export const Toast: FC<ToastProps> = memo(({
                                                        open,
                                                        maskClosable = true,
                                                        content,
@@ -89,7 +89,7 @@ export const ToastModal: FC<ToastModalProps> = memo(({
   }, [position])
 
 
-  return <Mask className={maskClassName} open={internalOpen} onMaskClick={() => {
+  return <Overlay className={maskClassName} open={internalOpen} onClick={() => {
     if (maskClosable) {
       setInternalOpen(false)
     }
@@ -106,5 +106,5 @@ export const ToastModal: FC<ToastModalProps> = memo(({
         </div>
       </div>
     </div>
-  </Mask>
+  </Overlay>
 })

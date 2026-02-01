@@ -54,9 +54,6 @@ export type {IndexedStackProps} from './IndexedStack';
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
 
-export {default as Mask} from "./Mask"
-export type {MaskProps} from "./Mask"
-
 export {default as NavBar} from './NavBar';
 export type {NavBarProps} from './NavBar';
 
@@ -101,10 +98,6 @@ export type {TabBarProps} from './TabBar';
 
 export {default as Tag} from './Tag';
 export type {TagProps} from './Tag';
-
-export {default as Toast} from './Toast';
-export type {ToastProps} from './Toast';
-
 
 export {default as Tabs} from './Tabs';
 export type {TabsProps} from './Tabs';
