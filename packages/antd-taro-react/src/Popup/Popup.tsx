@@ -29,6 +29,9 @@ export type PopupProps = {
   safeArea?: boolean;
   zIndex?: number;
   styles?: {
+    overlay?: React.CSSProperties;
+    container?: React.CSSProperties;
+    header?: React.CSSProperties;
     title?: React.CSSProperties;
     body?: React.CSSProperties;
   };
@@ -52,6 +55,7 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                  safeArea = true,
                                                                  zIndex,
                                                                  children,
+                                                                 styles
                                                                }) => {
   const [internalOpen, setInternalOpen] = useState(open || false);
   const handleClose = () => {
@@ -72,8 +76,12 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
     {closable && (<div className={classNames(`${cls}-close`, `${cls}-close-${closeIconPosition}`)}
                        onClick={handleClose}>{closeIcon ||
       <CloseOutline/>}</div>)}
-    {title && <div className={`${cls}-title`}>{title}</div>}
-    {children}
+    {title && <div className={`${cls}-header`} style={styles?.header}>
+      <div className={`${cls}-title`} style={styles?.title}>{title}</div>
+    </div>}
+    <div className={`${cls}-body`} style={styles?.body}>
+      {children}
+    </div>
   </>
 
   return (
@@ -82,11 +90,12 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
       onClose={handleClose}
       closeOnOverlayClick={overlayClosable}
       zIndex={zIndex}
-      className={classNames(`${cls}-root`, `${cls}-${position}`)}
+      className={classNames(`${cls}-overlay`, `${cls}-${position}`)}
       afterClose={afterClose}
       afterOpenChange={afterOpenChange}
+      style={styles?.overlay}
     >
-      <View className={classNames(cls, {[`${cls}-round`]: round})}>
+      <View className={classNames(`${cls}-container`, {[`${cls}-round`]: round})} style={styles?.container}>
         {['top', 'bottom', 'left', 'right'].includes(position) ? <SafeArea>{popupInner}</SafeArea> : popupInner}
       </View>
     </Overlay>

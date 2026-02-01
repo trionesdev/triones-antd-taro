@@ -3,17 +3,20 @@
 $trionesPopupCls: 'triones-antm-popup';
 
 .#{$trionesPopupCls} {
-  &-root {
+  &-overlay {
     display: flex;
 
     .#{$trionesPopupCls} {
-      position: relative;
-      background-color: white;
-
-      &-title {
-        text-align: center;
+      &-container{
+        position: relative;
+        background-color: white;
+      }
+      &header{
         padding-block: variable.$trionesPaddingContentVertical;
         padding-inline: variable.$trionesPaddingContentHorizontal;
+      }
+      &-title {
+        text-align: center;
       }
 
       &-close {
@@ -38,9 +41,11 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-start;
 
     .#{$trionesPopupCls} {
-      width: 100%;
-      min-height: 20%;
-      max-height: 90%;
+      &-container{
+        width: 100%;
+        min-height: 20%;
+        max-height: 90%;
+      }
 
       &-round {
         border-bottom-left-radius: variable.$trionesBorderRadius;
@@ -55,9 +60,11 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-end;
 
     .#{$trionesPopupCls} {
-      width: 100%;
-      min-height: 20%;
-      max-height: 90%;
+      &-container{
+        width: 100%;
+        min-height: 20%;
+        max-height: 90%;
+      }
 
       &-round {
         border-top-left-radius: variable.$trionesBorderRadius;
@@ -71,9 +78,11 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-start;
 
     .#{$trionesPopupCls} {
-      height: 100%;
-      min-width: 20%;
-      max-width: 90%;
+      &-container{
+        height: 100%;
+        min-width: 20%;
+        max-width: 90%;
+      }
 
       &-round {
         border-top-right-radius: variable.$trionesBorderRadius;
@@ -88,9 +97,11 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-end;
 
     .#{$trionesPopupCls} {
-      height: 100%;
-      min-width: 20%;
-      max-width: 90%;
+      &-container{
+        height: 100%;
+        min-width: 20%;
+        max-width: 90%;
+      }
 
       &-round {
         border-top-left-radius: variable.$trionesBorderRadius;
