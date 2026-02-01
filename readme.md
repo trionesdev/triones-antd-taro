@@ -51,6 +51,7 @@
   - [x] CascaderPicker 级联选择器
   - [x] Cell 单元格
   - [x] Checkbox 复选框
+  - [x] DatePicker 日期选择器
   - [x] Form 表单
   - [x] ImagesWall 图片墙
   - [x] Input 输入框
