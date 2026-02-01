@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-taro-react",
-  "version": "0.0.2-beta.7",
+  "version": "0.0.2-beta.8",
   "description": "antd taro react",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@tarojs/components": "^4.1.8",
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.7",
+    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.8",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.19",
     "rc-field-form": "^2.7.0",
