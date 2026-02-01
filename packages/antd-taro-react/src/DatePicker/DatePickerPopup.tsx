@@ -54,9 +54,6 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
   const hasMinute = cleanFormat?.includes('m')
   const hasSecond = cleanFormat?.includes('s')
 
-  console.log("format", format)
-  console.log("hasYear",hasYear,"hasMouth",hasMouth,"hasDate",hasDate,"hasHour",hasHour,"hasMinute",hasMinute,"hasSecond",hasSecond)
-
   const {locale} = ConfigProvider.useConfig();
   const [internalValue, setInternalValue] = useState<InternalValueType>({
     year: value?.year() || dayjs().year(),
@@ -74,7 +71,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
   const seconds = Array.from({length: 60}, (_, i) => i)
 
   useEffect(() => {
-    const startYear = new Date().getFullYear() + 30 - 100;
+    const startYear = dayjs().year() + 30 - 100;
     setYears(Array.from({length: 100}, (_, i) => startYear + i))
   }, [internalValue.year])
 
@@ -172,7 +169,6 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
   }
 
   const handleValueChange = (value: any[]) => {
-    console.log("value", value)
     const changedValue: InternalValueType = {...internalValue}
     if (mode === 'date') {
       changedValue.year = value[0]
@@ -187,8 +183,6 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
       changedValue.minute = value[1]
     }
     if (!isEqual(internalValue, changedValue)) {
-      console.log("internalValue", internalValue)
-      console.log("dateValue", changedValue)
       setInternalValue(changedValue)
     }
   }
