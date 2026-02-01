@@ -1,5 +1,5 @@
-import {PopupProps} from "@trionesdev/antd-mobile-base-react";
-import {Popup} from "./Popup"
+import {Popup,PopupProps} from "./Popup"
+import "./style.scss"
 
 export type {PopupProps}
 export default Popup;

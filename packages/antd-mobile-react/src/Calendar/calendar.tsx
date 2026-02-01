@@ -4,6 +4,7 @@ import { CalendarHeader } from './calendar-header';
 import './style.scss';
 import { TouchableCalendarGrid } from './touchable-calendar-grid';
 import {CalendarGrid} from "./calendar-grid";
+import {cloneDeep} from "lodash-es";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -41,7 +42,7 @@ export const Calendar = memo(
           ) : (
             <CalendarGrid
               mouth={currentMouth}
-              value={value ? [value] : []}
+              value={value ? [cloneDeep(value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}

@@ -219,9 +219,9 @@ const SideBarContent: FC<SideBarContentProps> = memo(({ tabKey, content }) => {
             const reactiveOffsetBottom = await computeReactiveOffsetBottom();
 
             // 获取视口高度
-            const viewportHeight = isTaroEnv
+            const viewportHeight = isTaroWeApp
               ? await new Promise<number>((resolve) => {
-                  Taro.getSystemInfo().then((res) => resolve(res.windowHeight));
+                  Taro.getSystemInfo?.().then((res) => resolve(res.windowHeight));
                 })
               : window.innerHeight || 667;
 

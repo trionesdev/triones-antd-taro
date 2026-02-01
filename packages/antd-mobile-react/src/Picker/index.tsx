@@ -1,4 +1,4 @@
-import {Picker, PickerProps} from "@trionesdev/antd-mobile-base-react"
+import {Picker, PickerProps} from "./picker"
 
 export type {
     PickerProps,

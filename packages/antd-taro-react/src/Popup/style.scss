@@ -1,0 +1,114 @@
+@use "../style/variable" as variable;
+
+$trionesPopupCls: 'triones-antm-popup';
+
+.#{$trionesPopupCls} {
+  &-root {
+    display: flex;
+
+    .#{$trionesPopupCls} {
+      position: relative;
+      background-color: white;
+
+      &-title {
+        text-align: center;
+        padding-block: variable.$trionesPaddingContentVertical;
+        padding-inline: variable.$trionesPaddingContentHorizontal;
+      }
+
+      &-close {
+        position: absolute;
+
+        &-top-right {
+          top: variable.$trionesPaddingContentVertical;
+          right: variable.$trionesPaddingContentHorizontal;
+        }
+
+        &-top-left {
+          top: variable.$trionesPaddingContentVertical;
+          left: variable.$trionesPaddingContentHorizontal;
+        }
+      }
+    }
+  }
+
+  &-top {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .#{$trionesPopupCls} {
+      width: 100%;
+      min-height: 20%;
+      max-height: 90%;
+
+      &-round {
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-bottom {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .#{$trionesPopupCls} {
+      width: 100%;
+      min-height: 20%;
+      max-height: 90%;
+
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-top-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-left {
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .#{$trionesPopupCls} {
+      height: 100%;
+      min-width: 20%;
+      max-width: 90%;
+
+      &-round {
+        border-top-right-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+
+  &-right {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .#{$trionesPopupCls} {
+      height: 100%;
+      min-width: 20%;
+      max-width: 90%;
+
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-center {
+    justify-content: center;
+    align-items: center;
+
+    .#{$trionesPopupCls} {
+      &-round {
+        border-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+
+}

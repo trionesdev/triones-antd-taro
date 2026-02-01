@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import './style.scss';
-import { SizeType } from '../types';
+import {SizeType} from '../types';
 
 export type AvatarProps = {
   alt?: string;
@@ -10,20 +10,24 @@ export type AvatarProps = {
   size?: SizeType | number;
   src?: string | React.ReactNode;
   srcSet?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 };
 
 export const Avatar: React.FC<AvatarProps> = ({
-  alt,
-  icon,
-  shape = 'circle',
-  size = 32,
-  src,
-  srcSet,
-  style,
-  children,
-}) => {
+                                                alt,
+                                                icon,
+                                                shape = 'circle',
+                                                size = 32,
+                                                src,
+                                                srcSet,
+                                                onClick,
+                                                className,
+                                                style,
+                                                children,
+                                              }) => {
   const clsPrefix = 'triones-antm-avatar';
 
   const avatarSize = useMemo(() => {
@@ -41,13 +45,14 @@ export const Avatar: React.FC<AvatarProps> = ({
     <div
       className={classNames(clsPrefix, {
         [`${clsPrefix}-${shape !== 'square' ? 'circle' : 'square'}`]: true,
-      })}
+      }, className)}
       style={{
         width: avatarSize,
         height: avatarSize,
         backgroundColor: src ? undefined : '#ccc',
         ...style,
       }}
+      onClick={onClick}
     >
       {src ? (
         typeof src === 'string' ? (

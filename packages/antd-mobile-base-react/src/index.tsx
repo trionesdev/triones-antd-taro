@@ -1,8 +1,5 @@
 import './style';
 
-export {default as ActionSheet} from "./ActionSheet"
-export type {ActionSheetProps} from './ActionSheet';
-
 export {default as Alert} from './Alert';
 export type {AlertProps} from './Alert';
 
@@ -14,9 +11,6 @@ export type {BadgeFill, BadgeProps} from './Badge';
 
 export {default as Card} from './Card';
 export type {CardProps} from './Card';
-
-export {default as CascaderPicker} from './CascaderPicker';
-export type {CascaderPickerProps} from './CascaderPicker';
 
 export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';
@@ -54,11 +48,11 @@ export type { FormProps, FormLayout, FormLayoutAlign,FormItemLayout} from './For
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
 
+export {default as IndexedStack} from './IndexedStack';
+export type {IndexedStackProps} from './IndexedStack';
+
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
-
-export {default as Mask} from "./Mask"
-export type {MaskProps} from "./Mask"
 
 export {default as NavBar} from './NavBar';
 export type {NavBarProps} from './NavBar';
@@ -68,15 +62,6 @@ export type {NoticeBarProps} from './NoticeBar';
 
 export {default as PageIndicator} from './PageIndicator';
 export type {PageIndicatorProps} from './PageIndicator';
-
-export {default as Picker} from './Picker';
-export type {PickerProps} from './Picker';
-
-export {default as PickerView} from './PickerView';
-export type {PickerViewProps, PickerColumnOption} from './PickerView';
-
-export {default as Popup,PopupModal} from './Popup';
-export type {PopupProps} from './Popup';
 
 export {default as Progress} from './Progress';
 export type {ProgressProps} from './Progress';
@@ -96,12 +81,6 @@ export type {SafeAreaProps} from './SafeArea';
 export {default as Scaffold} from './Scaffold';
 export type {ScaffoldProps} from './Scaffold';
 
-export {default as ScrollView} from './ScrollView';
-export type {ScrollViewProps} from './ScrollView';
-
-export {default as SideBar} from './SideBar';
-export type {SideBarProps} from './SideBar';
-
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
@@ -119,10 +98,6 @@ export type {TabBarProps} from './TabBar';
 
 export {default as Tag} from './Tag';
 export type {TagProps} from './Tag';
-
-export {default as Toast} from './Toast';
-export type {ToastProps} from './Toast';
-
 
 export {default as Tabs} from './Tabs';
 export type {TabsProps} from './Tabs';

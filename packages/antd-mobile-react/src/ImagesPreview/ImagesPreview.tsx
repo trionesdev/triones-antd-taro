@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {FC} from "react";
-import Mask from "../Mask";
 import classNames from "classnames";
 import {Swiper,Image} from "../index"
 import "./style.scss"
+import Overlay from "../Overlay";
 
 const cls = 'triones-antm-image-preview';
 
@@ -44,7 +44,7 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
     setInnerActiveIndex(activeIndex);
   }, [activeIndex]);
 
-  return <Mask open={innerOpen}>
+  return <Overlay open={innerOpen}>
     <div className={classNames(cls, className)} onClick={() => {
       setInnerOpen(false)
     }}>
@@ -67,5 +67,5 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
                 })}/>
       </div>
     </div>
-  </Mask>;
+  </Overlay>;
 }

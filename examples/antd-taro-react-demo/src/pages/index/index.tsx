@@ -119,11 +119,51 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/calendar-picker/index",
+                url: "/pages/calendar-datetime-popup/index",
               });
             }}
           >
-            Calendar 日历选择器
+            CalendarDatetimePopup 日历时间选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/calendar-popup/index",
+              });
+            }}
+          >
+            CalendarPopup 日历选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-picker/index",
+              });
+            }}
+          >
+            CascaderPicker 级联选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-popup/index",
+              });
+            }}
+          >
+            CascaderPopup 级联选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-view/index",
+              });
+            }}
+          >
+            CascaderView
           </Button>
           <Button
             block={true}
@@ -144,6 +184,16 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             Checkbox 复选框
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/date-picker/index",
+              });
+            }}
+          >
+            DatePicker 日期选择器
           </Button>
           <Button
             block={true}
@@ -259,26 +309,7 @@ class Index extends Component<PropsWithChildren> {
             Form
           </Button>
 
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/cascader-picker/index",
-              });
-            }}
-          >
-            CascaderPicker 级联选择器
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/cascader-view/index",
-              });
-            }}
-          >
-            CascaderView
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -313,11 +344,31 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/overlay/index",
+              });
+            }}
+          >
+            Overlay 遮罩层
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/picker/index",
               });
             }}
           >
             Picker 选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/picker-view/index",
+              });
+            }}
+          >
+            PickerView 选择器视图
           </Button>
           <Button
             block={true}

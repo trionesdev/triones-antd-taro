@@ -1,7 +1,6 @@
-import {
-  ScrollView,
-  ScrollViewProps,
-} from '@trionesdev/antd-mobile-base-react';
+import {ScrollView} from "./scroll-view"
+import type {ScrollViewProps} from "./types"
 
-export type { ScrollViewProps };
-export default ScrollView;
+export type {ScrollViewProps}
+
+export default ScrollView

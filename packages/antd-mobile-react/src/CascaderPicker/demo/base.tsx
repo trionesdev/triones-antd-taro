@@ -2,6 +2,7 @@ import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Button from "../../Button";
 import CascaderPicker from "../index";
+import Cell from "../../Cell";
 
 export default () => {
   const [open, setOpen] = React.useState(false);
@@ -73,17 +74,11 @@ export default () => {
   ]
   return <>
     <DemoBlock title={`基本使用`}>
-      <CascaderPicker open={open}
-                      options={options} onOk={(value) => {
-        console.log(value);
-      }} style={{height: 300}} onClose={() => {
-        setOpen(false)
-      }}/>
-      <Button block={true} onClick={() => {
-        setOpen(true);
-      }}>
-        级联选择
-      </Button>
+      <Cell label={'Label'} wrapperAlign={`right`}>
+        <CascaderPicker
+          options={options}  />
+      </Cell>
+
     </DemoBlock>
   </>
 }

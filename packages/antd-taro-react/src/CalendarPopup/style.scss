@@ -1,0 +1,32 @@
+@use "../style/variable" as variable;
+
+$calendarPopupCls: 'triones-antm-calendar-popup';
+
+.#{$calendarPopupCls} {
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+    padding: 4Px;
+    &-button {
+      padding: 8Px 12Px;
+
+      &-cancel{
+        color: variable.$trionesColorTextSecondary;
+      }
+
+      &-ok {
+        color: variable.$trionesColorPrimary;
+      }
+    }
+
+
+  }
+
+  &-body {
+    pointer-events: unset;
+  }
+}

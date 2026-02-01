@@ -1,5 +1,5 @@
-import {CalendarDatetimePicker,CalendarDatetimePickerProps} from "./CalendarDatetimePicker"
+import {CalendarDatetimePicker,CalendarDatetimePopupProps} from "./CalendarDatetimePicker"
 
-export type {CalendarDatetimePickerProps}
+export type {CalendarDatetimePopupProps}
 
 export default CalendarDatetimePicker;
