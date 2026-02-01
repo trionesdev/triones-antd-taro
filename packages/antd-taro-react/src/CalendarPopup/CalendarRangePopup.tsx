@@ -59,6 +59,7 @@ export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
 
     return <Popup
       open={innerOpen}
+      round={true}
       onClose={() => {
         setInnerOpen(false);
         onClose?.();

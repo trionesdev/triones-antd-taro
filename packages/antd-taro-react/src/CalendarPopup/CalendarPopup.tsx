@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FC, memo, useEffect, useRef } from 'react';
+import React, {FC, memo, useEffect, useRef} from 'react';
 import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
@@ -7,8 +7,8 @@ import './style.scss';
 import {CalendarPopupProps, cls} from './types';
 
 export const CalendarPopup: FC<CalendarPopupProps> = memo(
-  ({ mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose }) => {
-    const { locale } = ConfigProvider.useConfig();
+  ({mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose}) => {
+    const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();
 
@@ -51,6 +51,7 @@ export const CalendarPopup: FC<CalendarPopupProps> = memo(
     return (
       <Popup
         open={innerOpen}
+        round={true}
         onClose={() => {
           setInnerOpen(false);
           onClose?.();

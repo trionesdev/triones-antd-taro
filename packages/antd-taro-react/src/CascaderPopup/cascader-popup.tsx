@@ -80,6 +80,7 @@ export const CascaderPopup: FC<CascaderPopupProps> = React.memo(
     return (
       <Popup
         open={open}
+        round={true}
         onClose={handleClose}
         overlayClosable={true}
         styles={{

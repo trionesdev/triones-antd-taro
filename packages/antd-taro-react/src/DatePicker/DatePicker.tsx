@@ -13,6 +13,8 @@ export type DatePickerPops = {
   align?: 'left' | 'right' | 'center';
   mode?: Mode
   showTime?: boolean
+  minDate?: dayjs.Dayjs,
+  maxDate?: dayjs.Dayjs
 }
 
 export const DatePicker: FC<DatePickerPops> = ({
@@ -22,7 +24,9 @@ export const DatePicker: FC<DatePickerPops> = ({
                                                  onChange,
                                                  align = 'left',
                                                  mode = 'date',
-                                                 showTime = false
+                                                 showTime = false,
+                                                 minDate,
+                                                 maxDate
                                                }) => {
 
   const [innerOpen, setInnerOpen] = React.useState(false);
@@ -64,6 +68,8 @@ export const DatePicker: FC<DatePickerPops> = ({
       mode={mode}
       format={format}
       showTime={showTime}
+      minDate={minDate}
+      maxDate={maxDate}
       value={internalValue}
       onOk={(value) => {
         setInternalValue(value)

@@ -129,6 +129,9 @@ importers:
       babel-preset-taro:
         specifier: 4.1.8
         version: 4.1.8(@babel/core@7.28.3)(@babel/plugin-transform-typescript@7.28.0(@babel/core@7.28.3))(@babel/preset-react@7.27.1(@babel/core@7.28.3))(@swc/helpers@0.5.15)(react-refresh@0.11.0)
+      dayjs:
+        specifier: ^1.11.19
+        version: 1.11.19
       eslint:
         specifier: ^8.12.0
         version: 8.57.1
@@ -305,8 +308,8 @@ importers:
         specifier: ^13.0.3
         version: 13.3.0(enquirer@2.3.6)
       lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
+        specifier: ^4.17.23
+        version: 4.17.23
       prettier:
         specifier: ^3.4.2
         version: 3.6.2
@@ -409,8 +412,8 @@ importers:
         specifier: ^4.6.9
         version: 4.6.10(@babel/core@7.28.3)(@types/node@18.19.123)(@types/webpack@5.28.5(@swc/core@1.9.2(@swc/helpers@0.5.15)))(styled-components@6.1.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(type-fest@2.19.0)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15)))
       lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
+        specifier: ^4.17.23
+        version: 4.17.23
     optionalDependencies:
       '@trionesdev/antd-mobile-base-react':
         specifier: workspace:*
@@ -7815,6 +7818,9 @@ packages:
 
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+
+  lodash-es@4.17.23:
+    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
 
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
@@ -21113,6 +21119,8 @@ snapshots:
       p-locate: 6.0.0
 
   lodash-es@4.17.21: {}
+
+  lodash-es@4.17.23: {}
 
   lodash.camelcase@4.3.0: {}
 

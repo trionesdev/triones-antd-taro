@@ -134,6 +134,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   return (
     <Popup
       open={open}
+      round={true}
       onClose={() => {
         onClose?.();
       }}

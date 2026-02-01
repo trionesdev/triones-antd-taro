@@ -63,24 +63,52 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
     minute: value?.minute() || dayjs().minute(),
     second: value?.second() || dayjs().second(),
   })
-  const [years, setYears] = useState<any[]>([])
-  const mouths = Array.from({length: 12}, (_, i) => i + 1)
-  const [days, setDays] = useState<any[]>([])
+
+
+  const years = useMemo(() => {
+    if (minDate && maxDate) {
+      return Array.from({length: maxDate.year() - minDate.year() + 1}, (_, i) => minDate.year() + i)
+    }
+    if (minDate) {
+      return Array.from({length: dayjs().year() - minDate.year() + 1}, (_, i) => minDate.year() + i)
+    }
+    if (maxDate) {
+      return Array.from({length: maxDate.year() - dayjs().year() + 1}, (_, i) => dayjs().year() + i)
+    }
+    const startYear = dayjs().year() + 30 - 100;
+    return Array.from({length: 100}, (_, i) => startYear + i)
+  }, [internalValue.year, minDate, maxDate])
+
+  const mouths = useMemo(() => {
+    let start = 0
+    let end = 11
+    if (minDate && minDate.year() === internalValue.year) {
+      start = minDate.month()
+    }
+    if (maxDate && maxDate.year() === internalValue.year) {
+      end = maxDate.month()
+    }
+    return Array.from({length: end - start + 1}, (_, i) => start + i + 1)
+  }, [internalValue.year, minDate, maxDate])
+
+
+  const days = useMemo(() => {
+    let start = 1
+    let end = dayjs().year(internalValue.year || dayjs().year()).month((internalValue.mouth || 1) - 1).daysInMonth()
+
+    if (minDate && minDate.year() === internalValue.year && minDate.month() + 1 === internalValue.mouth) {
+      start = minDate.date()
+    }
+    if (maxDate && maxDate.year() === internalValue.year && maxDate.month() + 1 === internalValue.mouth) {
+      end = maxDate.date()
+    }
+    return Array.from({length: end - start + 1}, (_, i) => start + i)
+  }, [internalValue.year, internalValue.mouth, minDate, maxDate])
+
   const hours = Array.from({length: 24}, (_, i) => i)
   const minutes = Array.from({length: 60}, (_, i) => i)
   const seconds = Array.from({length: 60}, (_, i) => i)
 
-  useEffect(() => {
-    const startYear = dayjs().year() + 30 - 100;
-    setYears(Array.from({length: 100}, (_, i) => startYear + i))
-  }, [internalValue.year])
-
-  useEffect(() => {
-    setDays(Array.from(
-      {length: new Date(internalValue.year || new Date().getFullYear(), internalValue.mouth || 1, 0).getDate()},
-      (_, i) => i + 1
-    ))
-  }, [internalValue.year, internalValue.mouth]);
 
   const columns: any[] = useMemo(() => {
 
@@ -129,13 +157,13 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
       return dateColumns
     } else if (mode === 'time') {
       const timeColumns = [];
-      if (!format){
+      if (!format) {
         timeColumns.push(
           hours.map((v) => ({label: `${v}时`, value: v})),
           minutes.map((v) => ({label: `${v}分`, value: v})),
           seconds.map((v) => ({label: `${v}秒`, value: v})),
         )
-      }else {
+      } else {
         if (hasHour) {
           timeColumns.push(
             hours.map((v) => ({label: `${v}时`, value: v})),
@@ -238,7 +266,7 @@ const DatePickerPopup: FC<DatePickerPopupPops> = ({
     }
   }, [internalValue])
 
-  return <Popup open={open} onClose={onClose}>
+  return <Popup open={open} onClose={onClose} round={true}>
     <div className={classNames(`${cls}`)}>
       <div className={classNames(`${cls}-header`)}>
         <a
