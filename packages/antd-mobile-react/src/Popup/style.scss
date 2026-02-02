@@ -1,51 +1,129 @@
 @use "../style/variable" as variable;
-$popupCls: 'triones-antm-popup';
 
-.#{$popupCls} {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+$trionesPopupCls: 'triones-antm-popup';
 
-  &-mask {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, .55);
-  }
+.#{$trionesPopupCls} {
+  &-overlay {
+    display: flex;
 
-  &-close {
-    position: absolute;
-    right: 10Px;
-    top: 10Px;
-  }
+    .#{$trionesPopupCls} {
+      &-container {
+        position: relative;
+        background-color: white;
 
-  &-body {
-    background-color: white;
-    position: fixed;
+        .#{$trionesPopupCls} {
+          &-header {
+            padding-block: variable.$trionesPaddingContentVertical;
+            padding-inline: variable.$trionesPaddingContentHorizontal;
+          }
+        }
+      }
+
+      &-title {
+        text-align: center;
+      }
+
+      &-close {
+        position: absolute;
+
+        &-top-right {
+          top: variable.$trionesPaddingContentVertical;
+          right: variable.$trionesPaddingContentHorizontal;
+        }
+
+        &-top-left {
+          top: variable.$trionesPaddingContentVertical;
+          left: variable.$trionesPaddingContentHorizontal;
+        }
+      }
+    }
   }
 
   &-top {
-    top: 0;
-    left: 0;
-    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .#{$trionesPopupCls} {
+      &-container {
+        width: 100%;
+        min-height: 20%;
+        max-height: 90%;
+      }
+
+      &-round {
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
   }
 
   &-bottom {
-    bottom: 0;
-    left: 0;
-    right: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .#{$trionesPopupCls} {
+      &-container {
+        width: 100%;
+        min-height: 20%;
+        max-height: 90%;
+      }
+
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-top-right-radius: variable.$trionesBorderRadius;
+      }
+    }
   }
 
   &-left {
-    left: 0;
-    top: 0;
-    bottom: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .#{$trionesPopupCls} {
+      &-container {
+        height: 100%;
+        min-width: 20%;
+        max-width: 90%;
+      }
+
+      &-round {
+        border-top-right-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
   }
 
+
   &-right {
-    right: 0;
-    top: 0;
-    bottom: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .#{$trionesPopupCls} {
+      &-container {
+        height: 100%;
+        min-width: 20%;
+        max-width: 90%;
+      }
+
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+      }
+    }
   }
+
+  &-center {
+    justify-content: center;
+    align-items: center;
+
+    .#{$trionesPopupCls} {
+      &-round {
+        border-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+
 }

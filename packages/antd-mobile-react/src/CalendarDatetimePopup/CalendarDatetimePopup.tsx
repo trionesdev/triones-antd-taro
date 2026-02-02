@@ -119,6 +119,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
     <Popup
       open={open}
       onClose={onClose}
+      round={true}
     >
       <div className={classNames(cls)}>
         <div className={`${cls}-header`}>
