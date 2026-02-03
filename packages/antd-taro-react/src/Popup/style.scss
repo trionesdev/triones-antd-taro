@@ -10,11 +10,14 @@ $trionesPopupCls: 'triones-antm-popup';
       &-container{
         position: relative;
         background-color: white;
+        .#{$trionesPopupCls} {
+          &-header {
+            padding-block: variable.$trionesPaddingContentVertical;
+            padding-inline: variable.$trionesPaddingContentHorizontal;
+          }
+        }
       }
-      &header{
-        padding-block: variable.$trionesPaddingContentVertical;
-        padding-inline: variable.$trionesPaddingContentHorizontal;
-      }
+
       &-title {
         text-align: center;
       }
