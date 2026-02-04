@@ -20,7 +20,11 @@ const PopupBase = () => {
              closable={true}
              afterClose={() => {
                setDefaultOpen(false);
-             }}>
+             }}
+             onClose={() => {
+               setDefaultOpen(false)
+             }}
+      >
         <View style={{minHeight: "200px"}}>
           基础弹窗
         </View>
@@ -30,7 +34,7 @@ const PopupBase = () => {
       }}>基础弹窗</Button>
     </DemoBlock>
     <DemoBlock title="弹出位置">
-      <Popup open={topOpen} destroyOnHidden={true} afterClose={() => {
+      <Popup open={topOpen} destroyOnHidden={true} onClose={() => {
         setTopOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>
@@ -41,7 +45,7 @@ const PopupBase = () => {
         setTopOpen(true)
       }}>顶部弹出</Button>
 
-      <Popup open={bottomOpen} position={`bottom`} closable={true} afterClose={() => {
+      <Popup open={bottomOpen} position={`bottom`} closable={true} onClose={() => {
         setBottomOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>
@@ -52,7 +56,7 @@ const PopupBase = () => {
         setBottomOpen(true)
       }}>底部弹出</Button>
 
-      <Popup open={leftOpen} position={`left`} afterClose={() => {
+      <Popup open={leftOpen} position={`left`} onClose={() => {
         setLeftOpen(false);
       }}>
         <View style={{minWidth: "200px"}}>
@@ -62,7 +66,7 @@ const PopupBase = () => {
       <Button block={true} onClick={() => {
         setLeftOpen(true)
       }}>左部弹出</Button>
-      <Popup open={rightOpen} position={`right`} afterClose={() => {
+      <Popup open={rightOpen} position={`right`} onClose={() => {
         setRightOpen(false);
       }}>
         <View style={{minWidth: "200px"}}>
@@ -72,7 +76,7 @@ const PopupBase = () => {
       <Button block={true} onClick={() => {
         setRightOpen(true)
       }}>右部弹出</Button>
-      <Popup open={centerOpen} position={`center`} afterClose={() => {
+      <Popup open={centerOpen} position={`center`} onClose={() => {
         setCenterOpen(false);
       }}>
         <View style={{minWidth: "200px", minHeight: "200px"}}>
@@ -84,7 +88,7 @@ const PopupBase = () => {
       }}>居中弹出</Button>
     </DemoBlock>
     <DemoBlock title={`圆角`}>
-      <Popup open={roundOpen} round={true} afterClose={() => {
+      <Popup open={roundOpen} round={true} onClose={() => {
         setRoundOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>
@@ -96,7 +100,7 @@ const PopupBase = () => {
       }}>圆角弹窗</Button>
     </DemoBlock>
     <DemoBlock title={`关闭图标`}>
-      <Popup open={closeIconOpen} round={true} closable={true} afterClose={() => {
+      <Popup open={closeIconOpen} round={true} closable={true} onClose={() => {
         setCloseIconOpen(false);
       }}>
         <View style={{minHeight: "200px"}}>

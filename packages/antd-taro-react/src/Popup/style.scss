@@ -7,13 +7,20 @@ $trionesPopupCls: 'triones-antm-popup';
     display: flex;
 
     .#{$trionesPopupCls} {
-      &-container{
+      &-container {
         position: relative;
         background-color: white;
+        display: flex;
+        flex-direction: column;
+
         .#{$trionesPopupCls} {
           &-header {
             padding-block: variable.$trionesPaddingContentVertical;
             padding-inline: variable.$trionesPaddingContentHorizontal;
+          }
+
+          &-body {
+            flex: 1;
           }
         }
       }
@@ -44,7 +51,7 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-start;
 
     .#{$trionesPopupCls} {
-      &-container{
+      &-container {
         width: 100%;
         min-height: 20%;
         max-height: 90%;
@@ -63,7 +70,7 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-end;
 
     .#{$trionesPopupCls} {
-      &-container{
+      &-container {
         width: 100%;
         min-height: 20%;
         max-height: 90%;
@@ -81,7 +88,7 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-start;
 
     .#{$trionesPopupCls} {
-      &-container{
+      &-container {
         height: 100%;
         min-width: 20%;
         max-width: 90%;
@@ -100,7 +107,7 @@ $trionesPopupCls: 'triones-antm-popup';
     justify-content: flex-end;
 
     .#{$trionesPopupCls} {
-      &-container{
+      &-container {
         height: 100%;
         min-width: 20%;
         max-width: 90%;

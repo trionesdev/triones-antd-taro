@@ -73,15 +73,7 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
   }, [open]);
 
   const popupInner = <>
-    {closable && (<div className={classNames(`${cls}-close`, `${cls}-close-${closeIconPosition}`)}
-                       onClick={handleClose}>{closeIcon ||
-      <CloseOutline/>}</div>)}
-    {title && <div className={`${cls}-header`} style={styles?.header}>
-      <div className={`${cls}-title`} style={styles?.title}>{title}</div>
-    </div>}
-    <div className={`${cls}-body`} style={styles?.body}>
-      {children}
-    </div>
+
   </>
 
   return (
@@ -96,7 +88,15 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
       style={styles?.overlay}
     >
       <View className={classNames(`${cls}-container`, {[`${cls}-round`]: round})} style={styles?.container}>
-        {['top', 'bottom', 'left', 'right'].includes(position) ? <SafeArea>{popupInner}</SafeArea> : popupInner}
+        {closable && (<div className={classNames(`${cls}-close`, `${cls}-close-${closeIconPosition}`)}
+                           onClick={handleClose}>{closeIcon ||
+          <CloseOutline/>}</div>)}
+        {title && <div className={`${cls}-header`} style={styles?.header}>
+          <div className={`${cls}-title`} style={styles?.title}>{title}</div>
+        </div>}
+        <div className={`${cls}-body`} style={styles?.body}>
+          {children}
+        </div>
       </View>
     </Overlay>
   );
