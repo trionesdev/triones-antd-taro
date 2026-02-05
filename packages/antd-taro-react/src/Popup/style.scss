@@ -3,60 +3,52 @@
 $trionesPopupCls: 'triones-antm-popup';
 
 .#{$trionesPopupCls} {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  touch-action: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
   &-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .55);
+  }
+
+  &-container {
+    position: fixed;
+    overflow: hidden;
+    background-color: white;
     display: flex;
+    flex-direction: column;
+  }
 
-    .#{$trionesPopupCls} {
-      &-container {
-        position: relative;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
 
-        .#{$trionesPopupCls} {
-          &-header {
-            padding-block: variable.$trionesPaddingContentVertical;
-            padding-inline: variable.$trionesPaddingContentHorizontal;
-          }
-
-          &-body {
-            flex: 1;
-          }
-        }
-      }
-
-      &-title {
-        text-align: center;
-      }
-
-      &-close {
-        position: absolute;
-
-        &-top-right {
-          top: variable.$trionesPaddingContentVertical;
-          right: variable.$trionesPaddingContentHorizontal;
-        }
-
-        &-top-left {
-          top: variable.$trionesPaddingContentVertical;
-          left: variable.$trionesPaddingContentHorizontal;
-        }
-      }
-    }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: variable.$trionesPaddingContentVertical;
+    padding-inline: variable.$trionesPaddingContentHorizontal;
   }
 
   &-top {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
 
-    .#{$trionesPopupCls} {
-      &-container {
-        width: 100%;
-        min-height: 20%;
-        max-height: 90%;
-      }
 
+    &.#{$trionesPopupCls} {
       &-round {
         border-bottom-left-radius: variable.$trionesBorderRadius;
         border-bottom-right-radius: variable.$trionesBorderRadius;
@@ -65,17 +57,13 @@ $trionesPopupCls: 'triones-antm-popup';
   }
 
   &-bottom {
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
 
-    .#{$trionesPopupCls} {
-      &-container {
-        width: 100%;
-        min-height: 20%;
-        max-height: 90%;
-      }
 
+    &.#{$trionesPopupCls} {
       &-round {
         border-top-left-radius: variable.$trionesBorderRadius;
         border-top-right-radius: variable.$trionesBorderRadius;
@@ -84,16 +72,12 @@ $trionesPopupCls: 'triones-antm-popup';
   }
 
   &-left {
-    flex-direction: row;
-    justify-content: flex-start;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
 
-    .#{$trionesPopupCls} {
-      &-container {
-        height: 100%;
-        min-width: 20%;
-        max-width: 90%;
-      }
-
+    &.#{$trionesPopupCls} {
       &-round {
         border-top-right-radius: variable.$trionesBorderRadius;
         border-bottom-right-radius: variable.$trionesBorderRadius;
@@ -101,18 +85,13 @@ $trionesPopupCls: 'triones-antm-popup';
     }
   }
 
-
   &-right {
-    flex-direction: row;
-    justify-content: flex-end;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 100%;
 
-    .#{$trionesPopupCls} {
-      &-container {
-        height: 100%;
-        min-width: 20%;
-        max-width: 90%;
-      }
-
+    &.#{$trionesPopupCls} {
       &-round {
         border-top-left-radius: variable.$trionesBorderRadius;
         border-bottom-left-radius: variable.$trionesBorderRadius;
@@ -121,15 +100,17 @@ $trionesPopupCls: 'triones-antm-popup';
   }
 
   &-center {
-    justify-content: center;
-    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
 
-    .#{$trionesPopupCls} {
+    &.#{$trionesPopupCls} {
       &-round {
         border-radius: variable.$trionesBorderRadius;
       }
     }
   }
-
 
 }

@@ -12,6 +12,7 @@ const PopupBase = () => {
   const [centerOpen, setCenterOpen] = React.useState(false);
   const [roundOpen, setRoundOpen] = React.useState(false);
   const [closeIconOpen, setCloseIconOpen] = React.useState(false);
+  const [heightOpen, setHeightOpen] = React.useState(false);
 
   return <View style={{padding: '8px'}}>
     <DemoBlock title={`基本使用`}>
@@ -110,6 +111,18 @@ const PopupBase = () => {
       <Button block={true} onClick={() => {
         setCloseIconOpen(true)
       }}>关闭图标</Button>
+    </DemoBlock>
+    <DemoBlock title={`带高度设置`}>
+      <Popup open={heightOpen} round={true} height={300} closable={true} onClose={() => {
+        setHeightOpen(false);
+      }}>
+        <View>
+          高度300
+        </View>
+      </Popup>
+      <Button block={true} onClick={() => {
+        setHeightOpen(true)
+      }}>带高度设置</Button>
     </DemoBlock>
   </View>
 }
