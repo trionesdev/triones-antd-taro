@@ -1,8 +1,8 @@
-import {RootPortal, View} from "@tarojs/components";
-import React, {PropsWithChildren, useEffect, useState} from "react";
-import {FC} from "react";
+import { RootPortal, View } from "@tarojs/components";
+import React, { PropsWithChildren, useEffect, useState } from "react";
+import { FC } from "react";
 import classNames from "classnames";
-import {ITouchEvent} from "@tarojs/components";
+import { ITouchEvent } from "@tarojs/components";
 
 const cls = 'triones-antm-overlay'
 
@@ -12,6 +12,7 @@ export type OverlayProps = {
   open: boolean;
   zIndex?: number;
   closeOnOverlayClick?: boolean;
+  destroyOnHidden?: boolean;
   onClick?: (e: ITouchEvent) => void;
   onClose?: () => void;
   afterClose?: () => void;
@@ -20,18 +21,19 @@ export type OverlayProps = {
 }
 
 export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
-                                                               children,
-                                                               className,
-                                                               style,
-                                                               open ,
-                                                               zIndex = 1000,
-                                                               closeOnOverlayClick = true,
-                                                               onClick,
-                                                               onClose,
-                                                               afterClose,
-                                                               afterOpenChange,
-                                                               duration = 300,
-                                                             }) => {
+  children,
+  className,
+  style,
+  open,
+  zIndex = 1000,
+  closeOnOverlayClick = true,
+  destroyOnHidden = false,
+  onClick,
+  onClose,
+  afterClose,
+  afterOpenChange,
+  duration = 300,
+}) => {
   const [active, setActive] = useState(false);
   const [render, setRender] = useState(open);
   const [internalOpen, setInternalOpen] = useState(open);
@@ -52,9 +54,12 @@ export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
         setRender(false);
         afterClose?.();
       }, duration);
+      if (destroyOnHidden) {
+        setRender(false);
+      }
       return () => clearTimeout(timer);
     }
-  }, [internalOpen, duration]);
+  }, [internalOpen, duration, destroyOnHidden]);
 
   const handleClick = (e: ITouchEvent) => {
     // 只在点击遮罩层本身时触发，忽略子元素冒泡上来的点击
@@ -68,12 +73,13 @@ export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
   };
 
   useEffect(() => {
-    if ( open == undefined){
+    if (open == undefined) {
       return
     }
     if (open !== internalOpen) {
       setInternalOpen(open);
     }
+
   }, [open]);
 
   if (!render) return null;
@@ -81,9 +87,9 @@ export const Overlay: FC<PropsWithChildren<OverlayProps>> = ({
   return (
     <RootPortal>
       <View
-        className={classNames(cls, {[`${cls}-active`]: active}, className)}
+        className={classNames(cls, { [`${cls}-active`]: active }, className)}
         onClick={handleClick}
-        style={{...style, zIndex, transitionDuration: `${duration}ms`}}
+        style={{ ...style, zIndex, transitionDuration: `${duration}ms` }}
         catchMove={true}
       >
         {children}
