@@ -1,11 +1,12 @@
 @use "../style/variable" as variable;
+
 $tagCls: 'triones-antm-tag';
 
 .#{$tagCls} {
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
   padding: 2Px 8Px;
-  font-size: 11Px;
+  font-size: 12Px;
   line-height: 1.2;
   border-radius: variable.$trionesBorderRadius;
   box-sizing: border-box;
@@ -25,6 +26,7 @@ $tagCls: 'triones-antm-tag';
       background: #666;
       color: #fff;
     }
+
     &.#{$tagCls}-outline {
       color: #666;
       border: 1px solid #666;
@@ -38,6 +40,7 @@ $tagCls: 'triones-antm-tag';
       background: variable.$trionesColorPrimary;
       color: #fff;
     }
+
     &.#{$tagCls}-outline {
       color: variable.$trionesColorPrimary;
       border: 1px solid variable.$trionesColorPrimary;
@@ -51,6 +54,7 @@ $tagCls: 'triones-antm-tag';
       background: variable.$trionesColorSuccess;
       color: #fff;
     }
+
     &.#{$tagCls}-outline {
       color: variable.$trionesColorSuccess;
       border: 1px solid variable.$trionesColorSuccess;
@@ -64,6 +68,7 @@ $tagCls: 'triones-antm-tag';
       background: variable.$trionesColorWarning;
       color: #fff;
     }
+
     &.#{$tagCls}-outline {
       color: variable.$trionesColorWarning;
       border: 1px solid variable.$trionesColorWarning;
@@ -77,10 +82,27 @@ $tagCls: 'triones-antm-tag';
       background: variable.$trionesColorError;
       color: #fff;
     }
+
     &.#{$tagCls}-outline {
       color: variable.$trionesColorError;
       border: 1px solid variable.$trionesColorError;
       background: transparent;
+    }
+  }
+
+  &-icon {
+    margin-inline-end: 4Px;
+
+    .triones-antm-icon {
+      font-size: 10Px;
+    }
+  }
+
+  &-close {
+    margin-inline-start: 4Px;
+
+    .triones-antm-icon {
+      font-size: 10Px;
     }
   }
 }
