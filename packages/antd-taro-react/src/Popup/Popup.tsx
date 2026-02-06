@@ -37,6 +37,7 @@ export type PopupProps = {
    */
   destroyOnHidden?: boolean;
   onClose?: () => void;
+  onBack?: () => void;
   afterClose?: () => void;
   afterOpenChange?: (open: boolean) => void;
   className?: string;
@@ -69,10 +70,9 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                  overlayClosable = true,
                                                                  destroyOnHidden = false,
                                                                  onClose,
+                                                                 onBack,
                                                                  afterClose,
                                                                  afterOpenChange,
-                                                                 className,
-                                                                 style,
                                                                  round = false,
                                                                  zIndex = 998,
                                                                  duration = 300,
@@ -81,10 +81,38 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                }) => {
   const [render, setRender] = useState(open);
   const [internalOpen, setInternalOpen] = useState(open || false);
+
+  const handleBack = () => {
+    setInternalOpen(false);
+    onBack?.();
+  };
+
   const handleClose = () => {
     setInternalOpen(false);
     onClose?.();
   };
+
+  useEffect(() => {
+    if (internalOpen) {
+      setRender(true);
+      afterOpenChange?.(true);
+      const timer = setTimeout(() => {
+
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+
+      afterOpenChange?.(false);
+      const timer = setTimeout(() => {
+        setRender(false);
+        afterClose?.();
+      }, duration);
+      if (destroyOnHidden) {
+        setRender(false);
+      }
+      return () => clearTimeout(timer);
+    }
+  }, [internalOpen])
 
   useEffect(() => {
     if (open === undefined) {
@@ -95,7 +123,7 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
     }
   }, [open]);
 
-
+  if (!render) return null;
   return (
     <RootPortal>
       <View catchMove={true} className={classNames(`${cls}`, {[`${cls}-open`]: internalOpen})}
@@ -111,9 +139,10 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
               style={{...styles?.container, width: width, height: height}}>
 
           {(title || backable || closable) && <div className={`${cls}-header`} style={styles?.header}>
-            <div className={`${cls}-header-back`}>{backIcon || <LeftOutline/>}</div>
-            <div className={`${cls}-header-title`} style={styles?.title}>{title}</div>
-            <div className={`${cls}-header-close`}>{closeIcon || <CloseOutline/>}</div>
+            {backable && <div className={`${cls}-header-back`} onClick={handleBack}>{backIcon || <LeftOutline/>}</div>}
+            {title && <div className={`${cls}-header-title`} style={styles?.title}>{title}</div>}
+            {closable &&
+              <div className={`${cls}-header-close`} onClick={handleClose}>{closeIcon || <CloseOutline/>}</div>}
           </div>}
           <div className={`${cls}-body`} style={styles?.body}>
             {children}
@@ -123,4 +152,3 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
     </RootPortal>
   );
 }
-
