@@ -10,39 +10,40 @@ import React, {
   useState,
 } from 'react';
 import './style.scss';
+import dayjs from "dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarGridProps = {
-  mouth?: Date;
+  mouth?: dayjs.Dayjs;
   /**
    * @description 值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
    */
-  value?: Date[];
+  value?: dayjs.Dayjs[];
   /**
    * @description 默认值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
    */
-  defaultValue?: Date[];
-  onChange?: (value: Date[]) => void;
+  defaultValue?: dayjs.Dayjs[];
+  onChange?: (value: dayjs.Dayjs[]) => void;
   /**
    * @description 是否为范围选择
    */
   range?: boolean;
-  onSelect?: (date: Date) => void;
+  onSelect?: (date: dayjs.Dayjs) => void;
 };
 
 export type CalendarCellProps = {
-  mouth?: Date;
-  date?: Date;
-  value?: Date[];
+  mouth?: dayjs.Dayjs;
+  date?: dayjs.Dayjs;
+  value?: dayjs.Dayjs[];
   range?: boolean;
-  onSelect?: (date: Date) => void;
+  onSelect?: (date: dayjs.Dayjs) => void;
 };
 
 const CalendarCell: FC<CalendarCellProps> = memo(
-  ({ mouth = new Date(), date = new Date(), value, range, onSelect }) => {
+  ({ mouth = dayjs(), date = dayjs(), value, range, onSelect }) => {
     const disabled = useMemo(() => {
-      return date.getMonth() !== mouth.getMonth();
+      return date.month() !== mouth.month();
     }, [date, mouth]);
 
     const selected = useMemo(() => {
@@ -50,23 +51,23 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         return false;
       }
       if (value?.[0]) {
-        value?.[0]?.setHours(0, 0, 0, 0);
+        value?.[0]?.set('h',0);
       }
       if (value?.[1]) {
-        value?.[1]?.setHours(0, 0, 0, 0);
+        value?.[1]?.set('h',0);
       }
 
-      date.setHours(0, 0, 0, 0);
+      date.set('h',0);
       if (range) {
         const startDate = value?.[0];
         const endDate = value?.[1];
 
         return (
-          date.getTime() === startDate?.getTime() ||
-          date.getTime() === endDate?.getTime()
+          date.isSame(startDate) ||
+          date.isSame(endDate)
         );
       } else {
-        return date.getTime() === value?.[0]?.getTime();
+        return date.isSame(value?.[0]);
       }
     }, [mouth, date, value]);
 
@@ -79,12 +80,12 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       if (!startDate || !endDate) {
         return false;
       }
-      date.setHours(0, 0, 0, 0);
-      startDate.setHours(0, 0, 0, 0);
-      endDate.setHours(0, 0, 0, 0);
+      date.set('h',0);
+      startDate.set('h',0);
+      endDate.set('h',0);
       return (
-        date.getTime() > startDate!.getTime() &&
-        date.getTime() < endDate!.getTime()
+        date.isAfter(startDate) &&
+        date.isBefore(endDate)
       );
     }, [mouth, date, value]);
 
@@ -101,12 +102,12 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         }}
       >
         <div className={classNames(`${calendarCls}-cell-date`)}>
-          {date.getDate()}
+          {date.date()}
         </div>
-        {date.getDate() === 1 && (
+        {date.date() === 1 && (
           <div
             className={classNames(`${calendarCls}-cell-mouth`)}
-          >{`${date.getMonth() + 1}月`}</div>
+          >{`${date.month() + 1}月`}</div>
         )}
       </div>
     );
@@ -117,7 +118,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
   forwardRef(
     (
       {
-        mouth = new Date(),
+        mouth = dayjs(),
         value,
         defaultValue,
         range = false,
@@ -128,15 +129,15 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
     ) => {
       const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? []);
 
-      const handleSelect = (date: Date) => {
-        date.setHours(0, 0, 0, 0);
-        let _value: Date[] = innerValue;
+      const handleSelect = (date: dayjs.Dayjs) => {
+        date.set('h',0);
+        let _value: dayjs.Dayjs[] = innerValue;
         if (range) {
           if (!_value[0]) {
             _value = [date];
           } else if (!_value[1]) {
             let startDate = _value[0];
-            if (date.getTime() < startDate.getTime()) {
+            if (date.isBefore(startDate)) {
               _value = [date, startDate];
             } else {
               _value = [startDate, date];
@@ -153,27 +154,28 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       };
 
       const cells = useMemo(() => {
-        const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-        const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-        const beforeDays = Array.from({ length: firstDate.getDay() }).map(
-          (_, index): Date => {
-            const date = new Date(firstDate);
-            date.setDate(firstDate.getDate() - (firstDate.getDay() - index));
+        const firstDate = dayjs(new Date(mouth.year(), mouth.month(), 1));
+        const lastDate = dayjs(new Date(mouth.year(), mouth.month() + 1, 0));
+        const beforeDays = Array.from({ length: firstDate.day() }).map(
+          (_, index): dayjs.Dayjs => {
+            const date = dayjs(firstDate);
+            date.set("date", firstDate.date() - (firstDate.day() - index));
             return date;
           },
         );
 
-        const afterDays = Array.from({ length: 6 - lastDate.getDay() }).map(
-          (_, index): Date => {
-            const date = new Date(lastDate);
-            date.setDate(lastDate.getDate() + index + 1);
+        const afterDays = Array.from({ length: 6 - lastDate.day() }).map(
+          (_, index): dayjs.Dayjs => {
+            const date = dayjs(lastDate);
+            // date.setDate();
+            date.set('date',lastDate.date() + index + 1)
             return date;
           },
         );
-        const mouthDays = Array.from({ length: lastDate.getDate() }).map(
-          (_, index): Date => {
-            const date = new Date(firstDate);
-            date.setDate(date.getDate() + index);
+        const mouthDays = Array.from({ length: lastDate.date() }).map(
+          (_, index): dayjs.Dayjs => {
+            const date = dayjs(firstDate);
+            date.set('date',date.date() + index);
             return date;
           },
         );

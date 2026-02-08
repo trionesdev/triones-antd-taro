@@ -10,13 +10,14 @@ import {DateTimeSwitch} from './DateTimeSwitch';
 import './style.scss';
 import {cls, Mode} from './types';
 import {DatetimeUtils} from "../utils/datetime-utils";
+import dayjs from "dayjs";
 
 
 export type CalendarDatetimePopupProps = {
   open?: boolean;
   afterOpenChange?: (open: boolean) => void;
-  value?: Date;
-  onOk?: (value?: Date) => void;
+  value?: dayjs.Dayjs;
+  onOk?: (value?: dayjs.Dayjs) => void;
   onClose?: () => void;
 };
 
@@ -30,7 +31,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   const {locale} = ConfigProvider.useConfig();
   const {isTaroEnv, isTaroWeApp} = useTaro();
   const [mode, setMode] = useState<Mode>(Mode.date);
-  const valueRef = useRef<any>(value || new Date());
+  const valueRef = useRef<dayjs.Dayjs>(value || dayjs());
   const bodyRef = useRef<any>(null);
   const datetimeSwitchRef = useRef<any>();
   const [bodyHeight, setBodyHeight] = useState(300);
@@ -76,13 +77,13 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
               mouth={value}
               value={value}
               onChange={(date) => {
-                valueRef.current = new Date(
-                  date.getFullYear(),
-                  date.getMonth(),
-                  date.getDate(),
-                  valueRef.current.getHours(),
-                  valueRef.current.getMinutes(),
-                );
+                valueRef.current = dayjs(new Date(
+                  date.year(),
+                  date.month(),
+                  date.date(),
+                  valueRef.current.hour(),
+                  valueRef.current.minute(),
+                ));
                 datetimeSwitchRef.current?.setDatetime(valueRef.current);
               }}
             />
@@ -93,18 +94,18 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
             <PickerView className={`time-picker`} indicatorStyle='height: 32Px;'
                         style={{height: bodyHeight}}
                         value={[
-                          valueRef?.current.getHours(),
-                          valueRef?.current.getMinutes(),
+                          valueRef?.current.hour(),
+                          valueRef?.current.minute(),
                         ]}
                         onChange={(e) => {
                           const v = e.detail.value
-                          valueRef.current = new Date(
-                            valueRef.current.getFullYear(),
-                            valueRef.current.getMonth(),
-                            valueRef.current.getDate(),
+                          valueRef.current = dayjs(new Date(
+                            valueRef.current.year(),
+                            valueRef.current.month(),
+                            valueRef.current.date(),
                             v[0],
                             v[1],
-                          );
+                          ));
                           datetimeSwitchRef.current?.setDatetime(valueRef.current);
                         }}>
               <PickerViewColumn>

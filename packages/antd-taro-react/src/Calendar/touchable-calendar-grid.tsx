@@ -1,16 +1,17 @@
 import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import Taro from '@tarojs/taro'
 import {CalendarGrid} from '../Calendar';
-import { useTaro } from '../hooks/useTaro';
+import { useTaro } from '../hooks';
 import {RandomUtils} from "../utils/random-utils";
 import classNames from "classnames";
+import dayjs from "dayjs";
 
 type CalendarPickerViewProps = {
-  mouth?: Date;
-  value?: Date[];
-  defaultValue?: Date[];
-  onChange?: (value: Date[]) => void;
-  onMouthChange?: (mouth: Date) => void;
+  mouth?: dayjs.Dayjs;
+  value?: dayjs.Dayjs[];
+  defaultValue?: dayjs.Dayjs[];
+  onChange?: (value: dayjs.Dayjs[]) => void;
+  onMouthChange?: (mouth: dayjs.Dayjs) => void;
   range?: boolean
 };
 
@@ -19,7 +20,7 @@ type CalendarPickerViewProps = {
  */
 export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
   ({
-    mouth = new Date(),
+    mouth = dayjs(),
     value,
     defaultValue,
     onChange,
@@ -37,7 +38,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
     const [touchStartPoint, setTouchStartPoint] = React.useState<any>(); //触摸点
     const [touchPoint, setTouchPoint] = React.useState<any>(); //触摸点
     const [translateY, setTranslateY] = useState(0);
-    const [mouths, setMouths] = useState<Date[]>([]);
+    const [mouths, setMouths] = useState<dayjs.Dayjs[]>([]);
 
     /**
      * 计算出每个格子的大小
@@ -77,12 +78,12 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
      * 计算出该月的行数
      * @param mouth
      */
-    const mouthLines = (mouth: Date) => {
-      const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-      const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-      const beforeDays = firstDate.getDay();
-      const afterDays = 6 - lastDate.getDay();
-      const countDays = beforeDays + lastDate.getDate() + afterDays;
+    const mouthLines = (mouth: dayjs.Dayjs) => {
+      const firstDate = dayjs(new Date(mouth.year(), mouth.month(), 1));
+      const lastDate = dayjs(new Date(mouth.year(), mouth.month() + 1, 0));
+      const beforeDays = firstDate.day();
+      const afterDays = 6 - lastDate.day();
+      const countDays = beforeDays + lastDate.date() + afterDays;
       return Math.ceil(countDays / 7);
     };
 
@@ -93,11 +94,11 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
       // debugger
       // waiting = true
       const firstMouth = mouths[0];
-      const insertMouth = new Date(
-        firstMouth.getFullYear(),
-        firstMouth.getMonth() - 1,
+      const insertMouth = dayjs(new Date(
+        firstMouth.year(),
+        firstMouth.month() - 1,
         1,
-      );
+      ));
       const newMouths = [insertMouth, ...mouths];
       setMouths(newMouths);
       const insertMouthLines = mouthLines(insertMouth);
@@ -112,11 +113,11 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
       // }
       // waiting = true
       const lastMouth = mouths[mouths.length - 1];
-      const appendMouth = new Date(
-        lastMouth.getFullYear(),
-        lastMouth.getMonth() + 1,
+      const appendMouth = dayjs(new Date(
+        lastMouth.year(),
+        lastMouth.month() + 1,
         1,
-      );
+      ));
       const newMouths = [...mouths, appendMouth];
       setMouths(newMouths);
       // waiting = false
@@ -124,9 +125,9 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
 
     useEffect(() => {
       const initMouths = [
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth() - 1, 1),
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth(), 1),
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth() + 1, 1),
+        dayjs(new Date(currentMouth.year(), currentMouth.month() - 1, 1)),
+        dayjs(new Date(currentMouth.year(), currentMouth.month(), 1)),
+        dayjs(new Date(currentMouth.year(), currentMouth.month() + 1, 1)),
       ];
 
       Promise.all([]).then(async () => {
@@ -139,12 +140,12 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
 
     useEffect(() => {
       if (mouth !== undefined) {
-        const newMouth = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+        const newMouth = dayjs(new Date(mouth.year(), mouth.month(), 1));
         if (
           currentMouth === null ||
           !(
-            currentMouth.getFullYear() === newMouth.getFullYear() &&
-            currentMouth.getMonth() === newMouth.getMonth()
+            currentMouth.year() === newMouth.year() &&
+            currentMouth.month() === newMouth.month()
           )
         ) {
           setCurrentMouth(newMouth);

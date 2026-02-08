@@ -7,9 +7,9 @@ import dayjs from "dayjs";
 
 export type CalendarDatetimePickerProps = {
   placeholder?: string;
-  value?: Date;
+  value?: dayjs.Dayjs;
   format?: string;
-  onChange?: (value?: Date) => void;
+  onChange?: (value?: dayjs.Dayjs) => void;
   align?: 'left' | 'right' | 'center';
 };
 

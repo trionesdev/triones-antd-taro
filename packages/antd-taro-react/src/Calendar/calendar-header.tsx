@@ -1,29 +1,30 @@
 import React,{FC} from "react";
 import classNames from "classnames";
 import ConfigProvider from "../ConfigProvider";
+import dayjs from "dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 type CalendarHeaderProps={
-  mouth: Date;
-  onChange:(mouth:Date)=>void;
+  mouth: dayjs.Dayjs;
+  onChange:(mouth:dayjs.Dayjs)=>void;
 }
 export const CalendarHeader:FC<CalendarHeaderProps> = ({mouth,onChange}) => {
   const { locale } = ConfigProvider.useConfig();
   return (<>
     <div className={classNames(`${calendarCls}-header`)}>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(new Date(mouth.getFullYear() - 1, mouth.getMonth(), 1))
+        onChange(dayjs(new Date(mouth.year() - 1, mouth.month(), 1)))
       }}>{`<<`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(new Date(mouth.getFullYear(), mouth.getMonth() - 1, 1))
+        onChange(dayjs(new Date(mouth.year(), mouth.month() - 1, 1)))
       }}>{`<`}</div>
       <div
-        className={classNames(`${calendarCls}-header-title`)}>{`${mouth.getFullYear()}年${mouth.getMonth() + 1}月`}</div>
+        className={classNames(`${calendarCls}-header-title`)}>{`${mouth.year()}年${mouth.month() + 1}月`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(new Date(mouth.getFullYear(), mouth.getMonth() + 1, 1))
+        onChange(dayjs(new Date(mouth.year(), mouth.month() + 1, 1)))
       }}>{`>`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(new Date(mouth.getFullYear() + 1, mouth.getMonth(), 1))
+        onChange(dayjs(new Date(mouth.year() + 1, mouth.month(), 1)))
       }}>{`>>`}</div>
     </div>
     <div

@@ -5,14 +5,15 @@ import { CalendarHeader } from './calendar-header';
 import './style.scss';
 import { TouchableCalendarGrid } from './touchable-calendar-grid';
 import {cloneDeep} from "lodash-es";
+import dayjs from "dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarProps = {
-  mouth?: Date;
-  value?: Date;
-  onChange?: (date: Date) => void;
-  onMouthChange?: (mouth: Date) => void;
+  mouth?: dayjs.Dayjs;
+  value?: dayjs.Dayjs;
+  onChange?: (date: dayjs.Dayjs) => void;
+  onMouthChange?: (mouth: dayjs.Dayjs) => void;
   slideable?: boolean;
 };
 
@@ -22,7 +23,7 @@ export const Calendar = memo(
       { mouth, value, onChange, onMouthChange, slideable = false },
       ref,
     ) => {
-      const [currentMouth, setCurrentMouth] = useState(mouth || new Date());
+      const [currentMouth, setCurrentMouth] = useState(mouth || dayjs());
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
