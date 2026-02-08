@@ -5,9 +5,10 @@ import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
 import {CalendarPopupProps, cls} from './types';
+import dayjs from "dayjs";
 
 export const CalendarPopup: FC<CalendarPopupProps> = memo(
-  ({mouth, open, title, afterOpenChange, value = new Date(), onOk, onCancel, onClose}) => {
+  ({mouth, open, title, afterOpenChange, value = dayjs(), onOk, onCancel, onClose}) => {
     const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();

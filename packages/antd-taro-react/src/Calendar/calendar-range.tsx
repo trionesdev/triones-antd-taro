@@ -5,18 +5,19 @@ import { CalendarGrid } from './calendar-grid';
 import { CalendarHeader } from './calendar-header';
 import './style.scss';
 import { TouchableCalendarGrid } from './touchable-calendar-grid';
+import dayjs from "dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 type CalendarProps = {
-  mouth?: Date;
-  value?: Date[];
-  onChange?: (date: Date[]) => void;
+  mouth?: dayjs.Dayjs;
+  value?: dayjs.Dayjs[];
+  onChange?: (date: dayjs.Dayjs[]) => void;
   slideable?: boolean;
 };
 
 export const CalendarRange: FC<CalendarProps> = memo(
-  ({ mouth = new Date(), value, onChange, slideable }) => {
+  ({ mouth = dayjs(), value, onChange, slideable }) => {
     const [currentMouth, setCurrentMouth] = useState(mouth);
     const valueRef = useRef<any>();
 
