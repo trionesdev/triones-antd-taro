@@ -71,8 +71,6 @@ export const Tag: FC<TagProps> = ({
     }
     : style;
 
-  console.log(props.closeIcon);
-
   return (
     <div
       className={classNames(
