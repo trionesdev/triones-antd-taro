@@ -152,36 +152,16 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
         onSelect?.(date);
         onChange?.(_value);
       };
-
       const cells = useMemo(() => {
         const firstDate = month.startOf('month');
-        const lastDate = month.endOf('month');
-        console.log(firstDate, lastDate);
-        const beforeDays = Array.from({ length: firstDate.day() }).map(
-          (_, index): dayjs.Dayjs => {
-            const date = dayjs(firstDate);
-            date.set("date", firstDate.date() - (firstDate.day() - index));
-            return date;
-          },
-        );
 
-        const afterDays = Array.from({ length: 6 - lastDate.day() }).map(
-          (_, index): dayjs.Dayjs => {
-            const date = dayjs(lastDate);
-            // date.setDate();
-            date.set('date',lastDate.date() + index + 1)
-            return date;
-          },
-        );
-        const monthDays = Array.from({ length: lastDate.date() }).map(
-          (_, index): dayjs.Dayjs => {
-            const date = dayjs(firstDate);
-            date.set('date',date.date() + index);
-            return date;
-          },
-        );
-        console.log(beforeDays,monthDays,afterDays);
-        return [...beforeDays, ...monthDays, ...afterDays];
+        // 固定生成42天的日期网格（6行7列）
+        const startDate = firstDate.subtract(firstDate.day(), 'day');
+        const cells = Array.from({ length: 42 }, (_, index) => {
+          return startDate.add(index, 'day');
+        });
+
+        return cells;
       }, [month]);
 
       useEffect(() => {

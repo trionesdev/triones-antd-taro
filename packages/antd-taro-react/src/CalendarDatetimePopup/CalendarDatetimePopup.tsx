@@ -46,7 +46,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   };
 
   const handleComputeBodyHeight = async (): Promise<number> => {
-    if (isTaroEnv && isTaroWeApp) {
+    if (isTaroWeApp) {
       return new Promise((resolve) => {
         Taro.createSelectorQuery()
           .in(bodyRef.current.ctx)
@@ -165,19 +165,9 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
           </a>
         </div>
 
-        {isTaroEnv ? (
-          <CustomWrapper ref={bodyRef}>
-            <div className={`${cls}-body`}>{bodyRender()}</div>
-          </CustomWrapper>
-        ) : (
-          <div
-            className={`${cls}-body`}
-            ref={bodyRef}
-            id={bodyRef.current?.uid}
-          >
-            {bodyRender()}
-          </div>
-        )}
+        <CustomWrapper ref={bodyRef}>
+          <div className={`${cls}-body`}>{bodyRender()}</div>
+        </CustomWrapper>
       </div>
     </Popup>
   );
