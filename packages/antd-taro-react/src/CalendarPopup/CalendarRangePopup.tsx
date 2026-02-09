@@ -8,7 +8,7 @@ import ConfigProvider from "../ConfigProvider";
 
 export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
   ({
-     mouth,
+     month,
      open,
      title,
      afterOpenChange,
@@ -74,7 +74,7 @@ export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
              onClick={handleOk}>{locale.common.confirm}</a>
         </div>
         <div className={classNames(`${cls}-body`)}>
-          <Calendar.Range mouth={mouth} value={value} onChange={(date) => {
+          <Calendar.Range month={month} value={value} onChange={(date) => {
             valueRef.current = date;
           }}/>
         </div>

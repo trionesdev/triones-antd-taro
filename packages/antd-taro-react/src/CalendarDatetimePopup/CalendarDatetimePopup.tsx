@@ -74,7 +74,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
         {mode === Mode.date && (
           <div style={{}}>
             <Calendar
-              mouth={value}
+              month={value}
               value={value}
               onChange={(date) => {
                 valueRef.current = dayjs(new Date(

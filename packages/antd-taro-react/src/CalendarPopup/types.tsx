@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 export const cls = 'triones-antm-calendar-popup';
 
 export type CalendarPopupProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
   afterOpenChange?: (open: boolean) => void;
@@ -15,7 +15,7 @@ export type CalendarPopupProps = {
 }
 
 export type CalendarPopupRangeProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
   afterOpenChange?: (open: boolean) => void;

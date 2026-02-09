@@ -27,12 +27,12 @@ export const Calendar = memo(
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
-          <CalendarHeader mouth={currentMonth} onChange={setCurrentMonth} />
+          <CalendarHeader month={currentMonth} onChange={setCurrentMonth} />
           {slideable ? (
             <TouchableCalendarGrid
               month={currentMonth}
               value={value ? [cloneDeep( value)] : []}
-              onMouthChange={(newMouth) => {
+              onMonthChange={(newMouth) => {
                 setCurrentMonth(newMouth);
                 onMonthChange?.(newMouth);
               }}

@@ -8,7 +8,7 @@ import {CalendarPopupProps, cls} from './types';
 import dayjs from "dayjs";
 
 export const CalendarPopup: FC<CalendarPopupProps> = memo(
-  ({mouth, open, title, afterOpenChange, value = dayjs(), onOk, onCancel, onClose}) => {
+  ({month, open, title, afterOpenChange, value = dayjs(), onOk, onCancel, onClose}) => {
     const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();
@@ -84,7 +84,7 @@ export const CalendarPopup: FC<CalendarPopupProps> = memo(
           </div>
           <div className={classNames(`${cls}-body`)}>
             <Calendar
-              mouth={mouth}
+              month={month}
               value={value}
               onChange={(date) => {
                 valueRef.current = date;
