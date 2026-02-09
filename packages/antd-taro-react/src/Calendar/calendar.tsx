@@ -1,9 +1,9 @@
-import { CalendarGrid } from '@trionesdev/antd-taro-react';
+import {CalendarGrid} from '@trionesdev/antd-taro-react';
 import classNames from 'classnames';
-import React, { forwardRef, memo, useState } from 'react';
-import { CalendarHeader } from './calendar-header';
+import React, {forwardRef, memo, useEffect, useMemo, useState} from 'react';
+import {CalendarHeader} from './calendar-header';
 import './style.scss';
-import { TouchableCalendarGrid } from './touchable-calendar-grid';
+import {TouchableCalendarGrid} from './touchable-calendar-grid';
 import {cloneDeep} from "lodash-es";
 import dayjs from "dayjs";
 
@@ -20,22 +20,36 @@ export type CalendarProps = {
 export const Calendar = memo(
   forwardRef<HTMLDivElement, CalendarProps>(
     (
-      { month, value, onChange, onMonthChange, slideable = false },
+      {month, value, onChange, onMonthChange, slideable = false},
       ref,
     ) => {
       const [currentMonth, setCurrentMonth] = useState(month || dayjs());
 
+      const handleMonthChange = (newMonth: dayjs.Dayjs) => {
+        if (currentMonth.isSame(newMonth, 'month')) {
+          return;
+        }
+        setCurrentMonth(newMonth);
+        onMonthChange?.(newMonth);
+      };
+
+      useEffect(() => {
+        if (month == undefined) {
+          return;
+        }
+        if (!month.isSame(currentMonth, 'month')) {
+          setCurrentMonth(month);
+        }
+      }, [month]);
+
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
-          <CalendarHeader month={currentMonth} onChange={setCurrentMonth} />
+          <CalendarHeader month={currentMonth} onChange={handleMonthChange}/>
           {slideable ? (
             <TouchableCalendarGrid
               month={currentMonth}
-              value={value ? [cloneDeep( value)] : []}
-              onMonthChange={(newMouth) => {
-                setCurrentMonth(newMouth);
-                onMonthChange?.(newMouth);
-              }}
+              value={value ? [cloneDeep(value)] : []}
+              onMonthChange={handleMonthChange}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}
@@ -43,7 +57,7 @@ export const Calendar = memo(
           ) : (
             <CalendarGrid
               month={currentMonth}
-              value={value ? [cloneDeep( value)] : []}
+              value={value ? [cloneDeep(value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}

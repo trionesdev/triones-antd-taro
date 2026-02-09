@@ -21,7 +21,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   align = 'left'
 }) => {
   const [innerOpen, setInnerOpen] = React.useState(false);
-  const [internalValue, setInternalValue] = useState<any>(value)
+  const [internalValue, setInternalValue] = useState<dayjs.Dayjs | undefined>(value)
 
   const handleValueRender = () => {
     if (internalValue) {
@@ -34,7 +34,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
     if (value === undefined) {
       return
     }
-    if (value !== internalValue) {
+    if (!value.isSame(internalValue)) {
       setInternalValue(value)
     }
   }, [value])

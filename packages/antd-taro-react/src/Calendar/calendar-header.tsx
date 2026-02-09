@@ -16,18 +16,18 @@ export const CalendarHeader: FC<CalendarHeaderProps> = ({month, onChange}) => {
   return (<>
     <div className={classNames(`${calendarCls}-header`)}>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(dayjs(new Date(month.year() - 1, month.month(), 1)))
+        onChange(month.subtract(1,'year'))
       }}>{`<<`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(dayjs(new Date(month.year(), month.month() - 1, 1)))
+        onChange(month.subtract(1,'month'))
       }}>{`<`}</div>
       <div
         className={classNames(`${calendarCls}-header-title`)}>{`${month.year()}年${month.month() + 1}月`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(dayjs(new Date(month.year(), month.month() + 1, 1)))
+        onChange(month.add(1,'month'))
       }}>{`>`}</div>
       <div className={classNames(`${calendarCls}-header-button`)} onClick={() => {
-        onChange(dayjs(new Date(month.year() + 1, month.month(), 1)))
+        onChange(month.add(1,'year'))
       }}>{`>>`}</div>
     </div>
     <div
