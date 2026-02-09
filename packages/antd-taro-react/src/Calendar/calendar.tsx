@@ -6,6 +6,7 @@ import './style.scss';
 import {TouchableCalendarGrid} from './touchable-calendar-grid';
 import {cloneDeep} from "lodash-es";
 import dayjs from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -26,7 +27,7 @@ export const Calendar = memo(
       const [currentMonth, setCurrentMonth] = useState(month || dayjs());
 
       const handleMonthChange = (newMonth: dayjs.Dayjs) => {
-        if (currentMonth.isSame(newMonth, 'month')) {
+        if (isSame(currentMonth,newMonth, 'month')) {
           return;
         }
         setCurrentMonth(newMonth);
@@ -37,7 +38,7 @@ export const Calendar = memo(
         if (month == undefined) {
           return;
         }
-        if (!month.isSame(currentMonth, 'month')) {
+        if (!isSame(month,currentMonth, 'month')) {
           setCurrentMonth(month);
         }
       }, [month]);

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import _ from 'lodash-es';
 import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import {CalendarGrid} from './calendar-grid';
 import {CalendarHeader} from './calendar-header';
 import './style.scss';
 import {TouchableCalendarGrid} from './touchable-calendar-grid';
-import dayjs from "dayjs";
+import dayjs, {ConfigType} from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -19,11 +19,11 @@ type CalendarProps = {
 export const CalendarRange: FC<CalendarProps> = memo(
   ({month, value, onChange, slideable}) => {
     const [currentMonth, setCurrentMonth] = useState(month || dayjs());
-    const valueRef = useRef<any>();
+    const valueRef = useRef<dayjs.Dayjs[]>(value || []);
 
     useEffect(() => {
       if (value !== undefined) {
-        if (!_.isEqual(value, valueRef.current)) {
+        if (!isSame(value?.[0],valueRef.current?.[0], 'day') || !isSame(value?.[1],valueRef.current?.[1], 'day')) {
           valueRef.current = value;
         }
       }

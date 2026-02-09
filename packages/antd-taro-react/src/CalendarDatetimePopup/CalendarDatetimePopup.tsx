@@ -29,7 +29,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
                                                                         onClose,
                                                                       }) => {
   const {locale} = ConfigProvider.useConfig();
-  const {isTaroEnv, isTaroWeApp} = useTaro();
+  const {isTaroWeApp} = useTaro();
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<dayjs.Dayjs>(value || dayjs());
   const bodyRef = useRef<any>(null);
@@ -136,6 +136,12 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
     <Popup
       open={open}
       round={true}
+      afterOpenChange={(o) => {
+        if (!o) {
+          setMode(Mode.date)
+        }
+        afterOpenChange?.(o)
+      }}
       onClose={() => {
         onClose?.();
       }}

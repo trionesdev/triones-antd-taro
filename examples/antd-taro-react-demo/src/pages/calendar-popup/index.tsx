@@ -15,7 +15,7 @@ const CalendarBase = () => {
         setOpen(o);
       }} onOk={(date) => {
         Taro.showToast({
-          title: `${date!.getFullYear()}-${date!.getMonth()  +1}-${date!.getDate()}`,
+          title: `${date!.year()}-${date!.month()  +1}-${date!.date()}`,
         })
       }}/>
       <Button block={true} onClick={() => {
@@ -29,7 +29,7 @@ const CalendarBase = () => {
         setOpen2(o);
       }} onOk={(date) => {
         Taro.showToast({
-          title: `${date![0].getFullYear()}-${date![0].getMonth() +1}-${date![0].getDate()} ~ ${date![1].getFullYear()}-${date![1].getMonth()  +1}-${date![1].getDate()}`,
+          title: `${date![0].year()}-${date![0].month() +1}-${date![0].date()} ~ ${date![1].year()}-${date![1].month()  +1}-${date![1].date()}`,
         })
       }}/>
       <Button block={true} onClick={() => {

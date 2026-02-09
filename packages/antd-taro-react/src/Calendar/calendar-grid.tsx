@@ -10,7 +10,8 @@ import React, {
   useState,
 } from 'react';
 import './style.scss';
-import dayjs from "dayjs";
+import dayjs, {ConfigType} from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
@@ -29,7 +30,7 @@ export type CalendarGridProps = {
    * @description 是否为范围选择
    */
   range?: boolean;
-  onSelect?: (date: dayjs.Dayjs) => void;
+  onSelect?: (date: ConfigType) => void;
 };
 
 export type CalendarCellProps = {
@@ -43,31 +44,23 @@ export type CalendarCellProps = {
 const CalendarCell: FC<CalendarCellProps> = memo(
   ({month = dayjs(), date = dayjs(), value, range, onSelect}) => {
     const disabled = useMemo(() => {
-      return !date.isSame(month, 'month');
+      return !isSame(date, month, 'month');
     }, [date, month]);
 
     const selected = useMemo(() => {
+
       if (disabled || isEmpty(value)) {
         return false;
       }
-      if (value?.[0]) {
-        value?.[0]?.set('h', 0);
-      }
-      if (value?.[1]) {
-        value?.[1]?.set('h', 0);
-      }
-
-      date.set('h', 0);
       if (range) {
         const startDate = value?.[0];
         const endDate = value?.[1];
-
         return (
-          date.isSame(startDate, 'day') ||
-          date.isSame(endDate, 'day')
+          (isSame(date, startDate, 'date')) ||
+          (isSame(date, endDate, 'date'))
         );
       } else {
-        return date.isSame(value?.[0], 'day');
+        return isSame(date, value?.[0], 'date');
       }
     }, [month, date, value]);
 
@@ -80,12 +73,9 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       if (!startDate || !endDate) {
         return false;
       }
-      date.set('h', 0);
-      startDate.set('h', 0);
-      endDate.set('h', 0);
       return (
-        date.isAfter(startDate) &&
-        date.isBefore(endDate)
+        dayjs(date).isAfter(startDate, 'date') &&
+        dayjs(date).isBefore(endDate, 'date')
       );
     }, [month, date, value]);
 
@@ -94,7 +84,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         className={classNames(`${calendarCls}-cell`, {
           [`${calendarCls}-cell-disabled`]: disabled,
           [`${calendarCls}-cell-selected`]: selected,
-          [`${calendarCls}-cell-today`]: date.isSame(dayjs(), 'day'),
+          [`${calendarCls}-cell-today`]: isSame(date, dayjs(), 'day'),
           [`${calendarCls}-cell-selected-range`]: selectedRange,
         })}
         // style={{ width: size, height: size }}
@@ -103,12 +93,12 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         }}
       >
         <div className={classNames(`${calendarCls}-cell-date`)}>
-          {date.date()}
+          {dayjs(date).date()}
         </div>
-        {date.date() === 1 && (
+        {dayjs(date).date() === 1 && (
           <div
             className={classNames(`${calendarCls}-cell-mouth`)}
-          >{`${date.month() + 1}月`}</div>
+          >{`${dayjs(date).month() + 1}月`}</div>
         )}
       </div>
     );
@@ -131,14 +121,13 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? []);
 
       const handleSelect = (date: dayjs.Dayjs) => {
-        date.set('h', 0);
         let _value: dayjs.Dayjs[] = innerValue;
         if (range) {
           if (!_value[0]) {
             _value = [date];
           } else if (!_value[1]) {
             let startDate = _value[0];
-            if (date.isBefore(startDate)) {
+            if (dayjs(date).isBefore(startDate, 'date')) {
               _value = [date, startDate];
             } else {
               _value = [startDate, date];
@@ -154,7 +143,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
         onChange?.(_value);
       };
       const cells = useMemo(() => {
-        const firstDate = month.startOf('month');
+        const firstDate = dayjs(month).startOf('month');
 
         // 固定生成42天的日期网格（6行7列）
         const startDate = firstDate.subtract(firstDate.day(), 'day');
@@ -166,15 +155,13 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       }, [month]);
 
       useEffect(() => {
-        console.log('value', value);
-        console.log('innerValue is same', value?.[0]?.isSame(innerValue?.[0]), value?.[1]?.isSame(innerValue?.[1]));
         if (value !== undefined) {
           if (range) {
-            if (!value[0]?.isSame(innerValue[0], 'day') || !value[1]?.isSame(innerValue[1], 'day')) {
+            if (!isSame(value[0], innerValue[0], 'day') || !isSame(value[1], innerValue[1], 'day')) {
               setInnerValue(value);
             }
           } else {
-            if (!value[0]?.isSame(innerValue[0], 'day')) {
+            if (!isSame(value[0], innerValue[0], 'day')) {
               setInnerValue(value);
             }
           }
