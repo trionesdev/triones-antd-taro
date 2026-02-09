@@ -10,31 +10,31 @@ import dayjs from "dayjs";
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   value?: dayjs.Dayjs;
   onChange?: (date: dayjs.Dayjs) => void;
-  onMouthChange?: (mouth: dayjs.Dayjs) => void;
+  onMonthChange?: (mouth: dayjs.Dayjs) => void;
   slideable?: boolean;
 };
 
 export const Calendar = memo(
   forwardRef<HTMLDivElement, CalendarProps>(
     (
-      { mouth, value, onChange, onMouthChange, slideable = false },
+      { month, value, onChange, onMonthChange, slideable = false },
       ref,
     ) => {
-      const [currentMouth, setCurrentMouth] = useState(mouth || dayjs());
+      const [currentMonth, setCurrentMonth] = useState(month || dayjs());
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
-          <CalendarHeader mouth={currentMouth} onChange={setCurrentMouth} />
+          <CalendarHeader mouth={currentMonth} onChange={setCurrentMonth} />
           {slideable ? (
             <TouchableCalendarGrid
-              mouth={currentMouth}
+              month={currentMonth}
               value={value ? [cloneDeep( value)] : []}
               onMouthChange={(newMouth) => {
-                setCurrentMouth(newMouth);
-                onMouthChange?.(newMouth);
+                setCurrentMonth(newMouth);
+                onMonthChange?.(newMouth);
               }}
               onChange={(value) => {
                 onChange?.(value?.[0]);
@@ -42,7 +42,7 @@ export const Calendar = memo(
             />
           ) : (
             <CalendarGrid
-              mouth={currentMouth}
+              month={currentMonth}
               value={value ? [cloneDeep( value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);

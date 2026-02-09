@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarGridProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   /**
    * @description 值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
    */
@@ -33,7 +33,7 @@ export type CalendarGridProps = {
 };
 
 export type CalendarCellProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   date?: dayjs.Dayjs;
   value?: dayjs.Dayjs[];
   range?: boolean;
@@ -41,10 +41,10 @@ export type CalendarCellProps = {
 };
 
 const CalendarCell: FC<CalendarCellProps> = memo(
-  ({ mouth = dayjs(), date = dayjs(), value, range, onSelect }) => {
+  ({ month = dayjs(), date = dayjs(), value, range, onSelect }) => {
     const disabled = useMemo(() => {
-      return date.month() !== mouth.month();
-    }, [date, mouth]);
+      return date.month() !== month.month();
+    }, [date, month]);
 
     const selected = useMemo(() => {
       if (disabled || isEmpty(value)) {
@@ -69,7 +69,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       } else {
         return date.isSame(value?.[0]);
       }
-    }, [mouth, date, value]);
+    }, [month, date, value]);
 
     const selectedRange = useMemo(() => {
       if (disabled || !range) {
@@ -87,7 +87,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         date.isAfter(startDate) &&
         date.isBefore(endDate)
       );
-    }, [mouth, date, value]);
+    }, [month, date, value]);
 
     return (
       <div
@@ -118,7 +118,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
   forwardRef(
     (
       {
-        mouth = dayjs(),
+        month = dayjs(),
         value,
         defaultValue,
         range = false,
@@ -154,8 +154,9 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       };
 
       const cells = useMemo(() => {
-        const firstDate = dayjs(new Date(mouth.year(), mouth.month(), 1));
-        const lastDate = dayjs(new Date(mouth.year(), mouth.month() + 1, 0));
+        const firstDate = month.startOf('month');
+        const lastDate = month.endOf('month');
+        console.log(firstDate, lastDate);
         const beforeDays = Array.from({ length: firstDate.day() }).map(
           (_, index): dayjs.Dayjs => {
             const date = dayjs(firstDate);
@@ -172,15 +173,16 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
             return date;
           },
         );
-        const mouthDays = Array.from({ length: lastDate.date() }).map(
+        const monthDays = Array.from({ length: lastDate.date() }).map(
           (_, index): dayjs.Dayjs => {
             const date = dayjs(firstDate);
             date.set('date',date.date() + index);
             return date;
           },
         );
-        return [...beforeDays, ...mouthDays, ...afterDays];
-      }, [mouth]);
+        console.log(beforeDays,monthDays,afterDays);
+        return [...beforeDays, ...monthDays, ...afterDays];
+      }, [month]);
 
       useEffect(() => {
         if (value !== undefined) {
@@ -193,10 +195,11 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       return (
         <div ref={ref} className={classNames(`${calendarCls}-grid`)}>
           {cells.map((item, index) => {
+            console.log(item);
             return (
               <CalendarCell
                 key={index}
-                mouth={mouth}
+                month={month}
                 date={item}
                 value={innerValue}
                 range={range}

@@ -10,15 +10,15 @@ import dayjs from "dayjs";
 const calendarCls = 'triones-antm-calendar';
 
 type CalendarProps = {
-  mouth?: dayjs.Dayjs;
+  month?: dayjs.Dayjs;
   value?: dayjs.Dayjs[];
   onChange?: (date: dayjs.Dayjs[]) => void;
   slideable?: boolean;
 };
 
 export const CalendarRange: FC<CalendarProps> = memo(
-  ({ mouth = dayjs(), value, onChange, slideable }) => {
-    const [currentMouth, setCurrentMouth] = useState(mouth);
+  ({ month = dayjs(), value, onChange, slideable }) => {
+    const [currentMonth, setCurrentMonth] = useState(month);
     const valueRef = useRef<any>();
 
     useEffect(() => {
@@ -31,12 +31,12 @@ export const CalendarRange: FC<CalendarProps> = memo(
 
     return (
       <div className={classNames(`${calendarCls}`)}>
-        <CalendarHeader mouth={currentMouth} onChange={setCurrentMouth} />
+        <CalendarHeader month={currentMonth} onChange={setCurrentMonth} />
         {slideable ? (
           <TouchableCalendarGrid
-            mouth={currentMouth}
+            month={currentMonth}
             value={value ?? valueRef.current ?? []}
-            onMouthChange={setCurrentMouth}
+            onMonthChange={setCurrentMonth}
             onChange={(value) => {
               valueRef.current = value;
               onChange?.(value);
@@ -45,7 +45,7 @@ export const CalendarRange: FC<CalendarProps> = memo(
           />
         ) : (
           <CalendarGrid
-            mouth={currentMouth}
+            month={currentMonth}
             value={value ?? valueRef.current ?? []}
             onChange={(value) => {
               valueRef.current = value;
