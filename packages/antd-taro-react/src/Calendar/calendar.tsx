@@ -1,6 +1,6 @@
 import {CalendarGrid} from '@trionesdev/antd-taro-react';
 import classNames from 'classnames';
-import React, {forwardRef, memo, useEffect, useMemo, useState} from 'react';
+import React, {forwardRef, memo, useEffect, useState} from 'react';
 import {CalendarHeader} from './calendar-header';
 import './style.scss';
 import {TouchableCalendarGrid} from './touchable-calendar-grid';
@@ -13,7 +13,7 @@ export type CalendarProps = {
   month?: dayjs.Dayjs;
   value?: dayjs.Dayjs;
   onChange?: (date: dayjs.Dayjs) => void;
-  onMonthChange?: (mouth: dayjs.Dayjs) => void;
+  onMonthChange?: (month: dayjs.Dayjs) => void;
   slideable?: boolean;
 };
 
@@ -41,6 +41,10 @@ export const Calendar = memo(
           setCurrentMonth(month);
         }
       }, [month]);
+
+      useEffect(() => {
+        console.log('calendar value', value);
+      }, [value]);
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>

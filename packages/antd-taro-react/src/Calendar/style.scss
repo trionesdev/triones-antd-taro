@@ -34,10 +34,13 @@ $calendarCls: 'triones-antm-calendar';
   }
 
   &.#{$calendarCls}-cell {
+    box-sizing: border-box;
     &-disabled {
       color: #999999;
     }
-
+    &-today{
+      border: 1Px solid variable.$trionesColorPrimary;
+    }
     &-selected {
       background-color: variable.$trionesColorPrimary;
       color: white;

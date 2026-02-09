@@ -15,12 +15,14 @@ type CalendarPickerViewProps = {
   range?: boolean
 };
 
+const monthLines = 6
+
 /**
  * 可以手势滑动的日历组件
  */
 export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
   ({
-     month = dayjs(),
+     month,
      value,
      defaultValue,
      onChange,
@@ -31,7 +33,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
     const wrapperRef = useRef<any>();
     const wrapperUniqueRef = React.useRef<string>(RandomUtils.random())
 
-    const [currentMonth, setCurrentMonth] = useState(month);
+    const [currentMonth, setCurrentMonth] = useState(month || dayjs());
     let waiting = false;
     const [mouthHeight, setMouthHeight] = useState(200); //当前选中的月份的展示高度
     const [touching, setTouching] = useState<boolean>(false); //是否正在滑动
@@ -101,8 +103,8 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
       ));
       const newMouths = [insertMouth, ...mouths];
       setMouths(newMouths);
-      const insertMouthLines = mouthLines(insertMouth);
-      const insertMouthHeight = insertMouthLines * (await cellSize());
+      // const insertMouthLines = mouthLines(insertMouth);
+      const insertMouthHeight = monthLines * (await cellSize());
       setTranslateY(translateY - insertMouthHeight);
       // waiting  = false
     };
@@ -113,11 +115,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
       // }
       // waiting = true
       const lastMouth = mouths[mouths.length - 1];
-      const appendMouth = dayjs(new Date(
-        lastMouth.year(),
-        lastMouth.month() + 1,
-        1,
-      ));
+      const appendMouth = lastMouth.add(1, 'month');
       const newMouths = [...mouths, appendMouth];
       setMouths(newMouths);
       // waiting = false
@@ -125,15 +123,15 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
 
     useEffect(() => {
       const initMouths = [
-        dayjs(new Date(currentMonth.year(), currentMonth.month() - 1, 1)),
-        dayjs(new Date(currentMonth.year(), currentMonth.month(), 1)),
-        dayjs(new Date(currentMonth.year(), currentMonth.month() + 1, 1)),
+        currentMonth!.clone().subtract(1, 'month'),
+        currentMonth!.clone(),
+        currentMonth!.clone().add(1, 'month'),
       ];
 
       Promise.all([]).then(async () => {
         setMouths(initMouths);
-        setMouthHeight(mouthLines(currentMonth) * (await cellSize()));
-        const firstMouthHeight = mouthLines(initMouths[0]) * (await cellSize());
+        setMouthHeight(monthLines * (await cellSize()));
+        const firstMouthHeight = monthLines * (await cellSize());
         setTranslateY(0 - firstMouthHeight);
       });
     }, [currentMonth]);
@@ -144,8 +142,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
         if (
           currentMonth === null ||
           !(
-            currentMonth.year() === newMouth.year() &&
-            currentMonth.month() === newMouth.month()
+            currentMonth?.isSame(newMouth, 'month')
           )
         ) {
           setCurrentMonth(newMouth);
@@ -194,7 +191,7 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
               if (translateY > 0 || translateY < 0 - (await minTranslateY())) {
                 return;
               }
-              console.log('move', movePoint.clientY - touchPoint.clientY);
+              // console.log('move', movePoint.clientY - touchPoint.clientY);
               const newTranslateY =
                 translateY + (movePoint.clientY - touchPoint.clientY);
               setTranslateY(newTranslateY);
@@ -202,11 +199,11 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
               // console.log(newTranslateY,minTranslateY())
               if (newTranslateY > -10) {
                 //当向下滑动，顶部距离视窗顶部距离小于10，则插入上一个月份
-                console.log('insert');
+                // console.log('insert');
                 await handleInsertMouth();
               } else if (newTranslateY < 0 - (await minTranslateY()) + 10) {
                 //当向下滑动，底部距离视窗底部距离小于10，则追加下一个月份
-                console.log('append');
+                // console.log('append');
                 handleAppendMouth();
               }
             }
@@ -227,43 +224,43 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
             //region 判断当前月份是否在视窗内
             let _mouthHeightSum = 0;
             for (let i = 0; i < mouths.length; i++) {
-              console.log('mouthHeight', mouthHeight);
-              console.log('mouths[i]', mouths[i], i);
-              const _mouthHeight = mouthLines(mouths[i]) * (await cellSize());
+              // console.log('mouthHeight', mouthHeight);
+              // console.log('mouths[i]', mouths[i], i);
+              const _mouthHeight = monthLines * (await cellSize());
               _mouthHeightSum += _mouthHeight;
-              console.log('_mouthHeightSum', _mouthHeightSum);
-              console.log('translateY', translateY);
+              // console.log('_mouthHeightSum', _mouthHeightSum);
+              // console.log('translateY', translateY);
               const _topLineY = 0 - (_mouthHeightSum - _mouthHeight); //该月份区域顶部，对于顶点的偏移量
-              console.log('_topLineY', _topLineY);
+              // console.log('_topLineY', _topLineY);
               if (
                 _topLineY <= translateY &&
                 _topLineY >= translateY - mouthHeight
               ) {
                 //该月份区域的顶部在视窗内
-                console.log('top_in');
+                // console.log('top_in');
                 const _windowDisplayHeight = _mouthHeightSum - (0 - translateY); //该月份区域底部距离视窗顶部的距离
-                console.log('_windowDisplayHeight——top', _windowDisplayHeight);
+                // console.log('_windowDisplayHeight——top', _windowDisplayHeight);
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
+                  // console.log('displayMouth', mouths[i]);
                   displayMouth = mouths[i];
                   break;
                 }
               }
               const _bottomLineY = 0 - _mouthHeightSum; //该月份区域底部，对于顶点的偏移量
-              console.log('_bottomLineY', _bottomLineY);
+              // console.log('_bottomLineY', _bottomLineY);
               if (
                 _bottomLineY <= translateY &&
                 _bottomLineY >= translateY - mouthHeight
               ) {
                 //该月份区域的底部在视窗内
-                console.log('bottom_in');
+                // console.log('bottom_in');
                 const _windowDisplayHeight = _mouthHeightSum - (0 - translateY); //该月份区域底部距离视窗顶部的距离
-                console.log(
-                  '_windowDisplayHeight-bottom',
-                  _windowDisplayHeight,
-                );
+                // console.log(
+                //   '_windowDisplayHeight-bottom',
+                //   _windowDisplayHeight,
+                // );
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
+                  // console.log('displayMouth', mouths[i]);
                   displayMouth = mouths[i];
                   break;
                 }

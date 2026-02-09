@@ -1,8 +1,8 @@
-import { View } from "@tarojs/components";
+import {View} from "@tarojs/components";
 import Taro from "@tarojs/taro";
-import { Button, CalendarDatetimePopup } from "@trionesdev/antd-taro-react";
+import {Button, CalendarDatetimePopup} from "@trionesdev/antd-taro-react";
 import React from "react";
-import { DemoBlock } from "../../components";
+import {DemoBlock} from "../../components";
 
 
 const CalendarDatetimePopupBase = () => {
@@ -10,15 +10,16 @@ const CalendarDatetimePopupBase = () => {
 
   return <View>
     <DemoBlock title={`日期时间选择器`}>
-      <CalendarDatetimePopup open={open} afterOpenChange={(o) => {
-        setOpen(o);
-      }} onOk={(date) => {
+      <CalendarDatetimePopup open={open} onClose={() => setOpen(false)}
+                             afterOpenChange={(o) => {
+                               setOpen(o);
+                             }} onOk={(date) => {
         Taro.showToast({
-          title: `${date!.getFullYear()}-${date!.getMonth() + 1}-${date!.getDate()} ${date!.getHours()}:${date!.getMinutes()}`,
+          title: `${date!.year()}-${date!.month() + 1}-${date!.date()} ${date!.hour()}:${date!.minute()}`,
           icon: 'none',
           duration: 2000,
         })
-      }} />
+      }}/>
       <Button block={true} onClick={() => {
         setOpen(true);
       }}>日期时间选择器</Button>

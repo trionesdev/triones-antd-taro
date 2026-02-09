@@ -41,9 +41,9 @@ export type CalendarCellProps = {
 };
 
 const CalendarCell: FC<CalendarCellProps> = memo(
-  ({ month = dayjs(), date = dayjs(), value, range, onSelect }) => {
+  ({month = dayjs(), date = dayjs(), value, range, onSelect}) => {
     const disabled = useMemo(() => {
-      return date.month() !== month.month();
+      return !date.isSame(month, 'month');
     }, [date, month]);
 
     const selected = useMemo(() => {
@@ -51,23 +51,23 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         return false;
       }
       if (value?.[0]) {
-        value?.[0]?.set('h',0);
+        value?.[0]?.set('h', 0);
       }
       if (value?.[1]) {
-        value?.[1]?.set('h',0);
+        value?.[1]?.set('h', 0);
       }
 
-      date.set('h',0);
+      date.set('h', 0);
       if (range) {
         const startDate = value?.[0];
         const endDate = value?.[1];
 
         return (
-          date.isSame(startDate) ||
-          date.isSame(endDate)
+          date.isSame(startDate, 'day') ||
+          date.isSame(endDate, 'day')
         );
       } else {
-        return date.isSame(value?.[0]);
+        return date.isSame(value?.[0], 'day');
       }
     }, [month, date, value]);
 
@@ -80,9 +80,9 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       if (!startDate || !endDate) {
         return false;
       }
-      date.set('h',0);
-      startDate.set('h',0);
-      endDate.set('h',0);
+      date.set('h', 0);
+      startDate.set('h', 0);
+      endDate.set('h', 0);
       return (
         date.isAfter(startDate) &&
         date.isBefore(endDate)
@@ -94,6 +94,7 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         className={classNames(`${calendarCls}-cell`, {
           [`${calendarCls}-cell-disabled`]: disabled,
           [`${calendarCls}-cell-selected`]: selected,
+          [`${calendarCls}-cell-today`]: date.isSame(dayjs(), 'day'),
           [`${calendarCls}-cell-selected-range`]: selectedRange,
         })}
         // style={{ width: size, height: size }}
@@ -130,7 +131,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? []);
 
       const handleSelect = (date: dayjs.Dayjs) => {
-        date.set('h',0);
+        date.set('h', 0);
         let _value: dayjs.Dayjs[] = innerValue;
         if (range) {
           if (!_value[0]) {
@@ -157,7 +158,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
 
         // 固定生成42天的日期网格（6行7列）
         const startDate = firstDate.subtract(firstDate.day(), 'day');
-        const cells = Array.from({ length: 42 }, (_, index) => {
+        const cells = Array.from({length: 42}, (_, index) => {
           return startDate.add(index, 'day');
         });
 
@@ -165,9 +166,17 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       }, [month]);
 
       useEffect(() => {
+        console.log('value', value);
+        console.log('innerValue is same', value?.[0]?.isSame(innerValue?.[0]), value?.[1]?.isSame(innerValue?.[1]));
         if (value !== undefined) {
-          if (value !== innerValue) {
-            setInnerValue(value);
+          if (range) {
+            if (!value[0]?.isSame(innerValue[0], 'day') || !value[1]?.isSame(innerValue[1], 'day')) {
+              setInnerValue(value);
+            }
+          } else {
+            if (!value[0]?.isSame(innerValue[0], 'day')) {
+              setInnerValue(value);
+            }
           }
         }
       }, [value]);
@@ -175,7 +184,6 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
       return (
         <div ref={ref} className={classNames(`${calendarCls}-grid`)}>
           {cells.map((item, index) => {
-            console.log(item);
             return (
               <CalendarCell
                 key={index}

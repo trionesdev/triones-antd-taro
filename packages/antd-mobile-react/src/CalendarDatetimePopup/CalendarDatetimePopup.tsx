@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import PickerView from '../PickerView';
 import Popup from '../Popup';
-import {DatetimeUtils} from '../utils/datetime-utils';
-import {DateTimeSwitch} from './DateTimeSwitch';
+import { DatetimeUtils } from '../utils/datetime-utils';
+import { DateTimeSwitch } from './DateTimeSwitch';
 import './style.scss';
-import {cls, Mode} from './types';
+import { cls, Mode } from './types';
 
 export type CalendarDatetimePopupProps = {
   open?: boolean;
@@ -18,13 +18,13 @@ export type CalendarDatetimePopupProps = {
 };
 
 export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
-                                                                        open,
-                                                                        afterOpenChange,
-                                                                        value = new Date(),
-                                                                        onOk,
-                                                                        onClose,
-                                                                      }) => {
-  const {locale} = ConfigProvider.useConfig();
+  open,
+  afterOpenChange,
+  value = new Date(),
+  onOk,
+  onClose,
+}) => {
+  const { locale } = ConfigProvider.useConfig();
   const [mode, setMode] = useState<Mode>(Mode.date);
   const valueRef = useRef<any>(value || new Date());
   const bodyRef = useRef<any>(null);
@@ -45,6 +45,14 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   };
 
   useEffect(() => {
+    if (open) {
+      afterOpenChange?.(true);
+    } else {
+      afterOpenChange?.(false);
+    }
+  }, [open]);
+
+  useEffect(() => {
     if (datetimeSwitchRef.current) {
       datetimeSwitchRef.current.setDatetime(valueRef.current);
     }
@@ -59,21 +67,22 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
               mouth={value}
               value={value}
               onChange={(date) => {
-                console.log('date', date);
-                valueRef.current = date ? new Date(
-                  date?.getFullYear(),
-                  date?.getMonth(),
-                  date?.getDate(),
-                  valueRef.current.getHours(),
-                  valueRef.current.getMinutes(),
-                ) : new Date();
+                valueRef.current = date
+                  ? new Date(
+                      date?.getFullYear(),
+                      date?.getMonth(),
+                      date?.getDate(),
+                      valueRef.current.getHours(),
+                      valueRef.current.getMinutes(),
+                    )
+                  : new Date();
                 datetimeSwitchRef.current?.setDatetime(valueRef.current);
               }}
             />
           </div>
         )}
         {mode === Mode.time && (
-          <div style={{height: bodyHeight}}>
+          <div style={{ height: bodyHeight }}>
             <PickerView
               columns={[
                 Array(24)
@@ -116,11 +125,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   };
 
   return (
-    <Popup
-      open={open}
-      onClose={onClose}
-      round={true}
-    >
+    <Popup open={open} onClose={onClose} round={true}>
       <div className={classNames(cls)}>
         <div className={`${cls}-header`}>
           <DateTimeSwitch
@@ -146,11 +151,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
           </a>
         </div>
 
-        <div
-          className={`${cls}-body`}
-          ref={bodyRef}
-          id={bodyRef.current?.uid}
-        >
+        <div className={`${cls}-body`} ref={bodyRef} id={bodyRef.current?.uid}>
           {bodyRender()}
         </div>
       </div>
