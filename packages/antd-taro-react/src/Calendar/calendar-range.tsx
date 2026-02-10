@@ -17,7 +17,7 @@ type CalendarProps = {
 };
 
 export const CalendarRange: FC<CalendarProps> = memo(
-  ({month, value, onChange, slideable}) => {
+  ({month, value = [], onChange, slideable}) => {
     const [currentMonth, setCurrentMonth] = useState(dayjs(month));
     const valueRef = useRef<dayjs.Dayjs[]>(value ? value.map((v) => dayjs(v)) : []);
 

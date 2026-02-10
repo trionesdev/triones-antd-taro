@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 export type CalendarDatetimePopupProps = {
   open?: boolean;
   afterOpenChange?: (open: boolean) => void;
-  value?: dayjs.Dayjs;
+  value?: dayjs.Dayjs | Date;
   onOk?: (value?: dayjs.Dayjs) => void;
   onClose?: () => void;
 };
@@ -31,7 +31,7 @@ export const CalendarDatetimePopup: FC<CalendarDatetimePopupProps> = ({
   const {locale} = ConfigProvider.useConfig();
   const {isTaroWeApp} = useTaro();
   const [mode, setMode] = useState<Mode>(Mode.date);
-  const valueRef = useRef<dayjs.Dayjs>(value || dayjs());
+  const valueRef = useRef<dayjs.Dayjs>( dayjs(value));
   const bodyRef = useRef<any>(null);
   const datetimeSwitchRef = useRef<any>();
   const [bodyHeight, setBodyHeight] = useState(300);
