@@ -29,7 +29,7 @@ export const Picker: FC<PickerProps> = React.memo(
      open,
      afterOpenChange,
      title,
-     columns,
+     columns = [],
      labelInValue = false,
      value,
      onOk,
@@ -37,10 +37,9 @@ export const Picker: FC<PickerProps> = React.memo(
      onClose,
    }) => {
     const {locale} = ConfigProvider.useConfig();
-    const [internalValue, setInternalValue] = useState<any[]>([]);
+    const [internalValue, setInternalValue] = useState<any[]>(value || []);
 
     const handleClose = () => {
-
       onClose?.();
     };
     const handleOk = () => {
@@ -53,6 +52,29 @@ export const Picker: FC<PickerProps> = React.memo(
       handleClose();
     };
 
+    useEffect(() => {
+      if (!value || size(value) === 0 || size(value) !== size(columns)) {
+        if (labelInValue) {
+          setInternalValue(columns.map((column, index) => {
+            if (index < size(value)) {
+              return column.find((option) => {
+                return option.value === value![index].value;
+              });
+            }
+            return column[0];
+          }));
+        } else {
+          setInternalValue(columns.map((column, index) => {
+            if (index < size(value)) {
+              return column.find((option) => {
+                return option.value === value![index];
+              })?.value;
+            }
+            return column[0].value;
+          }));
+        }
+      }
+    }, [columns]);
 
     return (
       <Popup
@@ -70,7 +92,7 @@ export const Picker: FC<PickerProps> = React.memo(
         <div className={classNames(pickerCls)}>
           <div className={classNames(`${pickerCls}-header`)}>
             <a
-              className={classNames(`${pickerCls}-header-button`)}
+              className={classNames(`${pickerCls}-header-button`, `${pickerCls}-header-button-cancel`,)}
               onClick={handelCancel}
             >
               {locale.common.cancel}

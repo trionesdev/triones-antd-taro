@@ -4,7 +4,6 @@ import React, {forwardRef, memo, useEffect, useState} from 'react';
 import {CalendarHeader} from './calendar-header';
 import './style.scss';
 import {TouchableCalendarGrid} from './touchable-calendar-grid';
-import {cloneDeep, isNil} from "lodash-es";
 import dayjs from "dayjs";
 import {isSame} from "../utils/dayjs";
 
@@ -42,10 +41,6 @@ export const Calendar = memo(
           setCurrentMonth(dayjs(month));
         }
       }, [month]);
-
-      useEffect(() => {
-        console.log('calendar value', value);
-      }, [value]);
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
