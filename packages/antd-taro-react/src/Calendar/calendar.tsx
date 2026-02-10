@@ -4,15 +4,15 @@ import React, {forwardRef, memo, useEffect, useState} from 'react';
 import {CalendarHeader} from './calendar-header';
 import './style.scss';
 import {TouchableCalendarGrid} from './touchable-calendar-grid';
-import {cloneDeep} from "lodash-es";
+import {cloneDeep, isNil} from "lodash-es";
 import dayjs from "dayjs";
 import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarProps = {
-  month?: dayjs.Dayjs;
-  value?: dayjs.Dayjs;
+  month?: dayjs.Dayjs | Date;
+  value?: dayjs.Dayjs | Date;
   onChange?: (date: dayjs.Dayjs) => void;
   onMonthChange?: (month: dayjs.Dayjs) => void;
   slideable?: boolean;
@@ -24,10 +24,10 @@ export const Calendar = memo(
       {month, value, onChange, onMonthChange, slideable = false},
       ref,
     ) => {
-      const [currentMonth, setCurrentMonth] = useState(month || dayjs());
+      const [currentMonth, setCurrentMonth] = useState<dayjs.Dayjs>(dayjs(month));
 
       const handleMonthChange = (newMonth: dayjs.Dayjs) => {
-        if (isSame(currentMonth,newMonth, 'month')) {
+        if (isSame(currentMonth, newMonth, 'month')) {
           return;
         }
         setCurrentMonth(newMonth);
@@ -38,8 +38,8 @@ export const Calendar = memo(
         if (month == undefined) {
           return;
         }
-        if (!isSame(month,currentMonth, 'month')) {
-          setCurrentMonth(month);
+        if (!isSame(month, currentMonth, 'month')) {
+          setCurrentMonth(dayjs(month));
         }
       }, [month]);
 
@@ -53,7 +53,7 @@ export const Calendar = memo(
           {slideable ? (
             <TouchableCalendarGrid
               month={currentMonth}
-              value={value ? [cloneDeep(value)] : []}
+              value={value ? [dayjs(value)] : []}
               onMonthChange={handleMonthChange}
               onChange={(value) => {
                 onChange?.(value?.[0]);
@@ -62,7 +62,7 @@ export const Calendar = memo(
           ) : (
             <CalendarGrid
               month={currentMonth}
-              value={value ? [cloneDeep(value)] : []}
+              value={value ? [dayjs(value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}

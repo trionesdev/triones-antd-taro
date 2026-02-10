@@ -4,10 +4,11 @@ import './style.scss';
 import {cls} from './types';
 import CalendarDatetimePopup from "../CalendarDatetimePopup";
 import dayjs from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 export type CalendarDatetimePickerProps = {
   placeholder?: string;
-  value?: dayjs.Dayjs;
+  value?: dayjs.Dayjs | Date;
   format?: string;
   onChange?: (value?: dayjs.Dayjs) => void;
   align?: 'left' | 'right' | 'center';
@@ -21,7 +22,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
                                                                           align = 'left'
                                                                         }) => {
   const [innerOpen, setInnerOpen] = React.useState(false);
-  const [internalValue, setInternalValue] = useState<dayjs.Dayjs | undefined>(value)
+  const [internalValue, setInternalValue] = useState<dayjs.Dayjs | undefined>(value ? dayjs(value) : undefined)
 
   const handleValueRender = () => {
     if (internalValue) {
@@ -34,8 +35,8 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
     if (value === undefined) {
       return
     }
-    if (!value.isSame(internalValue)) {
-      setInternalValue(value)
+    if (!isSame(value, internalValue)) {
+      setInternalValue(dayjs(value))
     }
   }, [value])
 

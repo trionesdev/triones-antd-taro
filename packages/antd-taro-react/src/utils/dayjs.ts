@@ -1,13 +1,30 @@
-import dayjs, {ConfigType, OpUnitType} from "dayjs";
+import dayjs, {OpUnitType} from "dayjs";
+import {isEmpty, isNil} from "lodash-es";
 
-export const isSame = (x?: dayjs.Dayjs, y?: dayjs.Dayjs, unit?: OpUnitType): boolean => {
-  if (x == null && y == null) {
+export const toDayjsArray = (dateArr?: Date[] | dayjs.Dayjs[]): dayjs.Dayjs[] | undefined => {
+  if (isNil(dateArr)) {
+    return dateArr;
+  }
+  if (isEmpty(dateArr)) {
+    return []
+  }
+  return dateArr?.map(date => {
+    if (isNil(date)) {
+      return date
+    } else {
+      return dayjs(date)
+    }
+  }) as dayjs.Dayjs[];
+}
+
+export const isSame = (x?: dayjs.Dayjs | Date, y?: dayjs.Dayjs | Date, unit?: OpUnitType): boolean => {
+  if (isNil(x) && isNil(y)) {
     return true
-  } else if (x == null && y != null) {
+  } else if (isNil(x) && !isNil(y)) {
     return false
-  } else if (x != null && y == null) {
+  } else if (!isNil(x) && isNil(y)) {
     return false
   } else {
-    return Boolean(x?.isSame(y, unit))
+    return Boolean(dayjs(x)?.isSame(y, unit))
   }
 }
