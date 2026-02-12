@@ -11,6 +11,7 @@ const pickerCls = 'triones-antm-picker';
 export type PickerProps = {
   open?: boolean;
   afterOpenChange?: (open: boolean) => void;
+  round?: boolean;
   title?: React.ReactNode;
   columns?: PickerColumnOption[][];
   /**
@@ -28,6 +29,7 @@ export const Picker: FC<PickerProps> = React.memo(
   ({
      open,
      afterOpenChange,
+     round = true,
      title,
      columns,
      labelInValue = false,
@@ -74,14 +76,8 @@ export const Picker: FC<PickerProps> = React.memo(
         open={innerOpen}
         onClose={() => {
           setInnerOpen(false)
-        }
-        }
-        styles={{
-          body: {
-            borderTopLeftRadius: 6,
-            borderTopRightRadius: 6,
-          },
         }}
+        round={round}
       >
         <div className={classNames(pickerCls)}>
           <div className={classNames(`${pickerCls}-header`)}>
