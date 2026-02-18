@@ -8,7 +8,7 @@ export type TaroInputProps = Omit<InputProps, 'type'> & {
   password?: boolean;
 };
 
-export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'middle', ...rest}) => {
+export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'middle', align = 'left', ...rest}) => {
   const [innerValue, setInnerValue] = React.useState<any>(value);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'mi
       setInnerValue(null)
     }}
   >
-    <InternalTaroInput style={{flex: 1}} type={type}
+    <InternalTaroInput style={{flex: 1,textAlign: align}} type={type}
                        defaultValue={rest.defaultValue}
                        value={innerValue}
                        placeholder={rest.placeholder}

@@ -29,6 +29,14 @@ const InputBase = () => {
         <Input.Number placeholder="请输入内容" allowClear={true}/>
       </View>
     </DemoBlock>
+    <DemoBlock title="对其方式" styles={{body: {backgroundColor: '#D5D5D5'}}}>
+      <View style={{backgroundColor: '#ffffff'}}>
+          <Space direction="vertical" block>
+            <Input placeholder="文本内容对其"/>
+            <Input placeholder="文本内容对其" align="right"/>
+          </Space>
+      </View>
+    </DemoBlock>
     <DemoBlock title="OPT模式" styles={{body: {backgroundColor: '#D5D5D5'}}}>
       <View style={{backgroundColor: '#ffffff'}}>
         <Input.OPT/>

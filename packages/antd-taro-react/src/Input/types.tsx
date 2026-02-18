@@ -10,6 +10,7 @@ export type InputProps = {
   placeholder?: string;
   size?: SizeType
   disabled?: boolean;
+  align?: 'left' | 'center' | 'right';
   allowClear?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
