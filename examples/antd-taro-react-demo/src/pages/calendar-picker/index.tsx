@@ -1,7 +1,7 @@
 import {View} from "@tarojs/components";
 import React from "react";
 import {DemoBlock} from "../../components";
-import {Button, CalendarPopup } from "@trionesdev/antd-taro-react";
+import {Button, CalendarPicker } from "@trionesdev/antd-taro-react";
 import Taro from "@tarojs/taro";
 
 const CalendarBase = () => {
@@ -11,7 +11,7 @@ const CalendarBase = () => {
   return <View>
     <View ref={toastContainer}/>
     <DemoBlock title={`日历选择器`}>
-      <CalendarPopup open={open} afterOpenChange={(o) => {
+      <CalendarPicker open={open} afterOpenChange={(o) => {
         setOpen(o);
       }} onOk={(date) => {
         Taro.showToast({
@@ -25,7 +25,7 @@ const CalendarBase = () => {
       </Button>
     </DemoBlock>
     <DemoBlock title={`日历选择器(区间)`}>
-      <CalendarPopup.Range open={open2} afterOpenChange={(o) => {
+      <CalendarPicker.Range open={open2} afterOpenChange={(o) => {
         setOpen2(o);
       }} onOk={(date) => {
         Taro.showToast({

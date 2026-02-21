@@ -1,24 +1,62 @@
 @use "../style/variable" as variable;
+
 $calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
 
 .#{$calendarDatetimePickerCls} {
-  width: 100%;
-  line-height: 1.4;
-  display: flex;
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
 
-  &-left {
-    justify-content: flex-start;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+
+
+    &-display {
+      display: flex;
+      padding-left: 8Px;
+
+      &-date {
+        padding-inline: 8Px;
+        cursor: default;
+        display: flex;
+        align-items: center;
+      }
+
+      &-time {
+        padding-inline: 12Px;
+        display: flex;
+        align-items: center;
+        cursor: default;
+      }
+
+      &-active {
+        color: variable.$trionesColorText;
+        font-weight: bold;
+        background-color: variable.$trionesColorBgTextActive;
+      }
+    }
+
+    &-button {
+      padding: 12Px 16Px;
+
+      &-cancel {}
+
+      &-ok {
+        color: variable.$trionesColorPrimary;
+      }
+    }
   }
 
-  &-center {
-    justify-content: center;
-  }
-
-  &-right {
-    justify-content: flex-end;
-  }
-
-  &-placeholder {
-    color: variable.$trionesColorTextPlaceholder;
+  &-body {
+    .time-picker {
+      .time-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32Px;
+      }
+    }
   }
 }

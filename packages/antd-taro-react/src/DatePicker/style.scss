@@ -1,31 +1,8 @@
 @use "../style/variable" as variable;
+
 $datePickerCls: 'triones-antm-date-picker';
 
 .#{$datePickerCls} {
-  width: 100%;
-  line-height: 1.4;
-  display: flex;
-
-  &-left {
-    justify-content: flex-start;
-  }
-
-  &-center {
-    justify-content: center;
-  }
-
-  &-right {
-    justify-content: flex-end;
-  }
-
-  &-placeholder {
-    color: variable.$trionesColorTextPlaceholder;
-  }
-}
-
-$datePickerPopupCls: 'triones-antm-date-picker-popup';
-
-.#{$datePickerPopupCls} {
   border-top-left-radius: variable.$trionesBorderRadius;
   border-top-right-radius: variable.$trionesBorderRadius;
 

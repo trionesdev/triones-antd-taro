@@ -4,10 +4,10 @@ import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
-import {CalendarPopupProps, cls} from './types';
+import {CalendarPickerProps, cls} from './types';
 import dayjs from "dayjs";
 
-export const CalendarPopup: FC<CalendarPopupProps> = memo(
+export const CalendarPicker: FC<CalendarPickerProps> = memo(
   ({month, open, title, afterOpenChange, value = dayjs(), onOk, onCancel, onClose}) => {
     const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);

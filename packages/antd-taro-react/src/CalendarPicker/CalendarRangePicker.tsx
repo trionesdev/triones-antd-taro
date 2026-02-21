@@ -3,10 +3,10 @@ import Popup from "../Popup";
 import classNames from "classnames";
 import Calendar from "../Calendar";
 import "./style.scss"
-import {CalendarPopupRangeProps, cls} from "./types";
+import {CalendarPickerRangeProps, cls} from "./types";
 import ConfigProvider from "../ConfigProvider";
 
-export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
+export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
   ({
      month,
      open,

@@ -1,45 +1,32 @@
 @use "../style/variable" as variable;
-$cascaderPopupCls: 'triones-antm-cascader-popup';
 
-.#{$cascaderPopupCls} {
-  width: 100%;
-  height: 300Px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+$calendarPickerCls: 'triones-antm-calendar-picker';
+
+.#{$calendarPickerCls} {
+  border-top-left-radius: variable.$trionesBorderRadius;
+  border-top-right-radius: variable.$trionesBorderRadius;
 
   &-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     border-bottom: 1Px solid variable.$trionesBorderColor;
     padding: 4Px;
-
     &-button {
+      padding: 8Px 12Px;
 
-      padding: 8Px;
-      font-size: 12Px;
       &-cancel{
         color: variable.$trionesColorTextSecondary;
       }
-      &-ok{
+
+      &-ok {
         color: variable.$trionesColorPrimary;
       }
     }
 
-    &-title {
-    }
+
   }
 
   &-body {
-    flex: 1 1;
-    width: 100%;
     pointer-events: unset;
-    overflow: hidden;
   }
-  &-view{
-    --height: 100%;
-  }
-
 }

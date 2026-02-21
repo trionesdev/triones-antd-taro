@@ -109,31 +109,41 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/calendar-datetime-picker-cell/index",
+              });
+            }}
+          >
+            CalendarDatetimePickerCell 日历时间选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/calendar-datetime-picker/index",
               });
             }}
           >
-            CalendarDatetimePicker 日历时间选择器
+            CalendarDatetimePicker 日历时间选择器弹窗
           </Button>
           <Button
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/calendar-datetime-popup/index",
+                url: "/pages/calendar-picker/index",
               });
             }}
           >
-            CalendarDatetimePopup 日历时间选择器弹窗
+            CalendarPicker 日历选择器弹窗
           </Button>
           <Button
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/calendar-popup/index",
+                url: "/pages/cascader-picker-cell/index",
               });
             }}
           >
-            CalendarPopup 日历选择器弹窗
+            CascaderPickerCell 级联选择器
           </Button>
           <Button
             block={true}
@@ -143,17 +153,7 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            CascaderPicker 级联选择器
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/cascader-popup/index",
-              });
-            }}
-          >
-            CascaderPopup 级联选择器弹窗
+            CascaderPicker 级联选择器弹窗
           </Button>
           <Button
             block={true}
@@ -189,11 +189,11 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
-                url: "/pages/date-picker/index",
+                url: "/pages/date-picker-cell/index",
               });
             }}
           >
-            DatePicker 日期选择器
+            DatePickerCell 日期选择器
           </Button>
           <Button
             block={true}

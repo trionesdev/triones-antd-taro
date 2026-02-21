@@ -1,9 +1,9 @@
 import React from "react";
 import dayjs from "dayjs";
 
-export const cls = 'triones-antm-calendar-popup';
+export const cls = 'triones-antm-calendar-picker';
 
-export type CalendarPopupProps = {
+export type CalendarPickerProps = {
   month?: dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
@@ -14,7 +14,7 @@ export type CalendarPopupProps = {
   onClose?: () => void,
 }
 
-export type CalendarPopupRangeProps = {
+export type CalendarPickerRangeProps = {
   month?: dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode

@@ -1,16 +1,29 @@
-import { View } from "@tarojs/components";
-import { DemoBlock } from "../../components";
-import { CalendarDatetimePicker, Cell } from "@trionesdev/antd-taro-react";
+import {View} from "@tarojs/components";
+import Taro from "@tarojs/taro";
+import {Button, CalendarDatetimePicker} from "@trionesdev/antd-taro-react";
+import React from "react";
+import {DemoBlock} from "../../components";
 
-const CalendarDatetimePickerBase = () => {
+
+const CalendarDatetimePopupBase = () => {
+  const [open, setOpen] = React.useState(false);
 
   return <View>
-    <DemoBlock title={`基础用法`}>
-      <Cell label={'日历时间选择'} wrapperAlign="right">
-        <CalendarDatetimePicker align="right" />
-      </Cell>
+    <DemoBlock title={`日期时间选择器`}>
+      <CalendarDatetimePicker open={open} onClose={() => setOpen(false)}
+                             afterOpenChange={(o) => {
+                               setOpen(o);
+                             }} onOk={(date) => {
+        Taro.showToast({
+          title: `${date!.year()}-${date!.month() + 1}-${date!.date()} ${date!.hour()}:${date!.minute()}`,
+          icon: 'none',
+          duration: 2000,
+        })
+      }}/>
+      <Button block={true} onClick={() => {
+        setOpen(true);
+      }}>日期时间选择器</Button>
     </DemoBlock>
-
   </View>
 }
-export default CalendarDatetimePickerBase;
+export default CalendarDatetimePopupBase;
