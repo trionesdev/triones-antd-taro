@@ -1,7 +1,7 @@
 import dayjs, {OpUnitType} from "dayjs";
 import {isEmpty, isNil} from "lodash-es";
 
-export const toDayjsArray = (dateArr?: Date[] | dayjs.Dayjs[]): dayjs.Dayjs[] | undefined => {
+export const toDayjsArray = (dateArr?: (dayjs.Dayjs | Date)[]): dayjs.Dayjs[] | undefined => {
   if (isNil(dateArr)) {
     return dateArr;
   }
