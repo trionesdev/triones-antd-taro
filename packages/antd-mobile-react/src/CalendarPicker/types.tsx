@@ -13,7 +13,7 @@ export type CalendarPickerProps = {
 }
 
 export type CalendarRangePickerProps = {
-  mouth?: Date | dayjs.Dayjs;
+  month?: Date | dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
   afterOpenChange?: (open: boolean) => void;

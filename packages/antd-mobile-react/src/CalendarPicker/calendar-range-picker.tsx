@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 const cls = 'triones-antm-calendar-picker';
 
 export const CalendarRangePicker: FC<CalendarRangePickerProps> = memo(
-  ({mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose}) => {
+  ({month, open, title, afterOpenChange, value, onOk, onCancel, onClose}) => {
     const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<dayjs.Dayjs[] | undefined>();
@@ -80,7 +80,7 @@ export const CalendarRangePicker: FC<CalendarRangePickerProps> = memo(
           </div>
           <div className={classNames(`${cls}-body`)}>
             <Calendar.Range
-              month={mouth}
+              month={month}
               value={value}
               onChange={(date) => {
                 valueRef.current = date;

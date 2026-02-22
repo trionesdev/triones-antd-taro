@@ -23,6 +23,9 @@ export type {CalendarGridProps, CalendarProps} from './Calendar';
 export {default as CalendarDatetimePicker} from './CalendarDatetimePicker';
 export type {CalendarDatetimePickerProps} from './CalendarDatetimePicker';
 
+export {default as CalendarDatetimePickerCell} from './CalendarDatetimePickerCell';
+export type {CalendarDatetimePickerCellProps} from './CalendarDatetimePickerCell';
+
 export {default as CalendarPicker} from './CalendarPicker';
 export type {CalendarPickerProps} from './CalendarPicker';
 

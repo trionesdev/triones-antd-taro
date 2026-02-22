@@ -17,7 +17,7 @@ export default () => {
         }} onOk={(date) => {
           Toast.show({
             getContainer: () => toastContainer.current,
-            content: `${date!.getFullYear()}-${date!.getMonth()  +1}-${date!.getDate()}`,
+            content: `${date!.year()}-${date!.month()  +1}-${date!.date()}`,
           })
         }}/>
         <Button block={true} onClick={() => {
@@ -33,8 +33,8 @@ export default () => {
           Toast.show({
             getContainer: () => toastContainer.current,
             content: <div>
-              <div>{`${date![0].getFullYear()}-${date![0].getMonth() ?? +1}-${date![0].getDate()}`}</div>
-              <div>{`${date![1].getFullYear()}-${date![1].getMonth() ?? +1}-${date![1].getDate()}`}</div>
+              <div>{`${date![0].year()}-${date![0].month() ?? +1}-${date![0].date()}`}</div>
+              <div>{`${date![1].year()}-${date![1].month() ?? +1}-${date![1].date()}`}</div>
             </div>,
           })
         }}/>

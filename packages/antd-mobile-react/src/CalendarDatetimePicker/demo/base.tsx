@@ -15,7 +15,7 @@ export default ()=>{
       }} onOk={(date) => {
         Toast.show({
           getContainer: () => toastContainer.current,
-          content: `${date!.getFullYear()}-${date!.getMonth()  +1}-${date!.getDate()} ${date!.getHours()}:${date!.getMinutes()}`,
+          content: `${date!.year()}-${date!.month()  +1}-${date!.date()} ${date!.hour()}:${date!.minute()}`,
         })
       }}/>
       <Button block={true} onClick={() => {
