@@ -293,7 +293,6 @@ export const DatePicker: FC<DatePickerPops> = ({
       </div>
       <div className={classNames(`${cls}-body`)}>
         <PickerView columns={columns} value={pickerValue} onChange={(v) => {
-          console.log(v)
           handleValueChange(v)
         }}/>
       </div>
