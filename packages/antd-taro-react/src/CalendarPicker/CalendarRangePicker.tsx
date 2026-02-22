@@ -5,6 +5,8 @@ import Calendar from "../Calendar";
 import "./style.scss"
 import {CalendarPickerRangeProps, cls} from "./types";
 import ConfigProvider from "../ConfigProvider";
+import dayjs from "dayjs";
+import {isSameArray} from "../utils/dayjs";
 
 export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
   ({
@@ -19,7 +21,7 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
    }) => {
     const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
-    const valueRef = useRef<any>();
+    const valueRef = useRef<dayjs.Dayjs[] | undefined>();
 
     const handleClose = () => {
       setInnerOpen(false)
@@ -41,7 +43,7 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
 
     useEffect(() => {
       if (value !== undefined) {
-        if (value !== valueRef.current) {
+        if (!isSameArray(value, valueRef.current, 'day')) {
           valueRef.current = value
         }
       }

@@ -4,7 +4,7 @@ group:
   title: 数据录入
   order: 5
 ---
-# CascaderPopup 级联选择弹窗
+# CascaderPickerCell 级联选择器
 
 ## 示例
 

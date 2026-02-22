@@ -1,24 +1,45 @@
 @use "../style/variable" as variable;
 $cascaderPickerCls: 'triones-antm-cascader-picker';
 
-.#{$cascaderPickerCls}{
+.#{$cascaderPickerCls} {
   width: 100%;
-  line-height: 1.4;
+  height: 300Px;
+  overflow: hidden;
+  position: relative;
   display: flex;
+  flex-direction: column;
 
-  &-left {
-    justify-content: flex-start;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+    padding: 4Px;
+
+    &-button {
+
+      padding: 8Px;
+      font-size: 12Px;
+      &-cancel{
+        color: variable.$trionesColorTextSecondary;
+      }
+      &-ok{
+        color: variable.$trionesColorPrimary;
+      }
+    }
+
+    &-title {
+    }
   }
 
-  &-center {
-    justify-content: center;
+  &-body {
+    flex: 1 1;
+    width: 100%;
+    pointer-events: unset;
+    overflow: hidden;
+  }
+  &-view{
+    --height: 100%;
   }
 
-  &-right {
-    justify-content: flex-end;
-  }
-
-  &-placeholder{
-    color: variable.$trionesColorTextPlaceholder;
-  }
 }

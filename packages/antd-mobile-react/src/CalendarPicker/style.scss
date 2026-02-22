@@ -1,8 +1,8 @@
 @use "../style/variable" as variable;
 
-$calendarPopupCls: 'triones-antm-calendar-popup';
+$calendarPickerCls: 'triones-antm-calendar-picker';
 
-.#{$calendarPopupCls} {
+.#{$calendarPickerCls} {
   border-top-left-radius: variable.$trionesBorderRadius;
   border-top-right-radius: variable.$trionesBorderRadius;
 

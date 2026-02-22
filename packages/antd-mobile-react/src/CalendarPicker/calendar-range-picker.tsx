@@ -1,18 +1,20 @@
 import classNames from 'classnames';
-import React, { FC, memo, useEffect, useRef } from 'react';
+import React, {FC, memo, useEffect, useRef} from 'react';
 import Calendar from '../Calendar';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
-import { CalendarPopupRangeProps } from './types';
+import {CalendarRangePickerProps} from './types';
+import {isSameArray, toDayjsArray} from "../utils/dayjs";
+import dayjs from "dayjs";
 
-const cls = 'triones-antm-calendar-popup';
+const cls = 'triones-antm-calendar-picker';
 
-export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
-  ({ mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose }) => {
-    const { locale } = ConfigProvider.useConfig();
+export const CalendarRangePicker: FC<CalendarRangePickerProps> = memo(
+  ({mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose}) => {
+    const {locale} = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
-    const valueRef = useRef<any>();
+    const valueRef = useRef<dayjs.Dayjs[] | undefined>();
 
     const handleClose = () => {
       setInnerOpen(false);
@@ -34,8 +36,8 @@ export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
 
     useEffect(() => {
       if (value !== undefined) {
-        if (value !== valueRef.current) {
-          valueRef.current = value;
+        if (!isSameArray(value, valueRef.current, 'day')) {
+          valueRef.current = toDayjsArray(value);
         }
       }
     }, [value]);
@@ -78,7 +80,7 @@ export const CalendarRangePopup: FC<CalendarPopupRangeProps> = memo(
           </div>
           <div className={classNames(`${cls}-body`)}>
             <Calendar.Range
-              mouth={mouth}
+              month={mouth}
               value={value}
               onChange={(date) => {
                 valueRef.current = date;

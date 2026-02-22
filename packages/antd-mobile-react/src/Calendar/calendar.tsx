@@ -1,39 +1,48 @@
 import classNames from 'classnames';
-import React, { forwardRef, memo, useState } from 'react';
-import { CalendarHeader } from './calendar-header';
+import React, {forwardRef, memo, useState} from 'react';
+import {CalendarHeader} from './calendar-header';
 import './style.scss';
-import { TouchableCalendarGrid } from './touchable-calendar-grid';
+import {TouchableCalendarGrid} from './touchable-calendar-grid';
 import {CalendarGrid} from "./calendar-grid";
-import {cloneDeep} from "lodash-es";
+import dayjs from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarProps = {
-  mouth?: Date;
-  value?: Date;
-  onChange?: (date: Date) => void;
-  onMouthChange?: (mouth: Date) => void;
+  month?: dayjs.Dayjs|Date;
+  value?: dayjs.Dayjs|Date;
+  onChange?: (date: dayjs.Dayjs) => void;
+  onMonthChange?: (mouth: dayjs.Dayjs) => void;
   slideable?: boolean;
 };
 
 export const Calendar = memo(
   forwardRef<HTMLDivElement, CalendarProps>(
     (
-      { mouth = new Date(), value, onChange, onMouthChange, slideable = false },
+      { month = dayjs(), value, onChange, onMonthChange, slideable = false },
       ref,
     ) => {
-      const [currentMouth, setCurrentMouth] = useState(mouth);
+      const [currentMonth, setCurrentMonth] = useState<dayjs.Dayjs>(dayjs(month));
+
+      const handleMonthChange = (newMonth: dayjs.Dayjs) => {
+        if (isSame(currentMonth, newMonth, 'month')) {
+          return;
+        }
+        setCurrentMonth(newMonth);
+        onMonthChange?.(newMonth);
+      };
 
       return (
         <div ref={ref} className={classNames(`${calendarCls}`)}>
-          <CalendarHeader mouth={currentMouth} onChange={setCurrentMouth} />
+          <CalendarHeader month={currentMonth} onChange={handleMonthChange} />
           {slideable ? (
             <TouchableCalendarGrid
-              mouth={currentMouth}
-              value={value ? [value] : []}
+              month={currentMonth}
+              value={value ? [dayjs( value)] : []}
               onMouthChange={(newMouth) => {
-                setCurrentMouth(newMouth);
-                onMouthChange?.(newMouth);
+                setCurrentMonth(newMouth);
+                onMonthChange?.(newMouth);
               }}
               onChange={(value) => {
                 onChange?.(value?.[0]);
@@ -41,8 +50,8 @@ export const Calendar = memo(
             />
           ) : (
             <CalendarGrid
-              mouth={currentMouth}
-              value={value ? [cloneDeep(value)] : []}
+              month={currentMonth}
+              value={value ? [dayjs(value)] : []}
               onChange={(value) => {
                 onChange?.(value?.[0]);
               }}

@@ -6,9 +6,9 @@ import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 import './style.scss';
 
-const cascaderPopupCls = 'triones-antm-cascader-popup';
+const cascaderPickerCls = 'triones-antm-cascader-picker';
 
-export type CascaderPopupProps = {
+export type CascaderPickerProps = {
   className?: string;
   style?: React.CSSProperties;
   open?: boolean;
@@ -33,7 +33,7 @@ export type CascaderPopupProps = {
   asyncRequest?: (parentValue?: any) => Promise<any>;
 };
 
-export const CascaderPopup: FC<CascaderPopupProps> = React.memo(
+export const CascaderPicker: FC<CascaderPickerProps> = React.memo(
   ({
      className,
      style,
@@ -90,30 +90,30 @@ export const CascaderPopup: FC<CascaderPopupProps> = React.memo(
           },
         }}
       >
-        <div className={classNames(cascaderPopupCls, className)} style={style}>
-          <div className={classNames(`${cascaderPopupCls}-header`)}>
+        <div className={classNames(cascaderPickerCls, className)} style={style}>
+          <div className={classNames(`${cascaderPickerCls}-header`)}>
             <a
-              className={classNames(`${cascaderPopupCls}-header-button`, `${cascaderPopupCls}-header-button-cancel`,)}
+              className={classNames(`${cascaderPickerCls}-header-button`, `${cascaderPickerCls}-header-button-cancel`,)}
               onClick={handelCancel}
             >
               {locale.common.cancel}
             </a>
             {title && (
-              <div className={classNames(`${cascaderPopupCls}-header-title`)}>
+              <div className={classNames(`${cascaderPickerCls}-header-title`)}>
                 {title}
               </div>
             )}
             <a
               className={classNames(
-                `${cascaderPopupCls}-header-button`,
-                `${cascaderPopupCls}-header-button-ok`,
+                `${cascaderPickerCls}-header-button`,
+                `${cascaderPickerCls}-header-button-ok`,
               )}
               onClick={handleOk}
             >
               {locale.common.confirm}
             </a>
           </div>
-          <div className={classNames(`${cascaderPopupCls}-body`)}>
+          <div className={classNames(`${cascaderPickerCls}-body`)}>
             <CascaderView
               // open={ open}
               fieldNames={fieldNames}

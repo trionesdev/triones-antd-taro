@@ -1,18 +1,12 @@
-import React, { FC, useEffect, useState } from "react"
-import classNames from "classnames";
-import { isEmpty } from "lodash-es";
-import CascaderPopup from "../CascaderPopup";
+import React, {FC, useEffect, useState} from "react"
+import CascaderPopup from "../CascaderPicker";
 import "./style.scss"
+import Cell, {CellProps} from "../Cell";
 
 const cls = 'triones-antm-cascader-picker';
 
-export type CascaderPickerProps = {
-  placeholder?: string;
+export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {
   onChange?: (value: any[]) => void;
-  align?: 'left' | 'right' | 'center';
-  className?: string;
-  style?: React.CSSProperties;
-  title?: React.ReactNode;
   options?: any[];
   /**
    * @description 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { value: string, label: ReactNode } 的格式
@@ -29,10 +23,8 @@ export type CascaderPickerProps = {
   asyncRequest?: (parentValue?: any) => Promise<any>;
 }
 
-export const CascaderPicker: FC<CascaderPickerProps> = ({
-  placeholder = '请选择',
+export const CascaderPickerCell: FC<CascaderPickerCellProps> = ({
   onChange,
-  align = 'left',
   value,
   labelInValue = true,
   ...rest
@@ -68,10 +60,8 @@ export const CascaderPicker: FC<CascaderPickerProps> = ({
         setOpen(false)
         onChange?.(value || [])
       }} />
-    <div className={classNames(cls, `${cls}-${align}`)} onClick={() => {
+    <Cell onClick={() => {
       setOpen(true)
-    }}>
-      {isEmpty(internalValue) ? <div className={`${cls}-placeholder`}>{placeholder}</div> : <div>{valueText()}</div>}
-    </div>
+    }} {...rest}>{valueText()}</Cell>
   </>
 }

@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useState} from "react"
 import CascaderPopup from "../CascaderPicker";
-import "./style.scss"
 import Cell, {CellProps} from "../Cell";
 
 export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {

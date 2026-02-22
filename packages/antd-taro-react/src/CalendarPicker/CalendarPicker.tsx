@@ -6,6 +6,7 @@ import Popup from '../Popup';
 import './style.scss';
 import {CalendarPickerProps, cls} from './types';
 import dayjs from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 export const CalendarPicker: FC<CalendarPickerProps> = memo(
   ({month, open, title, afterOpenChange, value = dayjs(), onOk, onCancel, onClose}) => {
@@ -33,7 +34,7 @@ export const CalendarPicker: FC<CalendarPickerProps> = memo(
 
     useEffect(() => {
       if (value !== undefined) {
-        if (value !== valueRef.current) {
+        if (!isSame(value, valueRef.current, 'day')) {
           valueRef.current = value;
         }
       }
