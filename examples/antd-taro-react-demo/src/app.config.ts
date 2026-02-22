@@ -8,6 +8,7 @@ export default defineAppConfig({
     "pages/calendar-datetime-picker-cell/index",
     "pages/calendar-datetime-picker/index",
     "pages/calendar-picker/index",
+    "pages/calendar-picker-cell/index",
     "pages/card/index",
     "pages/cascader-picker/index",
     "pages/cascader-picker-cell/index",

@@ -30,7 +30,7 @@ export {default as CalendarPicker} from './CalendarPicker';
 export type {CalendarPickerProps, CalendarPickerRangeProps} from './CalendarPicker';
 
 export {default as CalendarPickerCell} from './CalendarPickerCell';
-export type {CalendarPickerCellProps, CalendarPickerRangeCellProps} from './CalendarPickerCell';
+export type {CalendarPickerCellProps, CalendarRangePickerCellProps} from './CalendarPickerCell';
 
 export {default as Card} from './Card';
 export type {CardProps} from './Card';

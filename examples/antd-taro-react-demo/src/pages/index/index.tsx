@@ -139,6 +139,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/calendar-picker-cell/index",
+              });
+            }}
+          >
+            CalendarPickerCell 日历选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/cascader-picker-cell/index",
               });
             }}
