@@ -70,7 +70,7 @@ export const DatePicker: FC<DatePickerPops> = ({
       return Array.from({length: maxDate.year() - minDate.year() + 1}, (_, i) => minDate.year() + i)
     }
     if (minDate) {
-      return Array.from({length: dayjs().year() - minDate.year() + 1}, (_, i) => minDate.year() + i)
+      return Array.from({length: 100}, (_, i) => minDate.year() + i)
     }
     if (maxDate) {
       return Array.from({length: maxDate.year() - dayjs().year() + 1}, (_, i) => dayjs().year() + i)
@@ -88,7 +88,7 @@ export const DatePicker: FC<DatePickerPops> = ({
     if (maxDate && maxDate.year() === internalValue.year) {
       end = maxDate.month()
     }
-    return Array.from({length: end - start + 1}, (_, i) => start + i + 1)
+    return Array.from({length: end - start }, (_, i) => start + i + 1)
   }, [internalValue.year, minDate, maxDate])
 
 
