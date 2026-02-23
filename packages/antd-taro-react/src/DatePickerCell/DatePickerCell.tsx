@@ -9,7 +9,7 @@ export type DatePickerCellPops = Omit<CellProps, 'value'> & {
   format?: string;
   onChange?: (value?: dayjs.Dayjs) => void;
   mode?: Mode
-  showTime?: boolean
+  showTime?: boolean| {format?: string}
   minDate?: dayjs.Dayjs,
   maxDate?: dayjs.Dayjs
 }
@@ -62,7 +62,6 @@ export const DatePickerCell: FC<DatePickerCellPops> = ({
         setInnerOpen(false)
       }}
       mode={mode}
-      format={format}
       showTime={showTime}
       minDate={minDate}
       maxDate={maxDate}

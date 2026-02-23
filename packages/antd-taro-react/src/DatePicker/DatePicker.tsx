@@ -16,8 +16,7 @@ export type DatePickerPops = {
   onClose?: () => void
   title?: React.ReactNode
   mode?: Mode
-  format?: string
-  showTime?: boolean
+  showTime?: boolean | { format?: string }
   value?: dayjs.Dayjs,
   onOk?: (value: dayjs.Dayjs) => void
   minDate?: dayjs.Dayjs,
@@ -34,25 +33,26 @@ type InternalValueType = {
 }
 
 export const DatePicker: FC<DatePickerPops> = ({
-                                                    open,
-                                                    onClose,
-                                                    title,
-                                                    mode = 'date',
-                                                    format,
-                                                    showTime,
-                                                    value,
-                                                    onOk,
-                                                    minDate,
-                                                    maxDate
-                                                  }) => {
-  const cleanFormat = format?.replace(/\[([^\]]+)\]/g, '')
-  const hasYear = cleanFormat?.includes('Y')
-  const hasMouth = cleanFormat?.includes('M')
-  const hasDate = cleanFormat?.includes('D')
+                                                 open,
+                                                 onClose,
+                                                 title,
+                                                 mode = 'date',
+                                                 showTime,
+                                                 value,
+                                                 onOk,
+                                                 minDate,
+                                                 maxDate
+                                               }) => {
+  const cleanTimeFormat = useMemo(() => {
+    if (typeof showTime === 'object' && showTime?.format) {
+      return showTime.format.replace(/\[([^\]]+)\]/g, '')
+    }
+    return ''
+  }, [showTime])
 
-  const hasHour = cleanFormat?.includes('H')
-  const hasMinute = cleanFormat?.includes('m')
-  const hasSecond = cleanFormat?.includes('s')
+  const hasHour = cleanTimeFormat?.includes('H')
+  const hasMinute = cleanTimeFormat?.includes('m')
+  const hasSecond = cleanTimeFormat?.includes('s')
 
   const {locale} = ConfigProvider.useConfig();
   const [internalValue, setInternalValue] = useState<InternalValueType>({
@@ -66,17 +66,19 @@ export const DatePicker: FC<DatePickerPops> = ({
 
 
   const years = useMemo(() => {
+    let startYear = dayjs().year() - 50;
+    let endYear = dayjs().year() + 50;
     if (minDate && maxDate) {
-      return Array.from({length: maxDate.year() - minDate.year() + 1}, (_, i) => minDate.year() + i)
+      startYear = minDate.year()
+      endYear = maxDate.year()
     }
     if (minDate) {
-      return Array.from({length: 100}, (_, i) => minDate.year() + i)
+      startYear = minDate.year()
     }
     if (maxDate) {
-      return Array.from({length: maxDate.year() - dayjs().year() + 1}, (_, i) => dayjs().year() + i)
+      endYear = maxDate.year()
     }
-    const startYear = dayjs().year() + 30 - 100;
-    return Array.from({length: 100}, (_, i) => startYear + i)
+    return Array.from({length: endYear - startYear + 1}, (_, i) => startYear + i)
   }, [internalValue.year, minDate, maxDate])
 
   const mouths = useMemo(() => {
@@ -88,7 +90,7 @@ export const DatePicker: FC<DatePickerPops> = ({
     if (maxDate && maxDate.year() === internalValue.year) {
       end = maxDate.month()
     }
-    return Array.from({length: end - start }, (_, i) => start + i + 1)
+    return Array.from({length: end - start}, (_, i) => start + i + 1)
   }, [internalValue.year, minDate, maxDate])
 
 
@@ -114,42 +116,32 @@ export const DatePicker: FC<DatePickerPops> = ({
 
     if (mode === 'date') {
       const dateColumns = []
-      if (!format) {
-        dateColumns.push(
-          years.map((v) => ({label: `${v}年`, value: v})),
-          mouths.map((v) => ({label: `${v}月`, value: v})),
-          days.map((v) => ({label: `${v}日`, value: v})),
-        )
-      } else {
-        if (hasYear) {
-          dateColumns.push(
-            years.map((v) => ({label: `${v}年`, value: v})),
-          )
-        }
-        if (hasMouth) {
-          dateColumns.push(
-            mouths.map((v) => ({label: `${v}月`, value: v})),
-          )
-        }
-        if (hasDate) {
-          dateColumns.push(
-            days.map((v) => ({label: `${v}日`, value: v})),
-          )
-        }
-      }
-      if (showTime) {
-        if (hasHour) {
+      dateColumns.push(
+        years.map((v) => ({label: `${v}年`, value: v})),
+        mouths.map((v) => ({label: `${v}月`, value: v})),
+        days.map((v) => ({label: `${v}日`, value: v})),
+      )
+      if (Boolean(showTime)) {
+        if (cleanTimeFormat){
+          if (hasHour) {
+            dateColumns.push(
+              hours.map((v) => ({label: `${v}时`, value: v})),
+            )
+          }
+          if (hasMinute) {
+            dateColumns.push(
+              minutes.map((v) => ({label: `${v}分`, value: v})),
+            )
+          }
+          if (hasSecond) {
+            dateColumns.push(
+              seconds.map((v) => ({label: `${v}秒`, value: v})),
+            )
+          }
+        }else {
           dateColumns.push(
             hours.map((v) => ({label: `${v}时`, value: v})),
-          )
-        }
-        if (hasMinute) {
-          dateColumns.push(
             minutes.map((v) => ({label: `${v}分`, value: v})),
-          )
-        }
-        if (hasSecond) {
-          dateColumns.push(
             seconds.map((v) => ({label: `${v}秒`, value: v})),
           )
         }
@@ -157,13 +149,7 @@ export const DatePicker: FC<DatePickerPops> = ({
       return dateColumns
     } else if (mode === 'time') {
       const timeColumns = [];
-      if (!format) {
-        timeColumns.push(
-          hours.map((v) => ({label: `${v}时`, value: v})),
-          minutes.map((v) => ({label: `${v}分`, value: v})),
-          seconds.map((v) => ({label: `${v}秒`, value: v})),
-        )
-      } else {
+      if (cleanTimeFormat){
         if (hasHour) {
           timeColumns.push(
             hours.map((v) => ({label: `${v}时`, value: v})),
@@ -179,6 +165,12 @@ export const DatePicker: FC<DatePickerPops> = ({
             seconds.map((v) => ({label: `${v}秒`, value: v})),
           )
         }
+      }else {
+        timeColumns.push(
+          hours.map((v) => ({label: `${v}时`, value: v})),
+          minutes.map((v) => ({label: `${v}分`, value: v})),
+          seconds.map((v) => ({label: `${v}秒`, value: v})),
+        )
       }
       return timeColumns
     }
