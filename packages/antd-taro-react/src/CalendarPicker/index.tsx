@@ -1,6 +1,5 @@
-import {CalendarPicker as InternalCalendarPicker} from "./calendar-picker"
-import {CalendarRangePicker} from "./calendar-range-picker";
-import {CalendarPickerProps} from "./types"
+import {CalendarPicker as InternalCalendarPicker} from "./CalendarPicker"
+import {CalendarRangePicker} from "./CalendarRangePicker";
 
 type CompoundedComponent = typeof InternalCalendarPicker & {
   Range: typeof CalendarRangePicker;
@@ -10,7 +9,9 @@ const CalendarPicker = InternalCalendarPicker as CompoundedComponent;
 CalendarPicker.Range = CalendarRangePicker;
 
 export type {
-  CalendarPickerProps
-}
+  CalendarPickerProps,
+  CalendarPickerRangeProps
+} from "./types";
+
 
 export default CalendarPicker;

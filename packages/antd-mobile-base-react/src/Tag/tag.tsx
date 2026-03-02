@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import './style.scss';
+import {CloseOutline} from "@trionesdev/antd-mobile-icons-react";
 
 export type TagProps = {
   children?: React.ReactNode;
@@ -16,6 +17,8 @@ export type TagProps = {
    * 点击时的回调
    */
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  closeIcon?: boolean | React.ReactNode | null;
+  icon?: React.ReactNode;
   /**
    * 是否圆角
    */
@@ -28,18 +31,19 @@ export type TagProps = {
    * 自定义样式
    */
   style?: React.CSSProperties;
+  onClose?: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
 export const Tag: FC<TagProps> = ({
-  children,
-  color = 'default',
-  fill = 'solid',
-  onClick,
-  className,
-  style,
-  round = false,
-  ...props
-}) => {
+                                    children,
+                                    color = 'default',
+                                    fill = 'solid',
+                                    onClick,
+                                    className,
+                                    style,
+                                    round = false,
+                                    ...props
+                                  }) => {
   const clsPrefix = 'triones-antm-tag';
 
   // 是否是预设颜色
@@ -53,18 +57,18 @@ export const Tag: FC<TagProps> = ({
 
   const customStyle = !isPresetColor
     ? {
-        ...(fill === 'solid'
-          ? {
-              backgroundColor: color,
-              color: '#fff',
-            }
-          : {
-              color: color,
-              borderColor: color,
-              backgroundColor: 'transparent',
-            }),
-        ...style,
-      }
+      ...(fill === 'solid'
+        ? {
+          backgroundColor: color,
+          color: '#fff',
+        }
+        : {
+          color: color,
+          borderColor: color,
+          backgroundColor: 'transparent',
+        }),
+      ...style,
+    }
     : style;
 
   return (
@@ -82,7 +86,12 @@ export const Tag: FC<TagProps> = ({
       {...props}
       onClick={onClick}
     >
+      {props.icon && <div className={`${clsPrefix}-icon`}>{props.icon}</div>}
       {children}
+      {props.closeIcon &&
+        <div onClick={props.onClose}
+             className={`${clsPrefix}-close`}>{React.isValidElement(props.closeIcon) ? props.closeIcon :
+          <CloseOutline/>} </div>}
     </div>
   );
 };

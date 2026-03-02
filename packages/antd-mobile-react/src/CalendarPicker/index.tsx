@@ -6,11 +6,11 @@ type CompoundedComponent = typeof InternalCalendarPicker & {
   Range: typeof CalendarRangePicker;
 };
 
-const CalendarPicker = InternalCalendarPicker as CompoundedComponent;
-CalendarPicker.Range = CalendarRangePicker;
+const CalendarPopup = InternalCalendarPicker as CompoundedComponent;
+CalendarPopup.Range = CalendarRangePicker;
 
 export type {
   CalendarPickerProps
 }
 
-export default CalendarPicker;
+export default CalendarPopup;

@@ -1,0 +1,124 @@
+@use "../style/variable" as variable;
+
+$trionesPopupCls: 'triones-antm-popup';
+
+.#{$trionesPopupCls} {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  touch-action: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  &-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .55);
+  }
+
+  &-container {
+    position: fixed;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &-header {
+    display: flex;
+    align-items: center;
+    padding-block: variable.$trionesPaddingContentVertical;
+    padding-inline: variable.$trionesPaddingContentHorizontal;
+    &-title{
+      flex: 1;
+      text-align: center;
+      font-size: variable.$trionesFontSizeLg;
+    }
+  }
+
+  &-body{
+    flex: 1;
+  }
+
+  &-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
+
+
+    &.#{$trionesPopupCls} {
+      &-round {
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
+
+
+    &.#{$trionesPopupCls} {
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-top-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-left {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+
+    &.#{$trionesPopupCls} {
+      &-round {
+        border-top-right-radius: variable.$trionesBorderRadius;
+        border-bottom-right-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-right {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 100%;
+
+    &.#{$trionesPopupCls} {
+      &-round {
+        border-top-left-radius: variable.$trionesBorderRadius;
+        border-bottom-left-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+  &-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+
+    &.#{$trionesPopupCls} {
+      &-round {
+        border-radius: variable.$trionesBorderRadius;
+      }
+    }
+  }
+
+}

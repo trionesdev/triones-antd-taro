@@ -1,23 +1,24 @@
 import React from "react";
+import dayjs from "dayjs";
 
 export type CalendarPickerProps = {
-  mouth?: Date;
+  month?: Date | dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
   afterOpenChange?: (open: boolean) => void;
-  value?: Date,
-  onOk?: (value?: Date) => void,
+  value?: Date | dayjs.Dayjs,
+  onOk?: (value?: dayjs.Dayjs) => void,
   onCancel?: () => void,
   onClose?: () => void,
 }
 
-export type CalendarPickerRangeProps = {
-  mouth?: Date;
+export type CalendarRangePickerProps = {
+  month?: Date | dayjs.Dayjs;
   open?: boolean
   title?: React.ReactNode
   afterOpenChange?: (open: boolean) => void;
-  value?: Date[],
-  onOk?: (value?: Date[]) => void,
+  value?: (Date | dayjs.Dayjs)[],
+  onOk?: (value?: dayjs.Dayjs[]) => void,
   onCancel?: () => void,
   onClose?: () => void,
 }

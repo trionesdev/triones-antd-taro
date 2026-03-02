@@ -1,82 +1,39 @@
 {
   "name": "@trionesdev/antd-mobile-icons-react",
-  "version": "0.0.2-beta.0",
-  "description": "A react library developed with dumi",
+  "version": "0.0.2-beta.13",
+  "description": "AntdMobileIconReact",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
+    "dev": "father dev",
     "build": "father build",
-    "build:watch": "father dev",
-    "docs:build": "dumi build",
-    "docs:preview": "dumi preview",
-    "prepare": "dumi setup",
-    "doctor": "father doctor",
-    "lint": "npm run lint:es && npm run lint:css",
-    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
-    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build",
-    "publish": "npm publish --registry=https://registry.npmjs.org/",
+    "publish": "npm publish --tag latest --registry=https://registry.npmjs.org/",
     "publishOnly": "npm publish --ignore-scripts --registry=https://registry.npmjs.org/"
   },
+  "keywords": [],
   "authors": [
     "fengxiaotx@163.com"
   ],
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "compiled"
   ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.{md,json}": [
-      "prettier --write --no-error-on-unmatched-pattern"
-    ],
-    "*.{css,less}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "classnames": "^2.5.1",
+    "lodash-es": "^4.17.21",
+    "react": ">=16.9.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@types/node": "^18.15.11",
+    "@types/node": "^18.19.123",
     "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@umijs/lint": "^4.4.4",
-    "dumi": "2.4.12",
-    "eslint": "^8.23.0",
-    "father": "^4.5.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.3.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.6",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1"
+    "father": "^4.6.9",
+    "react": "^18.0.0"
   },
-  "dependencies": {
-    "classnames": "^2.5.1"
-  },
-  "gitHead": "a8d2d1f5e85ad27511763e27fd46fc31c977edc5"
+  "gitHead": "c062f3bd8651ea933f9385279c05a1ab0245b2b8"
 }

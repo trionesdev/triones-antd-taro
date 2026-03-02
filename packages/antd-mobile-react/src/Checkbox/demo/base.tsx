@@ -26,21 +26,21 @@ export default () => {
         </Checkbox>
       </DemoBlock>
       <DemoBlock title="Button">
-        <Checkbox.Button>苹果</Checkbox.Button>
+        <Checkbox  shape='button' >苹果</Checkbox>
       </DemoBlock>
 
       <DemoBlock title="Button 禁用">
         <Space>
-          <Checkbox.Button disabled={true}>苹果</Checkbox.Button>
-          <Checkbox.Button disabled={true} checked={true}>
+          <Checkbox shape='button' disabled={true}>苹果</Checkbox>
+          <Checkbox shape='button' disabled={true} checked={true}>
             苹果
-          </Checkbox.Button>
+          </Checkbox>
         </Space>
       </DemoBlock>
 
       <DemoBlock title="分组">
         <Checkbox.Group defaultValue={['1']}>
-          <Checkbox.Button value={'1'}>苹果</Checkbox.Button>
+          <Checkbox shape='button' value={'1'}>苹果</Checkbox>
         </Checkbox.Group>
       </DemoBlock>
     </>

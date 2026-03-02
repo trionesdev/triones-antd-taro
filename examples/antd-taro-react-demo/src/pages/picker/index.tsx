@@ -1,6 +1,7 @@
 import React from "react";
 import {DemoBlock} from "../../components";
-import {Button, Picker } from "@trionesdev/antd-taro-react";
+import {Button, Picker} from "@trionesdev/antd-taro-react";
+import Taro from "@tarojs/taro";
 
 const PickerBase = () => {
   const [open, setOpen] = React.useState(false);
@@ -19,10 +20,17 @@ const PickerBase = () => {
   ]
   return <>
     <DemoBlock title={`基本使用`}>
-      <Picker open={open} afterOpenChange={(o) => {
+      <Picker open={open} labelInValue={true} afterOpenChange={(o) => {
         setOpen(o);
-      }} columns={basicColumns} value={["Fri"]} onOk={(v)=>{
+      }} columns={basicColumns} value={[{label: '周一', value: 'Mon'}]} onOk={(v) => {
         console.log(v)
+        setOpen(false);
+        Taro.showToast({
+          title: `${v[0]?.label}-${v[1]?.label}`,
+          icon: "none",
+          duration: 2000,
+          mask: true,
+        })
       }}/>
       <Button block={true} onClick={() => {
         setOpen(true);

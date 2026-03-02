@@ -1,6 +1,6 @@
-@import "../style/variable";
+@use "../style/variable" as variable;
 
-$trionesTabBarActiveColor: $trionesColorPrimary !default;
+$trionesTabBarActiveColor: variable.$trionesColorPrimary !default;
 
 $tabBarCls: 'triones-tab-bar';
 .#{$tabBarCls} {
@@ -20,6 +20,7 @@ $tabBarCls: 'triones-tab-bar';
     gap: 4Px;
     cursor: default;
     flex: 1 auto;
+    padding: 4Px;
 
     &-active {
       color: $trionesTabBarActiveColor;

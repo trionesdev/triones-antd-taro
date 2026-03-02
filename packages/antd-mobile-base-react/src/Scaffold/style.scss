@@ -1,4 +1,4 @@
-@import "../style/variable";
+@use "../style/variable" as variable;
 
 
 $trionesScaffoldCls: 'triones-antm-scaffold';
@@ -8,6 +8,7 @@ $trionesScaffoldCls: 'triones-antm-scaffold';
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: variable.$trionesColorBgScaffold;
 
   &-body {
     flex: 1 auto;

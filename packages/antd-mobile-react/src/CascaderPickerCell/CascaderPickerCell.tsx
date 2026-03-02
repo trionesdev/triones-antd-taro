@@ -1,0 +1,67 @@
+import React, {FC, useEffect, useState} from "react"
+import CascaderPopup from "../CascaderPicker";
+import "./style.scss"
+import Cell, {CellProps} from "../Cell";
+
+const cls = 'triones-antm-cascader-picker';
+
+export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {
+  onChange?: (value: any[]) => void;
+  options?: any[];
+  /**
+   * @description 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 string 变为 { value: string, label: ReactNode } 的格式
+   * @default false
+   */
+  labelInValue?: boolean;
+  fieldNames?: {
+    value?: string;
+    label?: string;
+    children?: string;
+  };
+  columnsCount?: number;
+  value?: any[];
+  asyncRequest?: (parentValue?: any) => Promise<any>;
+}
+
+export const CascaderPickerCell: FC<CascaderPickerCellProps> = ({
+  onChange,
+  value,
+  labelInValue = true,
+  ...rest
+}) => {
+  const mergedFieldNames = {
+    value: 'value',
+    label: 'label',
+    children: 'children',
+    ...rest.fieldNames
+  }
+  const [open, setOpen] = useState(false)
+  const [internalValue, setInternalValue] = useState<any[]>(value || [])
+
+  useEffect(() => {
+    if ((value || []) !== (internalValue || [])) {
+      setInternalValue(value || [])
+    }
+  }, [value])
+
+  const valueText = () => {
+    if (labelInValue) {
+      return internalValue?.map(item => item[mergedFieldNames.label]).join('/')
+    }
+  }
+
+  return <>
+    <CascaderPopup {...rest} open={open} value={internalValue} labelInValue={labelInValue}
+      onCancel={() => {
+        setOpen(false)
+      }}
+      onOk={(value) => {
+        setInternalValue(value || [])
+        setOpen(false)
+        onChange?.(value || [])
+      }} />
+    <Cell onClick={() => {
+      setOpen(true)
+    }} {...rest}>{valueText()}</Cell>
+  </>
+}

@@ -3,7 +3,7 @@
  */
 import React from "react";
 import * as icons from "../../../../antd-mobile-icons-react"
-import {map, omit} from "lodash";
+import {map, omit} from "lodash-es";
 import { DemoBlock } from '../../DemoBlock';
 
 export default () => {

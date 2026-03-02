@@ -1,4 +1,5 @@
-import { SideBar, SideBarProps } from './side-bar';
+import {SideBar,SideBarProps} from "./side-bar"
 
-export type { SideBarProps };
-export default SideBar;
+export type {SideBarProps}
+
+export default SideBar

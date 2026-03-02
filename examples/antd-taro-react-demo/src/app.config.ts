@@ -5,9 +5,17 @@ export default defineAppConfig({
     "pages/avatar/index",
     "pages/button/index",
     "pages/calendar/index",
+    "pages/calendar-datetime-picker-cell/index",
     "pages/calendar-datetime-picker/index",
     "pages/calendar-picker/index",
+    "pages/calendar-picker-cell/index",
+    "pages/card/index",
+    "pages/cascader-picker/index",
+    "pages/cascader-picker-cell/index",
+    "pages/cascader-view/index",
+    "pages/cell/index",
     "pages/checkbox/index",
+    "pages/date-picker-cell/index",
     "pages/radio/index",
     "pages/rate/index",
     "pages/input/index",
@@ -22,6 +30,8 @@ export default defineAppConfig({
     "pages/error-block/index",
     "pages/footer/index",
     "pages/notice-bar/index",
+    "pages/overlay/index",
+    "pages/picker-view/index",
     "pages/tag/index",
     // "pages/card/index",
 
@@ -32,8 +42,7 @@ export default defineAppConfig({
     "pages/progress/index",
     "pages/picker/index",
 
-    "pages/cascader-picker/index",
-    "pages/cascader-view/index",
+
 
 
 

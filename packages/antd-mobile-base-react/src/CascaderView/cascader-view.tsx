@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {find, isArray, isEmpty, isEqual} from 'lodash';
+import {find, isArray, isEmpty, isEqual} from 'lodash-es';
 import React, { CSSProperties, FC, memo, useEffect, useState } from 'react';
 import Tabs from '../Tabs';
 import { CascaderColumn } from './cascader-column';

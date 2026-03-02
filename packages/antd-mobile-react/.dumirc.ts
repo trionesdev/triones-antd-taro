@@ -7,7 +7,7 @@ const apiParserEnable =
   process.env.NODE_ENV === 'production' || process.env.API_PARSER == 'true';
 
 export default defineConfig({
-  base: '/triones-antd-mobile/',
+  base: '/triones-antd-taro/',
   publicPath: '/triones-antd-taro/',
   outputPath: 'docs-dist',
   apiParser: apiParserEnable ? {} : false,
@@ -18,7 +18,7 @@ export default defineConfig({
   define: {
     // 'process.env.TARO_PLATFORM': 'web', //解决taro-runtime 4.0.9 之后，验证平台类型的错误
   },
-  themeConfig:{
+  themeConfig: {
     name: 'TrionesDev Antd Mobile',
     hd: { rules: [{ mode: 'vw', options: [100, 750] }] },
     // 配置 demo 预览器的设备宽度，默认为 375px
@@ -137,5 +137,5 @@ export default defineConfig({
         ],
       },
     ],
-  }
+  },
 });

@@ -1,16 +1,16 @@
 import classNames from 'classnames';
-import React, { FC, memo, useEffect, useRef } from 'react';
+import React, {FC, memo, useEffect, useRef} from 'react';
 import Calendar from '../Calendar';
 
 import './style.scss';
-import { CalendarPickerProps } from './types';
+import {CalendarPickerProps} from './types';
 import ConfigProvider from '../ConfigProvider';
 import Popup from '../Popup';
 
 const cls = 'triones-antm-calendar-picker';
 
 export const CalendarPicker: FC<CalendarPickerProps> = memo(
-  ({ mouth, open, title, afterOpenChange, value, onOk, onCancel, onClose }) => {
+  ({ month, open, title, afterOpenChange, value, onOk, onCancel, onClose }) => {
     const { locale } = ConfigProvider.useConfig();
     const [innerOpen, setInnerOpen] = React.useState(open || false);
     const valueRef = useRef<any>();
@@ -84,7 +84,7 @@ export const CalendarPicker: FC<CalendarPickerProps> = memo(
           </div>
           <div className={classNames(`${cls}-body`)}>
             <Calendar
-              mouth={mouth}
+              month={month}
               value={value}
               onChange={(date) => {
                 valueRef.current = date;

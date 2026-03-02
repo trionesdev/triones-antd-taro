@@ -50,7 +50,7 @@ export const GridItem: FC<GridItemProps> = p => {
     props,
     <div
       className={`${classPrefix}-item`}
-      style={{gridColumnEnd: `span ${props.span}`}}
+      style={{ gridColumnEnd: `span ${props.span}` }}
       onClick={props.onClick}
     >
       {props.children}

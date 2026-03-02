@@ -1,51 +1,40 @@
-import { CheckOutline } from '../../../antd-mobile-icons-react';
-import classNames from 'classnames';
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, useContext, useState} from 'react';
 import './index.scss';
-import { CheckboxProps, cls } from './types';
+import {CheckboxProps} from './types';
+import {CheckboxRound} from "./checkbox-round";
+import {CheckboxButton} from "./checkbox-button";
+import {CheckboxGroupContext} from "./group-context";
+import {includes} from "lodash-es";
 
 export const Checkbox: FC<CheckboxProps> = ({
-  children,
-  checked,
-  defaultChecked,
-  disabled,
-  onChange
-}) => {
-  const [innerChecked, setInnerChecked] = useState(checked ?? defaultChecked ?? false);
+                                              shape = 'round',
+                                              ...rest
+                                            }) => {
 
-  useEffect(() => {
-    onChange?.(innerChecked)
-  }, [innerChecked]);
+  const ctx = useContext(CheckboxGroupContext)
 
-  const prefixCls = `${cls}`;
-  return (
-    <label className={classNames(`${prefixCls}-wrapper`,{
-      [`${prefixCls}-disabled`]: disabled,
-    })} onClick={() => {
+  const [innerChecked, setInnerChecked] = useState(rest.checked ?? rest.defaultChecked ?? (ctx.group ? includes(ctx.value || [], rest.value) : false) ?? false);
 
-      setInnerChecked(!innerChecked);
-    }}>
-      <div className={classNames(`${prefixCls}`)}>
-        {/*<input*/}
-        {/*  className={`${prefixCls}-input`}*/}
-        {/*  type={'checkbox'}*/}
-        {/*  checked={innerChecked}*/}
-        {/*  disabled={disabled}*/}
-        {/*  onChange={(e) => {*/}
-        {/*    setInnerChecked(e.target.checked);*/}
-        {/*  }}*/}
-        {/*/>*/}
-        <div className={classNames(`${prefixCls}-fake`)}>
-          {innerChecked ? (
-            <div className={classNames(`${prefixCls}-fake-checked`)}>
-              <CheckOutline />
-            </div>
-          ) : (
-            <div className={classNames(`${prefixCls}-fake-unchecked`)}></div>
-          )}
-        </div>
-      </div>
-      <div className={classNames(`${prefixCls}-content`)}>{children}</div>
-    </label>
-  );
+  const handleClick = () => {
+    let newValue = !innerChecked
+    setInnerChecked(newValue)
+    rest.onChange?.(newValue)
+    if (ctx.group) {
+      let ctxValue = [...(ctx.value || [])]
+      if (newValue) {
+        ctxValue.push(rest.value)
+      } else {
+        ctxValue = ctxValue.filter(v => v !== rest.value)
+      }
+      ctx!.onValueChange?.(ctxValue)
+    }
+  }
+
+  if (shape === 'round') {
+    return <CheckboxRound {...rest} checked={innerChecked} onClick={handleClick}/>
+  }
+  if (shape === 'button') {
+    return <CheckboxButton {...rest} checked={innerChecked} onClick={handleClick}/>
+  }
+  return null;
 };

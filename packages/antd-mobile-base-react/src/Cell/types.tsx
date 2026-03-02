@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
+import {Col} from "../types";
 
 export const cls = 'triones-antm-cell';
+
+export type align = 'left' | 'center' | 'right';
 
 export type CellProps = {
   className?: string;
   style?: React.CSSProperties;
-  placeholder?:string
+  placeholder?: string
   children?: React.ReactNode;
+  /**
+   * @description 左侧内容
+   */
+  label?: React.ReactNode;
   /**
    * @description 右侧内容
    * @default
@@ -21,7 +28,14 @@ export type CellProps = {
    * @description 点击事件
    */
   onClick?: () => void;
-  picker?:React.ReactNode;
+  labelCol?: Col;
+  labelAlign?: align;
+  wrapperAlign?: align;
+  styles?: {
+    label?: React.CSSProperties;
+    content?: React.CSSProperties;
+    extra?: React.CSSProperties;
+  }
 };
 
 export type CellGroupProps = {
@@ -36,9 +50,17 @@ export type CellGroupProps = {
    * @description 分组右侧内容
    */
   extra?: React.ReactNode;
-  /**
-   * @description 是否显示分割线
-   * @default false
-   */
-  divider?: boolean | React.ReactNode;
+  arrow?: boolean;
+  labelCol?: Col;
+  labelAlign?: align;
+  wrapperAlign?: align;
+  divider?: ReactNode;
+  styles?: {
+    container?: React.CSSProperties;
+    title?: React.CSSProperties;
+    cell?: React.CSSProperties;
+    label?: React.CSSProperties;
+    content?: React.CSSProperties;
+    extra?: React.CSSProperties;
+  }
 };

@@ -8,32 +8,31 @@ import { DatetimeUtils } from '../utils/datetime-utils';
 import { DateTimeSwitch } from './DateTimeSwitch';
 import './style.scss';
 import { cls, Mode } from './types';
+import dayjs from "dayjs";
 
 export type CalendarDatetimePickerProps = {
   open?: boolean;
   afterOpenChange?: (open: boolean) => void;
-  value?: Date;
-  onOk?: (value?: Date) => void;
+  value?: dayjs.Dayjs | Date;
+  onOk?: (value?: dayjs.Dayjs) => void;
   onClose?: () => void;
 };
 
 export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   open,
   afterOpenChange,
-  value = new Date(),
+  value ,
   onOk,
   onClose,
 }) => {
   const { locale } = ConfigProvider.useConfig();
-  const [innerOpen, setInnerOpen] = React.useState(open || false);
   const [mode, setMode] = useState<Mode>(Mode.date);
-  const valueRef = useRef<any>(value || new Date());
+  const valueRef = useRef<dayjs.Dayjs>(dayjs(value));
   const bodyRef = useRef<any>(null);
   const datetimeSwitchRef = useRef<any>();
   const [bodyHeight, setBodyHeight] = useState(300);
 
   const handleClose = () => {
-    setInnerOpen(false);
     onClose?.();
   };
 
@@ -47,20 +46,11 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   };
 
   useEffect(() => {
-    afterOpenChange?.(innerOpen);
-    if (!innerOpen) {
-      onClose?.();
+    if (open) {
+      afterOpenChange?.(true);
+    } else {
+      afterOpenChange?.(false);
     }
-  }, [innerOpen]);
-
-  useEffect(() => {
-    if (open === undefined) {
-      return;
-    }
-    if (open === innerOpen) {
-      return;
-    }
-    setInnerOpen(open!);
   }, [open]);
 
   useEffect(() => {
@@ -75,16 +65,16 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
         {mode === Mode.date && (
           <div style={{}}>
             <Calendar
-              mouth={value}
+              month={value}
               value={value}
               onChange={(date) => {
-                valueRef.current = new Date(
-                  date.getFullYear(),
-                  date.getMonth(),
-                  date.getDate(),
-                  valueRef.current.getHours(),
-                  valueRef.current.getMinutes(),
-                );
+                valueRef.current = dayjs(new Date(
+                  date.year(),
+                  date.month(),
+                  date.date(),
+                  valueRef.current.hour(),
+                  valueRef.current.minute(),
+                ));
                 datetimeSwitchRef.current?.setDatetime(valueRef.current);
               }}
             />
@@ -113,17 +103,17 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
               ]}
               labelInValue={false}
               value={[
-                `${valueRef?.current.getHours()}`,
-                `${valueRef?.current.getMinutes()}`,
+                `${valueRef?.current.hour()}`,
+                `${valueRef?.current.minute()}`,
               ]}
               onChange={(v) => {
-                valueRef.current = new Date(
-                  valueRef.current.getFullYear(),
-                  valueRef.current.getMonth(),
-                  valueRef.current.getDate(),
+                valueRef.current = dayjs(new Date(
+                  valueRef.current.year(),
+                  valueRef.current.month(),
+                  valueRef.current.date(),
                   v[0],
                   v[1],
-                );
+                ));
                 datetimeSwitchRef.current?.setDatetime(valueRef.current);
               }}
             />
@@ -134,12 +124,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
   };
 
   return (
-    <Popup
-      open={innerOpen}
-      onClose={() => {
-        setInnerOpen(false);
-      }}
-    >
+    <Popup open={open} onClose={onClose} round={true}>
       <div className={classNames(cls)}>
         <div className={`${cls}-header`}>
           <DateTimeSwitch
@@ -165,11 +150,7 @@ export const CalendarDatetimePicker: FC<CalendarDatetimePickerProps> = ({
           </a>
         </div>
 
-        <div
-          className={`${cls}-body`}
-          ref={bodyRef}
-          id={bodyRef.current?.uid}
-        >
+        <div className={`${cls}-body`} ref={bodyRef} id={bodyRef.current?.uid}>
           {bodyRender()}
         </div>
       </div>

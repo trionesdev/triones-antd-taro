@@ -1,18 +1,27 @@
 import {View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
-import {Tag} from "@trionesdev/antd-taro-react";
+import {Space, Tag} from "@trionesdev/antd-taro-react";
+import {CheckOutline, CloseCircleOutline, DeleteOutline} from "@trionesdev/antd-mobile-icons-react";
 
 const TagBase = () => {
   return <View>
+    <DemoBlock title={`基本使用`}>
+      <Space wrap>
+        <Tag>Tag1</Tag>
+        <Tag closeIcon>Prevent Default</Tag>
+        <Tag closeIcon={<CloseCircleOutline/>}>Tag2</Tag>
+        <Tag closeIcon={<DeleteOutline/>}>Tag3</Tag>
+      </Space>
+    </DemoBlock>
     <DemoBlock title="线框标签">
-      <div>
+      <Space>
         <Tag fill="outline" color="default">
           Default
         </Tag>
         <Tag fill="outline" color="primary">
           Primary
         </Tag>
-        <Tag fill="outline" color="success">
+        <Tag fill="outline" color="success" icon={<CheckOutline/>}>
           Success
         </Tag>
         <Tag fill="outline" color="warning">
@@ -21,31 +30,31 @@ const TagBase = () => {
         <Tag fill="outline" color="danger">
           Danger
         </Tag>
-      </div>
+      </Space>
     </DemoBlock>
     <DemoBlock title="语义标签">
-      <div>
+      <Space>
         <Tag color="default">Default</Tag>
         <Tag color="primary">Primary</Tag>
         <Tag color="success">Success</Tag>
         <Tag color="warning">Warning</Tag>
         <Tag color="danger">Danger</Tag>
-      </div>
+      </Space>
     </DemoBlock>
     <DemoBlock title="圆角标签">
-      <div>
+      <Space>
         <Tag color="default" round>
           Default
         </Tag>
-      </div>
+      </Space>
     </DemoBlock>
     <DemoBlock title="自定义颜色">
-      <div>
+      <Space>
         <Tag color="#f50">#f50</Tag>
         <Tag color="#2db7f5">#2db7f5</Tag>
         <Tag color="#87d068">#87d068</Tag>
         <Tag color="#108ee9">#108ee9</Tag>
-      </div>
+      </Space>
     </DemoBlock>
   </View>
 }

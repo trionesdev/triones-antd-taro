@@ -1,9 +1,9 @@
 import React, {FC, useEffect} from "react";
-import Mask from "../Mask";
 import classNames from "classnames";
 import "./style.scss"
 import Swiper from "../Swiper";
 import Image from "../Image";
+import Overlay from "../Overlay";
 
 const cls = 'triones-antm-image-preview';
 
@@ -44,7 +44,7 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
     setInnerActiveIndex(activeIndex);
   }, [activeIndex]);
 
-  return <Mask open={innerOpen}>
+  return <Overlay open={innerOpen}>
     <div className={classNames(cls, className)} onClick={() => {
       setInnerOpen(false)
     }}>
@@ -53,8 +53,8 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
       </div>
       <div className={classNames(`${cls}-content`)}>
         <Swiper style={{width: '100%', height: '100%'}} >
-          {items?.map((item) => {
-            return <Swiper.Item style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}  as React.CSSProperties}>
+          {items?.map((item,index) => {
+            return <Swiper.Item key={ index} style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}  as React.CSSProperties}>
               <div onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -66,5 +66,5 @@ export const ImagesPreview: FC<ImagePreviewProps> = ({className, open, items, ac
         </Swiper>
       </div>
     </div>
-  </Mask>;
+  </Overlay>;
 }

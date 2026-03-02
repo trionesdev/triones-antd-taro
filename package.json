@@ -16,18 +16,18 @@
     "prelease:force": "lerna publish from-package --yes --dist-tag next",
     "release": "lerna publish --registry=https://registry.npmjs.org/",
     "publishOnly:force": "lerna publish from-package --yes  --ignore-scripts --no-git-tag-version  --registry=https://registry.npmjs.org/",
-    "publishOnly": "lerna publish --ignore-scripts --no-git-tag-version --force-publish --registry=https://registry.npmjs.org/",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,css,less}\"",
-    "triones:publishOnly": "lerna publish --ignore-scripts --no-git-tag-version --force-publish --registry=https://moensun-npm.pkg.coding.net/npm/moensun/"
+    "publishOnly": "lerna publish --ignore-scripts --registry=https://registry.npmjs.org/",
+    "publish": "pnpm run build && pnpm run publishOnly"
   },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.2.2"
   },
   "resolutions": {
-    "sass": "1.59.3"
+    "sass": "1.96.0"
   },
   "overrides": {
-    "sass": "1.59.3"
+    "sass": "1.96.0"
   }
 }

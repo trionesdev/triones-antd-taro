@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {isEmpty,isEqual,isArray} from 'lodash';
+import {isEmpty,isEqual,isArray} from 'lodash-es';
 import React, {
   FC,
   MouseEvent,

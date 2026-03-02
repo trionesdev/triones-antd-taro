@@ -1,7 +1,7 @@
-import {Text, View} from "@tarojs/components";
-import {inject, observer} from "mobx-react";
-import {Component, PropsWithChildren} from "react";
-import {Button, SafeArea} from "@trionesdev/antd-taro-react";
+import { Text, View } from "@tarojs/components";
+import { inject, observer } from "mobx-react";
+import { Component, PropsWithChildren } from "react";
+import { Button, SafeArea } from "@trionesdev/antd-taro-react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
@@ -37,34 +37,34 @@ class Index extends Component<PropsWithChildren> {
   }
 
   increment = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.increment();
   };
 
   decrement = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.decrement();
   };
 
   incrementAsync = () => {
-    const {counterStore} = this.props.store;
+    const { counterStore } = this.props.store;
     counterStore.incrementAsync();
   };
 
   render() {
     const {
-      counterStore: {counter},
+      counterStore: { counter },
     } = this.props.store;
     return (
 
       <View className="index">
-        <View style={{display: 'none'}}>
+        <View style={{ display: 'none' }}>
           <Button onClick={this.increment}>+</Button>
           <Button onClick={this.decrement}>-</Button>
           <Button onClick={this.incrementAsync}>Add Async</Button>
           <Text>{counter}</Text>
         </View>
-        <View style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px'}}>
+        <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 10, padding: '10px' }}>
           <Button
             block={true}
             onClick={() => {
@@ -109,11 +109,21 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/calendar-datetime-picker-cell/index",
+              });
+            }}
+          >
+            CalendarDatetimePickerCell 日历时间选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/calendar-datetime-picker/index",
               });
             }}
           >
-            CalendarDatetimePicker 日历时间选择器
+            CalendarDatetimePicker 日历时间选择器弹窗
           </Button>
           <Button
             block={true}
@@ -123,7 +133,77 @@ class Index extends Component<PropsWithChildren> {
               });
             }}
           >
-            Calendar 日历选择器
+            CalendarPicker 日历选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/calendar-picker-cell/index",
+              });
+            }}
+          >
+            CalendarPickerCell 日历选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-picker-cell/index",
+              });
+            }}
+          >
+            CascaderPickerCell 级联选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-picker/index",
+              });
+            }}
+          >
+            CascaderPicker 级联选择器弹窗
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cascader-view/index",
+              });
+            }}
+          >
+            CascaderView
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/cell/index",
+              });
+            }}
+          >
+            Cell 单元格
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/checkbox/index",
+              });
+            }}
+          >
+            Checkbox 复选框
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/date-picker-cell/index",
+              });
+            }}
+          >
+            DatePickerCell 日期选择器
           </Button>
           <Button
             block={true}
@@ -145,16 +225,7 @@ class Index extends Component<PropsWithChildren> {
           >
             TabBar
           </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/checkbox/index",
-              });
-            }}
-          >
-            Checkbox
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -248,26 +319,7 @@ class Index extends Component<PropsWithChildren> {
             Form
           </Button>
 
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/cascader-picker/index",
-              });
-            }}
-          >
-            CascaderPicker 级联选择器
-          </Button>
-          <Button
-            block={true}
-            onClick={() => {
-              Taro.navigateTo({
-                url: "/pages/cascader-view/index",
-              });
-            }}
-          >
-            CascaderView
-          </Button>
+
           <Button
             block={true}
             onClick={() => {
@@ -302,11 +354,31 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/overlay/index",
+              });
+            }}
+          >
+            Overlay 遮罩层
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/picker/index",
               });
             }}
           >
             Picker 选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/picker-view/index",
+              });
+            }}
+          >
+            PickerView 选择器视图
           </Button>
           <Button
             block={true}

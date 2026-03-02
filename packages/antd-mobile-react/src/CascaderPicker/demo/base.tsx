@@ -1,7 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Button from "../../Button";
-import CascaderPicker from "../index";
+import {CascaderPicker} from "../cascader-picker";
 
 export default () => {
   const [open, setOpen] = React.useState(false);
@@ -76,9 +76,9 @@ export default () => {
       <CascaderPicker open={open}
                       options={options} onOk={(value) => {
         console.log(value);
-      }} style={{height: 300}} onClose={() => {
+      }} onClose={() => {
         setOpen(false)
-      }}/>
+      }} />
       <Button block={true} onClick={() => {
         setOpen(true);
       }}>

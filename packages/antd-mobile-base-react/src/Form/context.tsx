@@ -1,5 +1,6 @@
 import React from "react";
-import {FormLayout, FormLayoutAlign, RequiredMark} from "./form";
+import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
+
 
 export interface FormContextProps {
   colon?: boolean;
@@ -9,6 +10,7 @@ export interface FormContextProps {
   requiredMark?: RequiredMark;
   form?: any;
   hiddenError?: boolean
+  extra?: React.ReactNode;
 }
 
 export const FormContext = React.createContext<FormContextProps>({

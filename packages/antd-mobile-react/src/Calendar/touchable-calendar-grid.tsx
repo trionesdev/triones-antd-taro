@@ -2,22 +2,24 @@ import React, {FC, memo, useEffect, useRef, useState} from 'react';
 import {CalendarGrid} from '../Calendar';
 import {RandomUtils} from "../utils/random-utils";
 import classNames from "classnames";
+import dayjs from "dayjs";
 
 type CalendarPickerViewProps = {
-  mouth?: Date;
-  value?: Date[];
-  defaultValue?: Date[];
-  onChange?: (value: Date[]) => void;
-  onMouthChange?: (mouth: Date) => void;
+  month?: dayjs.Dayjs;
+  value?: dayjs.Dayjs[];
+  defaultValue?: dayjs.Dayjs[];
+  onChange?: (value: dayjs.Dayjs[]) => void;
+  onMouthChange?: (mouth: dayjs.Dayjs) => void;
   range?: boolean
 };
 
+const monthLines = 6
 /**
  * 可以手势滑动的日历组件
  */
 export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
   ({
-    mouth = new Date(),
+    month = dayjs(),
     value,
     defaultValue,
     onChange,
@@ -27,14 +29,14 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
     const wrapperRef = useRef<any>();
     const wrapperUniqueRef = React.useRef<string>(RandomUtils.random())
 
-    const [currentMouth, setCurrentMouth] = useState(mouth);
+    const [currentMonth, setCurrentMonth] = useState( dayjs(month));
     let waiting = false;
     const [mouthHeight, setMouthHeight] = useState(200); //当前选中的月份的展示高度
     const [touching, setTouching] = useState<boolean>(false); //是否正在滑动
     const [touchStartPoint, setTouchStartPoint] = React.useState<any>(); //触摸点
     const [touchPoint, setTouchPoint] = React.useState<any>(); //触摸点
     const [translateY, setTranslateY] = useState(0);
-    const [mouths, setMouths] = useState<Date[]>([]);
+    const [months, setMonths] = useState<dayjs.Dayjs[]>([]);
 
     /**
      * 计算出每个格子的大小
@@ -53,26 +55,31 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
      * 计算出该月的行数
      * @param mouth
      */
-    const mouthLines = (mouth: Date) => {
-      const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-      const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-      const beforeDays = firstDate.getDay();
-      const afterDays = 6 - lastDate.getDay();
-      const countDays = beforeDays + lastDate.getDate() + afterDays;
-      return Math.ceil(countDays / 7);
-    };
+    // const mouthLines = (mouth: Date) => {
+    //   const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+    //   const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
+    //   const beforeDays = firstDate.getDay();
+    //   const afterDays = 6 - lastDate.getDay();
+    //   const countDays = beforeDays + lastDate.getDate() + afterDays;
+    //   return Math.ceil(countDays / 7);
+    // };
 
     const handleInsertMouth = async () => {
-      const firstMouth = mouths[0];
-      const insertMouth = new Date(
-        firstMouth.getFullYear(),
-        firstMouth.getMonth() - 1,
+      // if (waiting){
+      //   return
+      // }
+      // debugger
+      // waiting = true
+      const firstMouth = months[0];
+      const insertMouth = dayjs(new Date(
+        firstMouth.year(),
+        firstMouth.month() - 1,
         1,
-      );
-      const newMouths = [insertMouth, ...mouths];
-      setMouths(newMouths);
-      const insertMouthLines = mouthLines(insertMouth);
-      const insertMouthHeight = insertMouthLines * (await cellSize());
+      ));
+      const newMouths = [insertMouth, ...months];
+      setMonths(newMouths);
+      // const insertMouthLines = mouthLines(insertMouth);
+      const insertMouthHeight = monthLines * (await cellSize());
       setTranslateY(translateY - insertMouthHeight);
       // waiting  = false
     };
@@ -82,46 +89,41 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
       //   return
       // }
       // waiting = true
-      const lastMouth = mouths[mouths.length - 1];
-      const appendMouth = new Date(
-        lastMouth.getFullYear(),
-        lastMouth.getMonth() + 1,
-        1,
-      );
-      const newMouths = [...mouths, appendMouth];
-      setMouths(newMouths);
+      const lastMouth = months[months.length - 1];
+      const appendMouth = lastMouth.add(1, 'month');
+      const newMouths = [...months, appendMouth];
+      setMonths(newMouths);
       // waiting = false
     };
 
     useEffect(() => {
-      const initMouths = [
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth() - 1, 1),
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth(), 1),
-        new Date(currentMouth.getFullYear(), currentMouth.getMonth() + 1, 1),
+      const initMonths = [
+        currentMonth!.clone().subtract(1, 'month'),
+        currentMonth!.clone(),
+        currentMonth!.clone().add(1, 'month'),
       ];
 
       Promise.all([]).then(async () => {
-        setMouths(initMouths);
-        setMouthHeight(mouthLines(currentMouth) * (await cellSize()));
-        const firstMouthHeight = mouthLines(initMouths[0]) * (await cellSize());
+        setMonths(initMonths);
+        setMouthHeight(monthLines * (await cellSize()));
+        const firstMouthHeight = monthLines * (await cellSize());
         setTranslateY(0 - firstMouthHeight);
       });
-    }, [currentMouth]);
+    }, [currentMonth]);
 
     useEffect(() => {
-      if (mouth !== undefined) {
-        const newMouth = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
+      if (month !== undefined) {
+        const newMouth = dayjs(new Date(month.year(), month.month(), 1));
         if (
-          currentMouth === null ||
+          currentMonth === null ||
           !(
-            currentMouth.getFullYear() === newMouth.getFullYear() &&
-            currentMouth.getMonth() === newMouth.getMonth()
+            currentMonth?.isSame(newMouth, 'month')
           )
         ) {
-          setCurrentMouth(newMouth);
+          setCurrentMonth(newMouth);
         }
       }
-    }, [mouth]);
+    }, [month]);
 
     useEffect(() => {
       if (value !== undefined) {
@@ -192,14 +194,14 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
               return;
             }
 
-            console.log(mouths);
+            console.log(months);
             let displayMouth;
             //region 判断当前月份是否在视窗内
             let _mouthHeightSum = 0;
-            for (let i = 0; i < mouths.length; i++) {
+            for (let i = 0; i < months.length; i++) {
               console.log('mouthHeight', mouthHeight);
-              console.log('mouths[i]', mouths[i], i);
-              const _mouthHeight = mouthLines(mouths[i]) * (await cellSize());
+              console.log('mouths[i]', months[i], i);
+              const _mouthHeight = monthLines * (await cellSize());
               _mouthHeightSum += _mouthHeight;
               console.log('_mouthHeightSum', _mouthHeightSum);
               console.log('translateY', translateY);
@@ -214,8 +216,8 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
                 const _windowDisplayHeight = _mouthHeightSum - (0 - translateY); //该月份区域底部距离视窗顶部的距离
                 console.log('_windowDisplayHeight——top', _windowDisplayHeight);
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
-                  displayMouth = mouths[i];
+                  console.log('displayMouth', months[i]);
+                  displayMouth = months[i];
                   break;
                 }
               }
@@ -233,23 +235,23 @@ export const TouchableCalendarGrid: FC<CalendarPickerViewProps> = memo(
                   _windowDisplayHeight,
                 );
                 if (_windowDisplayHeight >= mouthHeight / 2) {
-                  console.log('displayMouth', mouths[i]);
-                  displayMouth = mouths[i];
+                  console.log('displayMouth', months[i]);
+                  displayMouth = months[i];
                   break;
                 }
               }
             }
             //endregion
             if (displayMouth) {
-              setCurrentMouth(displayMouth);
+              setCurrentMonth(displayMouth);
               onMouthChange?.(displayMouth);
             }
           }}
         >
-          {mouths.map((mouth, index) => (
+          {months.map((mouth, index) => (
             <CalendarGrid
               key={index}
-              mouth={mouth}
+              month={mouth}
               value={value}
               defaultValue={defaultValue}
               onChange={onChange}

@@ -21,13 +21,13 @@ export type SpaceProps = {
    * @description 垂直对齐方式
    */
   justify?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'between'
-    | 'around'
-    | 'evenly'
-    | 'stretch';
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
   /**
    * @description 换行
    */
@@ -47,6 +47,7 @@ export type SpaceProps = {
    */
   size?: Size | Size[];
   style?: CSSProperties;
+  separator?: ReactNode;
 };
 
 export const Space: FC<SpaceProps> = ({
@@ -60,6 +61,7 @@ export const Space: FC<SpaceProps> = ({
   onClick,
   size = 'small',
   style,
+  separator
 }) => {
   const sizeValue = (size: Size) => {
     if (typeof size === 'number') {
@@ -104,14 +106,18 @@ export const Space: FC<SpaceProps> = ({
       }}
       onClick={onClick}
     >
-      {React.Children.map(children, (child) => {
-        return (
-          child !== null &&
-          child !== undefined && (
-            <div className={`${classPrefix}-item`}>{child}</div>
-          )
-        );
-      })}
+      {(() => {
+        const items: any[] = [];
+        React.Children.map(children, (child, index) => {
+          if (child !== null && child !== undefined) {
+            items.push(<div key={`space-item-${index}`} className={`${classPrefix}-item`}>{child}</div>)
+            if (separator && index < React.Children.count(children) - 1) {
+              items.push(separator);
+            }
+          }
+        })
+        return items;
+      })()}
     </div>
   );
 };

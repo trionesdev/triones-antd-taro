@@ -1,4 +1,4 @@
-import {Toast, ToastProps} from "@trionesdev/antd-mobile-base-react"
+import {Toast, ToastProps} from "./Toast"
 
 export type {ToastProps};
 export default Toast

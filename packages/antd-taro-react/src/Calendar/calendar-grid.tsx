@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {isEmpty} from 'lodash';
+import {isEmpty} from 'lodash-es';
 import React, {
   FC,
   ForwardedRef,
@@ -10,66 +10,59 @@ import React, {
   useState,
 } from 'react';
 import './style.scss';
+import dayjs, {ConfigType} from "dayjs";
+import {isSame} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 export type CalendarGridProps = {
-  mouth?: Date;
+  month?: dayjs.Dayjs;
   /**
    * @description 值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
    */
-  value?: Date[];
+  value?: dayjs.Dayjs[];
   /**
    * @description 默认值，如果是区间模式，则 0,1 索引的值有效，0是开始时间，1是结束时间
    */
-  defaultValue?: Date[];
-  onChange?: (value: Date[]) => void;
+  defaultValue?: dayjs.Dayjs[];
+  onChange?: (value: dayjs.Dayjs[]) => void;
   /**
    * @description 是否为范围选择
    */
   range?: boolean;
-  onSelect?: (date: Date) => void;
+  onSelect?: (date: ConfigType) => void;
 };
 
 export type CalendarCellProps = {
-  mouth?: Date;
-  date?: Date;
-  value?: Date[];
+  month?: dayjs.Dayjs;
+  date?: dayjs.Dayjs;
+  value?: dayjs.Dayjs[];
   range?: boolean;
-  onSelect?: (date: Date) => void;
+  onSelect?: (date: dayjs.Dayjs) => void;
 };
 
 const CalendarCell: FC<CalendarCellProps> = memo(
-  ({ mouth = new Date(), date = new Date(), value, range, onSelect }) => {
+  ({month = dayjs(), date = dayjs(), value, range, onSelect}) => {
     const disabled = useMemo(() => {
-      return date.getMonth() !== mouth.getMonth();
-    }, [date, mouth]);
+      return !isSame(date, month, 'month');
+    }, [date, month]);
 
     const selected = useMemo(() => {
+
       if (disabled || isEmpty(value)) {
         return false;
       }
-      if (value?.[0]) {
-        value?.[0]?.setHours(0, 0, 0, 0);
-      }
-      if (value?.[1]) {
-        value?.[1]?.setHours(0, 0, 0, 0);
-      }
-
-      date.setHours(0, 0, 0, 0);
       if (range) {
         const startDate = value?.[0];
         const endDate = value?.[1];
-        console.log('value', value);
-
         return (
-          date.getTime() === startDate?.getTime() ||
-          date.getTime() === endDate?.getTime()
+          (isSame(date, startDate, 'date')) ||
+          (isSame(date, endDate, 'date'))
         );
       } else {
-        return date.getTime() === value?.[0]?.getTime();
+        return isSame(date, value?.[0], 'date');
       }
-    }, [mouth, date, value]);
+    }, [month, date, value]);
 
     const selectedRange = useMemo(() => {
       if (disabled || !range) {
@@ -80,20 +73,18 @@ const CalendarCell: FC<CalendarCellProps> = memo(
       if (!startDate || !endDate) {
         return false;
       }
-      date.setHours(0, 0, 0, 0);
-      startDate.setHours(0, 0, 0, 0);
-      endDate.setHours(0, 0, 0, 0);
       return (
-        date.getTime() > startDate!.getTime() &&
-        date.getTime() < endDate!.getTime()
+        dayjs(date).isAfter(startDate, 'date') &&
+        dayjs(date).isBefore(endDate, 'date')
       );
-    }, [mouth, date, value]);
+    }, [month, date, value]);
 
     return (
       <div
         className={classNames(`${calendarCls}-cell`, {
           [`${calendarCls}-cell-disabled`]: disabled,
           [`${calendarCls}-cell-selected`]: selected,
+          [`${calendarCls}-cell-today`]: isSame(date, dayjs(), 'day'),
           [`${calendarCls}-cell-selected-range`]: selectedRange,
         })}
         // style={{ width: size, height: size }}
@@ -102,12 +93,12 @@ const CalendarCell: FC<CalendarCellProps> = memo(
         }}
       >
         <div className={classNames(`${calendarCls}-cell-date`)}>
-          {date.getDate()}
+          {dayjs(date).date()}
         </div>
-        {date.getDate() === 1 && (
+        {dayjs(date).date() === 1 && (
           <div
             className={classNames(`${calendarCls}-cell-mouth`)}
-          >{`${date.getMonth() + 1}月`}</div>
+          >{`${dayjs(date).month() + 1}月`}</div>
         )}
       </div>
     );
@@ -118,7 +109,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
   forwardRef(
     (
       {
-        mouth = new Date(),
+        month = dayjs(),
         value,
         defaultValue,
         range = false,
@@ -129,15 +120,14 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
     ) => {
       const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? []);
 
-      const handleSelect = (date: Date) => {
-        date.setHours(0, 0, 0, 0);
-        let _value: Date[] = innerValue;
+      const handleSelect = (date: dayjs.Dayjs) => {
+        let _value: dayjs.Dayjs[] = innerValue;
         if (range) {
           if (!_value[0]) {
             _value = [date];
           } else if (!_value[1]) {
             let startDate = _value[0];
-            if (date.getTime() < startDate.getTime()) {
+            if (dayjs(date).isBefore(startDate, 'date')) {
               _value = [date, startDate];
             } else {
               _value = [startDate, date];
@@ -152,39 +142,28 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
         onSelect?.(date);
         onChange?.(_value);
       };
-
       const cells = useMemo(() => {
-        const firstDate = new Date(mouth.getFullYear(), mouth.getMonth(), 1);
-        const lastDate = new Date(mouth.getFullYear(), mouth.getMonth() + 1, 0);
-        const beforeDays = Array.from({ length: firstDate.getDay() }).map(
-          (_, index): Date => {
-            const date = new Date(firstDate);
-            date.setDate(firstDate.getDate() - (firstDate.getDay() - index));
-            return date;
-          },
-        );
+        const firstDate = dayjs(month).startOf('month');
 
-        const afterDays = Array.from({ length: 6 - lastDate.getDay() }).map(
-          (_, index): Date => {
-            const date = new Date(lastDate);
-            date.setDate(lastDate.getDate() + index + 1);
-            return date;
-          },
-        );
-        const mouthDays = Array.from({ length: lastDate.getDate() }).map(
-          (_, index): Date => {
-            const date = new Date(firstDate);
-            date.setDate(date.getDate() + index);
-            return date;
-          },
-        );
-        return [...beforeDays, ...mouthDays, ...afterDays];
-      }, [mouth]);
+        // 固定生成42天的日期网格（6行7列）
+        const startDate = firstDate.subtract(firstDate.day(), 'day');
+        const cells = Array.from({length: 42}, (_, index) => {
+          return startDate.add(index, 'day');
+        });
+
+        return cells;
+      }, [month]);
 
       useEffect(() => {
         if (value !== undefined) {
-          if (value !== innerValue) {
-            setInnerValue(value);
+          if (range) {
+            if (!isSame(value[0], innerValue[0], 'day') || !isSame(value[1], innerValue[1], 'day')) {
+              setInnerValue(value);
+            }
+          } else {
+            if (!isSame(value[0], innerValue[0], 'day')) {
+              setInnerValue(value);
+            }
           }
         }
       }, [value]);
@@ -195,7 +174,7 @@ export const CalendarGrid: FC<CalendarGridProps> = memo(
             return (
               <CalendarCell
                 key={index}
-                mouth={mouth}
+                month={month}
                 date={item}
                 value={innerValue}
                 range={range}

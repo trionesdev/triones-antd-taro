@@ -1,41 +1,42 @@
 import classNames from 'classnames';
-import _ from 'lodash';
-import React, { FC, memo, useEffect, useRef, useState } from 'react';
-import { CalendarGrid } from './calendar-grid';
-import { CalendarHeader } from './calendar-header';
+import React, {FC, memo, useEffect, useRef, useState} from 'react';
+import {CalendarGrid} from './calendar-grid';
+import {CalendarHeader} from './calendar-header';
 import './style.scss';
-import { TouchableCalendarGrid } from './touchable-calendar-grid';
+import {TouchableCalendarGrid} from './touchable-calendar-grid';
+import dayjs from "dayjs";
+import {isSame, toDayjsArray} from "../utils/dayjs";
 
 const calendarCls = 'triones-antm-calendar';
 
 type CalendarProps = {
-  mouth?: Date;
-  value?: Date[];
-  onChange?: (date: Date[]) => void;
+  month?: dayjs.Dayjs | Date;
+  value?: dayjs.Dayjs[] | Date[];
+  onChange?: (date: dayjs.Dayjs[]) => void;
   slideable?: boolean;
 };
 
 export const CalendarRange: FC<CalendarProps> = memo(
-  ({ mouth = new Date(), value, onChange, slideable }) => {
-    const [currentMouth, setCurrentMouth] = useState(mouth);
-    const valueRef = useRef<any>();
+  ({month, value = [], onChange, slideable}) => {
+    const [currentMonth, setCurrentMonth] = useState(dayjs(month));
+    const valueRef = useRef<dayjs.Dayjs[]>(value ? value.map((v) => dayjs(v)) : []);
 
     useEffect(() => {
       if (value !== undefined) {
-        if (!_.isEqual(value, valueRef.current)) {
-          valueRef.current = value;
+        if (!isSame(value?.[0], valueRef.current?.[0], 'day') || !isSame(value?.[1], valueRef.current?.[1], 'day')) {
+          valueRef.current = toDayjsArray(value) || [];
         }
       }
     }, [value]);
 
     return (
       <div className={classNames(`${calendarCls}`)}>
-        <CalendarHeader mouth={currentMouth} onChange={setCurrentMouth} />
+        <CalendarHeader month={currentMonth} onChange={setCurrentMonth}/>
         {slideable ? (
           <TouchableCalendarGrid
-            mouth={currentMouth}
-            value={value ?? valueRef.current ?? []}
-            onMouthChange={setCurrentMouth}
+            month={currentMonth}
+            value={toDayjsArray(value) ?? valueRef.current ?? []}
+            onMonthChange={setCurrentMonth}
             onChange={(value) => {
               valueRef.current = value;
               onChange?.(value);
@@ -44,8 +45,8 @@ export const CalendarRange: FC<CalendarProps> = memo(
           />
         ) : (
           <CalendarGrid
-            mouth={currentMouth}
-            value={value ?? valueRef.current ?? []}
+            month={currentMonth}
+            value={toDayjsArray(value) ?? valueRef.current ?? []}
             onChange={(value) => {
               valueRef.current = value;
               onChange?.(value);

@@ -1,23 +1,24 @@
-import React from 'react';
-import { CheckboxProps, cls } from './types';
-import { FC, useState } from 'react';
+import React, {FC} from 'react';
+import {CheckboxProps, cls} from './types';
 import classNames from 'classnames';
-import { CheckOutline } from '../../../antd-mobile-icons-react';
+import {CheckOutline} from '../../../antd-mobile-icons-react';
 
-export const CheckboxButton:FC<CheckboxProps> = ({children,checked,defaultChecked,disabled}) => {
-  const [innerChecked, setInnerChecked] = useState(checked ?? defaultChecked ?? false)
+type CheckboxButtonProps = CheckboxProps  & { onClick: () => void };
+
+export const CheckboxButton:FC<CheckboxButtonProps> = ({children,checked,disabled,onClick}) => {
+
   const prefixCls =`${cls}-button`;
   return (<label className={classNames(`${prefixCls}`,{
-    [`${prefixCls}-disabled`]: disabled,
-    [`${prefixCls}-checked`]: innerChecked
+    [`${cls}-disabled`]: disabled,
+    [`${prefixCls}-checked`]: checked
   })} onClick={() => {
     if (disabled){
       return
     }
-    setInnerChecked(!innerChecked)
+    onClick?.()
   }}>
     <div className={classNames(`${prefixCls}-content`)}>{children}</div>
-    {innerChecked && <div className={classNames(`${prefixCls}-icon`)}>
+    {checked && <div className={classNames(`${prefixCls}-icon`)}>
       <CheckOutline className={classNames(`checkedIcon`)}/>
     </div>}
   </label>)

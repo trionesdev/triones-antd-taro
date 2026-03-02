@@ -1,0 +1,20 @@
+@use "../style/variable" as variable;
+
+$verificationCodeInputCls: 'triones-antm-verification-code-input';
+
+.#{$verificationCodeInputCls} {
+  &-send {
+    padding-inline: variable.$trionesPaddingContentHorizontal;
+    cursor: pointer;
+
+    &:hover {
+      color: variable.$trionesColorPrimary;
+    }
+  }
+
+  &-counting {
+    padding-inline: variable.$trionesPaddingContentHorizontal;
+    cursor: not-allowed;
+    color: variable.$trionesColorTextDisabled;
+  }
+}

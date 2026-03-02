@@ -1,4 +1,4 @@
-@import "@trionesdev/antd-mobile-base-react/dist/style/variable";
+@use "../style/variable" as variable;
 
 $imagesWallCls: 'triones-antm-images-wall';
 
@@ -9,7 +9,7 @@ $imagesWallCls: 'triones-antm-images-wall';
 
   &-item {
     aspect-ratio: 1;
-    border-radius: $trionesBorderRadius;
+    border-radius: variable.$trionesBorderRadius;
     overflow: hidden;
     position: relative;
 
@@ -25,7 +25,7 @@ $imagesWallCls: 'triones-antm-images-wall';
       background-color: rgb(0 0 0 / 63%);
       width: 20Px;
       height: 20Px;
-      border-bottom-left-radius: $trionesBorderRadius;
+      border-bottom-left-radius: variable.$trionesBorderRadius;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -59,7 +59,7 @@ $imagesWallCls: 'triones-antm-images-wall';
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $trionesColorBgTextActive;
+    background-color: variable.$trionesColorBgTextActive;
   }
 
   &-action-sheet {

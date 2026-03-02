@@ -1,0 +1,78 @@
+@use "../style/variable" as variable;
+
+$cls-prefix-form: 'triones-antm-form';
+$cls-prefix-form-item: 'triones-antm-form-item';
+
+.#{$cls-prefix-form} {
+}
+
+.#{$cls-prefix-form-item} {
+
+  &-label {
+    font-size: variable.$trionesFontSize;
+    padding-block: 4Px;
+    color: #6F6F6F;
+
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+
+      &.h5 {
+        @include variable.h5-input-size;
+      }
+
+      &.wx {
+        @include variable.h5-input-size;
+      }
+    }
+
+    &-left {
+    }
+
+    &-right {
+      text-align: right;
+    }
+
+    &-required-mark {
+      display: inline-block;
+      color: red;
+      margin-right: 4Px;
+    }
+
+  }
+
+  &-input {
+
+    .#{$cls-prefix-form-item} {
+      &-error {
+        font-size: variable.$trionesFontSizeSm;
+        color: red;
+      }
+    }
+  }
+
+  &-horizontal {
+    display: flex;
+
+    .#{$cls-prefix-form-item} {
+      &-label {
+        flex-shrink: 1;
+        min-width: 0;
+      }
+
+      &-input {
+        flex: 1;
+        flex-shrink: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  &-hidden {
+    display: none;
+  }
+}

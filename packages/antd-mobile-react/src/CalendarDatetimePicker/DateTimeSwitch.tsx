@@ -1,25 +1,26 @@
 import classNames from 'classnames';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
-import { DatetimeUtils } from '../utils/datetime-utils';
+import React, {forwardRef, useImperativeHandle, useState} from 'react';
+import {DatetimeUtils} from '../utils/datetime-utils';
 import './style.scss';
-import { cls, Mode } from './types';
+import {cls, Mode} from './types';
+import dayjs from "dayjs";
 
 export interface DateTimeSwitchHandle {
-  setDatetime: (datetime: Date) => void;
+  setDatetime: (datetime: dayjs.Dayjs) => void;
 }
 
 type DateTimeSwitchProps = {
   onDateTabTap?: () => void;
   onTimeTabTap?: () => void;
   mode?: Mode;
-  value?: Date;
+  value?: dayjs.Dayjs;
 };
 
 export const DateTimeSwitch = forwardRef<
   DateTimeSwitchHandle,
   DateTimeSwitchProps
->(({ onDateTabTap, onTimeTabTap, mode, value }, ref) => {
-  const [datetime, setDatetime] = useState<Date | undefined>(value);
+>(({onDateTabTap, onTimeTabTap, mode, value}, ref) => {
+  const [datetime, setDatetime] = useState<dayjs.Dayjs | undefined>(dayjs(value));
 
   useImperativeHandle(ref, () => ({
     setDatetime,
@@ -34,7 +35,7 @@ export const DateTimeSwitch = forwardRef<
         onClick={onDateTabTap}
       >
         {datetime
-          ? `${datetime.getFullYear()}-${DatetimeUtils.twoDigits(datetime.getMonth() + 1)}-${DatetimeUtils.twoDigits(datetime.getDate())}`
+          ? `${datetime.year()}-${DatetimeUtils.twoDigits(datetime.month() + 1)}-${DatetimeUtils.twoDigits(datetime.date())}`
           : ''}
       </div>
       <div
@@ -43,7 +44,7 @@ export const DateTimeSwitch = forwardRef<
         })}
         onClick={onTimeTabTap}
       >
-        {datetime ? `${datetime.getHours()}:${datetime.getMinutes()}` : ''}
+        {datetime ? `${datetime.hour()}:${datetime.minute()}` : ''}
       </div>
     </div>
   );

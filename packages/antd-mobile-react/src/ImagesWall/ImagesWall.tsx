@@ -5,7 +5,7 @@ import "./style.scss"
 import ActionSheet from "../ActionSheet";
 import {CameraModal} from "./CameraModal";
 import {ImagesPreview} from "../index"
-import {isEqual} from "lodash";
+import {isEqual} from "lodash-es";
 import {RandomUtils} from '../utils/random-utils';
 
 const cls = 'triones-antm-images-wall'

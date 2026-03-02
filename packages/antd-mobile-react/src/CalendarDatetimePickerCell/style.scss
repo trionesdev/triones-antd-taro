@@ -1,0 +1,10 @@
+@use "../style/variable" as variable;
+$calendarDatetimePickerCls: 'triones-antm-calendar-datetime-picker';
+
+.#{$calendarDatetimePickerCls}{
+  min-width: 50Px;
+  line-height: 1.4;
+  &-placeholder{
+    color: variable.$trionesColorTextPlaceholder;
+  }
+}
