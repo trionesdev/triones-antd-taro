@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "46936837",
+      "name": "LogoutOutline",
+      "font_class": "LogoutOutline",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
       "icon_id": "45635533",
       "name": "HomeFill",
       "font_class": "HomeFill",

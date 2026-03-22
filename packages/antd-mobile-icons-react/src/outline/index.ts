@@ -81,6 +81,7 @@ export * from "./KouBeiOutline";
 export * from "./LoopOutline";
 export * from "./LocationOutline";
 export * from "./LockOutline";
+export * from "./LogoutOutline";
 export * from "./MailOpenOutline";
 export * from "./PicturesOutline";
 export * from "./ReceiptOutline";
