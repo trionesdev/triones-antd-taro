@@ -1,7 +1,75 @@
+@use "../style/variable" as variable;
+
 $class-prefix-segmented: 'triones-antm-segmented';
 
 .#{$class-prefix-segmented} {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  gap: 12rpx;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 2Px;
+  border-radius: variable.$trionesBorderRadius;
+  background: variable.$trionesColorFillTertiary;
+  gap: 0;
+
+  &-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  &-item {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 10Px;
+    padding: 0Px 11Px;
+    font-size: variable.$trionesFontSize;
+    line-height: variable.$trionesLineHeightSm;
+    color: variable.$trionesColorTextSecondary;
+    border-radius: variable.$trionesBorderRadiusXs;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      box-shadow 0.2s;
+
+    &-icon {
+      display: inline-flex;
+      margin-inline-end: 4Px;
+      font-size: variable.$trionesFontSizeIcon;
+      line-height: 1;
+    }
+
+    &-label {
+      display: inline-flex;
+      align-items: center;
+      line-height: 28Px;
+    }
+
+    &-active {
+      z-index: 1;
+      color: variable.$trionesColorTextHeading;
+      background: variable.$trionesColorBgBase;
+      box-shadow: 0 1Px 2Px rgba(0, 0, 0, 0.06);
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      color: variable.$trionesColorTextDisabled;
+    }
+  }
+
+  &-block &-item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
 }

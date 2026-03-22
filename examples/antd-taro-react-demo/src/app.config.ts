@@ -18,6 +18,7 @@ export default defineAppConfig({
     "pages/date-picker-cell/index",
     "pages/radio/index",
     "pages/rate/index",
+    "pages/segmented/index",
     "pages/input/index",
 
     "pages/empty/index",

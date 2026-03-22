@@ -1,7 +1,7 @@
 ---
 category: Components
 group:
-  title: 信息展示
+  title: 数据录入
   order: 4
 ---
 
