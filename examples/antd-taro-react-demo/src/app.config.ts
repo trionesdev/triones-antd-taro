@@ -29,6 +29,7 @@ export default defineAppConfig({
     "pages/nav-bar/index",
     "pages/badge/index",
     "pages/error-block/index",
+    "pages/float-button/index",
     "pages/footer/index",
     "pages/notice-bar/index",
     "pages/overlay/index",

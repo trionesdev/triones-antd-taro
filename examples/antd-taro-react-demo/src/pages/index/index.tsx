@@ -291,6 +291,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/float-button/index",
+              });
+            }}
+          >
+            FloatButton 浮动按钮
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/footer/index",
               });
             }}
