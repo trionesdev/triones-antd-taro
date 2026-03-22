@@ -19,6 +19,7 @@
 ## 组件列表
 - 通用
   - [x] Button 按钮
+  - [x] FloatButton 悬浮按钮
 - 布局
   - [x] Divider 分割线
   - [x] Grid 网格
