@@ -1,0 +1,7 @@
+$class-prefix-segmented: 'triones-antm-segmented';
+
+.#{$class-prefix-segmented} {
+  display: flex;
+  flex-direction: row;
+  gap: 12rpx;
+}
