@@ -135,6 +135,9 @@ export type {ScaffoldProps} from './Scaffold';
 export {default as ScrollView} from './ScrollView';
 export type {ScrollViewProps} from './ScrollView';
 
+export {default as Segmented} from './Segmented';
+export type {SegmentedProps} from './Segmented';
+
 export {default as SideBar} from './SideBar';
 export type {SideBarProps} from './SideBar';
 

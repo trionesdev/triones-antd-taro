@@ -81,6 +81,9 @@ export type {SafeAreaProps} from './SafeArea';
 export {default as Scaffold} from './Scaffold';
 export type {ScaffoldProps} from './Scaffold';
 
+export { Segmented} from './Segmented';
+export type {SegmentedProps} from './Segmented';
+
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 

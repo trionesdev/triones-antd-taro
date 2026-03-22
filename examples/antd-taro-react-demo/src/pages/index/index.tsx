@@ -424,6 +424,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/segmented/index",
+              });
+            }}
+          >
+            Segmented 分段器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/side-bar/index",
               });
             }}
