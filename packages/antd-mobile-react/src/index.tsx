@@ -68,6 +68,9 @@ export type {EmptyProps} from './Empty';
 export {default as ErrorBlock} from './ErrorBlock';
 export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 
+export {default as FloatButton} from './FloatButton';
+export type {FloatButtonProps, FloatButtonGroupProps} from './FloatButton';
+
 export {default as Footer} from './Footer';
 export type {FooterProps} from './Footer';
 

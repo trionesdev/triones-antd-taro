@@ -1,0 +1,123 @@
+@use "../style/variable" as variable;
+
+$floatButtonCls: "triones-antm-float-button";
+$floatButtonGroupCls: "triones-antm-float-button-group";
+
+$floatButtonSize: 48Px;
+$floatButtonShadow: 0 6Px 16Px 0 rgba(0, 0, 0, 0.08),
+  0 3Px 6Px -4Px rgba(0, 0, 0, 0.12), 0 9Px 28Px 8Px rgba(0, 0, 0, 0.05);
+
+.#{$floatButtonCls} {
+  position: fixed;
+  display: inline-flex;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  &--embedded {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+  }
+
+  &-body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8Px;
+    min-width: $floatButtonSize;
+    min-height: $floatButtonSize;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20Px;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.88);
+    background: #fff;
+    box-shadow: $floatButtonShadow;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+
+    &:active {
+      filter: brightness(0.95);
+    }
+  }
+
+  &--shape-square &-body {
+    border-radius: variable.$trionesBorderRadius;
+  }
+
+  &--has-content &-body {
+    min-height: $floatButtonSize;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--type-primary &-body {
+    color: #fff;
+    background: variable.$trionesColorPrimary;
+  }
+
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-content {
+    font-size: variable.$trionesFontSizeSm;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+}
+
+.#{$floatButtonGroupCls} {
+  position: fixed;
+  z-index: 100;
+  bottom: calc(24Px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  gap: 12Px;
+  align-items: flex-end;
+  box-sizing: border-box;
+
+  &--placement {
+    &-top {
+      flex-direction: column;
+    }
+    &-bottom {
+      flex-direction: column;
+    }
+    &-left {
+      flex-direction: row;
+    }
+    &-right {
+      flex-direction: row;
+    }
+  }
+
+  &--menu {
+    align-items: center;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12Px;
+    align-items: flex-end;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &--placement-left &-list,
+  &--placement-right &-list {
+    flex-direction: column;
+  }
+}
