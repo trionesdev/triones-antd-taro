@@ -1,45 +1,82 @@
 @use "../style/variable" as variable;
+
 $trionesInputNumberCls: 'triones-antm-input-number';
 
-$inputNumberBg: #EEEEEE;
+$inputNumberBg: #F5F5F5;
 $inputSm: 24Px;
 $inputLg: 40Px;
+$inputNumberControlHeight: 28Px;
 
 .#{$trionesInputNumberCls} {
   display: inline-flex;
-  align-items: center;
-  gap: 4Px;
-  border-radius: variable.$trionesBorderRadius;
-  background-color: $inputNumberBg;
+  align-items: stretch;
+  gap: 2Px;
+  border-radius: variable.$trionesBorderRadiusXs;
+  overflow: hidden;
 
-  input {
+  &--block {
+    display: flex;
+    width: 100%;
 
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    background-color: transparent;
-    border: 0;
-    text-align: center ;
-    width: 32Px;
-
-
-    &:focus {
-      outline: none;
+    .#{$trionesInputNumberCls}-input {
+      flex: 1 1 auto;
+      min-width: 0;
     }
   }
 
+  &-input {
+    display: flex;
+    align-items: stretch;
+    flex: 0 1 auto;
+    min-width: 36Px;
+    min-height: $inputNumberControlHeight;
+
+    input {
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      min-height: $inputNumberControlHeight;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0 8Px;
+      border: 0;
+      border-radius: variable.$trionesBorderRadiusXs;
+      background-color: $inputNumberBg;
+      color: variable.$trionesColorText;
+      font-size: 14Px;
+      line-height: $inputNumberControlHeight;
+      text-align: center;
+      -moz-appearance: textfield;
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        color: variable.$trionesColorTextDisabled;
+        cursor: not-allowed;
+      }
+    }
+  }
 
   &-button {
     cursor: pointer;
     display: flex;
+    flex-shrink: 0;
     font-size: 10Px;
-    height: 32Px;
-    width: 32Px;
+    height: $inputNumberControlHeight;
+    width: $inputNumberControlHeight;
     justify-content: center;
     align-items: center;
+    background-color: $inputNumberBg;
+    border-radius: variable.$trionesBorderRadiusXs;
 
     &-sm {
       width: $inputSm;

@@ -1,83 +1,102 @@
-import React, {useEffect} from "react";
-import {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import classNames from "classnames";
-import {AddOutline, MinusOutline} from "../../../antd-mobile-icons-react";
+import {AddOutline, MinusOutline} from "@trionesdev/antd-mobile-icons-react";
 import "./style.scss"
-import {SizeType} from "../types";
 
 export type InputNumberProps = {
-  size?: SizeType
   value?: number,
   onChange?: (value: number) => void
   step?: number
   min?: number
   max?: number
   disabled?: boolean
+  block?: boolean
   className?: string
   style?: React.CSSProperties
 }
+
+function clampValue(n: number, min?: number, max?: number): number {
+  let v = n;
+  if (min !== undefined) v = Math.max(min, v);
+  if (max !== undefined) v = Math.min(max, v);
+  return v;
+}
+
 export const InputNumber: FC<InputNumberProps> = ({
-                                                    size,
                                                     value,
                                                     onChange,
                                                     step,
                                                     min,
                                                     max,
                                                     disabled = false,
+                                                    block = false,
                                                     className,
                                                     style
                                                   }) => {
-  const [internalValue, setInternalValue] = React.useState<number>(value || 0);
+  const [internalValue, setInternalValue] = useState<number>(value ?? 0);
+  const stepSize = step ?? 1;
 
   useEffect(() => {
     if (value !== undefined) {
-      if (value !== internalValue) {
-        setInternalValue(value)
-      }
+      setInternalValue(clampValue(value, min, max));
     }
-  }, [value]);
+  }, [value, min, max]);
 
   const minMatch = min !== undefined && internalValue <= min;
   const maxMatch = max !== undefined && internalValue >= max;
 
   const trionesInputNumberCls = 'triones-antm-input-number';
-  return <div className={classNames(trionesInputNumberCls, className)} style={style}>
+  const setValue = (next: number) => {
+    const clamped = clampValue(next, min, max);
+    setInternalValue(clamped);
+    onChange?.(clamped);
+  };
+
+  return <div
+    className={classNames(trionesInputNumberCls, {[`${trionesInputNumberCls}--block`]: block}, className)}
+    style={style}>
     <div
       className={classNames(`${trionesInputNumberCls}-button`, {
-        [`${trionesInputNumberCls}-button-sm`]: size == 'small',
-        [`${trionesInputNumberCls}-button-lg`]: size == 'large',
         [`${trionesInputNumberCls}-button-disabled`]: minMatch || disabled,
       })}
+      role="button"
+      tabIndex={disabled || minMatch ? -1 : 0}
       onClick={() => {
-        if (minMatch) {
+        if (minMatch || disabled) {
           return
         }
-        const newValue = internalValue - (step || 1);
-        setInternalValue(newValue);
-        onChange?.(newValue);
+        setValue(internalValue - stepSize);
       }}>
       <MinusOutline/>
     </div>
-    <div>
-      <input type={`number`} disabled={disabled} value={internalValue} onChange={(e) => {
-        const newVal = Number(e.target.value);
-        setInternalValue(newVal);
-        onChange?.(newVal)
-      }}/>
+    <div className={`${trionesInputNumberCls}-input`}>
+      <input
+        type="number"
+        disabled={disabled}
+        min={min}
+        max={max}
+        step={stepSize}
+        value={internalValue}
+        onChange={(e) => {
+          const num = Number(e.target.value);
+          if (!Number.isFinite(num)) {
+            return;
+          }
+          setValue(num);
+        }}
+      />
     </div>
     <div
       className={classNames(`${trionesInputNumberCls}-button`, {
-        [`${trionesInputNumberCls}-button-sm`]: size == 'small',
-        [`${trionesInputNumberCls}-button-lg`]: size == 'large',
         [`${trionesInputNumberCls}-button-disabled`]: maxMatch || disabled,
       })}
+      role="button"
+      tabIndex={disabled || maxMatch ? -1 : 0}
       onClick={() => {
-        if (maxMatch) {
+        if (maxMatch || disabled) {
           return
         }
-        const newVal = internalValue + (step || 1);
-        setInternalValue(newVal);
-        onChange?.(newVal)
+        setValue(internalValue + stepSize);
       }}>
       <AddOutline/>
     </div>
