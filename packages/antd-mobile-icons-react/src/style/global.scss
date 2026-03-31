@@ -14,6 +14,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.antm-icon-BoxOutline:before {
+  content: "\e609";
+}
+
+.antm-icon-SwapOutline:before {
+  content: "\e608";
+}
+
+.antm-icon-LogoutOutline:before {
+  content: "\e63e";
+}
+
 .antm-icon-HomeFill:before {
   content: "\e74d";
 }

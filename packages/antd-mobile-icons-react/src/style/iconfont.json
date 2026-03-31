@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "47227043",
+      "name": "BoxOutline",
+      "font_class": "BoxOutline",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "47226900",
+      "name": "SwapOutline",
+      "font_class": "SwapOutline",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
       "icon_id": "46936837",
       "name": "LogoutOutline",
       "font_class": "LogoutOutline",

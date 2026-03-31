@@ -1,0 +1,100 @@
+@use "../style/variable" as variable;
+
+$trionesStepperCls: 'triones-antm-stepper';
+
+$inputNumberBg: #F5F5F5;
+$inputSm: 24Px;
+$inputLg: 40Px;
+$stepperControlHeight: 28Px;
+
+.#{$trionesStepperCls} {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2Px;
+  border-radius: variable.$trionesBorderRadiusXs;
+  overflow: hidden;
+  width: 110Px;
+
+  &--block {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+
+    .#{$trionesStepperCls}-input {
+      flex: 1 1 auto;
+      min-width: 0;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  &-input {
+    display: flex;
+    align-items: stretch;
+    //flex: 0 1 auto;
+    min-width: 36Px;
+    min-height: $stepperControlHeight;
+
+    input {
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      min-height: $stepperControlHeight;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0 8Px;
+      border: 0;
+      border-radius: variable.$trionesBorderRadiusXs;
+      background-color: $inputNumberBg;
+      color: variable.$trionesColorText;
+      font-size: 14Px;
+      line-height: $stepperControlHeight;
+      text-align: center;
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        color: variable.$trionesColorTextDisabled;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &-button {
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 10Px;
+    height: $stepperControlHeight;
+    width: $stepperControlHeight;
+    justify-content: center;
+    align-items: center;
+    background-color: $inputNumberBg;
+    border-radius: variable.$trionesBorderRadiusXs;
+    color: variable.$trionesColorPrimary;
+
+
+    &-disabled {
+      cursor: not-allowed;
+      color: variable.$trionesColorTextDisabled;
+    }
+
+    .triones-antm-icon {
+      font-size: 12Px !important;
+    }
+  }
+}
