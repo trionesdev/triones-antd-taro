@@ -8,7 +8,7 @@ export default ()=>{
   const [form] = Form.useForm()
   return <>
     <DemoBlock title='水平表单'>
-      <Form form={form}>
+      <Form form={form} labelWidth={100}>
         <Form.Item label='用户名' name='username'>
           <Input placeholder='请输入用户名'/>
         </Form.Item>

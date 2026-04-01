@@ -40,12 +40,10 @@ export interface FormProps<Values = any>
   extra?: React.ReactNode;
 }
 
-export const InternalForm: React.ForwardRefRenderFunction<
-  FormRef,
-  FormProps
-> = (
+const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
   {
     children,
+    colon = true,
     layout,
     labelAlign,
     labelWidth,
@@ -53,28 +51,43 @@ export const InternalForm: React.ForwardRefRenderFunction<
     requiredMark,
     hiddenError = false,
     extra,
-    ...props
+    ...rest
   },
   ref,
-) => {
+) {
+  const contextValue = React.useMemo(
+    () => ({
+      colon,
+      layout: layout ?? 'horizontal',
+      labelAlign: labelAlign ?? 'left',
+      labelWidth,
+      wrapperAlign: wrapperAlign ?? 'left',
+      requiredMark: requiredMark ?? true,
+      hiddenError,
+      extra,
+    }),
+    [
+      colon,
+      layout,
+      labelAlign,
+      labelWidth,
+      wrapperAlign,
+      requiredMark,
+      hiddenError,
+      extra,
+    ],
+  );
+
   return (
-    <FormContext.Provider
-      value={{
-        layout: layout || 'horizontal',
-        labelAlign: labelAlign || 'left',
-        labelWidth: labelWidth,
-        wrapperAlign: wrapperAlign || 'left',
-        requiredMark: requiredMark || true,
-        hiddenError: hiddenError,
-        extra: extra,
-      }}
-    >
-      <FieldForm {...props} component={false}>
+    <FormContext.Provider value={contextValue}>
+      <FieldForm {...rest} ref={ref} component={false}>
         {children}
       </FieldForm>
     </FormContext.Provider>
   );
-};
+});
+
+InternalForm.displayName = 'Form';
 
 export {useWatch};
 export default InternalForm;

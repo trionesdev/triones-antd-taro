@@ -70,7 +70,7 @@ export const FormItem: FC<FormItemProps> = ({
     [`${clsPrefix}-hidden`]: hidden
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
-                             style={{width: formItemLabelWidth}} label={label} required={required}/>}
+                             style={{width: formItemLabelWidth}} layout={formItemLayout} label={label} required={required}/>}
     <FormItemInput className={classNames(`${clsPrefix}-input`, {
       [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign
     })} {...props} name={name} rules={rules}

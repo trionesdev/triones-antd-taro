@@ -41,7 +41,7 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  padding: variable.$trionesInputPaddingBlock 0;
+  //padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
     max-height: $inputSm;
@@ -74,7 +74,7 @@ wx-input {
   min-width: 0;
   flex-shrink: 1;
   //line-height: variable.$trionesLineHeight;
-  padding: variable.$trionesInputPaddingBlock 0;
+  //padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
   box-sizing: border-box;
 
@@ -250,7 +250,7 @@ wx-input {
     background-color: transparent;
   }
   textarea {
-    padding: variable.$trionesInputPaddingBlock 0;
+    //padding: variable.$trionesInputPaddingBlock 0;
     background-color: transparent;
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;

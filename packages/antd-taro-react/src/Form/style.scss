@@ -37,13 +37,17 @@ $cls-prefix-form-item: 'triones-antm-form-item';
     &-required-mark {
       display: inline-block;
       color: red;
-      margin-right: 4Px;
+      width: 8Px;
+      margin-left: -8Px;
     }
 
   }
 
   &-input {
-
+    padding-block: 4Px;
+    &-right {
+      text-align: right;
+    }
     .#{$cls-prefix-form-item} {
       &-error {
         font-size: variable.$trionesFontSizeSm;

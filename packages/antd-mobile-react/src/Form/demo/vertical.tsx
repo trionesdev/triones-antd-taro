@@ -16,7 +16,7 @@ export default ()=>{
         <Form.Item label='说明' name='description'>
           <Input.Textarea placeholder='请输入说明'/>
         </Form.Item>
-        <Form.Item label='是否' name='married' layout={'horizontal'}>
+        <Form.Item label='是否' name='married' layout={'horizontal'} wrapperAlign={'right'}>
           <Switch/>
         </Form.Item>
       </Form>

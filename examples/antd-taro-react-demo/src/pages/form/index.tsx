@@ -6,7 +6,7 @@ const FormPage = () => {
   const [horizontalForm] = Form.useForm();
 
   return <View>
-    <View >
+    <View style={{padding:16}} >
       <Form form={verticalForm} labelWidth={80}>
         <Form.Item label={'姓名'} name={'name'} required={true} rules={[{required: true, message: '请输入姓名'}]}>
           <Input placeholder={`请输入姓名`}/>
@@ -23,7 +23,7 @@ const FormPage = () => {
         })
       }}>提交</Button>
     </View>
-    <View>
+    <View style={{padding:16}}>
       <Form layout={`vertical`} form={horizontalForm}>
         <Form.Item label={'姓名'} name={'name'}>
           <Input placeholder={`请输入姓名`}/>
