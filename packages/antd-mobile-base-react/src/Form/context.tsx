@@ -7,6 +7,7 @@ export interface FormContextProps {
   layout?: FormLayout;
   labelAlign?: FormLayoutAlign
   labelWidth?: number
+  wrapperAlign?: FormLayoutAlign
   requiredMark?: RequiredMark;
   form?: any;
   hiddenError?: boolean
@@ -16,6 +17,5 @@ export interface FormContextProps {
 export const FormContext = React.createContext<FormContextProps>({
   colon: true,
   layout: "horizontal",
-  labelAlign: "left",
-
+  labelAlign: "left"
 })

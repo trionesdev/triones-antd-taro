@@ -13,6 +13,9 @@ group:
 ## Input
 <code src="./demo/input.tsx"></code>
 
+## Vertical
+<code src="./demo/vertical.tsx"></code>
+
 ### Form
 <API id="Form"></API>
 

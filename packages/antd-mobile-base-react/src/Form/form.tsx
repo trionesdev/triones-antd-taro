@@ -1,11 +1,10 @@
-import FieldForm, { useWatch } from 'rc-field-form';
-import type { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
-import type { FormRef } from 'rc-field-form/lib/interface';
+import FieldForm, {useWatch} from 'rc-field-form';
+import type {FormProps as RcFormProps} from 'rc-field-form/lib/Form';
+import type {FormRef} from 'rc-field-form/lib/interface';
 import React from 'react';
-import { FormContext } from './context';
-import { FormInstance } from './interface';
+import {FormContext} from './context';
+import {FormInstance} from './interface';
 import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
-
 
 
 export interface FormProps<Values = any>
@@ -31,6 +30,7 @@ export interface FormProps<Values = any>
    */
   labelAlign?: FormLayoutAlign;
   labelWidth?: number;
+  wrapperAlign?: FormLayoutAlign;
   requiredMark?: RequiredMark;
   /**
    * @description 是否隐藏错误信息，主要用于自定义异常样式
@@ -49,6 +49,7 @@ export const InternalForm: React.ForwardRefRenderFunction<
     layout,
     labelAlign,
     labelWidth,
+    wrapperAlign,
     requiredMark,
     hiddenError = false,
     extra,
@@ -62,6 +63,7 @@ export const InternalForm: React.ForwardRefRenderFunction<
         layout: layout || 'horizontal',
         labelAlign: labelAlign || 'left',
         labelWidth: labelWidth,
+        wrapperAlign: wrapperAlign || 'left',
         requiredMark: requiredMark || true,
         hiddenError: hiddenError,
         extra: extra,
@@ -74,5 +76,5 @@ export const InternalForm: React.ForwardRefRenderFunction<
   );
 };
 
-export { useWatch };
+export {useWatch};
 export default InternalForm;

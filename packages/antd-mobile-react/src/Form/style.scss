@@ -1,8 +1,10 @@
 @use "../style/variable" as variable;
+
 $cls-prefix-form: 'triones-antm-form';
 $cls-prefix-form-item: 'triones-antm-form-item';
 
-.#{$cls-prefix-form} {}
+.#{$cls-prefix-form} {
+}
 
 .#{$cls-prefix-form-item} {
 
@@ -19,7 +21,8 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       align-items: center;
     }
 
-    &-left {}
+    &-left {
+    }
 
     &-right {
       text-align: right;
@@ -28,12 +31,16 @@ $cls-prefix-form-item: 'triones-antm-form-item';
     &-required-mark {
       display: inline-block;
       color: red;
-      margin-right: 4Px;
+      width: 8Px;
+      margin-left: -8Px;
     }
 
   }
 
   &-input {
+    &-right {
+      text-align: right;
+    }
 
     .#{$cls-prefix-form-item} {
       &-error {

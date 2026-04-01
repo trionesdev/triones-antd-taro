@@ -1,9 +1,9 @@
-import React, { CSSProperties, FC, ReactElement, ReactNode } from "react"
-import { FormItemLabel } from "./form-item-label";
-import { FormItemInput } from "./form-item-input";
-import { NamePath, Rule } from "rc-field-form/lib/interface";
+import React, {CSSProperties, FC, ReactElement, ReactNode} from "react"
+import {FormItemLabel} from "./form-item-label";
+import {FormItemInput} from "./form-item-input";
+import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
-import { Field } from "rc-field-form";
+import {Field} from "rc-field-form";
 import {FormItemLayout, FormLayoutAlign, useFormContext} from "@trionesdev/antd-mobile-base-react";
 
 export type FormItemProps = {
@@ -14,6 +14,7 @@ export type FormItemProps = {
   label?: ReactNode;
   labelAlign?: FormLayoutAlign
   labelWidth?: number
+  wrapperAlign?: FormLayoutAlign
   name?: NamePath;
   required?: boolean
   hidden?: boolean
@@ -26,29 +27,32 @@ export type FormItemProps = {
 }
 
 export const FormItem: FC<FormItemProps> = ({
-  className,
-  style,
-  children,
-  layout,
-  label,
-  labelAlign,
-  labelWidth,
-  name,
-  required,
-  hidden = false,
-  noStyle = false,
-  rules,
-  initialValue,
-  valuePropName,
-  errorRender,
-  extra,
-  ...props
-}) => {
-  const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
-  const formItemLayout = layout ? layout : (formLayout === 'inline' ? 'horizontal' : formLayout)
-  const formItemAlign = labelAlign ? labelAlign : formLayoutAlign || 'left'
-  const formItemLabelWidth = labelWidth ? labelWidth : formLabelWidth
-  const itemExtra = extra !== undefined ? extra : formExtra
+                                              className,
+                                              style,
+                                              children,
+                                              layout,
+                                              label,
+                                              labelAlign,
+                                              labelWidth,
+                                              wrapperAlign,
+                                              name,
+                                              required,
+                                              hidden = false,
+                                              noStyle = false,
+                                              rules,
+                                              initialValue,
+                                              valuePropName,
+                                              errorRender,
+                                              extra,
+                                              ...props
+                                            }) => {
+  // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
+  const ctx = useFormContext()
+  const formItemLayout = layout ? layout : (ctx.layout === 'inline' ? 'horizontal' : ctx.layout)
+  const formItemAlign = labelAlign ? labelAlign : ctx.labelAlign || 'left'
+  const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth
+  const formItemExtra = extra !== undefined ? extra : ctx.extra
+  const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign
   const clsPrefix = "triones-antm-form-item"
 
   if (noStyle) {
@@ -66,9 +70,12 @@ export const FormItem: FC<FormItemProps> = ({
     [`${clsPrefix}-hidden`]: hidden
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
-      style={{ width: formItemLabelWidth }} label={label} required={required} />}
-    <FormItemInput className={`${clsPrefix}-input`} {...props} name={name} rules={rules}
-      errorRender={errorRender} initialValue={initialValue} hiddenError={hiddenError}>{children}</FormItemInput>
-    {formExtra}
+                             style={{width: formItemLabelWidth}} label={label} required={required}/>}
+    <FormItemInput className={classNames(`${clsPrefix}-input`, {
+      [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign
+    })} {...props} name={name} rules={rules}
+                   errorRender={errorRender} initialValue={initialValue}
+                   hiddenError={ctx.hiddenError}>{children}</FormItemInput>
+    {formItemExtra}
   </div>
 }
