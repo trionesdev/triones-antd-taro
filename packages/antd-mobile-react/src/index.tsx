@@ -151,8 +151,26 @@ export type { SegmentedProps } from './Segmented';
 export { default as SideBar } from './SideBar';
 export type { SideBarProps } from './SideBar';
 
-export { default as Skeleton } from './Skeleton';
-export type { SkeletonProps } from './Skeleton';
+export {
+  default as Skeleton,
+  SkeletonAvatar,
+  SkeletonButton,
+  SkeletonInput,
+  SkeletonParagraph,
+  SkeletonTitle,
+} from './Skeleton';
+export type {
+  SkeletonAvatarProps,
+  SkeletonAvatarShape,
+  SkeletonAvatarSize,
+  SkeletonBlockType,
+  SkeletonButtonProps,
+  SkeletonButtonShape,
+  SkeletonInputProps,
+  SkeletonParagraphProps,
+  SkeletonProps,
+  SkeletonTitleProps,
+} from './Skeleton';
 
 export { default as Space } from './Space';
 export type { SpaceProps } from './Space';

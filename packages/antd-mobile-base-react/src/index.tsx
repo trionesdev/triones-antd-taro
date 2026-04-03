@@ -84,8 +84,26 @@ export type {ScaffoldProps} from './Scaffold';
 export {Segmented} from './Segmented';
 export type {SegmentedProps} from './Segmented';
 
-export {Skeleton} from "./Skeleton"
-export type {SkeletonProps} from "./Skeleton"
+export {
+  Skeleton,
+  SkeletonAvatar,
+  SkeletonTitle,
+  SkeletonParagraph,
+  SkeletonInput,
+  SkeletonButton,
+} from './Skeleton';
+export type {
+  SkeletonProps,
+  SkeletonAvatarProps,
+  SkeletonTitleProps,
+  SkeletonParagraphProps,
+  SkeletonInputProps,
+  SkeletonButtonProps,
+  SkeletonBlockType,
+  SkeletonAvatarShape,
+  SkeletonAvatarSize,
+  SkeletonButtonShape,
+} from './Skeleton';
 
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';

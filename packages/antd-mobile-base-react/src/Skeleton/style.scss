@@ -1,44 +1,211 @@
-.skeleton-container {
+$prefix: triones-antm-skeleton;
+
+@mixin skeleton-fill {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.#{$prefix} {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.#{$prefix}-element-active {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.12) 50%,
+    rgba(0, 0, 0, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: #{$prefix}-shimmer 1.4s ease infinite;
+}
+
+.#{$prefix}-with-avatar {
+  display: flex;
+  align-items: flex-start;
+  gap: 24rpx;
+}
+
+.#{$prefix}-header {
+  flex-shrink: 0;
+}
+
+.#{$prefix}-section {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 12rpx;
+  gap: 24rpx;
+  padding-top: 8rpx;
+}
 
-  .skeleton-item {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+.#{$prefix}-avatar {
+  @include skeleton-fill;
+  flex-shrink: 0;
+
+  &.#{$prefix}-element-active {
+    @include skeleton-fill;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
     background-size: 200% 100%;
-    background-position: 100% 0;
-    animation: skeleton-loading 1.5s infinite linear;
-
-    &.skeleton-animated {
-      animation: skeleton-loading 1.5s infinite linear;
-    }
-  }
-
-  .skeleton-text {
-    width: 100%;
-    height: 32rpx;
-    border-radius: 8rpx;
-    margin-bottom: 12rpx;
-    &:last-child {
-      margin-bottom: 0;
-      width: 70%;
-    }
-  }
-
-  .skeleton-circle {
-    width: 64rpx;
-    height: 64rpx;
-    border-radius: 50%;
-  }
-
-  .skeleton-rect {
-    width: 100%;
-    height: 128rpx;
-    border-radius: 16rpx;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
   }
 }
 
-@keyframes skeleton-loading {
+.#{$prefix}-avatar-circle {
+  border-radius: 50%;
+}
+
+.#{$prefix}-avatar-square {
+  border-radius: 16rpx;
+}
+
+.#{$prefix}-title {
+  height: 32rpx;
+  max-width: 100%;
+  border-radius: 8rpx;
+  @include skeleton-fill;
+
+  &.#{$prefix}-element-active {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
+  }
+}
+
+.#{$prefix}-round .#{$prefix}-title,
+.#{$prefix}-round .#{$prefix}-paragraph-line {
+  border-radius: 999rpx;
+}
+
+.#{$prefix}-paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.#{$prefix}-paragraph-line {
+  height: 28rpx;
+  max-width: 100%;
+  border-radius: 8rpx;
+  @include skeleton-fill;
+
+  &.#{$prefix}-element-active {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
+  }
+}
+
+.#{$prefix}-input {
+  width: 100%;
+  border-radius: 12rpx;
+  @include skeleton-fill;
+
+  &.#{$prefix}-element-active {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
+  }
+}
+
+.#{$prefix}-button {
+  display: inline-block;
+  min-width: 120rpx;
+  border-radius: 12rpx;
+  @include skeleton-fill;
+
+  &.#{$prefix}-element-active {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
+  }
+}
+
+.#{$prefix}-button-block {
+  display: block;
+  width: 100%;
+}
+
+.#{$prefix}-button-square {
+  border-radius: 8rpx;
+}
+
+.#{$prefix}-button-round {
+  border-radius: 999rpx;
+}
+
+.#{$prefix}-button-circle {
+  min-width: unset;
+  border-radius: 50%;
+}
+
+.#{$prefix}-block-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  width: 100%;
+}
+
+.#{$prefix}-block {
+  @include skeleton-fill;
+  box-sizing: border-box;
+
+  &.#{$prefix}-element-active {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: #{$prefix}-shimmer 1.4s ease infinite;
+  }
+}
+
+.#{$prefix}-block-text {
+  width: 100%;
+  height: 32rpx;
+  border-radius: 8rpx;
+}
+
+.#{$prefix}-block-rect {
+  width: 100%;
+  height: 128rpx;
+  border-radius: 16rpx;
+}
+
+.#{$prefix}-block-circle {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
+@keyframes #{$prefix}-shimmer {
   0% {
     background-position: 100% 0;
   }
