@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-export interface SkeletonProps {
+export type SkeletonProps= {
     /** 是否显示骨架屏 */
     loading?: boolean;
     /** 骨架屏类型：text, circle, rect */

@@ -43,7 +43,7 @@ export {default as Footer} from './Footer';
 export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
 export {default as Form, useFormContext} from './Form';
-export type { FormProps, FormLayout, FormLayoutAlign,FormItemLayout} from './Form';
+export type {FormProps, FormLayout, FormLayoutAlign, FormItemLayout} from './Form';
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
@@ -81,8 +81,11 @@ export type {SafeAreaProps} from './SafeArea';
 export {default as Scaffold} from './Scaffold';
 export type {ScaffoldProps} from './Scaffold';
 
-export { Segmented} from './Segmented';
+export {Segmented} from './Segmented';
 export type {SegmentedProps} from './Segmented';
+
+export {Skeleton} from "./Skeleton"
+export type {SkeletonProps} from "./Skeleton"
 
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
