@@ -72,8 +72,8 @@ export type SkeletonProps = {
   style?: CSSProperties;
   children?: ReactNode;
   /**
-   * `composed`：头像+标题+段落组合（对齐 [antd Skeleton](https://ant.design/components/skeleton-cn) / 移动端列表卡片）
-   * `block`：单行/单块占位（默认，兼容历史 `type` + `rows`）
+   * `composed`：标题+段落组合（默认，对齐 [antd Skeleton](https://ant.design/components/skeleton-cn)）；可配合 `avatar`
+   * `block`：单行/单块占位（兼容历史 `type` + `rows`）
    */
   mode?: 'composed' | 'block';
   /** 仅在 mode=block 时生效 */
@@ -84,22 +84,23 @@ export type SkeletonProps = {
   rows?: number;
 };
 
-const sizeToRpx: Record<Exclude<SkeletonAvatarSize, number>, number> = {
-  small: 64,
-  medium: 88,
-  large: 112,
+/** 使用 px，保证 H5 / 文档站点可渲染（浏览器不支持 rpx） */
+const sizeToPx: Record<Exclude<SkeletonAvatarSize, number>, number> = {
+  small: 32,
+  medium: 44,
+  large: 56,
 };
 
-const inputHeightRpx: Record<NonNullable<SkeletonInputProps['size']>, number> = {
-  small: 48,
-  medium: 64,
-  large: 80,
+const inputHeightPx: Record<NonNullable<SkeletonInputProps['size']>, number> = {
+  small: 24,
+  medium: 32,
+  large: 40,
 };
 
-const buttonSizeRpx: Record<NonNullable<SkeletonButtonProps['size']>, number> = {
-  small: 56,
-  medium: 64,
-  large: 72,
+const buttonSizePx: Record<NonNullable<SkeletonButtonProps['size']>, number> = {
+  small: 28,
+  medium: 32,
+  large: 36,
 };
 
 function toCssSize(v: number | string | undefined): string | undefined {
@@ -121,7 +122,7 @@ export const SkeletonAvatar: FC<SkeletonAvatarProps> = ({
   active = true,
 }) => {
   const dim =
-    typeof size === 'number' ? `${size}px` : `${sizeToRpx[size]}rpx`;
+    typeof size === 'number' ? `${size}px` : `${sizeToPx[size]}px`;
   return (
     <div
       className={classNames(
@@ -191,7 +192,7 @@ export const SkeletonInput: FC<SkeletonInputProps> = ({
 }) => (
   <div
     className={classNames(`${prefixCls}-input`, { [`${prefixCls}-element-active`]: active }, className)}
-    style={{ height: `${inputHeightRpx[size]}rpx`, ...style }}
+    style={{ height: `${inputHeightPx[size]}px`, ...style }}
   />
 );
 
@@ -211,8 +212,8 @@ export const SkeletonButton: FC<SkeletonButtonProps> = ({
       className,
     )}
     style={{
-      width: shape === 'circle' ? `${buttonSizeRpx[size]}rpx` : undefined,
-      height: `${buttonSizeRpx[size]}rpx`,
+      width: shape === 'circle' ? `${buttonSizePx[size]}px` : undefined,
+      height: `${buttonSizePx[size]}px`,
       ...style,
     }}
   />
@@ -366,7 +367,7 @@ const SkeletonImpl: FC<SkeletonProps> = (props) => {
   const {
     loading = true,
     children,
-    mode = 'block',
+    mode = 'composed',
     round = false,
     active,
     animated,

@@ -1,7 +1,7 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
-import SpinLoading from "../index";
 import Space from "../../Space";
+import {SpinLoading} from "../../index";
 
 export default () => {
   return <>
@@ -12,7 +12,10 @@ export default () => {
       <Space>
         <SpinLoading/>
         <SpinLoading color={`primary`}/>
-        <SpinLoading color={`white`}/>
+        <div style={{backgroundColor: `#333`}}>
+          <SpinLoading color={`white`}/>
+        </div>
+        <SpinLoading color={`red`}/>
       </Space>
     </DemoBlock>
 

@@ -23,7 +23,7 @@ $prefix: triones-antm-skeleton;
 .#{$prefix}-with-avatar {
   display: flex;
   align-items: flex-start;
-  gap: 24rpx;
+  gap: 12px;
 }
 
 .#{$prefix}-header {
@@ -35,8 +35,8 @@ $prefix: triones-antm-skeleton;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
-  padding-top: 8rpx;
+  gap: 12px;
+  padding-top: 4px;
 }
 
 .#{$prefix}-avatar {
@@ -61,13 +61,13 @@ $prefix: triones-antm-skeleton;
 }
 
 .#{$prefix}-avatar-square {
-  border-radius: 16rpx;
+  border-radius: 8px;
 }
 
 .#{$prefix}-title {
-  height: 32rpx;
+  height: 16px;
   max-width: 100%;
-  border-radius: 8rpx;
+  border-radius: 4px;
   @include skeleton-fill;
 
   &.#{$prefix}-element-active {
@@ -84,19 +84,19 @@ $prefix: triones-antm-skeleton;
 
 .#{$prefix}-round .#{$prefix}-title,
 .#{$prefix}-round .#{$prefix}-paragraph-line {
-  border-radius: 999rpx;
+  border-radius: 9999px;
 }
 
 .#{$prefix}-paragraph {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
+  gap: 8px;
 }
 
 .#{$prefix}-paragraph-line {
-  height: 28rpx;
+  height: 14px;
   max-width: 100%;
-  border-radius: 8rpx;
+  border-radius: 4px;
   @include skeleton-fill;
 
   &.#{$prefix}-element-active {
@@ -113,7 +113,7 @@ $prefix: triones-antm-skeleton;
 
 .#{$prefix}-input {
   width: 100%;
-  border-radius: 12rpx;
+  border-radius: 6px;
   @include skeleton-fill;
 
   &.#{$prefix}-element-active {
@@ -130,8 +130,8 @@ $prefix: triones-antm-skeleton;
 
 .#{$prefix}-button {
   display: inline-block;
-  min-width: 120rpx;
-  border-radius: 12rpx;
+  min-width: 60px;
+  border-radius: 6px;
   @include skeleton-fill;
 
   &.#{$prefix}-element-active {
@@ -152,11 +152,11 @@ $prefix: triones-antm-skeleton;
 }
 
 .#{$prefix}-button-square {
-  border-radius: 8rpx;
+  border-radius: 4px;
 }
 
 .#{$prefix}-button-round {
-  border-radius: 999rpx;
+  border-radius: 9999px;
 }
 
 .#{$prefix}-button-circle {
@@ -167,7 +167,7 @@ $prefix: triones-antm-skeleton;
 .#{$prefix}-block-root {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
+  gap: 8px;
   width: 100%;
 }
 
@@ -189,19 +189,19 @@ $prefix: triones-antm-skeleton;
 
 .#{$prefix}-block-text {
   width: 100%;
-  height: 32rpx;
-  border-radius: 8rpx;
+  height: 16px;
+  border-radius: 4px;
 }
 
 .#{$prefix}-block-rect {
   width: 100%;
-  height: 128rpx;
-  border-radius: 16rpx;
+  height: 64px;
+  border-radius: 8px;
 }
 
 .#{$prefix}-block-circle {
-  width: 64rpx;
-  height: 64rpx;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
 }
 

@@ -84,14 +84,7 @@ export type {ScaffoldProps} from './Scaffold';
 export {Segmented} from './Segmented';
 export type {SegmentedProps} from './Segmented';
 
-export {
-  Skeleton,
-  SkeletonAvatar,
-  SkeletonTitle,
-  SkeletonParagraph,
-  SkeletonInput,
-  SkeletonButton,
-} from './Skeleton';
+export {default as Skeleton} from './Skeleton';
 export type {
   SkeletonProps,
   SkeletonAvatarProps,
@@ -108,8 +101,8 @@ export type {
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
-export {default as SpinLoading} from './SpinLoading';
-export type {SpinLoadingProps} from './SpinLoading';
+export {DotLoading, SpinLoading} from './Loading';
+export type {DotLoadingProps, SpinLoadingProps} from './Loading';
 
 export {default as Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';

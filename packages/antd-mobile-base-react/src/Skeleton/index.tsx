@@ -1,11 +1,5 @@
-export {
-  Skeleton,
-  SkeletonAvatar,
-  SkeletonTitle,
-  SkeletonParagraph,
-  SkeletonInput,
-  SkeletonButton,
-} from './Skeleton';
+import {Skeleton} from './Skeleton';
+
 export type {
   SkeletonProps,
   SkeletonAvatarProps,
@@ -18,3 +12,5 @@ export type {
   SkeletonAvatarSize,
   SkeletonButtonShape,
 } from './Skeleton';
+
+export default Skeleton

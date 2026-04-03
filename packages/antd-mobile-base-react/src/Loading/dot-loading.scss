@@ -1,0 +1,72 @@
+@use "../style/variable" as variable;
+
+$dotLoadingCls: triones-antm-dot-loading;
+
+.#{$dotLoadingCls} {
+  display: inline-flex;
+  align-items: center;
+  height: 1em;
+  vertical-align: -0.125em;
+  /* 18 / 40 * 1em — horizontal gap between dots in antd-mobile viewBox */
+  gap: 0.45em;
+
+  &-default {
+    color: #9D9D9D;
+  }
+
+  &-primary {
+    color: variable.$trionesColorPrimary;
+  }
+
+  &-white {
+    color: white;
+  }
+
+  &-dot {
+    display: block;
+    flex-shrink: 0;
+    /* 8×8 in a 40-unit-tall viewBox, height = 1em */
+    width: 0.2em;
+    height: 0.2em;
+    background: currentColor;
+    //mask-image: var(--dotLoadingMask);
+    //-webkit-mask-image: var(--dotLoadingMask);
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+    mask-position: center;
+    -webkit-mask-position: center;
+    animation: triones-antm-dot-loading-bounce 2s infinite linear;
+    animation-fill-mode: backwards;
+  }
+
+  &-dot-0 {
+    animation-delay: 0s;
+  }
+
+  &-dot-1 {
+    animation-delay: 0.2s;
+  }
+
+  &-dot-2 {
+    animation-delay: 0.4s;
+  }
+}
+
+/* Mirrors antd-mobile SMIL: values 16;6;26;16;16, keyTimes 0;0.1;0.3;0.4;1, viewBox height 40 */
+@keyframes triones-antm-dot-loading-bounce {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(-0.25em);
+  }
+
+  30% {
+    transform: translateY(0.25em);
+  }
+}

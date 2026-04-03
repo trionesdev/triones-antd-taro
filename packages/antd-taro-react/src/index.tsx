@@ -153,8 +153,8 @@ export type {SideBarProps} from './SideBar';
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
-export {default as SpinLoading} from './SpinLoading';
-export type {SpinLoadingProps} from './SpinLoading';
+export {SpinLoading, DotLoading} from './Loading';
+export type {SpinLoadingProps, DotLoadingProps} from './Loading';
 
 export {default as Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';
