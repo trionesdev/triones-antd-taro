@@ -21,6 +21,7 @@ export * from "./BellMuteOutline";
 export * from "./ArrowsAltOutline";
 export * from "./AddOutline";
 export * from "./BillOutline";
+export * from "./BoxOutline";
 export * from "./AntOutline";
 export * from "./CameraOutline";
 export * from "./CalendarOutline";

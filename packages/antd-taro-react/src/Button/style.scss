@@ -24,7 +24,7 @@ $buttonCls: 'triones-antm-button';
   width: auto;
   position: relative;
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-self: center;
   align-items: center;
   justify-content: center;
@@ -36,11 +36,13 @@ $buttonCls: 'triones-antm-button';
   font-size: 14Px;
   z-index: 2;
   margin-top: 0;
+  gap: 8Px;
 
   &:active {
     filter: brightness(92%);
   }
-  &::after{
+
+  &::after {
     content: none;
   }
 
@@ -51,7 +53,9 @@ $buttonCls: 'triones-antm-button';
       filter: none;
     }
   }
-  &:not([disabled]):active{}
+
+  &:not([disabled]):active {
+  }
 
   &-color {
     &-default {
@@ -147,7 +151,7 @@ $buttonCls: 'triones-antm-button';
         &-variant {
           &-solid {
             color: $colorWhite;
-            background-color:$colorError;
+            background-color: $colorError;
             box-shadow: inset 0 0 0 1px $colorError;
           }
 
@@ -209,7 +213,8 @@ $buttonCls: 'triones-antm-button';
   }
 
   &-block {
-    display: flex;
+    //display: flex;
+    //flex-direction: row;
     width: 100%;
   }
 
