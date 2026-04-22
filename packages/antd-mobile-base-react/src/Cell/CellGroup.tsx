@@ -20,15 +20,34 @@ export const CellGroup: FC<CellGroupProps> = ({
   const handleRender = () => {
     if (children) {
       if (Array.isArray(children)) {
+        const validChildren = React.Children.toArray(children).filter(
+          (child): child is React.ReactElement =>
+            React.isValidElement(child) && (child.type == Cell || child.type == InternalCell)
+        );
         const childrenArray: React.ReactNode[] = [];
 
-        children.filter((child) => React.isValidElement(child) && (child.type == Cell || child.type == InternalCell))
-          .forEach((child, index) => {
-            childrenArray.push(child);
-            if (divider && (index < React.Children.count(children) - 1)) {
-              childrenArray.push(divider);
+        validChildren.forEach((child, index) => {
+          childrenArray.push(
+            React.cloneElement(child, {
+              key: child.key ?? `cell-${index}`
+            })
+          );
+          if (divider && index < validChildren.length - 1) {
+            if (React.isValidElement(divider)) {
+              childrenArray.push(
+                React.cloneElement(divider, {
+                  key: divider.key ?? `divider-${index}`
+                })
+              );
+            } else {
+              childrenArray.push(
+                <React.Fragment key={`divider-${index}`}>
+                  {divider}
+                </React.Fragment>
+              );
             }
-          });
+          }
+        });
         return childrenArray;
       } else {
         return children
