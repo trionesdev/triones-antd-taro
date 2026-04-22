@@ -11,7 +11,7 @@ export interface FormProps<Values = any>
   extends Omit<RcFormProps<Values>, 'form' | 'component'> {
   /**
    * @description 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效)
-   * @default true
+   * @default false
    */
   colon?: boolean;
   /**
@@ -43,7 +43,7 @@ export interface FormProps<Values = any>
 const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
   {
     children,
-    colon = true,
+    colon = false,
     layout,
     labelAlign,
     labelWidth,

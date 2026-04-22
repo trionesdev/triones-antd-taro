@@ -10,7 +10,6 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
   &-label {
     font-size: variable.$trionesFontSize;
-    padding-block: 4Px;
     color: #6F6F6F;
 
 
@@ -44,7 +43,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   }
 
   &-input {
-    padding-block: 4Px;
+    padding-block: 12Px;
     &-right {
       text-align: right;
     }
@@ -61,6 +60,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
     .#{$cls-prefix-form-item} {
       &-label {
+        padding-block: 12Px;
         flex-shrink: 1;
         min-width: 0;
       }
@@ -74,6 +74,15 @@ $cls-prefix-form-item: 'triones-antm-form-item';
         justify-content: center;
       }
     }
+  }
+
+  &-vertical {
+    .#{$cls-prefix-form-item} {
+      &-label {
+        margin-bottom: 4Px;
+      }
+    }
+
   }
 
   &-hidden {
