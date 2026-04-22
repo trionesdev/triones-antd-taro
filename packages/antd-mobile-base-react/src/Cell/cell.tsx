@@ -14,6 +14,7 @@ export const Cell: FC<CellProps> = ({
                                       children,
                                       label,
                                       extra,
+                                      arrow,
                                       labelCol,
                                       labelAlign,
                                       wrapperAlign,
