@@ -82,7 +82,7 @@ export {default as Footer} from './Footer';
 export type {FooterProps} from './Footer';
 
 export {default as Form} from './Form';
-export type {FormItemProps, FormProps} from './Form';
+export type {FormItemProps, FormProps,FormInstance} from './Form';
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';

@@ -25,4 +25,5 @@ export type {
   FormLayoutAlign,
   FormItemLayout
 }
+
 export default Form;

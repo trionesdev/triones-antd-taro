@@ -43,6 +43,7 @@ export {default as Footer} from './Footer';
 export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
 export {default as Form, useFormContext} from './Form';
+export type {FormInstance} from "./Form/interface"
 export type {FormProps, FormLayout, FormLayoutAlign, FormItemLayout} from './Form';
 
 export {default as Grid} from './Grid';

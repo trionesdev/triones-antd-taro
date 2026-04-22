@@ -1,4 +1,4 @@
-import {Form as InternalForm,FormProps} from "@trionesdev/antd-mobile-base-react";
+import {Form as InternalForm,FormProps,FormInstance} from "@trionesdev/antd-mobile-base-react";
 import FormItem, { FormItemProps } from "./FormItem";
 import "./style.scss"
 
@@ -13,6 +13,7 @@ Form.Item = FormItem;
 
 export type {
   FormProps,
-  FormItemProps
+  FormItemProps,
+  FormInstance
 }
 export default Form;
