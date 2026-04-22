@@ -2,6 +2,8 @@ import {SpinLoading, SpinLoadingProps, DotLoading, DotLoadingProps} from "@trion
 
 export type {SpinLoadingProps, DotLoadingProps}
 export {
-  SpinLoading,
+  SpinLoading
+}
+export {
   DotLoading
 }

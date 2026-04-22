@@ -474,6 +474,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/stepper/index",
+              });
+            }}
+          >
+            Stepper 步进器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/steps/index",
               });
             }}
