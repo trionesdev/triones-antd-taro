@@ -1,11 +1,17 @@
-import React, { CSSProperties, FC, ReactElement, ReactNode } from "react"
-import { FormItemLabel } from "./form-item-label";
-import { FormItemInput } from "./form-item-input";
-import { NamePath, Rule } from "rc-field-form/lib/interface";
+import React, {CSSProperties, FC, ReactElement, ReactNode} from "react"
+import {FormItemLabel} from "./form-item-label";
+import {FormItemInput} from "./form-item-input";
+import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
 
-import { Field } from "rc-field-form";
-import {FormItemLayout, FormHorizontalAlign,FormItemVerticalAlign,useFormContext,Form} from "@trionesdev/antd-mobile-base-react";
+import {Field} from "rc-field-form";
+import {
+  FormItemLayout,
+  FormHorizontalAlign,
+  FormItemVerticalAlign,
+  useFormContext,
+  Form
+} from "@trionesdev/antd-mobile-base-react";
 
 export type FormItemProps = {
   className?: string;
@@ -29,26 +35,26 @@ export type FormItemProps = {
 }
 
 export const FormItem: FC<FormItemProps> = ({
-  className,
-  style,
-  children,
-  layout,
-  label,
-  labelAlign,
-  labelWidth,
-  wrapperAlign,
-  name,
-  required,
-  hidden = false,
-  noStyle = false,
-  rules,
-  initialValue,
-  valuePropName,
-  errorRender,
-  extra,
-  verticalAlign,
-  ...props
-}) => {
+                                              className,
+                                              style,
+                                              children,
+                                              layout,
+                                              label,
+                                              labelAlign,
+                                              labelWidth,
+                                              wrapperAlign,
+                                              name,
+                                              required,
+                                              hidden = false,
+                                              noStyle = false,
+                                              rules,
+                                              initialValue,
+                                              valuePropName,
+                                              errorRender,
+                                              extra,
+                                              verticalAlign,
+                                              ...props
+                                            }) => {
   // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
   const ctx = useFormContext()
   const formItemLayout = layout ? layout : (ctx.layout === 'inline' ? 'horizontal' : ctx.layout)
@@ -65,6 +71,7 @@ export const FormItem: FC<FormItemProps> = ({
     return <Field
       name={name}
       rules={rules}
+      valuePropName={valuePropName}
       trigger={'onChange'}
       initialValue={initialValue}
     >
@@ -78,11 +85,13 @@ export const FormItem: FC<FormItemProps> = ({
       formItemLayout === 'horizontal',
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
-      style={{ width: formItemLabelWidth }} layout={formItemLayout} label={label} required={required} />}
+                             style={{width: formItemLabelWidth}} layout={formItemLayout} label={label}
+                             required={required}/>}
     <FormItemInput className={classNames(`${clsPrefix}-input`, {
       [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign
     })} {...props} name={name} rules={rules}
-      errorRender={errorRender} initialValue={initialValue} hiddenError={ctx.hiddenError}>{children}</FormItemInput>
+                   errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
+                   hiddenError={ctx.hiddenError}>{children}</FormItemInput>
     {formItemExtra}
   </div>
 }

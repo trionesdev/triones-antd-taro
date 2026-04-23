@@ -102,6 +102,7 @@ export const FormItem: FC<FormItemProps> = ({
       <Field
         name={name}
         rules={rules}
+        valuePropName={valuePropName}
         trigger={'onChange'}
         initialValue={initialValue}
       >
@@ -145,6 +146,7 @@ export const FormItem: FC<FormItemProps> = ({
         rules={rules}
         errorRender={errorRender}
         initialValue={initialValue}
+        valuePropName={valuePropName}
         hiddenError={ctx.hiddenError}
       >
         {children}

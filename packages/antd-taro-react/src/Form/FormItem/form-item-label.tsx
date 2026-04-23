@@ -19,7 +19,9 @@ export const FormItemLabel: FC<FormItemLabelProps> = ({className, style, label, 
   const {isTaroWeApp, isTaroWeb} = useTaro()
   const {requiredMark, colon} = useFormContext()
   const clsPrefix = `triones-antm-form-item-label`
-  return <div className={classNames(className, {required: `${clsPrefix}-required`})} style={style}>
+  return <div className={classNames(className, {
+    [`${clsPrefix}-required`]: required,
+  })} style={style}>
 
     <div className={classNames(`${clsPrefix}-wrapper`, {
       [`h5`]: isTaroWeb,
