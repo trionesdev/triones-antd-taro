@@ -139,6 +139,7 @@ wx-input {
     border-radius: variable.$trionesBorderRadius;
     border: 1Px solid variable.$trionesBorderColor;
     padding-inline: 4Px;
+    min-height: 32Px;
   }
 
   &-filled {

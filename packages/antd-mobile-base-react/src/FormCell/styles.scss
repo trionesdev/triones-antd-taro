@@ -1,0 +1,66 @@
+@use "../style/variable" as variable;
+
+$cellCls: 'triones-antm-form-cell';
+
+.#{$cellCls} {
+  display: flex;
+  flex-direction: row;
+  gap: 4Px;
+  align-items: center;
+
+  &-content {
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+    min-height: 20Px;
+  }
+
+  &-placeholder {
+    font-size: variable.$trionesFontSize;
+    color: variable.$trionesColorTextPlaceholder;
+  }
+
+  &-extra {
+    flex-shrink: 0;
+  }
+
+  &-arrow {
+    flex-shrink: 0;
+  }
+
+  &-small {
+    min-height: 20Px;
+  }
+
+  &-middle {
+    min-height: 32Px;
+  }
+
+  &-large {
+    min-height: 40Px;
+  }
+
+  &-left {
+    .#{$cellCls} {
+      &&-content {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &-center {
+    .#{$cellCls} {
+      &&-content {
+        justify-content: center;
+      }
+    }
+  }
+
+  &-right {
+    .#{$cellCls} {
+      &&-content {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
