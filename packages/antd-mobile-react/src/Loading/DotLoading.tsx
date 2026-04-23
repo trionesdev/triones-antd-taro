@@ -1,3 +1,1 @@
-import {DotLoading} from "@trionesdev/antd-mobile-base-react"
-
-export {DotLoading}
+export { DotLoading } from '@trionesdev/antd-mobile-base-react';

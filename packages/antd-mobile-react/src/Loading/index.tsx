@@ -1,11 +1,13 @@
-import {  SpinLoadingProps , DotLoadingProps} from "@trionesdev/antd-mobile-base-react"
-import {SpinLoading} from "./SpinLoading";
-import {DotLoading} from "./DotLoading"
+import {
+  DotLoading as BaseDotLoading,
+  SpinLoading as BaseSpinLoading,
+} from '@trionesdev/antd-mobile-base-react';
+import type {
+  DotLoadingProps,
+  SpinLoadingProps,
+} from '@trionesdev/antd-mobile-base-react';
 
-export type {SpinLoadingProps, DotLoadingProps}
-export {
-  SpinLoading
-}
-export {
-  DotLoading
-}
+export const SpinLoading = BaseSpinLoading;
+export const DotLoading = BaseDotLoading;
+
+export type { SpinLoadingProps, DotLoadingProps };

@@ -1,3 +1,1 @@
-import { SpinLoading } from '@trionesdev/antd-mobile-base-react';
-
-export { SpinLoading };
+export { SpinLoading } from '@trionesdev/antd-mobile-base-react';

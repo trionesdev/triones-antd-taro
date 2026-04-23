@@ -24,7 +24,10 @@ $cellCls: 'triones-antm-cell';
     display: flex;
     align-items: center;
   }
-
+  &-arrow{
+    font-size: variable.$trionesFontSize;
+    color: variable.$trionesColorTextPlaceholder;
+  }
 
   &-placeholder {
     font-size: variable.$trionesFontSize;
@@ -47,5 +50,6 @@ $cellCls: 'triones-antm-cell';
 
     &-extra {
     }
+
   }
 }

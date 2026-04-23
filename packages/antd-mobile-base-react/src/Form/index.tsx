@@ -1,8 +1,9 @@
 import FieldForm from 'rc-field-form';
-import InternalForm, { FormProps, useWatch } from "./form";
+import InternalForm, {FormProps, useWatch} from "./form";
 import useForm from "./hooks/useForm";
-import {FormItemLayout, FormLayout, FormLayoutAlign } from "./types";
-export {useFormContext} from  "./hooks/useFormContext";
+import {FormItemLayout, FormLayout, FormHorizontalAlign, FormItemVerticalAlign} from "./types";
+
+export {useFormContext} from "./hooks/useFormContext";
 
 type InternalFormType = typeof InternalForm;
 
@@ -22,8 +23,9 @@ Form.useWatch = useWatch;
 export type {
   FormProps,
   FormLayout,
-  FormLayoutAlign,
-  FormItemLayout
+  FormItemLayout,
+  FormHorizontalAlign,
+  FormItemVerticalAlign,
 }
 
 export default Form;

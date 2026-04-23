@@ -4,6 +4,7 @@ import './styles.scss';
 import {CellProps} from './types';
 import {CellGroupContext} from "./context";
 import {assign} from "lodash-es";
+import {RightOutline} from "@trionesdev/antd-mobile-icons-react";
 
 const cls = 'triones-antm-cell';
 
@@ -87,6 +88,9 @@ export const Cell: FC<CellProps> = ({
       </div>
       {(extra || ctxExtra) &&
         <div className={classNames(`${cls}-extra`)} style={mergedStyles?.extra}>{extra || ctxExtra}</div>}
+      {arrow && <div className={classNames(`${cls}-arrow`)}>
+        <RightOutline/>
+      </div>}
     </div>
   );
 };

@@ -44,9 +44,11 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
   &-input {
     padding-block: 12Px;
+
     &-right {
       text-align: right;
     }
+
     .#{$cls-prefix-form-item} {
       &-error {
         font-size: variable.$trionesFontSizeSm;
@@ -72,6 +74,16 @@ $cls-prefix-form-item: 'triones-antm-form-item';
         display: flex;
         flex-direction: column;
         justify-content: center;
+      }
+    }
+
+    &.#{$cls-prefix-form-item} {
+      &-start {
+        align-items: flex-start;
+      }
+
+      &-center {
+        align-items: center;
       }
     }
   }

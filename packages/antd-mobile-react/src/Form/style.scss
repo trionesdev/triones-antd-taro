@@ -8,6 +8,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
 .#{$cls-prefix-form-item} {
   line-height: 1.5;
+
   &-label {
     font-size: variable.$trionesFontSize;
     color: #6F6F6F;
@@ -67,6 +68,16 @@ $cls-prefix-form-item: 'triones-antm-form-item';
         flex: auto 1;
         flex-shrink: 1;
         min-width: 0;
+      }
+    }
+
+    &.#{$cls-prefix-form-item} {
+      &-start {
+        align-items: flex-start;
+      }
+
+      &-center {
+        align-items: center;
       }
     }
   }

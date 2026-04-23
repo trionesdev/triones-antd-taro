@@ -5,7 +5,7 @@ import { NamePath, Rule } from "rc-field-form/lib/interface";
 import classNames from "classnames";
 
 import { Field } from "rc-field-form";
-import {FormItemLayout, FormLayoutAlign, useFormContext} from "@trionesdev/antd-mobile-base-react";
+import {FormItemLayout, FormHorizontalAlign,FormItemVerticalAlign,useFormContext,Form} from "@trionesdev/antd-mobile-base-react";
 
 export type FormItemProps = {
   className?: string;
@@ -13,9 +13,9 @@ export type FormItemProps = {
   children?: ReactElement;
   layout?: FormItemLayout;
   label?: ReactNode;
-  labelAlign?: FormLayoutAlign
+  labelAlign?: FormHorizontalAlign
   labelWidth?: number
-  wrapperAlign?: FormLayoutAlign
+  wrapperAlign?: FormHorizontalAlign
   name?: NamePath;
   required?: boolean
   hidden?: boolean
@@ -25,6 +25,7 @@ export type FormItemProps = {
   valuePropName?: string
   errorRender?: (errors?: any[]) => React.ReactNode;
   extra?: ReactNode;
+  verticalAlign?: FormItemVerticalAlign;
 }
 
 export const FormItem: FC<FormItemProps> = ({
@@ -45,6 +46,7 @@ export const FormItem: FC<FormItemProps> = ({
   valuePropName,
   errorRender,
   extra,
+  verticalAlign,
   ...props
 }) => {
   // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
@@ -54,6 +56,9 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth
   const formItemExtra = extra !== undefined ? extra : ctx.extra
   const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign
+  const formItemVerticalAlign = verticalAlign
+    ? verticalAlign
+    : ctx.verticalAlign || 'center';
   const clsPrefix = "triones-antm-form-item"
 
   if (noStyle) {
@@ -68,7 +73,9 @@ export const FormItem: FC<FormItemProps> = ({
   }
 
   return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className, {
-    [`${clsPrefix}-hidden`]: hidden
+    [`${clsPrefix}-hidden`]: hidden,
+    [`${clsPrefix}-${formItemVerticalAlign}`]:
+      formItemLayout === 'horizontal',
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
       style={{ width: formItemLabelWidth }} layout={formItemLayout} label={label} required={required} />}

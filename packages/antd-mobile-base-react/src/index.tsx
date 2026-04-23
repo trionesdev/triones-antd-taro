@@ -44,7 +44,7 @@ export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
 export {default as Form, useFormContext} from './Form';
 export type {FormInstance} from "./Form/interface"
-export type {FormProps, FormLayout, FormLayoutAlign, FormItemLayout} from './Form';
+export type {FormProps, FormLayout, FormHorizontalAlign,FormItemVerticalAlign, FormItemLayout} from './Form';
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
