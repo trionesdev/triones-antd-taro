@@ -1,8 +1,13 @@
 import React, {FC, PropsWithChildren} from "react"
 import classNames from "classnames";
 import {RightOutline} from "@trionesdev/antd-mobile-icons-react";
+import {AntSize} from "../types";
+import ConfigProvider from "../ConfigProvider";
+import {mergeProp} from "../utils/with-default-props";
 
-type FormCellProps = {
+export type VariantType = 'outlined' | 'borderless' | 'filled' | 'underlined' | undefined
+
+export type FormCellProps = {
   className?: string
   style?: React.CSSProperties
   styles?: {
@@ -11,15 +16,17 @@ type FormCellProps = {
     extra?: React.CSSProperties;
     arrow?: React.CSSProperties;
   }
-  size?: 'small' | 'large' | 'middle'
+  size?: AntSize
+  variant?: VariantType
   placeholder?: string
-  onClick: () => void
+  onClick?: () => void
   extra?: React.ReactNode;
-  arrow?: boolean;
-  align?: 'left' | 'center' | 'right'
+  arrow?: boolean | React.ReactNode;
+  align?: 'start' | 'center' | 'end'
 }
 
 const cls = 'triones-antm-form-cell';
+const defaultArrowIcon = <RightOutline/>
 
 export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
                                                                  className,
@@ -27,16 +34,26 @@ export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
                                                                  styles,
                                                                  children,
                                                                  size = 'middle',
+                                                                 variant = 'borderless',
                                                                  placeholder,
                                                                  extra,
                                                                  arrow = false,
                                                                  align = 'left',
                                                                  onClick,
                                                                }) => {
-  return <div className={classNames(`${cls}`, `${cls}-${align}`, `${cls}-${size}`, className)}
+  const {form: componentConfig = {}} = ConfigProvider.useConfig()
+  const mergedArrow = (() => {
+    if (arrow === false || arrow === undefined || arrow === null) return null
+    if (arrow === true) {
+      return mergeProp<React.ReactNode>(defaultArrowIcon, componentConfig.arrowIcon)
+    }
+    return arrow
+  })()
+
+  return <div className={classNames(`${cls}`, `${cls}-${align}`, `${cls}-${size}`, `${cls}-${variant}`, className)}
               style={{...style, ...styles?.root}}
               onClick={onClick}>
-    <div className={classNames(`${cls}-content`, {})} style={styles?.content}>
+    <div className={classNames(`${cls}-content`)} style={styles?.content}>
       {children ||
         (placeholder && (
           <div className={classNames(`${cls}-placeholder`)}>
@@ -44,11 +61,11 @@ export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
           </div>
         ))}
     </div>
-    <div className={classNames(`${cls}-extra`)} style={styles?.extra}>
+    {extra && <div className={classNames(`${cls}-extra`)} style={styles?.extra}>
       {extra}
-    </div>
-    {arrow && <div className={classNames(`${cls}-arrow`)} style={styles?.arrow}>
-      <RightOutline/>
+    </div>}
+    {mergedArrow && <div className={classNames(`${cls}-arrow`)} style={styles?.arrow}>
+      {mergedArrow}
     </div>}
   </div>
 }

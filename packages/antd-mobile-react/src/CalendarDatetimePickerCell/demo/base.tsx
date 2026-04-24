@@ -1,6 +1,6 @@
 import React from 'react';
 import {DemoBlock} from '../../DemoBlock';
-import {CalendarDatetimePickerCell} from '../CalendarDatetimePickerCell';
+import CalendarDatetimePickerCell from '../CalendarDatetimePickerCell';
 
 export default ()=>{
   const toastContainer = React.useRef<any>()

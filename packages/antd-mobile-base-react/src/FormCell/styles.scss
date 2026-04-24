@@ -3,6 +3,7 @@
 $cellCls: 'triones-antm-form-cell';
 
 .#{$cellCls} {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 4Px;
@@ -26,6 +27,10 @@ $cellCls: 'triones-antm-form-cell';
 
   &-arrow {
     flex-shrink: 0;
+    .triones-antm-icon {
+      color: variable.$trionesColorTextPlaceholder;
+      font-size: variable.$trionesFontSize;
+    }
   }
 
   &-small {
@@ -40,9 +45,9 @@ $cellCls: 'triones-antm-form-cell';
     min-height: 40Px;
   }
 
-  &-left {
+  &-start {
     .#{$cellCls} {
-      &&-content {
+      &-content {
         justify-content: flex-start;
       }
     }
@@ -50,17 +55,48 @@ $cellCls: 'triones-antm-form-cell';
 
   &-center {
     .#{$cellCls} {
-      &&-content {
+      &-content {
         justify-content: center;
       }
     }
   }
 
-  &-right {
+  &-end {
     .#{$cellCls} {
-      &&-content {
+      &-content {
         justify-content: flex-end;
       }
     }
+  }
+
+  &-borderless {
+    border: 0;
+    min-height: variable.$trionesControlHeight;
+  }
+
+  &-outlined {
+    border-radius: variable.$trionesBorderRadius;
+    border: 1Px solid variable.$trionesBorderColor;
+    padding-inline: 4Px;
+    box-sizing: border-box;
+    min-height: variable.$trionesControlHeight;
+  }
+
+  &-filled {
+    border-radius: variable.$trionesBorderRadius;
+    background-color: variable.$trionesColorFillTertiary;
+    padding-inline: 4Px;
+    box-sizing: border-box;
+    border: 0;
+    min-height: variable.$trionesControlHeight;
+  }
+
+  &-underlined {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+    box-sizing: border-box;
+    min-height: variable.$trionesControlHeight;
   }
 }

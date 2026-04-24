@@ -18,6 +18,7 @@ type Config = {
   }
   form?: {
     helpIcon?: ReactNode
+    arrowIcon?: ReactNode
   }
   input?: {
     clearIcon?: ReactNode

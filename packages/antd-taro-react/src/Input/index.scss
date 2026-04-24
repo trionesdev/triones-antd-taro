@@ -41,14 +41,16 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  //padding: variable.$trionesInputPaddingBlock 0;
+  padding: variable.$trionesInputPaddingBlock 0;
 
-  &-sm {
-    max-height: $inputSm;
+  &-small {
+    padding: variable.$trionesInputPaddingBlockSm 0;
+    font-size: variable.$trionesInputInputFontSizeSm;
   }
 
-  &-lg {
-    max-height: $inputLg;
+  &-large {
+    padding: variable.$trionesInputPaddingBlockLg 0;
+    font-size: variable.$trionesInputInputFontSizeLg;
   }
 
   &::placeholder {
@@ -74,9 +76,20 @@ wx-input {
   min-width: 0;
   flex-shrink: 1;
   //line-height: variable.$trionesLineHeight;
-  //padding: variable.$trionesInputPaddingBlock 0;
+  padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
   box-sizing: border-box;
+
+  &-small {
+    padding: variable.$trionesInputPaddingBlockSm 0;
+    font-size: variable.$trionesInputInputFontSizeSm;
+  }
+
+  &-large {
+    padding: variable.$trionesInputPaddingBlockLg 0;
+    font-size: variable.$trionesInputInputFontSizeLg;
+  }
+
 
 
   .#{$inputCls} {
@@ -139,7 +152,6 @@ wx-input {
     border-radius: variable.$trionesBorderRadius;
     border: 1Px solid variable.$trionesBorderColor;
     padding-inline: 4Px;
-    min-height: 32Px;
   }
 
   &-filled {
@@ -190,20 +202,20 @@ wx-input {
   &-item {
     text-align: center;
     font-size: variable.$trionesInputInputFontSize;
-    height: 32Px;
-    width: 32Px;
+    height: variable.$trionesControlHeight;
+    width: variable.$trionesControlHeight;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     &-sm {
-      width: $inputSm;
-      height: $inputSm;
+      width: variable.$trionesControlHeightSm;
+      height: variable.$trionesControlHeightSm;
     }
 
     &-lg {
-      width: $inputLg;
-      height: $inputLg;
+      width: variable.$trionesControlHeightLg;
+      height: variable.$trionesControlHeightLg;
     }
 
     &::placeholder {

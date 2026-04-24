@@ -23,14 +23,16 @@ $placeholderColor: #CCCCCC;
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  //padding: variable.$trionesInputPaddingBlock 0;
+  padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
     max-height: $inputSm;
+    //font-size: variable.$trionesInputPaddingInlineSm 0;
   }
 
   &-lg {
     max-height: $inputLg;
+    //font-size: variable.$trionesInputPaddingInlineLg 0;
   }
 
   &::placeholder {
@@ -50,8 +52,18 @@ $placeholderColor: #CCCCCC;
   width: 100%;
   min-width: 0;
   //line-height: variable.$trionesLineHeight;
-  //padding: variable.$trionesInputPaddingBlock 0;
+  padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
+
+  &-small {
+    padding: variable.$trionesInputPaddingBlockSm 0;
+    font-size: variable.$trionesInputInputFontSizeSm;
+  }
+
+  &-large {
+    padding: variable.$trionesInputPaddingBlockLg 0;
+    font-size: variable.$trionesInputInputFontSizeLg;
+  }
 
   .#{$inputCls} {
     padding: 0;
@@ -107,6 +119,7 @@ $placeholderColor: #CCCCCC;
     box-sizing: border-box;
     border: 0;
   }
+
   &-borderless {
     border: 0;
   }
@@ -120,8 +133,6 @@ $placeholderColor: #CCCCCC;
   }
 }
 
-.#{$inputGroupWrapperCls} {
-}
 
 
 .#{$inputPotCls} {
@@ -158,20 +169,20 @@ $placeholderColor: #CCCCCC;
   &-item {
     text-align: center;
     font-size: variable.$trionesInputInputFontSize;
-    height: 32Px;
-    width: 32Px;
+    height: variable.$trionesControlHeight;
+    width: variable.$trionesControlHeight;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     &-sm {
-      width: $inputSm;
-      height: $inputSm;
+      width: variable.$trionesControlHeightSm;
+      height: variable.$trionesControlHeightSm;
     }
 
     &-lg {
-      width: $inputLg;
-      height: $inputLg;
+      width: variable.$trionesControlHeightLg;
+      height: variable.$trionesControlHeightLg;
     }
 
     &::placeholder {

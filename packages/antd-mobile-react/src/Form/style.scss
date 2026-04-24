@@ -38,7 +38,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   }
 
   &-input {
-    padding-block: 12Px;
+    padding-block: 8Px;
 
     &-right {
       text-align: right;
@@ -59,7 +59,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
     .#{$cls-prefix-form-item} {
       &-label {
-        padding-block: 12Px;
+        padding-block: 8Px;
         flex-shrink: 1;
         min-width: 0;
       }
@@ -86,6 +86,9 @@ $cls-prefix-form-item: 'triones-antm-form-item';
     .#{$cls-prefix-form-item} {
       &-label {
         margin-bottom: 4Px;
+      }
+      &-input {
+        padding-block-end: 8Px;
       }
     }
 

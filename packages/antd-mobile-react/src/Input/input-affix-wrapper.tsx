@@ -1,35 +1,45 @@
-import {CloseCircleFill} from '../../../antd-mobile-icons-react';
 import classNames from 'classnames';
-import React, {FC, PropsWithChildren, useRef} from 'react';
-import {BaseInputHandle, BaseInputProps} from './base-input';
-import {inputAffixWrapperCls, inputCls, variantType} from "./types";
+import React, { FC, PropsWithChildren } from 'react';
+import { CloseCircleFill } from '../../../antd-mobile-icons-react';
+import { BaseInputProps } from './base-input';
+import { inputAffixWrapperCls, inputCls, variantType } from './types';
 
 export type InputAffixWrapperProps = BaseInputProps & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  variant?: variantType
+  variant?: variantType;
   allowClear?: boolean;
   onClear?: () => void;
 };
-export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = ({
-                                                                                   children,
-                                                                                   prefix,
-                                                                                   suffix,
-                                                                                   variant = 'borderless',
-                                                                                   allowClear,
-                                                                                   value,
-                                                                                   onChange,
-                                                                                   onClear,
-                                                                                   ...rest
-                                                                                 }) => {
-
-
+export const InputAffixWrapper: FC<
+  PropsWithChildren<InputAffixWrapperProps>
+> = ({
+  children,
+  size,
+  prefix,
+  suffix,
+  variant = 'borderless',
+  allowClear,
+  value,
+  onChange,
+  onClear,
+  ...rest
+}) => {
   const innerStyle = rest.style || {};
 
   return (
-    <div className={classNames([inputAffixWrapperCls, {
-      [`${inputCls}-${variant}`]: variant
-    }, rest.className])} style={innerStyle}>
+    <div
+      className={classNames([
+        inputAffixWrapperCls,
+        `${inputAffixWrapperCls}-${size}`,
+        {
+          [`${inputCls}-${variant}`]: variant,
+        },
+
+        rest.className,
+      ])}
+      style={innerStyle}
+    >
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>
       )}
@@ -40,7 +50,7 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
             <CloseCircleFill
               className="clear-icon"
               onClick={() => {
-                onClear?.()
+                onClear?.();
               }}
             />
           )}
