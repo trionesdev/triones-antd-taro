@@ -1,0 +1,72 @@
+@use "../style/variable" as variable;
+
+$cls: 'triones-antm-fetch-picker';
+
+.#{$cls} {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+
+  &-head {
+    padding: variable.$trionesPaddingXxs;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1Px solid variable.$trionesBorderColor;
+
+    &-icon {
+      padding: 8Px;
+    }
+
+    &-title {
+      flex: 1 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-button {
+      color: variable.$trionesColorPrimaryText;
+      display: inline-block;
+      padding: 8Px;
+    }
+
+  }
+
+  &-search-bar {
+    padding: variable.$trionesPaddingXxs;
+    background-color: white;
+    &-input {
+      background-color: #f5f5f5;
+    }
+  }
+  &-empty {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-body {
+    flex: 1 auto;
+
+    .#{$cls} {
+      &-list {
+        &-item {
+          padding-block: variable.$trionesPaddingSm;
+          padding-inline: variable.$trionesPadding;
+          background-color: white;
+          border-bottom: 1Px solid #f0f0f0;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    flex-shrink: 0;
+    border-top: 1Px solid variable.$trionesBorderColor;
+    padding: variable.$trionesPaddingXxs;
+    background-color: white;
+  }
+}

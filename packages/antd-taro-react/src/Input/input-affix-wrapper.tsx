@@ -31,9 +31,9 @@ export const InputAffixWrapper: FC<PropsWithChildren<InputAffixWrapperProps>> = 
   const innerStyle = style || {};
 
   return (
-    <div className={classNames([inputAffixWrapperCls, {
+    <div className={classNames(inputAffixWrapperCls, {
       [`${inputCls}-${variant}`]: variant
-    }])} style={innerStyle}>
+    }, className)} style={innerStyle}>
       {prefix && (
         <div className={classNames([`${inputCls}-prefix`])}>{prefix}</div>
       )}

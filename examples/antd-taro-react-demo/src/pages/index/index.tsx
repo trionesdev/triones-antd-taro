@@ -301,6 +301,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/fetch-picker/index",
+              });
+            }}
+          >
+            FetchPicker 远程选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/footer/index",
               });
             }}

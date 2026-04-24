@@ -77,12 +77,15 @@ export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 export {default as FloatButton} from './FloatButton';
 export type {FloatButtonProps} from './FloatButton';
 
+export {default as FetchPicker} from './FetchPicker';
+export type {FetchPickerProps} from './FetchPicker';
+
 
 export {default as Footer} from './Footer';
 export type {FooterProps} from './Footer';
 
 export {default as Form} from './Form';
-export type {FormItemProps, FormProps,FormInstance} from './Form';
+export type {FormItemProps, FormProps, FormInstance} from './Form';
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
