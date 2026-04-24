@@ -52,7 +52,7 @@ export type FetchPickerProps = {
   round?: boolean;
   onClose?: () => void;
   onBack?: () => void;
-  fetch?: (params: { page?: number, wd?: string }) => Promise<any[]>;
+  fetch?: (params: { page?: number, size?: number, wd?: string }) => Promise<any[]>;
   fieldNames?: {
     label?: string;
     value?: string;
@@ -81,7 +81,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                         }) => {
   const {label: labelFieldName = 'label', value: valueFieldName = 'value'} = fieldNames || {}
   const [options, setOptions] = useState<any[]>([])
-  const [queryParams, setQueryParams] = useState<{ page: number, pageSize: number, wd?: string }>({page: 1, pageSize})
+  const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
 
@@ -91,7 +91,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     }
     fetch?.(queryParams).then((res) => {
       setOptions([...options, ...(res || [])])
-      setHasMore((res || []).length >= queryParams.pageSize)
+      setHasMore((res || []).length >= queryParams.size)
     }).finally(() => {
       setLoading(false)
     })
