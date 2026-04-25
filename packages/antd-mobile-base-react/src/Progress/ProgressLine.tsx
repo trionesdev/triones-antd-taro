@@ -18,7 +18,7 @@ type ProgressLineProps = {
 export const ProgressLine: FC<ProgressLineProps> = ({
                                                       format,
                                                       percent = 0,
-                                                      size = 'middle',
+                                                      size = 'medium',
                                                       showInfo = true,
                                                       railColor = '#E5E5E5',
                                                       strokeColor = '#1777FF',
@@ -31,7 +31,7 @@ export const ProgressLine: FC<ProgressLineProps> = ({
     switch (size) {
       case 'small':
         return 6;
-      case 'middle':
+      case 'medium':
         return 8;
       case 'large':
         return 12;

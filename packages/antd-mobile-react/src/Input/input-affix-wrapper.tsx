@@ -23,7 +23,6 @@ export const InputAffixWrapper: FC<
   variant = 'borderless',
   allowClear,
   value,
-  onChange,
   onClear,
   ...rest
 }) => {

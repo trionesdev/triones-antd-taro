@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React, {useMemo} from 'react';
 import './style.scss';
-import {SizeType} from '../types';
+import {AntSize} from '../types';
 
 export type AvatarProps = {
   alt?: string;
   icon?: React.ReactNode;
   shape?: 'circle' | 'square';
-  size?: SizeType | number;
+  size?: AntSize | number;
   src?: string | React.ReactNode;
   srcSet?: string;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -36,9 +36,9 @@ export const Avatar: React.FC<AvatarProps> = ({
     }
     return {
       small: 24,
-      middle: 32,
+      medium: 32,
       large: 40,
-    }[size];
+    }[size]
   }, [size]);
 
   return (

@@ -1,9 +1,9 @@
-import { AntSize } from '@trionesdev/antd-mobile-base-react';
-import React, { FC, useEffect } from 'react';
-import { BaseInput } from './base-input';
+import {AntSize} from '@trionesdev/antd-mobile-base-react';
+import React, {FC, useEffect} from 'react';
+import {BaseInput} from './base-input';
 import './index.scss';
-import { InputAffixWrapper } from './input-affix-wrapper';
-import { variantType } from './types';
+import {InputAffixWrapper} from './input-affix-wrapper';
+import {variantType} from './types';
 
 export type InputProps = {
   className?: string;
@@ -21,22 +21,21 @@ export type InputProps = {
   onChange?: (e: any) => void;
 };
 export const Input: FC<InputProps> = ({
-  className,
-  style,
-  size = 'middle',
-  placeholder,
-  type,
-
-  disabled,
-  allowClear,
-  prefix,
-  suffix,
-  defaultValue,
-  value,
-  onChange,
-  ...rest
-}) => {
-  const [innerValue, setInnerValue] = React.useState(value);
+                                        className,
+                                        style,
+                                        size = 'medium',
+                                        placeholder,
+                                        type,
+                                        disabled,
+                                        allowClear,
+                                        prefix,
+                                        suffix,
+                                        defaultValue,
+                                        value,
+                                        onChange,
+                                        ...rest
+                                      }) => {
+  const [innerValue, setInnerValue] = React.useState(value || defaultValue);
 
   useEffect(() => {
     if (value === undefined) {

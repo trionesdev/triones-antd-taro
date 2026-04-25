@@ -24,7 +24,7 @@ export default () => {
         <div style={{ backgroundColor: '#FFFFFF' }}>
           <Space direction="vertical" block={true}>
             <Input placeholder="Large Size" size="large" variant="outlined" />
-            <Input placeholder="Middle Size" size="middle" variant={'outlined'} />
+            <Input placeholder="Middle Size" size="medium" variant={'outlined'} />
             <Input placeholder="Small Size" size="small" variant="outlined" />
           </Space>
         </div>

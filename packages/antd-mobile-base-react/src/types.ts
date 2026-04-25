@@ -1,4 +1,3 @@
-export type SizeType = 'small' | 'middle' | 'large' | undefined;
 export type AntSize = 'small' | 'medium' | 'large' | undefined;
 
 export type BoundingClientRectType = {

@@ -73,7 +73,7 @@ export default () => {
   return <>
     <DemoBlock title={`基本使用`}>
       <CascaderPicker
-        options={options} label={'Label'} wrapperAlign={`right`} placeholder={'请选择'} />
+        options={options} align={`end`} placeholder={'请选择'}/>
     </DemoBlock>
   </>
 }

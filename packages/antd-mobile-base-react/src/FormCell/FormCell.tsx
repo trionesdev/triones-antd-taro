@@ -33,7 +33,7 @@ export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
                                                                  style,
                                                                  styles,
                                                                  children,
-                                                                 size = 'middle',
+                                                                 size = 'medium',
                                                                  variant = 'borderless',
                                                                  placeholder,
                                                                  extra,

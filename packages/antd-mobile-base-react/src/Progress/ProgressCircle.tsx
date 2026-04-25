@@ -31,12 +31,12 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
     switch (size) {
       case 'small':
         return 50;
-      case 'middle':
+      case 'medium':
         return 100;
       case 'large':
         return 150;
       default:
-        return size || 50;
+        return 50;
     }
   }, [size])
 

@@ -1,4 +1,4 @@
-import { SizeType } from "@trionesdev/antd-mobile-base-react";
+import { AntSize } from "@trionesdev/antd-mobile-base-react";
 import React from "react";
 
 export const inputCls = 'triones-antm-input';
@@ -8,7 +8,7 @@ export type InputProps = {
   className?: string;
   style?: React.CSSProperties;
   placeholder?: string;
-  size?: SizeType
+  size?: AntSize
   disabled?: boolean;
   align?: 'left' | 'center' | 'right';
   allowClear?: boolean;
