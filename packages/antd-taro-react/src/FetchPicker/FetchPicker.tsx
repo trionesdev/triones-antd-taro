@@ -5,7 +5,7 @@ import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesde
 import Space from "../Space";
 import {ScrollView} from "@tarojs/components";
 import Input from "../Input";
-import {debounce, get, isEmpty, some} from "lodash-es";
+import {debounce, get, isEmpty, isEqual, some} from "lodash-es";
 import classNames from "classnames";
 
 export type FetchPickerProps = {
@@ -16,6 +16,7 @@ export type FetchPickerProps = {
    */
   fullScreen?: boolean;
   height?: number | string;
+  value?: any;
   /**
    * @description 是否可返回,fullScreen 为 true 时生效
    * @default true
@@ -71,6 +72,7 @@ export type FetchPickerProps = {
    * @default
    */
   onBack?: () => void;
+  onOk?: (value: any) => void;
   /**
    * @description 请求
    * @default
@@ -103,6 +105,7 @@ const cls = "triones-antm-fetch-picker";
 export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           open = false, fullScreen = false,
                                                           height,
+                                                          value,
                                                           backable = true,
                                                           backIcon,
                                                           closable = true,
@@ -126,10 +129,10 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
-  const [internalValue, setInternalValue] = useState<any>(multiple ? [] : null)
+  const [internalValue, setInternalValue] = useState<any>(value || (multiple ? [] : null))
   const requestIdRef = useRef(0)
 
-  const handleClick = useCallback((item: any) => {
+  const handleItemClick = useCallback((item: any) => {
     const itemValue = get(item, valueFieldName)
     const itemLabel = get(item, labelFieldName)
     if (multiple) {
@@ -196,6 +199,15 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     handleFetch(queryParams)
   }, [handleFetch, open, queryParams])
 
+  useEffect(() => {
+    if (value == undefined) {
+      return
+    }
+    if (isEqual(value, internalValue)) {
+      setInternalValue(value)
+    }
+  }, [value])
+
   const handleSearchChange = useMemo(() => debounce((v) => {
     setQueryParams((prev) => ({...prev, page: 1, wd: v}))
   }, 500), [])
@@ -246,7 +258,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
               {
                 [`${cls}-item-option-selected`]: selected
               })} key={`${get(item, valueFieldName) ?? index}`} onClick={() => {
-              handleClick(item)
+              handleItemClick(item)
             }}>
               <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
               {multiple && selected && <div className={`${cls}-item-option-state`}>

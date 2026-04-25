@@ -13,8 +13,8 @@ const FetchPickerBase = () => {
       <DemoBlock title={`基本使用`}>
         <FetchPicker
           open={open}
-
           title={"远程选择"}
+          onClose={() => setOpen(false)}
         />
         <Button block={true} onClick={() => setOpen(true)}>FetchPicker 目前为静态演示</Button>
       </DemoBlock>
