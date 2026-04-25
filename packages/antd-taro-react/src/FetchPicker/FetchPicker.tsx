@@ -9,9 +9,9 @@ import {debounce, get, isEmpty, isEqual, some} from "lodash-es";
 import classNames from "classnames";
 
 
-type LabeledValue = { label?: string, value?: string|number }
+type LabeledValue = { label?: string, value?: string | number }
 
-type PickerValue = string|string[]|number|number[]|LabeledValue|LabeledValue[]
+type PickerValue = string | string[] | number | number[] | LabeledValue | LabeledValue[]
 
 export type FetchPickerProps = {
   open?: boolean;
@@ -20,6 +20,16 @@ export type FetchPickerProps = {
    * @default false
    */
   fullScreen?: boolean;
+  /**
+   * @description 搜索框
+   * @default false
+   */
+  showSearch?: boolean;
+  /**
+   * @description 搜索框占位符
+   * @default 搜索
+   */
+  searchPlaceholder?: string;
   height?: number | string;
   value?: PickerValue;
   /**
@@ -77,7 +87,7 @@ export type FetchPickerProps = {
    * @default
    */
   onBack?: () => void;
-  onOk?: (value: any) => void;
+  onOk?: (value?: PickerValue) => void;
   /**
    * @description 请求
    * @default
@@ -110,6 +120,8 @@ const cls = "triones-antm-fetch-picker";
 export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           open = false, fullScreen = false,
                                                           height,
+                                                          showSearch = false,
+                                                          searchPlaceholder = '搜索',
                                                           value,
                                                           backable = true,
                                                           backIcon,
@@ -123,6 +135,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           round = true,
                                                           onClose,
                                                           onBack,
+                                                          onOk,
                                                           fetch,
                                                           fieldNames,
                                                           empty,
@@ -134,25 +147,32 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
-  const [internalValue, setInternalValue] = useState<PickerValue|undefined>(value || (multiple?[]:undefined) )
+  const [internalValue, setInternalValue] = useState<PickerValue | undefined>(value || (multiple ? [] : undefined))
   const requestIdRef = useRef(0)
 
   const handleItemClick = useCallback((item: any) => {
     const itemValue = get(item, valueFieldName)
     const itemLabel = get(item, labelFieldName)
+    let newValue: PickerValue
     if (multiple) {
-      setInternalValue((prev: LabeledValue[] = []) => {
-        if (labelInValue) {
-          const exists = some(prev, (v) => get(v, "value") === itemValue)
-          return exists
-            ? prev.filter((v: any) => get(v, "value") !== itemValue)
-            : [...prev, {value: itemValue, label: itemLabel}]
-        }
-        const exists = prev.includes(itemValue)
-        return exists ? prev.filter((v: any) => v !== itemValue) : [...prev, itemValue]
-      })
+      const prevList = Array.isArray(internalValue) ? internalValue : []
+      if (labelInValue) {
+        const values = prevList as LabeledValue[]
+        const exists = some(values, (v) => get(v, "value") === itemValue)
+        return exists
+          ? values.filter((v) => get(v, "value") !== itemValue)
+          : [...values, {value: itemValue, label: itemLabel}]
+      }
+      const values = prevList as (string | number)[]
+      const exists = values.includes(itemValue)
+      newValue = exists ? values.filter((v) => v !== itemValue) : [...values, itemValue]
     } else {
-      setInternalValue(labelInValue ? {value: itemValue, label: itemLabel} : itemValue)
+      newValue = labelInValue ? {value: itemValue, label: itemLabel} : itemValue
+    }
+    setInternalValue(newValue)
+    if (!multiple) {
+      onOk?.(newValue)
+      onClose?.()
     }
   }, [labelFieldName, labelInValue, multiple, valueFieldName])
 
@@ -164,7 +184,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
       if (labelInValue) {
         return some(internalValue as LabeledValue[], (v) => get(v, "value") === get(item, valueFieldName))
       } else {
-        return (internalValue as (string|number)[])?.includes(get(item, valueFieldName))
+        return (internalValue as (string | number)[])?.includes(get(item, valueFieldName))
       }
     } else {
       if (labelInValue) {
@@ -196,6 +216,11 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
       }
     })
   }, [fetch, pageable])
+
+  const handleOnOk = () => {
+    onOk?.(internalValue)
+    onClose?.()
+  }
 
   useEffect(() => {
     if (!open) {
@@ -230,20 +255,20 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   </> : <>
     <div className={`${cls}-head-button`} onClick={onClose}>{cancelText}</div>
     <div className={`${cls}-head-title`}>{title}</div>
-    <div className={`${cls}-head-button`} onClick={onClose}>{okText}</div>
+    <div className={`${cls}-head-button`} onClick={handleOnOk}>{okText}</div>
   </>
   return <Popup open={open} onClose={onClose} onBack={onBack}
                 height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
     <SafeArea>
       <div className={cls}>
         <div className={`${cls}-head`}>{header}</div>
-        <div className={`${cls}-search-bar`}>
+        {showSearch && <div className={`${cls}-search-bar`}>
           <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
-                 variant={`outlined`} placeholder="搜索"
+                 variant={`outlined`} placeholder={searchPlaceholder}
                  value={queryParams.wd}
                  onChange={handleSearchChange}
           />
-        </div>
+        </div>}
         <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
           if (!hasMore || !pageable) {
             return
@@ -276,7 +301,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
           </div>}
         </ScrollView>
         {fullScreen && multiple && <div className={`${cls}-footer`}>
-          <Button type={'primary'} block={true} size={'large'} onClick={onClose}>{okText}</Button>
+          <Button type={'primary'} block={true} size={'large'} onClick={handleOnOk}>{okText}</Button>
         </div>}
       </div>
     </SafeArea>
