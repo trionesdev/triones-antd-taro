@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Popup from "../Popup";
 import {Button, DotLoading, SafeArea, SpinLoading} from "../index";
 import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
@@ -113,6 +113,8 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           cancelText = '取消',
                                                           okText = '确定',
                                                           round = true,
+                                                          onClose,
+                                                          onBack,
                                                           fetch,
                                                           fieldNames,
                                                           empty,
@@ -125,33 +127,28 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
   const [internalValue, setInternalValue] = useState<any>(multiple ? [] : null)
+  const requestIdRef = useRef(0)
 
-  const handleClick = (item: any) => {
+  const handleClick = useCallback((item: any) => {
+    const itemValue = get(item, valueFieldName)
+    const itemLabel = get(item, labelFieldName)
     if (multiple) {
-      if (labelInValue) {
-        const exists = some(internalValue, (v) => {
-          return get(v, "value") === get(item, valueFieldName)
-        })
-        setInternalValue(exists ? internalValue.filter((v: any) => get(v, "value") !== get(item, valueFieldName)) : [...internalValue, {
-          value: get(item, valueFieldName),
-          label: get(item, labelFieldName)
-        }])
-      } else {
-        const exists = some(internalValue, (v) => {
-          return v === get(item, valueFieldName)
-        })
-        setInternalValue(exists ? internalValue.filter((v: any) => v !== get(item, valueFieldName)) : get(item, valueFieldName))
-      }
+      setInternalValue((prev: any[] = []) => {
+        if (labelInValue) {
+          const exists = some(prev, (v) => get(v, "value") === itemValue)
+          return exists
+            ? prev.filter((v: any) => get(v, "value") !== itemValue)
+            : [...prev, {value: itemValue, label: itemLabel}]
+        }
+        const exists = prev.includes(itemValue)
+        return exists ? prev.filter((v: any) => v !== itemValue) : [...prev, itemValue]
+      })
     } else {
-      if (labelInValue) {
-        setInternalValue({value: get(item, valueFieldName), label: get(item, labelFieldName)})
-      } else {
-        setInternalValue(get(item, valueFieldName))
-      }
+      setInternalValue(labelInValue ? {value: itemValue, label: itemLabel} : itemValue)
     }
-  }
+  }, [labelFieldName, labelInValue, multiple, valueFieldName])
 
-  const handleSelected = (item: any) => {
+  const handleSelected = useCallback((item: any) => {
     if (!internalValue || isEmpty(internalValue)) {
       return false
     }
@@ -168,39 +165,58 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
         return internalValue === get(item, valueFieldName)
       }
     }
-  }
+  }, [internalValue, labelInValue, multiple, valueFieldName])
 
-  const handleFetch = () => {
-    if (fetch) {
-      setLoading(true)
+  const handleFetch = useCallback((params: { page: number, size: number, wd?: string }) => {
+    if (!fetch) {
+      setOptions([])
+      setHasMore(false)
+      return
     }
-    fetch?.(queryParams).then((res) => {
-      setOptions([...options, ...(res || [])])
-      setHasMore((res || []).length >= queryParams.size)
+    const requestId = ++requestIdRef.current
+    setLoading(true)
+    fetch(params).then((res) => {
+      if (requestId !== requestIdRef.current) {
+        return
+      }
+      const nextOptions = res || []
+      setOptions((prev) => params.page === 1 ? nextOptions : [...prev, ...nextOptions])
+      setHasMore(pageable ? nextOptions.length >= params.size : false)
     }).finally(() => {
-      setLoading(false)
+      if (requestId === requestIdRef.current) {
+        setLoading(false)
+      }
     })
-  }
+  }, [fetch, pageable])
 
   useEffect(() => {
-    if (queryParams.page == 1) {
-      setOptions([])
+    if (!open) {
+      return
     }
-    handleFetch()
-  }, [queryParams])
+    handleFetch(queryParams)
+  }, [handleFetch, open, queryParams])
+
+  const handleSearchChange = useMemo(() => debounce((v) => {
+    setQueryParams((prev) => ({...prev, page: 1, wd: v}))
+  }, 500), [])
+
+  useEffect(() => {
+    return () => handleSearchChange.cancel()
+  }, [handleSearchChange])
 
   const header = fullScreen ? <>
     <Space>
-      {backable && <div className={`${cls}-head-icon`}>{backIcon || <LeftOutline/>}</div>}
-      {closable && <div className={`${cls}-head-icon`}>{closeIcon || <CloseOutline/>}</div>}
+      {backable && <div className={`${cls}-head-icon`} onClick={onBack}>{backIcon || <LeftOutline/>}</div>}
+      {closable && <div className={`${cls}-head-icon`} onClick={onClose}>{closeIcon || <CloseOutline/>}</div>}
     </Space>
     <div className={`${cls}-head-title`}>{title}</div>
   </> : <>
-    <div className={`${cls}-head-button`}>{cancelText}</div>
+    <div className={`${cls}-head-button`} onClick={onClose}>{cancelText}</div>
     <div className={`${cls}-head-title`}>{title}</div>
-    <div className={`${cls}-head-button`}>{okText}</div>
+    <div className={`${cls}-head-button`} onClick={onClose}>{okText}</div>
   </>
-  return <Popup open={open} height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
+  return <Popup open={open} onClose={onClose} onBack={onBack}
+                height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
     <SafeArea>
       <div className={cls}>
         <div className={`${cls}-head`}>{header}</div>
@@ -208,16 +224,14 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
           <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
                  variant={`outlined`} placeholder="搜索"
                  value={queryParams.wd}
-                 onChange={debounce((v) => {
-                   setQueryParams({...queryParams, page: 1, wd: v})
-                 }, 500)}
+                 onChange={handleSearchChange}
           />
         </div>
         <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
           if (!hasMore || !pageable) {
             return
           }
-          setQueryParams({...queryParams, page: queryParams.page + 1})
+          setQueryParams((prev) => ({...prev, page: prev.page + 1}))
         }}>
           {isEmpty(options) && loading && <div className={`${cls}-loading`}>
             <div className={`${cls}-loading-content`}>
@@ -231,7 +245,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
             return <div className={classNames(`${cls}-item`, `${cls}-item-option`,
               {
                 [`${cls}-item-option-selected`]: selected
-              })} key={`${index}`} onClick={() => {
+              })} key={`${get(item, valueFieldName) ?? index}`} onClick={() => {
               handleClick(item)
             }}>
               <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
@@ -245,7 +259,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
           </div>}
         </ScrollView>
         {fullScreen && multiple && <div className={`${cls}-footer`}>
-          <Button type={'primary'} block={true} size={'large'}>{okText}</Button>
+          <Button type={'primary'} block={true} size={'large'} onClick={onClose}>{okText}</Button>
         </div>}
       </div>
     </SafeArea>
