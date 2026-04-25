@@ -1,11 +1,11 @@
 import React, {FC, useEffect, useState} from "react"
 import CascaderPopup from "../CascaderPicker";
 import "./style.scss"
-import Cell, {CellProps} from "../Cell";
+import FormCell, {FormCellProps} from '../FormCell';
 
 const cls = 'triones-antm-cascader-picker';
 
-export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {
+export type CascaderPickerCellProps = Omit<FormCellProps, 'value'> & {
   onChange?: (value: any[]) => void;
   options?: any[];
   /**
@@ -24,11 +24,11 @@ export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {
 }
 
 export const CascaderPickerCell: FC<CascaderPickerCellProps> = ({
-  onChange,
-  value,
-  labelInValue = true,
-  ...rest
-}) => {
+                                                                  onChange,
+                                                                  value,
+                                                                  labelInValue = true,
+                                                                  ...rest
+                                                                }) => {
   const mergedFieldNames = {
     value: 'value',
     label: 'label',
@@ -52,16 +52,16 @@ export const CascaderPickerCell: FC<CascaderPickerCellProps> = ({
 
   return <>
     <CascaderPopup {...rest} open={open} value={internalValue} labelInValue={labelInValue}
-      onCancel={() => {
-        setOpen(false)
-      }}
-      onOk={(value) => {
-        setInternalValue(value || [])
-        setOpen(false)
-        onChange?.(value || [])
-      }} />
-    <Cell onClick={() => {
+                   onCancel={() => {
+                     setOpen(false)
+                   }}
+                   onOk={(value) => {
+                     setInternalValue(value || [])
+                     setOpen(false)
+                     onChange?.(value || [])
+                   }}/>
+    <FormCell {...rest} onClick={() => {
       setOpen(true)
-    }} {...rest}>{valueText()}</Cell>
+    }}>{valueText()}</FormCell>
   </>
 }
