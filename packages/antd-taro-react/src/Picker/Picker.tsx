@@ -19,9 +19,17 @@ export type PickerProps = {
    */
   labelInValue?: boolean;
   value?: any[];
+  round?: boolean;
   onOk?: (value: any[]) => void;
   onCancel?: () => void;
   onClose?: () => void;
+  styles?: {
+    overlay?: React.CSSProperties;
+    container?: React.CSSProperties;
+    header?: React.CSSProperties;
+    title?: React.CSSProperties;
+    body?: React.CSSProperties;
+  };
 };
 
 export const Picker: FC<PickerProps> = React.memo(
@@ -32,9 +40,11 @@ export const Picker: FC<PickerProps> = React.memo(
      columns = [],
      labelInValue = false,
      value,
+     round = true,
      onOk,
      onCancel,
      onClose,
+     styles
    }) => {
     const {locale} = ConfigProvider.useConfig();
     const [internalValue, setInternalValue] = useState<any[]>(value || []);
@@ -82,12 +92,8 @@ export const Picker: FC<PickerProps> = React.memo(
         onClose={() => {
           afterOpenChange?.(false);
         }}
-        styles={{
-          body: {
-            borderTopLeftRadius: 6,
-            borderTopRightRadius: 6,
-          },
-        }}
+        round={round}
+        styles={styles}
       >
         <div className={classNames(pickerCls)}>
           <div className={classNames(`${pickerCls}-header`)}>

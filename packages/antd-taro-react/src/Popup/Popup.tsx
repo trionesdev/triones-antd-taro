@@ -1,9 +1,7 @@
 import React, {PropsWithChildren, useEffect, useState} from "react";
 import {RootPortal, View} from "@tarojs/components";
-import Overlay from "../Overlay";
 import classNames from "classnames";
 import {CloseOutline, LeftOutline} from "@trionesdev/antd-mobile-icons-react";
-import {SafeArea} from "@trionesdev/antd-mobile-base-react";
 
 const cls = 'triones-antm-popup'
 

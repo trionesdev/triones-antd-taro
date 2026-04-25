@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Popup from "../Popup";
-import {Button, DotLoading, SpinLoading} from "../index";
+import {Button, DotLoading, SafeArea, SpinLoading} from "../index";
 import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
 import Space from "../Space";
 import {ScrollView} from "@tarojs/components";
@@ -82,11 +82,16 @@ export type FetchPickerProps = {
   };
   /**
    * @description 空状态
-   * @default 暂无数据  
+   * @default 暂无数据
    */
   empty?: React.ReactNode;
-    /**
-   * @description 每页大小
+  /**
+   * @description 是否分页
+   * @default false
+   */
+  pageable?: boolean;
+  /**
+   * @description 每页大小,pageable 为 true 时生效
    * @default 20
    */
   pageSize?: number;
@@ -111,6 +116,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           fetch,
                                                           fieldNames,
                                                           empty,
+                                                          pageable,
                                                           pageSize = 20
                                                         }) => {
   const {label: labelFieldName = 'label', value: valueFieldName = 'value'} = fieldNames || {}
@@ -195,52 +201,53 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     <div className={`${cls}-head-button`}>{okText}</div>
   </>
   return <Popup open={open} height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
-
-    <div className={cls}>
-      <div className={`${cls}-head`}>{header}</div>
-      <div className={`${cls}-search-bar`}>
-        <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
-               variant={`outlined`} placeholder="搜索"
-               value={queryParams.wd}
-               onChange={debounce((v) => {
-                 setQueryParams({...queryParams, page: 1, wd: v})
-               }, 500)}
-        />
+    <SafeArea>
+      <div className={cls}>
+        <div className={`${cls}-head`}>{header}</div>
+        <div className={`${cls}-search-bar`}>
+          <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
+                 variant={`outlined`} placeholder="搜索"
+                 value={queryParams.wd}
+                 onChange={debounce((v) => {
+                   setQueryParams({...queryParams, page: 1, wd: v})
+                 }, 500)}
+          />
+        </div>
+        <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
+          if (!hasMore || !pageable) {
+            return
+          }
+          setQueryParams({...queryParams, page: queryParams.page + 1})
+        }}>
+          {isEmpty(options) && loading && <div className={`${cls}-loading`}>
+            <div className={`${cls}-loading-content`}>
+              <SpinLoading/>
+              <div>加载中...</div>
+            </div>
+          </div>}
+          {isEmpty(options) && !loading && (empty || <div className={`${cls}-empty`}>暂无数据</div>)}
+          {options?.map((item, index) => {
+            const selected = handleSelected(item)
+            return <div className={classNames(`${cls}-item`, `${cls}-item-option`,
+              {
+                [`${cls}-item-option-selected`]: selected
+              })} key={`${index}`} onClick={() => {
+              handleClick(item)
+            }}>
+              <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
+              {multiple && selected && <div className={`${cls}-item-option-state`}>
+                <CheckOutline/>
+              </div>}
+            </div>
+          })}
+          {!isEmpty(options) && loading && <div className={`${cls}-loading-more`}>
+            加载更多<DotLoading/>
+          </div>}
+        </ScrollView>
+        {fullScreen && multiple && <div className={`${cls}-footer`}>
+          <Button type={'primary'} block={true} size={'large'}>{okText}</Button>
+        </div>}
       </div>
-      <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
-        if (!hasMore) {
-          return
-        }
-        setQueryParams({...queryParams, page: queryParams.page + 1})
-      }}>
-        {isEmpty(options) && loading && <div className={`${cls}-loading`}>
-          <div className={`${cls}-loading-content`}>
-            <SpinLoading/>
-            <div>加载中...</div>
-          </div>
-        </div>}
-        {isEmpty(options) && !loading && (empty || <div className={`${cls}-empty`}>暂无数据</div>)}
-        {options?.map((item, index) => {
-          const selected = handleSelected(item)
-          return <div className={classNames(`${cls}-item`, `${cls}-item-option`,
-            {
-              [`${cls}-item-option-selected`]: selected
-            })} key={`${index}`} onClick={() => {
-            handleClick(item)
-          }}>
-            <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
-            {multiple && selected && <div className={`${cls}-item-option-state`}>
-              <CheckOutline/>
-            </div>}
-          </div>
-        })}
-        {!isEmpty(options) && loading && <div className={`${cls}-loading-more`}>
-          加载更多<DotLoading/>
-        </div>}
-      </ScrollView>
-      {fullScreen && multiple && <div className={`${cls}-footer`}>
-        <Button type={'primary'} block={true} size={'large'}>{okText}</Button>
-      </div>}
-    </div>
+    </SafeArea>
   </Popup>
 }
