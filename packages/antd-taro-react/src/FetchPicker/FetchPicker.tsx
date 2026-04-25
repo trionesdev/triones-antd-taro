@@ -8,6 +8,11 @@ import Input from "../Input";
 import {debounce, get, isEmpty, isEqual, some} from "lodash-es";
 import classNames from "classnames";
 
+
+type LabeledValue = { label?: string, value?: string|number }
+
+type PickerValue = string|string[]|number|number[]|LabeledValue|LabeledValue[]
+
 export type FetchPickerProps = {
   open?: boolean;
   /**
@@ -16,7 +21,7 @@ export type FetchPickerProps = {
    */
   fullScreen?: boolean;
   height?: number | string;
-  value?: any;
+  value?: PickerValue;
   /**
    * @description 是否可返回,fullScreen 为 true 时生效
    * @default true
@@ -129,14 +134,14 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
-  const [internalValue, setInternalValue] = useState<any>(value || (multiple ? [] : null))
+  const [internalValue, setInternalValue] = useState<PickerValue|undefined>(value || (multiple?[]:undefined) )
   const requestIdRef = useRef(0)
 
   const handleItemClick = useCallback((item: any) => {
     const itemValue = get(item, valueFieldName)
     const itemLabel = get(item, labelFieldName)
     if (multiple) {
-      setInternalValue((prev: any[] = []) => {
+      setInternalValue((prev: LabeledValue[] = []) => {
         if (labelInValue) {
           const exists = some(prev, (v) => get(v, "value") === itemValue)
           return exists
@@ -157,9 +162,9 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     }
     if (multiple) {
       if (labelInValue) {
-        return some(internalValue, (v) => get(v, "value") === get(item, valueFieldName))
+        return some(internalValue as LabeledValue[], (v) => get(v, "value") === get(item, valueFieldName))
       } else {
-        return internalValue?.includes(get(item, valueFieldName))
+        return (internalValue as (string|number)[])?.includes(get(item, valueFieldName))
       }
     } else {
       if (labelInValue) {
