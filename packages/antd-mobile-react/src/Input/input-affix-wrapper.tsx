@@ -1,10 +1,12 @@
 import classNames from 'classnames';
 import React, { FC, PropsWithChildren } from 'react';
-import { CloseCircleFill } from '../../../antd-mobile-icons-react';
 import { BaseInputProps } from './base-input';
 import { inputAffixWrapperCls, inputCls, variantType } from './types';
+import {AntSize} from "@trionesdev/antd-mobile-base-react";
+import {CloseCircleFill} from "@trionesdev/antd-mobile-icons-react";
 
 export type InputAffixWrapperProps = BaseInputProps & {
+  size?:AntSize,
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   variant?: variantType;

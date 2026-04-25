@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Popup from "../Popup";
-import {Button, DotLoading} from "../index";
-import {CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
+import {Button, DotLoading, SpinLoading} from "../index";
+import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
 import Space from "../Space";
 import {ScrollView} from "@tarojs/components";
 import Input from "../Input";
-import {isEmpty} from "lodash-es";
+import {debounce, get, isEmpty, some} from "lodash-es";
+import classNames from "classnames";
 
 export type FetchPickerProps = {
   open?: boolean;
@@ -36,6 +37,12 @@ export type FetchPickerProps = {
    */
   closeIcon?: React.ReactNode;
   /**
+   * @description 是否多选
+   * @default false
+   */
+  multiple?: boolean;
+  labelInValue?: boolean;
+  /**
    * @description 弹窗标题
    */
   title?: React.ReactNode;
@@ -49,16 +56,41 @@ export type FetchPickerProps = {
    * @default 确定
    */
   okText?: string;
+  /**
+   * @description 是否圆角,fullScreen 为 false 时生效
+   * @default true
+   */
   round?: boolean;
+  /**
+   * @description 关闭回调
+   * @default
+   */
   onClose?: () => void;
+  /**
+   * @description 回退回调
+   * @default
+   */
   onBack?: () => void;
+  /**
+   * @description 请求
+   * @default
+   */
   fetch?: (params: { page?: number, size?: number, wd?: string }) => Promise<any[]>;
   fieldNames?: {
     label?: string;
     value?: string;
   };
+  /**
+   * @description 空状态
+   * @default 暂无数据  
+   */
   empty?: React.ReactNode;
-  pageSize?: number
+    /**
+   * @description 每页大小
+   * @default 20
+   */
+  pageSize?: number;
+
 }
 
 const cls = "triones-antm-fetch-picker";
@@ -70,6 +102,8 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           backIcon,
                                                           closable = true,
                                                           closeIcon,
+                                                          multiple = false,
+                                                          labelInValue = true,
                                                           title,
                                                           cancelText = '取消',
                                                           okText = '确定',
@@ -77,13 +111,58 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           fetch,
                                                           fieldNames,
                                                           empty,
-                                                          pageSize = 10
+                                                          pageSize = 20
                                                         }) => {
   const {label: labelFieldName = 'label', value: valueFieldName = 'value'} = fieldNames || {}
   const [options, setOptions] = useState<any[]>([])
   const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
+  const [internalValue, setInternalValue] = useState<any>(multiple ? [] : null)
+
+  const handleClick = (item: any) => {
+    if (multiple) {
+      if (labelInValue) {
+        const exists = some(internalValue, (v) => {
+          return get(v, "value") === get(item, valueFieldName)
+        })
+        setInternalValue(exists ? internalValue.filter((v: any) => get(v, "value") !== get(item, valueFieldName)) : [...internalValue, {
+          value: get(item, valueFieldName),
+          label: get(item, labelFieldName)
+        }])
+      } else {
+        const exists = some(internalValue, (v) => {
+          return v === get(item, valueFieldName)
+        })
+        setInternalValue(exists ? internalValue.filter((v: any) => v !== get(item, valueFieldName)) : get(item, valueFieldName))
+      }
+    } else {
+      if (labelInValue) {
+        setInternalValue({value: get(item, valueFieldName), label: get(item, labelFieldName)})
+      } else {
+        setInternalValue(get(item, valueFieldName))
+      }
+    }
+  }
+
+  const handleSelected = (item: any) => {
+    if (!internalValue || isEmpty(internalValue)) {
+      return false
+    }
+    if (multiple) {
+      if (labelInValue) {
+        return some(internalValue, (v) => get(v, "value") === get(item, valueFieldName))
+      } else {
+        return internalValue?.includes(get(item, valueFieldName))
+      }
+    } else {
+      if (labelInValue) {
+        return get(internalValue, "value") === get(item, valueFieldName)
+      } else {
+        return internalValue === get(item, valueFieldName)
+      }
+    }
+  }
 
   const handleFetch = () => {
     if (fetch) {
@@ -123,9 +202,9 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
         <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
                variant={`outlined`} placeholder="搜索"
                value={queryParams.wd}
-               onChange={(v) => {
+               onChange={debounce((v) => {
                  setQueryParams({...queryParams, page: 1, wd: v})
-               }}
+               }, 500)}
         />
       </div>
       <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
@@ -134,14 +213,32 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
         }
         setQueryParams({...queryParams, page: queryParams.page + 1})
       }}>
-        {isEmpty(options) && (empty || <div className={`${cls}-empty`}>暂无数据</div>)}
-        {options?.map((item, index) => <div className={`${cls}-list-item`}
-                                            key={`${index}`}>{item[labelFieldName]}</div>)}
-        {loading && <div className={`${cls}-loading`}>
-          <DotLoading/>
+        {isEmpty(options) && loading && <div className={`${cls}-loading`}>
+          <div className={`${cls}-loading-content`}>
+            <SpinLoading/>
+            <div>加载中...</div>
+          </div>
+        </div>}
+        {isEmpty(options) && !loading && (empty || <div className={`${cls}-empty`}>暂无数据</div>)}
+        {options?.map((item, index) => {
+          const selected = handleSelected(item)
+          return <div className={classNames(`${cls}-item`, `${cls}-item-option`,
+            {
+              [`${cls}-item-option-selected`]: selected
+            })} key={`${index}`} onClick={() => {
+            handleClick(item)
+          }}>
+            <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
+            {multiple && selected && <div className={`${cls}-item-option-state`}>
+              <CheckOutline/>
+            </div>}
+          </div>
+        })}
+        {!isEmpty(options) && loading && <div className={`${cls}-loading-more`}>
+          加载更多<DotLoading/>
         </div>}
       </ScrollView>
-      {fullScreen && <div className={`${cls}-footer`}>
+      {fullScreen && multiple && <div className={`${cls}-footer`}>
         <Button type={'primary'} block={true} size={'large'}>{okText}</Button>
       </div>}
     </div>
