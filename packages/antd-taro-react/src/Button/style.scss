@@ -238,4 +238,9 @@ $buttonCls: 'triones-antm-button';
     height: $trionesButtonHeightLg;
     border-radius: variable.$trionesBorderRadiusLg;
   }
+
+  &-disabled {
+    opacity: 0.4;
+  }
 }
+

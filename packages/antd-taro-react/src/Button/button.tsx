@@ -112,9 +112,9 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
         [`${clsPrefix}-type-${type}`]: type,
         [`${clsPrefix}-color-${finalColor}`]: finalColor,
         [`${clsPrefix}-variant-${finalVariant}`]: finalVariant,
+        [`${clsPrefix}-disabled`]: disabled
       })}
       style={style}
-      disabled={disabled}
       openType={openType}
       onGetPhoneNumber={onGetPhoneNumber}
       onClick={onClick}
