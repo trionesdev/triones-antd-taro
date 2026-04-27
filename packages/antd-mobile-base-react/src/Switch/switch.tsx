@@ -23,10 +23,13 @@ export type SwitchProps = {
   checkedColor?: string
   width?: number
   height?: number
+  value?: boolean
+  defaultValue?: boolean
 }
 
 const defaultProps = {
   defaultChecked: false,
+  defaultValue: false,
 }
 
 export function createSvgStr(props: { stroke: string }) {
@@ -45,7 +48,7 @@ export const Switch: FC<SwitchProps> = (p) => {
   const props = mergeProps(defaultProps, p)
   const disabled = props.disabled || props.loading || false
   const [changing, setChanging] = useState(false)
-  const [checked, setChecked] = useState(props.checked ?? props.defaultChecked)
+  const [checked, setChecked] = useState(props.checked ?? props.value ?? props.defaultChecked ?? props.defaultValue ?? false)
   const {locale} = ConfigProvider.useConfig()
 
   const handleClick = async () => {
@@ -60,10 +63,10 @@ export const Switch: FC<SwitchProps> = (p) => {
     if (props.checkedColor) {
       style['--checked-color'] = props.checkedColor;
     }
-    if (props.width){
+    if (props.width) {
       style['--width'] = toCSSLength(props.width);
     }
-    if (props.height){
+    if (props.height) {
       style['--height'] = toCSSLength(props.height);
     }
     return style;
@@ -77,7 +80,7 @@ export const Switch: FC<SwitchProps> = (p) => {
         [`${classPrefix}-checked`]: checked,
         [`${classPrefix}-disabled`]: disabled || changing,
       })}
-      style={{...p.style,...completedStyle}}
+      style={{...p.style, ...completedStyle}}
       role='switch'
       aria-label={locale.Switch.name}
       aria-checked={checked}
@@ -85,7 +88,7 @@ export const Switch: FC<SwitchProps> = (p) => {
     >
       <div className={`${classPrefix}-checkbox`}>
         <div
-          className={classNames(`${classPrefix}-handle`)} >
+          className={classNames(`${classPrefix}-handle`)}>
           {(props.loading || changing) ? <div className={`${classPrefix}-handle-loading`}/> : null}
         </div>
         <div className={`${classPrefix}-inner`}>

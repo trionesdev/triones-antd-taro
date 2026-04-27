@@ -19,6 +19,7 @@ $cellCls: 'triones-antm-form-cell';
   &-placeholder {
     font-size: variable.$trionesFontSize;
     color: variable.$trionesColorTextPlaceholder;
+    width: 100%;
   }
 
   &-extra {
@@ -27,6 +28,7 @@ $cellCls: 'triones-antm-form-cell';
 
   &-arrow {
     flex-shrink: 0;
+
     .triones-antm-icon {
       color: variable.$trionesColorTextPlaceholder;
       font-size: variable.$trionesFontSize;

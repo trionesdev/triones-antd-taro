@@ -53,10 +53,11 @@ const HorizontalStepItem: FC<StepsItemProps & { index: number }> = ({icon, title
 }
 
 export const HorizontalSteps: FC<HorizontalStepsProps> = ({
+                                                            className, style,
                                                             stretch = true,
                                                             items = []
                                                           }) => {
-  return <div className={classNames(clsPrefixSteps, `${clsPrefixSteps}-horizontal`)}>
+  return <div className={classNames(clsPrefixSteps, `${clsPrefixSteps}-horizontal`, className)} style={style}>
     {items.map((item, index) => <HorizontalStepItem icon={item.icon} title={item.title} description={item.description}
                                                     key={index} index={index}/>)}
   </div>

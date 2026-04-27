@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Popup from "../Popup";
-import { Button, DotLoading, SafeArea, SpinLoading } from "../index";
-import { CheckOutline, CloseOutline, LeftOutline, SearchOutline } from "@trionesdev/antd-mobile-icons-react";
+import {Button, DotLoading, SafeArea, SpinLoading} from "../index";
+import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
 import Space from "../Space";
-import { ScrollView } from "@tarojs/components";
+import {ScrollView} from "@tarojs/components";
 import Input from "../Input";
-import { debounce, get, isEmpty, isEqual, some } from "lodash-es";
+import {debounce, get, isEmpty, isEqual, some} from "lodash-es";
 import classNames from "classnames";
 
 
@@ -87,7 +87,7 @@ export type FetchPickerProps = {
    * @default
    */
   onBack?: () => void;
-  onOk?: (value?: PickerValue) => void;
+  onOk?: (value?: PickerValue, option?: any | any[]) => void;
   /**
    * @description 请求
    * @default
@@ -112,43 +112,65 @@ export type FetchPickerProps = {
    * @default 20
    */
   pageSize?: number;
-
+  optionRender?: (option: any) => React.ReactNode;
 }
 
 const cls = "triones-antm-fetch-picker";
 
 export const FetchPicker: React.FC<FetchPickerProps> = ({
-  open = false, fullScreen = false,
-  height,
-  showSearch = false,
-  searchPlaceholder = '搜索',
-  value,
-  backable = true,
-  backIcon,
-  closable = true,
-  closeIcon,
-  multiple = false,
-  labelInValue = true,
-  title,
-  cancelText = '取消',
-  okText = '确定',
-  round = true,
-  onClose,
-  onBack,
-  onOk,
-  fetch,
-  fieldNames,
-  empty,
-  pageable,
-  pageSize = 20
-}) => {
-  const { label: labelFieldName = 'label', value: valueFieldName = 'value' } = fieldNames || {}
+                                                          open = false, fullScreen = false,
+                                                          height,
+                                                          showSearch = false,
+                                                          searchPlaceholder = '搜索',
+                                                          value,
+                                                          backable = true,
+                                                          backIcon,
+                                                          closable = true,
+                                                          closeIcon,
+                                                          multiple = false,
+                                                          labelInValue = true,
+                                                          title,
+                                                          cancelText = '取消',
+                                                          okText = '确定',
+                                                          round = true,
+                                                          onClose,
+                                                          onBack,
+                                                          onOk,
+                                                          fetch,
+                                                          fieldNames,
+                                                          empty,
+                                                          pageable,
+                                                          pageSize = 20,
+                                                          optionRender,
+                                                        }) => {
+  const {label: labelFieldName = 'label', value: valueFieldName = 'value'} = fieldNames || {}
   const [options, setOptions] = useState<any[]>([])
-  const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({ page: 1, size: pageSize })
+  const [queryParams, setQueryParams] = useState<{ page: number, size: number, wd?: string }>({page: 1, size: pageSize})
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loading, setLoading] = useState(false)
   const [internalValue, setInternalValue] = useState<PickerValue | undefined>(value || (multiple ? [] : undefined))
   const requestIdRef = useRef(0)
+
+  const handleGetOptions = useCallback((value?: PickerValue) => {
+    if (!value) return null
+    if (multiple) {
+      if (labelInValue) {
+        return options.filter((option) => {
+          return some(value as LabeledValue[], (v) => get(option, valueFieldName) === get(v, "value"))
+        })
+      } else {
+        return options.filter((option) => {
+          return some(value as any[], (v) => get(option, valueFieldName) === v)
+        })
+      }
+    } else {
+      if (labelInValue) {
+        return options.find((option) => get(option, valueFieldName) === get(value, "value"))
+      } else {
+        return options.find((option) => get(option, valueFieldName) === value)
+      }
+    }
+  }, [labelInValue, options])
 
   const handleItemClick = useCallback((item: any) => {
     const itemValue = get(item, valueFieldName)
@@ -161,18 +183,18 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
         const exists = some(values, (v) => get(v, "value") === itemValue)
         newValue = exists
           ? values.filter((v) => get(v, "value") !== itemValue)
-          : [...values, { value: itemValue, label: itemLabel }]
+          : [...values, {value: itemValue, label: itemLabel}]
       } else {
         const values = prevList as (string | number)[]
         const exists = values.includes(itemValue)
         newValue = exists ? values.filter((v) => v !== itemValue) : [...values, itemValue]
       }
     } else {
-      newValue = labelInValue ? { value: itemValue, label: itemLabel } : itemValue
+      newValue = labelInValue ? {value: itemValue, label: itemLabel} : itemValue
     }
     setInternalValue(newValue)
     if (!multiple) {
-      onOk?.(newValue)
+      onOk?.(newValue, handleGetOptions(newValue))
       onClose?.()
     }
   }, [internalValue, labelFieldName, labelInValue, multiple, onClose, onOk, valueFieldName])
@@ -219,7 +241,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   }, [fetch, pageable])
 
   const handleOnOk = () => {
-    onOk?.(internalValue)
+    onOk?.(internalValue, handleGetOptions(internalValue))
     onClose?.()
   }
 
@@ -242,7 +264,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
   }, [open, value])
 
   const handleSearchChange = useMemo(() => debounce((v) => {
-    setQueryParams((prev) => ({ ...prev, page: 1, wd: v }))
+    setQueryParams((prev) => ({...prev, page: 1, wd: v}))
   }, 500), [])
 
   useEffect(() => {
@@ -251,8 +273,8 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
 
   const header = fullScreen ? <>
     <Space>
-      {backable && <div className={`${cls}-head-icon`} onClick={onBack}>{backIcon || <LeftOutline />}</div>}
-      {closable && <div className={`${cls}-head-icon`} onClick={onClose}>{closeIcon || <CloseOutline />}</div>}
+      {backable && <div className={`${cls}-head-icon`} onClick={onBack}>{backIcon || <LeftOutline/>}</div>}
+      {closable && <div className={`${cls}-head-icon`} onClick={onClose}>{closeIcon || <CloseOutline/>}</div>}
     </Space>
     <div className={`${cls}-head-title`}>{title}</div>
   </> : <>
@@ -261,26 +283,26 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     <div className={`${cls}-head-button`} onClick={handleOnOk}>{okText}</div>
   </>
   return <Popup open={open} onClose={onClose} onBack={onBack}
-    height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
+                height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
     <SafeArea>
       <div className={cls}>
         <div className={`${cls}-head`}>{header}</div>
         {showSearch && <div className={`${cls}-search-bar`}>
-          <Input className={`${cls}-search-bar-input`} prefix={<div style={{ paddingInline: 8 }}><SearchOutline /></div>}
-            variant={`outlined`} placeholder={searchPlaceholder}
-            value={queryParams.wd}
-            onChange={handleSearchChange}
+          <Input className={`${cls}-search-bar-input`} prefix={<div style={{paddingInline: 8}}><SearchOutline/></div>}
+                 variant={`outlined`} placeholder={searchPlaceholder}
+                 value={queryParams.wd}
+                 onChange={handleSearchChange}
           />
         </div>}
         <ScrollView className={`${cls}-body`} scrollY={true} onScrollToLower={() => {
           if (!hasMore || !pageable) {
             return
           }
-          setQueryParams((prev) => ({ ...prev, page: prev.page + 1 }))
+          setQueryParams((prev) => ({...prev, page: prev.page + 1}))
         }}>
           {isEmpty(options) && loading && <div className={`${cls}-loading`}>
             <div className={`${cls}-loading-content`}>
-              <SpinLoading />
+              <SpinLoading/>
               <div>加载中...</div>
             </div>
           </div>}
@@ -291,16 +313,18 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
               {
                 [`${cls}-item-option-selected`]: selected
               })} key={`${get(item, valueFieldName) ?? index}`} onClick={() => {
-                handleItemClick(item)
-              }}>
-              <div className={`${cls}-item-option-content`}>{get(item, labelFieldName)}</div>
+              handleItemClick(item)
+            }}>
+              <div className={`${cls}-item-option-content`}>{
+                optionRender?.(item) || get(item, labelFieldName)
+              }</div>
               {multiple && selected && <div className={`${cls}-item-option-state`}>
-                <CheckOutline />
+                <CheckOutline/>
               </div>}
             </div>
           })}
           {!isEmpty(options) && loading && <div className={`${cls}-loading-more`}>
-            加载更多<DotLoading />
+            加载更多<DotLoading/>
           </div>}
         </ScrollView>
         {fullScreen && multiple && <div className={`${cls}-footer`}>

@@ -87,6 +87,10 @@ export type {FooterProps} from './Footer';
 export {default as Form} from './Form';
 export type {FormItemProps, FormProps, FormInstance} from './Form';
 
+export {default as FormCell} from './FormCell';
+export type {FormCellProps} from './FormCell';
+
+
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
 

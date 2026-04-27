@@ -36,6 +36,9 @@ export const ProgressCircle: FC<ProcessCircleProps> = memo(({
       case 'large':
         return 150;
       default:
+        if (typeof size === 'number'){
+          return size;
+        }
         return 50;
     }
   }, [size])
