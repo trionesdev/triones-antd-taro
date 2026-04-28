@@ -96,6 +96,7 @@ export * from "./PayCircleOutline";
 export * from "./PieOutline";
 export * from "./ScanCodeOutline";
 export * from "./StopOutline";
+export * from "./SubDeptOutline";
 export * from "./StarOutline";
 export * from "./SoundMuteOutline";
 export * from "./ShrinkOutline";

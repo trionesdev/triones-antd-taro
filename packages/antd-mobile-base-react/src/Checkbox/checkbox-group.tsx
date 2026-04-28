@@ -24,12 +24,11 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
         value: innerValue,
         onValueChange: (v) => {
           setInnerValue(v);
-          console.log('value', v);
           onChange?.(v);
         },
       }}
     >
-      <div className={classNames(`${cls}-group}`)}>
+      <div className={classNames(`${cls}-group`)}>
         {!isEmpty(options) && <Space direction={direction}>
           {options?.map((item: CheckboxOptionProps, index) => <Checkbox key={`${index}`} shape={shape}
                                                                         value={item.value}
