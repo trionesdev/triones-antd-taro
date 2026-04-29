@@ -26,13 +26,6 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       }
     }
 
-    &-left {
-    }
-
-    &-right {
-      text-align: right;
-    }
-
     &-required-mark {
       display: inline-block;
       color: red;
@@ -43,9 +36,9 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   }
 
   &-input {
-    flex-direction: column;
+
     &-right {
-      justify-content: flex-end;
+      text-align: end;
     }
 
     .#{$cls-prefix-form-item} {
@@ -71,7 +64,6 @@ $cls-prefix-form-item: 'triones-antm-form-item';
         flex: 1;
         flex-shrink: 1;
         min-width: 0;
-        display: flex;
       }
     }
 
