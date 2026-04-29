@@ -1,0 +1,11 @@
+@use "../style/variable" as variable;
+
+.triones-antm-form{
+  &-item{
+    &-explain-error{
+      font-size: variable.$trionesFontSizeSm;
+      color: variable.$trionesColorError;
+    }
+  }
+
+}

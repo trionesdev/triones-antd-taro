@@ -118,7 +118,8 @@ export type FetchPickerProps = {
 const cls = "triones-antm-fetch-picker";
 
 export const FetchPicker: React.FC<FetchPickerProps> = ({
-                                                          open = false, fullScreen = false,
+                                                          open = false,
+                                                          fullScreen = false,
                                                           height,
                                                           showSearch = false,
                                                           searchPlaceholder = '搜索',

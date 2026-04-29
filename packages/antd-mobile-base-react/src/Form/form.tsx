@@ -5,7 +5,7 @@ import React from 'react';
 import {FormContext} from './context';
 import {FormInstance} from './interface';
 import {FormHorizontalAlign, FormItemVerticalAlign, FormLayout, RequiredMark} from "./types";
-
+import "./styles.scss"
 
 export interface FormProps<Values = any>
   extends Omit<RcFormProps<Values>, 'form' | 'component'> {
