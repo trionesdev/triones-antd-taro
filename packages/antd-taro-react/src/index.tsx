@@ -195,3 +195,5 @@ export {default as WaterMark} from './WaterMark';
 export type {WaterMarkProps} from './WaterMark';
 
 export * from "./hooks"
+
+export type {LabeledValue} from "@trionesdev/antd-mobile-base-react"

@@ -1,3 +1,5 @@
+import React from "react";
+
 export type AntSize = 'small' | 'medium' | 'large' | undefined;
 
 export type BoundingClientRectType = {
@@ -9,9 +11,12 @@ export type BoundingClientRectType = {
   height: number;
 }
 
-export type Col={
+export type Col = {
   flex?: number | string;
   span?: number;
 }
 
-
+export type LabeledValue = {
+  value: string | number;
+  label: React.ReactNode;
+}
