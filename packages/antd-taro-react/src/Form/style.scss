@@ -43,6 +43,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   }
 
   &-input {
+    flex-direction: column;
     &-right {
       justify-content: flex-end;
     }
