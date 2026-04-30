@@ -1,12 +1,26 @@
 @forward "@trionesdev/antd-mobile-base-react/dist/style/variable";
 
+@mixin h5-label-size {
+  height: 1.47059em;
+  line-height: 1.47059;
+}
+
 @mixin h5-input-size {
   height: 1.47059em;
   line-height: 1.47059;
 }
 
+@mixin h5-line-height {
+  line-height: 1.47059;
+}
+
 @mixin wx-input-size {
   min-height: 1.4rem;
+  line-height: 1.4rem;
+}
+
+
+@mixin wx-line-height {
   line-height: 1.4rem;
 }
 

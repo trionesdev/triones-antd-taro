@@ -40,7 +40,7 @@ $cellCls: 'triones-antm-form-cell';
   }
 
   &-medium {
-    min-height: 32Px;
+    //min-height: 32Px;
   }
 
   &-large {
@@ -73,7 +73,6 @@ $cellCls: 'triones-antm-form-cell';
 
   &-borderless {
     border: 0;
-    min-height: variable.$trionesControlHeight;
   }
 
   &-outlined {

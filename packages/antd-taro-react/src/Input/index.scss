@@ -41,7 +41,6 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  padding: variable.$trionesInputPaddingBlock 0;
 
   &-small {
     padding: variable.$trionesInputPaddingBlockSm 0;
@@ -76,9 +75,9 @@ wx-input {
   min-width: 0;
   flex-shrink: 1;
   //line-height: variable.$trionesLineHeight;
-  padding: variable.$trionesInputPaddingBlock 0;
+  //padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
-  box-sizing: border-box;
+
 
   &-small {
     padding: variable.$trionesInputPaddingBlockSm 0;
@@ -151,17 +150,20 @@ wx-input {
   &-outlined {
     border-radius: variable.$trionesBorderRadius;
     border: 1Px solid variable.$trionesBorderColor;
-    padding-inline: 4Px;
+    padding-block: variable.$trionesInputPaddingBlock;
+    padding-inline: variable.$trionesInputPaddingBlock;
   }
 
   &-filled {
     border-radius: variable.$trionesBorderRadius;
     background-color: variable.$trionesColorFillTertiary;
-    padding-inline: 4Px;
+    padding-block: variable.$trionesInputPaddingBlock;
+    padding-inline: variable.$trionesInputPaddingBlock;
   }
 
   &-underlined {
     border-bottom: 1Px solid variable.$trionesBorderColor;
+    padding-block: variable.$trionesInputPaddingBlock;
   }
 }
 

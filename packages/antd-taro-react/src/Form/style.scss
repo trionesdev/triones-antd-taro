@@ -7,23 +7,22 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 }
 
 .#{$cls-prefix-form-item} {
+  &.h5 {
+    @include variable.h5-line-height;
+  }
 
+  &.wx {
+    @include variable.wx-input-size;
+  }
   &-label {
     font-size: variable.$trionesFontSize;
     color: #6F6F6F;
 
 
     &-wrapper {
-      display: flex;
-      align-items: center;
-
-      &.h5 {
-        @include variable.h5-input-size;
-      }
-
-      &.wx {
-        @include variable.h5-input-size;
-      }
+      //display: flex;
+      //align-items: center;
+      height: 100%;
     }
 
     &-required-mark {
@@ -35,7 +34,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
   }
 
-  &-input {
+  &-content {
 
     &-right {
       text-align: end;
@@ -54,13 +53,13 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
     .#{$cls-prefix-form-item} {
       &-label {
-        padding-block: 8Px;
+        padding-block: 12Px;
         flex-shrink: 1;
         min-width: 0;
       }
 
-      &-input {
-        padding-block: 8Px;
+      &-content {
+        padding-block: 12Px;
         flex: 1;
         flex-shrink: 1;
         min-width: 0;
@@ -73,7 +72,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       }
 
       &-center {
-        align-items: center;
+        //align-items: center;
       }
     }
   }
@@ -83,7 +82,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       &-label {
         margin-bottom: 4Px;
       }
-      &-input {
+      &-content {
         padding-block-end: 8Px;
       }
     }

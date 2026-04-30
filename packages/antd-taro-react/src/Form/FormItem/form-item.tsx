@@ -1,6 +1,6 @@
 import React, {CSSProperties, FC, ReactElement, ReactNode} from "react"
 import {FormItemLabel} from "./form-item-label";
-import {FormItemInput} from "./form-item-input";
+import {FormItemContent} from "./form-item-content";
 import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
 
@@ -12,6 +12,7 @@ import {
   useFormContext,
   Form
 } from "@trionesdev/antd-mobile-base-react";
+import {useTaro} from "../../hooks";
 
 export type FormItemProps = {
   className?: string;
@@ -55,6 +56,7 @@ export const FormItem: FC<FormItemProps> = ({
                                               verticalAlign,
                                               ...props
                                             }) => {
+  const {isTaroWeApp, isTaroWeb} = useTaro()
   // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
   const ctx = useFormContext()
   const formItemLayout = layout ? layout : (ctx.layout === 'inline' ? 'horizontal' : ctx.layout)
@@ -83,15 +85,17 @@ export const FormItem: FC<FormItemProps> = ({
     [`${clsPrefix}-hidden`]: hidden,
     [`${clsPrefix}-${formItemVerticalAlign}`]:
       formItemLayout === 'horizontal',
+    [`h5`]: isTaroWeb,
+    [`wx`]: isTaroWeApp
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
                              style={{width: formItemLabelWidth}} layout={formItemLayout} label={label}
                              required={required}/>}
-    <FormItemInput className={classNames(`${clsPrefix}-input`, {
-      [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign
+    <FormItemContent className={classNames(`${clsPrefix}-content`, {
+      [`${clsPrefix}-content-${formItemWrapperAlign}`]: formItemWrapperAlign
     })} {...props} name={name} rules={rules}
-                   errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
-                   hiddenError={ctx.hiddenError}>{children}</FormItemInput>
+                     errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
+                     hiddenError={ctx.hiddenError}>{children}</FormItemContent>
     {formItemExtra}
   </div>
 }

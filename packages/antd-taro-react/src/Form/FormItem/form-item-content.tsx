@@ -11,28 +11,29 @@ type FormItemInputProps = {
   name?: string;
   rules?: Rule[];
   initialValue?: any,
-  wrapperAlign?:FormHorizontalAlign
+  wrapperAlign?: FormHorizontalAlign
   valuePropName?: string
   errors?: React.ReactNode[];
   errorRender?: (errors?: any[]) => React.ReactNode;
   hiddenError?: boolean;
 };
 
-export const FormItemInput: FC<FormItemInputProps> = ({
-                                                        children,
-                                                        className,
-                                                        name,
-                                                        rules,
-                                                        initialValue,
-                                                        valuePropName,
-                                                        errorRender,
-                                                        hiddenError,
-                                                      }) => {
+export const FormItemContent: FC<FormItemInputProps> = ({
+                                                          children,
+                                                          className,
+                                                          name,
+                                                          rules,
+                                                          initialValue,
+                                                          valuePropName,
+                                                          errorRender,
+                                                          hiddenError,
+                                                        }) => {
   const [meta, setMeta] = useState<Meta | undefined>();
 
   const clsPrefix = 'triones-antm-form-item';
   return (
     <div className={classNames(className)}>
+      <div>
         <Field
           name={name}
           rules={rules}
@@ -45,6 +46,7 @@ export const FormItemInput: FC<FormItemInputProps> = ({
         >
           {children}
         </Field>
+      </div>
       {!hiddenError && !isEmpty(meta?.errors) && (
         <div className={classNames(`${clsPrefix}-error`)}>
           {errorRender?.(meta?.errors) || meta?.errors.join(',')}
