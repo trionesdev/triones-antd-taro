@@ -4,7 +4,7 @@ import type {FormRef} from 'rc-field-form/lib/interface';
 import React from 'react';
 import {FormContext} from './context';
 import {FormInstance} from './interface';
-import {FormHorizontalAlign, FormItemVerticalAlign, FormLayout, RequiredMark} from "./types";
+import {FormHorizontalAlign, FormLayout, RequiredMark} from "./types";
 import "./styles.scss"
 
 export interface FormProps<Values = any>
@@ -54,11 +54,6 @@ export interface FormProps<Values = any>
    * @default
    */
   extra?: React.ReactNode;
-  /**
-   * @description 表单垂直层面的对齐方式。只有当 item layout 为 horizontal 时有效
-   * @default center
-   */
-  verticalAlign?: FormItemVerticalAlign;
 }
 
 const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
