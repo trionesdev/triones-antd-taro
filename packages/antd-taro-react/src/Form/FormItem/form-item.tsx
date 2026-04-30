@@ -32,7 +32,6 @@ export type FormItemProps = {
   valuePropName?: string
   errorRender?: (errors?: any[]) => React.ReactNode;
   extra?: ReactNode;
-  verticalAlign?: FormItemVerticalAlign;
 }
 
 export const FormItem: FC<FormItemProps> = ({
@@ -53,7 +52,6 @@ export const FormItem: FC<FormItemProps> = ({
                                               valuePropName,
                                               errorRender,
                                               extra,
-                                              verticalAlign,
                                               ...props
                                             }) => {
   const {isTaroWeApp, isTaroWeb} = useTaro()
@@ -64,9 +62,6 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth
   const formItemExtra = extra !== undefined ? extra : ctx.extra
   const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign
-  const formItemVerticalAlign = verticalAlign
-    ? verticalAlign
-    : ctx.verticalAlign || 'center';
   const clsPrefix = "triones-antm-form-item"
 
   if (noStyle) {
@@ -83,8 +78,6 @@ export const FormItem: FC<FormItemProps> = ({
 
   return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className, {
     [`${clsPrefix}-hidden`]: hidden,
-    [`${clsPrefix}-${formItemVerticalAlign}`]:
-      formItemLayout === 'horizontal',
     [`h5`]: isTaroWeb,
     [`wx`]: isTaroWeApp
   })} style={style}>

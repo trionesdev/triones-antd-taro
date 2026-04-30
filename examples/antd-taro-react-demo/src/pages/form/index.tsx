@@ -58,6 +58,9 @@ const FormPage = () => {
           </Radio.Group>
         </Form.Item>
       </Form>
+      <Form.Item label={`备注`} name={`remark`}>
+        <Input.Textarea placeholder={`请输入备注`}/>
+      </Form.Item>
       <Button type={`primary`} block={true} onClick={() => {
         form.validateFields().then(values => {
           console.log(values)

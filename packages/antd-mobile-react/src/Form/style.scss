@@ -15,12 +15,18 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
 
     &-wrapper {
+      height: 100%;
       // height: 1.47059em;
 
-      display: flex;
-      align-items: center;
+      //display: flex;
+      //align-items: center;
     }
-
+    &-required-mark {
+      display: inline-block;
+      color: variable.$trionesColorError;
+      width: 8Px;
+      margin-left: -8Px;
+    }
     &-left {
     }
 
@@ -28,17 +34,17 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       text-align: right;
     }
 
-    &-required {
-      display: inline-block;
-      color: red;
-      width: 8Px;
-      margin-left: -8Px;
-    }
+    //&-required {
+    //  display: inline-block;
+    //  color: red;
+    //  width: 8Px;
+    //  margin-left: -8Px;
+    //}
 
   }
 
-  &-input {
-    padding-block: 8Px;
+  &-content {
+    padding-block: 12Px;
 
     &-right {
       text-align: right;
@@ -47,7 +53,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
     .#{$cls-prefix-form-item} {
       &-error {
         font-size: variable.$trionesFontSizeSm;
-        color: red;
+        color: variable.$trionesColorError;
       }
     }
   }
@@ -59,12 +65,12 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
     .#{$cls-prefix-form-item} {
       &-label {
-        padding-block: 8Px;
+        padding-block: 12Px;
         flex-shrink: 1;
         min-width: 0;
       }
 
-      &-input {
+      &-content {
         flex: auto 1;
         flex-shrink: 1;
         min-width: 0;
@@ -87,8 +93,8 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       &-label {
         margin-bottom: 4Px;
       }
-      &-input {
-        padding-block-end: 8Px;
+      &-content {
+        padding-block-end: 12Px;
       }
     }
 

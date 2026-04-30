@@ -265,7 +265,7 @@ wx-input {
     background-color: transparent;
   }
   textarea {
-    //padding: variable.$trionesInputPaddingBlock 0;
+    padding-block: 2Px;
     background-color: transparent;
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;

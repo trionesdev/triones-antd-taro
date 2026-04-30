@@ -23,7 +23,7 @@ $placeholderColor: #CCCCCC;
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  padding: variable.$trionesInputPaddingBlock 0;
+  //padding: variable.$trionesInputPaddingBlock 0;
 
   &-sm {
     max-height: $inputSm;
@@ -52,7 +52,7 @@ $placeholderColor: #CCCCCC;
   width: 100%;
   min-width: 0;
   //line-height: variable.$trionesLineHeight;
-  padding: variable.$trionesInputPaddingBlock 0;
+  //padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
 
   &-small {
@@ -106,6 +106,7 @@ $placeholderColor: #CCCCCC;
 
 .#{$inputCls} {
   &-outlined {
+    padding-block: variable.$trionesInputPaddingBlock;
     border-radius: variable.$trionesBorderRadius;
     border: 1Px solid variable.$trionesBorderColor;
     padding-inline: 4Px;
@@ -115,7 +116,8 @@ $placeholderColor: #CCCCCC;
   &-filled {
     border-radius: variable.$trionesBorderRadius;
     background-color: variable.$trionesColorFillTertiary;
-    padding-inline: 4Px;
+    padding-inline: variable.$trionesInputPaddingBlock;
+    padding-block: variable.$trionesInputPaddingBlock;
     box-sizing: border-box;
     border: 0;
   }
@@ -129,6 +131,7 @@ $placeholderColor: #CCCCCC;
     border-left: 0;
     border-right: 0;
     border-bottom: 1Px solid variable.$trionesBorderColor;
+    padding-block: variable.$trionesInputPaddingBlock;
     box-sizing: border-box;
   }
 }

@@ -72,7 +72,6 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     requiredMark,
     hiddenError = false,
     extra,
-    verticalAlign,
     ...rest
   },
   ref,
@@ -87,7 +86,6 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
       requiredMark: requiredMark ?? true,
       hiddenError,
       extra,
-      verticalAlign,
     }),
     [
       colon,
@@ -98,7 +96,6 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
       requiredMark,
       hiddenError,
       extra,
-      verticalAlign,
     ],
   );
 

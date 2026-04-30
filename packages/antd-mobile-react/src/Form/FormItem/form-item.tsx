@@ -1,7 +1,6 @@
 import {
-  FormItemLayout,
   FormHorizontalAlign,
-  FormItemVerticalAlign,
+  FormItemLayout,
   useFormContext,
 } from '@trionesdev/antd-mobile-base-react';
 import classNames from 'classnames';
@@ -57,7 +56,6 @@ export type FormItemProps = {
   valuePropName?: string;
   errorRender?: (errors?: any[]) => React.ReactNode;
   extra?: ReactNode;
-  verticalAlign?: FormItemVerticalAlign;
 };
 
 export const FormItem: FC<FormItemProps> = ({
@@ -78,7 +76,6 @@ export const FormItem: FC<FormItemProps> = ({
   valuePropName,
   errorRender,
   extra,
-  verticalAlign,
   ...props
 }) => {
   // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
@@ -92,9 +89,6 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth;
   const formItemExtra = extra !== undefined ? extra : ctx.extra;
   const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign;
-  const formItemVerticalAlign = verticalAlign
-    ? verticalAlign
-    : ctx.verticalAlign || 'center';
   const clsPrefix = 'triones-antm-form-item';
 
   if (noStyle) {
@@ -119,8 +113,6 @@ export const FormItem: FC<FormItemProps> = ({
         className,
         {
           [`${clsPrefix}-hidden`]: hidden,
-          [`${clsPrefix}-${formItemVerticalAlign}`]:
-            formItemLayout === 'horizontal',
         },
       )}
       style={style}
@@ -138,8 +130,9 @@ export const FormItem: FC<FormItemProps> = ({
         />
       )}
       <FormItemInput
-        className={classNames(`${clsPrefix}-input`, {
-          [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign,
+        className={classNames(`${clsPrefix}-content`, {
+          [`${clsPrefix}-content-${formItemWrapperAlign}`]:
+            formItemWrapperAlign,
         })}
         {...props}
         name={name}

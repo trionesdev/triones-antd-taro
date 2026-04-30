@@ -33,7 +33,7 @@ export const FormItemLabel: FC<FormItemLabelProps> = ({
     >
       <div className={classNames(`${clsPrefix}-wrapper`)}>
         {required && (
-          <div className={`${clsPrefix}-required`}>
+          <div className={`${clsPrefix}-required-mark`}>
             {isFunction(requiredMark) ? requiredMark(label, { required }) : '*'}
           </div>
         )}

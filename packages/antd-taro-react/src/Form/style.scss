@@ -14,6 +14,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
   &.wx {
     @include variable.wx-input-size;
   }
+
   &-label {
     font-size: variable.$trionesFontSize;
     color: #6F6F6F;
@@ -44,6 +45,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       &-error {
         font-size: variable.$trionesFontSizeSm;
         color: variable.$trionesColorError;
+        line-height: normal;
       }
     }
   }
@@ -82,6 +84,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
       &-label {
         margin-bottom: 4Px;
       }
+
       &-content {
         padding-block-end: 8Px;
       }
