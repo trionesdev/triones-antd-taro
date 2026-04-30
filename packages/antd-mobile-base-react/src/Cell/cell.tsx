@@ -18,47 +18,22 @@ export const Cell: FC<CellProps> = ({
                                       arrow,
                                       labelCol,
                                       labelAlign,
-                                      wrapperAlign,
+                                      contentAlign,
                                       onClick,
                                       styles
                                     }) => {
   const {
     labelCol: ctxLabelCol,
     labelAlign: ctxLabelAlign,
-    wrapperAlign: ctxWrapperAlign,
+    contentAlign: ctxContentAlign,
     extra: ctxExtra, styles: ctxStyles
   } = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
     return labelCol?.flex || ctxLabelCol?.flex || 'auto';
   }, [labelCol, ctxLabelCol])
+  const finalLabelAlign = ctxLabelAlign ?? labelAlign ?? 'start'
+  const finalContentAlign = ctxContentAlign ?? contentAlign ?? 'end'
 
-  const labelAlignStyle = useMemo(() => {
-    const align = labelAlign || ctxLabelAlign;
-    switch (align) {
-      case 'left':
-        return 'start'
-      case 'center':
-        return 'center'
-      case 'right':
-        return 'end'
-      default:
-        return 'start'
-    }
-  }, [labelAlign, ctxLabelAlign])
-
-  const wrapperAlignStyle = useMemo(() => {
-    const align = wrapperAlign || ctxWrapperAlign;
-    switch (align) {
-      case 'left':
-        return 'start'
-      case 'center':
-        return 'center'
-      case 'right':
-        return 'end'
-      default:
-        return 'start'
-    }
-  }, [wrapperAlign, ctxWrapperAlign])
 
   const mergedStyles = assign({}, ctxStyles, styles)
   if (style) {
@@ -69,14 +44,12 @@ export const Cell: FC<CellProps> = ({
   return (
     <div className={classNames(cls, className)} style={{...mergedStyles.cell}} onClick={onClick}>
       {label && (
-        <div className={classNames(`${cls}-label`)} style={{
-          width: labelWidth,
-          justifyContent: labelAlignStyle
+        <div className={classNames(`${cls}-label`, `${cls}-label-${finalLabelAlign}`)} style={{
+          width: labelWidth
           , ...mergedStyles?.label
         }}>{label}</div>
       )}
-      <div className={classNames(`${cls}-content`)} style={{
-        justifyContent: wrapperAlignStyle,
+      <div className={classNames(`${cls}-content`, `${cls}-content-${finalContentAlign}`)} style={{
         ...mergedStyles?.content
       }}>
         {children ||

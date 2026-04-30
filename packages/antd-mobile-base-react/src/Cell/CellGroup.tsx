@@ -13,7 +13,7 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 extra,
                                                 labelCol,
                                                 labelAlign,
-                                                wrapperAlign,
+                                                contentAlign,
                                                 divider,
                                                 styles
                                               }) => {
@@ -60,7 +60,7 @@ export const CellGroup: FC<CellGroupProps> = ({
     <CellGroupContext.Provider value={{
       labelCol,
       labelAlign,
-      wrapperAlign,
+      contentAlign,
       extra,
       styles: {
         cell: styles?.cell,

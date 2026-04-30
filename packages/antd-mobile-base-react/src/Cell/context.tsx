@@ -6,7 +6,7 @@ type CellGroupContextType = {
 
   labelCol?: Col,
   labelAlign?: align,
-  wrapperAlign?: align,
+  contentAlign?: align,
   extra?: React.ReactNode,
   styles?: {
     cell?: React.CSSProperties,
