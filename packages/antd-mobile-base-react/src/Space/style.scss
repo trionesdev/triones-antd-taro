@@ -2,7 +2,7 @@ $class-prefix-space: 'triones-antm-space';
 
 .#{$class-prefix-space}-item {
   flex: none;
-  display: inline-flex;
+  //display: inline-flex;
   flex-shrink: 1;
   min-width: 0;
 }
@@ -36,7 +36,7 @@ $class-prefix-space: 'triones-antm-space';
     display: flex;
     width: 100%;
     .#{$class-prefix-space}-item{
-      display: flex;
+      //display: flex;
     }
 
   }

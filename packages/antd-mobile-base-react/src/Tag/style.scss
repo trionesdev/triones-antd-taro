@@ -6,9 +6,9 @@ $tagCls: 'triones-antm-tag';
   display: inline-flex;
   align-items: center;
   padding: 2Px 8Px;
-  font-size: 12Px;
+  font-size: variable.$trionesFontSizeSm;
   line-height: 1.2;
-  border-radius: variable.$trionesBorderRadius;
+  border-radius: variable.$trionesBorderRadiusXs;
   box-sizing: border-box;
   white-space: nowrap;
 
@@ -17,6 +17,7 @@ $tagCls: 'triones-antm-tag';
   }
 
   &-round {
+    padding: 2Px 8Px;
     border-radius: 12Px;
   }
 
