@@ -11,9 +11,13 @@ $class-prefix-radio: 'triones-antm-radio';
   gap: 8Px;
 
   .#{$class-prefix-radio} {
+    flex-shrink: 0;
     &-fake {
       width: 20PX;
       height: 20PX;
+      line-height: 0;
+      box-sizing: border-box;
+      overflow: hidden;
 
       .triones-antm-icon {
         //position: absolute;
@@ -34,6 +38,8 @@ $class-prefix-radio: 'triones-antm-radio';
 
         .triones-antm-icon {
           font-size: 14Px;
+          line-height: 1;
+          display: block;
         }
       }
 
@@ -81,6 +87,8 @@ $class-prefix-radio: 'triones-antm-radio';
   &-horizontal {
     display: inline-flex;
     flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
   }
 
   &-vertical {
