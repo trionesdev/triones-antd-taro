@@ -38,7 +38,7 @@ export interface FormProps<Values = any>
    * @description 表单控件的对齐方式
    * @default left
    */
-  wrapperAlign?: FormHorizontalAlign;
+  contentAlign?: FormHorizontalAlign;
   /**
    * @description 是否显示必填标记
    * @default true
@@ -63,7 +63,7 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     layout,
     labelAlign,
     labelWidth,
-    wrapperAlign,
+    contentAlign,
     requiredMark,
     hiddenError = false,
     extra,
@@ -75,9 +75,9 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     () => ({
       colon,
       layout: layout ?? 'horizontal',
-      labelAlign: labelAlign ?? 'left',
+      labelAlign: labelAlign ?? 'start',
       labelWidth,
-      wrapperAlign: wrapperAlign ?? 'left',
+      contentAlign: contentAlign ?? 'start',
       requiredMark: requiredMark ?? true,
       hiddenError,
       extra,
@@ -87,7 +87,7 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
       layout,
       labelAlign,
       labelWidth,
-      wrapperAlign,
+      contentAlign,
       requiredMark,
       hiddenError,
       extra,

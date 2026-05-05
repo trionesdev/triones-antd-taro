@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { Field } from 'rc-field-form';
 import { NamePath, Rule } from 'rc-field-form/lib/interface';
 import React, { CSSProperties, FC, ReactElement, ReactNode } from 'react';
-import { FormItemInput } from './form-item-input';
+import { FormItemContent } from './form-item-content';
 import { FormItemLabel } from './form-item-label';
 
 export type FormItemProps = {
@@ -42,7 +42,7 @@ export type FormItemProps = {
    * @description 输入框对齐方式
    * @default
    */
-  wrapperAlign?: FormHorizontalAlign;
+  contentAlign?: FormHorizontalAlign;
   /**
    * @description 字段名
    * @default
@@ -66,7 +66,7 @@ export const FormItem: FC<FormItemProps> = ({
   label,
   labelAlign,
   labelWidth,
-  wrapperAlign,
+  contentAlign,
   name,
   required,
   hidden = false,
@@ -88,7 +88,7 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemAlign = labelAlign ? labelAlign : ctx.labelAlign || 'left';
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth;
   const formItemExtra = extra !== undefined ? extra : ctx.extra;
-  const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign;
+  const formItemWrapperAlign = contentAlign ? contentAlign : ctx.contentAlign;
   const clsPrefix = 'triones-antm-form-item';
 
   if (noStyle) {
@@ -129,7 +129,7 @@ export const FormItem: FC<FormItemProps> = ({
           required={required}
         />
       )}
-      <FormItemInput
+      <FormItemContent
         className={classNames(`${clsPrefix}-content`, {
           [`${clsPrefix}-content-${formItemWrapperAlign}`]:
             formItemWrapperAlign,
@@ -143,7 +143,7 @@ export const FormItem: FC<FormItemProps> = ({
         hiddenError={ctx.hiddenError}
       >
         {children}
-      </FormItemInput>
+      </FormItemContent>
       {formItemExtra}
     </div>
   );

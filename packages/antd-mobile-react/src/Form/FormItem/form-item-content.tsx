@@ -11,14 +11,14 @@ type FormItemInputProps = {
   name?: string;
   rules?: Rule[];
   initialValue?: any,
-  wrapperAlign?:FormHorizontalAlign
+  contentAlign?:FormHorizontalAlign
   valuePropName?: string
   errors?: React.ReactNode[];
   errorRender?: (errors?: any[]) => React.ReactNode;
   hiddenError?: boolean;
 };
 
-export const FormItemInput: FC<FormItemInputProps> = ({
+export const FormItemContent: FC<FormItemInputProps> = ({
                                                         children,
                                                         className,
                                                         name,
