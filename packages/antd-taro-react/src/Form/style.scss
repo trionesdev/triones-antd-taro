@@ -1,10 +1,8 @@
 @use "../style/variable" as variable;
 
-$cls-prefix-form: 'triones-antm-form';
+
 $cls-prefix-form-item: 'triones-antm-form-item';
 
-.#{$cls-prefix-form} {
-}
 
 .#{$cls-prefix-form-item} {
   &.h5 {
@@ -37,7 +35,7 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
   &-content {
 
-    &-right {
+    &-end {
       text-align: end;
     }
 
@@ -65,6 +63,10 @@ $cls-prefix-form-item: 'triones-antm-form-item';
         flex: 1;
         flex-shrink: 1;
         min-width: 0;
+
+        &-end {
+          text-align: end;
+        }
       }
     }
 

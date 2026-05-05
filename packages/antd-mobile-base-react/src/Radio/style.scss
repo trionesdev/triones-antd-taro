@@ -31,7 +31,8 @@ $class-prefix-radio: 'triones-antm-radio';
         border-radius: 50vh;
         box-sizing: border-box;
         overflow: hidden;
-        .triones-antm-icon{
+
+        .triones-antm-icon {
           font-size: 14Px;
         }
       }
@@ -50,7 +51,6 @@ $class-prefix-radio: 'triones-antm-radio';
     }
 
 
-
     &-label {
       flex: 1 auto;
     }
@@ -65,6 +65,7 @@ $class-prefix-radio: 'triones-antm-radio';
         background-color: $checkboxDisabledColor;
       }
     }
+
     &-block {
       width: 100%;
     }
@@ -74,12 +75,16 @@ $class-prefix-radio: 'triones-antm-radio';
 
 
 .#{$class-prefix-radio}-group {
-  display: flex;
+
   gap: 8Px;
-  &-horizontal{
+
+  &-horizontal {
+    display: inline-flex;
     flex-direction: row;
   }
-  &-vertical{
+
+  &-vertical {
+    display: flex;
     flex-direction: column;
   }
 }

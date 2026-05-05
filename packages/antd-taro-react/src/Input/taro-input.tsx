@@ -1,5 +1,5 @@
 import {Input as InternalTaroInput, InputProps as InternalTaroInputProps} from '@tarojs/components';
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useMemo} from "react";
 import {InputAffixWrapper} from "./input-affix-wrapper";
 import {InputProps} from "./types";
 
@@ -8,8 +8,21 @@ export type TaroInputProps = Omit<InputProps, 'type'> & {
   password?: boolean;
 };
 
-export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'middle', align = 'left', ...rest}) => {
+export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'middle', align = 'start', ...rest}) => {
   const [innerValue, setInnerValue] = React.useState<any>(value);
+
+  const textAlign = useMemo(() => {
+    switch (align) {
+      case 'start':
+        return 'left';
+      case 'center':
+        return 'center';
+      case 'end':
+        return 'right';
+      default:
+        return 'left';
+    }
+  }, [align])
 
   useEffect(() => {
     if (value !== innerValue) {
@@ -29,7 +42,7 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'mi
       setInnerValue(null)
     }}
   >
-    <InternalTaroInput style={{flex: 1,textAlign: align}} type={type}
+    <InternalTaroInput style={{flex: 1, textAlign: textAlign}} type={type}
                        defaultValue={rest.defaultValue}
                        value={innerValue}
                        placeholder={rest.placeholder}

@@ -8,7 +8,6 @@ import {Field} from "rc-field-form";
 import {
   FormItemLayout,
   FormHorizontalAlign,
-  FormItemVerticalAlign,
   useFormContext,
   Form
 } from "@trionesdev/antd-mobile-base-react";
@@ -22,7 +21,7 @@ export type FormItemProps = {
   label?: ReactNode;
   labelAlign?: FormHorizontalAlign
   labelWidth?: number
-  wrapperAlign?: FormHorizontalAlign
+  contentAlign?: FormHorizontalAlign
   name?: NamePath;
   required?: boolean
   hidden?: boolean
@@ -42,7 +41,7 @@ export const FormItem: FC<FormItemProps> = ({
                                               label,
                                               labelAlign,
                                               labelWidth,
-                                              wrapperAlign,
+                                              contentAlign,
                                               name,
                                               required,
                                               hidden = false,
@@ -61,7 +60,7 @@ export const FormItem: FC<FormItemProps> = ({
   const formItemAlign = labelAlign ? labelAlign : ctx.labelAlign || 'left'
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth
   const formItemExtra = extra !== undefined ? extra : ctx.extra
-  const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign
+  const formItemWrapperAlign = contentAlign ? contentAlign : ctx.contentAlign
   const clsPrefix = "triones-antm-form-item"
 
   if (noStyle) {
@@ -84,11 +83,11 @@ export const FormItem: FC<FormItemProps> = ({
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
                              style={{width: formItemLabelWidth}} layout={formItemLayout} label={label}
                              required={required}/>}
-    <FormItemContent className={classNames(`${clsPrefix}-content`, {
-      [`${clsPrefix}-content-${formItemWrapperAlign}`]: formItemWrapperAlign
-    })} {...props} name={name} rules={rules}
-                     errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
-                     hiddenError={ctx.hiddenError}>{children}</FormItemContent>
+    <FormItemContent
+      className={classNames(`${clsPrefix}-content`, `${clsPrefix}-content-${formItemWrapperAlign}`)} {...props}
+      name={name} rules={rules}
+      errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
+      hiddenError={ctx.hiddenError}>{children}</FormItemContent>
     {formItemExtra}
   </div>
 }
