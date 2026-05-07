@@ -97,6 +97,7 @@ export * from "./PieOutline";
 export * from "./ScanCodeOutline";
 export * from "./StopOutline";
 export * from "./SubDeptOutline";
+export * from "./SwapOutline";
 export * from "./StarOutline";
 export * from "./SoundMuteOutline";
 export * from "./ShrinkOutline";
