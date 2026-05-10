@@ -39,6 +39,11 @@ $cellCls: 'triones-antm-cell';
   &-arrow{
     font-size: variable.$trionesFontSize;
     color: variable.$trionesColorTextPlaceholder;
+    .triones-antm-icon{
+      &::before{
+        font-size: 12Px;
+      }
+    }
   }
 
   &-placeholder {
