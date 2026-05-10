@@ -8,7 +8,7 @@ export type TagProps = {
   /**
    * 标签色
    */
-  color?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | string;
+  color?: 'default' | 'processing' | 'success' | 'warning' | 'error' | string;
   /**
    * 填充模式
    */
@@ -49,10 +49,10 @@ export const Tag: FC<TagProps> = ({
   // 是否是预设颜色
   const isPresetColor = [
     'default',
-    'primary',
+    'processing',
     'success',
     'warning',
-    'danger',
+    'error',
   ].includes(color);
 
   const customStyle = !isPresetColor

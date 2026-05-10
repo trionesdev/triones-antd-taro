@@ -35,8 +35,8 @@ $tagCls: 'triones-antm-tag';
     }
   }
 
-  // Primary variant styles
-  &-primary {
+  // processing variant styles
+  &-processing {
     &.#{$tagCls}-solid {
       background: variable.$trionesColorPrimary;
       color: #fff;
@@ -78,7 +78,7 @@ $tagCls: 'triones-antm-tag';
   }
 
   // Danger variant styles
-  &-danger {
+  &-error {
     &.#{$tagCls}-solid {
       background: variable.$trionesColorError;
       color: #fff;
