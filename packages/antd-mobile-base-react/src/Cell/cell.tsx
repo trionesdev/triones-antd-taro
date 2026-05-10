@@ -26,6 +26,7 @@ export const Cell: FC<CellProps> = ({
     labelCol: ctxLabelCol,
     labelAlign: ctxLabelAlign,
     contentAlign: ctxContentAlign,
+    arrow: ctxArrow,
     extra: ctxExtra, styles: ctxStyles
   } = useContext(CellGroupContext);
   const labelWidth = useMemo(() => {
@@ -33,6 +34,7 @@ export const Cell: FC<CellProps> = ({
   }, [labelCol, ctxLabelCol])
   const finalLabelAlign = ctxLabelAlign ?? labelAlign ?? 'start'
   const finalContentAlign = ctxContentAlign ?? contentAlign ?? 'end'
+  const finalArrow = ctxArrow ?? arrow ?? false;
 
 
   const mergedStyles = assign({}, ctxStyles, styles)
@@ -61,7 +63,7 @@ export const Cell: FC<CellProps> = ({
       </div>
       {(extra || ctxExtra) &&
         <div className={classNames(`${cls}-extra`)} style={mergedStyles?.extra}>{extra || ctxExtra}</div>}
-      {arrow && <div className={classNames(`${cls}-arrow`)}>
+      {finalArrow && <div className={classNames(`${cls}-arrow`)}>
         <RightOutline/>
       </div>}
     </div>
