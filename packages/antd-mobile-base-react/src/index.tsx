@@ -42,7 +42,7 @@ export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 export {default as Footer} from './Footer';
 export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
-export {default as Form, useFormContext} from './Form';
+export {default as Form, useFormContext, Field} from './Form';
 export type {FormInstance} from "./Form/interface"
 export type {FormProps, FormLayout, FormHorizontalAlign, FormItemVerticalAlign, FormItemLayout} from './Form';
 

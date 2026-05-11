@@ -1,9 +1,10 @@
-import FieldForm from 'rc-field-form';
+import FieldForm, {Field} from 'rc-field-form';
 import InternalForm, {FormProps, useWatch} from "./form";
 import {ErrorList} from "./ErrorList"
 import useForm from "./hooks/useForm";
 import {FormItemLayout, FormLayout, FormHorizontalAlign, FormItemVerticalAlign} from "./types";
 
+export {Field};
 export {useFormContext} from "./hooks/useFormContext";
 
 type InternalFormType = typeof InternalForm;

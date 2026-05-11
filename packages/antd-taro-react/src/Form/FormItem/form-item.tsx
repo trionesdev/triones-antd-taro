@@ -4,12 +4,11 @@ import {FormItemContent} from "./form-item-content";
 import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
 
-import {Field} from "rc-field-form";
 import {
+  Field,
   FormItemLayout,
   FormHorizontalAlign,
   useFormContext,
-  Form
 } from "@trionesdev/antd-mobile-base-react";
 import {useTaro} from "../../hooks";
 

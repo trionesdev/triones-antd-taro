@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import {isEmpty} from 'lodash-es';
-import {Field} from 'rc-field-form';
 import {Meta, Rule} from 'rc-field-form/lib/interface';
 import React, {FC, useState} from 'react';
-import {FormHorizontalAlign} from "@trionesdev/antd-mobile-base-react";
+import {Field, FormHorizontalAlign} from "@trionesdev/antd-mobile-base-react";
 
 type FormItemInputProps = {
   children?: React.ReactElement;

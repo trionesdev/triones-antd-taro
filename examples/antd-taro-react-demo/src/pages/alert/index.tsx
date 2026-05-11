@@ -1,12 +1,9 @@
 import {View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
-import { Alert, Space } from "@trionesdev/antd-taro-react";
-import {useReady} from "@tarojs/taro";
+import {Alert, Space} from "@trionesdev/antd-taro-react";
 
 const AlertBase = () => {
-  useReady( ()=>{
-    console.log('ready')
-  })
+
   return <View>
     <DemoBlock title={`基本使用`}>
       <Alert message={`Success Text`}/>
@@ -32,7 +29,6 @@ const AlertBase = () => {
         <Alert showIcon={true} type={'info'} message={`Info Text`}/>
         <Alert showIcon={true} type={`warning`} message={`Warring Text`}/>
         <Alert showIcon={true} type={`error`} message={`Error Text`}/>
-
       </Space>
     </DemoBlock>
   </View>
