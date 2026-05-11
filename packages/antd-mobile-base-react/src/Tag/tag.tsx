@@ -70,7 +70,6 @@ export const Tag: FC<TagProps> = ({
       ...style,
     }
     : style;
-
   return (
     <div
       className={classNames(

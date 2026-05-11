@@ -33,20 +33,18 @@ export const FormItemContent: FC<FormItemInputProps> = ({
   const clsPrefix = 'triones-antm-form-item';
   return (
     <div className={classNames(className)}>
-      <div>
-        <Field
-          name={name}
-          rules={rules}
-          valuePropName={valuePropName}
-          trigger={'onChange'}
-          onMetaChange={(meta) => {
-            setMeta(meta);
-          }}
-          initialValue={initialValue}
-        >
-          {children}
-        </Field>
-      </div>
+      <Field
+        name={name}
+        rules={rules}
+        valuePropName={valuePropName}
+        trigger={'onChange'}
+        onMetaChange={(meta) => {
+          setMeta(meta);
+        }}
+        initialValue={initialValue}
+      >
+        {children}
+      </Field>
       {!hiddenError && !isEmpty(meta?.errors) && (
         <div className={classNames(`${clsPrefix}-error`)}>
           {errorRender?.(meta?.errors) || meta?.errors.join(',')}
