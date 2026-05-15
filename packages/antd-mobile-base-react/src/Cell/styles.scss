@@ -6,7 +6,16 @@ $cellCls: 'triones-antm-cell';
   display: flex;
   gap: 4Px;
   align-items: center;
-  padding-block: variable.$trionesPaddingXs;
+
+  &-small{
+    padding-block: variable.$trionesPaddingXxs;
+  }
+  &-medium{
+    padding-block: variable.$trionesPaddingXs;
+  }
+  &-large{
+    padding-block: variable.$trionesPaddingSm;
+  }
 
   &-label {
     display: flex;

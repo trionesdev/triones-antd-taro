@@ -16,6 +16,7 @@ export const CellGroup: FC<CellGroupProps> = ({
                                                 labelAlign,
                                                 contentAlign,
                                                 divider,
+                                                size,
                                                 styles
                                               }) => {
   const handleRender = () => {
@@ -64,6 +65,7 @@ export const CellGroup: FC<CellGroupProps> = ({
       contentAlign,
       extra,
       arrow,
+      size,
       styles: {
         cell: styles?.cell,
         label: styles?.label,

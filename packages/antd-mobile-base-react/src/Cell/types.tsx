@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Col} from "../types";
+import {AntSize, Col} from "../types";
 
 export const cls = 'triones-antm-cell';
 
@@ -31,6 +31,7 @@ export type CellProps = {
   labelCol?: Col;
   labelAlign?: align;
   contentAlign?: align;
+  size?:AntSize
   styles?: {
     label?: React.CSSProperties;
     content?: React.CSSProperties;
@@ -55,6 +56,7 @@ export type CellGroupProps = {
   labelAlign?: align;
   contentAlign?: align;
   divider?: ReactNode;
+  size?:AntSize
   styles?: {
     container?: React.CSSProperties;
     title?: React.CSSProperties;

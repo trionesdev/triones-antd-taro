@@ -26,6 +26,7 @@ export const Cell: FC<CellProps> = ({
     labelCol: ctxLabelCol,
     labelAlign: ctxLabelAlign,
     contentAlign: ctxContentAlign,
+    size: ctxSize,
     arrow: ctxArrow,
     extra: ctxExtra, styles: ctxStyles
   } = useContext(CellGroupContext);
@@ -34,6 +35,7 @@ export const Cell: FC<CellProps> = ({
   }, [labelCol, ctxLabelCol])
   const finalLabelAlign = ctxLabelAlign ?? labelAlign ?? 'start'
   const finalContentAlign = ctxContentAlign ?? contentAlign ?? 'end'
+  const finalSize = ctxSize ?? 'medium'
   const finalArrow = ctxArrow ?? arrow ?? false;
 
 
@@ -42,9 +44,12 @@ export const Cell: FC<CellProps> = ({
     mergedStyles.cell = assign(mergedStyles.cell, style)
   }
 
+  const sizePossible = ['small', 'medium', 'large'].includes(finalSize);
 
   return (
-    <div className={classNames(cls, className)} style={{...mergedStyles.cell}} onClick={onClick}>
+    <div className={classNames(cls, {
+      [`${cls}-${finalSize}`]: sizePossible,
+    }, className)} style={{...mergedStyles.cell}} onClick={onClick}>
       {label && (
         <div className={classNames(`${cls}-label`, `${cls}-label-${finalLabelAlign}`)} style={{
           width: labelWidth
