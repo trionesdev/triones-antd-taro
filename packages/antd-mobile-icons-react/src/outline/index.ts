@@ -1,3 +1,6 @@
+export * from "./BoxesOutline";
+export * from "./PackageOutline";
+export * from "./BoxOutline";
 export * from "./ShieldOutline";
 export * from "./PackageSearchOutline";
 export * from "./ClipboardListOutline";
@@ -6,7 +9,6 @@ export * from "./ArrowUpFromLineOutline";
 export * from "./LayoutGridOutline";
 export * from "./ArrowDownToLineOutline";
 export * from "./SubDeptOutline";
-export * from "./BoxOutline";
 export * from "./SwapOutline";
 export * from "./LogoutOutline";
 export * from "./WechatPayOutline";

@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "47583239",
+      "name": "BoxesOutline",
+      "font_class": "BoxesOutline",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "47583238",
+      "name": "PackageOutline",
+      "font_class": "PackageOutline",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "47583237",
+      "name": "BoxOutline",
+      "font_class": "BoxOutline",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
       "icon_id": "47571742",
       "name": "ShieldOutline",
       "font_class": "ShieldOutline",
@@ -60,13 +81,6 @@
       "font_class": "SubDeptOutline",
       "unicode": "e610",
       "unicode_decimal": 58896
-    },
-    {
-      "icon_id": "47227043",
-      "name": "BoxOutline",
-      "font_class": "BoxOutline",
-      "unicode": "e609",
-      "unicode_decimal": 58889
     },
     {
       "icon_id": "47226900",
