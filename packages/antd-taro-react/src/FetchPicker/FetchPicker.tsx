@@ -166,7 +166,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
       }
     } else {
       if (labelInValue) {
-        return options.find((option) => get(option, valueFieldName) === get(value, "value"))
+        return options.find((option) => isEqual(get(option, valueFieldName), get(value, "value")))
       } else {
         return options.find((option) => get(option, valueFieldName) === value)
       }
@@ -195,10 +195,11 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     }
     setInternalValue(newValue)
     if (!multiple) {
-      onOk?.(newValue, handleGetOptions(newValue))
+      const option = handleGetOptions(newValue)
+      onOk?.(newValue, option)
       onClose?.()
     }
-  }, [internalValue, labelFieldName, labelInValue, multiple, onClose, onOk, valueFieldName])
+  }, [internalValue, labelFieldName, labelInValue, multiple, onClose, onOk, valueFieldName,options])
 
   const handleSelected = useCallback((item: any) => {
     if (!internalValue || isEmpty(internalValue)) {
