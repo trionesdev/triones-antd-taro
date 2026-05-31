@@ -89,15 +89,11 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.17",
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
     "ahooks": "^3.9.7",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.20",
     "rc-field-form": "^2.7.1"
-  },
-  "optionalDependencies": {
-    "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.16"
   },
   "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
 }

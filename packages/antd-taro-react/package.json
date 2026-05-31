@@ -56,15 +56,11 @@
   },
   "dependencies": {
     "@tarojs/components": "^4.1.8",
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.17",
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.19",
     "rc-field-form": "^2.7.0",
     "react": "^18.0.0"
-  },
-  "optionalDependencies": {
-    "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.16"
   },
   "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
 }

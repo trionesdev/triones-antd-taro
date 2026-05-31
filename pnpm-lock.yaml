@@ -350,6 +350,9 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
     devDependencies:
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -371,10 +374,6 @@ importers:
       stylelint:
         specifier: ^16.12.0
         version: 16.23.1(typescript@5.4.2)
-    optionalDependencies:
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.16
-        version: 0.0.2-beta.16(classnames@2.5.1)(lodash-es@4.17.21)(react@18.3.1)
 
   packages/antd-mobile-icons-react:
     dependencies:
@@ -400,6 +399,9 @@ importers:
 
   packages/antd-mobile-react:
     dependencies:
+      '@trionesdev/antd-mobile-base-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-base-react
       ahooks:
         specifier: ^3.9.7
         version: 3.9.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -419,6 +421,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.6.0
         version: 19.8.1
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -485,19 +490,15 @@ importers:
       stylelint:
         specifier: ^16.12.0
         version: 16.23.1(typescript@5.9.2)
-    optionalDependencies:
-      '@trionesdev/antd-mobile-base-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-base-react
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.16
-        version: 0.0.2-beta.16(classnames@2.5.1)(lodash-es@4.17.23)(react@18.3.1)
 
   packages/antd-taro-react:
     dependencies:
       '@tarojs/components':
         specifier: ^4.1.8
         version: 4.1.8(@tarojs/helper@4.1.8(@swc/helpers@0.5.15))(@types/react@18.3.24)(html-webpack-plugin@5.6.4(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(postcss@8.4.31)(rollup@3.29.5)(webpack-chain@6.5.1)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15)))
+      '@trionesdev/antd-mobile-base-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-base-react
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -541,6 +542,9 @@ importers:
       '@tarojs/taro':
         specifier: ^4.1.8
         version: 4.1.8(@tarojs/components@4.1.8(@tarojs/helper@4.1.8(@swc/helpers@0.5.15))(@types/react@18.3.24)(html-webpack-plugin@5.6.4(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(postcss@8.4.31)(rollup@3.29.5)(webpack-chain@6.5.1)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(@tarojs/helper@4.1.8(@swc/helpers@0.5.15))(@tarojs/shared@4.1.8)(@types/react@18.3.24)(html-webpack-plugin@5.6.4(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(postcss@8.4.31)(rollup@3.29.5)(webpack-chain@6.5.1)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15))))(webpack@5.94.0(@swc/core@1.9.2(@swc/helpers@0.5.15)))
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -562,13 +566,6 @@ importers:
       lodash-es:
         specifier: ^4.17.23
         version: 4.17.23
-    optionalDependencies:
-      '@trionesdev/antd-mobile-base-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-base-react
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: 0.0.2-beta.16
-        version: 0.0.2-beta.16(classnames@2.5.1)(lodash-es@4.17.23)(react@18.3.1)
 
 packages:
 
@@ -3600,13 +3597,6 @@ packages:
         optional: true
       stylus:
         optional: true
-
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.16':
-    resolution: {integrity: sha512-tJX3JxKBmqTmOg5h5jLGa0ZZl4Mpjwl2YWYb/kzfBOtU4BboVRDqcEII2bn/YOANN0nWypf6elWoGc6VPPhsnQ==}
-    peerDependencies:
-      classnames: ^2.5.1
-      lodash-es: ^4.17.21
-      react: '>=16.9.0'
 
   '@trionesdev/auth-react@0.0.1-beta.9':
     resolution: {integrity: sha512-BPpJPTbIT49ZqwVjAT9MqMRp16pSzhLi0TZOAFZ7TtJLUKsW+17OemmRydSxI3A2Qc7ZG3xk0G1stUXbDe/RIg==}
@@ -15769,20 +15759,6 @@ snapshots:
       - uglify-js
       - utf-8-validate
       - webpack-cli
-
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.16(classnames@2.5.1)(lodash-es@4.17.21)(react@18.3.1)':
-    dependencies:
-      classnames: 2.5.1
-      lodash-es: 4.17.21
-      react: 18.3.1
-    optional: true
-
-  '@trionesdev/antd-mobile-icons-react@0.0.2-beta.16(classnames@2.5.1)(lodash-es@4.17.23)(react@18.3.1)':
-    dependencies:
-      classnames: 2.5.1
-      lodash-es: 4.17.23
-      react: 18.3.1
-    optional: true
 
   '@trionesdev/auth-react@0.0.1-beta.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
