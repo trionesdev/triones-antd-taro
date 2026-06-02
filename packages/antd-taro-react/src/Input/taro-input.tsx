@@ -47,6 +47,7 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'mi
                        value={innerValue}
                        placeholder={rest.placeholder}
                        password={rest.password}
+                       disabled={rest.disabled}
                        onInput={(e: any) => {
                          setInnerValue(e.target.value);
                          onChange?.(e.target.value);
