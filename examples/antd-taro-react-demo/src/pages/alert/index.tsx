@@ -1,8 +1,13 @@
 import {View} from "@tarojs/components";
 import {DemoBlock} from "../../components";
 import {Alert, Space} from "@trionesdev/antd-taro-react";
+import {useDidShow} from "@tarojs/taro";
 
 const AlertBase = () => {
+
+  useDidShow(()=>{
+    console.log("show")
+  })
 
   return <View>
     <DemoBlock title={`基本使用`}>
