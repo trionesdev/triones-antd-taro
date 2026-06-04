@@ -22,7 +22,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "lerna": "^8.2.2"
+    "lerna": "^9.0.7"
   },
   "resolutions": {
     "sass": "1.96.0"
