@@ -23,16 +23,16 @@ function clampValue(n: number, min?: number, max?: number): number {
 }
 
 export const Stepper: FC<StepperProps> = ({
-                                                    value,
-                                                    onChange,
-                                                    step,
-                                                    min,
-                                                    max,
-                                                    disabled = false,
-                                                    block = false,
-                                                    className,
-                                                    style
-                                                  }) => {
+                                            value,
+                                            onChange,
+                                            step,
+                                            min,
+                                            max,
+                                            disabled = false,
+                                            block = false,
+                                            className,
+                                            style
+                                          }) => {
   const [internalValue, setInternalValue] = useState<number>(value ?? 0);
   const stepSize = step ?? 1;
 
@@ -69,8 +69,9 @@ export const Stepper: FC<StepperProps> = ({
       }}>
       <MinusOutline/>
     </div>
-    <div className={`${trionesStepperCls}-input`}>
+    <div className={`${trionesStepperCls}-input-wrapper`}>
       <input
+        className={`${trionesStepperCls}-input`}
         type="number"
         disabled={disabled}
         min={min}

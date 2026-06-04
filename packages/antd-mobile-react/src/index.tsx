@@ -1,4 +1,4 @@
-export {default as ActionSheet} from "./ActionSheet"
+export {default as ActionSheet} from './ActionSheet';
 export type {ActionSheetProps} from './ActionSheet';
 
 export {default as Alert} from './Alert';
@@ -30,7 +30,10 @@ export {default as CalendarPicker} from './CalendarPicker';
 export type {CalendarPickerProps} from './CalendarPicker';
 
 export {default as CalendarPickerCell} from './CalendarPickerCell';
-export type {CalendarPickerCellProps, CalendarRangePickerCellProps} from './CalendarPickerCell';
+export type {
+  CalendarPickerCellProps,
+  CalendarRangePickerCellProps,
+} from './CalendarPickerCell';
 
 export {default as Card} from './Card';
 export type {CardProps} from './Card';
@@ -45,7 +48,7 @@ export {default as CascaderView} from './CascaderView';
 export type {CascaderViewProps} from './CascaderView';
 
 export {default as Cell} from './Cell';
-export type {CellProps, CellGroupProps} from './Cell';
+export type {CellGroupProps, CellProps} from './Cell';
 
 export {default as Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
@@ -53,8 +56,8 @@ export type {CheckboxProps} from './Checkbox';
 export {default as ConfigProvider} from './ConfigProvider';
 export type {ConfigProviderProps} from './ConfigProvider';
 
-export {default as Descriptions} from "./Descriptions"
-export type {DescriptionsProps} from "./Descriptions"
+export {default as Descriptions} from './Descriptions';
+export type {DescriptionsProps} from './Descriptions';
 
 export {default as Divider} from './Divider';
 export type {DividerProps} from './Divider';
@@ -66,35 +69,39 @@ export {default as Empty} from './Empty';
 export type {EmptyProps} from './Empty';
 
 export {default as ErrorBlock} from './ErrorBlock';
-export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
+export type {ErrorBlockProps, ErrorBlockStatus} from './ErrorBlock';
 
 export {default as FloatButton} from './FloatButton';
-export type {FloatButtonProps, FloatButtonGroupProps} from './FloatButton';
+export type {FloatButtonGroupProps, FloatButtonProps} from './FloatButton';
 
 export {default as Footer} from './Footer';
 export type {FooterProps} from './Footer';
 
 export {default as Form} from './Form';
-export type {FormItemProps, FormProps} from './Form';
+export type {FormItemProps, FormProps,FormInstance} from './Form';
 
 export {default as Grid} from './Grid';
-export type {GridProps, GridItemProps} from './Grid';
+export type {GridItemProps, GridProps} from './Grid';
 
 export {default as Image} from './Image';
-export type {ImageProps} from "./Image"
+export type {ImageProps} from './Image';
 
 export {default as ImagesPreview} from './ImagesPreview';
 export type {ImagePreviewProps} from './ImagesPreview';
 
 export {default as ImagesWall} from './ImagesWall';
-export type {ImagesWallProps, ImagesWallItemProps} from './ImagesWall';
+export type {ImagesWallItemProps, ImagesWallProps} from './ImagesWall';
 
 export {default as Input} from './Input';
-export type {InputOPTProps, InputPasswordProps, InputProps, InputTextareaProps} from './Input';
+export type {
+  InputOPTProps,
+  InputPasswordProps,
+  InputProps,
+  InputTextareaProps,
+} from './Input';
 
 export {default as InputNumber} from './InputNumber';
 export type {InputNumberProps} from './InputNumber';
-
 
 export {default as NavBar} from './NavBar';
 export type {NavBarProps} from './NavBar';
@@ -112,7 +119,7 @@ export {default as Picker} from './Picker';
 export type {PickerProps} from './Picker';
 
 export {default as PickerView} from './PickerView';
-export type {PickerViewProps, PickerColumnOption} from './PickerView';
+export type {PickerColumnOption, PickerViewProps} from './PickerView';
 
 export {default as Popup} from './Popup';
 export type {PopupProps} from './Popup';
@@ -144,22 +151,35 @@ export type {SegmentedProps} from './Segmented';
 export {default as SideBar} from './SideBar';
 export type {SideBarProps} from './SideBar';
 
+export {default as Skeleton} from './Skeleton';
+export type {
+  SkeletonAvatarProps,
+  SkeletonAvatarShape,
+  SkeletonAvatarSize,
+  SkeletonBlockType,
+  SkeletonButtonProps,
+  SkeletonButtonShape,
+  SkeletonInputProps,
+  SkeletonParagraphProps,
+  SkeletonProps,
+  SkeletonTitleProps,
+} from './Skeleton';
+
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
-export {default as SpinLoading} from './SpinLoading';
-export type {SpinLoadingProps} from './SpinLoading';
+
+export {SpinLoading, DotLoading} from './Loading';
+export type {SpinLoadingProps, DotLoadingProps} from './Loading';
 
 export {default as Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';
 
-
-
-export {default as Swiper} from "./Swiper"
+export {default as Swiper} from './Swiper';
 export type {SwiperProps} from './Swiper';
 
-export {default as Steps} from "./Steps";
-export type {StepsProps, StepsItemProps} from './Steps';
+export {default as Steps} from './Steps';
+export type {StepsItemProps, StepsProps} from './Steps';
 
 export {default as Switch} from './Switch';
 export type {SwitchProps} from './Switch';
@@ -172,7 +192,6 @@ export type {TagProps} from './Tag';
 
 export {default as Toast} from './Toast';
 export type {ToastProps} from './Toast';
-
 
 export {default as Tabs} from './Tabs';
 export type {TabsProps} from './Tabs';

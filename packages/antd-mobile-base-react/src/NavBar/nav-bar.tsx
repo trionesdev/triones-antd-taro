@@ -4,7 +4,7 @@ import React from 'react'
 import { withNativeProps } from '../utils/native-props'
 import ConfigProvider from '../ConfigProvider'
 import { mergeProp, mergeProps } from '../utils/with-default-props'
-import { LeftOutline } from '../../../antd-mobile-icons-react'
+import { LeftOutline } from '@trionesdev/antd-mobile-icons-react'
 
 import './style.scss'
 

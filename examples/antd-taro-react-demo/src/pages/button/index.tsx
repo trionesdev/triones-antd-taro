@@ -2,6 +2,7 @@ import {View} from "@tarojs/components";
 import {Button} from "@trionesdev/antd-taro-react";
 import {DemoBlock} from "../../components";
 import Taro from "@tarojs/taro";
+import {FingerDownOutline} from "@trionesdev/antd-mobile-icons-react";
 
 const ButtonBase = () => {
   return <View style={{padding: '8px'}}>
@@ -62,6 +63,9 @@ const ButtonBase = () => {
         <Button type={`text`} danger>文本按钮</Button>
       </View>
     </DemoBlock>
+    <DemoBlock title='带图标'>
+      <Button icon={<FingerDownOutline/>}>点击</Button>
+    </DemoBlock>
     <DemoBlock title='加载中'>
       <Button onClick={() => {
         Taro.showModal({
@@ -75,7 +79,7 @@ const ButtonBase = () => {
             }
           }
         })
-      }} >点击</Button>
+      }}>点击</Button>
     </DemoBlock>
   </View>
 }

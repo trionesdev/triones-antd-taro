@@ -38,6 +38,7 @@ $trionesPopupCls: 'triones-antm-popup';
     align-items: center;
     padding-block: variable.$trionesPaddingContentVertical;
     padding-inline: variable.$trionesPaddingContentHorizontal;
+    border-bottom: 1px solid variable.$trionesBorderColor;
     &-title{
       flex: 1;
       text-align: center;
@@ -46,6 +47,7 @@ $trionesPopupCls: 'triones-antm-popup';
   }
 
   &-body{
+    min-height: 0;
     flex: 1;
   }
 

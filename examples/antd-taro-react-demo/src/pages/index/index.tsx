@@ -301,6 +301,16 @@ class Index extends Component<PropsWithChildren> {
             block={true}
             onClick={() => {
               Taro.navigateTo({
+                url: "/pages/fetch-picker/index",
+              });
+            }}
+          >
+            FetchPicker 远程选择器
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
                 url: "/pages/footer/index",
               });
             }}
@@ -469,6 +479,16 @@ class Index extends Component<PropsWithChildren> {
             }}
           >
             SpinLoading 加载中
+          </Button>
+          <Button
+            block={true}
+            onClick={() => {
+              Taro.navigateTo({
+                url: "/pages/stepper/index",
+              });
+            }}
+          >
+            Stepper 步进器
           </Button>
           <Button
             block={true}

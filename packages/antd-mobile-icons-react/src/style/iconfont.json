@@ -6,11 +6,81 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "47227043",
+      "icon_id": "47583239",
+      "name": "BoxesOutline",
+      "font_class": "BoxesOutline",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "47583238",
+      "name": "PackageOutline",
+      "font_class": "PackageOutline",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "47583237",
       "name": "BoxOutline",
       "font_class": "BoxOutline",
-      "unicode": "e609",
-      "unicode_decimal": 58889
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "47571742",
+      "name": "ShieldOutline",
+      "font_class": "ShieldOutline",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "47571644",
+      "name": "PackageSearchOutline",
+      "font_class": "PackageSearchOutline",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "47571643",
+      "name": "ClipboardListOutline",
+      "font_class": "ClipboardListOutline",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "47571642",
+      "name": "HistoryOutline",
+      "font_class": "HistoryOutline",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "47571641",
+      "name": "ArrowUpFromLineOutline",
+      "font_class": "ArrowUpFromLineOutline",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "47571639",
+      "name": "LayoutGridOutline",
+      "font_class": "LayoutGridOutline",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "47571640",
+      "name": "ArrowDownToLineOutline",
+      "font_class": "ArrowDownToLineOutline",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "47467269",
+      "name": "SubDeptOutline",
+      "font_class": "SubDeptOutline",
+      "unicode": "e610",
+      "unicode_decimal": 58896
     },
     {
       "icon_id": "47226900",

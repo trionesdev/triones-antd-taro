@@ -1,13 +1,15 @@
 import React from "react";
-import {Col} from "../types";
+import {AntSize, Col} from "../types";
 import {align} from "./types";
 
 type CellGroupContextType = {
 
   labelCol?: Col,
   labelAlign?: align,
-  wrapperAlign?: align,
+  contentAlign?: align,
+  arrow?: boolean,
   extra?: React.ReactNode,
+  size?:AntSize
   styles?: {
     cell?: React.CSSProperties,
     label?: React.CSSProperties,

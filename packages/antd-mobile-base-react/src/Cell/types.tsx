@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react';
-import {Col} from "../types";
+import {AntSize, Col} from "../types";
 
 export const cls = 'triones-antm-cell';
 
-export type align = 'left' | 'center' | 'right';
+export type align = 'start' | 'center' | 'end';
 
 export type CellProps = {
   className?: string;
@@ -30,7 +30,8 @@ export type CellProps = {
   onClick?: () => void;
   labelCol?: Col;
   labelAlign?: align;
-  wrapperAlign?: align;
+  contentAlign?: align;
+  size?:AntSize
   styles?: {
     label?: React.CSSProperties;
     content?: React.CSSProperties;
@@ -53,8 +54,9 @@ export type CellGroupProps = {
   arrow?: boolean;
   labelCol?: Col;
   labelAlign?: align;
-  wrapperAlign?: align;
+  contentAlign?: align;
   divider?: ReactNode;
+  size?:AntSize
   styles?: {
     container?: React.CSSProperties;
     title?: React.CSSProperties;

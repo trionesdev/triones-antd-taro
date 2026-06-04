@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Base64 from 'crypto-js/enc-base64';
 import Utf8 from 'crypto-js/enc-utf8';
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import './spin-loading.scss';
 
 const spinLoadingCls = 'triones-antm-spin-loading';
@@ -23,9 +23,10 @@ export function createSvgStr(props: { stroke: string }) {
 }
 
 export const SpinLoading: FC<SpinLoadingProps> = ({
-  size = 'middle',
-  color = 'default',
-}) => {
+                                                    size = 'middle',
+                                                    color: colorProp = 'default',
+                                                  }) => {
+  const colors = ['default', 'primary', 'white'];
   const computedSize = React.useMemo(() => {
     let resSize = null;
     if (size === 'small') {
@@ -44,31 +45,36 @@ export const SpinLoading: FC<SpinLoadingProps> = ({
     }
   }, [size]);
 
-  const computedColor = React.useMemo(() => {
-    if (color === 'default') {
-      return '#9D9D9D';
-    } else if (color === 'primary') {
-      return '#1677ff';
-    } else if (color === 'white') {
-      return '#ffffff';
-    } else {
-      return color;
-    }
-  }, [color]);
+  // const computedColor = React.useMemo(() => {
+  //   if (colorProp === 'default') {
+  //     return '#9D9D9D';
+  //   } else if (colorProp === 'primary') {
+  //     return '#1677ff';
+  //   } else if (colorProp === 'white') {
+  //     return '#ffffff';
+  //   } else {
+  //     return colorProp;
+  //   }
+  // }, [colorProp]);
 
   const completedStyle: any = React.useMemo(() => {
-    const maskImageSvg = createSvgStr({ stroke: computedColor });
-
-    return {
+    const maskImageSvg = createSvgStr({stroke: 'currentColor'});
+    const style = {
       '--size': computedSize,
-      '--color': computedColor,
+      // '--color': computedColor,
       '--maskImage': `url(data:image/svg+xml;base64,${Base64.stringify(Utf8.parse(maskImageSvg))})`,
-    };
-  }, [computedSize, computedColor]);
+    } as React.CSSProperties;
+    if (!colors.includes(colorProp)) {
+      style.color = colorProp;
+    }
+    return style;
+  }, [computedSize, colorProp]);
 
   return (
-    <div className={classNames(spinLoadingCls)} style={completedStyle}>
-      <i className={classNames(`${spinLoadingCls}-loading`)} />
+    <div className={classNames(spinLoadingCls, {
+      [`${spinLoadingCls}-${colorProp}`]: colors.includes(colorProp),
+    })} style={completedStyle}>
+      <i className={classNames(`${spinLoadingCls}-spin`)}/>
     </div>
   );
 };

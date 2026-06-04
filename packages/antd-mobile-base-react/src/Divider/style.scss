@@ -47,7 +47,7 @@ $dividerCls: 'triones-antm-divider';
   &-hairline {
     &::before,
     &::after {
-      transform: scaleY(0.5);
+      // transform: scaleY(0.5);
     }
   }
 
@@ -55,7 +55,7 @@ $dividerCls: 'triones-antm-divider';
     display: inline-block;
     width: auto;
     height: 12PX;
-    border-left: 1PX solid #eeeeee;
+    border-left: 1PX solid variable.$trionesBorderColor;
     margin: 0 8PX;
     vertical-align: middle;
   }

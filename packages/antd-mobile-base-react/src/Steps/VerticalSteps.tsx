@@ -60,8 +60,8 @@ const VerticalStepIem: FC<StepsItemProps & { index: number }> = ({index, icon, t
   </div>
 }
 
-export const VerticalSteps: FC<VerticalStepsProps> = ({current, items = []}) => {
-  return <div className={classNames(clsPrefixSteps, `${clsPrefixSteps}-vertical`)}>
+export const VerticalSteps: FC<VerticalStepsProps> = ({className, style, current, items = []}) => {
+  return <div className={classNames(clsPrefixSteps, `${clsPrefixSteps}-vertical`, className)} style={style}>
     {
       items.map((item, index) => {
         return <VerticalStepIem key={index} index={index} icon={item.icon} title={item.title}

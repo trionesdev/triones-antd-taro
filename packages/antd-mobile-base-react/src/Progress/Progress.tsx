@@ -43,7 +43,7 @@ export type ProgressProps = {
 export const Progress: FC<ProgressProps> = ({
                                               format,
                                               type = 'line', percent = 0,
-                                              size = 'middle',
+                                              size = 'medium',
                                               showInfo = true,
                                               railColor = '#E5E5E5',
                                               strokeColor = '#1777FF',

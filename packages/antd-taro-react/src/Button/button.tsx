@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import React, {FC, PropsWithChildren} from 'react';
 import './style.scss';
 import {CommonEventFunction} from '@tarojs/components/types/common';
-import {SizeType} from "@trionesdev/antd-mobile-base-react";
+import {AntSize} from "@trionesdev/antd-mobile-base-react";
 
 export type ButtonProps =   {
   /**
@@ -51,7 +51,7 @@ export type ButtonProps =   {
    * @description 按钮样式
    */
   variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link';
-  size?: SizeType;
+  size?: AntSize;
   /**
    * @description 点击事件
    */
@@ -74,7 +74,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
                                                              iconPosition = 'start',
                                                              loading,
                                                              variant,
-                                                             size = 'middle',
+                                                             size = 'medium',
                                                              onClick,
                                                              openType,
                                                              onGetPhoneNumber,
@@ -112,9 +112,9 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
         [`${clsPrefix}-type-${type}`]: type,
         [`${clsPrefix}-color-${finalColor}`]: finalColor,
         [`${clsPrefix}-variant-${finalVariant}`]: finalVariant,
+        [`${clsPrefix}-disabled`]: disabled
       })}
       style={style}
-      disabled={disabled}
       openType={openType}
       onGetPhoneNumber={onGetPhoneNumber}
       onClick={onClick}

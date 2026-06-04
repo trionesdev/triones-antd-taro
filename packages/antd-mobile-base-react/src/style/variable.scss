@@ -139,8 +139,8 @@ $trionesPaddingContentVerticalSm: var(--triones-padding-content-vertical-sm,8Px)
 
 
 $trionesInputPaddingBlock: var(--triones-input-padding-block,4Px) !default;
-$trionesInputPaddingSm: var(--triones-input-padding-sm,0Px) !default;
-$trionesInputPaddingLg: var(--triones-input-padding-lg,7Px) !default;
+$trionesInputPaddingBlockSm: var(--triones-input-padding-block-sm,0Px) !default;
+$trionesInputPaddingBlockLg: var(--triones-input-padding-block-lg,7Px) !default;
 $trionesInputPaddingInline: var(--triones-input-padding-inline,11Px) !default;
 $trionesInputPaddingInlineSm: var(--triones-input-padding-inline-sm,7Px) !default;
 $trionesInputPaddingInlineLg: var(--triones-input-padding-inline-lg,11Px) !default;
@@ -166,6 +166,13 @@ $trionesColorIcon: var(--triones-color-icon,rgba(0, 0, 0, 0.45)) !default;
 $trionesColorIconHover: var(--triones-color-icon-hover,rgba(0, 0, 0, 0.88)) !default;
 
 $trionesFontSizeIcon: var(--triones-font-size-icon,12Px) !default;
+
+$trionesControlHeightXs: var(--control-height-xs,16Px) !default;
+$trionesControlHeightSm: var(--control-height-sm,22Px) !default;
+$trionesControlHeight: var(--control-height,32Px) !default;
+$trionesControlHeightLg: var(--control-height-lg,40Px) !default;
+
+
 
 /**
  * @description 安全区倍数

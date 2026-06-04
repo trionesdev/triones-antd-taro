@@ -11,9 +11,13 @@ $class-prefix-radio: 'triones-antm-radio';
   gap: 8Px;
 
   .#{$class-prefix-radio} {
+    flex-shrink: 0;
     &-fake {
       width: 20PX;
       height: 20PX;
+      line-height: 0;
+      box-sizing: border-box;
+      overflow: hidden;
 
       .triones-antm-icon {
         //position: absolute;
@@ -31,8 +35,11 @@ $class-prefix-radio: 'triones-antm-radio';
         border-radius: 50vh;
         box-sizing: border-box;
         overflow: hidden;
-        .triones-antm-icon{
+
+        .triones-antm-icon {
           font-size: 14Px;
+          line-height: 1;
+          display: block;
         }
       }
 
@@ -50,7 +57,6 @@ $class-prefix-radio: 'triones-antm-radio';
     }
 
 
-
     &-label {
       flex: 1 auto;
     }
@@ -65,6 +71,7 @@ $class-prefix-radio: 'triones-antm-radio';
         background-color: $checkboxDisabledColor;
       }
     }
+
     &-block {
       width: 100%;
     }
@@ -74,12 +81,18 @@ $class-prefix-radio: 'triones-antm-radio';
 
 
 .#{$class-prefix-radio}-group {
-  display: flex;
+
   gap: 8Px;
-  &-horizontal{
+
+  &-horizontal {
+    display: inline-flex;
     flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
   }
-  &-vertical{
+
+  &-vertical {
+    display: flex;
     flex-direction: column;
   }
 }

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {FC} from "react";
 import dayjs from "dayjs";
-import Cell, {CellProps} from "../Cell";
+import FormCell, {FormCellProps} from '../FormCell';
 import CalendarPicker from "../CalendarPicker";
 
-export type  CalendarPickerCellProps = Omit<CellProps, 'value'> & {
+export type  CalendarPickerCellProps = Omit<FormCellProps, 'value'> & {
   month?: dayjs.Dayjs | Date;
   title?: React.ReactNode
   value?: dayjs.Dayjs | Date;
@@ -40,8 +40,8 @@ export const CalendarPickerCell: FC<CalendarPickerCellProps> = ({
                       onChange?.(date)
                     }}
     />
-    <Cell onClick={() => {
+    <FormCell {...rest} onClick={() => {
       setInnerOpen(true)
-    }} {...rest}>{handleValueRender()}</Cell>
+    }}>{handleValueRender()}</FormCell>
   </>
 }

@@ -30,6 +30,7 @@ export default defineAppConfig({
     "pages/badge/index",
     "pages/error-block/index",
     "pages/float-button/index",
+    "pages/fetch-picker/index",
     "pages/footer/index",
     "pages/notice-bar/index",
     "pages/overlay/index",
@@ -50,6 +51,7 @@ export default defineAppConfig({
 
     "pages/space/index",
     "pages/spin-loading/index",
+    "pages/stepper/index",
     "pages/steps/index",
     "pages/swiper/index",
     "pages/side-bar/index",

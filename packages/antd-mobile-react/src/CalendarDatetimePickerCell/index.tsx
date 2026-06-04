@@ -1,4 +1,4 @@
-import {CalendarDatetimePickerCell,CalendarDatetimePickerCellProps} from "./CalendarDatetimePickerCell"
+import CalendarDatetimePickerCell, {CalendarDatetimePickerCellProps} from "./CalendarDatetimePickerCell"
 
 export type {CalendarDatetimePickerCellProps}
 

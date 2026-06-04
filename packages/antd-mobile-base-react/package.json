@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-base-react",
-  "version": "0.0.2-beta.16",
+  "version": "0.0.2-beta.18",
   "description": "antd mobile base react",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
     "@types/node": "^18.19.123",
     "@types/react": "^18.0.0",
     "classnames": "^2.5.1",
-    "father": "^4.6.9",
+    "father": "^4.6.19",
     "react": "^18.0.0",
     "stylelint": "^16.12.0"
   },
@@ -46,9 +46,6 @@
     "rc-util": "^5.44.3",
     "react": "^18.0.0",
     "runes2": "^1.1.4"
-  },
-  "optionalDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.16"
   },
   "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
 }

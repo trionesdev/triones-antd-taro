@@ -42,8 +42,12 @@ export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 export {default as Footer} from './Footer';
 export type {FooterProps, ChipItem, LinkItem} from './Footer';
 
-export {default as Form, useFormContext} from './Form';
-export type { FormProps, FormLayout, FormLayoutAlign,FormItemLayout} from './Form';
+export {default as Form, useFormContext, Field} from './Form';
+export type {FormInstance} from "./Form/interface"
+export type {FormProps, FormLayout, FormHorizontalAlign, FormItemVerticalAlign, FormItemLayout} from './Form';
+
+export {default as FormCell} from "./FormCell"
+export type {FormCellProps} from "./FormCell"
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
@@ -81,14 +85,28 @@ export type {SafeAreaProps} from './SafeArea';
 export {default as Scaffold} from './Scaffold';
 export type {ScaffoldProps} from './Scaffold';
 
-export { Segmented} from './Segmented';
+export {Segmented} from './Segmented';
 export type {SegmentedProps} from './Segmented';
+
+export {default as Skeleton} from './Skeleton';
+export type {
+  SkeletonProps,
+  SkeletonAvatarProps,
+  SkeletonTitleProps,
+  SkeletonParagraphProps,
+  SkeletonInputProps,
+  SkeletonButtonProps,
+  SkeletonBlockType,
+  SkeletonAvatarShape,
+  SkeletonAvatarSize,
+  SkeletonButtonShape,
+} from './Skeleton';
 
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
-export {default as SpinLoading} from './SpinLoading';
-export type {SpinLoadingProps} from './SpinLoading';
+export {DotLoading, SpinLoading} from './Loading';
+export type {DotLoadingProps, SpinLoadingProps} from './Loading';
 
 export {default as Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';

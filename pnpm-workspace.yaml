@@ -1,12 +1,14 @@
 packages:
   - packages/*
   - examples/*
-ignoredBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - '@tarojs/binding'
-  - '@tarojs/cli'
-  - core-js
-  - core-js-pure
-  - esbuild
-  - nx
+
+# pnpm v11：依赖生命周期脚本需在 allowBuilds 中显式声明（strictDepBuilds 默认为 true）
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  '@tarojs/binding': true
+  '@tarojs/cli': true
+  core-js: true
+  core-js-pure: true
+  esbuild: true
+  nx: true

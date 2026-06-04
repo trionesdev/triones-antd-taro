@@ -107,15 +107,27 @@ export const Space: FC<SpaceProps> = ({
       onClick={onClick}
     >
       {(() => {
-        const items: any[] = [];
-        React.Children.map(children, (child, index) => {
-          if (child !== null && child !== undefined) {
-            items.push(<div key={`space-item-${index}`} className={`${classPrefix}-item`}>{child}</div>)
-            if (separator && index < React.Children.count(children) - 1) {
-              items.push(separator);
-            }
+        const validChildren = React.Children.toArray(children).filter(
+          child => child !== null && child !== undefined
+        );
+        const items: ReactNode[] = [];
+
+        validChildren.forEach((child, index) => {
+          items.push(
+            <div key={`space-item-${index}`} className={`${classPrefix}-item`}>
+              {child}
+            </div>
+          );
+
+          if (separator && index < validChildren.length - 1) {
+            items.push(
+              <React.Fragment key={`space-separator-${index}`}>
+                {separator}
+              </React.Fragment>
+            );
           }
-        })
+        });
+
         return items;
       })()}
     </div>

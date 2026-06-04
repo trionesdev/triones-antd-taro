@@ -18,8 +18,8 @@ const TagBase = () => {
         <Tag fill="outline" color="default">
           Default
         </Tag>
-        <Tag fill="outline" color="primary">
-          Primary
+        <Tag fill="outline" color="processing">
+          Processing
         </Tag>
         <Tag fill="outline" color="success" icon={<CheckOutline/>}>
           Success
@@ -27,18 +27,18 @@ const TagBase = () => {
         <Tag fill="outline" color="warning">
           Warning
         </Tag>
-        <Tag fill="outline" color="danger">
-          Danger
+        <Tag fill="outline" color="error">
+          Error
         </Tag>
       </Space>
     </DemoBlock>
     <DemoBlock title="语义标签">
       <Space>
         <Tag color="default">Default</Tag>
-        <Tag color="primary">Primary</Tag>
+        <Tag color="processing">Processing</Tag>
         <Tag color="success">Success</Tag>
         <Tag color="warning">Warning</Tag>
-        <Tag color="danger">Danger</Tag>
+        <Tag color="error">Error</Tag>
       </Space>
     </DemoBlock>
     <DemoBlock title="圆角标签">

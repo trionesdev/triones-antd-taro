@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from "react"
 import CascaderPopup from "../CascaderPicker";
-import Cell, {CellProps} from "../Cell";
+import FormCell, {FormCellProps} from "../FormCell";
 
-export type CascaderPickerCellProps = Omit<CellProps, 'value'> & {
+export type CascaderPickerCellProps = Omit<FormCellProps, 'value'> & {
   onChange?: (value: any[]) => void;
   options?: any[];
   /**
@@ -58,8 +58,8 @@ export const CascaderPickerCell: FC<CascaderPickerCellProps> = ({
                      setOpen(false)
                      onChange?.(value || [])
                    }}/>
-    <Cell onClick={() => {
+    <FormCell  {...rest} onClick={() => {
       setOpen(true)
-    }} {...rest}>{valueText()}</Cell>
+    }}>{valueText()}</FormCell>
   </>
 }

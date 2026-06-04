@@ -3,15 +3,29 @@
 $cellCls: 'triones-antm-cell';
 
 .#{$cellCls} {
-  padding-block: 4Px;
   display: flex;
   gap: 4Px;
   align-items: center;
 
+  &-small{
+    padding-block: variable.$trionesPaddingXxs;
+  }
+  &-medium{
+    padding-block: variable.$trionesPaddingXs;
+  }
+  &-large{
+    padding-block: variable.$trionesPaddingSm;
+  }
 
   &-label {
     display: flex;
     align-items: center;
+    &-start{
+      justify-content: flex-start;
+    }
+    &-end{
+      justify-content: flex-end;
+    }
   }
 
   &-content {
@@ -19,13 +33,27 @@ $cellCls: 'triones-antm-cell';
     display: flex;
     align-items: center;
     min-height: 20Px;
+    &-start{
+      justify-content: flex-start;
+    }
+    &-end{
+      justify-content: flex-end;
+    }
   }
 
   &-extra {
     display: flex;
     align-items: center;
   }
-
+  &-arrow{
+    font-size: variable.$trionesFontSize;
+    color: variable.$trionesColorTextPlaceholder;
+    .triones-antm-icon{
+      &::before{
+        font-size: 12Px;
+      }
+    }
+  }
 
   &-placeholder {
     font-size: variable.$trionesFontSize;
@@ -48,5 +76,6 @@ $cellCls: 'triones-antm-cell';
 
     &-extra {
     }
+
   }
 }

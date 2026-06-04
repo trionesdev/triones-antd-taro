@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, {FC, PropsWithChildren} from 'react';
 import './style.scss';
+import {AntSize} from "@trionesdev/antd-mobile-base-react";
 
 export type ButtonProps = {
   /**
@@ -45,7 +46,7 @@ export type ButtonProps = {
    * @description 按钮样式
    */
   variant?: 'outlined' | 'dashed' | 'solid' | 'filled' | 'text' | 'link';
-  size?: 'small' | 'middle' | 'large';
+  size?: AntSize;
   /**
    * @description 点击事件
    */
@@ -63,7 +64,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
                                           className,
                                           style,
                                           icon,
-                                          iconPosition = 'start',
+                                          iconPosition = 'medium',
                                           loading,
                                           variant,
                                           size = 'middle',

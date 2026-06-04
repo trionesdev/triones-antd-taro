@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-react",
-  "version": "0.0.2-beta.16",
+  "version": "0.0.2-beta.18",
   "description": "antd mobile react ",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -73,10 +73,10 @@
     "@umijs/lint": "^4.0.0",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
-    "dumi": "2.4.21",
+    "dumi": "2.4.23",
     "dumi-theme-mobile": "^2.3.5",
     "eslint": "^8.23.0",
-    "father": "^4.6.9",
+    "father": "^4.6.19",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "lodash-es": "^4.17.23",
@@ -89,15 +89,11 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.16",
-    "ahooks": "^3.8.4",
-    "crypto-js": "^4.2.0",
-    "dayjs": "^1.11.19",
-    "rc-field-form": "^2.7.0"
-  },
-  "optionalDependencies": {
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.16"
+    "ahooks": "^3.9.7",
+    "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.20",
+    "rc-field-form": "^2.7.1"
   },
   "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
 }

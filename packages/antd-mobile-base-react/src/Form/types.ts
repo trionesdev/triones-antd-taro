@@ -9,4 +9,5 @@ export type RequiredMark =
 ) => React.ReactNode);
 export type FormLayout = 'horizontal' | 'inline' | 'vertical';
 export type FormItemLayout = 'horizontal' | 'vertical';
-export type FormLayoutAlign = 'left' | 'right';
+export type FormHorizontalAlign = 'start' | 'end';
+export type FormItemVerticalAlign = 'start' | 'center';

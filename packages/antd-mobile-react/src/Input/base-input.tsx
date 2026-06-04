@@ -5,6 +5,7 @@ import {inputCls} from "./types";
 export type BaseInputProps = {
   className?: string;
   style?: React.CSSProperties;
+
   placeholder?: string;
   type?: 'text' | 'password' | 'textarea';
   disabled?: boolean;

@@ -14,7 +14,7 @@ export type DividerContentPosition = 'left' | 'center' | 'right'
 export type DividerDirection = 'horizontal' | 'vertical'
 
 export interface DividerProps extends BasicComponent {
-  contentPosition: DividerContentPosition
+  contentPosition?: DividerContentPosition
   direction?: DividerDirection
 }
 
@@ -23,11 +23,11 @@ const ComponentDefaults = {
   style: {},
 }
 
-const defaultProps = {
+const defaultProps: Required<Pick<DividerProps, 'contentPosition' | 'direction'>> = {
   ...ComponentDefaults,
   contentPosition: 'center',
   direction: 'horizontal',
-} as DividerProps
+}
 
 const classPrefix = `triones-antm-divider`
 
@@ -36,21 +36,21 @@ export const Divider: FC<Partial<DividerProps> & React.HTMLAttributes<HTMLDivEle
     ...defaultProps,
     ...props,
   }
-  const classes =
-    direction === 'horizontal'
-      ? classNames({
-        [`${classPrefix}`]: true,
-        [`${classPrefix}-center`]: children,
-        [`${classPrefix}-left`]: contentPosition === 'left',
-        [`${classPrefix}-right`]: contentPosition === 'right',
-        [`${classPrefix}-hairline`]: true,
-      })
-      : classNames({
-        [`${classPrefix}`]: true,
-        [`${classPrefix}-vertical`]: direction === 'vertical',
-      })
+
+  const classes = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-vertical`]: direction === 'vertical',
+      [`${classPrefix}-hairline`]: direction === 'horizontal',
+      [`${classPrefix}-center`]: direction === 'horizontal' && !!children && contentPosition === 'center',
+      [`${classPrefix}-left`]: direction === 'horizontal' && contentPosition === 'left',
+      [`${classPrefix}-right`]: direction === 'horizontal' && contentPosition === 'right',
+    },
+    className
+  )
+
   return (
-    <div className={`${classes} ${className || ''}`} style={style} {...rest}>
+    <div className={classes} style={style} role='separator' aria-orientation={direction} {...rest}>
       {children}
     </div>
   )

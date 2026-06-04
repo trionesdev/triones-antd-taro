@@ -7,6 +7,8 @@ export type StepsItemProps = {
 }
 
 export type BaseStepsProps = {
+  className?: string;
+  style?: React.CSSProperties;
   current?: number;
   items?: StepsItemProps[];
 }

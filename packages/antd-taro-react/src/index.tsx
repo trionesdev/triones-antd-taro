@@ -77,12 +77,19 @@ export type {ErrorBlockStatus, ErrorBlockProps} from './ErrorBlock';
 export {default as FloatButton} from './FloatButton';
 export type {FloatButtonProps} from './FloatButton';
 
+export {default as FetchPicker} from './FetchPicker';
+export type {FetchPickerProps} from './FetchPicker';
+
 
 export {default as Footer} from './Footer';
 export type {FooterProps} from './Footer';
 
 export {default as Form} from './Form';
-export type {FormItemProps, FormProps} from './Form';
+export type {FormItemProps, FormProps, FormInstance} from './Form';
+
+export {default as FormCell} from './FormCell';
+export type {FormCellProps} from './FormCell';
+
 
 export {default as Grid} from './Grid';
 export type {GridProps, GridItemProps} from './Grid';
@@ -153,8 +160,8 @@ export type {SideBarProps} from './SideBar';
 export {default as Space} from './Space';
 export type {SpaceProps} from './Space';
 
-export {default as SpinLoading} from './SpinLoading';
-export type {SpinLoadingProps} from './SpinLoading';
+export {SpinLoading, DotLoading} from './Loading/index';
+export type {SpinLoadingProps, DotLoadingProps} from './Loading/index';
 
 export {default as Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';
@@ -188,3 +195,5 @@ export {default as WaterMark} from './WaterMark';
 export type {WaterMarkProps} from './WaterMark';
 
 export * from "./hooks"
+
+export type {LabeledValue} from "@trionesdev/antd-mobile-base-react"

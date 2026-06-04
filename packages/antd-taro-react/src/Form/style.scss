@@ -1,57 +1,49 @@
 @use "../style/variable" as variable;
 
-$cls-prefix-form: 'triones-antm-form';
+
 $cls-prefix-form-item: 'triones-antm-form-item';
 
-.#{$cls-prefix-form} {
-}
 
 .#{$cls-prefix-form-item} {
+  &.h5 {
+    @include variable.h5-line-height;
+  }
+
+  &.wx {
+    @include variable.wx-input-size;
+  }
 
   &-label {
     font-size: variable.$trionesFontSize;
-    padding-block: 4Px;
     color: #6F6F6F;
 
 
     &-wrapper {
-      display: flex;
-      align-items: center;
-
-      &.h5 {
-        @include variable.h5-input-size;
-      }
-
-      &.wx {
-        @include variable.h5-input-size;
-      }
-    }
-
-    &-left {
-    }
-
-    &-right {
-      text-align: right;
+      //display: flex;
+      //align-items: center;
+      height: 100%;
     }
 
     &-required-mark {
       display: inline-block;
-      color: red;
+      color: variable.$trionesColorError;
       width: 8Px;
       margin-left: -8Px;
     }
 
   }
 
-  &-input {
-    padding-block: 4Px;
-    &-right {
-      text-align: right;
+  &-content {
+
+    &-end {
+      text-align: end;
     }
+
     .#{$cls-prefix-form-item} {
       &-error {
         font-size: variable.$trionesFontSizeSm;
-        color: red;
+        color: variable.$trionesColorError;
+        line-height: normal;
       }
     }
   }
@@ -61,19 +53,45 @@ $cls-prefix-form-item: 'triones-antm-form-item';
 
     .#{$cls-prefix-form-item} {
       &-label {
+        padding-block: 12Px;
         flex-shrink: 1;
         min-width: 0;
       }
 
-      &-input {
+      &-content {
+        padding-block: 12Px;
         flex: 1;
         flex-shrink: 1;
         min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+
+        &-end {
+          text-align: end;
+        }
       }
     }
+
+    &.#{$cls-prefix-form-item} {
+      &-start {
+        align-items: flex-start;
+      }
+
+      &-center {
+        //align-items: center;
+      }
+    }
+  }
+
+  &-vertical {
+    .#{$cls-prefix-form-item} {
+      &-label {
+        margin-bottom: 4Px;
+      }
+
+      &-content {
+        padding-block-end: 8Px;
+      }
+    }
+
   }
 
   &-hidden {

@@ -4,14 +4,14 @@ import type {FormRef} from 'rc-field-form/lib/interface';
 import React from 'react';
 import {FormContext} from './context';
 import {FormInstance} from './interface';
-import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
-
+import {FormHorizontalAlign, FormLayout, RequiredMark} from "./types";
+import "./styles.scss"
 
 export interface FormProps<Values = any>
   extends Omit<RcFormProps<Values>, 'form' | 'component'> {
   /**
    * @description 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效)
-   * @default true
+   * @default false
    */
   colon?: boolean;
   /**
@@ -25,29 +25,45 @@ export interface FormProps<Values = any>
    */
   form?: FormInstance<Values>;
   /**
-   * @description 标签
-   * @default horizontal
+   * @description 标签对齐方式
+   * @default left
    */
-  labelAlign?: FormLayoutAlign;
+  labelAlign?: FormHorizontalAlign;
+  /**
+   * @description 标签宽度
+   * @default
+   */
   labelWidth?: number;
-  wrapperAlign?: FormLayoutAlign;
+  /**
+   * @description 表单控件的对齐方式
+   * @default left
+   */
+  contentAlign?: FormHorizontalAlign;
+  /**
+   * @description 是否显示必填标记
+   * @default true
+   */
   requiredMark?: RequiredMark;
   /**
    * @description 是否隐藏错误信息，主要用于自定义异常样式
    * @default false
    */
   hiddenError?: boolean;
+  /**
+   * @description 表单底部内容
+   * @default
+   */
   extra?: React.ReactNode;
 }
 
 const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
   {
     children,
-    colon = true,
+    colon = false,
     layout,
     labelAlign,
     labelWidth,
-    wrapperAlign,
+    contentAlign,
     requiredMark,
     hiddenError = false,
     extra,
@@ -59,9 +75,9 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     () => ({
       colon,
       layout: layout ?? 'horizontal',
-      labelAlign: labelAlign ?? 'left',
+      labelAlign: labelAlign ?? 'start',
       labelWidth,
-      wrapperAlign: wrapperAlign ?? 'left',
+      contentAlign: contentAlign ?? 'start',
       requiredMark: requiredMark ?? true,
       hiddenError,
       extra,
@@ -71,7 +87,7 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
       layout,
       labelAlign,
       labelWidth,
-      wrapperAlign,
+      contentAlign,
       requiredMark,
       hiddenError,
       extra,

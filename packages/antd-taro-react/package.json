@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-taro-react",
-  "version": "0.0.2-beta.16",
+  "version": "0.0.2-beta.18",
   "description": "antd taro react",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,25 +25,25 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@tarojs/components": "^4.1.8",
-    "@tarojs/react": "^4.1.8",
-    "@tarojs/taro": "^4.1.8",
+    "@tarojs/components": "4.2.0",
+    "@tarojs/react": "4.2.0",
+    "@tarojs/taro": "4.2.0",
     "classnames": "^2.5.1",
     "lodash-es": "4.17.23",
     "react": ">=16.9.0"
   },
   "devDependencies": {
-    "@tarojs/components": "^4.1.8",
-    "@tarojs/plugin-framework-react": "^4.1.8",
-    "@tarojs/plugin-platform-alipay": "4.1.8",
-    "@tarojs/plugin-platform-h5": "^4.1.8",
-    "@tarojs/plugin-platform-jd": "^4.1.8",
-    "@tarojs/plugin-platform-qq": "^4.1.8",
-    "@tarojs/plugin-platform-swan": "^4.1.8",
-    "@tarojs/plugin-platform-tt": "^4.1.8",
-    "@tarojs/plugin-platform-weapp": "^4.1.8",
-    "@tarojs/react": "^4.1.8",
-    "@tarojs/taro": "^4.1.8",
+    "@tarojs/components": "4.2.0",
+    "@tarojs/plugin-framework-react": "4.2.0",
+    "@tarojs/plugin-platform-alipay": "4.2.0",
+    "@tarojs/plugin-platform-h5": "4.2.0",
+    "@tarojs/plugin-platform-jd": "4.2.0",
+    "@tarojs/plugin-platform-qq": "4.2.0",
+    "@tarojs/plugin-platform-swan": "4.2.0",
+    "@tarojs/plugin-platform-tt": "4.2.0",
+    "@tarojs/plugin-platform-weapp": "4.2.0",
+    "@tarojs/react": "4.2.0",
+    "@tarojs/taro": "4.2.0",
     "@trionesdev/antd-mobile-base-react": "workspace:*",
     "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
@@ -51,20 +51,16 @@
     "@types/node": "^18.19.123",
     "@types/react": "^18.0.0",
     "classnames": "^2.5.1",
-    "father": "^4.6.9",
+    "father": "^4.6.19",
     "lodash-es": "^4.17.23"
   },
   "dependencies": {
-    "@tarojs/components": "^4.1.8",
-    "@trionesdev/antd-mobile-base-react": "^0.0.2-beta.16",
+    "@tarojs/components": "4.2.0",
+    "@trionesdev/antd-mobile-base-react": "workspace:*",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.19",
     "rc-field-form": "^2.7.0",
     "react": "^18.0.0"
-  },
-  "optionalDependencies": {
-    "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.16"
   },
   "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
 }

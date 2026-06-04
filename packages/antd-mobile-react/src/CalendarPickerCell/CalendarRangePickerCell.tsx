@@ -1,23 +1,23 @@
 import React, {useState} from "react";
 import {FC} from "react";
 import dayjs from "dayjs";
-import Cell, {CellProps} from "../Cell";
+import FormCell, {FormCellProps} from '../FormCell';
 import CalendarPicker from "../CalendarPicker";
 import {toDayjsArray} from "../utils/dayjs";
 
-export type  CalendarRangePickerCellProps = Omit<CellProps, 'value'> & {
+export type  CalendarRangePickerCellProps = Omit<FormCellProps, 'value'> & {
   month?: dayjs.Dayjs;
   title?: React.ReactNode
   value?: (dayjs.Dayjs | Date)[];
   onChange?: (date?: (dayjs.Dayjs | Date)[]) => void;
 }
 export const CalendarRangePickerCell: FC<CalendarRangePickerCellProps> = ({
-                                                                  month,
-                                                                  title,
-                                                                  value,
-                                                                  onChange,
-                                                                  ...rest
-                                                                }) => {
+                                                                            month,
+                                                                            title,
+                                                                            value,
+                                                                            onChange,
+                                                                            ...rest
+                                                                          }) => {
 
   const [innerOpen, setInnerOpen] = React.useState(false);
   const [internalValue, setInternalValue] = useState<dayjs.Dayjs[] | undefined>(toDayjsArray(value))
@@ -42,8 +42,8 @@ export const CalendarRangePickerCell: FC<CalendarRangePickerCellProps> = ({
                             onChange?.(date)
                           }}
     />
-    <Cell onClick={() => {
+    <FormCell {...rest} onClick={() => {
       setInnerOpen(true)
-    }} {...rest}>{handleValueRender()}</Cell>
+    }}>{handleValueRender()}</FormCell>
   </>
 }

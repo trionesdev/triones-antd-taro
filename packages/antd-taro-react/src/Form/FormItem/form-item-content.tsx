@@ -1,0 +1,54 @@
+import classNames from 'classnames';
+import {isEmpty} from 'lodash-es';
+import {Meta, Rule} from 'rc-field-form/lib/interface';
+import React, {FC, useState} from 'react';
+import {Field, FormHorizontalAlign} from "@trionesdev/antd-mobile-base-react";
+
+type FormItemInputProps = {
+  children?: React.ReactElement;
+  className?: string;
+  name?: string;
+  rules?: Rule[];
+  initialValue?: any,
+  wrapperAlign?: FormHorizontalAlign
+  valuePropName?: string
+  errors?: React.ReactNode[];
+  errorRender?: (errors?: any[]) => React.ReactNode;
+  hiddenError?: boolean;
+};
+
+export const FormItemContent: FC<FormItemInputProps> = ({
+                                                          children,
+                                                          className,
+                                                          name,
+                                                          rules,
+                                                          initialValue,
+                                                          valuePropName,
+                                                          errorRender,
+                                                          hiddenError,
+                                                        }) => {
+  const [meta, setMeta] = useState<Meta | undefined>();
+
+  const clsPrefix = 'triones-antm-form-item';
+  return (
+    <div className={classNames(className)}>
+      <Field
+        name={name}
+        rules={rules}
+        valuePropName={valuePropName}
+        trigger={'onChange'}
+        onMetaChange={(meta) => {
+          setMeta(meta);
+        }}
+        initialValue={initialValue}
+      >
+        {children}
+      </Field>
+      {!hiddenError && !isEmpty(meta?.errors) && (
+        <div className={classNames(`${clsPrefix}-error`)}>
+          {errorRender?.(meta?.errors) || meta?.errors.join(',')}
+        </div>
+      )}
+    </div>
+  );
+};

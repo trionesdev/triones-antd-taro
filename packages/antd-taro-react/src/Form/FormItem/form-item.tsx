@@ -1,11 +1,16 @@
-import React, { CSSProperties, FC, ReactElement, ReactNode } from "react"
-import { FormItemLabel } from "./form-item-label";
-import { FormItemInput } from "./form-item-input";
-import { NamePath, Rule } from "rc-field-form/lib/interface";
+import React, {CSSProperties, FC, ReactElement, ReactNode} from "react"
+import {FormItemLabel} from "./form-item-label";
+import {FormItemContent} from "./form-item-content";
+import {NamePath, Rule} from "rc-field-form/lib/interface";
 import classNames from "classnames";
 
-import { Field } from "rc-field-form";
-import {FormItemLayout, FormLayoutAlign, useFormContext} from "@trionesdev/antd-mobile-base-react";
+import {
+  Field,
+  FormItemLayout,
+  FormHorizontalAlign,
+  useFormContext,
+} from "@trionesdev/antd-mobile-base-react";
+import {useTaro} from "../../hooks";
 
 export type FormItemProps = {
   className?: string;
@@ -13,9 +18,9 @@ export type FormItemProps = {
   children?: ReactElement;
   layout?: FormItemLayout;
   label?: ReactNode;
-  labelAlign?: FormLayoutAlign
+  labelAlign?: FormHorizontalAlign
   labelWidth?: number
-  wrapperAlign?: FormLayoutAlign
+  contentAlign?: FormHorizontalAlign
   name?: NamePath;
   required?: boolean
   hidden?: boolean
@@ -28,38 +33,40 @@ export type FormItemProps = {
 }
 
 export const FormItem: FC<FormItemProps> = ({
-  className,
-  style,
-  children,
-  layout,
-  label,
-  labelAlign,
-  labelWidth,
-  wrapperAlign,
-  name,
-  required,
-  hidden = false,
-  noStyle = false,
-  rules,
-  initialValue,
-  valuePropName,
-  errorRender,
-  extra,
-  ...props
-}) => {
+                                              className,
+                                              style,
+                                              children,
+                                              layout,
+                                              label,
+                                              labelAlign,
+                                              labelWidth,
+                                              contentAlign,
+                                              name,
+                                              required,
+                                              hidden = false,
+                                              noStyle = false,
+                                              rules,
+                                              initialValue,
+                                              valuePropName,
+                                              errorRender,
+                                              extra,
+                                              ...props
+                                            }) => {
+  const {isTaroWeApp, isTaroWeb} = useTaro()
   // const { layout: formLayout, labelAlign: formLayoutAlign, labelWidth: formLabelWidth, hiddenError, extra: formExtra } = useFormContext()
   const ctx = useFormContext()
   const formItemLayout = layout ? layout : (ctx.layout === 'inline' ? 'horizontal' : ctx.layout)
   const formItemAlign = labelAlign ? labelAlign : ctx.labelAlign || 'left'
   const formItemLabelWidth = labelWidth ? labelWidth : ctx.labelWidth
   const formItemExtra = extra !== undefined ? extra : ctx.extra
-  const formItemWrapperAlign = wrapperAlign ? wrapperAlign : ctx.wrapperAlign
+  const formItemWrapperAlign = contentAlign ? contentAlign : ctx.contentAlign
   const clsPrefix = "triones-antm-form-item"
 
   if (noStyle) {
     return <Field
       name={name}
       rules={rules}
+      valuePropName={valuePropName}
       trigger={'onChange'}
       initialValue={initialValue}
     >
@@ -68,14 +75,18 @@ export const FormItem: FC<FormItemProps> = ({
   }
 
   return <div className={classNames(clsPrefix, `${clsPrefix}-${formItemLayout}`, className, {
-    [`${clsPrefix}-hidden`]: hidden
+    [`${clsPrefix}-hidden`]: hidden,
+    [`h5`]: isTaroWeb,
+    [`wx`]: isTaroWeApp
   })} style={style}>
     {label && <FormItemLabel className={classNames(`${clsPrefix}-label`, `${clsPrefix}-label-${formItemAlign}`)}
-      style={{ width: formItemLabelWidth }} layout={formItemLayout} label={label} required={required} />}
-    <FormItemInput className={classNames(`${clsPrefix}-input`, {
-      [`${clsPrefix}-input-${formItemWrapperAlign}`]: formItemWrapperAlign
-    })} {...props} name={name} rules={rules}
-      errorRender={errorRender} initialValue={initialValue} hiddenError={ctx.hiddenError}>{children}</FormItemInput>
+                             style={{width: formItemLabelWidth}} layout={formItemLayout} label={label}
+                             required={required}/>}
+    <FormItemContent
+      className={classNames(`${clsPrefix}-content`, `${clsPrefix}-content-${formItemWrapperAlign}`)} {...props}
+      name={name} rules={rules}
+      errorRender={errorRender} initialValue={initialValue} valuePropName={valuePropName}
+      hiddenError={ctx.hiddenError}>{children}</FormItemContent>
     {formItemExtra}
   </div>
 }

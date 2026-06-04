@@ -6,9 +6,9 @@ $tagCls: 'triones-antm-tag';
   display: inline-flex;
   align-items: center;
   padding: 2Px 8Px;
-  font-size: 12Px;
-  line-height: 1.2;
-  border-radius: variable.$trionesBorderRadius;
+  font-size: variable.$trionesFontSizeSm;
+  line-height: 1;
+  border-radius: variable.$trionesBorderRadiusXs;
   box-sizing: border-box;
   white-space: nowrap;
 
@@ -17,6 +17,7 @@ $tagCls: 'triones-antm-tag';
   }
 
   &-round {
+    padding: 2Px 8Px;
     border-radius: 12Px;
   }
 
@@ -34,8 +35,8 @@ $tagCls: 'triones-antm-tag';
     }
   }
 
-  // Primary variant styles
-  &-primary {
+  // processing variant styles
+  &-processing {
     &.#{$tagCls}-solid {
       background: variable.$trionesColorPrimary;
       color: #fff;
@@ -77,7 +78,7 @@ $tagCls: 'triones-antm-tag';
   }
 
   // Danger variant styles
-  &-danger {
+  &-error {
     &.#{$tagCls}-solid {
       background: variable.$trionesColorError;
       color: #fff;

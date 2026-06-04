@@ -33,44 +33,44 @@ $stepperControlHeight: 28Px;
     }
   }
 
-  &-input {
+  &-input-wrapper {
     display: flex;
     align-items: stretch;
     //flex: 0 1 auto;
     min-width: 36Px;
     min-height: $stepperControlHeight;
+  }
 
-    input {
-      width: 100%;
-      min-width: 0;
-      height: 100%;
-      min-height: $stepperControlHeight;
-      box-sizing: border-box;
+  &-input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: $stepperControlHeight;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 8Px;
+    border: 0;
+    border-radius: variable.$trionesBorderRadiusXs;
+    background-color: $inputNumberBg;
+    color: variable.$trionesColorText;
+    font-size: 14Px;
+    line-height: $stepperControlHeight;
+    text-align: center;
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
       margin: 0;
-      padding: 0 8Px;
-      border: 0;
-      border-radius: variable.$trionesBorderRadiusXs;
-      background-color: $inputNumberBg;
-      color: variable.$trionesColorText;
-      font-size: 14Px;
-      line-height: $stepperControlHeight;
-      text-align: center;
-      appearance: textfield;
+    }
 
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    &:focus {
+      outline: none;
+    }
 
-      &:focus {
-        outline: none;
-      }
-
-      &:disabled {
-        color: variable.$trionesColorTextDisabled;
-        cursor: not-allowed;
-      }
+    &:disabled {
+      color: variable.$trionesColorTextDisabled;
+      cursor: not-allowed;
     }
   }
 

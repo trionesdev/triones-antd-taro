@@ -1,8 +1,8 @@
 import React from "react"
 import {DemoBlock} from "../../DemoBlock";
 import Cell from "../index";
-import {Divider} from "@trionesdev/antd-mobile-base-react";
 import {RightOutline} from "@trionesdev/antd-mobile-icons-react";
+import { Divider } from '../../index';
 
 
 export default () => {

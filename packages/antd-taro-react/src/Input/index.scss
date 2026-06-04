@@ -41,14 +41,15 @@ wx-input {
   border: none;
   border-radius: variable.$trionesBorderRadius;
   font-size: variable.$trionesInputInputFontSize;
-  //padding: variable.$trionesInputPaddingBlock 0;
 
-  &-sm {
-    max-height: $inputSm;
+  &-small {
+    padding: variable.$trionesInputPaddingBlockSm 0;
+    font-size: variable.$trionesInputInputFontSizeSm;
   }
 
-  &-lg {
-    max-height: $inputLg;
+  &-large {
+    padding: variable.$trionesInputPaddingBlockLg 0;
+    font-size: variable.$trionesInputInputFontSizeLg;
   }
 
   &::placeholder {
@@ -76,7 +77,18 @@ wx-input {
   //line-height: variable.$trionesLineHeight;
   //padding: variable.$trionesInputPaddingBlock 0;
   gap: 4Px;
-  box-sizing: border-box;
+
+
+  &-small {
+    padding: variable.$trionesInputPaddingBlockSm 0;
+    font-size: variable.$trionesInputInputFontSizeSm;
+  }
+
+  &-large {
+    padding: variable.$trionesInputPaddingBlockLg 0;
+    font-size: variable.$trionesInputInputFontSizeLg;
+  }
+
 
 
   .#{$inputCls} {
@@ -138,17 +150,20 @@ wx-input {
   &-outlined {
     border-radius: variable.$trionesBorderRadius;
     border: 1Px solid variable.$trionesBorderColor;
-    padding-inline: 4Px;
+    padding-block: variable.$trionesInputPaddingBlock;
+    padding-inline: variable.$trionesInputPaddingBlock;
   }
 
   &-filled {
     border-radius: variable.$trionesBorderRadius;
     background-color: variable.$trionesColorFillTertiary;
-    padding-inline: 4Px;
+    padding-block: variable.$trionesInputPaddingBlock;
+    padding-inline: variable.$trionesInputPaddingBlock;
   }
 
   &-underlined {
     border-bottom: 1Px solid variable.$trionesBorderColor;
+    padding-block: variable.$trionesInputPaddingBlock;
   }
 }
 
@@ -189,20 +204,20 @@ wx-input {
   &-item {
     text-align: center;
     font-size: variable.$trionesInputInputFontSize;
-    height: 32Px;
-    width: 32Px;
+    height: variable.$trionesControlHeight;
+    width: variable.$trionesControlHeight;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     &-sm {
-      width: $inputSm;
-      height: $inputSm;
+      width: variable.$trionesControlHeightSm;
+      height: variable.$trionesControlHeightSm;
     }
 
     &-lg {
-      width: $inputLg;
-      height: $inputLg;
+      width: variable.$trionesControlHeightLg;
+      height: variable.$trionesControlHeightLg;
     }
 
     &::placeholder {
@@ -250,7 +265,7 @@ wx-input {
     background-color: transparent;
   }
   textarea {
-    //padding: variable.$trionesInputPaddingBlock 0;
+    padding-block: 2Px;
     background-color: transparent;
     &::placeholder {
       font-size: variable.$trionesInputInputFontSize;

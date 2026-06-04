@@ -1,22 +1,23 @@
 import React from "react";
-import {FormLayout, FormLayoutAlign, RequiredMark} from "./types";
+import {FormItemVerticalAlign, FormLayout, FormHorizontalAlign, RequiredMark} from "./types";
 
 
 export interface FormContextProps {
   colon?: boolean;
   layout?: FormLayout;
-  labelAlign?: FormLayoutAlign
+  labelAlign?: FormHorizontalAlign
   labelWidth?: number
-  wrapperAlign?: FormLayoutAlign
+  contentAlign?: FormHorizontalAlign
   requiredMark?: RequiredMark;
   form?: any;
   hiddenError?: boolean
   extra?: React.ReactNode;
+  verticalAlign?: FormItemVerticalAlign;
 }
 
 export const FormContext = React.createContext<FormContextProps>({
   colon: true,
   layout: "horizontal",
-  labelAlign: "left",
-  wrapperAlign: "left",
+  labelAlign: "start",
+  contentAlign: "start",
 })

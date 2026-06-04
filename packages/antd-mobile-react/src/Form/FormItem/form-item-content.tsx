@@ -3,7 +3,7 @@ import {isEmpty} from 'lodash-es';
 import {Field} from 'rc-field-form';
 import {Meta, Rule} from 'rc-field-form/lib/interface';
 import React, {FC, useState} from 'react';
-import {FormLayoutAlign} from "@trionesdev/antd-mobile-base-react";
+import {FormHorizontalAlign} from "@trionesdev/antd-mobile-base-react";
 
 type FormItemInputProps = {
   children?: React.ReactElement;
@@ -11,20 +11,19 @@ type FormItemInputProps = {
   name?: string;
   rules?: Rule[];
   initialValue?: any,
-  wrapperAlign?:FormLayoutAlign
+  contentAlign?:FormHorizontalAlign
   valuePropName?: string
   errors?: React.ReactNode[];
   errorRender?: (errors?: any[]) => React.ReactNode;
   hiddenError?: boolean;
 };
 
-export const FormItemInput: FC<FormItemInputProps> = ({
+export const FormItemContent: FC<FormItemInputProps> = ({
                                                         children,
                                                         className,
                                                         name,
                                                         rules,
                                                         initialValue,
-
                                                         valuePropName,
                                                         errorRender,
                                                         hiddenError,
