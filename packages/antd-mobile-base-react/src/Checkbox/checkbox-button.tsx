@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {CheckboxProps, cls} from './types';
 import classNames from 'classnames';
-import {CheckOutline} from '../../../antd-mobile-icons-react';
+import {CheckOutline} from '@trionesdev/antd-mobile-icons-react';
 
 type CheckboxButtonProps = CheckboxProps  & { onClick: () => void };
 

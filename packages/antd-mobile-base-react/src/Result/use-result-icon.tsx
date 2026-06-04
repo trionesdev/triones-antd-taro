@@ -1,6 +1,6 @@
 import React from 'react'
 import ConfigProvider from '../ConfigProvider'
-import { CheckCircleOutline, CloseCircleOutline, InformationCircleOutline, ClockCircleOutline, ExclamationTriangleOutline } from '../../../antd-mobile-icons-react'
+import { CheckCircleOutline, CloseCircleOutline, InformationCircleOutline, ClockCircleOutline, ExclamationTriangleOutline } from '@trionesdev/antd-mobile-icons-react'
 
 
 export const useResultIcon = (

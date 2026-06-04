@@ -1,4 +1,4 @@
-import { StarFill } from '../../../antd-mobile-icons-react';
+import { StarFill } from '@trionesdev/antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, { FC, useState } from 'react';
 import { NativeProps, withNativeProps } from '../utils/native-props';

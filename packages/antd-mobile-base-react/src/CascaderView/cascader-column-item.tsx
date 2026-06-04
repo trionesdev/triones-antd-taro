@@ -1,7 +1,7 @@
 import React from "react";
 import {FC} from "react";
 import classNames from "classnames";
-import { CheckOutline } from "../../../antd-mobile-icons-react";
+import { CheckOutline } from "@trionesdev/antd-mobile-icons-react";
 
 const cascaderViewCls = 'triones-antm-cascader-view'
 

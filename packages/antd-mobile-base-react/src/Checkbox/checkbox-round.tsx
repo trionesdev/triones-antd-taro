@@ -1,4 +1,4 @@
-import {CheckOutline} from '../../../antd-mobile-icons-react';
+import {CheckOutline} from '@trionesdev/antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, {FC} from 'react';
 import './index.scss';

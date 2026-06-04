@@ -4,7 +4,7 @@ import {
   CloseOutline,
   ExclamationCircleFill,
   InformationCircleFill,
-} from '../../../antd-mobile-icons-react';
+} from '@trionesdev/antd-mobile-icons-react';
 import classNames from 'classnames';
 import React, { FC, useState } from 'react';
 import './style.scss';
