@@ -112,7 +112,7 @@ export type FetchPickerProps = {
    * @default 20
    */
   pageSize?: number;
-  optionRender?: (option: any) => React.ReactNode;
+  optionRender?: (option: any, selected: boolean) => React.ReactNode;
 }
 
 const cls = "triones-antm-fetch-picker";
@@ -318,7 +318,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
               handleItemClick(item)
             }}>
               <div className={`${cls}-item-option-content`}>{
-                optionRender?.(item) || get(item, labelFieldName)
+                optionRender?.(item,selected) || get(item, labelFieldName)
               }</div>
               {multiple && selected && <div className={`${cls}-item-option-state`}>
                 <CheckOutline/>
