@@ -64,7 +64,7 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.19",
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.0.0",
