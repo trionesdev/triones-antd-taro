@@ -64,7 +64,7 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.19",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.0.0",
@@ -95,5 +95,5 @@
     "dayjs": "^1.11.20",
     "rc-field-form": "^2.7.1"
   },
-  "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
+  "gitHead": "c46ca8e895481db1ad13edc2885df39bff8a67a1"
 }
