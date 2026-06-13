@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 import React, {FC, memo, useMemo} from 'react';
-import './dot-loading.scss';
-
 const dotLoadingCls = 'triones-antm-dot-loading';
 
 

@@ -1,6 +1,7 @@
-@use "../style/variable" as variable;
+@use "../style/variable";
 
 $dotLoadingCls: triones-antm-dot-loading;
+$spinLoadingCls: triones-antm-spin-loading;
 
 .#{$dotLoadingCls} {
   display: inline-flex;
@@ -68,5 +69,45 @@ $dotLoadingCls: triones-antm-dot-loading;
 
   30% {
     transform: translateY(0.25em);
+  }
+}
+
+
+
+
+.#{$spinLoadingCls} {
+  --size: 32Px;
+  width: var(--size);
+  height: var(--size);
+
+  &-default{
+    color: #9D9D9D;
+  }
+  &-primary{
+    color: variable.$trionesColorPrimary;
+  }
+  &-white{
+    color: #ffffff;
+  }
+
+  &-spin {
+    //color: var(--color);
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: currentColor;
+    mask-image: var(--maskImage);
+    -webkit-mask-image: var(--maskImage);
+    animation: adm-spin-loading-rotate 2s infinite linear;
+  }
+
+}
+
+@keyframes adm-spin-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
