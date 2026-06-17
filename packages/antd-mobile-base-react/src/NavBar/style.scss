@@ -9,6 +9,7 @@ $class-prefix-nav-bar: 'triones-antm-nav-bar';
   --height: 45PX;
   --border-bottom: none;
   display: flex;
+  flex: none;
   align-items: center;
   height: var(--height);
   border-bottom: var(--border-bottom);

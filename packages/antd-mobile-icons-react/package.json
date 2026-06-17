@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-icons-react",
-  "version": "0.0.2-beta.18",
+  "version": "0.0.2-beta.19",
   "description": "AntdMobileIconReact",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,5 +35,5 @@
     "father": "^4.6.19",
     "react": "^18.0.0"
   },
-  "gitHead": "c43752ae341cc478de96784586fbf3b36251f4a0"
+  "gitHead": "12ad65db42fabc5e2dfa4661398c8d01cc8c8d33"
 }
