@@ -24,6 +24,14 @@ export type PopupProps = {
   closable?: boolean;
   closeIcon?: React.ReactNode;
   /**
+   * @description 左侧返回图标后面的内容
+   */
+  leading?: React.ReactNode;
+  /**
+   * @description 右侧操作图标
+   */
+  actions?: React.ReactNode;
+  /**
    * @description 点击遮罩层是否关闭
    * @default true
    */
@@ -64,6 +72,8 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                  backIcon,
                                                                  closable = false,
                                                                  closeIcon,
+                                                                 leading,
+                                                                 actions,
                                                                  showOverlay = true,
                                                                  overlayClosable = true,
                                                                  destroyOnHidden = false,
@@ -136,12 +146,16 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
         <View className={classNames(`${cls}-container`, `${cls}-${position}`, {[`${cls}-round`]: round})}
               style={{...styles?.container, width: width, height: height}}>
 
-          {(title || backable || closable) && <div className={`${cls}-header`} style={styles?.header}>
-            {backable && <div className={`${cls}-header-back`} onClick={handleBack}>{backIcon || <LeftOutline/>}</div>}
-            {title && <div className={`${cls}-header-title`} style={styles?.title}>{title}</div>}
-            {closable &&
-              <div className={`${cls}-header-close`} onClick={handleClose}>{closeIcon || <CloseOutline/>}</div>}
-          </div>}
+          {(title || backable || closable || leading || actions) &&
+            <div className={`${cls}-header`} style={styles?.header}>
+              {backable &&
+                <div className={`${cls}-header-back`} onClick={handleBack}>{backIcon || <LeftOutline/>}</div>}
+              {leading && <div className={`${cls}-header-leading`}>{leading}</div>}
+              {title && <div className={`${cls}-header-title`} style={styles?.title}>{title}</div>}
+              {actions && <div className={`${cls}-header-actions`}>{actions}</div>}
+              {closable &&
+                <div className={`${cls}-header-close`} onClick={handleClose}>{closeIcon || <CloseOutline/>}</div>}
+            </div>}
           <div className={`${cls}-body`} style={styles?.body}>
             {children}
           </div>
