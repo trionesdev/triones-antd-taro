@@ -30,7 +30,7 @@
     "react": ">=16.9.0"
   },
   "devDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.20",
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^18.19.123",
