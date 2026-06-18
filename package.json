@@ -18,7 +18,8 @@
     "publishOnly:force": "lerna publish from-package --yes  --ignore-scripts --no-git-tag-version  --registry=https://registry.npmjs.org/",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,css,less}\"",
     "publishOnly": "lerna publish --ignore-scripts --registry=https://registry.npmjs.org/",
-    "publish": "pnpm run build && pnpm run publishOnly"
+    "publish": "pnpm run build && pnpm run publishOnly",
+    "publish:npm": "pnpm run build && lerna publish --registry=https://registry.npmjs.org/"
   },
   "dependencies": {},
   "devDependencies": {
