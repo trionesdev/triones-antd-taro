@@ -30,7 +30,7 @@
     "react": ">=16.9.0"
   },
   "devDependencies": {
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
+    "@trionesdev/antd-mobile-icons-react": "0.0.2-beta.20",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^18.19.123",
@@ -47,5 +47,5 @@
     "react": "^18.0.0",
     "runes2": "^1.1.4"
   },
-  "gitHead": "5d0231fd6b537b8b56c875659e0aac023b5ee3d3"
+  "gitHead": "6826587141b29a1e9eda58f95d92210671cbd31c"
 }
