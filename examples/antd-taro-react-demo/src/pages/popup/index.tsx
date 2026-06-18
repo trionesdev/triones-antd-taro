@@ -14,6 +14,7 @@ const PopupBase = () => {
   const [closeIconOpen, setCloseIconOpen] = React.useState(false);
   const [heightOpen, setHeightOpen] = React.useState(false);
 
+
   return <View style={{padding: '8px'}}>
     <DemoBlock title={`基本使用`}>
       <Popup open={defaultOpen}
@@ -124,6 +125,7 @@ const PopupBase = () => {
         setHeightOpen(true)
       }}>带高度设置</Button>
     </DemoBlock>
+
   </View>
 }
 export default PopupBase

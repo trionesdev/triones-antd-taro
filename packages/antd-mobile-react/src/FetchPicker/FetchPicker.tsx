@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import Popup, {PopupProps} from "../Popup";
+import Popup from "../Popup";
 import {Button, DotLoading, SafeArea, SpinLoading} from "../index";
-import {CheckOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
+import {CheckOutline, CloseOutline, LeftOutline, SearchOutline} from "@trionesdev/antd-mobile-icons-react";
+import Space from "../Space";
 import {ScrollView} from "@tarojs/components";
 import Input from "../Input";
 import {debounce, get, isEmpty, isEqual, some} from "lodash-es";
@@ -12,8 +13,8 @@ type LabeledValue = { label?: string, value?: string | number }
 
 type PickerValue = string | string[] | number | number[] | LabeledValue | LabeledValue[]
 
-export type FetchPickerProps = Omit<PopupProps, ''> & {
-
+export type FetchPickerProps = {
+  open?: boolean;
   /**
    * @description 是否全屏
    * @default false
@@ -29,7 +30,28 @@ export type FetchPickerProps = Omit<PopupProps, ''> & {
    * @default 搜索
    */
   searchPlaceholder?: string;
+  height?: number | string;
   value?: PickerValue;
+  /**
+   * @description 是否可返回,fullScreen 为 true 时生效
+   * @default true
+   */
+  backable?: boolean;
+  /**
+   * @description 返回按钮图标,fullScreen 为 true 时生效
+   * @default
+   */
+  backIcon?: React.ReactNode;
+  /**
+   * @description 是否可关闭,fullScreen 为 true 时生效
+   * @default true
+   */
+  closable?: boolean;
+  /**
+   * @description 关闭按钮图标,fullScreen 为 true 时生效
+   * @default
+   */
+  closeIcon?: React.ReactNode;
   /**
    * @description 是否多选
    * @default false
@@ -50,9 +72,21 @@ export type FetchPickerProps = Omit<PopupProps, ''> & {
    * @default 确定
    */
   okText?: string;
-
-  onCancel?: () => void;
-
+  /**
+   * @description 是否圆角,fullScreen 为 false 时生效
+   * @default true
+   */
+  round?: boolean;
+  /**
+   * @description 关闭回调
+   * @default
+   */
+  onClose?: () => void;
+  /**
+   * @description 回退回调
+   * @default
+   */
+  onBack?: () => void;
   onOk?: (value?: PickerValue, option?: any | any[]) => void;
   /**
    * @description 请求
@@ -90,12 +124,18 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           showSearch = false,
                                                           searchPlaceholder = '搜索',
                                                           value,
+                                                          backable = true,
+                                                          backIcon,
+                                                          closable = true,
+                                                          closeIcon,
                                                           multiple = false,
                                                           labelInValue = true,
                                                           title,
                                                           cancelText = '取消',
                                                           okText = '确定',
-                                                          onCancel,
+                                                          round = true,
+                                                          onClose,
+                                                          onBack,
                                                           onOk,
                                                           fetch,
                                                           fieldNames,
@@ -103,8 +143,6 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
                                                           pageable,
                                                           pageSize = 20,
                                                           optionRender,
-                                                          round = true,
-                                                          ...rest
                                                         }) => {
   const {label: labelFieldName = 'label', value: valueFieldName = 'value'} = fieldNames || {}
   const [options, setOptions] = useState<any[]>([])
@@ -159,9 +197,9 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     if (!multiple) {
       const option = handleGetOptions(newValue)
       onOk?.(newValue, option)
-      onCancel?.()
+      onClose?.()
     }
-  }, [internalValue, labelFieldName, labelInValue, multiple, onCancel, onOk, valueFieldName, options])
+  }, [internalValue, labelFieldName, labelInValue, multiple, onClose, onOk, valueFieldName,options])
 
   const handleSelected = useCallback((item: any) => {
     if (!internalValue || isEmpty(internalValue)) {
@@ -206,7 +244,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
 
   const handleOnOk = () => {
     onOk?.(internalValue, handleGetOptions(internalValue))
-    onCancel?.()
+    onClose?.()
   }
 
   useEffect(() => {
@@ -235,14 +273,19 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
     return () => handleSearchChange.cancel()
   }, [handleSearchChange])
 
-  const header = <>
-    <div className={classNames(`${cls}-head-button`, `${cls}-head-button-cancel`)} onClick={onCancel}>{cancelText}</div>
+  const header = fullScreen ? <>
+    <Space>
+      {backable && <div className={`${cls}-head-icon`} onClick={onBack}>{backIcon || <LeftOutline/>}</div>}
+      {closable && <div className={`${cls}-head-icon`} onClick={onClose}>{closeIcon || <CloseOutline/>}</div>}
+    </Space>
     <div className={`${cls}-head-title`}>{title}</div>
-    {multiple &&
-      <div className={classNames(`${cls}-head-button`, `${cls}-head-button-ok`)} onClick={handleOnOk}>{okText}</div>}
+  </> : <>
+    <div className={`${cls}-head-button`} onClick={onClose}>{cancelText}</div>
+    <div className={`${cls}-head-title`}>{title}</div>
+    <div className={`${cls}-head-button`} onClick={handleOnOk}>{okText}</div>
   </>
-  return <Popup {...rest} open={open}
-                height={fullScreen ? `calc(-24px + 100vh)` : (height ?? 'auto')} onClose={onCancel} round={round}>
+  return <Popup open={open} onClose={onClose} onBack={onBack}
+                height={fullScreen ? '100%' : (height ?? 'auto')} round={fullScreen ? false : round}>
     <SafeArea>
       <div className={cls}>
         <div className={`${cls}-head`}>{header}</div>
@@ -275,7 +318,7 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
               handleItemClick(item)
             }}>
               <div className={`${cls}-item-option-content`}>{
-                optionRender?.(item, selected) || get(item, labelFieldName)
+                optionRender?.(item,selected) || get(item, labelFieldName)
               }</div>
               {multiple && selected && <div className={`${cls}-item-option-state`}>
                 <CheckOutline/>

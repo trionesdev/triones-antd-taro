@@ -60,8 +60,8 @@ $trionesPopupCls: 'triones-antm-popup';
 
     &.#{$trionesPopupCls} {
       &-round {
-        border-bottom-left-radius: variable.$trionesBorderRadius;
-        border-bottom-right-radius: variable.$trionesBorderRadius;
+        border-bottom-left-radius: variable.$trionesBorderRadiusLg;
+        border-bottom-right-radius: variable.$trionesBorderRadiusLg;
       }
     }
   }
@@ -75,8 +75,8 @@ $trionesPopupCls: 'triones-antm-popup';
 
     &.#{$trionesPopupCls} {
       &-round {
-        border-top-left-radius: variable.$trionesBorderRadius;
-        border-top-right-radius: variable.$trionesBorderRadius;
+        border-top-left-radius: variable.$trionesBorderRadiusLg;
+        border-top-right-radius: variable.$trionesBorderRadiusLg;
       }
     }
   }
@@ -89,8 +89,8 @@ $trionesPopupCls: 'triones-antm-popup';
 
     &.#{$trionesPopupCls} {
       &-round {
-        border-top-right-radius: variable.$trionesBorderRadius;
-        border-bottom-right-radius: variable.$trionesBorderRadius;
+        border-top-right-radius: variable.$trionesBorderRadiusLg;
+        border-bottom-right-radius: variable.$trionesBorderRadiusLg;
       }
     }
   }
@@ -103,8 +103,8 @@ $trionesPopupCls: 'triones-antm-popup';
 
     &.#{$trionesPopupCls} {
       &-round {
-        border-top-left-radius: variable.$trionesBorderRadius;
-        border-bottom-left-radius: variable.$trionesBorderRadius;
+        border-top-left-radius: variable.$trionesBorderRadiusLg;
+        border-bottom-left-radius: variable.$trionesBorderRadiusLg;
       }
     }
   }
@@ -118,7 +118,7 @@ $trionesPopupCls: 'triones-antm-popup';
 
     &.#{$trionesPopupCls} {
       &-round {
-        border-radius: variable.$trionesBorderRadius;
+        border-radius: variable.$trionesBorderRadiusLg;
       }
     }
   }

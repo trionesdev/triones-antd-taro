@@ -14,7 +14,10 @@ const FetchPickerBase = () => {
         <FetchPicker
           open={open}
           title={"远程选择"}
-          onClose={() => setOpen(false)}
+          onCancel={() => setOpen(false)}
+          onOk={(value) => {
+            setOpen(false)
+          }}
         />
         <Button block={true} onClick={() => setOpen(true)}>FetchPicker 目前为静态演示</Button>
       </DemoBlock>
@@ -23,7 +26,7 @@ const FetchPickerBase = () => {
           open={fullScreenOpen}
           fullScreen={true}
           title={"全屏"}
-          onClose={() => setFullScreenOpen(false)}
+          onCancel={() => setFullScreenOpen(false)}
           fetch={(params) => {
             if (params.page! > 5) {
               return Promise.resolve([])
@@ -41,7 +44,7 @@ const FetchPickerBase = () => {
         <FetchPicker
           open={fullScreenOpen1}
           fullScreen={true}
-          onClose={() => setFullScreenOpen1(false)}
+          onCancel={() => setFullScreenOpen1(false)}
         />
         <Button block={true} onClick={() => setFullScreenOpen1(true)}>FetchPicker Full Screen</Button>
       </DemoBlock>
@@ -51,7 +54,7 @@ const FetchPickerBase = () => {
           fullScreen={true}
           multiple={true}
           title={"全屏-多选"}
-          onClose={() => setFullScreenOpen2(false)}
+          onCancel={() => setFullScreenOpen2(false)}
           fetch={(params) => {
             if (params.page! > 5) {
               return Promise.resolve([])
