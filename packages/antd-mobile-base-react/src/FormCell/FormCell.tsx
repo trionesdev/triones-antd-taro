@@ -16,6 +16,7 @@ export type FormCellProps = {
     extra?: React.CSSProperties;
     arrow?: React.CSSProperties;
   }
+  value?: React.ReactNode;
   size?: AntSize
   variant?: VariantType
   placeholder?: string
@@ -33,6 +34,7 @@ export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
                                                                  style,
                                                                  styles,
                                                                  children,
+                                                                 value,
                                                                  size = 'medium',
                                                                  variant = 'borderless',
                                                                  placeholder,
@@ -54,7 +56,7 @@ export const FormCell: FC<PropsWithChildren<FormCellProps>> = ({
               style={{...style, ...styles?.root}}
               onClick={onClick}>
     <div className={classNames(`${cls}-content`)} style={styles?.content}>
-      {children ||
+      {children || value ||
         (placeholder && (
           <div className={classNames(`${cls}-placeholder`)}>
             {placeholder}
