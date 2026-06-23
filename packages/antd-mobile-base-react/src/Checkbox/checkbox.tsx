@@ -1,4 +1,4 @@
-import React, {FC, useContext, useState} from 'react';
+import React, {FC, useContext, useEffect, useState} from 'react';
 import './index.scss';
 import {CheckboxProps} from './types';
 import {CheckboxRound} from "./checkbox-round";
@@ -29,6 +29,14 @@ export const Checkbox: FC<CheckboxProps> = ({
       ctx!.onValueChange?.(ctxValue)
     }
   }
+
+  useEffect(() => {
+    if (rest.checked !== undefined) {
+      if (rest.checked !== innerChecked) {
+        setInnerChecked(rest.checked)
+      }
+    }
+  }, [rest.checked]);
 
   if (shape === 'round') {
     return <CheckboxRound {...rest} checked={innerChecked} onClick={handleClick}/>
