@@ -168,6 +168,9 @@ importers:
 
   packages/antd-mobile-base-react:
     dependencies:
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -187,9 +190,6 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
     devDependencies:
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -25364,7 +25364,7 @@ snapshots:
   stylus@0.64.0:
     dependencies:
       '@adobe/css-tools': 4.3.3
-      debug: 4.4.1
+      debug: 4.4.3
       glob: 10.4.5
       sax: 1.4.1
       source-map: 0.7.6

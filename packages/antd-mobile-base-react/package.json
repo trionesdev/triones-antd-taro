@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-base-react",
-  "version": "0.0.2-beta.21",
+  "version": "0.0.2-beta.22",
   "description": "antd mobile base react",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,12 +40,12 @@
     "stylelint": "^16.12.0"
   },
   "dependencies": {
+    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "crypto-js": "^4.2.0",
     "rc-field-form": "^2.7.0",
     "rc-util": "^5.44.3",
     "react": "^18.0.0",
-    "runes2": "^1.1.4",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*"
+    "runes2": "^1.1.4"
   },
   "gitHead": "6826587141b29a1e9eda58f95d92210671cbd31c"
 }
