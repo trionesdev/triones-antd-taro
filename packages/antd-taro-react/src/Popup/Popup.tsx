@@ -71,6 +71,8 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                  onBack,
                                                                  afterClose,
                                                                  afterOpenChange,
+                                                                 className,
+                                                                 style,
                                                                  round = false,
                                                                  zIndex = 998,
                                                                  duration = 300,
@@ -124,8 +126,8 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
   if (!render) return null;
   return (
     <RootPortal>
-      <View catchMove={true} className={classNames(`${cls}`, {[`${cls}-open`]: internalOpen})}
-            style={{zIndex, transitionDuration: `${duration}ms`}}>
+      <View catchMove={true} className={classNames(`${cls}`, {[`${cls}-open`]: internalOpen}, className)}
+            style={{...style, zIndex, transitionDuration: `${duration}ms`}}>
         {showOverlay && <View className={classNames(`${cls}-overlay`)} onClick={(e) => {
           if (e.target === e.currentTarget) {
             if (overlayClosable) {
