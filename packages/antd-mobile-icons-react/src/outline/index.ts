@@ -1,3 +1,6 @@
+export * from "./FactoryOutline";
+export * from "./WarehouseOutline";
+export * from "./Building2Outline";
 export * from "./BoxesOutline";
 export * from "./PackageOutline";
 export * from "./BoxOutline";

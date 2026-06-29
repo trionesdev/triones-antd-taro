@@ -31,6 +31,6 @@ export type CheckboxProps = {
   defaultChecked?: boolean;
   value?: any;
   disabled?: boolean
-  onChange?: (e: any) => void;
+  onChange?: (e: boolean) => void;
   shape?: Shape
 }

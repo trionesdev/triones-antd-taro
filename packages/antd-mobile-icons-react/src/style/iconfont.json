@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "47954227",
+      "name": "FactoryOutline",
+      "font_class": "FactoryOutline",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "47954228",
+      "name": "WarehouseOutline",
+      "font_class": "WarehouseOutline",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "47954178",
+      "name": "Building2Outline",
+      "font_class": "Building2Outline",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
       "icon_id": "47583239",
       "name": "BoxesOutline",
       "font_class": "BoxesOutline",
