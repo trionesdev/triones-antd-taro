@@ -22,7 +22,7 @@ export type PickerProps = {
   round?: boolean;
   onOk?: (value: any[]) => void;
   onCancel?: () => void;
-  onClose?: () => void;
+  afterClose?: () => void;
   styles?: {
     overlay?: React.CSSProperties;
     container?: React.CSSProperties;
@@ -43,23 +43,23 @@ export const Picker: FC<PickerProps> = React.memo(
      round = true,
      onOk,
      onCancel,
-     onClose,
+     afterClose,
      styles
    }) => {
     const {locale} = ConfigProvider.useConfig();
     const [internalValue, setInternalValue] = useState<any[]>(value || []);
 
-    const handleClose = () => {
-      onClose?.();
+    const handleAfterClose = () => {
+      afterClose?.();
     };
     const handleOk = () => {
       onOk?.(internalValue);
-      handleClose();
+      handleAfterClose();
     };
 
     const handelCancel = () => {
       onCancel?.();
-      handleClose();
+      handleAfterClose();
     };
 
     useEffect(() => {
@@ -90,7 +90,7 @@ export const Picker: FC<PickerProps> = React.memo(
       <Popup
         open={open}
         onClose={() => {
-          handleClose();
+          handleAfterClose();
           afterOpenChange?.(false);
         }}
         round={round}
