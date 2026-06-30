@@ -90,6 +90,7 @@ export const Picker: FC<PickerProps> = React.memo(
       <Popup
         open={open}
         onClose={() => {
+          handleClose();
           afterOpenChange?.(false);
         }}
         round={round}
