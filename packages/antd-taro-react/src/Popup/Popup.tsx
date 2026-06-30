@@ -15,10 +15,22 @@ export type PopupProps = {
    */
   height?: number | string;
   /**
+   * @description 弹窗最大高度,当position 为 `top`或`bottom` 时生效
+   * @default null
+   */
+  maxHeight?: number | string;
+  /**
+   * @description 弹窗最小高度,当position 为 `top`或`bottom` 时生效
+   * @default null
+   */
+  minHeight?: number | string;
+  /**
    * @description 弹窗宽度,当position 为 `left`或`right` 时生效
    * @default null
    */
   width?: number | string;
+  maxWidth?: number | string;
+  minWidth?: number | string;
   backable?: boolean;
   backIcon?: React.ReactNode;
   closable?: boolean;
@@ -59,7 +71,11 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
                                                                  title,
                                                                  position = 'bottom',
                                                                  height,
+                                                                 maxHeight,
+                                                                 minHeight,
                                                                  width,
+                                                                 maxWidth,
+                                                                 minWidth,
                                                                  backable = false,
                                                                  backIcon,
                                                                  closable = false,
@@ -136,7 +152,15 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
           }
         }}/>}
         <View className={classNames(`${cls}-container`, `${cls}-${position}`, {[`${cls}-round`]: round})}
-              style={{...styles?.container, width: width, height: height}}>
+              style={{
+                ...styles?.container,
+                width: width,
+                maxWidth: maxWidth,
+                minWidth: minWidth,
+                height: height,
+                maxHeight: maxHeight,
+                minHeight: minHeight
+              }}>
 
           {(title || backable || closable) &&
             <div className={`${cls}-header`} style={styles?.header}>
