@@ -286,9 +286,6 @@ export const FetchPicker: React.FC<FetchPickerProps> = ({
             加载更多<DotLoading/>
           </div>}
         </ScrollView>
-        {fullScreen && multiple && <div className={`${cls}-footer`}>
-          <Button type={'primary'} block={true} size={'large'} onClick={handleOnOk}>{okText}</Button>
-        </div>}
       </div>
     </SafeArea>
   </Popup>
