@@ -23,6 +23,7 @@ export type PickerProps = {
   onOk?: (value: any[]) => void;
   onCancel?: () => void;
   afterClose?: () => void;
+  zIndex?: number;
   styles?: {
     overlay?: React.CSSProperties;
     container?: React.CSSProperties;
@@ -44,6 +45,7 @@ export const Picker: FC<PickerProps> = React.memo(
      onOk,
      onCancel,
      afterClose,
+     zIndex,
      styles
    }) => {
     const {locale} = ConfigProvider.useConfig();
@@ -89,6 +91,7 @@ export const Picker: FC<PickerProps> = React.memo(
     return (
       <Popup
         open={open}
+        zIndex={zIndex}
         onClose={() => {
           handelCancel()
           handleAfterClose();
