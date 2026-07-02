@@ -33,7 +33,7 @@ const InputBase = () => {
       <View style={{backgroundColor: '#ffffff'}}>
           <Space direction="vertical" block>
             <Input placeholder="文本内容对其"/>
-            <Input placeholder="文本内容对其" align="right"/>
+            <Input placeholder="文本内容对其" align="end"/>
           </Space>
       </View>
     </DemoBlock>
