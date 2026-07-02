@@ -50,6 +50,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         width: avatarSize,
         height: avatarSize,
         backgroundColor: src ? undefined : '#ccc',
+        color: src ? undefined : '#fff',
         ...style,
       }}
       onClick={onClick}
