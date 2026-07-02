@@ -98,6 +98,7 @@ export const Popup: React.FC<PropsWithChildren<PopupProps>> = ({
   const [render, setRender] = useState(open);
   const [internalOpen, setInternalOpen] = useState(open || false);
 
+
   const handleBack = () => {
     setInternalOpen(false);
     onBack?.();

@@ -24,7 +24,7 @@ export const CellGroup: FC<CellGroupProps> = ({
       if (Array.isArray(children)) {
         const validChildren = React.Children.toArray(children).filter(
           (child): child is React.ReactElement =>
-            React.isValidElement(child) && (child.type == Cell || child.type == InternalCell)
+            React.isValidElement(child)
         );
         const childrenArray: React.ReactNode[] = [];
 
