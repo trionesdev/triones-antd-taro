@@ -1,6 +1,6 @@
 {
   "name": "@trionesdev/antd-mobile-icons-react",
-  "version": "0.0.2-beta.26",
+  "version": "0.0.2-beta.27",
   "description": "AntdMobileIconReact",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

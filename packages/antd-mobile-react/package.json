@@ -90,7 +90,6 @@
   },
   "dependencies": {
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "ahooks": "^3.9.7",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.20",

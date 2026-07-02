@@ -57,7 +57,6 @@
   "dependencies": {
     "@tarojs/components": "4.2.0",
     "@trionesdev/antd-mobile-base-react": "workspace:*",
-    "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.19",
     "rc-field-form": "^2.7.0",
