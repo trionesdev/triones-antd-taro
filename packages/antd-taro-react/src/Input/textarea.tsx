@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from 'react';
 import { Textarea as TaroTextarea } from "@tarojs/components"
-import {inputCls, variantType} from './types';
+import {inputCls, VariantType} from './types';
 import classNames from 'classnames';
 
 export type InputTextareaProps = {
   className?: string;
   style?: React.CSSProperties;
-  variant?: variantType
+  variant?: VariantType
   placeholder?: string;
   disabled?: boolean;
   allowClear?: boolean;

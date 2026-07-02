@@ -165,6 +165,12 @@ wx-input {
     border-bottom: 1Px solid variable.$trionesBorderColor;
     padding-block: variable.$trionesInputPaddingBlock;
   }
+
+  &-borderless{
+    border-radius: variable.$trionesBorderRadius;
+    padding-block: variable.$trionesInputPaddingBlock;
+    padding-inline: variable.$trionesInputPaddingBlock;
+  }
 }
 
 .#{$inputGroupWrapperCls} {}

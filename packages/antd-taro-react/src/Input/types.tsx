@@ -14,10 +14,10 @@ export type InputProps = {
   allowClear?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  variant?:variantType
+  variant?:VariantType
   defaultValue?: any;
   value?: any;
   onChange?: (e: any) => void;
 };
 
-export type variantType = 'outlined' | 'borderless' | 'filled' | 'underlined' | undefined
+export type VariantType = 'outlined' | 'borderless' | 'filled' | 'underlined' | undefined

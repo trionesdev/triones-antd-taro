@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, {FC, PropsWithChildren} from 'react';
-import {inputAffixWrapperCls, inputCls, variantType} from "./types";
+import {inputAffixWrapperCls, inputCls, VariantType} from "./types";
 import {CloseCircleFill} from '@trionesdev/antd-mobile-icons-react';
 
 export type InputAffixWrapperProps = {
@@ -8,7 +8,7 @@ export type InputAffixWrapperProps = {
   className?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  variant?: variantType
+  variant?: VariantType
   allowClear?: boolean;
   value?: any;
   onClear?: () => void;

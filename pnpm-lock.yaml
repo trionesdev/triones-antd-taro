@@ -168,9 +168,6 @@ importers:
 
   packages/antd-mobile-base-react:
     dependencies:
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-icons-react
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -190,6 +187,9 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
     devDependencies:
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -239,9 +239,6 @@ importers:
       '@trionesdev/antd-mobile-base-react':
         specifier: workspace:*
         version: link:../antd-mobile-base-react
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-icons-react
       ahooks:
         specifier: ^3.9.7
         version: 3.9.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -261,6 +258,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.6.0
         version: 19.8.1
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -336,9 +336,6 @@ importers:
       '@trionesdev/antd-mobile-base-react':
         specifier: workspace:*
         version: link:../antd-mobile-base-react
-      '@trionesdev/antd-mobile-icons-react':
-        specifier: workspace:*
-        version: link:../antd-mobile-icons-react
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -382,6 +379,9 @@ importers:
       '@tarojs/taro':
         specifier: 4.2.0
         version: 4.2.0(@tarojs/components@4.2.0(@tarojs/helper@4.2.0(@swc/helpers@0.5.15))(@types/react@18.3.24)(html-webpack-plugin@5.6.4(webpack@5.94.0))(postcss@8.4.31)(rollup@3.29.5)(webpack-chain@6.5.1)(webpack-dev-server@4.15.2(webpack@5.94.0))(webpack@5.94.0))(@tarojs/helper@4.2.0(@swc/helpers@0.5.15))(@tarojs/shared@4.2.0)(@types/react@18.3.24)(html-webpack-plugin@5.6.4(webpack@5.94.0))(postcss@8.4.31)(rollup@3.29.5)(webpack-chain@6.5.1)(webpack-dev-server@4.15.2(webpack@5.94.0))(webpack@5.94.0)
+      '@trionesdev/antd-mobile-icons-react':
+        specifier: workspace:*
+        version: link:../antd-mobile-icons-react
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
