@@ -5,6 +5,6 @@ import React from "react";
 
 export const Input:FC<InputProps> = ({...rest})=>{
     return (
-        <TaroInput {...rest} />
+        <TaroInput {...rest}  />
     )
 }

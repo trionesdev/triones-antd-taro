@@ -24,11 +24,11 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'mi
     }
   }, [align])
 
-  useEffect(() => {
-    if (value !== innerValue) {
-      setInnerValue(value);
-    }
-  }, [value]);
+  // useEffect(() => {
+  //   if (value !== innerValue) {
+  //     setInnerValue(value);
+  //   }
+  // }, [value]);
 
   return <InputAffixWrapper
     {...rest}
@@ -42,16 +42,18 @@ export const TaroInput: FC<TaroInputProps> = ({value, onChange, type, size = 'mi
       setInnerValue(null)
     }}
   >
-    <InternalTaroInput style={{flex: 1, textAlign: textAlign}} type={type}
-                       defaultValue={rest.defaultValue}
-                       value={innerValue}
+
+    <InternalTaroInput style={{flex: 1, textAlign: textAlign}}
+                       type={type}
+                       value={innerValue || rest.defaultValue}
                        placeholder={rest.placeholder}
                        password={rest.password}
                        disabled={rest.disabled}
                        onInput={(e: any) => {
                          setInnerValue(e.target.value);
                          onChange?.(e.target.value);
-                       }}/>
+                       }}
+    />
   </InputAffixWrapper>;
 }
 

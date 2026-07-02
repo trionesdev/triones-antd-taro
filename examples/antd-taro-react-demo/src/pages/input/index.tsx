@@ -6,7 +6,7 @@ const InputBase = () => {
   return <View style={{backgroundColor: '#D5D5D5'}}>
     <DemoBlock title="基础用法" styles={{body: {backgroundColor: '#D5D5D5'}}}>
       <View style={{backgroundColor: '#ffffff'}}>
-        <Input placeholder="请输入内容"/>
+        <Input placeholder="请输入内容" value={'测试'}/>
       </View>
     </DemoBlock>
     <DemoBlock title="带清除按钮" styles={{body: {backgroundColor: '#D5D5D5'}}}>
@@ -31,10 +31,10 @@ const InputBase = () => {
     </DemoBlock>
     <DemoBlock title="对其方式" styles={{body: {backgroundColor: '#D5D5D5'}}}>
       <View style={{backgroundColor: '#ffffff'}}>
-          <Space direction="vertical" block>
-            <Input placeholder="文本内容对其"/>
-            <Input placeholder="文本内容对其" align="end"/>
-          </Space>
+        <Space direction="vertical" block>
+          <Input placeholder="文本内容对其"/>
+          <Input placeholder="文本内容对其" align="end"/>
+        </Space>
       </View>
     </DemoBlock>
     <DemoBlock title="OPT模式" styles={{body: {backgroundColor: '#D5D5D5'}}}>
@@ -49,10 +49,10 @@ const InputBase = () => {
     </DemoBlock>
     <DemoBlock title={`变体`}>
       <Space direction="vertical" block={true}>
-        <Input variant="outlined" placeholder="outlined"/>
-        <Input variant="borderless" placeholder="borderless"/>
-        <Input variant="filled" placeholder="filled"/>
-        <Input variant="underlined" placeholder="underlined"/>
+        <Input variant="outlined" placeholder="outlined" value={'outlined'} allowClear={true}/>
+        <Input variant="borderless" placeholder="borderless" value={'borderless'} allowClear={true}/>
+        <Input variant="filled" placeholder="filled" value={'filled'} allowClear={true}/>
+        <Input variant="underlined" placeholder="underlined" value={'underlined'} allowClear={true}/>
       </Space>
     </DemoBlock>
     <DemoBlock title={`TextArea变体`}>
