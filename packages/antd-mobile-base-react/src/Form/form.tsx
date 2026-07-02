@@ -1,7 +1,7 @@
 import FieldForm, {useWatch} from 'rc-field-form';
 import type {FormProps as RcFormProps} from 'rc-field-form/lib/Form';
 import type {FormRef} from 'rc-field-form/lib/interface';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {FormContext} from './context';
 import {FormInstance} from './interface';
 import {FormHorizontalAlign, FormLayout, RequiredMark} from "./types";
@@ -54,6 +54,7 @@ export interface FormProps<Values = any>
    * @default
    */
   extra?: React.ReactNode;
+  divider?: ReactNode;
 }
 
 const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
@@ -67,6 +68,7 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     requiredMark,
     hiddenError = false,
     extra,
+    divider,
     ...rest
   },
   ref,
@@ -94,10 +96,49 @@ const InternalForm = React.forwardRef<FormRef, FormProps>(function Form(
     ],
   );
 
+  const handleRender = () => {
+    if (children) {
+      if (Array.isArray(children)) {
+        const validChildren = React.Children.toArray(children).filter(
+          (child): child is React.ReactElement =>
+            React.isValidElement(child)
+        );
+        const childrenArray: React.ReactNode[] = [];
+
+        validChildren.forEach((child, index) => {
+          childrenArray.push(
+            React.cloneElement(child, {
+              key: child.key ?? `form-item-${index}`
+            })
+          );
+          if (divider && index < validChildren.length - 1) {
+            if (React.isValidElement(divider)) {
+              childrenArray.push(
+                React.cloneElement(divider, {
+                  key: divider.key ?? `divider-${index}`
+                })
+              );
+            } else {
+              childrenArray.push(
+                <React.Fragment key={`divider-${index}`}>
+                  {divider}
+                </React.Fragment>
+              );
+            }
+          }
+        });
+        return childrenArray;
+      } else {
+        return children
+      }
+    }
+    return null;
+  }
+
   return (
     <FormContext.Provider value={contextValue}>
       <FieldForm {...rest} ref={ref} component={false}>
-        {children}
+        {handleRender()}
       </FieldForm>
     </FormContext.Provider>
   );

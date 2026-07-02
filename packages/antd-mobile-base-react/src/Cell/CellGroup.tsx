@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import React, {FC} from 'react';
 import {CellGroupProps, cls} from './types';
 import {CellGroupContext} from "./context";
-import Cell from '.';
-import {Cell as InternalCell} from "./cell"
 
 export const CellGroup: FC<CellGroupProps> = ({
                                                 className,
