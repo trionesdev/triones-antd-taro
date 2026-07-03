@@ -28,6 +28,9 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
       onClose?.()
     }
     const handleOk = () => {
+      if (valueRef.current === undefined || valueRef.current.length !== 2) {
+        return
+      }
       onOk?.(valueRef.current)
       handleClose()
     }
@@ -76,7 +79,7 @@ export const CalendarRangePicker: FC<CalendarPickerRangeProps> = memo(
              onClick={handleOk}>{locale.common.confirm}</a>
         </div>
         <div className={classNames(`${cls}-body`)}>
-          <Calendar.Range month={month} value={value} onChange={(date) => {
+          <Calendar.Range month={month || valueRef?.current?.[0] || dayjs()} value={value} onChange={(date) => {
             valueRef.current = date;
           }}/>
         </div>
