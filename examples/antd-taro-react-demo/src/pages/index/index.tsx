@@ -5,6 +5,7 @@ import { Button, SafeArea } from "@trionesdev/antd-taro-react";
 
 import Taro from "@tarojs/taro";
 import "./index.scss";
+import {IconAd} from "@trionesdev/lucide-taro-react";
 
 type PageStateProps = {
   store: {
@@ -550,6 +551,9 @@ class Index extends Component<PropsWithChildren> {
           >
             Toast 轻提示
           </Button>
+        </View>
+        <View>
+          <IconAd/>
         </View>
       </View>
 

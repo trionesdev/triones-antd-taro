@@ -53,6 +53,7 @@
     "@tarojs/taro": "4.2.0",
     "@trionesdev/antd-mobile-icons-react": "workspace:*",
     "@trionesdev/antd-taro-react": "workspace:*",
+    "@trionesdev/lucide-taro-react":"0.0.1-beta.3",
     "mobx": "^4.8.0",
     "mobx-react": "^6.1.4",
     "react": "^18.0.0",
