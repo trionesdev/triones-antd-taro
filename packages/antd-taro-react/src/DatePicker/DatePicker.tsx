@@ -8,6 +8,7 @@ import classNames from "classnames";
 import ConfigProvider from "../ConfigProvider";
 import {isEqual} from "lodash-es";
 import dayjs from "dayjs";
+import SafeArea from "../SafeArea";
 
 const cls = 'triones-antm-date-picker'
 
@@ -259,36 +260,36 @@ export const DatePicker: FC<DatePickerPops> = ({
   }, [internalValue])
 
   return <Popup open={open} onClose={onClose} round={true}>
-    <div className={classNames(`${cls}`)}>
-      <div className={classNames(`${cls}-header`)}>
-        <a
-          className={classNames(
-            `${cls}-header-button`,
-            `${cls}-header-button-cancel`,
+    <SafeArea>
+      <div className={classNames(`${cls}`)}>
+        <div className={classNames(`${cls}-header`)}>
+          <div className={classNames(
+              `${cls}-header-button`,
+              `${cls}-header-button-cancel`,
+            )}
+            onClick={handelCancel}
+          >
+            {locale.common.cancel}
+          </div>
+          {title && (
+            <div className={classNames(`${cls}-header-title`)}>{title}</div>
           )}
-          onClick={handelCancel}
-        >
-          {locale.common.cancel}
-        </a>
-        {title && (
-          <div className={classNames(`${cls}-header-title`)}>{title}</div>
-        )}
-        <a
-          className={classNames(
-            `${cls}-header-button`,
-            `${cls}-header-button-ok`,
-          )}
-          onClick={handleOk}
-        >
-          {locale.common.confirm}
-        </a>
+          <a
+            className={classNames(
+              `${cls}-header-button`,
+              `${cls}-header-button-ok`,
+            )}
+            onClick={handleOk}
+          >
+            {locale.common.confirm}
+          </a>
+        </div>
+        <div className={classNames(`${cls}-body`)}>
+          <PickerView columns={columns} value={pickerValue} onChange={(v) => {
+            handleValueChange(v)
+          }}/>
+        </div>
       </div>
-      <div className={classNames(`${cls}-body`)}>
-        <PickerView columns={columns} value={pickerValue} onChange={(v) => {
-          handleValueChange(v)
-        }}/>
-      </div>
-    </div>
-
+    </SafeArea>
   </Popup>
 }

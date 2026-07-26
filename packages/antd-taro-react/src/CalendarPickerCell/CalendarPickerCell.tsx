@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FC} from "react";
 import dayjs from "dayjs";
 import FormCell, {FormCellProps} from "../FormCell";
 import CalendarPicker from "../CalendarPicker";
+import {isSame} from "../utils/dayjs";
 
 export type  CalendarPickerCellProps = Omit<FormCellProps, 'value'> & {
   month?: dayjs.Dayjs;
@@ -27,8 +28,17 @@ export const CalendarPickerCell: FC<CalendarPickerCellProps> = ({
     return null
   }
 
+  useEffect(() => {
+    if (value == undefined) {
+      return
+    }
+    if (!isSame(value, internalValue, 'day')) {
+      setInternalValue(dayjs(value))
+    }
+  }, [value]);
+
   return <>
-    <CalendarPicker month={month} value={internalValue} open={innerOpen}
+    <CalendarPicker month={month ?? internalValue} value={internalValue} open={innerOpen}
                     afterOpenChange={(o) => {
                       setInnerOpen(o)
                     }}

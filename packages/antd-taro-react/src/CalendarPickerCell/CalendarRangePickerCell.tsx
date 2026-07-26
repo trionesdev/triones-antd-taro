@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FC} from "react";
 import dayjs from "dayjs";
 import FormCell, {FormCellProps} from "../FormCell";
 import CalendarPicker from "../CalendarPicker";
-import {toDayjsArray} from "../utils/dayjs";
+import {isSameArray, toDayjsArray} from "../utils/dayjs";
 
 export type  CalendarRangePickerCellProps = Omit<FormCellProps, 'value'> & {
   month?: dayjs.Dayjs;
@@ -12,12 +12,12 @@ export type  CalendarRangePickerCellProps = Omit<FormCellProps, 'value'> & {
   onChange?: (date?: (dayjs.Dayjs | Date)[]) => void;
 }
 export const CalendarRangePickerCell: FC<CalendarRangePickerCellProps> = ({
-                                                                  month,
-                                                                  title,
-                                                                  value,
-                                                                  onChange,
-                                                                  ...rest
-                                                                }) => {
+                                                                            month,
+                                                                            title,
+                                                                            value,
+                                                                            onChange,
+                                                                            ...rest
+                                                                          }) => {
 
   const [innerOpen, setInnerOpen] = React.useState(false);
   const [internalValue, setInternalValue] = useState<dayjs.Dayjs[] | undefined>(toDayjsArray(value))
@@ -29,8 +29,17 @@ export const CalendarRangePickerCell: FC<CalendarRangePickerCellProps> = ({
     return null
   }
 
+  useEffect(() => {
+    if (value == undefined) {
+      return
+    }
+    if (!isSameArray(value, internalValue, 'day')) {
+      setInternalValue(toDayjsArray(value))
+    }
+  }, [value]);
+
   return <>
-    <CalendarPicker.Range month={month} value={internalValue} open={innerOpen}
+    <CalendarPicker.Range month={month || internalValue?.[0] || dayjs()} value={internalValue} open={innerOpen}
                           afterOpenChange={(o) => {
                             setInnerOpen(o)
                           }}
@@ -44,6 +53,6 @@ export const CalendarRangePickerCell: FC<CalendarRangePickerCellProps> = ({
     />
     <FormCell {...rest} onClick={() => {
       setInnerOpen(true)
-    }} >{handleValueRender()}</FormCell>
+    }}>{handleValueRender()}</FormCell>
   </>
 }
